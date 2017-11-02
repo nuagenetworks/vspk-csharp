@@ -1,0 +1,295 @@
+/*
+  Copyright (c) 2017, Nokia
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+      * Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above copyright
+        notice, this list of conditions and the following disclaimer in the
+        documentation and/or other materials provided with the distribution.
+      * Neither the name of the copyright holder nor the names of its contributors
+        may be used to endorse or promote products derived from this software without
+        specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY
+  DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+
+using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Converters;
+using net.nuagenetworks.bambou;
+
+using net.nuagenetworks.vspk.v5_0.fetchers;
+
+namespace net.nuagenetworks.vspk.v5_0
+{
+
+public class VLANTemplate: RestObject {
+
+   private const long serialVersionUID = 1L;
+
+   
+   public enum EAssociatedConnectionType {BR_CONNECTION,UPLINK_CONNECTION };
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum EType {ACCESS,BR,DUC,UPLINK };
+
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("associatedConnectionType")]
+   protected EAssociatedConnectionType? _associatedConnectionType;
+   
+   [JsonProperty("associatedEgressQOSPolicyID")]
+   protected String _associatedEgressQOSPolicyID;
+   
+   [JsonProperty("associatedIngressQOSPolicyID")]
+   protected String _associatedIngressQOSPolicyID;
+   
+   [JsonProperty("associatedUplinkConnectionID")]
+   protected String _associatedUplinkConnectionID;
+   
+   [JsonProperty("associatedVSCProfileID")]
+   protected String _associatedVSCProfileID;
+   
+   [JsonProperty("description")]
+   protected String _description;
+   
+   [JsonProperty("ducVlan")]
+   protected bool _ducVlan;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("isUplink")]
+   protected bool _isUplink;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("type")]
+   protected EType? _type;
+   
+   [JsonProperty("value")]
+   protected long? _value;
+   
+
+   
+   [JsonIgnore]
+   private BRConnectionsFetcher _bRConnections;
+   
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
+   [JsonIgnore]
+   private UplinkConnectionsFetcher _uplinkConnections;
+   
+   public VLANTemplate() {
+      
+      _bRConnections = new BRConnectionsFetcher(this);
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
+      
+      _uplinkConnections = new UplinkConnectionsFetcher(this);
+      
+   }
+
+   
+   [JsonIgnore]
+   public EAssociatedConnectionType? NUAssociatedConnectionType {
+      get {
+         return _associatedConnectionType;
+      }
+      set {
+         this._associatedConnectionType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEgressQOSPolicyID {
+      get {
+         return _associatedEgressQOSPolicyID;
+      }
+      set {
+         this._associatedEgressQOSPolicyID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedIngressQOSPolicyID {
+      get {
+         return _associatedIngressQOSPolicyID;
+      }
+      set {
+         this._associatedIngressQOSPolicyID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedUplinkConnectionID {
+      get {
+         return _associatedUplinkConnectionID;
+      }
+      set {
+         this._associatedUplinkConnectionID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedVSCProfileID {
+      get {
+         return _associatedVSCProfileID;
+      }
+      set {
+         this._associatedVSCProfileID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUDescription {
+      get {
+         return _description;
+      }
+      set {
+         this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUDucVlan {
+      get {
+         return _ducVlan;
+      }
+      set {
+         this._ducVlan = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUIsUplink {
+      get {
+         return _isUplink;
+      }
+      set {
+         this._isUplink = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EType? NUType {
+      get {
+         return _type;
+      }
+      set {
+         this._type = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUValue {
+      get {
+         return _value;
+      }
+      set {
+         this._value = value;
+      }
+   }
+
+   
+
+   
+   public BRConnectionsFetcher getBRConnections() {
+      return _bRConnections;
+   }
+   
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
+   public UplinkConnectionsFetcher getUplinkConnections() {
+      return _uplinkConnections;
+   }
+   
+
+   public String toString() {
+      return "VLANTemplate [" + "associatedConnectionType=" + _associatedConnectionType + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedIngressQOSPolicyID=" + _associatedIngressQOSPolicyID + ", associatedUplinkConnectionID=" + _associatedUplinkConnectionID + ", associatedVSCProfileID=" + _associatedVSCProfileID + ", description=" + _description + ", ducVlan=" + _ducVlan + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isUplink=" + _isUplink + ", lastUpdatedBy=" + _lastUpdatedBy + ", type=" + _type + ", value=" + _value + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+   }
+   
+   
+
+   public static String getResourceName()
+   {
+	return "vlantemplates";
+   }
+
+   public static String getRestName()
+   {
+	return "vlantemplate";
+   }
+}
+}
