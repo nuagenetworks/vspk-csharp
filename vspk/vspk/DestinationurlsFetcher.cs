@@ -26,63 +26,22 @@
 */
 
 
-using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Converters;
+
 using net.nuagenetworks.bambou;
+using net.nuagenetworks.vspk.v5_0; 
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
-
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v5_0.fetchers
 {
+    public class DestinationurlsFetcher: RestFetcher<Destinationurl>
+    {
 
-public class Via: RestObject {
-
-   private const long serialVersionUID = 1L;
-
+       private const long serialVersionUID = 1L;
+       
+       public DestinationurlsFetcher(RestObject parentRestObj) 
+          : base(parentRestObj, typeof(Destinationurl))
+       {
+       }
    
-
-   
-   [JsonProperty("nextHops")]
-   protected System.Collections.Generic.List<String> _nextHops;
-   
-
-   
-   public Via() {
-      
-   }
-
-   
-   [JsonIgnore]
-   public System.Collections.Generic.List<String> NUNextHops {
-      get {
-         return _nextHops;
-      }
-      set {
-         this._nextHops = value;
-      }
-   }
-
-   
-
-   
-
-   public String toString() {
-      return "Via [" + "nextHops=" + _nextHops + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
-   }
-   
-   
-
-   public static String getResourceName()
-   {
-	return "vias";
-   }
-
-   public static String getRestName()
-   {
-	return "via";
-   }
-}
+       
+    }
 }

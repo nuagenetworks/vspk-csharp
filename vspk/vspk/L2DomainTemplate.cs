@@ -168,6 +168,9 @@ public class L2DomainTemplate: RestObject {
    [JsonIgnore]
    private RedirectionTargetTemplatesFetcher _redirectionTargetTemplates;
    
+   [JsonIgnore]
+   private VirtualFirewallPoliciesFetcher _virtualFirewallPolicies;
+   
    public L2DomainTemplate() {
       
       _addressRanges = new AddressRangesFetcher(this);
@@ -205,6 +208,8 @@ public class L2DomainTemplate: RestObject {
       _qOSs = new QOSsFetcher(this);
       
       _redirectionTargetTemplates = new RedirectionTargetTemplatesFetcher(this);
+      
+      _virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
       
    }
 
@@ -501,6 +506,10 @@ public class L2DomainTemplate: RestObject {
    
    public RedirectionTargetTemplatesFetcher getRedirectionTargetTemplates() {
       return _redirectionTargetTemplates;
+   }
+   
+   public VirtualFirewallPoliciesFetcher getVirtualFirewallPolicies() {
+      return _virtualFirewallPolicies;
    }
    
 

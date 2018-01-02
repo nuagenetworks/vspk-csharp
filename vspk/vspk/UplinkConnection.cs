@@ -51,6 +51,9 @@ public class UplinkConnection: RestObject {
    [JsonProperty("DNSAddress")]
    protected String _DNSAddress;
    
+   [JsonProperty("PATEnabled")]
+   protected bool _PATEnabled;
+   
    [JsonProperty("address")]
    protected String _address;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -74,6 +77,9 @@ public class UplinkConnection: RestObject {
    
    [JsonProperty("gateway")]
    protected String _gateway;
+   
+   [JsonProperty("installerManaged")]
+   protected bool _installerManaged;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("interfaceConnectionType")]
    protected EInterfaceConnectionType? _interfaceConnectionType;
@@ -98,6 +104,9 @@ public class UplinkConnection: RestObject {
    
    [JsonProperty("secondaryAddress")]
    protected String _secondaryAddress;
+   
+   [JsonProperty("underlayEnabled")]
+   protected bool _underlayEnabled;
    
    [JsonProperty("uplinkID")]
    protected long? _uplinkID;
@@ -137,6 +146,17 @@ public class UplinkConnection: RestObject {
       }
       set {
          this._DNSAddress = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUPATEnabled {
+      get {
+         return _PATEnabled;
+      }
+      set {
+         this._PATEnabled = value;
       }
    }
 
@@ -230,6 +250,17 @@ public class UplinkConnection: RestObject {
 
    
    [JsonIgnore]
+   public bool NUInstallerManaged {
+      get {
+         return _installerManaged;
+      }
+      set {
+         this._installerManaged = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EInterfaceConnectionType? NUInterfaceConnectionType {
       get {
          return _interfaceConnectionType;
@@ -318,6 +349,17 @@ public class UplinkConnection: RestObject {
 
    
    [JsonIgnore]
+   public bool NUUnderlayEnabled {
+      get {
+         return _underlayEnabled;
+      }
+      set {
+         this._underlayEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUUplinkID {
       get {
          return _uplinkID;
@@ -366,7 +408,7 @@ public class UplinkConnection: RestObject {
    
 
    public String toString() {
-      return "UplinkConnection [" + "DNSAddress=" + _DNSAddress + ", address=" + _address + ", advertisementCriteria=" + _advertisementCriteria + ", assocUnderlayID=" + _assocUnderlayID + ", associatedBGPNeighborID=" + _associatedBGPNeighborID + ", associatedUnderlayName=" + _associatedUnderlayName + ", auxiliaryLink=" + _auxiliaryLink + ", downloadRateLimit=" + _downloadRateLimit + ", gateway=" + _gateway + ", interfaceConnectionType=" + _interfaceConnectionType + ", mode=" + _mode + ", netmask=" + _netmask + ", password=" + _password + ", portName=" + _portName + ", role=" + _role + ", roleOrder=" + _roleOrder + ", secondaryAddress=" + _secondaryAddress + ", uplinkID=" + _uplinkID + ", username=" + _username + ", vlanId=" + _vlanId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "UplinkConnection [" + "DNSAddress=" + _DNSAddress + ", PATEnabled=" + _PATEnabled + ", address=" + _address + ", advertisementCriteria=" + _advertisementCriteria + ", assocUnderlayID=" + _assocUnderlayID + ", associatedBGPNeighborID=" + _associatedBGPNeighborID + ", associatedUnderlayName=" + _associatedUnderlayName + ", auxiliaryLink=" + _auxiliaryLink + ", downloadRateLimit=" + _downloadRateLimit + ", gateway=" + _gateway + ", installerManaged=" + _installerManaged + ", interfaceConnectionType=" + _interfaceConnectionType + ", mode=" + _mode + ", netmask=" + _netmask + ", password=" + _password + ", portName=" + _portName + ", role=" + _role + ", roleOrder=" + _roleOrder + ", secondaryAddress=" + _secondaryAddress + ", underlayEnabled=" + _underlayEnabled + ", uplinkID=" + _uplinkID + ", username=" + _username + ", vlanId=" + _vlanId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

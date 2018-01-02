@@ -80,16 +80,26 @@ public class InfrastructureAccessProfile: RestObject {
 
    
    [JsonIgnore]
+   private ConnectionendpointsFetcher _connectionendpoints;
+   
+   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
+   [JsonIgnore]
+   private SSHKeysFetcher _sSHKeys;
+   
    public InfrastructureAccessProfile() {
+      
+      _connectionendpoints = new ConnectionendpointsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _sSHKeys = new SSHKeysFetcher(this);
       
    }
 
@@ -206,12 +216,20 @@ public class InfrastructureAccessProfile: RestObject {
    
 
    
+   public ConnectionendpointsFetcher getConnectionendpoints() {
+      return _connectionendpoints;
+   }
+   
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
    }
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public SSHKeysFetcher getSSHKeys() {
+      return _sSHKeys;
    }
    
 

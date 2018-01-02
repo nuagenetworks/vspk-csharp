@@ -32,13 +32,13 @@ using net.nuagenetworks.vspk.v5_0;
 
 namespace net.nuagenetworks.vspk.v5_0.fetchers
 {
-    public class ViasFetcher: RestFetcher<Via>
+    public class OSPFInstancesFetcher: RestFetcher<OSPFInstance>
     {
 
        private const long serialVersionUID = 1L;
        
-       public ViasFetcher(RestObject parentRestObj) 
-          : base(parentRestObj, typeof(Via))
+       public OSPFInstancesFetcher(RestObject parentRestObj) 
+          : base(parentRestObj, typeof(OSPFInstance))
        {
        }
    

@@ -307,10 +307,16 @@ public class Me: RestObject {
    private UsersFetcher _users;
    
    [JsonIgnore]
+   private UserContextsFetcher _userContexts;
+   
+   [JsonIgnore]
    private VCentersFetcher _vCenters;
    
    [JsonIgnore]
    private VCenterHypervisorsFetcher _vCenterHypervisors;
+   
+   [JsonIgnore]
+   private VirtualFirewallPoliciesFetcher _virtualFirewallPolicies;
    
    [JsonIgnore]
    private VMsFetcher _vMs;
@@ -474,9 +480,13 @@ public class Me: RestObject {
       
       _users = new UsersFetcher(this);
       
+      _userContexts = new UserContextsFetcher(this);
+      
       _vCenters = new VCentersFetcher(this);
       
       _vCenterHypervisors = new VCenterHypervisorsFetcher(this);
+      
+      _virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
       
       _vMs = new VMsFetcher(this);
       
@@ -994,12 +1004,20 @@ public class Me: RestObject {
       return _users;
    }
    
+   public UserContextsFetcher getUserContexts() {
+      return _userContexts;
+   }
+   
    public VCentersFetcher getVCenters() {
       return _vCenters;
    }
    
    public VCenterHypervisorsFetcher getVCenterHypervisors() {
       return _vCenterHypervisors;
+   }
+   
+   public VirtualFirewallPoliciesFetcher getVirtualFirewallPolicies() {
+      return _virtualFirewallPolicies;
    }
    
    public VMsFetcher getVMs() {

@@ -37,23 +37,17 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class IngressAdvFwdEntryTemplate: RestObject {
+public class VirtualFirewallRule: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EFCOverride {A,B,C,D,E,F,G,H,NONE };
    public enum EAction {DROP,FORWARD,REDIRECT };
-   public enum EAppType {ALL,APPLICATION,NONE };
    public enum EAssociatedTrafficType {L4_SERVICE,L4_SERVICE_GROUP };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EFailsafeDatapath {FAIL_TO_BLOCK,FAIL_TO_WIRE };
-   public enum ELocationType {ANY,PGEXPRESSION,POLICYGROUP,REDIRECTIONTARGET,SUBNET,VPORTTAG,ZONE };
-   public enum ENetworkType {ANY,ENDPOINT_DOMAIN,ENDPOINT_SUBNET,ENDPOINT_ZONE,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,PUBLIC_NETWORK,SUBNET,UNDERLAY_INTERNET_POLICYGROUP,ZONE };
+   public enum ELocationType {ANY,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,SUBNET,ZONE };
+   public enum ENetworkType {ANY,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,SUBNET,ZONE };
    public enum EPolicyState {DRAFT,LIVE };
-   public enum ERedirectRewriteType {VLAN };
-   public enum ERemoteUplinkPreference {DEFAULT,PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY };
-   public enum EUplinkPreference {DEFAULT,PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY,SYMMETRIC };
 
    
    [JsonProperty("ACLTemplateName")]
@@ -61,30 +55,18 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    
    [JsonProperty("DSCP")]
    protected String _DSCP;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("FCOverride")]
-   protected EFCOverride? _FCOverride;
    
    [JsonProperty("ICMPCode")]
    protected String _ICMPCode;
    
    [JsonProperty("ICMPType")]
    protected String _ICMPType;
-   
-   [JsonProperty("IPv6AddressOverride")]
-   protected String _IPv6AddressOverride;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("action")]
    protected EAction? _action;
    
-   [JsonProperty("addressOverride")]
-   protected String _addressOverride;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("appType")]
-   protected EAppType? _appType;
-   
-   [JsonProperty("associatedApplicationID")]
-   protected String _associatedApplicationID;
+   [JsonProperty("associatedL7ApplicationSignatureID")]
+   protected String _associatedL7ApplicationSignatureID;
    
    [JsonProperty("associatedLiveEntityID")]
    protected String _associatedLiveEntityID;
@@ -110,20 +92,11 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
    
-   [JsonProperty("etherType")]
-   protected String _etherType;
-   
    [JsonProperty("externalID")]
    protected String _externalID;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("failsafeDatapath")]
-   protected EFailsafeDatapath? _failsafeDatapath;
    
    [JsonProperty("flowLoggingEnabled")]
    protected bool _flowLoggingEnabled;
-   
-   [JsonProperty("isSLAAware")]
-   protected bool _isSLAAware;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
@@ -137,14 +110,14 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    [JsonProperty("mirrorDestinationID")]
    protected String _mirrorDestinationID;
    
-   [JsonProperty("name")]
-   protected String _name;
-   
    [JsonProperty("networkID")]
    protected String _networkID;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("networkType")]
    protected ENetworkType? _networkType;
+   
+   [JsonProperty("overlayMirrorDestinationID")]
+   protected String _overlayMirrorDestinationID;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("policyState")]
    protected EPolicyState? _policyState;
@@ -154,18 +127,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    
    [JsonProperty("protocol")]
    protected String _protocol;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("redirectRewriteType")]
-   protected ERedirectRewriteType? _redirectRewriteType;
-   
-   [JsonProperty("redirectRewriteValue")]
-   protected String _redirectRewriteValue;
-   
-   [JsonProperty("redirectVPortTagID")]
-   protected String _redirectVPortTagID;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("remoteUplinkPreference")]
-   protected ERemoteUplinkPreference? _remoteUplinkPreference;
    
    [JsonProperty("sourcePort")]
    protected String _sourcePort;
@@ -175,12 +136,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    
    [JsonProperty("statsLoggingEnabled")]
    protected bool _statsLoggingEnabled;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("uplinkPreference")]
-   protected EUplinkPreference? _uplinkPreference;
-   
-   [JsonProperty("vlanRange")]
-   protected String _vlanRange;
    
 
    
@@ -196,13 +151,7 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    [JsonIgnore]
    private StatisticsFetcher _statistics;
    
-   public IngressAdvFwdEntryTemplate() {
-      _protocol = "6";
-      _etherType = "0x0800";
-      _DSCP = "*";
-      _locationType = ELocationType.ANY;
-      _action = EAction.FORWARD;
-      _networkType = ENetworkType.ANY;
+   public VirtualFirewallRule() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -238,17 +187,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
-   public EFCOverride? NUFCOverride {
-      get {
-         return _FCOverride;
-      }
-      set {
-         this._FCOverride = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUICMPCode {
       get {
          return _ICMPCode;
@@ -271,17 +209,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
-   public String NUIPv6AddressOverride {
-      get {
-         return _IPv6AddressOverride;
-      }
-      set {
-         this._IPv6AddressOverride = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public EAction? NUAction {
       get {
          return _action;
@@ -293,34 +220,12 @@ public class IngressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
-   public String NUAddressOverride {
+   public String NUAssociatedL7ApplicationSignatureID {
       get {
-         return _addressOverride;
+         return _associatedL7ApplicationSignatureID;
       }
       set {
-         this._addressOverride = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EAppType? NUAppType {
-      get {
-         return _appType;
-      }
-      set {
-         this._appType = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUAssociatedApplicationID {
-      get {
-         return _associatedApplicationID;
-      }
-      set {
-         this._associatedApplicationID = value;
+         this._associatedL7ApplicationSignatureID = value;
       }
    }
 
@@ -414,17 +319,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
-   public String NUEtherType {
-      get {
-         return _etherType;
-      }
-      set {
-         this._etherType = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUExternalID {
       get {
          return _externalID;
@@ -436,34 +330,12 @@ public class IngressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
-   public EFailsafeDatapath? NUFailsafeDatapath {
-      get {
-         return _failsafeDatapath;
-      }
-      set {
-         this._failsafeDatapath = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public bool NUFlowLoggingEnabled {
       get {
          return _flowLoggingEnabled;
       }
       set {
          this._flowLoggingEnabled = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public bool NUIsSLAAware {
-      get {
-         return _isSLAAware;
-      }
-      set {
-         this._isSLAAware = value;
       }
    }
 
@@ -513,17 +385,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
-   public String NUName {
-      get {
-         return _name;
-      }
-      set {
-         this._name = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUNetworkID {
       get {
          return _networkID;
@@ -541,6 +402,17 @@ public class IngressAdvFwdEntryTemplate: RestObject {
       }
       set {
          this._networkType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOverlayMirrorDestinationID {
+      get {
+         return _overlayMirrorDestinationID;
+      }
+      set {
+         this._overlayMirrorDestinationID = value;
       }
    }
 
@@ -579,50 +451,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
-   public ERedirectRewriteType? NURedirectRewriteType {
-      get {
-         return _redirectRewriteType;
-      }
-      set {
-         this._redirectRewriteType = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NURedirectRewriteValue {
-      get {
-         return _redirectRewriteValue;
-      }
-      set {
-         this._redirectRewriteValue = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NURedirectVPortTagID {
-      get {
-         return _redirectVPortTagID;
-      }
-      set {
-         this._redirectVPortTagID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public ERemoteUplinkPreference? NURemoteUplinkPreference {
-      get {
-         return _remoteUplinkPreference;
-      }
-      set {
-         this._remoteUplinkPreference = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUSourcePort {
       get {
          return _sourcePort;
@@ -655,28 +483,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    }
 
    
-   [JsonIgnore]
-   public EUplinkPreference? NUUplinkPreference {
-      get {
-         return _uplinkPreference;
-      }
-      set {
-         this._uplinkPreference = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUVlanRange {
-      get {
-         return _vlanRange;
-      }
-      set {
-         this._vlanRange = value;
-      }
-   }
-
-   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -697,7 +503,7 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    
 
    public String toString() {
-      return "IngressAdvFwdEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", FCOverride=" + _FCOverride + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", appType=" + _appType + ", associatedApplicationID=" + _associatedApplicationID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", failsafeDatapath=" + _failsafeDatapath + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", isSLAAware=" + _isSLAAware + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", name=" + _name + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", redirectRewriteType=" + _redirectRewriteType + ", redirectRewriteValue=" + _redirectRewriteValue + ", redirectVPortTagID=" + _redirectVPortTagID + ", remoteUplinkPreference=" + _remoteUplinkPreference + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", uplinkPreference=" + _uplinkPreference + ", vlanRange=" + _vlanRange + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VirtualFirewallRule [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", action=" + _action + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", overlayMirrorDestinationID=" + _overlayMirrorDestinationID + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -705,12 +511,12 @@ public class IngressAdvFwdEntryTemplate: RestObject {
 
    public static String getResourceName()
    {
-	return "ingressadvfwdentrytemplates";
+	return "virtualfirewallrules";
    }
 
    public static String getRestName()
    {
-	return "ingressadvfwdentrytemplate";
+	return "virtualfirewallrule";
    }
 }
 }

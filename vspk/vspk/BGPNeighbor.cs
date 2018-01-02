@@ -45,6 +45,9 @@ public class BGPNeighbor: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("BFDEnabled")]
+   protected bool _BFDEnabled;
+   
    [JsonProperty("associatedExportRoutingPolicyID")]
    protected String _associatedExportRoutingPolicyID;
    
@@ -89,6 +92,17 @@ public class BGPNeighbor: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public bool NUBFDEnabled {
+      get {
+         return _BFDEnabled;
+      }
+      set {
+         this._BFDEnabled = value;
+      }
    }
 
    
@@ -214,7 +228,7 @@ public class BGPNeighbor: RestObject {
    
 
    public String toString() {
-      return "BGPNeighbor [" + "associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningEnabled=" + _dampeningEnabled + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", peerAS=" + _peerAS + ", peerIP=" + _peerIP + ", session=" + _session + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BGPNeighbor [" + "BFDEnabled=" + _BFDEnabled + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningEnabled=" + _dampeningEnabled + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", peerAS=" + _peerAS + ", peerIP=" + _peerIP + ", session=" + _session + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

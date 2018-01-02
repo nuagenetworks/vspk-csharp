@@ -37,30 +37,34 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class StaticRoute: RestObject {
+public class OSPFInterface: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EIPType {DUALSTACK,IPV4,IPV6 };
+   public enum EAdminState {DOWN,UP };
+   public enum EAuthenticationType {MESSAGE_DIGEST,NONE,PASSWORD };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EType {EXIT_DOMAIN,OVERLAY,OVERLAY_ADDRESS_TRANSLATION };
+   public enum EInterfaceType {BROADCAST,POINT_TO_POINT };
 
-   
-   [JsonProperty("BFDEnabled")]
-   protected bool _BFDEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("IPType")]
-   protected EIPType? _IPType;
-   
-   [JsonProperty("IPv6Address")]
-   protected String _IPv6Address;
-   
-   [JsonProperty("address")]
-   protected String _address;
+   [JsonProperty("adminState")]
+   protected EAdminState? _adminState;
    
    [JsonProperty("associatedSubnetID")]
    protected String _associatedSubnetID;
+   
+   [JsonProperty("authenticationKey")]
+   protected String _authenticationKey;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("authenticationType")]
+   protected EAuthenticationType? _authenticationType;
+   
+   [JsonProperty("deadInterval")]
+   protected long? _deadInterval;
+   
+   [JsonProperty("description")]
+   protected String _description;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -68,25 +72,34 @@ public class StaticRoute: RestObject {
    [JsonProperty("externalID")]
    protected String _externalID;
    
+   [JsonProperty("helloInterval")]
+   protected long? _helloInterval;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("interfaceType")]
+   protected EInterfaceType? _interfaceType;
+   
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
-   [JsonProperty("netmask")]
-   protected String _netmask;
+   [JsonProperty("messageDigestKeys")]
+   protected System.Collections.Generic.List<String> _messageDigestKeys;
    
-   [JsonProperty("nextHopIp")]
-   protected String _nextHopIp;
+   [JsonProperty("metric")]
+   protected long? _metric;
    
-   [JsonProperty("routeDistinguisher")]
-   protected String _routeDistinguisher;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("type")]
-   protected EType? _type;
+   [JsonProperty("mtu")]
+   protected long? _mtu;
+   
+   [JsonProperty("name")]
+   protected String _name;
+   
+   [JsonProperty("passiveEnabled")]
+   protected bool _passiveEnabled;
+   
+   [JsonProperty("priority")]
+   protected long? _priority;
    
 
-   
-   [JsonIgnore]
-   private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
@@ -94,9 +107,7 @@ public class StaticRoute: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
-   public StaticRoute() {
-      
-      _eventLogs = new EventLogsFetcher(this);
+   public OSPFInterface() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -106,45 +117,12 @@ public class StaticRoute: RestObject {
 
    
    [JsonIgnore]
-   public bool NUBFDEnabled {
+   public EAdminState? NUAdminState {
       get {
-         return _BFDEnabled;
+         return _adminState;
       }
       set {
-         this._BFDEnabled = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EIPType? NUIPType {
-      get {
-         return _IPType;
-      }
-      set {
-         this._IPType = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUIPv6Address {
-      get {
-         return _IPv6Address;
-      }
-      set {
-         this._IPv6Address = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUAddress {
-      get {
-         return _address;
-      }
-      set {
-         this._address = value;
+         this._adminState = value;
       }
    }
 
@@ -156,6 +134,50 @@ public class StaticRoute: RestObject {
       }
       set {
          this._associatedSubnetID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAuthenticationKey {
+      get {
+         return _authenticationKey;
+      }
+      set {
+         this._authenticationKey = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EAuthenticationType? NUAuthenticationType {
+      get {
+         return _authenticationType;
+      }
+      set {
+         this._authenticationType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUDeadInterval {
+      get {
+         return _deadInterval;
+      }
+      set {
+         this._deadInterval = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUDescription {
+      get {
+         return _description;
+      }
+      set {
+         this._description = value;
       }
    }
 
@@ -183,6 +205,28 @@ public class StaticRoute: RestObject {
 
    
    [JsonIgnore]
+   public long? NUHelloInterval {
+      get {
+         return _helloInterval;
+      }
+      set {
+         this._helloInterval = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EInterfaceType? NUInterfaceType {
+      get {
+         return _interfaceType;
+      }
+      set {
+         this._interfaceType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -194,54 +238,72 @@ public class StaticRoute: RestObject {
 
    
    [JsonIgnore]
-   public String NUNetmask {
+   public System.Collections.Generic.List<String> NUMessageDigestKeys {
       get {
-         return _netmask;
+         return _messageDigestKeys;
       }
       set {
-         this._netmask = value;
+         this._messageDigestKeys = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUNextHopIp {
+   public long? NUMetric {
       get {
-         return _nextHopIp;
+         return _metric;
       }
       set {
-         this._nextHopIp = value;
+         this._metric = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NURouteDistinguisher {
+   public long? NUMtu {
       get {
-         return _routeDistinguisher;
+         return _mtu;
       }
       set {
-         this._routeDistinguisher = value;
+         this._mtu = value;
       }
    }
 
    
    [JsonIgnore]
-   public EType? NUType {
+   public String NUName {
       get {
-         return _type;
+         return _name;
       }
       set {
-         this._type = value;
+         this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUPassiveEnabled {
+      get {
+         return _passiveEnabled;
+      }
+      set {
+         this._passiveEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUPriority {
+      get {
+         return _priority;
+      }
+      set {
+         this._priority = value;
       }
    }
 
    
 
-   
-   public EventLogsFetcher getEventLogs() {
-      return _eventLogs;
-   }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
@@ -253,7 +315,7 @@ public class StaticRoute: RestObject {
    
 
    public String toString() {
-      return "StaticRoute [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedSubnetID=" + _associatedSubnetID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", netmask=" + _netmask + ", nextHopIp=" + _nextHopIp + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "OSPFInterface [" + "adminState=" + _adminState + ", associatedSubnetID=" + _associatedSubnetID + ", authenticationKey=" + _authenticationKey + ", authenticationType=" + _authenticationType + ", deadInterval=" + _deadInterval + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", helloInterval=" + _helloInterval + ", interfaceType=" + _interfaceType + ", lastUpdatedBy=" + _lastUpdatedBy + ", messageDigestKeys=" + _messageDigestKeys + ", metric=" + _metric + ", mtu=" + _mtu + ", name=" + _name + ", passiveEnabled=" + _passiveEnabled + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -261,12 +323,12 @@ public class StaticRoute: RestObject {
 
    public static String getResourceName()
    {
-	return "staticroutes";
+	return "ospfinterfaces";
    }
 
    public static String getRestName()
    {
-	return "staticroute";
+	return "ospfinterface";
    }
 }
 }

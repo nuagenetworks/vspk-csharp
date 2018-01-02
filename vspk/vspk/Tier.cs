@@ -37,17 +37,17 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class KeyServerNotification: RestObject {
+public class Tier: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum ENotificationType {CONFIG_UPDATE,ENCRYPTION_DISABLED,ENCRYPTION_ENABLED,REKEY,TEST };
+   public enum ETierType {TIER1,TIER2 };
 
    
-   [JsonProperty("base64JSONString")]
-   protected String _base64JSONString;
+   [JsonProperty("downThresholdCount")]
+   protected long? _downThresholdCount;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -55,13 +55,25 @@ public class KeyServerNotification: RestObject {
    [JsonProperty("externalID")]
    protected String _externalID;
    
-   [JsonProperty("message")]
-   protected Object _message;
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   
+   [JsonProperty("packetCount")]
+   protected long? _packetCount;
+   
+   [JsonProperty("probeInterval")]
+   protected long? _probeInterval;
    [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("notificationType")]
-   protected ENotificationType? _notificationType;
+   [JsonProperty("tierType")]
+   protected ETierType? _tierType;
+   
+   [JsonProperty("timeout")]
+   protected long? _timeout;
    
 
+   
+   [JsonIgnore]
+   private DestinationurlsFetcher _destinationurls;
    
    [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
@@ -69,7 +81,9 @@ public class KeyServerNotification: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
-   public KeyServerNotification() {
+   public Tier() {
+      
+      _destinationurls = new DestinationurlsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -79,12 +93,12 @@ public class KeyServerNotification: RestObject {
 
    
    [JsonIgnore]
-   public String NUBase64JSONString {
+   public long? NUDownThresholdCount {
       get {
-         return _base64JSONString;
+         return _downThresholdCount;
       }
       set {
-         this._base64JSONString = value;
+         this._downThresholdCount = value;
       }
    }
 
@@ -112,28 +126,65 @@ public class KeyServerNotification: RestObject {
 
    
    [JsonIgnore]
-   public Object NUMessage {
+   public String NULastUpdatedBy {
       get {
-         return _message;
+         return _lastUpdatedBy;
       }
       set {
-         this._message = value;
+         this._lastUpdatedBy = value;
       }
    }
 
    
    [JsonIgnore]
-   public ENotificationType? NUNotificationType {
+   public long? NUPacketCount {
       get {
-         return _notificationType;
+         return _packetCount;
       }
       set {
-         this._notificationType = value;
+         this._packetCount = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUProbeInterval {
+      get {
+         return _probeInterval;
+      }
+      set {
+         this._probeInterval = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public ETierType? NUTierType {
+      get {
+         return _tierType;
+      }
+      set {
+         this._tierType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUTimeout {
+      get {
+         return _timeout;
+      }
+      set {
+         this._timeout = value;
       }
    }
 
    
 
+   
+   public DestinationurlsFetcher getDestinationurls() {
+      return _destinationurls;
+   }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
@@ -145,7 +196,7 @@ public class KeyServerNotification: RestObject {
    
 
    public String toString() {
-      return "KeyServerNotification [" + "base64JSONString=" + _base64JSONString + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", message=" + _message + ", notificationType=" + _notificationType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Tier [" + "downThresholdCount=" + _downThresholdCount + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", packetCount=" + _packetCount + ", probeInterval=" + _probeInterval + ", tierType=" + _tierType + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -153,12 +204,12 @@ public class KeyServerNotification: RestObject {
 
    public static String getResourceName()
    {
-	return "keyservernotifications";
+	return "tiers";
    }
 
    public static String getRestName()
    {
-	return "keyservernotification";
+	return "tier";
    }
 }
 }

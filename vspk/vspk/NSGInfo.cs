@@ -44,8 +44,11 @@ public class NSGInfo: RestObject {
    
    public enum ETPMStatus {DISABLED,ENABLED_NOT_OPERATIONAL,ENABLED_OPERATIONAL,UNKNOWN };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EFamily {ANY,NSG_E,NSG_V };
+   public enum EFamily {ANY,NSG_AMI,NSG_C,NSG_DOCKER,NSG_E,NSG_E200,NSG_E300,NSG_V,NSG_X,NSG_X200 };
 
+   
+   [JsonProperty("BIOSReleaseDate")]
+   protected String _BIOSReleaseDate;
    
    [JsonProperty("BIOSVersion")]
    protected String _BIOSVersion;
@@ -93,6 +96,17 @@ public class NSGInfo: RestObject {
    
    public NSGInfo() {
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUBIOSReleaseDate {
+      get {
+         return _BIOSReleaseDate;
+      }
+      set {
+         this._BIOSReleaseDate = value;
+      }
    }
 
    
@@ -254,7 +268,7 @@ public class NSGInfo: RestObject {
    
 
    public String toString() {
-      return "NSGInfo [" + "BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", TPMStatus=" + _TPMStatus + ", UUID=" + _UUID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", libraries=" + _libraries + ", productName=" + _productName + ", serialNumber=" + _serialNumber + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGInfo [" + "BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", TPMStatus=" + _TPMStatus + ", UUID=" + _UUID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", libraries=" + _libraries + ", productName=" + _productName + ", serialNumber=" + _serialNumber + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

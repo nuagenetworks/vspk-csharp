@@ -37,30 +37,23 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class StaticRoute: RestObject {
+public class Destinationurl: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EIPType {DUALSTACK,IPV4,IPV6 };
+   public enum EHTTPMethod {GET,HEAD };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EType {EXIT_DOMAIN,OVERLAY,OVERLAY_ADDRESS_TRANSLATION };
 
-   
-   [JsonProperty("BFDEnabled")]
-   protected bool _BFDEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("IPType")]
-   protected EIPType? _IPType;
+   [JsonProperty("HTTPMethod")]
+   protected EHTTPMethod? _HTTPMethod;
    
-   [JsonProperty("IPv6Address")]
-   protected String _IPv6Address;
+   [JsonProperty("URL")]
+   protected String _URL;
    
-   [JsonProperty("address")]
-   protected String _address;
-   
-   [JsonProperty("associatedSubnetID")]
-   protected String _associatedSubnetID;
+   [JsonProperty("downThresholdCount")]
+   protected long? _downThresholdCount;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -71,22 +64,10 @@ public class StaticRoute: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
-   [JsonProperty("netmask")]
-   protected String _netmask;
-   
-   [JsonProperty("nextHopIp")]
-   protected String _nextHopIp;
-   
-   [JsonProperty("routeDistinguisher")]
-   protected String _routeDistinguisher;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("type")]
-   protected EType? _type;
+   [JsonProperty("percentageWeight")]
+   protected long? _percentageWeight;
    
 
-   
-   [JsonIgnore]
-   private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
@@ -94,9 +75,7 @@ public class StaticRoute: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
-   public StaticRoute() {
-      
-      _eventLogs = new EventLogsFetcher(this);
+   public Destinationurl() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -106,56 +85,34 @@ public class StaticRoute: RestObject {
 
    
    [JsonIgnore]
-   public bool NUBFDEnabled {
+   public EHTTPMethod? NUHTTPMethod {
       get {
-         return _BFDEnabled;
+         return _HTTPMethod;
       }
       set {
-         this._BFDEnabled = value;
+         this._HTTPMethod = value;
       }
    }
 
    
    [JsonIgnore]
-   public EIPType? NUIPType {
+   public String NUURL {
       get {
-         return _IPType;
+         return _URL;
       }
       set {
-         this._IPType = value;
+         this._URL = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUIPv6Address {
+   public long? NUDownThresholdCount {
       get {
-         return _IPv6Address;
+         return _downThresholdCount;
       }
       set {
-         this._IPv6Address = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUAddress {
-      get {
-         return _address;
-      }
-      set {
-         this._address = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUAssociatedSubnetID {
-      get {
-         return _associatedSubnetID;
-      }
-      set {
-         this._associatedSubnetID = value;
+         this._downThresholdCount = value;
       }
    }
 
@@ -194,54 +151,17 @@ public class StaticRoute: RestObject {
 
    
    [JsonIgnore]
-   public String NUNetmask {
+   public long? NUPercentageWeight {
       get {
-         return _netmask;
+         return _percentageWeight;
       }
       set {
-         this._netmask = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUNextHopIp {
-      get {
-         return _nextHopIp;
-      }
-      set {
-         this._nextHopIp = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NURouteDistinguisher {
-      get {
-         return _routeDistinguisher;
-      }
-      set {
-         this._routeDistinguisher = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EType? NUType {
-      get {
-         return _type;
-      }
-      set {
-         this._type = value;
+         this._percentageWeight = value;
       }
    }
 
    
 
-   
-   public EventLogsFetcher getEventLogs() {
-      return _eventLogs;
-   }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
@@ -253,7 +173,7 @@ public class StaticRoute: RestObject {
    
 
    public String toString() {
-      return "StaticRoute [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedSubnetID=" + _associatedSubnetID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", netmask=" + _netmask + ", nextHopIp=" + _nextHopIp + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Destinationurl [" + "HTTPMethod=" + _HTTPMethod + ", URL=" + _URL + ", downThresholdCount=" + _downThresholdCount + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", percentageWeight=" + _percentageWeight + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -261,12 +181,12 @@ public class StaticRoute: RestObject {
 
    public static String getResourceName()
    {
-	return "staticroutes";
+	return "destinationurls";
    }
 
    public static String getRestName()
    {
-	return "staticroute";
+	return "destinationurl";
    }
 }
 }

@@ -37,30 +37,36 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class StaticRoute: RestObject {
+public class OSPFArea: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EIPType {DUALSTACK,IPV4,IPV6 };
+   public enum EAreaType {NORMAL,NSSA,STUB };
+   public enum EDefaultOriginateOption {NONE,TYPE3,TYPE7 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EType {EXIT_DOMAIN,OVERLAY,OVERLAY_ADDRESS_TRANSLATION };
 
    
-   [JsonProperty("BFDEnabled")]
-   protected bool _BFDEnabled;
+   [JsonProperty("aggregateAreaRange")]
+   protected System.Collections.Generic.List<String> _aggregateAreaRange;
+   
+   [JsonProperty("aggregateAreaRangeNSSA")]
+   protected System.Collections.Generic.List<String> _aggregateAreaRangeNSSA;
+   
+   [JsonProperty("areaID")]
+   protected long? _areaID;
    [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("IPType")]
-   protected EIPType? _IPType;
+   [JsonProperty("areaType")]
+   protected EAreaType? _areaType;
    
-   [JsonProperty("IPv6Address")]
-   protected String _IPv6Address;
+   [JsonProperty("defaultMetric")]
+   protected long? _defaultMetric;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("defaultOriginateOption")]
+   protected EDefaultOriginateOption? _defaultOriginateOption;
    
-   [JsonProperty("address")]
-   protected String _address;
-   
-   [JsonProperty("associatedSubnetID")]
-   protected String _associatedSubnetID;
+   [JsonProperty("description")]
+   protected String _description;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -71,22 +77,19 @@ public class StaticRoute: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
-   [JsonProperty("netmask")]
-   protected String _netmask;
+   [JsonProperty("redistributeExternalEnabled")]
+   protected bool _redistributeExternalEnabled;
    
-   [JsonProperty("nextHopIp")]
-   protected String _nextHopIp;
+   [JsonProperty("summariesEnabled")]
+   protected bool _summariesEnabled;
    
-   [JsonProperty("routeDistinguisher")]
-   protected String _routeDistinguisher;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("type")]
-   protected EType? _type;
+   [JsonProperty("suppressAreaRange")]
+   protected System.Collections.Generic.List<String> _suppressAreaRange;
+   
+   [JsonProperty("suppressAreaRangeNSSA")]
+   protected System.Collections.Generic.List<String> _suppressAreaRangeNSSA;
    
 
-   
-   [JsonIgnore]
-   private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
@@ -94,68 +97,93 @@ public class StaticRoute: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
-   public StaticRoute() {
-      
-      _eventLogs = new EventLogsFetcher(this);
+   [JsonIgnore]
+   private OSPFInterfacesFetcher _oSPFInterfaces;
+   
+   public OSPFArea() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
+      _oSPFInterfaces = new OSPFInterfacesFetcher(this);
+      
    }
 
    
    [JsonIgnore]
-   public bool NUBFDEnabled {
+   public System.Collections.Generic.List<String> NUAggregateAreaRange {
       get {
-         return _BFDEnabled;
+         return _aggregateAreaRange;
       }
       set {
-         this._BFDEnabled = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EIPType? NUIPType {
-      get {
-         return _IPType;
-      }
-      set {
-         this._IPType = value;
+         this._aggregateAreaRange = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUIPv6Address {
+   public System.Collections.Generic.List<String> NUAggregateAreaRangeNSSA {
       get {
-         return _IPv6Address;
+         return _aggregateAreaRangeNSSA;
       }
       set {
-         this._IPv6Address = value;
+         this._aggregateAreaRangeNSSA = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUAddress {
+   public long? NUAreaID {
       get {
-         return _address;
+         return _areaID;
       }
       set {
-         this._address = value;
+         this._areaID = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUAssociatedSubnetID {
+   public EAreaType? NUAreaType {
       get {
-         return _associatedSubnetID;
+         return _areaType;
       }
       set {
-         this._associatedSubnetID = value;
+         this._areaType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUDefaultMetric {
+      get {
+         return _defaultMetric;
+      }
+      set {
+         this._defaultMetric = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EDefaultOriginateOption? NUDefaultOriginateOption {
+      get {
+         return _defaultOriginateOption;
+      }
+      set {
+         this._defaultOriginateOption = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUDescription {
+      get {
+         return _description;
+      }
+      set {
+         this._description = value;
       }
    }
 
@@ -194,54 +222,50 @@ public class StaticRoute: RestObject {
 
    
    [JsonIgnore]
-   public String NUNetmask {
+   public bool NURedistributeExternalEnabled {
       get {
-         return _netmask;
+         return _redistributeExternalEnabled;
       }
       set {
-         this._netmask = value;
+         this._redistributeExternalEnabled = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUNextHopIp {
+   public bool NUSummariesEnabled {
       get {
-         return _nextHopIp;
+         return _summariesEnabled;
       }
       set {
-         this._nextHopIp = value;
+         this._summariesEnabled = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NURouteDistinguisher {
+   public System.Collections.Generic.List<String> NUSuppressAreaRange {
       get {
-         return _routeDistinguisher;
+         return _suppressAreaRange;
       }
       set {
-         this._routeDistinguisher = value;
+         this._suppressAreaRange = value;
       }
    }
 
    
    [JsonIgnore]
-   public EType? NUType {
+   public System.Collections.Generic.List<String> NUSuppressAreaRangeNSSA {
       get {
-         return _type;
+         return _suppressAreaRangeNSSA;
       }
       set {
-         this._type = value;
+         this._suppressAreaRangeNSSA = value;
       }
    }
 
    
 
-   
-   public EventLogsFetcher getEventLogs() {
-      return _eventLogs;
-   }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
@@ -251,9 +275,13 @@ public class StaticRoute: RestObject {
       return _metadatas;
    }
    
+   public OSPFInterfacesFetcher getOSPFInterfaces() {
+      return _oSPFInterfaces;
+   }
+   
 
    public String toString() {
-      return "StaticRoute [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedSubnetID=" + _associatedSubnetID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", netmask=" + _netmask + ", nextHopIp=" + _nextHopIp + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "OSPFArea [" + "aggregateAreaRange=" + _aggregateAreaRange + ", aggregateAreaRangeNSSA=" + _aggregateAreaRangeNSSA + ", areaID=" + _areaID + ", areaType=" + _areaType + ", defaultMetric=" + _defaultMetric + ", defaultOriginateOption=" + _defaultOriginateOption + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", redistributeExternalEnabled=" + _redistributeExternalEnabled + ", summariesEnabled=" + _summariesEnabled + ", suppressAreaRange=" + _suppressAreaRange + ", suppressAreaRangeNSSA=" + _suppressAreaRangeNSSA + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -261,12 +289,12 @@ public class StaticRoute: RestObject {
 
    public static String getResourceName()
    {
-	return "staticroutes";
+	return "ospfareas";
    }
 
    public static String getRestName()
    {
-	return "staticroute";
+	return "ospfarea";
    }
 }
 }

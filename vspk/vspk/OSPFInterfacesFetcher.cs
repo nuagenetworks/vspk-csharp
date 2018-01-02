@@ -32,13 +32,13 @@ using net.nuagenetworks.vspk.v5_0;
 
 namespace net.nuagenetworks.vspk.v5_0.fetchers
 {
-    public class KeyServerNotificationsFetcher: RestFetcher<KeyServerNotification>
+    public class OSPFInterfacesFetcher: RestFetcher<OSPFInterface>
     {
 
        private const long serialVersionUID = 1L;
        
-       public KeyServerNotificationsFetcher(RestObject parentRestObj) 
-          : base(parentRestObj, typeof(KeyServerNotification))
+       public OSPFInterfacesFetcher(RestObject parentRestObj) 
+          : base(parentRestObj, typeof(OSPFInterface))
        {
        }
    

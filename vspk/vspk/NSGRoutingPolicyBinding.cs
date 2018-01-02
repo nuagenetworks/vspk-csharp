@@ -37,33 +37,32 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class StaticRoute: RestObject {
+public class NSGRoutingPolicyBinding: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EIPType {DUALSTACK,IPV4,IPV6 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EType {EXIT_DOMAIN,OVERLAY,OVERLAY_ADDRESS_TRANSLATION };
+   public enum EExportToOverlay {INHERITED,DISABLED,ENABLED };
 
    
-   [JsonProperty("BFDEnabled")]
-   protected bool _BFDEnabled;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("IPType")]
-   protected EIPType? _IPType;
+   [JsonProperty("associatedExportRoutingPolicyID")]
+   protected String _associatedExportRoutingPolicyID;
    
-   [JsonProperty("IPv6Address")]
-   protected String _IPv6Address;
+   [JsonProperty("associatedImportRoutingPolicyID")]
+   protected String _associatedImportRoutingPolicyID;
    
-   [JsonProperty("address")]
-   protected String _address;
+   [JsonProperty("associatedPolicyObjectGroupID")]
+   protected String _associatedPolicyObjectGroupID;
    
-   [JsonProperty("associatedSubnetID")]
-   protected String _associatedSubnetID;
+   [JsonProperty("description")]
+   protected String _description;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("exportToOverlay")]
+   protected EExportToOverlay? _exportToOverlay;
    
    [JsonProperty("externalID")]
    protected String _externalID;
@@ -71,22 +70,10 @@ public class StaticRoute: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
-   [JsonProperty("netmask")]
-   protected String _netmask;
-   
-   [JsonProperty("nextHopIp")]
-   protected String _nextHopIp;
-   
-   [JsonProperty("routeDistinguisher")]
-   protected String _routeDistinguisher;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("type")]
-   protected EType? _type;
+   [JsonProperty("name")]
+   protected String _name;
    
 
-   
-   [JsonIgnore]
-   private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
@@ -94,9 +81,7 @@ public class StaticRoute: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
-   public StaticRoute() {
-      
-      _eventLogs = new EventLogsFetcher(this);
+   public NSGRoutingPolicyBinding() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -106,56 +91,45 @@ public class StaticRoute: RestObject {
 
    
    [JsonIgnore]
-   public bool NUBFDEnabled {
+   public String NUAssociatedExportRoutingPolicyID {
       get {
-         return _BFDEnabled;
+         return _associatedExportRoutingPolicyID;
       }
       set {
-         this._BFDEnabled = value;
+         this._associatedExportRoutingPolicyID = value;
       }
    }
 
    
    [JsonIgnore]
-   public EIPType? NUIPType {
+   public String NUAssociatedImportRoutingPolicyID {
       get {
-         return _IPType;
+         return _associatedImportRoutingPolicyID;
       }
       set {
-         this._IPType = value;
+         this._associatedImportRoutingPolicyID = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUIPv6Address {
+   public String NUAssociatedPolicyObjectGroupID {
       get {
-         return _IPv6Address;
+         return _associatedPolicyObjectGroupID;
       }
       set {
-         this._IPv6Address = value;
+         this._associatedPolicyObjectGroupID = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUAddress {
+   public String NUDescription {
       get {
-         return _address;
+         return _description;
       }
       set {
-         this._address = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUAssociatedSubnetID {
-      get {
-         return _associatedSubnetID;
-      }
-      set {
-         this._associatedSubnetID = value;
+         this._description = value;
       }
    }
 
@@ -167,6 +141,17 @@ public class StaticRoute: RestObject {
       }
       set {
          this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EExportToOverlay? NUExportToOverlay {
+      get {
+         return _exportToOverlay;
+      }
+      set {
+         this._exportToOverlay = value;
       }
    }
 
@@ -194,54 +179,17 @@ public class StaticRoute: RestObject {
 
    
    [JsonIgnore]
-   public String NUNetmask {
+   public String NUName {
       get {
-         return _netmask;
+         return _name;
       }
       set {
-         this._netmask = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUNextHopIp {
-      get {
-         return _nextHopIp;
-      }
-      set {
-         this._nextHopIp = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NURouteDistinguisher {
-      get {
-         return _routeDistinguisher;
-      }
-      set {
-         this._routeDistinguisher = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EType? NUType {
-      get {
-         return _type;
-      }
-      set {
-         this._type = value;
+         this._name = value;
       }
    }
 
    
 
-   
-   public EventLogsFetcher getEventLogs() {
-      return _eventLogs;
-   }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
@@ -253,7 +201,7 @@ public class StaticRoute: RestObject {
    
 
    public String toString() {
-      return "StaticRoute [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedSubnetID=" + _associatedSubnetID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", netmask=" + _netmask + ", nextHopIp=" + _nextHopIp + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGRoutingPolicyBinding [" + "associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", associatedPolicyObjectGroupID=" + _associatedPolicyObjectGroupID + ", description=" + _description + ", entityScope=" + _entityScope + ", exportToOverlay=" + _exportToOverlay + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -261,12 +209,12 @@ public class StaticRoute: RestObject {
 
    public static String getResourceName()
    {
-	return "staticroutes";
+	return "nsgroutingpolicybindings";
    }
 
    public static String getRestName()
    {
-	return "staticroute";
+	return "nsgroutingpolicybinding";
    }
 }
 }

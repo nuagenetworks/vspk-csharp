@@ -44,7 +44,7 @@ public class IngressACLTemplate: RestObject {
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EPolicyState {DRAFT,LIVE };
-   public enum EPriorityType {BOTTOM,NONE,TOP };
+   public enum EPriorityType {BOTTOM,BOTTOM_FIREWALL,MIDDLE_FIREWALL,NONE,TOP,TOP_FIREWALL };
 
    
    [JsonProperty("active")]
@@ -58,6 +58,9 @@ public class IngressACLTemplate: RestObject {
    
    [JsonProperty("associatedLiveEntityID")]
    protected String _associatedLiveEntityID;
+   
+   [JsonProperty("associatedVirtualFirewallPolicyID")]
+   protected String _associatedVirtualFirewallPolicyID;
    
    [JsonProperty("autoGeneratePriority")]
    protected bool _autoGeneratePriority;
@@ -174,6 +177,17 @@ public class IngressACLTemplate: RestObject {
       }
       set {
          this._associatedLiveEntityID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedVirtualFirewallPolicyID {
+      get {
+         return _associatedVirtualFirewallPolicyID;
+      }
+      set {
+         this._associatedVirtualFirewallPolicyID = value;
       }
    }
 
@@ -331,7 +345,7 @@ public class IngressACLTemplate: RestObject {
    
 
    public String toString() {
-      return "IngressACLTemplate [" + "active=" + _active + ", allowAddressSpoof=" + _allowAddressSpoof + ", assocAclTemplateId=" + _assocAclTemplateId + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", autoGeneratePriority=" + _autoGeneratePriority + ", defaultAllowIP=" + _defaultAllowIP + ", defaultAllowNonIP=" + _defaultAllowNonIP + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyState=" + _policyState + ", priority=" + _priority + ", priorityType=" + _priorityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IngressACLTemplate [" + "active=" + _active + ", allowAddressSpoof=" + _allowAddressSpoof + ", assocAclTemplateId=" + _assocAclTemplateId + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedVirtualFirewallPolicyID=" + _associatedVirtualFirewallPolicyID + ", autoGeneratePriority=" + _autoGeneratePriority + ", defaultAllowIP=" + _defaultAllowIP + ", defaultAllowNonIP=" + _defaultAllowNonIP + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyState=" + _policyState + ", priority=" + _priority + ", priorityType=" + _priorityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

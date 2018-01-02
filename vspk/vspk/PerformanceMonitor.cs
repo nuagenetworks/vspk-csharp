@@ -52,15 +52,15 @@ public class PerformanceMonitor: RestObject {
    
    [JsonProperty("destinationTargetList")]
    protected System.Collections.Generic.List<String> _destinationTargetList;
-   
-   [JsonProperty("downThresholdCount")]
-   protected long? _downThresholdCount;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
    
    [JsonProperty("externalID")]
    protected String _externalID;
+   
+   [JsonProperty("holdDownTimer")]
+   protected long? _holdDownTimer;
    
    [JsonProperty("interval")]
    protected long? _interval;
@@ -97,11 +97,16 @@ public class PerformanceMonitor: RestObject {
    [JsonIgnore]
    private NSGatewaysFetcher _nSGateways;
    
+   [JsonIgnore]
+   private TiersFetcher _tiers;
+   
    public PerformanceMonitor() {
       
       _applicationperformancemanagements = new ApplicationperformancemanagementsFetcher(this);
       
       _nSGateways = new NSGatewaysFetcher(this);
+      
+      _tiers = new TiersFetcher(this);
       
    }
 
@@ -129,17 +134,6 @@ public class PerformanceMonitor: RestObject {
 
    
    [JsonIgnore]
-   public long? NUDownThresholdCount {
-      get {
-         return _downThresholdCount;
-      }
-      set {
-         this._downThresholdCount = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -157,6 +151,17 @@ public class PerformanceMonitor: RestObject {
       }
       set {
          this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUHoldDownTimer {
+      get {
+         return _holdDownTimer;
+      }
+      set {
+         this._holdDownTimer = value;
       }
    }
 
@@ -270,9 +275,13 @@ public class PerformanceMonitor: RestObject {
       return _nSGateways;
    }
    
+   public TiersFetcher getTiers() {
+      return _tiers;
+   }
+   
 
    public String toString() {
-      return "PerformanceMonitor [" + "description=" + _description + ", destinationTargetList=" + _destinationTargetList + ", downThresholdCount=" + _downThresholdCount + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", interval=" + _interval + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", numberOfPackets=" + _numberOfPackets + ", payloadSize=" + _payloadSize + ", probeType=" + _probeType + ", readOnly=" + _readOnly + ", serviceClass=" + _serviceClass + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "PerformanceMonitor [" + "description=" + _description + ", destinationTargetList=" + _destinationTargetList + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", holdDownTimer=" + _holdDownTimer + ", interval=" + _interval + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", numberOfPackets=" + _numberOfPackets + ", payloadSize=" + _payloadSize + ", probeType=" + _probeType + ", readOnly=" + _readOnly + ", serviceClass=" + _serviceClass + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

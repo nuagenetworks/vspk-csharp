@@ -37,24 +37,30 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class EgressACLTemplate: RestObject {
+public class VirtualFirewallPolicy: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EPolicyState {DRAFT,LIVE };
-   public enum EPriorityType {BOTTOM,BOTTOM_FIREWALL,MIDDLE_FIREWALL,NONE,TOP,TOP_FIREWALL };
+   public enum EPriorityType {BOTTOM,NONE,TOP };
 
    
    [JsonProperty("active")]
    protected bool _active;
    
+   [JsonProperty("allowAddressSpoof")]
+   protected bool _allowAddressSpoof;
+   
+   [JsonProperty("associatedEgressTemplateID")]
+   protected String _associatedEgressTemplateID;
+   
+   [JsonProperty("associatedIngressTemplateID")]
+   protected String _associatedIngressTemplateID;
+   
    [JsonProperty("associatedLiveEntityID")]
    protected String _associatedLiveEntityID;
-   
-   [JsonProperty("associatedVirtualFirewallPolicyID")]
-   protected String _associatedVirtualFirewallPolicyID;
    
    [JsonProperty("autoGeneratePriority")]
    protected bool _autoGeneratePriority;
@@ -95,41 +101,21 @@ public class EgressACLTemplate: RestObject {
 
    
    [JsonIgnore]
-   private ContainersFetcher _containers;
-   
-   [JsonIgnore]
-   private EgressACLEntryTemplatesFetcher _egressACLEntryTemplates;
-   
-   [JsonIgnore]
-   private EventLogsFetcher _eventLogs;
-   
-   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
-   
-   [JsonIgnore]
-   private JobsFetcher _jobs;
    
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
-   private VMsFetcher _vMs;
+   private VirtualFirewallRulesFetcher _virtualFirewallRules;
    
-   public EgressACLTemplate() {
-      
-      _containers = new ContainersFetcher(this);
-      
-      _egressACLEntryTemplates = new EgressACLEntryTemplatesFetcher(this);
-      
-      _eventLogs = new EventLogsFetcher(this);
+   public VirtualFirewallPolicy() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
-      _jobs = new JobsFetcher(this);
-      
       _metadatas = new MetadatasFetcher(this);
       
-      _vMs = new VMsFetcher(this);
+      _virtualFirewallRules = new VirtualFirewallRulesFetcher(this);
       
    }
 
@@ -146,23 +132,45 @@ public class EgressACLTemplate: RestObject {
 
    
    [JsonIgnore]
+   public bool NUAllowAddressSpoof {
+      get {
+         return _allowAddressSpoof;
+      }
+      set {
+         this._allowAddressSpoof = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEgressTemplateID {
+      get {
+         return _associatedEgressTemplateID;
+      }
+      set {
+         this._associatedEgressTemplateID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedIngressTemplateID {
+      get {
+         return _associatedIngressTemplateID;
+      }
+      set {
+         this._associatedIngressTemplateID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAssociatedLiveEntityID {
       get {
          return _associatedLiveEntityID;
       }
       set {
          this._associatedLiveEntityID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUAssociatedVirtualFirewallPolicyID {
-      get {
-         return _associatedVirtualFirewallPolicyID;
-      }
-      set {
-         this._associatedVirtualFirewallPolicyID = value;
       }
    }
 
@@ -301,37 +309,21 @@ public class EgressACLTemplate: RestObject {
    
 
    
-   public ContainersFetcher getContainers() {
-      return _containers;
-   }
-   
-   public EgressACLEntryTemplatesFetcher getEgressACLEntryTemplates() {
-      return _egressACLEntryTemplates;
-   }
-   
-   public EventLogsFetcher getEventLogs() {
-      return _eventLogs;
-   }
-   
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
-   }
-   
-   public JobsFetcher getJobs() {
-      return _jobs;
    }
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
    }
    
-   public VMsFetcher getVMs() {
-      return _vMs;
+   public VirtualFirewallRulesFetcher getVirtualFirewallRules() {
+      return _virtualFirewallRules;
    }
    
 
    public String toString() {
-      return "EgressACLTemplate [" + "active=" + _active + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedVirtualFirewallPolicyID=" + _associatedVirtualFirewallPolicyID + ", autoGeneratePriority=" + _autoGeneratePriority + ", defaultAllowIP=" + _defaultAllowIP + ", defaultAllowNonIP=" + _defaultAllowNonIP + ", defaultInstallACLImplicitRules=" + _defaultInstallACLImplicitRules + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyState=" + _policyState + ", priority=" + _priority + ", priorityType=" + _priorityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VirtualFirewallPolicy [" + "active=" + _active + ", allowAddressSpoof=" + _allowAddressSpoof + ", associatedEgressTemplateID=" + _associatedEgressTemplateID + ", associatedIngressTemplateID=" + _associatedIngressTemplateID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", autoGeneratePriority=" + _autoGeneratePriority + ", defaultAllowIP=" + _defaultAllowIP + ", defaultAllowNonIP=" + _defaultAllowNonIP + ", defaultInstallACLImplicitRules=" + _defaultInstallACLImplicitRules + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyState=" + _policyState + ", priority=" + _priority + ", priorityType=" + _priorityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -339,12 +331,12 @@ public class EgressACLTemplate: RestObject {
 
    public static String getResourceName()
    {
-	return "egressacltemplates";
+	return "virtualfirewallpolicies";
    }
 
    public static String getRestName()
    {
-	return "egressacltemplate";
+	return "virtualfirewallpolicy";
    }
 }
 }

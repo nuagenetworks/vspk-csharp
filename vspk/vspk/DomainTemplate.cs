@@ -145,6 +145,9 @@ public class DomainTemplate: RestObject {
    private SubnetTemplatesFetcher _subnetTemplates;
    
    [JsonIgnore]
+   private VirtualFirewallPoliciesFetcher _virtualFirewallPolicies;
+   
+   [JsonIgnore]
    private ZoneTemplatesFetcher _zoneTemplates;
    
    public DomainTemplate() {
@@ -186,6 +189,8 @@ public class DomainTemplate: RestObject {
       _redirectionTargetTemplates = new RedirectionTargetTemplatesFetcher(this);
       
       _subnetTemplates = new SubnetTemplatesFetcher(this);
+      
+      _virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
       
       _zoneTemplates = new ZoneTemplatesFetcher(this);
       
@@ -400,6 +405,10 @@ public class DomainTemplate: RestObject {
    
    public SubnetTemplatesFetcher getSubnetTemplates() {
       return _subnetTemplates;
+   }
+   
+   public VirtualFirewallPoliciesFetcher getVirtualFirewallPolicies() {
+      return _virtualFirewallPolicies;
    }
    
    public ZoneTemplatesFetcher getZoneTemplates() {

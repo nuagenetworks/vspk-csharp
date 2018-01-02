@@ -78,6 +78,9 @@ public class L2Domain: RestObject {
    [JsonProperty("associatedSharedNetworkResourceID")]
    protected String _associatedSharedNetworkResourceID;
    
+   [JsonProperty("associatedUnderlayID")]
+   protected String _associatedUnderlayID;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -150,9 +153,6 @@ public class L2Domain: RestObject {
    private AddressRangesFetcher _addressRanges;
    
    [JsonIgnore]
-   private ApplicationperformancemanagementbindingsFetcher _applicationperformancemanagementbindings;
-   
-   [JsonIgnore]
    private BridgeInterfacesFetcher _bridgeInterfaces;
    
    [JsonIgnore]
@@ -204,6 +204,9 @@ public class L2Domain: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private NetworkPerformanceBindingsFetcher _networkPerformanceBindings;
+   
+   [JsonIgnore]
    private OverlayMirrorDestinationsFetcher _overlayMirrorDestinations;
    
    [JsonIgnore]
@@ -234,6 +237,9 @@ public class L2Domain: RestObject {
    private UplinkRDsFetcher _uplinkRDs;
    
    [JsonIgnore]
+   private VirtualFirewallPoliciesFetcher _virtualFirewallPolicies;
+   
+   [JsonIgnore]
    private VMsFetcher _vMs;
    
    [JsonIgnore]
@@ -249,8 +255,6 @@ public class L2Domain: RestObject {
       _maintenanceMode = EMaintenanceMode.DISABLED;
       
       _addressRanges = new AddressRangesFetcher(this);
-      
-      _applicationperformancemanagementbindings = new ApplicationperformancemanagementbindingsFetcher(this);
       
       _bridgeInterfaces = new BridgeInterfacesFetcher(this);
       
@@ -286,6 +290,8 @@ public class L2Domain: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+      _networkPerformanceBindings = new NetworkPerformanceBindingsFetcher(this);
+      
       _overlayMirrorDestinations = new OverlayMirrorDestinationsFetcher(this);
       
       _permissions = new PermissionsFetcher(this);
@@ -305,6 +311,8 @@ public class L2Domain: RestObject {
       _tCAs = new TCAsFetcher(this);
       
       _uplinkRDs = new UplinkRDsFetcher(this);
+      
+      _virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
       
       _vMs = new VMsFetcher(this);
       
@@ -401,6 +409,17 @@ public class L2Domain: RestObject {
       }
       set {
          this._associatedSharedNetworkResourceID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedUnderlayID {
+      get {
+         return _associatedUnderlayID;
+      }
+      set {
+         this._associatedUnderlayID = value;
       }
    }
 
@@ -653,10 +672,6 @@ public class L2Domain: RestObject {
       return _addressRanges;
    }
    
-   public ApplicationperformancemanagementbindingsFetcher getApplicationperformancemanagementbindings() {
-      return _applicationperformancemanagementbindings;
-   }
-   
    public BridgeInterfacesFetcher getBridgeInterfaces() {
       return _bridgeInterfaces;
    }
@@ -725,6 +740,10 @@ public class L2Domain: RestObject {
       return _metadatas;
    }
    
+   public NetworkPerformanceBindingsFetcher getNetworkPerformanceBindings() {
+      return _networkPerformanceBindings;
+   }
+   
    public OverlayMirrorDestinationsFetcher getOverlayMirrorDestinations() {
       return _overlayMirrorDestinations;
    }
@@ -765,6 +784,10 @@ public class L2Domain: RestObject {
       return _uplinkRDs;
    }
    
+   public VirtualFirewallPoliciesFetcher getVirtualFirewallPolicies() {
+      return _virtualFirewallPolicies;
+   }
+   
    public VMsFetcher getVMs() {
       return _vMs;
    }
@@ -783,7 +806,7 @@ public class L2Domain: RestObject {
    
 
    public String toString() {
-      return "L2Domain [" + "DHCPManaged=" + _DHCPManaged + ", DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", uplinkPreference=" + _uplinkPreference + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "L2Domain [" + "DHCPManaged=" + _DHCPManaged + ", DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", associatedUnderlayID=" + _associatedUnderlayID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", uplinkPreference=" + _uplinkPreference + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
