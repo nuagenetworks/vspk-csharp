@@ -44,7 +44,7 @@ public class NSRedundantGatewayGroup: RestObject {
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
-   public enum EPersonality {DC7X50,HARDWARE_VTEP,NSG,OTHER,VRSG,VSA,VSG };
+   public enum EPersonality {DC7X50,HARDWARE_VTEP,NSG,NSGBR,NSGDUC,OTHER,VRSB,VRSG,VSA,VSG,NUAGE_210_WBX_48_S,NUAGE_210_WBX_32_Q };
    public enum ERedundantGatewayStatus {FAILED,SUCCESS };
 
    
