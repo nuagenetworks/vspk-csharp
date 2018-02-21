@@ -37,24 +37,48 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class VNFInterfaceDescriptor: RestObject {
+public class DefaultGateway: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EType {LAN,MANAGEMENT,WAN };
 
+   
+   [JsonProperty("gatewayIPAddress")]
+   protected String _gatewayIPAddress;
+   
+   [JsonProperty("gatewayMACAddress")]
+   protected String _gatewayMACAddress;
    
    [JsonProperty("name")]
    protected String _name;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("type")]
-   protected EType? _type;
    
 
    
-   public VNFInterfaceDescriptor() {
+   public DefaultGateway() {
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUGatewayIPAddress {
+      get {
+         return _gatewayIPAddress;
+      }
+      set {
+         this._gatewayIPAddress = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUGatewayMACAddress {
+      get {
+         return _gatewayMACAddress;
+      }
+      set {
+         this._gatewayMACAddress = value;
+      }
    }
 
    
@@ -69,22 +93,11 @@ public class VNFInterfaceDescriptor: RestObject {
    }
 
    
-   [JsonIgnore]
-   public EType? NUType {
-      get {
-         return _type;
-      }
-      set {
-         this._type = value;
-      }
-   }
-
-   
 
    
 
    public String toString() {
-      return "VNFInterfaceDescriptor [" + "name=" + _name + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "DefaultGateway [" + "gatewayIPAddress=" + _gatewayIPAddress + ", gatewayMACAddress=" + _gatewayMACAddress + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -92,12 +105,12 @@ public class VNFInterfaceDescriptor: RestObject {
 
    public static String getResourceName()
    {
-	return "vnfinterfacedescriptors";
+	return "defaultgateways";
    }
 
    public static String getRestName()
    {
-	return "vnfinterfacedescriptor";
+	return "defaultgateway";
    }
 }
 }

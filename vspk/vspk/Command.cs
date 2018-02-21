@@ -42,10 +42,17 @@ public class Command: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum ECommand {NSG_DOWNLOAD_OS_IMAGE,NSG_UPGRADE_TO_IMAGE,UNKNOWN };
+   public enum ECommand {NSG_APPLY_PATCH,NSG_DOWNLOAD_OS_IMAGE,NSG_UPGRADE_TO_IMAGE,UNKNOWN };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum EOverride {ABANDON,UNSPECIFIED };
    public enum EStatus {COMPLETE,FAILED,STARTED,UNKNOWN };
 
+   
+   [JsonProperty("associatedParam")]
+   protected String _associatedParam;
+   
+   [JsonProperty("associatedParamType")]
+   protected String _associatedParamType;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("command")]
    protected ECommand? _command;
@@ -65,8 +72,14 @@ public class Command: RestObject {
    [JsonProperty("externalID")]
    protected String _externalID;
    
+   [JsonProperty("fullCommand")]
+   protected String _fullCommand;
+   
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("override")]
+   protected EOverride? _override;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("status")]
    protected EStatus? _status;
@@ -78,6 +91,28 @@ public class Command: RestObject {
    
    public Command() {
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedParam {
+      get {
+         return _associatedParam;
+      }
+      set {
+         this._associatedParam = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedParamType {
+      get {
+         return _associatedParamType;
+      }
+      set {
+         this._associatedParamType = value;
+      }
    }
 
    
@@ -148,12 +183,34 @@ public class Command: RestObject {
 
    
    [JsonIgnore]
+   public String NUFullCommand {
+      get {
+         return _fullCommand;
+      }
+      set {
+         this._fullCommand = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
       }
       set {
          this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EOverride? NUOverride {
+      get {
+         return _override;
+      }
+      set {
+         this._override = value;
       }
    }
 
@@ -184,7 +241,7 @@ public class Command: RestObject {
    
 
    public String toString() {
-      return "Command [" + "command=" + _command + ", commandInformation=" + _commandInformation + ", detailedStatus=" + _detailedStatus + ", detailedStatusCode=" + _detailedStatusCode + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", status=" + _status + ", summary=" + _summary + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Command [" + "associatedParam=" + _associatedParam + ", associatedParamType=" + _associatedParamType + ", command=" + _command + ", commandInformation=" + _commandInformation + ", detailedStatus=" + _detailedStatus + ", detailedStatusCode=" + _detailedStatusCode + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fullCommand=" + _fullCommand + ", lastUpdatedBy=" + _lastUpdatedBy + ", override=" + _override + ", status=" + _status + ", summary=" + _summary + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

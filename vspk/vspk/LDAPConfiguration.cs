@@ -93,6 +93,9 @@ public class LDAPConfiguration: RestObject {
    [JsonProperty("userDNTemplate")]
    protected String _userDNTemplate;
    
+   [JsonProperty("userNameAttribute")]
+   protected String _userNameAttribute;
+   
 
    
    [JsonIgnore]
@@ -286,6 +289,17 @@ public class LDAPConfiguration: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NUUserNameAttribute {
+      get {
+         return _userNameAttribute;
+      }
+      set {
+         this._userNameAttribute = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -298,7 +312,7 @@ public class LDAPConfiguration: RestObject {
    
 
    public String toString() {
-      return "LDAPConfiguration [" + "SSLEnabled=" + _SSLEnabled + ", acceptAllCertificates=" + _acceptAllCertificates + ", authorizationEnabled=" + _authorizationEnabled + ", authorizingUserDN=" + _authorizingUserDN + ", certificate=" + _certificate + ", enabled=" + _enabled + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", groupDN=" + _groupDN + ", groupNamePrefix=" + _groupNamePrefix + ", groupNameSuffix=" + _groupNameSuffix + ", lastUpdatedBy=" + _lastUpdatedBy + ", password=" + _password + ", port=" + _port + ", server=" + _server + ", userDNTemplate=" + _userDNTemplate + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "LDAPConfiguration [" + "SSLEnabled=" + _SSLEnabled + ", acceptAllCertificates=" + _acceptAllCertificates + ", authorizationEnabled=" + _authorizationEnabled + ", authorizingUserDN=" + _authorizingUserDN + ", certificate=" + _certificate + ", enabled=" + _enabled + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", groupDN=" + _groupDN + ", groupNamePrefix=" + _groupNamePrefix + ", groupNameSuffix=" + _groupNameSuffix + ", lastUpdatedBy=" + _lastUpdatedBy + ", password=" + _password + ", port=" + _port + ", server=" + _server + ", userDNTemplate=" + _userDNTemplate + ", userNameAttribute=" + _userNameAttribute + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -78,6 +78,9 @@ public class OSPFInstance: RestObject {
    [JsonProperty("preference")]
    protected long? _preference;
    
+   [JsonProperty("superBackboneEnabled")]
+   protected bool _superBackboneEnabled;
+   
 
    
    [JsonIgnore]
@@ -221,6 +224,17 @@ public class OSPFInstance: RestObject {
    }
 
    
+   [JsonIgnore]
+   public bool NUSuperBackboneEnabled {
+      get {
+         return _superBackboneEnabled;
+      }
+      set {
+         this._superBackboneEnabled = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -237,7 +251,7 @@ public class OSPFInstance: RestObject {
    
 
    public String toString() {
-      return "OSPFInstance [" + "associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", description=" + _description + ", entityScope=" + _entityScope + ", exportLimit=" + _exportLimit + ", exportToOverlay=" + _exportToOverlay + ", externalID=" + _externalID + ", externalPreference=" + _externalPreference + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", preference=" + _preference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "OSPFInstance [" + "associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", description=" + _description + ", entityScope=" + _entityScope + ", exportLimit=" + _exportLimit + ", exportToOverlay=" + _exportToOverlay + ", externalID=" + _externalID + ", externalPreference=" + _externalPreference + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", preference=" + _preference + ", superBackboneEnabled=" + _superBackboneEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

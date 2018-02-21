@@ -42,7 +42,7 @@ public class Bootstrap: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EZFBMatchAttribute {NONE,MAC_ADDRESS,IP_ADDRESS,HOSTNAME,NSGATEWAY_ID,SERIAL_NUMBER };
+   public enum EZFBMatchAttribute {HOSTNAME,IP_ADDRESS,MAC_ADDRESS,NONE,NSGATEWAY_ID,SERIAL_NUMBER };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EStatus {ACTIVE,CERTIFICATE_SIGNED,INACTIVE,NOTIFICATION_APP_REQ_ACK,NOTIFICATION_APP_REQ_SENT };
 

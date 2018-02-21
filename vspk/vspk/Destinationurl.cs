@@ -64,8 +64,17 @@ public class Destinationurl: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("packetCount")]
+   protected long? _packetCount;
+   
    [JsonProperty("percentageWeight")]
    protected long? _percentageWeight;
+   
+   [JsonProperty("probeInterval")]
+   protected long? _probeInterval;
+   
+   [JsonProperty("timeout")]
+   protected long? _timeout;
    
 
    
@@ -151,12 +160,45 @@ public class Destinationurl: RestObject {
 
    
    [JsonIgnore]
+   public long? NUPacketCount {
+      get {
+         return _packetCount;
+      }
+      set {
+         this._packetCount = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUPercentageWeight {
       get {
          return _percentageWeight;
       }
       set {
          this._percentageWeight = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUProbeInterval {
+      get {
+         return _probeInterval;
+      }
+      set {
+         this._probeInterval = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUTimeout {
+      get {
+         return _timeout;
+      }
+      set {
+         this._timeout = value;
       }
    }
 
@@ -173,7 +215,7 @@ public class Destinationurl: RestObject {
    
 
    public String toString() {
-      return "Destinationurl [" + "HTTPMethod=" + _HTTPMethod + ", URL=" + _URL + ", downThresholdCount=" + _downThresholdCount + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", percentageWeight=" + _percentageWeight + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Destinationurl [" + "HTTPMethod=" + _HTTPMethod + ", URL=" + _URL + ", downThresholdCount=" + _downThresholdCount + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", packetCount=" + _packetCount + ", percentageWeight=" + _percentageWeight + ", probeInterval=" + _probeInterval + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -42,6 +42,7 @@ public class Application: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EOptimizePathSelection {JITTER,LATENCY,PACKETLOSS };
    public enum EPerformanceMonitorType {CONTINUOUS,FIRST_PACKET,FIRST_PACKET_AND_CONTINUOUS };
    public enum EPostClassificationPath {ANY,PRIMARY,SECONDARY };
@@ -72,9 +73,18 @@ public class Application: RestObject {
    
    [JsonProperty("enablePPS")]
    protected bool _enablePPS;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
    
    [JsonProperty("etherType")]
    protected String _etherType;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("name")]
    protected String _name;
@@ -121,11 +131,21 @@ public class Application: RestObject {
    private ApplicationBindingsFetcher _applicationBindings;
    
    [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
+   [JsonIgnore]
    private MonitorscopesFetcher _monitorscopes;
    
    public Application() {
       
       _applicationBindings = new ApplicationBindingsFetcher(this);
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
       _monitorscopes = new MonitorscopesFetcher(this);
       
@@ -221,12 +241,45 @@ public class Application: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUEtherType {
       get {
          return _etherType;
       }
       set {
          this._etherType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
       }
    }
 
@@ -380,13 +433,21 @@ public class Application: RestObject {
       return _applicationBindings;
    }
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
    public MonitorscopesFetcher getMonitorscopes() {
       return _monitorscopes;
    }
    
 
    public String toString() {
-      return "Application [" + "DSCP=" + _DSCP + ", appId=" + _appId + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", bandwidth=" + _bandwidth + ", description=" + _description + ", destinationIP=" + _destinationIP + ", destinationPort=" + _destinationPort + ", enablePPS=" + _enablePPS + ", etherType=" + _etherType + ", name=" + _name + ", oneWayDelay=" + _oneWayDelay + ", oneWayJitter=" + _oneWayJitter + ", oneWayLoss=" + _oneWayLoss + ", optimizePathSelection=" + _optimizePathSelection + ", performanceMonitorType=" + _performanceMonitorType + ", postClassificationPath=" + _postClassificationPath + ", preClassificationPath=" + _preClassificationPath + ", protocol=" + _protocol + ", readOnly=" + _readOnly + ", sourceIP=" + _sourceIP + ", sourcePort=" + _sourcePort + ", symmetry=" + _symmetry + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Application [" + "DSCP=" + _DSCP + ", appId=" + _appId + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", bandwidth=" + _bandwidth + ", description=" + _description + ", destinationIP=" + _destinationIP + ", destinationPort=" + _destinationPort + ", enablePPS=" + _enablePPS + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", oneWayDelay=" + _oneWayDelay + ", oneWayJitter=" + _oneWayJitter + ", oneWayLoss=" + _oneWayLoss + ", optimizePathSelection=" + _optimizePathSelection + ", performanceMonitorType=" + _performanceMonitorType + ", postClassificationPath=" + _postClassificationPath + ", preClassificationPath=" + _preClassificationPath + ", protocol=" + _protocol + ", readOnly=" + _readOnly + ", sourceIP=" + _sourceIP + ", sourcePort=" + _sourcePort + ", symmetry=" + _symmetry + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -244,6 +244,9 @@ public class Me: RestObject {
    private NSGGroupsFetcher _nSGGroups;
    
    [JsonIgnore]
+   private NSGPatchProfilesFetcher _nSGPatchProfiles;
+   
+   [JsonIgnore]
    private NSRedundantGatewayGroupsFetcher _nSRedundantGatewayGroups;
    
    [JsonIgnore]
@@ -437,6 +440,8 @@ public class Me: RestObject {
       _nSGatewayTemplates = new NSGatewayTemplatesFetcher(this);
       
       _nSGGroups = new NSGGroupsFetcher(this);
+      
+      _nSGPatchProfiles = new NSGPatchProfilesFetcher(this);
       
       _nSRedundantGatewayGroups = new NSRedundantGatewayGroupsFetcher(this);
       
@@ -918,6 +923,10 @@ public class Me: RestObject {
    
    public NSGGroupsFetcher getNSGGroups() {
       return _nSGGroups;
+   }
+   
+   public NSGPatchProfilesFetcher getNSGPatchProfiles() {
+      return _nSGPatchProfiles;
    }
    
    public NSRedundantGatewayGroupsFetcher getNSRedundantGatewayGroups() {

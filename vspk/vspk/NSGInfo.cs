@@ -68,6 +68,9 @@ public class NSGInfo: RestObject {
    [JsonProperty("TPMStatus")]
    protected ETPMStatus? _TPMStatus;
    
+   [JsonProperty("TPMVersion")]
+   protected String _TPMVersion;
+   
    [JsonProperty("UUID")]
    protected String _UUID;
    
@@ -85,6 +88,9 @@ public class NSGInfo: RestObject {
    
    [JsonProperty("libraries")]
    protected String _libraries;
+   
+   [JsonProperty("patches")]
+   protected String _patches;
    
    [JsonProperty("productName")]
    protected String _productName;
@@ -177,6 +183,17 @@ public class NSGInfo: RestObject {
 
    
    [JsonIgnore]
+   public String NUTPMVersion {
+      get {
+         return _TPMVersion;
+      }
+      set {
+         this._TPMVersion = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUUUID {
       get {
          return _UUID;
@@ -243,6 +260,17 @@ public class NSGInfo: RestObject {
 
    
    [JsonIgnore]
+   public String NUPatches {
+      get {
+         return _patches;
+      }
+      set {
+         this._patches = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUProductName {
       get {
          return _productName;
@@ -268,7 +296,7 @@ public class NSGInfo: RestObject {
    
 
    public String toString() {
-      return "NSGInfo [" + "BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", TPMStatus=" + _TPMStatus + ", UUID=" + _UUID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", libraries=" + _libraries + ", productName=" + _productName + ", serialNumber=" + _serialNumber + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGInfo [" + "BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", libraries=" + _libraries + ", patches=" + _patches + ", productName=" + _productName + ", serialNumber=" + _serialNumber + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

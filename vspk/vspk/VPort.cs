@@ -45,6 +45,7 @@ public class VPort: RestObject {
    public enum EDPI {DISABLED,ENABLED,INHERITED };
    public enum EAddressSpoofing {DISABLED,ENABLED,INHERITED };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum EFlowCollectionEnabled {DISABLED,ENABLED,INHERITED };
    public enum EGatewayMACMoveRole {SECONDARY,TERTIARY };
    public enum EMulticast {DISABLED,ENABLED,INHERITED };
    public enum EOperationalState {DOWN,INIT,UP };
@@ -93,6 +94,9 @@ public class VPort: RestObject {
    
    [JsonProperty("externalID")]
    protected String _externalID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("flowCollectionEnabled")]
+   protected EFlowCollectionEnabled? _flowCollectionEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("gatewayMACMoveRole")]
    protected EGatewayMACMoveRole? _gatewayMACMoveRole;
@@ -441,6 +445,17 @@ public class VPort: RestObject {
 
    
    [JsonIgnore]
+   public EFlowCollectionEnabled? NUFlowCollectionEnabled {
+      get {
+         return _flowCollectionEnabled;
+      }
+      set {
+         this._flowCollectionEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EGatewayMACMoveRole? NUGatewayMACMoveRole {
       get {
          return _gatewayMACMoveRole;
@@ -718,7 +733,7 @@ public class VPort: RestObject {
    
 
    public String toString() {
-      return "VPort [" + "DPI=" + _DPI + ", VLANID=" + _VLANID + ", active=" + _active + ", addressSpoofing=" + _addressSpoofing + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSSID=" + _associatedSSID + ", associatedSendMulticastChannelMapID=" + _associatedSendMulticastChannelMapID + ", associatedTrunkID=" + _associatedTrunkID + ", description=" + _description + ", domainID=" + _domainID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayMACMoveRole=" + _gatewayMACMoveRole + ", hasAttachedInterfaces=" + _hasAttachedInterfaces + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiNICVPortID=" + _multiNICVPortID + ", multicast=" + _multicast + ", name=" + _name + ", operationalState=" + _operationalState + ", segmentationID=" + _segmentationID + ", segmentationType=" + _segmentationType + ", subType=" + _subType + ", systemType=" + _systemType + ", trunkRole=" + _trunkRole + ", type=" + _type + ", zoneID=" + _zoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VPort [" + "DPI=" + _DPI + ", VLANID=" + _VLANID + ", active=" + _active + ", addressSpoofing=" + _addressSpoofing + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSSID=" + _associatedSSID + ", associatedSendMulticastChannelMapID=" + _associatedSendMulticastChannelMapID + ", associatedTrunkID=" + _associatedTrunkID + ", description=" + _description + ", domainID=" + _domainID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", gatewayMACMoveRole=" + _gatewayMACMoveRole + ", hasAttachedInterfaces=" + _hasAttachedInterfaces + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiNICVPortID=" + _multiNICVPortID + ", multicast=" + _multicast + ", name=" + _name + ", operationalState=" + _operationalState + ", segmentationID=" + _segmentationID + ", segmentationType=" + _segmentationType + ", subType=" + _subType + ", systemType=" + _systemType + ", trunkRole=" + _trunkRole + ", type=" + _type + ", zoneID=" + _zoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

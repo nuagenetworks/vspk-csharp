@@ -26,78 +26,22 @@
 */
 
 
-using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Converters;
+
 using net.nuagenetworks.bambou;
+using net.nuagenetworks.vspk.v5_0; 
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
-
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v5_0.fetchers
 {
+    public class NSGPatchProfilesFetcher: RestFetcher<NSGPatchProfile>
+    {
 
-public class VNFInterfaceDescriptor: RestObject {
-
-   private const long serialVersionUID = 1L;
-
+       private const long serialVersionUID = 1L;
+       
+       public NSGPatchProfilesFetcher(RestObject parentRestObj) 
+          : base(parentRestObj, typeof(NSGPatchProfile))
+       {
+       }
    
-   public enum EType {LAN,MANAGEMENT,WAN };
-
-   
-   [JsonProperty("name")]
-   protected String _name;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("type")]
-   protected EType? _type;
-   
-
-   
-   public VNFInterfaceDescriptor() {
-      
-   }
-
-   
-   [JsonIgnore]
-   public String NUName {
-      get {
-         return _name;
-      }
-      set {
-         this._name = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EType? NUType {
-      get {
-         return _type;
-      }
-      set {
-         this._type = value;
-      }
-   }
-
-   
-
-   
-
-   public String toString() {
-      return "VNFInterfaceDescriptor [" + "name=" + _name + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
-   }
-   
-   
-
-   public static String getResourceName()
-   {
-	return "vnfinterfacedescriptors";
-   }
-
-   public static String getRestName()
-   {
-	return "vnfinterfacedescriptor";
-   }
-}
+       
+    }
 }

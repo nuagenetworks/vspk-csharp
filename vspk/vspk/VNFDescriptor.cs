@@ -42,6 +42,7 @@ public class VNFDescriptor: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EType {FIREWALL,WAN_OPT };
 
    
    [JsonProperty("CPUCount")]
@@ -64,6 +65,9 @@ public class VNFDescriptor: RestObject {
    
    [JsonProperty("storageGB")]
    protected long? _storageGB;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("type")]
+   protected EType? _type;
    
    [JsonProperty("vendor")]
    protected String _vendor;
@@ -161,6 +165,17 @@ public class VNFDescriptor: RestObject {
 
    
    [JsonIgnore]
+   public EType? NUType {
+      get {
+         return _type;
+      }
+      set {
+         this._type = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUVendor {
       get {
          return _vendor;
@@ -190,7 +205,7 @@ public class VNFDescriptor: RestObject {
    
 
    public String toString() {
-      return "VNFDescriptor [" + "CPUCount=" + _CPUCount + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", memoryMB=" + _memoryMB + ", metadataID=" + _metadataID + ", name=" + _name + ", storageGB=" + _storageGB + ", vendor=" + _vendor + ", visible=" + _visible + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VNFDescriptor [" + "CPUCount=" + _CPUCount + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", memoryMB=" + _memoryMB + ", metadataID=" + _metadataID + ", name=" + _name + ", storageGB=" + _storageGB + ", type=" + _type + ", vendor=" + _vendor + ", visible=" + _visible + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

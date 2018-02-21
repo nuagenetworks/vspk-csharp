@@ -45,6 +45,7 @@ public class VNF: RestObject {
    public enum EAllowedActions {DEPLOY,REDEPLOY,RESTART,START,STOP,UNDEPLOY };
    public enum EStatus {BLOCKED,CRASHED,DYING,IDLE,INIT,LAST,PAUSED,PMSUSPENDED,RUNNING,SHUTDOWN,SHUTOFF };
    public enum ETaskState {DEPLOYING,NONE,STARTING,STOPPING,UNDEPLOYING };
+   public enum EType {FIREWALL,WAN_OPT };
 
    
    [JsonProperty("CPUCount")]
@@ -103,6 +104,9 @@ public class VNF: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("taskState")]
    protected ETaskState? _taskState;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("type")]
+   protected EType? _type;
    
    [JsonProperty("vendor")]
    protected String _vendor;
@@ -339,6 +343,17 @@ public class VNF: RestObject {
 
    
    [JsonIgnore]
+   public EType? NUType {
+      get {
+         return _type;
+      }
+      set {
+         this._type = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUVendor {
       get {
          return _vendor;
@@ -365,7 +380,7 @@ public class VNF: RestObject {
    
 
    public String toString() {
-      return "VNF [" + "CPUCount=" + _CPUCount + ", NSGName=" + _NSGName + ", NSGSystemID=" + _NSGSystemID + ", NSGatewayID=" + _NSGatewayID + ", VNFDescriptorID=" + _VNFDescriptorID + ", VNFDescriptorName=" + _VNFDescriptorName + ", allowedActions=" + _allowedActions + ", associatedVNFMetadataID=" + _associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", isAttachedToDescriptor=" + _isAttachedToDescriptor + ", lastKnownError=" + _lastKnownError + ", memoryMB=" + _memoryMB + ", metadataID=" + _metadataID + ", name=" + _name + ", status=" + _status + ", storageGB=" + _storageGB + ", taskState=" + _taskState + ", vendor=" + _vendor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VNF [" + "CPUCount=" + _CPUCount + ", NSGName=" + _NSGName + ", NSGSystemID=" + _NSGSystemID + ", NSGatewayID=" + _NSGatewayID + ", VNFDescriptorID=" + _VNFDescriptorID + ", VNFDescriptorName=" + _VNFDescriptorName + ", allowedActions=" + _allowedActions + ", associatedVNFMetadataID=" + _associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", isAttachedToDescriptor=" + _isAttachedToDescriptor + ", lastKnownError=" + _lastKnownError + ", memoryMB=" + _memoryMB + ", metadataID=" + _metadataID + ", name=" + _name + ", status=" + _status + ", storageGB=" + _storageGB + ", taskState=" + _taskState + ", type=" + _type + ", vendor=" + _vendor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

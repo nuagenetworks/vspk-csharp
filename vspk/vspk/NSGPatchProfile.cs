@@ -37,23 +37,19 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class VirtualIP: RestObject {
+public class NSGPatchProfile: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EIPType {IPV4,IPV6 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("IPType")]
-   protected EIPType? _IPType;
    
-   [JsonProperty("MAC")]
-   protected String _MAC;
+   [JsonProperty("description")]
+   protected String _description;
    
-   [JsonProperty("associatedFloatingIPID")]
-   protected String _associatedFloatingIPID;
+   [JsonProperty("enterpriseID")]
+   protected String _enterpriseID;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -64,63 +60,40 @@ public class VirtualIP: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
-   [JsonProperty("subnetID")]
-   protected String _subnetID;
+   [JsonProperty("name")]
+   protected String _name;
    
-   [JsonProperty("virtualIP")]
-   protected String _virtualIP;
+   [JsonProperty("patchTag")]
+   protected String _patchTag;
+   
+   [JsonProperty("patchURL")]
+   protected String _patchURL;
    
 
    
-   [JsonIgnore]
-   private EventLogsFetcher _eventLogs;
-   
-   [JsonIgnore]
-   private GlobalMetadatasFetcher _globalMetadatas;
-   
-   [JsonIgnore]
-   private MetadatasFetcher _metadatas;
-   
-   public VirtualIP() {
-      
-      _eventLogs = new EventLogsFetcher(this);
-      
-      _globalMetadatas = new GlobalMetadatasFetcher(this);
-      
-      _metadatas = new MetadatasFetcher(this);
+   public NSGPatchProfile() {
       
    }
 
    
    [JsonIgnore]
-   public EIPType? NUIPType {
+   public String NUDescription {
       get {
-         return _IPType;
+         return _description;
       }
       set {
-         this._IPType = value;
+         this._description = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUMAC {
+   public String NUEnterpriseID {
       get {
-         return _MAC;
+         return _enterpriseID;
       }
       set {
-         this._MAC = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUAssociatedFloatingIPID {
-      get {
-         return _associatedFloatingIPID;
-      }
-      set {
-         this._associatedFloatingIPID = value;
+         this._enterpriseID = value;
       }
    }
 
@@ -159,44 +132,43 @@ public class VirtualIP: RestObject {
 
    
    [JsonIgnore]
-   public String NUSubnetID {
+   public String NUName {
       get {
-         return _subnetID;
+         return _name;
       }
       set {
-         this._subnetID = value;
+         this._name = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUVirtualIP {
+   public String NUPatchTag {
       get {
-         return _virtualIP;
+         return _patchTag;
       }
       set {
-         this._virtualIP = value;
+         this._patchTag = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUPatchURL {
+      get {
+         return _patchURL;
+      }
+      set {
+         this._patchURL = value;
       }
    }
 
    
 
-   
-   public EventLogsFetcher getEventLogs() {
-      return _eventLogs;
-   }
-   
-   public GlobalMetadatasFetcher getGlobalMetadatas() {
-      return _globalMetadatas;
-   }
-   
-   public MetadatasFetcher getMetadatas() {
-      return _metadatas;
-   }
    
 
    public String toString() {
-      return "VirtualIP [" + "IPType=" + _IPType + ", MAC=" + _MAC + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", subnetID=" + _subnetID + ", virtualIP=" + _virtualIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGPatchProfile [" + "description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", patchTag=" + _patchTag + ", patchURL=" + _patchURL + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -204,12 +176,12 @@ public class VirtualIP: RestObject {
 
    public static String getResourceName()
    {
-	return "virtualips";
+	return "nsgpatchprofiles";
    }
 
    public static String getRestName()
    {
-	return "virtualip";
+	return "nsgpatchprofile";
    }
 }
 }

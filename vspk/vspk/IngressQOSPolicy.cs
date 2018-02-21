@@ -43,10 +43,10 @@ public class IngressQOSPolicy: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EQueue1ForwardingClasses {NONE,A,B,C,D,E,F,G,H };
-   public enum EQueue2ForwardingClasses {NONE,A,B,C,D,E,F,G,H };
-   public enum EQueue3ForwardingClasses {NONE,A,B,C,D,E,F,G,H };
-   public enum EQueue4ForwardingClasses {NONE,A,B,C,D,E,F,G,H };
+   public enum EQueue1ForwardingClasses {A,B,C,D,E,F,G,H,NONE };
+   public enum EQueue2ForwardingClasses {A,B,C,D,E,F,G,H,NONE };
+   public enum EQueue3ForwardingClasses {A,B,C,D,E,F,G,H,NONE };
+   public enum EQueue4ForwardingClasses {A,B,C,D,E,F,G,H,NONE };
 
    
    [JsonProperty("assocEgressQosId")]
