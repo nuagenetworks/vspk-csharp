@@ -253,6 +253,9 @@ public class Domain: RestObject {
    private FloatingIpsFetcher _floatingIps;
    
    [JsonIgnore]
+   private ForwardingPathListsFetcher _forwardingPathLists;
+   
+   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
@@ -386,6 +389,8 @@ public class Domain: RestObject {
       _firewallAcls = new FirewallAclsFetcher(this);
       
       _floatingIps = new FloatingIpsFetcher(this);
+      
+      _forwardingPathLists = new ForwardingPathListsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -1055,6 +1060,10 @@ public class Domain: RestObject {
    
    public FloatingIpsFetcher getFloatingIps() {
       return _floatingIps;
+   }
+   
+   public ForwardingPathListsFetcher getForwardingPathLists() {
+      return _forwardingPathLists;
    }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {

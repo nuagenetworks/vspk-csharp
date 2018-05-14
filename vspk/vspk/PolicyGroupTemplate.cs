@@ -79,9 +79,6 @@ public class PolicyGroupTemplate: RestObject {
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
-   private JobsFetcher _jobs;
-   
-   [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    public PolicyGroupTemplate() {
@@ -90,8 +87,6 @@ public class PolicyGroupTemplate: RestObject {
       _eventLogs = new EventLogsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
-      
-      _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
@@ -194,10 +189,6 @@ public class PolicyGroupTemplate: RestObject {
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
-   }
-   
-   public JobsFetcher getJobs() {
-      return _jobs;
    }
    
    public MetadatasFetcher getMetadatas() {

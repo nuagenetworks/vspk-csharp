@@ -42,7 +42,7 @@ public class VirtualFirewallRule: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EAction {DROP,FORWARD,REDIRECT };
+   public enum EAction {DROP,FORWARD };
    public enum EAssociatedTrafficType {L4_SERVICE,L4_SERVICE_GROUP };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum ELocationType {ANY,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,SUBNET,ZONE };
@@ -131,6 +131,9 @@ public class VirtualFirewallRule: RestObject {
    [JsonProperty("sourcePort")]
    protected String _sourcePort;
    
+   [JsonProperty("stateful")]
+   protected bool _stateful;
+   
    [JsonProperty("statsID")]
    protected String _statsID;
    
@@ -143,9 +146,6 @@ public class VirtualFirewallRule: RestObject {
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
-   private JobsFetcher _jobs;
-   
-   [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
@@ -154,8 +154,6 @@ public class VirtualFirewallRule: RestObject {
    public VirtualFirewallRule() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
-      
-      _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
@@ -462,6 +460,17 @@ public class VirtualFirewallRule: RestObject {
 
    
    [JsonIgnore]
+   public bool NUStateful {
+      get {
+         return _stateful;
+      }
+      set {
+         this._stateful = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUStatsID {
       get {
          return _statsID;
@@ -489,10 +498,6 @@ public class VirtualFirewallRule: RestObject {
       return _globalMetadatas;
    }
    
-   public JobsFetcher getJobs() {
-      return _jobs;
-   }
-   
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
    }
@@ -503,7 +508,7 @@ public class VirtualFirewallRule: RestObject {
    
 
    public String toString() {
-      return "VirtualFirewallRule [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", action=" + _action + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", overlayMirrorDestinationID=" + _overlayMirrorDestinationID + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VirtualFirewallRule [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", action=" + _action + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", overlayMirrorDestinationID=" + _overlayMirrorDestinationID + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

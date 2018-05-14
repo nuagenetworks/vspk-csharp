@@ -45,6 +45,12 @@ public class Metadata: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("assocEntityID")]
+   protected String _assocEntityID;
+   
+   [JsonProperty("assocEntityType")]
+   protected String _assocEntityType;
+   
    [JsonProperty("blob")]
    protected String _blob;
    
@@ -59,6 +65,9 @@ public class Metadata: RestObject {
    
    [JsonProperty("global")]
    protected bool _globalMetadata;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("metadataTagIDs")]
    protected System.Collections.Generic.List<String> _metadataTagIDs;
@@ -78,6 +87,28 @@ public class Metadata: RestObject {
       
       _eventLogs = new EventLogsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssocEntityID {
+      get {
+         return _assocEntityID;
+      }
+      set {
+         this._assocEntityID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssocEntityType {
+      get {
+         return _assocEntityType;
+      }
+      set {
+         this._assocEntityType = value;
+      }
    }
 
    
@@ -137,6 +168,17 @@ public class Metadata: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUMetadataTagIDs {
       get {
          return _metadataTagIDs;
@@ -177,7 +219,7 @@ public class Metadata: RestObject {
    
 
    public String toString() {
-      return "Metadata [" + "blob=" + _blob + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", globalMetadata=" + _globalMetadata + ", metadataTagIDs=" + _metadataTagIDs + ", name=" + _name + ", networkNotificationDisabled=" + _networkNotificationDisabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Metadata [" + "assocEntityID=" + _assocEntityID + ", assocEntityType=" + _assocEntityType + ", blob=" + _blob + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", globalMetadata=" + _globalMetadata + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataTagIDs=" + _metadataTagIDs + ", name=" + _name + ", networkNotificationDisabled=" + _networkNotificationDisabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -42,10 +42,20 @@ public class ApplicationBinding: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
    [JsonProperty("associatedApplicationID")]
    protected String _associatedApplicationID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("priority")]
    protected long? _priority;
@@ -55,7 +65,17 @@ public class ApplicationBinding: RestObject {
    
 
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public ApplicationBinding() {
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
    }
 
@@ -67,6 +87,39 @@ public class ApplicationBinding: RestObject {
       }
       set {
          this._associatedApplicationID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
       }
    }
 
@@ -95,9 +148,17 @@ public class ApplicationBinding: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "ApplicationBinding [" + "associatedApplicationID=" + _associatedApplicationID + ", priority=" + _priority + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "ApplicationBinding [" + "associatedApplicationID=" + _associatedApplicationID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", priority=" + _priority + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

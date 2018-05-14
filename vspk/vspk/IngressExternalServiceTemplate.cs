@@ -83,9 +83,6 @@ public class IngressExternalServiceTemplate: RestObject {
    private IngressExternalServiceTemplateEntriesFetcher _ingressExternalServiceTemplateEntries;
    
    [JsonIgnore]
-   private JobsFetcher _jobs;
-   
-   [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    public IngressExternalServiceTemplate() {
@@ -93,8 +90,6 @@ public class IngressExternalServiceTemplate: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _ingressExternalServiceTemplateEntries = new IngressExternalServiceTemplateEntriesFetcher(this);
-      
-      _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
@@ -208,10 +203,6 @@ public class IngressExternalServiceTemplate: RestObject {
    
    public IngressExternalServiceTemplateEntriesFetcher getIngressExternalServiceTemplateEntries() {
       return _ingressExternalServiceTemplateEntries;
-   }
-   
-   public JobsFetcher getJobs() {
-      return _jobs;
    }
    
    public MetadatasFetcher getMetadatas() {

@@ -42,7 +42,7 @@ public class ZFBAutoAssignment: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EZFBMatchAttribute {HOSTNAME,IP_ADDRESS,MAC_ADDRESS,NSGATEWAY_ID,SERIAL_NUMBER };
+   public enum EZFBMatchAttribute {HOSTNAME,IP_ADDRESS,MAC_ADDRESS,NSGATEWAY_ID,SERIAL_NUMBER,UUID };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    [JsonConverter(typeof(StringEnumConverter))]

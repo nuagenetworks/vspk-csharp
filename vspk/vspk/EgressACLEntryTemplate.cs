@@ -45,7 +45,7 @@ public class EgressACLEntryTemplate: RestObject {
    public enum EAction {DROP,FORWARD };
    public enum EAssociatedTrafficType {L4_SERVICE,L4_SERVICE_GROUP };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum ELocationType {ANY,PGEXPRESSION,POLICYGROUP,REDIRECTIONTARGET,SUBNET,VPORTTAG,ZONE };
+   public enum ELocationType {ANY,PGEXPRESSION,POLICYGROUP,SUBNET,ZONE };
    public enum ENetworkType {ANY,ENDPOINT_DOMAIN,ENDPOINT_SUBNET,ENDPOINT_ZONE,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,PUBLIC_NETWORK,SUBNET,UNDERLAY_INTERNET_POLICYGROUP,ZONE };
    public enum EPolicyState {DRAFT,LIVE };
 
@@ -152,9 +152,6 @@ public class EgressACLEntryTemplate: RestObject {
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
-   private JobsFetcher _jobs;
-   
-   [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
@@ -169,8 +166,6 @@ public class EgressACLEntryTemplate: RestObject {
       _networkType = ENetworkType.ANY;
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
-      
-      _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
@@ -535,10 +530,6 @@ public class EgressACLEntryTemplate: RestObject {
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
-   }
-   
-   public JobsFetcher getJobs() {
-      return _jobs;
    }
    
    public MetadatasFetcher getMetadatas() {

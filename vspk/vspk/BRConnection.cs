@@ -42,7 +42,7 @@ public class BRConnection: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EAdvertisementCriteria {BFD,LINK_BASED,OPENFLOW };
+   public enum EAdvertisementCriteria {BFD,LINK_BASED,OPENFLOW,OPERATIONAL_LINK };
    public enum EMode {Static };
 
    
@@ -57,6 +57,9 @@ public class BRConnection: RestObject {
    
    [JsonProperty("gateway")]
    protected String _gateway;
+   
+   [JsonProperty("inherited")]
+   protected bool _inherited;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("mode")]
    protected EMode? _mode;
@@ -124,6 +127,17 @@ public class BRConnection: RestObject {
 
    
    [JsonIgnore]
+   public bool NUInherited {
+      get {
+         return _inherited;
+      }
+      set {
+         this._inherited = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EMode? NUMode {
       get {
          return _mode;
@@ -164,7 +178,7 @@ public class BRConnection: RestObject {
    
 
    public String toString() {
-      return "BRConnection [" + "DNSAddress=" + _DNSAddress + ", address=" + _address + ", advertisementCriteria=" + _advertisementCriteria + ", gateway=" + _gateway + ", mode=" + _mode + ", netmask=" + _netmask + ", uplinkID=" + _uplinkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BRConnection [" + "DNSAddress=" + _DNSAddress + ", address=" + _address + ", advertisementCriteria=" + _advertisementCriteria + ", gateway=" + _gateway + ", inherited=" + _inherited + ", mode=" + _mode + ", netmask=" + _netmask + ", uplinkID=" + _uplinkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -37,49 +37,36 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class PolicyGroup: RestObject {
+public class ForwardingPathListEntry: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
+   public enum EFCOverride {A,B,C,D,E,F,G,H,NONE };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EType {HARDWARE,SOFTWARE };
+   public enum EForwardingAction {IKE,UNDERLAY_PAT,UNDERLAY_ROUTE };
+   public enum EUplinkPreference {PRIMARY,SECONDARY };
 
-   
-   [JsonProperty("EVPNCommunityTag")]
-   protected String _EVPNCommunityTag;
-   
-   [JsonProperty("description")]
-   protected String _description;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("FCOverride")]
+   protected EFCOverride? _FCOverride;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
    
-   [JsonProperty("external")]
-   protected bool _external;
-   
    [JsonProperty("externalID")]
    protected String _externalID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("forwardingAction")]
+   protected EForwardingAction? _forwardingAction;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
-   
-   [JsonProperty("name")]
-   protected String _name;
-   
-   [JsonProperty("policyGroupID")]
-   protected long? _policyGroupID;
-   
-   [JsonProperty("templateID")]
-   protected String _templateID;
    [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("type")]
-   protected EType? _type;
+   [JsonProperty("uplinkPreference")]
+   protected EUplinkPreference? _uplinkPreference;
    
 
-   
-   [JsonIgnore]
-   private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
@@ -87,41 +74,22 @@ public class PolicyGroup: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
-   [JsonIgnore]
-   private VPortsFetcher _vPorts;
-   
-   public PolicyGroup() {
-      _type = EType.SOFTWARE;
-      
-      _eventLogs = new EventLogsFetcher(this);
+   public ForwardingPathListEntry() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
-      _vPorts = new VPortsFetcher(this);
-      
    }
 
    
    [JsonIgnore]
-   public String NUEVPNCommunityTag {
+   public EFCOverride? NUFCOverride {
       get {
-         return _EVPNCommunityTag;
+         return _FCOverride;
       }
       set {
-         this._EVPNCommunityTag = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUDescription {
-      get {
-         return _description;
-      }
-      set {
-         this._description = value;
+         this._FCOverride = value;
       }
    }
 
@@ -138,23 +106,23 @@ public class PolicyGroup: RestObject {
 
    
    [JsonIgnore]
-   public bool NUExternal {
-      get {
-         return _external;
-      }
-      set {
-         this._external = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUExternalID {
       get {
          return _externalID;
       }
       set {
          this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EForwardingAction? NUForwardingAction {
+      get {
+         return _forwardingAction;
+      }
+      set {
+         this._forwardingAction = value;
       }
    }
 
@@ -171,54 +139,17 @@ public class PolicyGroup: RestObject {
 
    
    [JsonIgnore]
-   public String NUName {
+   public EUplinkPreference? NUUplinkPreference {
       get {
-         return _name;
+         return _uplinkPreference;
       }
       set {
-         this._name = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public long? NUPolicyGroupID {
-      get {
-         return _policyGroupID;
-      }
-      set {
-         this._policyGroupID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUTemplateID {
-      get {
-         return _templateID;
-      }
-      set {
-         this._templateID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EType? NUType {
-      get {
-         return _type;
-      }
-      set {
-         this._type = value;
+         this._uplinkPreference = value;
       }
    }
 
    
 
-   
-   public EventLogsFetcher getEventLogs() {
-      return _eventLogs;
-   }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
@@ -228,13 +159,9 @@ public class PolicyGroup: RestObject {
       return _metadatas;
    }
    
-   public VPortsFetcher getVPorts() {
-      return _vPorts;
-   }
-   
 
    public String toString() {
-      return "PolicyGroup [" + "EVPNCommunityTag=" + _EVPNCommunityTag + ", description=" + _description + ", entityScope=" + _entityScope + ", external=" + _external + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyGroupID=" + _policyGroupID + ", templateID=" + _templateID + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "ForwardingPathListEntry [" + "FCOverride=" + _FCOverride + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", forwardingAction=" + _forwardingAction + ", lastUpdatedBy=" + _lastUpdatedBy + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -242,12 +169,12 @@ public class PolicyGroup: RestObject {
 
    public static String getResourceName()
    {
-	return "policygroups";
+	return "forwardingpathlistentries";
    }
 
    public static String getRestName()
    {
-	return "policygroup";
+	return "forwardingpathlistentry";
    }
 }
 }

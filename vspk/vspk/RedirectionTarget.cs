@@ -42,7 +42,7 @@ public class RedirectionTarget: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EEndPointType {L3,NONE,NSG_VNF,VIRTUAL_WIRE };
+   public enum EEndPointType {L3,NSG_VNF,VIRTUAL_WIRE };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum ETriggerType {GARP,NONE };
 
@@ -89,9 +89,6 @@ public class RedirectionTarget: RestObject {
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
-   private JobsFetcher _jobs;
-   
-   [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
@@ -106,8 +103,6 @@ public class RedirectionTarget: RestObject {
       _eventLogs = new EventLogsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
-      
-      _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
@@ -247,10 +242,6 @@ public class RedirectionTarget: RestObject {
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
-   }
-   
-   public JobsFetcher getJobs() {
-      return _jobs;
    }
    
    public MetadatasFetcher getMetadatas() {

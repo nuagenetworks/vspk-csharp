@@ -92,6 +92,9 @@ public class VRS: RestObject {
    
    [JsonProperty("externalID")]
    protected String _externalID;
+   
+   [JsonProperty("gatewayUUID")]
+   protected String _gatewayUUID;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("hypervisorConnectionState")]
    protected EHypervisorConnectionState? _hypervisorConnectionState;
@@ -407,6 +410,17 @@ public class VRS: RestObject {
       }
       set {
          this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUGatewayUUID {
+      get {
+         return _gatewayUUID;
+      }
+      set {
+         this._gatewayUUID = value;
       }
    }
 
@@ -859,7 +873,7 @@ public class VRS: RestObject {
    
 
    public String toString() {
-      return "VRS [" + "JSONRPCConnectionState=" + _JSONRPCConnectionState + ", address=" + _address + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", clusterNodeRole=" + _clusterNodeRole + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", dbSynced=" + _dbSynced + ", description=" + _description + ", disks=" + _disks + ", dynamic=" + _dynamic + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorConnectionState=" + _hypervisorConnectionState + ", hypervisorIdentifier=" + _hypervisorIdentifier + ", hypervisorName=" + _hypervisorName + ", hypervisorType=" + _hypervisorType + ", isResilient=" + _isResilient + ", lastEventName=" + _lastEventName + ", lastEventObject=" + _lastEventObject + ", lastEventTimestamp=" + _lastEventTimestamp + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", licensedState=" + _licensedState + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", multiNICVPortEnabled=" + _multiNICVPortEnabled + ", name=" + _name + ", numberOfBridgeInterfaces=" + _numberOfBridgeInterfaces + ", numberOfContainers=" + _numberOfContainers + ", numberOfHostInterfaces=" + _numberOfHostInterfaces + ", numberOfVirtualMachines=" + _numberOfVirtualMachines + ", parentIDs=" + _parentIDs + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", peer=" + _peer + ", personality=" + _personality + ", primaryVSCConnectionLost=" + _primaryVSCConnectionLost + ", productVersion=" + _productVersion + ", revertBehaviorEnabled=" + _revertBehaviorEnabled + ", revertCompleted=" + _revertCompleted + ", revertCount=" + _revertCount + ", revertFailedCount=" + _revertFailedCount + ", role=" + _role + ", status=" + _status + ", uptime=" + _uptime + ", vscConfigState=" + _vscConfigState + ", vscCurrentState=" + _vscCurrentState + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VRS [" + "JSONRPCConnectionState=" + _JSONRPCConnectionState + ", address=" + _address + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", clusterNodeRole=" + _clusterNodeRole + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", dbSynced=" + _dbSynced + ", description=" + _description + ", disks=" + _disks + ", dynamic=" + _dynamic + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayUUID=" + _gatewayUUID + ", hypervisorConnectionState=" + _hypervisorConnectionState + ", hypervisorIdentifier=" + _hypervisorIdentifier + ", hypervisorName=" + _hypervisorName + ", hypervisorType=" + _hypervisorType + ", isResilient=" + _isResilient + ", lastEventName=" + _lastEventName + ", lastEventObject=" + _lastEventObject + ", lastEventTimestamp=" + _lastEventTimestamp + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", licensedState=" + _licensedState + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", multiNICVPortEnabled=" + _multiNICVPortEnabled + ", name=" + _name + ", numberOfBridgeInterfaces=" + _numberOfBridgeInterfaces + ", numberOfContainers=" + _numberOfContainers + ", numberOfHostInterfaces=" + _numberOfHostInterfaces + ", numberOfVirtualMachines=" + _numberOfVirtualMachines + ", parentIDs=" + _parentIDs + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", peer=" + _peer + ", personality=" + _personality + ", primaryVSCConnectionLost=" + _primaryVSCConnectionLost + ", productVersion=" + _productVersion + ", revertBehaviorEnabled=" + _revertBehaviorEnabled + ", revertCompleted=" + _revertCompleted + ", revertCount=" + _revertCount + ", revertFailedCount=" + _revertFailedCount + ", role=" + _role + ", status=" + _status + ", uptime=" + _uptime + ", vscConfigState=" + _vscConfigState + ", vscCurrentState=" + _vscCurrentState + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

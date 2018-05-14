@@ -43,7 +43,7 @@ public class Group: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EManagementMode {CMS,DEFAULT };
+   public enum EManagementMode {CMS,DEFAULT,RESERVED };
    public enum ERole {ADMINOPERATOR,CMS,CSPOPERATOR,CSPROOT,JMS,ORGADMIN,ORGAPPDESIGNER,ORGNETWORKDESIGNER,ORGUSER,SECURITYADMINISTRATOR,SYSTEM,UNKNOWN,USER };
 
    

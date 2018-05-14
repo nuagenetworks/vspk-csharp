@@ -51,6 +51,7 @@ public class NSGateway: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFamily {ANY,NSG_AMI,NSG_C,NSG_E,NSG_E200,NSG_E300,NSG_V,NSG_X,NSG_X200 };
    public enum EInheritedSSHServiceState {DISABLED,ENABLED };
+   public enum ENetworkAcceleration {NONE,PERFORMANCE };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
    public enum EPersonality {DC7X50,HARDWARE_VTEP,NSG,NSGBR,NSGDUC,OTHER,VRSG,VSA,VSG };
 
@@ -165,6 +166,9 @@ public class NSGateway: RestObject {
    
    [JsonProperty("name")]
    protected String _name;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("networkAcceleration")]
+   protected ENetworkAcceleration? _networkAcceleration;
    
    [JsonProperty("operationMode")]
    protected String _operationMode;
@@ -714,6 +718,17 @@ public class NSGateway: RestObject {
 
    
    [JsonIgnore]
+   public ENetworkAcceleration? NUNetworkAcceleration {
+      get {
+         return _networkAcceleration;
+      }
+      set {
+         this._networkAcceleration = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUOperationMode {
       get {
          return _operationMode;
@@ -918,7 +933,7 @@ public class NSGateway: RestObject {
    
 
    public String toString() {
-      return "NSGateway [" + "BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NATTraversalEnabled=" + _NATTraversalEnabled + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", SSHService=" + _SSHService + ", TCPMSSEnabled=" + _TCPMSSEnabled + ", TCPMaximumSegmentSize=" + _TCPMaximumSegmentSize + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + _associatedNSGUpgradeProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", configurationReloadState=" + _configurationReloadState + ", configurationStatus=" + _configurationStatus + ", controlTrafficCOSValue=" + _controlTrafficCOSValue + ", controlTrafficDSCPValue=" + _controlTrafficDSCPValue + ", datapathID=" + _datapathID + ", derivedSSHServiceState=" + _derivedSSHServiceState + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", inheritedSSHServiceState=" + _inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + _lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + _lastUpdatedBy + ", libraries=" + _libraries + ", locationID=" + _locationID + ", name=" + _name + ", operationMode=" + _operationMode + ", operationStatus=" + _operationStatus + ", patches=" + _patches + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", systemID=" + _systemID + ", templateID=" + _templateID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGateway [" + "BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NATTraversalEnabled=" + _NATTraversalEnabled + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", SSHService=" + _SSHService + ", TCPMSSEnabled=" + _TCPMSSEnabled + ", TCPMaximumSegmentSize=" + _TCPMaximumSegmentSize + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + _associatedNSGUpgradeProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", configurationReloadState=" + _configurationReloadState + ", configurationStatus=" + _configurationStatus + ", controlTrafficCOSValue=" + _controlTrafficCOSValue + ", controlTrafficDSCPValue=" + _controlTrafficDSCPValue + ", datapathID=" + _datapathID + ", derivedSSHServiceState=" + _derivedSSHServiceState + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", inheritedSSHServiceState=" + _inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + _lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + _lastUpdatedBy + ", libraries=" + _libraries + ", locationID=" + _locationID + ", name=" + _name + ", networkAcceleration=" + _networkAcceleration + ", operationMode=" + _operationMode + ", operationStatus=" + _operationStatus + ", patches=" + _patches + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", systemID=" + _systemID + ", templateID=" + _templateID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

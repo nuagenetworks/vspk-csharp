@@ -44,8 +44,8 @@ public class IngressExternalServiceTemplateEntry: RestObject {
    
    public enum EAction {DROP,FORWARD,REDIRECT };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum ELocationType {ANY,POLICYGROUP,REDIRECTIONTARGET,SUBNET,VPORTTAG,ZONE };
-   public enum ENetworkType {ANY,ENDPOINT_DOMAIN,ENDPOINT_SUBNET,ENDPOINT_ZONE,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,POLICYGROUP,PUBLIC_NETWORK,SUBNET,ZONE };
+   public enum ELocationType {ANY,POLICYGROUP,SUBNET,ZONE };
+   public enum ENetworkType {ANY,ENDPOINT_DOMAIN,ENDPOINT_SUBNET,ENDPOINT_ZONE,ENTERPRISE_NETWORK,NETWORK_MACRO_GROUP,POLICYGROUP,PUBLIC_NETWORK,SUBNET,ZONE };
    public enum EPolicyState {DRAFT,LIVE };
 
    
@@ -145,9 +145,6 @@ public class IngressExternalServiceTemplateEntry: RestObject {
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
-   private JobsFetcher _jobs;
-   
-   [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
@@ -156,8 +153,6 @@ public class IngressExternalServiceTemplateEntry: RestObject {
    public IngressExternalServiceTemplateEntry() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
-      
-      _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
@@ -500,10 +495,6 @@ public class IngressExternalServiceTemplateEntry: RestObject {
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
-   }
-   
-   public JobsFetcher getJobs() {
-      return _jobs;
    }
    
    public MetadatasFetcher getMetadatas() {

@@ -43,13 +43,13 @@ public class IngressAdvFwdEntryTemplate: RestObject {
 
    
    public enum EFCOverride {A,B,C,D,E,F,G,H,NONE };
-   public enum EAction {DROP,FORWARD,REDIRECT };
+   public enum EAction {ACTION_LIST,DROP,FORWARD,REDIRECT };
    public enum EAppType {ALL,APPLICATION,NONE };
    public enum EAssociatedTrafficType {L4_SERVICE,L4_SERVICE_GROUP };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFailsafeDatapath {FAIL_TO_BLOCK,FAIL_TO_WIRE };
-   public enum ELocationType {ANY,PGEXPRESSION,POLICYGROUP,REDIRECTIONTARGET,SUBNET,VPORTTAG,ZONE };
-   public enum ENetworkType {ANY,ENDPOINT_DOMAIN,ENDPOINT_SUBNET,ENDPOINT_ZONE,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,PUBLIC_NETWORK,SUBNET,UNDERLAY_INTERNET_POLICYGROUP,ZONE };
+   public enum ELocationType {ANY,PGEXPRESSION,POLICYGROUP,SUBNET,ZONE };
+   public enum ENetworkType {ANY,ENDPOINT_DOMAIN,ENDPOINT_SUBNET,ENDPOINT_ZONE,ENTERPRISE_NETWORK,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,PUBLIC_NETWORK,SUBNET,UNDERLAY_INTERNET_POLICYGROUP,ZONE };
    public enum EPolicyState {DRAFT,LIVE };
    public enum ERedirectRewriteType {VLAN };
    public enum ERemoteUplinkPreference {DEFAULT,PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY };
@@ -85,6 +85,9 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    
    [JsonProperty("associatedApplicationID")]
    protected String _associatedApplicationID;
+   
+   [JsonProperty("associatedForwardingPathListID")]
+   protected String _associatedForwardingPathListID;
    
    [JsonProperty("associatedLiveEntityID")]
    protected String _associatedLiveEntityID;
@@ -188,9 +191,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
-   private JobsFetcher _jobs;
-   
-   [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
@@ -205,8 +205,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
       _networkType = ENetworkType.ANY;
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
-      
-      _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
@@ -321,6 +319,17 @@ public class IngressAdvFwdEntryTemplate: RestObject {
       }
       set {
          this._associatedApplicationID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedForwardingPathListID {
+      get {
+         return _associatedForwardingPathListID;
+      }
+      set {
+         this._associatedForwardingPathListID = value;
       }
    }
 
@@ -683,10 +692,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
       return _globalMetadatas;
    }
    
-   public JobsFetcher getJobs() {
-      return _jobs;
-   }
-   
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
    }
@@ -697,7 +702,7 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    
 
    public String toString() {
-      return "IngressAdvFwdEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", FCOverride=" + _FCOverride + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", appType=" + _appType + ", associatedApplicationID=" + _associatedApplicationID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", failsafeDatapath=" + _failsafeDatapath + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", isSLAAware=" + _isSLAAware + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", name=" + _name + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", redirectRewriteType=" + _redirectRewriteType + ", redirectRewriteValue=" + _redirectRewriteValue + ", redirectVPortTagID=" + _redirectVPortTagID + ", remoteUplinkPreference=" + _remoteUplinkPreference + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", uplinkPreference=" + _uplinkPreference + ", vlanRange=" + _vlanRange + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IngressAdvFwdEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", FCOverride=" + _FCOverride + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", appType=" + _appType + ", associatedApplicationID=" + _associatedApplicationID + ", associatedForwardingPathListID=" + _associatedForwardingPathListID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", failsafeDatapath=" + _failsafeDatapath + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", isSLAAware=" + _isSLAAware + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", name=" + _name + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", redirectRewriteType=" + _redirectRewriteType + ", redirectRewriteValue=" + _redirectRewriteValue + ", redirectVPortTagID=" + _redirectVPortTagID + ", remoteUplinkPreference=" + _remoteUplinkPreference + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", uplinkPreference=" + _uplinkPreference + ", vlanRange=" + _vlanRange + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

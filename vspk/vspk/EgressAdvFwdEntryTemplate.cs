@@ -46,7 +46,7 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    public enum EAction {DROP,FORWARD,REDIRECT };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFailsafeDatapath {FAIL_TO_BLOCK,FAIL_TO_WIRE };
-   public enum ELocationType {ANY,PGEXPRESSION,POLICYGROUP,REDIRECTIONTARGET,SUBNET,VPORTTAG,ZONE };
+   public enum ELocationType {ANY,PGEXPRESSION,POLICYGROUP,SUBNET,ZONE };
    public enum ENetworkType {ANY,ENDPOINT_DOMAIN,ENDPOINT_SUBNET,ENDPOINT_ZONE,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,PUBLIC_NETWORK,SUBNET,UNDERLAY_INTERNET_POLICYGROUP,ZONE };
    public enum EPolicyState {DRAFT,LIVE };
    public enum EUplinkPreference {DEFAULT,PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY,SYMMETRIC };
@@ -157,9 +157,6 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
-   private JobsFetcher _jobs;
-   
-   [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
@@ -168,8 +165,6 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    public EgressAdvFwdEntryTemplate() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
-      
-      _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
@@ -545,10 +540,6 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
-   }
-   
-   public JobsFetcher getJobs() {
-      return _jobs;
    }
    
    public MetadatasFetcher getMetadatas() {

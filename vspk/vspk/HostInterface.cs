@@ -49,6 +49,12 @@ public class HostInterface: RestObject {
    [JsonProperty("IPAddress")]
    protected String _IPAddress;
    
+   [JsonProperty("IPv6Address")]
+   protected String _IPv6Address;
+   
+   [JsonProperty("IPv6Gateway")]
+   protected String _IPv6Gateway;
+   
    [JsonProperty("MAC")]
    protected String _MAC;
    
@@ -180,6 +186,28 @@ public class HostInterface: RestObject {
       }
       set {
          this._IPAddress = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUIPv6Address {
+      get {
+         return _IPv6Address;
+      }
+      set {
+         this._IPv6Address = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUIPv6Gateway {
+      get {
+         return _IPv6Gateway;
+      }
+      set {
+         this._IPv6Gateway = value;
       }
    }
 
@@ -445,7 +473,7 @@ public class HostInterface: RestObject {
    
 
    public String toString() {
-      return "HostInterface [" + "IPAddress=" + _IPAddress + ", MAC=" + _MAC + ", VPortID=" + _VPortID + ", VPortName=" + _VPortName + ", associatedFloatingIPAddress=" + _associatedFloatingIPAddress + ", attachedNetworkID=" + _attachedNetworkID + ", attachedNetworkType=" + _attachedNetworkType + ", domainID=" + _domainID + ", domainName=" + _domainName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", netmask=" + _netmask + ", networkName=" + _networkName + ", policyDecisionID=" + _policyDecisionID + ", tierID=" + _tierID + ", zoneID=" + _zoneID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "HostInterface [" + "IPAddress=" + _IPAddress + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", MAC=" + _MAC + ", VPortID=" + _VPortID + ", VPortName=" + _VPortName + ", associatedFloatingIPAddress=" + _associatedFloatingIPAddress + ", attachedNetworkID=" + _attachedNetworkID + ", attachedNetworkType=" + _attachedNetworkType + ", domainID=" + _domainID + ", domainName=" + _domainName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", netmask=" + _netmask + ", networkName=" + _networkName + ", policyDecisionID=" + _policyDecisionID + ", tierID=" + _tierID + ", zoneID=" + _zoneID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -47,6 +47,9 @@ public class PSNATPool: RestObject {
    [JsonProperty("endAddress")]
    protected String _endAddress;
    
+   [JsonProperty("name")]
+   protected String _name;
+   
    [JsonProperty("startAddress")]
    protected String _startAddress;
    
@@ -79,6 +82,17 @@ public class PSNATPool: RestObject {
 
    
    [JsonIgnore]
+   public String NUName {
+      get {
+         return _name;
+      }
+      set {
+         this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUStartAddress {
       get {
          return _startAddress;
@@ -101,7 +115,7 @@ public class PSNATPool: RestObject {
    
 
    public String toString() {
-      return "PSNATPool [" + "endAddress=" + _endAddress + ", startAddress=" + _startAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "PSNATPool [" + "endAddress=" + _endAddress + ", name=" + _name + ", startAddress=" + _startAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

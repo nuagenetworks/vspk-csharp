@@ -48,6 +48,15 @@ public class Location: RestObject {
    [JsonProperty("address")]
    protected String _address;
    
+   [JsonProperty("associatedEntityID")]
+   protected String _associatedEntityID;
+   
+   [JsonProperty("associatedEntityName")]
+   protected String _associatedEntityName;
+   
+   [JsonProperty("associatedEntityType")]
+   protected String _associatedEntityType;
+   
    [JsonProperty("country")]
    protected String _country;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -103,6 +112,39 @@ public class Location: RestObject {
       }
       set {
          this._address = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEntityID {
+      get {
+         return _associatedEntityID;
+      }
+      set {
+         this._associatedEntityID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEntityName {
+      get {
+         return _associatedEntityName;
+      }
+      set {
+         this._associatedEntityName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEntityType {
+      get {
+         return _associatedEntityType;
+      }
+      set {
+         this._associatedEntityType = value;
       }
    }
 
@@ -229,7 +271,7 @@ public class Location: RestObject {
    
 
    public String toString() {
-      return "Location [" + "address=" + _address + ", country=" + _country + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ignoreGeocode=" + _ignoreGeocode + ", lastUpdatedBy=" + _lastUpdatedBy + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", state=" + _state + ", timeZoneID=" + _timeZoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Location [" + "address=" + _address + ", associatedEntityID=" + _associatedEntityID + ", associatedEntityName=" + _associatedEntityName + ", associatedEntityType=" + _associatedEntityType + ", country=" + _country + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ignoreGeocode=" + _ignoreGeocode + ", lastUpdatedBy=" + _lastUpdatedBy + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", state=" + _state + ", timeZoneID=" + _timeZoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

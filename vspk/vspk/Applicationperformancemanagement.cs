@@ -42,6 +42,7 @@ public class Applicationperformancemanagement: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
    [JsonProperty("associatedPerformanceMonitorID")]
@@ -49,6 +50,15 @@ public class Applicationperformancemanagement: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("name")]
    protected String _name;
@@ -61,9 +71,19 @@ public class Applicationperformancemanagement: RestObject {
    [JsonIgnore]
    private ApplicationBindingsFetcher _applicationBindings;
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public Applicationperformancemanagement() {
       
       _applicationBindings = new ApplicationBindingsFetcher(this);
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
    }
 
@@ -86,6 +106,39 @@ public class Applicationperformancemanagement: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
       }
    }
 
@@ -118,9 +171,17 @@ public class Applicationperformancemanagement: RestObject {
       return _applicationBindings;
    }
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "Applicationperformancemanagement [" + "associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", description=" + _description + ", name=" + _name + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Applicationperformancemanagement [" + "associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
