@@ -53,6 +53,12 @@ public class PolicyEntry: RestObject {
    [JsonProperty("matchCriteria")]
    protected Object _matchCriteria;
    
+   [JsonProperty("matchOverlayAddressPoolID")]
+   protected String _matchOverlayAddressPoolID;
+   
+   [JsonProperty("matchPolicyObjectGroupID")]
+   protected String _matchPolicyObjectGroupID;
+   
    [JsonProperty("name")]
    protected String _name;
    
@@ -97,6 +103,28 @@ public class PolicyEntry: RestObject {
 
    
    [JsonIgnore]
+   public String NUMatchOverlayAddressPoolID {
+      get {
+         return _matchOverlayAddressPoolID;
+      }
+      set {
+         this._matchOverlayAddressPoolID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUMatchPolicyObjectGroupID {
+      get {
+         return _matchPolicyObjectGroupID;
+      }
+      set {
+         this._matchPolicyObjectGroupID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -111,7 +139,7 @@ public class PolicyEntry: RestObject {
    
 
    public String toString() {
-      return "PolicyEntry [" + "actions=" + _actions + ", description=" + _description + ", matchCriteria=" + _matchCriteria + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "PolicyEntry [" + "actions=" + _actions + ", description=" + _description + ", matchCriteria=" + _matchCriteria + ", matchOverlayAddressPoolID=" + _matchOverlayAddressPoolID + ", matchPolicyObjectGroupID=" + _matchPolicyObjectGroupID + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

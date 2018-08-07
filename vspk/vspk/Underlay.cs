@@ -61,7 +61,7 @@ public class Underlay: RestObject {
    protected String _name;
    
    [JsonProperty("underlayId")]
-   protected String _underlayId;
+   protected long? _underlayId;
    
 
    
@@ -136,7 +136,7 @@ public class Underlay: RestObject {
 
    
    [JsonIgnore]
-   public String NUUnderlayId {
+   public long? NUUnderlayId {
       get {
          return _underlayId;
       }

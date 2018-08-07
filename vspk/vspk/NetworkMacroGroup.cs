@@ -54,6 +54,9 @@ public class NetworkMacroGroup: RestObject {
    [JsonProperty("externalID")]
    protected String _externalID;
    
+   [JsonProperty("isSaaSType")]
+   protected bool _isSaaSType;
+   
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
@@ -119,6 +122,17 @@ public class NetworkMacroGroup: RestObject {
 
    
    [JsonIgnore]
+   public bool NUIsSaaSType {
+      get {
+         return _isSaaSType;
+      }
+      set {
+         this._isSaaSType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -167,7 +181,7 @@ public class NetworkMacroGroup: RestObject {
    
 
    public String toString() {
-      return "NetworkMacroGroup [" + "description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", networkMacros=" + _networkMacros + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NetworkMacroGroup [" + "description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isSaaSType=" + _isSaaSType + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", networkMacros=" + _networkMacros + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

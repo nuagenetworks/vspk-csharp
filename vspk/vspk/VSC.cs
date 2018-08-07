@@ -136,6 +136,9 @@ public class VSC: RestObject {
    private MonitoringPortsFetcher _monitoringPorts;
    
    [JsonIgnore]
+   private StatisticsFetcher _statistics;
+   
+   [JsonIgnore]
    private VRSsFetcher _vRSs;
    
    public VSC() {
@@ -153,6 +156,8 @@ public class VSC: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _monitoringPorts = new MonitoringPortsFetcher(this);
+      
+      _statistics = new StatisticsFetcher(this);
       
       _vRSs = new VRSsFetcher(this);
       
@@ -429,6 +434,10 @@ public class VSC: RestObject {
    
    public MonitoringPortsFetcher getMonitoringPorts() {
       return _monitoringPorts;
+   }
+   
+   public StatisticsFetcher getStatistics() {
+      return _statistics;
    }
    
    public VRSsFetcher getVRSs() {

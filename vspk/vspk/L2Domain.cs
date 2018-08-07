@@ -133,6 +133,9 @@ public class L2Domain: RestObject {
    [JsonProperty("routeTarget")]
    protected String _routeTarget;
    
+   [JsonProperty("routedVPLSEnabled")]
+   protected bool _routedVPLSEnabled;
+   
    [JsonProperty("serviceID")]
    protected long? _serviceID;
    
@@ -155,6 +158,9 @@ public class L2Domain: RestObject {
    
    [JsonIgnore]
    private AddressRangesFetcher _addressRanges;
+   
+   [JsonIgnore]
+   private ApplicationperformancemanagementbindingsFetcher _applicationperformancemanagementbindings;
    
    [JsonIgnore]
    private BridgeInterfacesFetcher _bridgeInterfaces;
@@ -211,6 +217,9 @@ public class L2Domain: RestObject {
    private NetworkPerformanceBindingsFetcher _networkPerformanceBindings;
    
    [JsonIgnore]
+   private NSGatewaySummariesFetcher _nSGatewaySummaries;
+   
+   [JsonIgnore]
    private OverlayMirrorDestinationsFetcher _overlayMirrorDestinations;
    
    [JsonIgnore]
@@ -260,6 +269,8 @@ public class L2Domain: RestObject {
       
       _addressRanges = new AddressRangesFetcher(this);
       
+      _applicationperformancemanagementbindings = new ApplicationperformancemanagementbindingsFetcher(this);
+      
       _bridgeInterfaces = new BridgeInterfacesFetcher(this);
       
       _containers = new ContainersFetcher(this);
@@ -295,6 +306,8 @@ public class L2Domain: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _networkPerformanceBindings = new NetworkPerformanceBindingsFetcher(this);
+      
+      _nSGatewaySummaries = new NSGatewaySummariesFetcher(this);
       
       _overlayMirrorDestinations = new OverlayMirrorDestinationsFetcher(this);
       
@@ -616,6 +629,17 @@ public class L2Domain: RestObject {
 
    
    [JsonIgnore]
+   public bool NURoutedVPLSEnabled {
+      get {
+         return _routedVPLSEnabled;
+      }
+      set {
+         this._routedVPLSEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUServiceID {
       get {
          return _serviceID;
@@ -685,6 +709,10 @@ public class L2Domain: RestObject {
    
    public AddressRangesFetcher getAddressRanges() {
       return _addressRanges;
+   }
+   
+   public ApplicationperformancemanagementbindingsFetcher getApplicationperformancemanagementbindings() {
+      return _applicationperformancemanagementbindings;
    }
    
    public BridgeInterfacesFetcher getBridgeInterfaces() {
@@ -759,6 +787,10 @@ public class L2Domain: RestObject {
       return _networkPerformanceBindings;
    }
    
+   public NSGatewaySummariesFetcher getNSGatewaySummaries() {
+      return _nSGatewaySummaries;
+   }
+   
    public OverlayMirrorDestinationsFetcher getOverlayMirrorDestinations() {
       return _overlayMirrorDestinations;
    }
@@ -821,7 +853,7 @@ public class L2Domain: RestObject {
    
 
    public String toString() {
-      return "L2Domain [" + "DHCPManaged=" + _DHCPManaged + ", DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", associatedUnderlayID=" + _associatedUnderlayID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", uplinkPreference=" + _uplinkPreference + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "L2Domain [" + "DHCPManaged=" + _DHCPManaged + ", DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", associatedUnderlayID=" + _associatedUnderlayID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", routedVPLSEnabled=" + _routedVPLSEnabled + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", uplinkPreference=" + _uplinkPreference + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

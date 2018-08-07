@@ -62,6 +62,9 @@ public class ForwardingPathListEntry: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("priority")]
+   protected long? _priority;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("uplinkPreference")]
    protected EUplinkPreference? _uplinkPreference;
@@ -139,6 +142,17 @@ public class ForwardingPathListEntry: RestObject {
 
    
    [JsonIgnore]
+   public long? NUPriority {
+      get {
+         return _priority;
+      }
+      set {
+         this._priority = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EUplinkPreference? NUUplinkPreference {
       get {
          return _uplinkPreference;
@@ -161,7 +175,7 @@ public class ForwardingPathListEntry: RestObject {
    
 
    public String toString() {
-      return "ForwardingPathListEntry [" + "FCOverride=" + _FCOverride + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", forwardingAction=" + _forwardingAction + ", lastUpdatedBy=" + _lastUpdatedBy + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "ForwardingPathListEntry [" + "FCOverride=" + _FCOverride + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", forwardingAction=" + _forwardingAction + ", lastUpdatedBy=" + _lastUpdatedBy + ", priority=" + _priority + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

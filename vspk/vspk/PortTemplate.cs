@@ -43,7 +43,7 @@ public class PortTemplate: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EPortType {ACCESS,NETWORK };
+   public enum EPortType {ACCESS,NETWORK,MANAGEMENT };
 
    
    [JsonProperty("VLANRange")]

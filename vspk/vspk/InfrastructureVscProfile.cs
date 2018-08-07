@@ -42,8 +42,12 @@ public class InfrastructureVscProfile: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EAddressFamily {DUALSTACK,IPV4,IPV6 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("addressFamily")]
+   protected EAddressFamily? _addressFamily;
    
    [JsonProperty("description")]
    protected String _description;
@@ -60,6 +64,9 @@ public class InfrastructureVscProfile: RestObject {
    [JsonProperty("firstController")]
    protected String _firstController;
    
+   [JsonProperty("firstControllerV6")]
+   protected String _firstControllerV6;
+   
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
@@ -71,6 +78,9 @@ public class InfrastructureVscProfile: RestObject {
    
    [JsonProperty("secondController")]
    protected String _secondController;
+   
+   [JsonProperty("secondControllerV6")]
+   protected String _secondControllerV6;
    
 
    
@@ -86,6 +96,17 @@ public class InfrastructureVscProfile: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public EAddressFamily? NUAddressFamily {
+      get {
+         return _addressFamily;
+      }
+      set {
+         this._addressFamily = value;
+      }
    }
 
    
@@ -145,6 +166,17 @@ public class InfrastructureVscProfile: RestObject {
 
    
    [JsonIgnore]
+   public String NUFirstControllerV6 {
+      get {
+         return _firstControllerV6;
+      }
+      set {
+         this._firstControllerV6 = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -188,6 +220,17 @@ public class InfrastructureVscProfile: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NUSecondControllerV6 {
+      get {
+         return _secondControllerV6;
+      }
+      set {
+         this._secondControllerV6 = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -200,7 +243,7 @@ public class InfrastructureVscProfile: RestObject {
    
 
    public String toString() {
-      return "InfrastructureVscProfile [" + "description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstController=" + _firstController + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", probeInterval=" + _probeInterval + ", secondController=" + _secondController + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "InfrastructureVscProfile [" + "addressFamily=" + _addressFamily + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstController=" + _firstController + ", firstControllerV6=" + _firstControllerV6 + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", probeInterval=" + _probeInterval + ", secondController=" + _secondController + ", secondControllerV6=" + _secondControllerV6 + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -48,6 +48,7 @@ public class VCenterHypervisor: RestObject {
    public enum EDestinationMirrorPort {ens160,ens161,ens224,ens256,no_mirror };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EMemorySizeInGB {DEFAULT_4,LARGE_8,MEDIUM_6 };
+   public enum EPersonality {VDF,VRS };
    public enum ERemoteSyslogServerType {NONE,TCP,UDP };
 
    
@@ -302,15 +303,18 @@ public class VCenterHypervisor: RestObject {
    
    [JsonProperty("ovfURL")]
    protected String _ovfURL;
-   
+   [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("personality")]
-   protected String _personality;
+   protected EPersonality? _personality;
    
    [JsonProperty("portgroupMetadata")]
    protected bool _portgroupMetadata;
    
    [JsonProperty("primaryDataUplinkUnderlayID")]
    protected long? _primaryDataUplinkUnderlayID;
+   
+   [JsonProperty("primaryDataUplinkVDFControlVLAN")]
+   protected long? _primaryDataUplinkVDFControlVLAN;
    
    [JsonProperty("primaryNuageController")]
    protected String _primaryNuageController;
@@ -362,6 +366,9 @@ public class VCenterHypervisor: RestObject {
    
    [JsonProperty("secondaryDataUplinkUnderlayID")]
    protected long? _secondaryDataUplinkUnderlayID;
+   
+   [JsonProperty("secondaryDataUplinkVDFControlVLAN")]
+   protected long? _secondaryDataUplinkVDFControlVLAN;
    
    [JsonProperty("secondaryNuageController")]
    protected String _secondaryNuageController;
@@ -1415,7 +1422,7 @@ public class VCenterHypervisor: RestObject {
 
    
    [JsonIgnore]
-   public String NUPersonality {
+   public EPersonality? NUPersonality {
       get {
          return _personality;
       }
@@ -1443,6 +1450,17 @@ public class VCenterHypervisor: RestObject {
       }
       set {
          this._primaryDataUplinkUnderlayID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUPrimaryDataUplinkVDFControlVLAN {
+      get {
+         return _primaryDataUplinkVDFControlVLAN;
+      }
+      set {
+         this._primaryDataUplinkVDFControlVLAN = value;
       }
    }
 
@@ -1630,6 +1648,17 @@ public class VCenterHypervisor: RestObject {
       }
       set {
          this._secondaryDataUplinkUnderlayID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUSecondaryDataUplinkVDFControlVLAN {
+      get {
+         return _secondaryDataUplinkVDFControlVLAN;
+      }
+      set {
+         this._secondaryDataUplinkVDFControlVLAN = value;
       }
    }
 
@@ -1992,7 +2021,7 @@ public class VCenterHypervisor: RestObject {
    
 
    public String toString() {
-      return "VCenterHypervisor [" + "VRSAgentMOID=" + _VRSAgentMOID + ", VRSAgentName=" + _VRSAgentName + ", VRSConfigurationTimeLimit=" + _VRSConfigurationTimeLimit + ", VRSMetricsID=" + _VRSMetricsID + ", VRSMgmtHostname=" + _VRSMgmtHostname + ", VRSState=" + _VRSState + ", allowDataDHCP=" + _allowDataDHCP + ", allowMgmtDHCP=" + _allowMgmtDHCP + ", availableNetworks=" + _availableNetworks + ", avrsEnabled=" + _avrsEnabled + ", avrsProfile=" + _avrsProfile + ", configuredMetricsPushInterval=" + _configuredMetricsPushInterval + ", cpuCount=" + _cpuCount + ", customizedScriptURL=" + _customizedScriptURL + ", dataDNS1=" + _dataDNS1 + ", dataDNS2=" + _dataDNS2 + ", dataGateway=" + _dataGateway + ", dataIPAddress=" + _dataIPAddress + ", dataNetmask=" + _dataNetmask + ", dataNetworkPortgroup=" + _dataNetworkPortgroup + ", datapathSyncTimeout=" + _datapathSyncTimeout + ", deploymentCount=" + _deploymentCount + ", description=" + _description + ", destinationMirrorPort=" + _destinationMirrorPort + ", dhcpRelayServer=" + _dhcpRelayServer + ", disableGROOnDatapath=" + _disableGROOnDatapath + ", disableLROOnDatapath=" + _disableLROOnDatapath + ", enableVRSResourceReservation=" + _enableVRSResourceReservation + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowEvictionThreshold=" + _flowEvictionThreshold + ", genericSplitActivation=" + _genericSplitActivation + ", hypervisorIP=" + _hypervisorIP + ", hypervisorPassword=" + _hypervisorPassword + ", hypervisorUser=" + _hypervisorUser + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastVRSDeployedDate=" + _lastVRSDeployedDate + ", manageVRSAvailability=" + _manageVRSAvailability + ", managedObjectID=" + _managedObjectID + ", memorySizeInGB=" + _memorySizeInGB + ", metadataServerIP=" + _metadataServerIP + ", metadataServerListenPort=" + _metadataServerListenPort + ", metadataServerPort=" + _metadataServerPort + ", metadataServiceEnabled=" + _metadataServiceEnabled + ", mgmtDNS1=" + _mgmtDNS1 + ", mgmtDNS2=" + _mgmtDNS2 + ", mgmtGateway=" + _mgmtGateway + ", mgmtIPAddress=" + _mgmtIPAddress + ", mgmtNetmask=" + _mgmtNetmask + ", mgmtNetworkPortgroup=" + _mgmtNetworkPortgroup + ", mirrorNetworkPortgroup=" + _mirrorNetworkPortgroup + ", mtu=" + _mtu + ", multiVMSsupport=" + _multiVMSsupport + ", multicastReceiveInterface=" + _multicastReceiveInterface + ", multicastReceiveInterfaceIP=" + _multicastReceiveInterfaceIP + ", multicastReceiveInterfaceNetmask=" + _multicastReceiveInterfaceNetmask + ", multicastReceiveRange=" + _multicastReceiveRange + ", multicastSendInterface=" + _multicastSendInterface + ", multicastSendInterfaceIP=" + _multicastSendInterfaceIP + ", multicastSendInterfaceNetmask=" + _multicastSendInterfaceNetmask + ", multicastSourcePortgroup=" + _multicastSourcePortgroup + ", name=" + _name + ", networkUplinkInterface=" + _networkUplinkInterface + ", networkUplinkInterfaceGateway=" + _networkUplinkInterfaceGateway + ", networkUplinkInterfaceIp=" + _networkUplinkInterfaceIp + ", networkUplinkInterfaceNetmask=" + _networkUplinkInterfaceNetmask + ", nfsLogServer=" + _nfsLogServer + ", nfsMountPath=" + _nfsMountPath + ", novaClientVersion=" + _novaClientVersion + ", novaIdentityURLVersion=" + _novaIdentityURLVersion + ", novaMetadataServiceAuthUrl=" + _novaMetadataServiceAuthUrl + ", novaMetadataServiceEndpoint=" + _novaMetadataServiceEndpoint + ", novaMetadataServicePassword=" + _novaMetadataServicePassword + ", novaMetadataServiceTenant=" + _novaMetadataServiceTenant + ", novaMetadataServiceUsername=" + _novaMetadataServiceUsername + ", novaMetadataSharedSecret=" + _novaMetadataSharedSecret + ", novaOSKeystoneUsername=" + _novaOSKeystoneUsername + ", novaProjectDomainName=" + _novaProjectDomainName + ", novaProjectName=" + _novaProjectName + ", novaRegionName=" + _novaRegionName + ", novaUserDomainName=" + _novaUserDomainName + ", ntpServer1=" + _ntpServer1 + ", ntpServer2=" + _ntpServer2 + ", ovfURL=" + _ovfURL + ", personality=" + _personality + ", portgroupMetadata=" + _portgroupMetadata + ", primaryDataUplinkUnderlayID=" + _primaryDataUplinkUnderlayID + ", primaryNuageController=" + _primaryNuageController + ", remoteSyslogServerIP=" + _remoteSyslogServerIP + ", remoteSyslogServerPort=" + _remoteSyslogServerPort + ", remoteSyslogServerType=" + _remoteSyslogServerType + ", removedFromVCenterInventory=" + _removedFromVCenterInventory + ", revertiveControllerEnabled=" + _revertiveControllerEnabled + ", revertiveTimer=" + _revertiveTimer + ", scope=" + _scope + ", secondaryDataUplinkDHCPEnabled=" + _secondaryDataUplinkDHCPEnabled + ", secondaryDataUplinkEnabled=" + _secondaryDataUplinkEnabled + ", secondaryDataUplinkIP=" + _secondaryDataUplinkIP + ", secondaryDataUplinkInterface=" + _secondaryDataUplinkInterface + ", secondaryDataUplinkMTU=" + _secondaryDataUplinkMTU + ", secondaryDataUplinkNetmask=" + _secondaryDataUplinkNetmask + ", secondaryDataUplinkPrimaryController=" + _secondaryDataUplinkPrimaryController + ", secondaryDataUplinkSecondaryController=" + _secondaryDataUplinkSecondaryController + ", secondaryDataUplinkUnderlayID=" + _secondaryDataUplinkUnderlayID + ", secondaryNuageController=" + _secondaryNuageController + ", separateDataNetwork=" + _separateDataNetwork + ", siteId=" + _siteId + ", staticRoute=" + _staticRoute + ", staticRouteGateway=" + _staticRouteGateway + ", staticRouteNetmask=" + _staticRouteNetmask + ", successfullyAppliedUpgradePackagePassword=" + _successfullyAppliedUpgradePackagePassword + ", successfullyAppliedUpgradePackageURL=" + _successfullyAppliedUpgradePackageURL + ", successfullyAppliedUpgradePackageUsername=" + _successfullyAppliedUpgradePackageUsername + ", successfullyAppliedVersion=" + _successfullyAppliedVersion + ", toolboxDeploymentMode=" + _toolboxDeploymentMode + ", toolboxGroup=" + _toolboxGroup + ", toolboxIP=" + _toolboxIP + ", toolboxPassword=" + _toolboxPassword + ", toolboxUserName=" + _toolboxUserName + ", upgradePackagePassword=" + _upgradePackagePassword + ", upgradePackageURL=" + _upgradePackageURL + ", upgradePackageUsername=" + _upgradePackageUsername + ", upgradeScriptTimeLimit=" + _upgradeScriptTimeLimit + ", upgradeStatus=" + _upgradeStatus + ", upgradeTimedout=" + _upgradeTimedout + ", vCenterIP=" + _vCenterIP + ", vCenterPassword=" + _vCenterPassword + ", vCenterUser=" + _vCenterUser + ", vRequireNuageMetadata=" + _vRequireNuageMetadata + ", vmNetworkPortgroup=" + _vmNetworkPortgroup + ", vrsId=" + _vrsId + ", vrsMarkedAsAvailable=" + _vrsMarkedAsAvailable + ", vrsPassword=" + _vrsPassword + ", vrsUserName=" + _vrsUserName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VCenterHypervisor [" + "VRSAgentMOID=" + _VRSAgentMOID + ", VRSAgentName=" + _VRSAgentName + ", VRSConfigurationTimeLimit=" + _VRSConfigurationTimeLimit + ", VRSMetricsID=" + _VRSMetricsID + ", VRSMgmtHostname=" + _VRSMgmtHostname + ", VRSState=" + _VRSState + ", allowDataDHCP=" + _allowDataDHCP + ", allowMgmtDHCP=" + _allowMgmtDHCP + ", availableNetworks=" + _availableNetworks + ", avrsEnabled=" + _avrsEnabled + ", avrsProfile=" + _avrsProfile + ", configuredMetricsPushInterval=" + _configuredMetricsPushInterval + ", cpuCount=" + _cpuCount + ", customizedScriptURL=" + _customizedScriptURL + ", dataDNS1=" + _dataDNS1 + ", dataDNS2=" + _dataDNS2 + ", dataGateway=" + _dataGateway + ", dataIPAddress=" + _dataIPAddress + ", dataNetmask=" + _dataNetmask + ", dataNetworkPortgroup=" + _dataNetworkPortgroup + ", datapathSyncTimeout=" + _datapathSyncTimeout + ", deploymentCount=" + _deploymentCount + ", description=" + _description + ", destinationMirrorPort=" + _destinationMirrorPort + ", dhcpRelayServer=" + _dhcpRelayServer + ", disableGROOnDatapath=" + _disableGROOnDatapath + ", disableLROOnDatapath=" + _disableLROOnDatapath + ", enableVRSResourceReservation=" + _enableVRSResourceReservation + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowEvictionThreshold=" + _flowEvictionThreshold + ", genericSplitActivation=" + _genericSplitActivation + ", hypervisorIP=" + _hypervisorIP + ", hypervisorPassword=" + _hypervisorPassword + ", hypervisorUser=" + _hypervisorUser + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastVRSDeployedDate=" + _lastVRSDeployedDate + ", manageVRSAvailability=" + _manageVRSAvailability + ", managedObjectID=" + _managedObjectID + ", memorySizeInGB=" + _memorySizeInGB + ", metadataServerIP=" + _metadataServerIP + ", metadataServerListenPort=" + _metadataServerListenPort + ", metadataServerPort=" + _metadataServerPort + ", metadataServiceEnabled=" + _metadataServiceEnabled + ", mgmtDNS1=" + _mgmtDNS1 + ", mgmtDNS2=" + _mgmtDNS2 + ", mgmtGateway=" + _mgmtGateway + ", mgmtIPAddress=" + _mgmtIPAddress + ", mgmtNetmask=" + _mgmtNetmask + ", mgmtNetworkPortgroup=" + _mgmtNetworkPortgroup + ", mirrorNetworkPortgroup=" + _mirrorNetworkPortgroup + ", mtu=" + _mtu + ", multiVMSsupport=" + _multiVMSsupport + ", multicastReceiveInterface=" + _multicastReceiveInterface + ", multicastReceiveInterfaceIP=" + _multicastReceiveInterfaceIP + ", multicastReceiveInterfaceNetmask=" + _multicastReceiveInterfaceNetmask + ", multicastReceiveRange=" + _multicastReceiveRange + ", multicastSendInterface=" + _multicastSendInterface + ", multicastSendInterfaceIP=" + _multicastSendInterfaceIP + ", multicastSendInterfaceNetmask=" + _multicastSendInterfaceNetmask + ", multicastSourcePortgroup=" + _multicastSourcePortgroup + ", name=" + _name + ", networkUplinkInterface=" + _networkUplinkInterface + ", networkUplinkInterfaceGateway=" + _networkUplinkInterfaceGateway + ", networkUplinkInterfaceIp=" + _networkUplinkInterfaceIp + ", networkUplinkInterfaceNetmask=" + _networkUplinkInterfaceNetmask + ", nfsLogServer=" + _nfsLogServer + ", nfsMountPath=" + _nfsMountPath + ", novaClientVersion=" + _novaClientVersion + ", novaIdentityURLVersion=" + _novaIdentityURLVersion + ", novaMetadataServiceAuthUrl=" + _novaMetadataServiceAuthUrl + ", novaMetadataServiceEndpoint=" + _novaMetadataServiceEndpoint + ", novaMetadataServicePassword=" + _novaMetadataServicePassword + ", novaMetadataServiceTenant=" + _novaMetadataServiceTenant + ", novaMetadataServiceUsername=" + _novaMetadataServiceUsername + ", novaMetadataSharedSecret=" + _novaMetadataSharedSecret + ", novaOSKeystoneUsername=" + _novaOSKeystoneUsername + ", novaProjectDomainName=" + _novaProjectDomainName + ", novaProjectName=" + _novaProjectName + ", novaRegionName=" + _novaRegionName + ", novaUserDomainName=" + _novaUserDomainName + ", ntpServer1=" + _ntpServer1 + ", ntpServer2=" + _ntpServer2 + ", ovfURL=" + _ovfURL + ", personality=" + _personality + ", portgroupMetadata=" + _portgroupMetadata + ", primaryDataUplinkUnderlayID=" + _primaryDataUplinkUnderlayID + ", primaryDataUplinkVDFControlVLAN=" + _primaryDataUplinkVDFControlVLAN + ", primaryNuageController=" + _primaryNuageController + ", remoteSyslogServerIP=" + _remoteSyslogServerIP + ", remoteSyslogServerPort=" + _remoteSyslogServerPort + ", remoteSyslogServerType=" + _remoteSyslogServerType + ", removedFromVCenterInventory=" + _removedFromVCenterInventory + ", revertiveControllerEnabled=" + _revertiveControllerEnabled + ", revertiveTimer=" + _revertiveTimer + ", scope=" + _scope + ", secondaryDataUplinkDHCPEnabled=" + _secondaryDataUplinkDHCPEnabled + ", secondaryDataUplinkEnabled=" + _secondaryDataUplinkEnabled + ", secondaryDataUplinkIP=" + _secondaryDataUplinkIP + ", secondaryDataUplinkInterface=" + _secondaryDataUplinkInterface + ", secondaryDataUplinkMTU=" + _secondaryDataUplinkMTU + ", secondaryDataUplinkNetmask=" + _secondaryDataUplinkNetmask + ", secondaryDataUplinkPrimaryController=" + _secondaryDataUplinkPrimaryController + ", secondaryDataUplinkSecondaryController=" + _secondaryDataUplinkSecondaryController + ", secondaryDataUplinkUnderlayID=" + _secondaryDataUplinkUnderlayID + ", secondaryDataUplinkVDFControlVLAN=" + _secondaryDataUplinkVDFControlVLAN + ", secondaryNuageController=" + _secondaryNuageController + ", separateDataNetwork=" + _separateDataNetwork + ", siteId=" + _siteId + ", staticRoute=" + _staticRoute + ", staticRouteGateway=" + _staticRouteGateway + ", staticRouteNetmask=" + _staticRouteNetmask + ", successfullyAppliedUpgradePackagePassword=" + _successfullyAppliedUpgradePackagePassword + ", successfullyAppliedUpgradePackageURL=" + _successfullyAppliedUpgradePackageURL + ", successfullyAppliedUpgradePackageUsername=" + _successfullyAppliedUpgradePackageUsername + ", successfullyAppliedVersion=" + _successfullyAppliedVersion + ", toolboxDeploymentMode=" + _toolboxDeploymentMode + ", toolboxGroup=" + _toolboxGroup + ", toolboxIP=" + _toolboxIP + ", toolboxPassword=" + _toolboxPassword + ", toolboxUserName=" + _toolboxUserName + ", upgradePackagePassword=" + _upgradePackagePassword + ", upgradePackageURL=" + _upgradePackageURL + ", upgradePackageUsername=" + _upgradePackageUsername + ", upgradeScriptTimeLimit=" + _upgradeScriptTimeLimit + ", upgradeStatus=" + _upgradeStatus + ", upgradeTimedout=" + _upgradeTimedout + ", vCenterIP=" + _vCenterIP + ", vCenterPassword=" + _vCenterPassword + ", vCenterUser=" + _vCenterUser + ", vRequireNuageMetadata=" + _vRequireNuageMetadata + ", vmNetworkPortgroup=" + _vmNetworkPortgroup + ", vrsId=" + _vrsId + ", vrsMarkedAsAvailable=" + _vrsMarkedAsAvailable + ", vrsPassword=" + _vrsPassword + ", vrsUserName=" + _vrsUserName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -234,6 +234,9 @@ public class VRS: RestObject {
    private MultiNICVPortsFetcher _multiNICVPorts;
    
    [JsonIgnore]
+   private StatisticsFetcher _statistics;
+   
+   [JsonIgnore]
    private VMsFetcher _vMs;
    
    [JsonIgnore]
@@ -261,6 +264,8 @@ public class VRS: RestObject {
       _monitoringPorts = new MonitoringPortsFetcher(this);
       
       _multiNICVPorts = new MultiNICVPortsFetcher(this);
+      
+      _statistics = new StatisticsFetcher(this);
       
       _vMs = new VMsFetcher(this);
       
@@ -857,6 +862,10 @@ public class VRS: RestObject {
    
    public MultiNICVPortsFetcher getMultiNICVPorts() {
       return _multiNICVPorts;
+   }
+   
+   public StatisticsFetcher getStatistics() {
+      return _statistics;
    }
    
    public VMsFetcher getVMs() {

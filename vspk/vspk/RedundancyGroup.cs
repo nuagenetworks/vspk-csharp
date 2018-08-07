@@ -44,7 +44,7 @@ public class RedundancyGroup: RestObject {
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
-   public enum EPersonality {DC7X50,HARDWARE_VTEP,NSG,NSGBR,NSGDUC,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,OTHER,VRSB,VRSG,VSA,VSG };
+   public enum EPersonality {DC7X50,HARDWARE_VTEP,NETCONF_7X50,NSG,NSGBR,NSGDUC,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,OTHER,VDFG,VRSB,VRSG,VSA,VSG };
    public enum ERedundantGatewayStatus {FAILED,SUCCESS };
 
    
@@ -63,6 +63,9 @@ public class RedundancyGroup: RestObject {
    [JsonProperty("gatewayPeer1AutodiscoveredGatewayID")]
    protected String _gatewayPeer1AutodiscoveredGatewayID;
    
+   [JsonProperty("gatewayPeer1Connected")]
+   protected bool _gatewayPeer1Connected;
+   
    [JsonProperty("gatewayPeer1ID")]
    protected String _gatewayPeer1ID;
    
@@ -71,6 +74,9 @@ public class RedundancyGroup: RestObject {
    
    [JsonProperty("gatewayPeer2AutodiscoveredGatewayID")]
    protected String _gatewayPeer2AutodiscoveredGatewayID;
+   
+   [JsonProperty("gatewayPeer2Connected")]
+   protected bool _gatewayPeer2Connected;
    
    [JsonProperty("gatewayPeer2ID")]
    protected String _gatewayPeer2ID;
@@ -102,6 +108,12 @@ public class RedundancyGroup: RestObject {
    private AlarmsFetcher _alarms;
    
    [JsonIgnore]
+   private DeploymentFailuresFetcher _deploymentFailures;
+   
+   [JsonIgnore]
+   private EgressProfilesFetcher _egressProfiles;
+   
+   [JsonIgnore]
    private EnterprisePermissionsFetcher _enterprisePermissions;
    
    [JsonIgnore]
@@ -111,7 +123,28 @@ public class RedundancyGroup: RestObject {
    private GatewaysFetcher _gateways;
    
    [JsonIgnore]
+   private GatewayRedundantPortsFetcher _gatewayRedundantPorts;
+   
+   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private IngressProfilesFetcher _ingressProfiles;
+   
+   [JsonIgnore]
+   private IPFilterProfilesFetcher _iPFilterProfiles;
+   
+   [JsonIgnore]
+   private IPv6FilterProfilesFetcher _iPv6FilterProfiles;
+   
+   [JsonIgnore]
+   private JobsFetcher _jobs;
+   
+   [JsonIgnore]
+   private L2DomainsFetcher _l2Domains;
+   
+   [JsonIgnore]
+   private MACFilterProfilesFetcher _mACFilterProfiles;
    
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
@@ -123,6 +156,12 @@ public class RedundancyGroup: RestObject {
    private PortsFetcher _ports;
    
    [JsonIgnore]
+   private SAPEgressQoSProfilesFetcher _sAPEgressQoSProfiles;
+   
+   [JsonIgnore]
+   private SAPIngressQoSProfilesFetcher _sAPIngressQoSProfiles;
+   
+   [JsonIgnore]
    private WANServicesFetcher _wANServices;
    
    [JsonIgnore]
@@ -132,19 +171,41 @@ public class RedundancyGroup: RestObject {
       
       _alarms = new AlarmsFetcher(this);
       
+      _deploymentFailures = new DeploymentFailuresFetcher(this);
+      
+      _egressProfiles = new EgressProfilesFetcher(this);
+      
       _enterprisePermissions = new EnterprisePermissionsFetcher(this);
       
       _eventLogs = new EventLogsFetcher(this);
       
       _gateways = new GatewaysFetcher(this);
       
+      _gatewayRedundantPorts = new GatewayRedundantPortsFetcher(this);
+      
       _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _ingressProfiles = new IngressProfilesFetcher(this);
+      
+      _iPFilterProfiles = new IPFilterProfilesFetcher(this);
+      
+      _iPv6FilterProfiles = new IPv6FilterProfilesFetcher(this);
+      
+      _jobs = new JobsFetcher(this);
+      
+      _l2Domains = new L2DomainsFetcher(this);
+      
+      _mACFilterProfiles = new MACFilterProfilesFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
       _permissions = new PermissionsFetcher(this);
       
       _ports = new PortsFetcher(this);
+      
+      _sAPEgressQoSProfiles = new SAPEgressQoSProfilesFetcher(this);
+      
+      _sAPIngressQoSProfiles = new SAPIngressQoSProfilesFetcher(this);
       
       _wANServices = new WANServicesFetcher(this);
       
@@ -209,6 +270,17 @@ public class RedundancyGroup: RestObject {
 
    
    [JsonIgnore]
+   public bool NUGatewayPeer1Connected {
+      get {
+         return _gatewayPeer1Connected;
+      }
+      set {
+         this._gatewayPeer1Connected = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUGatewayPeer1ID {
       get {
          return _gatewayPeer1ID;
@@ -237,6 +309,17 @@ public class RedundancyGroup: RestObject {
       }
       set {
          this._gatewayPeer2AutodiscoveredGatewayID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUGatewayPeer2Connected {
+      get {
+         return _gatewayPeer2Connected;
+      }
+      set {
+         this._gatewayPeer2Connected = value;
       }
    }
 
@@ -335,6 +418,14 @@ public class RedundancyGroup: RestObject {
       return _alarms;
    }
    
+   public DeploymentFailuresFetcher getDeploymentFailures() {
+      return _deploymentFailures;
+   }
+   
+   public EgressProfilesFetcher getEgressProfiles() {
+      return _egressProfiles;
+   }
+   
    public EnterprisePermissionsFetcher getEnterprisePermissions() {
       return _enterprisePermissions;
    }
@@ -347,8 +438,36 @@ public class RedundancyGroup: RestObject {
       return _gateways;
    }
    
+   public GatewayRedundantPortsFetcher getGatewayRedundantPorts() {
+      return _gatewayRedundantPorts;
+   }
+   
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
+   }
+   
+   public IngressProfilesFetcher getIngressProfiles() {
+      return _ingressProfiles;
+   }
+   
+   public IPFilterProfilesFetcher getIPFilterProfiles() {
+      return _iPFilterProfiles;
+   }
+   
+   public IPv6FilterProfilesFetcher getIPv6FilterProfiles() {
+      return _iPv6FilterProfiles;
+   }
+   
+   public JobsFetcher getJobs() {
+      return _jobs;
+   }
+   
+   public L2DomainsFetcher getL2Domains() {
+      return _l2Domains;
+   }
+   
+   public MACFilterProfilesFetcher getMACFilterProfiles() {
+      return _mACFilterProfiles;
    }
    
    public MetadatasFetcher getMetadatas() {
@@ -363,6 +482,14 @@ public class RedundancyGroup: RestObject {
       return _ports;
    }
    
+   public SAPEgressQoSProfilesFetcher getSAPEgressQoSProfiles() {
+      return _sAPEgressQoSProfiles;
+   }
+   
+   public SAPIngressQoSProfilesFetcher getSAPIngressQoSProfiles() {
+      return _sAPIngressQoSProfiles;
+   }
+   
    public WANServicesFetcher getWANServices() {
       return _wANServices;
    }
@@ -373,7 +500,7 @@ public class RedundancyGroup: RestObject {
    
 
    public String toString() {
-      return "RedundancyGroup [" + "description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayPeer1AutodiscoveredGatewayID=" + _gatewayPeer1AutodiscoveredGatewayID + ", gatewayPeer1ID=" + _gatewayPeer1ID + ", gatewayPeer1Name=" + _gatewayPeer1Name + ", gatewayPeer2AutodiscoveredGatewayID=" + _gatewayPeer2AutodiscoveredGatewayID + ", gatewayPeer2ID=" + _gatewayPeer2ID + ", gatewayPeer2Name=" + _gatewayPeer2Name + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", redundantGatewayStatus=" + _redundantGatewayStatus + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "RedundancyGroup [" + "description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayPeer1AutodiscoveredGatewayID=" + _gatewayPeer1AutodiscoveredGatewayID + ", gatewayPeer1Connected=" + _gatewayPeer1Connected + ", gatewayPeer1ID=" + _gatewayPeer1ID + ", gatewayPeer1Name=" + _gatewayPeer1Name + ", gatewayPeer2AutodiscoveredGatewayID=" + _gatewayPeer2AutodiscoveredGatewayID + ", gatewayPeer2Connected=" + _gatewayPeer2Connected + ", gatewayPeer2ID=" + _gatewayPeer2ID + ", gatewayPeer2Name=" + _gatewayPeer2Name + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", redundantGatewayStatus=" + _redundantGatewayStatus + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

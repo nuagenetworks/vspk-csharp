@@ -187,6 +187,9 @@ public class Me: RestObject {
    private InfrastructureAccessProfilesFetcher _infrastructureAccessProfiles;
    
    [JsonIgnore]
+   private InfrastructureEVDFProfilesFetcher _infrastructureEVDFProfiles;
+   
+   [JsonIgnore]
    private InfrastructureGatewayProfilesFetcher _infrastructureGatewayProfiles;
    
    [JsonIgnore]
@@ -230,6 +233,9 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private MultiCastChannelMapsFetcher _multiCastChannelMaps;
+   
+   [JsonIgnore]
+   private NetconfProfilesFetcher _netconfProfiles;
    
    [JsonIgnore]
    private NetworkLayoutsFetcher _networkLayouts;
@@ -403,6 +409,8 @@ public class Me: RestObject {
       
       _infrastructureAccessProfiles = new InfrastructureAccessProfilesFetcher(this);
       
+      _infrastructureEVDFProfiles = new InfrastructureEVDFProfilesFetcher(this);
+      
       _infrastructureGatewayProfiles = new InfrastructureGatewayProfilesFetcher(this);
       
       _infrastructureVscProfiles = new InfrastructureVscProfilesFetcher(this);
@@ -432,6 +440,8 @@ public class Me: RestObject {
       _mirrorDestinations = new MirrorDestinationsFetcher(this);
       
       _multiCastChannelMaps = new MultiCastChannelMapsFetcher(this);
+      
+      _netconfProfiles = new NetconfProfilesFetcher(this);
       
       _networkLayouts = new NetworkLayoutsFetcher(this);
       
@@ -849,6 +859,10 @@ public class Me: RestObject {
       return _infrastructureAccessProfiles;
    }
    
+   public InfrastructureEVDFProfilesFetcher getInfrastructureEVDFProfiles() {
+      return _infrastructureEVDFProfiles;
+   }
+   
    public InfrastructureGatewayProfilesFetcher getInfrastructureGatewayProfiles() {
       return _infrastructureGatewayProfiles;
    }
@@ -907,6 +921,10 @@ public class Me: RestObject {
    
    public MultiCastChannelMapsFetcher getMultiCastChannelMaps() {
       return _multiCastChannelMaps;
+   }
+   
+   public NetconfProfilesFetcher getNetconfProfiles() {
+      return _netconfProfiles;
    }
    
    public NetworkLayoutsFetcher getNetworkLayouts() {

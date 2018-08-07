@@ -50,11 +50,20 @@ public class UserContext: RestObject {
    [JsonProperty("AARProbeStatsInterval")]
    protected long? _AARProbeStatsInterval;
    
+   [JsonProperty("VSSFeatureEnabled")]
+   protected bool _VSSFeatureEnabled;
+   
    [JsonProperty("VSSStatsInterval")]
    protected long? _VSSStatsInterval;
    
    [JsonProperty("flowCollectionEnabled")]
    protected bool _flowCollectionEnabled;
+   
+   [JsonProperty("googleMapsAPIKey")]
+   protected String _googleMapsAPIKey;
+   
+   [JsonProperty("pageSize")]
+   protected String _pageSize;
    
    [JsonProperty("statisticsEnabled")]
    protected bool _statisticsEnabled;
@@ -92,6 +101,17 @@ public class UserContext: RestObject {
 
    
    [JsonIgnore]
+   public bool NUVSSFeatureEnabled {
+      get {
+         return _VSSFeatureEnabled;
+      }
+      set {
+         this._VSSFeatureEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUVSSStatsInterval {
       get {
          return _VSSStatsInterval;
@@ -109,6 +129,28 @@ public class UserContext: RestObject {
       }
       set {
          this._flowCollectionEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUGoogleMapsAPIKey {
+      get {
+         return _googleMapsAPIKey;
+      }
+      set {
+         this._googleMapsAPIKey = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUPageSize {
+      get {
+         return _pageSize;
+      }
+      set {
+         this._pageSize = value;
       }
    }
 
@@ -139,7 +181,7 @@ public class UserContext: RestObject {
    
 
    public String toString() {
-      return "UserContext [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSStatsInterval=" + _VSSStatsInterval + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", statisticsEnabled=" + _statisticsEnabled + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "UserContext [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSFeatureEnabled=" + _VSSFeatureEnabled + ", VSSStatsInterval=" + _VSSStatsInterval + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", pageSize=" + _pageSize + ", statisticsEnabled=" + _statisticsEnabled + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

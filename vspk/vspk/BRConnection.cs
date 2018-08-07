@@ -42,6 +42,7 @@ public class BRConnection: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EAddressFamily {IPV4,IPV6 };
    public enum EAdvertisementCriteria {BFD,LINK_BASED,OPENFLOW,OPERATIONAL_LINK };
    public enum EMode {Static };
 
@@ -49,14 +50,26 @@ public class BRConnection: RestObject {
    [JsonProperty("DNSAddress")]
    protected String _DNSAddress;
    
+   [JsonProperty("DNSAddressV6")]
+   protected String _DNSAddressV6;
+   
    [JsonProperty("address")]
    protected String _address;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("addressFamily")]
+   protected EAddressFamily? _addressFamily;
+   
+   [JsonProperty("addressV6")]
+   protected String _addressV6;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("advertisementCriteria")]
    protected EAdvertisementCriteria? _advertisementCriteria;
    
    [JsonProperty("gateway")]
    protected String _gateway;
+   
+   [JsonProperty("gatewayV6")]
+   protected String _gatewayV6;
    
    [JsonProperty("inherited")]
    protected bool _inherited;
@@ -94,12 +107,45 @@ public class BRConnection: RestObject {
 
    
    [JsonIgnore]
+   public String NUDNSAddressV6 {
+      get {
+         return _DNSAddressV6;
+      }
+      set {
+         this._DNSAddressV6 = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAddress {
       get {
          return _address;
       }
       set {
          this._address = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EAddressFamily? NUAddressFamily {
+      get {
+         return _addressFamily;
+      }
+      set {
+         this._addressFamily = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAddressV6 {
+      get {
+         return _addressV6;
+      }
+      set {
+         this._addressV6 = value;
       }
    }
 
@@ -122,6 +168,17 @@ public class BRConnection: RestObject {
       }
       set {
          this._gateway = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUGatewayV6 {
+      get {
+         return _gatewayV6;
+      }
+      set {
+         this._gatewayV6 = value;
       }
    }
 
@@ -178,7 +235,7 @@ public class BRConnection: RestObject {
    
 
    public String toString() {
-      return "BRConnection [" + "DNSAddress=" + _DNSAddress + ", address=" + _address + ", advertisementCriteria=" + _advertisementCriteria + ", gateway=" + _gateway + ", inherited=" + _inherited + ", mode=" + _mode + ", netmask=" + _netmask + ", uplinkID=" + _uplinkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BRConnection [" + "DNSAddress=" + _DNSAddress + ", DNSAddressV6=" + _DNSAddressV6 + ", address=" + _address + ", addressFamily=" + _addressFamily + ", addressV6=" + _addressV6 + ", advertisementCriteria=" + _advertisementCriteria + ", gateway=" + _gateway + ", gatewayV6=" + _gatewayV6 + ", inherited=" + _inherited + ", mode=" + _mode + ", netmask=" + _netmask + ", uplinkID=" + _uplinkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

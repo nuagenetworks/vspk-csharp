@@ -43,7 +43,7 @@ public class GatewayTemplate: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EPersonality {DC7X50,HARDWARE_VTEP,NSG,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,OTHER,VRSB,VRSG,VSA,VSG };
+   public enum EPersonality {DC7X50,EVDF,EVDFB,HARDWARE_VTEP,NETCONF_7X50,NSG,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,OTHER,VDFG,VRSB,VRSG,VSA,VSG };
 
    
    [JsonProperty("description")]
@@ -57,6 +57,9 @@ public class GatewayTemplate: RestObject {
    
    [JsonProperty("externalID")]
    protected String _externalID;
+   
+   [JsonProperty("infrastructureProfileID")]
+   protected String _infrastructureProfileID;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
@@ -135,6 +138,17 @@ public class GatewayTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NUInfrastructureProfileID {
+      get {
+         return _infrastructureProfileID;
+      }
+      set {
+         this._infrastructureProfileID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -183,7 +197,7 @@ public class GatewayTemplate: RestObject {
    
 
    public String toString() {
-      return "GatewayTemplate [" + "description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", personality=" + _personality + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "GatewayTemplate [" + "description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", infrastructureProfileID=" + _infrastructureProfileID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", personality=" + _personality + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

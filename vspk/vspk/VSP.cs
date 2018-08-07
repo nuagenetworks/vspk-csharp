@@ -81,6 +81,9 @@ public class VSP: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private NetconfManagersFetcher _netconfManagers;
+   
+   [JsonIgnore]
    private VSCsFetcher _vSCs;
    
    [JsonIgnore]
@@ -95,6 +98,8 @@ public class VSP: RestObject {
       _hSCs = new HSCsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _netconfManagers = new NetconfManagersFetcher(this);
       
       _vSCs = new VSCsFetcher(this);
       
@@ -196,6 +201,10 @@ public class VSP: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public NetconfManagersFetcher getNetconfManagers() {
+      return _netconfManagers;
    }
    
    public VSCsFetcher getVSCs() {

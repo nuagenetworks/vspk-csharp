@@ -43,7 +43,7 @@ public class DSCPForwardingClassMapping: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EForwardingClass {A,B,C,D,E,F,G,H,NONE };
+   public enum EForwardingClass {A,B,C,D,E,F,G,H };
 
    
    [JsonProperty("DSCP")]

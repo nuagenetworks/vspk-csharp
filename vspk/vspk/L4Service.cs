@@ -45,6 +45,12 @@ public class L4Service: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("ICMPCode")]
+   protected String _ICMPCode;
+   
+   [JsonProperty("ICMPType")]
+   protected String _ICMPType;
+   
    [JsonProperty("defaultService")]
    protected bool _defaultService;
    
@@ -73,6 +79,28 @@ public class L4Service: RestObject {
    
    public L4Service() {
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUICMPCode {
+      get {
+         return _ICMPCode;
+      }
+      set {
+         this._ICMPCode = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUICMPType {
+      get {
+         return _ICMPType;
+      }
+      set {
+         this._ICMPType = value;
+      }
    }
 
    
@@ -168,7 +196,7 @@ public class L4Service: RestObject {
    
 
    public String toString() {
-      return "L4Service [" + "defaultService=" + _defaultService + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", ports=" + _ports + ", protocol=" + _protocol + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "L4Service [" + "ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", defaultService=" + _defaultService + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", ports=" + _ports + ", protocol=" + _protocol + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

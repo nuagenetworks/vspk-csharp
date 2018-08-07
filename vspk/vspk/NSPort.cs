@@ -94,6 +94,9 @@ public class NSPort: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("portType")]
    protected EPortType? _portType;
+   
+   [JsonProperty("shuntPort")]
+   protected bool _shuntPort;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("speed")]
    protected ESpeed? _speed;
@@ -333,6 +336,17 @@ public class NSPort: RestObject {
 
    
    [JsonIgnore]
+   public bool NUShuntPort {
+      get {
+         return _shuntPort;
+      }
+      set {
+         this._shuntPort = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public ESpeed? NUSpeed {
       get {
          return _speed;
@@ -431,7 +445,7 @@ public class NSPort: RestObject {
    
 
    public String toString() {
-      return "NSPort [" + "NATTraversal=" + _NATTraversal + ", TrafficThroughUBROnly=" + _TrafficThroughUBROnly + ", VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + _associatedRedundantPortID + ", description=" + _description + ", enableNATProbes=" + _enableNATProbes + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mtu=" + _mtu + ", name=" + _name + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", speed=" + _speed + ", status=" + _status + ", templateID=" + _templateID + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSPort [" + "NATTraversal=" + _NATTraversal + ", TrafficThroughUBROnly=" + _TrafficThroughUBROnly + ", VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + _associatedRedundantPortID + ", description=" + _description + ", enableNATProbes=" + _enableNATProbes + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mtu=" + _mtu + ", name=" + _name + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", shuntPort=" + _shuntPort + ", speed=" + _speed + ", status=" + _status + ", templateID=" + _templateID + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
