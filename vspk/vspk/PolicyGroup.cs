@@ -43,6 +43,7 @@ public class PolicyGroup: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum EEntityState {MARKED_FOR_DELETION,UNDER_CONSTRUCTION };
    public enum EType {HARDWARE,SOFTWARE };
 
    
@@ -60,6 +61,9 @@ public class PolicyGroup: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityState")]
+   protected EEntityState? _entityState;
    
    [JsonProperty("external")]
    protected bool _external;
@@ -94,6 +98,9 @@ public class PolicyGroup: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PolicyGroupCategoriesFetcher _policyGroupCategories;
+   
+   [JsonIgnore]
    private VPortsFetcher _vPorts;
    
    public PolicyGroup() {
@@ -104,6 +111,8 @@ public class PolicyGroup: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _policyGroupCategories = new PolicyGroupCategoriesFetcher(this);
       
       _vPorts = new VPortsFetcher(this);
       
@@ -161,6 +170,17 @@ public class PolicyGroup: RestObject {
       }
       set {
          this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EEntityState? NUEntityState {
+      get {
+         return _entityState;
+      }
+      set {
+         this._entityState = value;
       }
    }
 
@@ -256,13 +276,17 @@ public class PolicyGroup: RestObject {
       return _metadatas;
    }
    
+   public PolicyGroupCategoriesFetcher getPolicyGroupCategories() {
+      return _policyGroupCategories;
+   }
+   
    public VPortsFetcher getVPorts() {
       return _vPorts;
    }
    
 
    public String toString() {
-      return "PolicyGroup [" + "EVPNCommunityTag=" + _EVPNCommunityTag + ", assocPolicyGroupCategoryID=" + _assocPolicyGroupCategoryID + ", assocPolicyGroupCategoryName=" + _assocPolicyGroupCategoryName + ", description=" + _description + ", entityScope=" + _entityScope + ", external=" + _external + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyGroupID=" + _policyGroupID + ", templateID=" + _templateID + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "PolicyGroup [" + "EVPNCommunityTag=" + _EVPNCommunityTag + ", assocPolicyGroupCategoryID=" + _assocPolicyGroupCategoryID + ", assocPolicyGroupCategoryName=" + _assocPolicyGroupCategoryName + ", description=" + _description + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", external=" + _external + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyGroupID=" + _policyGroupID + ", templateID=" + _templateID + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

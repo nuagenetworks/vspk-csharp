@@ -45,7 +45,7 @@ public class IKEEncryptionprofile: RestObject {
    public enum EDPDMode {ON_DEMAND,REPLY_ONLY };
    public enum EIPsecAuthenticationAlgorithm {HMAC_SHA1,HMAC_SHA256,HMAC_SHA512,HMAC_MD5 };
    public enum EIPsecEncryptionAlgorithm {AES128,AES192,AES256,TRIPLE_DES,NULL };
-   public enum EIPsecSAReplayWindowSize {WINDOW_SIZE_0,WINDOW_SIZE_1024,WINDOW_SIZE_128,WINDOW_SIZE_256,WINDOW_SIZE_32,WINDOW_SIZE_512,WINDOW_SIZE_64 };
+   public enum EIPsecSAReplayWindowSize {WINDOW_SIZE_1024,WINDOW_SIZE_128,WINDOW_SIZE_256,WINDOW_SIZE_32,WINDOW_SIZE_512,WINDOW_SIZE_64 };
    public enum EISAKMPAuthenticationMode {PRE_SHARED_KEY };
    public enum EISAKMPDiffieHelmanGroupIdentifier {GROUP_14_2048_BIT_DH,GROUP_15_3072_BIT_DH,GROUP_16_4096_BIT_DH,GROUP_17_6144_BIT_DH,GROUP_18_8192_BIT_DH,GROUP_1_768_BIT_DH,GROUP_2_1024_BIT_DH,GROUP_5_1536_BIT_DH };
    public enum EISAKMPEncryptionAlgorithm {AES128,AES192,AES256,TRIPLE_DES };
@@ -82,6 +82,9 @@ public class IKEEncryptionprofile: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("IPsecSAReplayWindowSize")]
    protected EIPsecSAReplayWindowSize? _IPsecSAReplayWindowSize;
+   
+   [JsonProperty("IPsecSAReplayWindowSizeValue")]
+   protected long? _IPsecSAReplayWindowSizeValue;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("ISAKMPAuthenticationMode")]
    protected EISAKMPAuthenticationMode? _ISAKMPAuthenticationMode;
@@ -109,9 +112,6 @@ public class IKEEncryptionprofile: RestObject {
    
    [JsonProperty("externalID")]
    protected String _externalID;
-   
-   [JsonProperty("ipsecSAReplayWindowSizeValue")]
-   protected long? _ipsecSAReplayWindowSizeValue;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
@@ -250,6 +250,17 @@ public class IKEEncryptionprofile: RestObject {
 
    
    [JsonIgnore]
+   public long? NUIPsecSAReplayWindowSizeValue {
+      get {
+         return _IPsecSAReplayWindowSizeValue;
+      }
+      set {
+         this._IPsecSAReplayWindowSizeValue = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EISAKMPAuthenticationMode? NUISAKMPAuthenticationMode {
       get {
          return _ISAKMPAuthenticationMode;
@@ -349,17 +360,6 @@ public class IKEEncryptionprofile: RestObject {
 
    
    [JsonIgnore]
-   public long? NUIpsecSAReplayWindowSizeValue {
-      get {
-         return _ipsecSAReplayWindowSizeValue;
-      }
-      set {
-         this._ipsecSAReplayWindowSizeValue = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -404,7 +404,7 @@ public class IKEEncryptionprofile: RestObject {
    
 
    public String toString() {
-      return "IKEEncryptionprofile [" + "DPDInterval=" + _DPDInterval + ", DPDMode=" + _DPDMode + ", DPDTimeout=" + _DPDTimeout + ", IPsecAuthenticationAlgorithm=" + _IPsecAuthenticationAlgorithm + ", IPsecDontFragment=" + _IPsecDontFragment + ", IPsecEnablePFS=" + _IPsecEnablePFS + ", IPsecEncryptionAlgorithm=" + _IPsecEncryptionAlgorithm + ", IPsecPreFragment=" + _IPsecPreFragment + ", IPsecSALifetime=" + _IPsecSALifetime + ", IPsecSAReplayWindowSize=" + _IPsecSAReplayWindowSize + ", ISAKMPAuthenticationMode=" + _ISAKMPAuthenticationMode + ", ISAKMPDiffieHelmanGroupIdentifier=" + _ISAKMPDiffieHelmanGroupIdentifier + ", ISAKMPEncryptionAlgorithm=" + _ISAKMPEncryptionAlgorithm + ", ISAKMPEncryptionKeyLifetime=" + _ISAKMPEncryptionKeyLifetime + ", ISAKMPHashAlgorithm=" + _ISAKMPHashAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ipsecSAReplayWindowSizeValue=" + _ipsecSAReplayWindowSizeValue + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", sequence=" + _sequence + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IKEEncryptionprofile [" + "DPDInterval=" + _DPDInterval + ", DPDMode=" + _DPDMode + ", DPDTimeout=" + _DPDTimeout + ", IPsecAuthenticationAlgorithm=" + _IPsecAuthenticationAlgorithm + ", IPsecDontFragment=" + _IPsecDontFragment + ", IPsecEnablePFS=" + _IPsecEnablePFS + ", IPsecEncryptionAlgorithm=" + _IPsecEncryptionAlgorithm + ", IPsecPreFragment=" + _IPsecPreFragment + ", IPsecSALifetime=" + _IPsecSALifetime + ", IPsecSAReplayWindowSize=" + _IPsecSAReplayWindowSize + ", IPsecSAReplayWindowSizeValue=" + _IPsecSAReplayWindowSizeValue + ", ISAKMPAuthenticationMode=" + _ISAKMPAuthenticationMode + ", ISAKMPDiffieHelmanGroupIdentifier=" + _ISAKMPDiffieHelmanGroupIdentifier + ", ISAKMPEncryptionAlgorithm=" + _ISAKMPEncryptionAlgorithm + ", ISAKMPEncryptionKeyLifetime=" + _ISAKMPEncryptionKeyLifetime + ", ISAKMPHashAlgorithm=" + _ISAKMPHashAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", sequence=" + _sequence + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

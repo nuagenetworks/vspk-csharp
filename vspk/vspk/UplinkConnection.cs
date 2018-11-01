@@ -44,6 +44,7 @@ public class UplinkConnection: RestObject {
    
    public enum EAddressFamily {IPV4,IPV6 };
    public enum EAdvertisementCriteria {BFD,CONTROL_SESSION,OPERATIONAL_LINK };
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EInterfaceConnectionType {AUTOMATIC,EMBEDDED,PCI_EXPRESS,USB_ETHERNET,USB_MODEM };
    public enum EMode {Any,Dynamic,LTE,PPPoE,Static };
    public enum ERole {NONE,PRIMARY,SECONDARY,TERTIARY,UNKNOWN };
@@ -84,6 +85,12 @@ public class UplinkConnection: RestObject {
    
    [JsonProperty("downloadRateLimit")]
    protected float _downloadRateLimit;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
    
    [JsonProperty("gateway")]
    protected String _gateway;
@@ -99,6 +106,9 @@ public class UplinkConnection: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("interfaceConnectionType")]
    protected EInterfaceConnectionType? _interfaceConnectionType;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("mode")]
    protected EMode? _mode;
@@ -116,7 +126,7 @@ public class UplinkConnection: RestObject {
    protected ERole? _role;
    
    [JsonProperty("roleOrder")]
-   protected String _roleOrder;
+   protected long? _roleOrder;
    
    [JsonProperty("secondaryAddress")]
    protected String _secondaryAddress;
@@ -124,14 +134,17 @@ public class UplinkConnection: RestObject {
    [JsonProperty("underlayEnabled")]
    protected bool _underlayEnabled;
    
+   [JsonProperty("underlayID")]
+   protected long? _underlayID;
+   
    [JsonProperty("uplinkID")]
    protected long? _uplinkID;
    
    [JsonProperty("username")]
    protected String _username;
    
-   [JsonProperty("vlanId")]
-   protected String _vlanId;
+   [JsonProperty("vlan")]
+   protected long? _vlan;
    
 
    
@@ -142,7 +155,10 @@ public class UplinkConnection: RestObject {
    private CustomPropertiesFetcher _customProperties;
    
    [JsonIgnore]
-   private UnderlaysFetcher _underlays;
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
    
    public UplinkConnection() {
       
@@ -150,7 +166,9 @@ public class UplinkConnection: RestObject {
       
       _customProperties = new CustomPropertiesFetcher(this);
       
-      _underlays = new UnderlaysFetcher(this);
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
    }
 
@@ -288,6 +306,28 @@ public class UplinkConnection: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUGateway {
       get {
          return _gateway;
@@ -338,6 +378,17 @@ public class UplinkConnection: RestObject {
       }
       set {
          this._interfaceConnectionType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
       }
    }
 
@@ -398,7 +449,7 @@ public class UplinkConnection: RestObject {
 
    
    [JsonIgnore]
-   public String NURoleOrder {
+   public long? NURoleOrder {
       get {
          return _roleOrder;
       }
@@ -431,6 +482,17 @@ public class UplinkConnection: RestObject {
 
    
    [JsonIgnore]
+   public long? NUUnderlayID {
+      get {
+         return _underlayID;
+      }
+      set {
+         this._underlayID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUUplinkID {
       get {
          return _uplinkID;
@@ -453,12 +515,12 @@ public class UplinkConnection: RestObject {
 
    
    [JsonIgnore]
-   public String NUVlanId {
+   public long? NUVlan {
       get {
-         return _vlanId;
+         return _vlan;
       }
       set {
-         this._vlanId = value;
+         this._vlan = value;
       }
    }
 
@@ -473,13 +535,17 @@ public class UplinkConnection: RestObject {
       return _customProperties;
    }
    
-   public UnderlaysFetcher getUnderlays() {
-      return _underlays;
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
    }
    
 
    public String toString() {
-      return "UplinkConnection [" + "DNSAddress=" + _DNSAddress + ", DNSAddressV6=" + _DNSAddressV6 + ", PATEnabled=" + _PATEnabled + ", address=" + _address + ", addressFamily=" + _addressFamily + ", addressV6=" + _addressV6 + ", advertisementCriteria=" + _advertisementCriteria + ", assocUnderlayID=" + _assocUnderlayID + ", associatedBGPNeighborID=" + _associatedBGPNeighborID + ", associatedUnderlayName=" + _associatedUnderlayName + ", auxiliaryLink=" + _auxiliaryLink + ", downloadRateLimit=" + _downloadRateLimit + ", gateway=" + _gateway + ", gatewayV6=" + _gatewayV6 + ", inherited=" + _inherited + ", installerManaged=" + _installerManaged + ", interfaceConnectionType=" + _interfaceConnectionType + ", mode=" + _mode + ", netmask=" + _netmask + ", password=" + _password + ", portName=" + _portName + ", role=" + _role + ", roleOrder=" + _roleOrder + ", secondaryAddress=" + _secondaryAddress + ", underlayEnabled=" + _underlayEnabled + ", uplinkID=" + _uplinkID + ", username=" + _username + ", vlanId=" + _vlanId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "UplinkConnection [" + "DNSAddress=" + _DNSAddress + ", DNSAddressV6=" + _DNSAddressV6 + ", PATEnabled=" + _PATEnabled + ", address=" + _address + ", addressFamily=" + _addressFamily + ", addressV6=" + _addressV6 + ", advertisementCriteria=" + _advertisementCriteria + ", assocUnderlayID=" + _assocUnderlayID + ", associatedBGPNeighborID=" + _associatedBGPNeighborID + ", associatedUnderlayName=" + _associatedUnderlayName + ", auxiliaryLink=" + _auxiliaryLink + ", downloadRateLimit=" + _downloadRateLimit + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayV6=" + _gatewayV6 + ", inherited=" + _inherited + ", installerManaged=" + _installerManaged + ", interfaceConnectionType=" + _interfaceConnectionType + ", lastUpdatedBy=" + _lastUpdatedBy + ", mode=" + _mode + ", netmask=" + _netmask + ", password=" + _password + ", portName=" + _portName + ", role=" + _role + ", roleOrder=" + _roleOrder + ", secondaryAddress=" + _secondaryAddress + ", underlayEnabled=" + _underlayEnabled + ", underlayID=" + _underlayID + ", uplinkID=" + _uplinkID + ", username=" + _username + ", vlan=" + _vlan + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

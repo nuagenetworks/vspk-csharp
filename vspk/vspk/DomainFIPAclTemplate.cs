@@ -53,6 +53,9 @@ public class DomainFIPAclTemplate: RestObject {
    [JsonProperty("associatedLiveEntityID")]
    protected String _associatedLiveEntityID;
    
+   [JsonProperty("autoGeneratePriority")]
+   protected bool _autoGeneratePriority;
+   
    [JsonProperty("defaultAllowIP")]
    protected bool _defaultAllowIP;
    
@@ -126,6 +129,17 @@ public class DomainFIPAclTemplate: RestObject {
       }
       set {
          this._associatedLiveEntityID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUAutoGeneratePriority {
+      get {
+         return _autoGeneratePriority;
+      }
+      set {
+         this._autoGeneratePriority = value;
       }
    }
 
@@ -267,7 +281,7 @@ public class DomainFIPAclTemplate: RestObject {
    
 
    public String toString() {
-      return "DomainFIPAclTemplate [" + "active=" + _active + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", defaultAllowIP=" + _defaultAllowIP + ", defaultAllowNonIP=" + _defaultAllowNonIP + ", description=" + _description + ", entityScope=" + _entityScope + ", entries=" + _entries + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyState=" + _policyState + ", priority=" + _priority + ", priorityType=" + _priorityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "DomainFIPAclTemplate [" + "active=" + _active + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", autoGeneratePriority=" + _autoGeneratePriority + ", defaultAllowIP=" + _defaultAllowIP + ", defaultAllowNonIP=" + _defaultAllowNonIP + ", description=" + _description + ", entityScope=" + _entityScope + ", entries=" + _entries + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyState=" + _policyState + ", priority=" + _priority + ", priorityType=" + _priorityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

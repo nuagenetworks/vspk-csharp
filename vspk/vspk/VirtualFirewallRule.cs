@@ -45,7 +45,7 @@ public class VirtualFirewallRule: RestObject {
    public enum EAction {DROP,FORWARD };
    public enum EAssociatedTrafficType {L4_SERVICE,L4_SERVICE_GROUP };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum ELocationType {ANY,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,SUBNET,ZONE };
+   public enum ELocationType {ANY,ENTERPRISE_NETWORK,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,SUBNET,UNDERLAY_INTERNET_POLICYGROUP,ZONE };
    public enum ENetworkType {ANY,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,SUBNET,ZONE };
    public enum EPolicyState {DRAFT,LIVE };
 
@@ -61,15 +61,30 @@ public class VirtualFirewallRule: RestObject {
    
    [JsonProperty("ICMPType")]
    protected String _ICMPType;
+   
+   [JsonProperty("IPv6AddressOverride")]
+   protected String _IPv6AddressOverride;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("action")]
    protected EAction? _action;
+   
+   [JsonProperty("addressOverride")]
+   protected String _addressOverride;
+   
+   [JsonProperty("associatedEgressEntryID")]
+   protected String _associatedEgressEntryID;
+   
+   [JsonProperty("associatedIngressEntryID")]
+   protected String _associatedIngressEntryID;
    
    [JsonProperty("associatedL7ApplicationSignatureID")]
    protected String _associatedL7ApplicationSignatureID;
    
    [JsonProperty("associatedLiveEntityID")]
    protected String _associatedLiveEntityID;
+   
+   [JsonProperty("associatedLiveTemplateID")]
+   protected String _associatedLiveTemplateID;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("associatedTrafficType")]
    protected EAssociatedTrafficType? _associatedTrafficType;
@@ -91,6 +106,9 @@ public class VirtualFirewallRule: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
+   
+   [JsonProperty("etherType")]
+   protected String _etherType;
    
    [JsonProperty("externalID")]
    protected String _externalID;
@@ -148,16 +166,11 @@ public class VirtualFirewallRule: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
-   [JsonIgnore]
-   private StatisticsFetcher _statistics;
-   
    public VirtualFirewallRule() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
-      
-      _statistics = new StatisticsFetcher(this);
       
    }
 
@@ -207,12 +220,56 @@ public class VirtualFirewallRule: RestObject {
 
    
    [JsonIgnore]
+   public String NUIPv6AddressOverride {
+      get {
+         return _IPv6AddressOverride;
+      }
+      set {
+         this._IPv6AddressOverride = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EAction? NUAction {
       get {
          return _action;
       }
       set {
          this._action = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAddressOverride {
+      get {
+         return _addressOverride;
+      }
+      set {
+         this._addressOverride = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEgressEntryID {
+      get {
+         return _associatedEgressEntryID;
+      }
+      set {
+         this._associatedEgressEntryID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedIngressEntryID {
+      get {
+         return _associatedIngressEntryID;
+      }
+      set {
+         this._associatedIngressEntryID = value;
       }
    }
 
@@ -235,6 +292,17 @@ public class VirtualFirewallRule: RestObject {
       }
       set {
          this._associatedLiveEntityID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedLiveTemplateID {
+      get {
+         return _associatedLiveTemplateID;
+      }
+      set {
+         this._associatedLiveTemplateID = value;
       }
    }
 
@@ -312,6 +380,17 @@ public class VirtualFirewallRule: RestObject {
       }
       set {
          this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUEtherType {
+      get {
+         return _etherType;
+      }
+      set {
+         this._etherType = value;
       }
    }
 
@@ -502,13 +581,9 @@ public class VirtualFirewallRule: RestObject {
       return _metadatas;
    }
    
-   public StatisticsFetcher getStatistics() {
-      return _statistics;
-   }
-   
 
    public String toString() {
-      return "VirtualFirewallRule [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", action=" + _action + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", overlayMirrorDestinationID=" + _overlayMirrorDestinationID + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VirtualFirewallRule [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedEgressEntryID=" + _associatedEgressEntryID + ", associatedIngressEntryID=" + _associatedIngressEntryID + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", overlayMirrorDestinationID=" + _overlayMirrorDestinationID + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

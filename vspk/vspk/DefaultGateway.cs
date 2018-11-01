@@ -42,7 +42,14 @@ public class DefaultGateway: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
    
    [JsonProperty("gatewayIPAddress")]
    protected String _gatewayIPAddress;
@@ -50,13 +57,48 @@ public class DefaultGateway: RestObject {
    [JsonProperty("gatewayMACAddress")]
    protected String _gatewayMACAddress;
    
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   
    [JsonProperty("name")]
    protected String _name;
    
 
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public DefaultGateway() {
       
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
+      
+   }
+
+   
+   [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
    }
 
    
@@ -83,6 +125,17 @@ public class DefaultGateway: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -95,9 +148,17 @@ public class DefaultGateway: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "DefaultGateway [" + "gatewayIPAddress=" + _gatewayIPAddress + ", gatewayMACAddress=" + _gatewayMACAddress + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "DefaultGateway [" + "entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayIPAddress=" + _gatewayIPAddress + ", gatewayMACAddress=" + _gatewayMACAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

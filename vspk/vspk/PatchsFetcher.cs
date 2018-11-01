@@ -32,13 +32,13 @@ using net.nuagenetworks.vspk.v5_0;
 
 namespace net.nuagenetworks.vspk.v5_0.fetchers
 {
-    public class FloatingIPACLTemplatesFetcher: RestFetcher<FloatingIPACLTemplate>
+    public class PatchsFetcher: RestFetcher<Patch>
     {
 
        private const long serialVersionUID = 1L;
        
-       public FloatingIPACLTemplatesFetcher(RestObject parentRestObj) 
-          : base(parentRestObj, typeof(FloatingIPACLTemplate))
+       public PatchsFetcher(RestObject parentRestObj) 
+          : base(parentRestObj, typeof(Patch))
        {
        }
    

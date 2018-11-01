@@ -32,13 +32,13 @@ using net.nuagenetworks.vspk.v5_0;
 
 namespace net.nuagenetworks.vspk.v5_0.fetchers
 {
-    public class IngressExternalServiceTemplatesFetcher: RestFetcher<IngressExternalServiceTemplate>
+    public class NSGatewaysCountsFetcher: RestFetcher<NSGatewaysCount>
     {
 
        private const long serialVersionUID = 1L;
        
-       public IngressExternalServiceTemplatesFetcher(RestObject parentRestObj) 
-          : base(parentRestObj, typeof(IngressExternalServiceTemplate))
+       public NSGatewaysCountsFetcher(RestObject parentRestObj) 
+          : base(parentRestObj, typeof(NSGatewaysCount))
        {
        }
    

@@ -43,6 +43,7 @@ public class VNFThresholdPolicy: RestObject {
 
    
    public enum EAction {NONE,SHUTOFF };
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
    [JsonProperty("CPUThreshold")]
@@ -51,8 +52,20 @@ public class VNFThresholdPolicy: RestObject {
    [JsonProperty("action")]
    protected EAction? _action;
    
+   [JsonProperty("assocEntityType")]
+   protected String _assocEntityType;
+   
    [JsonProperty("description")]
    protected String _description;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("memoryThreshold")]
    protected long? _memoryThreshold;
@@ -71,7 +84,17 @@ public class VNFThresholdPolicy: RestObject {
    
 
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public VNFThresholdPolicy() {
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
    }
 
@@ -99,12 +122,56 @@ public class VNFThresholdPolicy: RestObject {
 
    
    [JsonIgnore]
+   public String NUAssocEntityType {
+      get {
+         return _assocEntityType;
+      }
+      set {
+         this._assocEntityType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
       }
    }
 
@@ -166,9 +233,17 @@ public class VNFThresholdPolicy: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "VNFThresholdPolicy [" + "CPUThreshold=" + _CPUThreshold + ", action=" + _action + ", description=" + _description + ", memoryThreshold=" + _memoryThreshold + ", minOccurrence=" + _minOccurrence + ", monitInterval=" + _monitInterval + ", name=" + _name + ", storageThreshold=" + _storageThreshold + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VNFThresholdPolicy [" + "CPUThreshold=" + _CPUThreshold + ", action=" + _action + ", assocEntityType=" + _assocEntityType + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", memoryThreshold=" + _memoryThreshold + ", minOccurrence=" + _minOccurrence + ", monitInterval=" + _monitInterval + ", name=" + _name + ", storageThreshold=" + _storageThreshold + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

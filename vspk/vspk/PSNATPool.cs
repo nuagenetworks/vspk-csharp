@@ -42,10 +42,27 @@ public class PSNATPool: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EIPType {IPV4,IPV6,DUALSTACK };
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("IPType")]
+   protected EIPType? _IPType;
+   
+   [JsonProperty("description")]
+   protected String _description;
    
    [JsonProperty("endAddress")]
    protected String _endAddress;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("name")]
    protected String _name;
@@ -56,6 +73,12 @@ public class PSNATPool: RestObject {
 
    
    [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
+   [JsonIgnore]
    private PSPATMapsFetcher _pSPATMaps;
    
    [JsonIgnore]
@@ -63,10 +86,36 @@ public class PSNATPool: RestObject {
    
    public PSNATPool() {
       
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
+      
       _pSPATMaps = new PSPATMapsFetcher(this);
       
       _pTranslationMaps = new PTranslationMapsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public EIPType? NUIPType {
+      get {
+         return _IPType;
+      }
+      set {
+         this._IPType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUDescription {
+      get {
+         return _description;
+      }
+      set {
+         this._description = value;
+      }
    }
 
    
@@ -77,6 +126,39 @@ public class PSNATPool: RestObject {
       }
       set {
          this._endAddress = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
       }
    }
 
@@ -105,6 +187,14 @@ public class PSNATPool: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
    public PSPATMapsFetcher getPSPATMaps() {
       return _pSPATMaps;
    }
@@ -115,7 +205,7 @@ public class PSNATPool: RestObject {
    
 
    public String toString() {
-      return "PSNATPool [" + "endAddress=" + _endAddress + ", name=" + _name + ", startAddress=" + _startAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "PSNATPool [" + "IPType=" + _IPType + ", description=" + _description + ", endAddress=" + _endAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", startAddress=" + _startAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

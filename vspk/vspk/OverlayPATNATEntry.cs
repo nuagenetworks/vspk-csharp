@@ -42,16 +42,26 @@ public class OverlayPATNATEntry: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
    [JsonProperty("NATEnabled")]
-   protected String _NATEnabled;
+   protected bool _NATEnabled;
    
    [JsonProperty("associatedDomainID")]
    protected String _associatedDomainID;
    
    [JsonProperty("associatedLinkID")]
    protected String _associatedLinkID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("privateIP")]
    protected String _privateIP;
@@ -61,13 +71,23 @@ public class OverlayPATNATEntry: RestObject {
    
 
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public OverlayPATNATEntry() {
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
    }
 
    
    [JsonIgnore]
-   public String NUNATEnabled {
+   public bool NUNATEnabled {
       get {
          return _NATEnabled;
       }
@@ -100,6 +120,39 @@ public class OverlayPATNATEntry: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUPrivateIP {
       get {
          return _privateIP;
@@ -123,9 +176,17 @@ public class OverlayPATNATEntry: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "OverlayPATNATEntry [" + "NATEnabled=" + _NATEnabled + ", associatedDomainID=" + _associatedDomainID + ", associatedLinkID=" + _associatedLinkID + ", privateIP=" + _privateIP + ", publicIP=" + _publicIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "OverlayPATNATEntry [" + "NATEnabled=" + _NATEnabled + ", associatedDomainID=" + _associatedDomainID + ", associatedLinkID=" + _associatedLinkID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", privateIP=" + _privateIP + ", publicIP=" + _publicIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

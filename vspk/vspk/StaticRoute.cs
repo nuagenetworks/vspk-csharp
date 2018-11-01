@@ -42,7 +42,7 @@ public class StaticRoute: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EIPType {DUALSTACK,IPV4,IPV6 };
+   public enum EIPType {IPV4,IPV6 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EType {EXIT_DOMAIN,OVERLAY,OVERLAY_ADDRESS_TRANSLATION };
 

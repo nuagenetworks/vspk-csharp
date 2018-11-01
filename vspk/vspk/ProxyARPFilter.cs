@@ -66,12 +66,7 @@ public class ProxyARPFilter: RestObject {
    
 
    
-   [JsonIgnore]
-   private EventLogsFetcher _eventLogs;
-   
    public ProxyARPFilter() {
-      
-      _eventLogs = new EventLogsFetcher(this);
       
    }
 
@@ -143,10 +138,6 @@ public class ProxyARPFilter: RestObject {
 
    
 
-   
-   public EventLogsFetcher getEventLogs() {
-      return _eventLogs;
-   }
    
 
    public String toString() {

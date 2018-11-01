@@ -49,9 +49,6 @@ public class PerformanceMonitor: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
-   
-   [JsonProperty("destinationTargetList")]
-   protected System.Collections.Generic.List<String> _destinationTargetList;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -86,16 +83,10 @@ public class PerformanceMonitor: RestObject {
    [JsonProperty("serviceClass")]
    protected EServiceClass? _serviceClass;
    
-   [JsonProperty("timeout")]
-   protected long? _timeout;
-   
 
    
    [JsonIgnore]
    private ApplicationperformancemanagementsFetcher _applicationperformancemanagements;
-   
-   [JsonIgnore]
-   private NSGatewaysFetcher _nSGateways;
    
    [JsonIgnore]
    private TiersFetcher _tiers;
@@ -103,8 +94,6 @@ public class PerformanceMonitor: RestObject {
    public PerformanceMonitor() {
       
       _applicationperformancemanagements = new ApplicationperformancemanagementsFetcher(this);
-      
-      _nSGateways = new NSGatewaysFetcher(this);
       
       _tiers = new TiersFetcher(this);
       
@@ -118,17 +107,6 @@ public class PerformanceMonitor: RestObject {
       }
       set {
          this._description = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public System.Collections.Generic.List<String> NUDestinationTargetList {
-      get {
-         return _destinationTargetList;
-      }
-      set {
-         this._destinationTargetList = value;
       }
    }
 
@@ -254,25 +232,10 @@ public class PerformanceMonitor: RestObject {
    }
 
    
-   [JsonIgnore]
-   public long? NUTimeout {
-      get {
-         return _timeout;
-      }
-      set {
-         this._timeout = value;
-      }
-   }
-
-   
 
    
    public ApplicationperformancemanagementsFetcher getApplicationperformancemanagements() {
       return _applicationperformancemanagements;
-   }
-   
-   public NSGatewaysFetcher getNSGateways() {
-      return _nSGateways;
    }
    
    public TiersFetcher getTiers() {
@@ -281,7 +244,7 @@ public class PerformanceMonitor: RestObject {
    
 
    public String toString() {
-      return "PerformanceMonitor [" + "description=" + _description + ", destinationTargetList=" + _destinationTargetList + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", holdDownTimer=" + _holdDownTimer + ", interval=" + _interval + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", numberOfPackets=" + _numberOfPackets + ", payloadSize=" + _payloadSize + ", probeType=" + _probeType + ", readOnly=" + _readOnly + ", serviceClass=" + _serviceClass + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "PerformanceMonitor [" + "description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", holdDownTimer=" + _holdDownTimer + ", interval=" + _interval + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", numberOfPackets=" + _numberOfPackets + ", payloadSize=" + _payloadSize + ", probeType=" + _probeType + ", readOnly=" + _readOnly + ", serviceClass=" + _serviceClass + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

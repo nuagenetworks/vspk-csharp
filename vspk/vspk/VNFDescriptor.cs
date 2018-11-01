@@ -42,6 +42,7 @@ public class VNFDescriptor: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EType {FIREWALL,WAN_OPT };
 
    
@@ -53,6 +54,12 @@ public class VNFDescriptor: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
    
    [JsonProperty("memoryMB")]
    protected long? _memoryMB;
@@ -78,9 +85,19 @@ public class VNFDescriptor: RestObject {
 
    
    [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
+   [JsonIgnore]
    private VNFInterfaceDescriptorsFetcher _vNFInterfaceDescriptors;
    
    public VNFDescriptor() {
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
       _vNFInterfaceDescriptors = new VNFInterfaceDescriptorsFetcher(this);
       
@@ -116,6 +133,28 @@ public class VNFDescriptor: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
       }
    }
 
@@ -199,13 +238,21 @@ public class VNFDescriptor: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
    public VNFInterfaceDescriptorsFetcher getVNFInterfaceDescriptors() {
       return _vNFInterfaceDescriptors;
    }
    
 
    public String toString() {
-      return "VNFDescriptor [" + "CPUCount=" + _CPUCount + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", memoryMB=" + _memoryMB + ", metadataID=" + _metadataID + ", name=" + _name + ", storageGB=" + _storageGB + ", type=" + _type + ", vendor=" + _vendor + ", visible=" + _visible + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VNFDescriptor [" + "CPUCount=" + _CPUCount + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", memoryMB=" + _memoryMB + ", metadataID=" + _metadataID + ", name=" + _name + ", storageGB=" + _storageGB + ", type=" + _type + ", vendor=" + _vendor + ", visible=" + _visible + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

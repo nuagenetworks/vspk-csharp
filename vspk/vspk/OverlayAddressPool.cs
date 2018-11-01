@@ -42,7 +42,12 @@ public class OverlayAddressPool: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EIPType {IPV4,IPV6,DUALSTACK };
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("IPType")]
+   protected EIPType? _IPType;
    
    [JsonProperty("associatedDomainID")]
    protected String _associatedDomainID;
@@ -52,6 +57,15 @@ public class OverlayAddressPool: RestObject {
    
    [JsonProperty("endAddressRange")]
    protected String _endAddressRange;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("name")]
    protected String _name;
@@ -62,12 +76,33 @@ public class OverlayAddressPool: RestObject {
 
    
    [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
+   [JsonIgnore]
    private OverlayPATNATEntriesFetcher _overlayPATNATEntries;
    
    public OverlayAddressPool() {
       
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
+      
       _overlayPATNATEntries = new OverlayPATNATEntriesFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public EIPType? NUIPType {
+      get {
+         return _IPType;
+      }
+      set {
+         this._IPType = value;
+      }
    }
 
    
@@ -105,6 +140,39 @@ public class OverlayAddressPool: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -128,13 +196,21 @@ public class OverlayAddressPool: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
    public OverlayPATNATEntriesFetcher getOverlayPATNATEntries() {
       return _overlayPATNATEntries;
    }
    
 
    public String toString() {
-      return "OverlayAddressPool [" + "associatedDomainID=" + _associatedDomainID + ", description=" + _description + ", endAddressRange=" + _endAddressRange + ", name=" + _name + ", startAddressRange=" + _startAddressRange + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "OverlayAddressPool [" + "IPType=" + _IPType + ", associatedDomainID=" + _associatedDomainID + ", description=" + _description + ", endAddressRange=" + _endAddressRange + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", startAddressRange=" + _startAddressRange + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -57,6 +57,9 @@ public class InfrastructureEVDFProfile: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("enterpriseID")]
+   protected String _enterpriseID;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -142,6 +145,17 @@ public class InfrastructureEVDFProfile: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUEnterpriseID {
+      get {
+         return _enterpriseID;
+      }
+      set {
+         this._enterpriseID = value;
       }
    }
 
@@ -257,7 +271,7 @@ public class InfrastructureEVDFProfile: RestObject {
    
 
    public String toString() {
-      return "InfrastructureEVDFProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", activeController=" + _activeController + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", nuagePlatform=" + _nuagePlatform + ", proxyDNSName=" + _proxyDNSName + ", serviceIPv4Subnet=" + _serviceIPv4Subnet + ", standbyController=" + _standbyController + ", useTwoFactor=" + _useTwoFactor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "InfrastructureEVDFProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", activeController=" + _activeController + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", nuagePlatform=" + _nuagePlatform + ", proxyDNSName=" + _proxyDNSName + ", serviceIPv4Subnet=" + _serviceIPv4Subnet + ", standbyController=" + _standbyController + ", useTwoFactor=" + _useTwoFactor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

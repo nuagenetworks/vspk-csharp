@@ -139,9 +139,6 @@ public class L2DomainTemplate: RestObject {
    private IngressAdvFwdTemplatesFetcher _ingressAdvFwdTemplates;
    
    [JsonIgnore]
-   private IngressExternalServiceTemplatesFetcher _ingressExternalServiceTemplates;
-   
-   [JsonIgnore]
    private JobsFetcher _jobs;
    
    [JsonIgnore]
@@ -188,8 +185,6 @@ public class L2DomainTemplate: RestObject {
       _ingressACLTemplates = new IngressACLTemplatesFetcher(this);
       
       _ingressAdvFwdTemplates = new IngressAdvFwdTemplatesFetcher(this);
-      
-      _ingressExternalServiceTemplates = new IngressExternalServiceTemplatesFetcher(this);
       
       _jobs = new JobsFetcher(this);
       
@@ -466,10 +461,6 @@ public class L2DomainTemplate: RestObject {
    
    public IngressAdvFwdTemplatesFetcher getIngressAdvFwdTemplates() {
       return _ingressAdvFwdTemplates;
-   }
-   
-   public IngressExternalServiceTemplatesFetcher getIngressExternalServiceTemplates() {
-      return _ingressExternalServiceTemplates;
    }
    
    public JobsFetcher getJobs() {

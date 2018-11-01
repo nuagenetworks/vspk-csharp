@@ -43,6 +43,7 @@ public class EnterpriseSecuredData: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum ESeedType {STANDARD,DR };
 
    
    [JsonProperty("data")]
@@ -62,6 +63,9 @@ public class EnterpriseSecuredData: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("seedType")]
+   protected ESeedType? _seedType;
    
    [JsonProperty("sekId")]
    protected long? _sekId;
@@ -153,6 +157,17 @@ public class EnterpriseSecuredData: RestObject {
 
    
    [JsonIgnore]
+   public ESeedType? NUSeedType {
+      get {
+         return _seedType;
+      }
+      set {
+         this._seedType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUSekId {
       get {
          return _sekId;
@@ -186,7 +201,7 @@ public class EnterpriseSecuredData: RestObject {
    
 
    public String toString() {
-      return "EnterpriseSecuredData [" + "data=" + _data + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hash=" + _hash + ", keyserverCertSerialNumber=" + _keyserverCertSerialNumber + ", lastUpdatedBy=" + _lastUpdatedBy + ", sekId=" + _sekId + ", signedHash=" + _signedHash + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "EnterpriseSecuredData [" + "data=" + _data + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hash=" + _hash + ", keyserverCertSerialNumber=" + _keyserverCertSerialNumber + ", lastUpdatedBy=" + _lastUpdatedBy + ", seedType=" + _seedType + ", sekId=" + _sekId + ", signedHash=" + _signedHash + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

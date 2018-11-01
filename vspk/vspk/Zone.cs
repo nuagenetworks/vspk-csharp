@@ -46,7 +46,6 @@ public class Zone: RestObject {
    public enum EIPType {IPV4,IPV6 };
    public enum EEncryption {DISABLED,ENABLED,INHERITED };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EFlowCollectionEnabled {DISABLED,ENABLED,INHERITED };
    public enum EMaintenanceMode {DISABLED,ENABLED,ENABLED_INHERITED };
    public enum EMulticast {DISABLED,ENABLED,INHERITED };
 
@@ -80,9 +79,6 @@ public class Zone: RestObject {
    
    [JsonProperty("externalID")]
    protected String _externalID;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("flowCollectionEnabled")]
-   protected EFlowCollectionEnabled? _flowCollectionEnabled;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
@@ -311,17 +307,6 @@ public class Zone: RestObject {
 
    
    [JsonIgnore]
-   public EFlowCollectionEnabled? NUFlowCollectionEnabled {
-      get {
-         return _flowCollectionEnabled;
-      }
-      set {
-         this._flowCollectionEnabled = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -488,7 +473,7 @@ public class Zone: RestObject {
    
 
    public String toString() {
-      return "Zone [" + "DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", numberOfHostsInSubnets=" + _numberOfHostsInSubnets + ", policyGroupID=" + _policyGroupID + ", publicZone=" + _publicZone + ", templateID=" + _templateID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Zone [" + "DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", numberOfHostsInSubnets=" + _numberOfHostsInSubnets + ", policyGroupID=" + _policyGroupID + ", publicZone=" + _publicZone + ", templateID=" + _templateID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

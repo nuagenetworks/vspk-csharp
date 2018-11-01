@@ -43,7 +43,8 @@ public class BRConnection: RestObject {
 
    
    public enum EAddressFamily {IPV4,IPV6 };
-   public enum EAdvertisementCriteria {BFD,LINK_BASED,OPENFLOW,OPERATIONAL_LINK };
+   public enum EAdvertisementCriteria {OPERATIONAL_LINK };
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EMode {Static };
 
    
@@ -64,6 +65,12 @@ public class BRConnection: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("advertisementCriteria")]
    protected EAdvertisementCriteria? _advertisementCriteria;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
    
    [JsonProperty("gateway")]
    protected String _gateway;
@@ -73,6 +80,9 @@ public class BRConnection: RestObject {
    
    [JsonProperty("inherited")]
    protected bool _inherited;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("mode")]
    protected EMode? _mode;
@@ -88,9 +98,19 @@ public class BRConnection: RestObject {
    [JsonIgnore]
    private BFDSessionsFetcher _bFDSessions;
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public BRConnection() {
       
       _bFDSessions = new BFDSessionsFetcher(this);
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
    }
 
@@ -162,6 +182,28 @@ public class BRConnection: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUGateway {
       get {
          return _gateway;
@@ -190,6 +232,17 @@ public class BRConnection: RestObject {
       }
       set {
          this._inherited = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
       }
    }
 
@@ -233,9 +286,17 @@ public class BRConnection: RestObject {
       return _bFDSessions;
    }
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "BRConnection [" + "DNSAddress=" + _DNSAddress + ", DNSAddressV6=" + _DNSAddressV6 + ", address=" + _address + ", addressFamily=" + _addressFamily + ", addressV6=" + _addressV6 + ", advertisementCriteria=" + _advertisementCriteria + ", gateway=" + _gateway + ", gatewayV6=" + _gatewayV6 + ", inherited=" + _inherited + ", mode=" + _mode + ", netmask=" + _netmask + ", uplinkID=" + _uplinkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BRConnection [" + "DNSAddress=" + _DNSAddress + ", DNSAddressV6=" + _DNSAddressV6 + ", address=" + _address + ", addressFamily=" + _addressFamily + ", addressV6=" + _addressV6 + ", advertisementCriteria=" + _advertisementCriteria + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayV6=" + _gatewayV6 + ", inherited=" + _inherited + ", lastUpdatedBy=" + _lastUpdatedBy + ", mode=" + _mode + ", netmask=" + _netmask + ", uplinkID=" + _uplinkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

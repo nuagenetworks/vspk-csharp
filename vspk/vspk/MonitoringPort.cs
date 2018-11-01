@@ -52,6 +52,9 @@ public class MonitoringPort: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("dpdkEnabled")]
+   protected bool _dpdkEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -112,6 +115,17 @@ public class MonitoringPort: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUDpdkEnabled {
+      get {
+         return _dpdkEnabled;
+      }
+      set {
+         this._dpdkEnabled = value;
       }
    }
 
@@ -216,7 +230,7 @@ public class MonitoringPort: RestObject {
    
 
    public String toString() {
-      return "MonitoringPort [" + "access=" + _access + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", name=" + _name + ", resiliencyState=" + _resiliencyState + ", resilient=" + _resilient + ", state=" + _state + ", uplink=" + _uplink + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "MonitoringPort [" + "access=" + _access + ", description=" + _description + ", dpdkEnabled=" + _dpdkEnabled + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", name=" + _name + ", resiliencyState=" + _resiliencyState + ", resilient=" + _resilient + ", state=" + _state + ", uplink=" + _uplink + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

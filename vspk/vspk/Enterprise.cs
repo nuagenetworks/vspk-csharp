@@ -43,6 +43,7 @@ public class Enterprise: RestObject {
 
    
    public enum EAllowedForwardingClasses {A,B,C,D,E,F,G,H,NONE };
+   public enum EAllowedForwardingMode {DISABLED,LOCAL_ONLY,LOCAL_AND_REMOTE };
    public enum EAvatarType {BASE64,COMPUTEDURL,URL };
    public enum EEncryptionManagementMode {DISABLED,MANAGED };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
@@ -75,6 +76,9 @@ public class Enterprise: RestObject {
    
    [JsonProperty("allowedForwardingClasses")]
    protected System.Collections.Generic.List<EAllowedForwardingClasses> _allowedForwardingClasses;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("allowedForwardingMode")]
+   protected EAllowedForwardingMode? _allowedForwardingMode;
    
    [JsonProperty("associatedEnterpriseSecurityID")]
    protected String _associatedEnterpriseSecurityID;
@@ -208,6 +212,9 @@ public class Enterprise: RestObject {
    private GatewaysFetcher _gateways;
    
    [JsonIgnore]
+   private GatewaysLocationsFetcher _gatewaysLocations;
+   
+   [JsonIgnore]
    private GatewayTemplatesFetcher _gatewayTemplates;
    
    [JsonIgnore]
@@ -278,6 +285,9 @@ public class Enterprise: RestObject {
    
    [JsonIgnore]
    private NSGatewaysFetcher _nSGateways;
+   
+   [JsonIgnore]
+   private NSGatewaysCountsFetcher _nSGatewaysCounts;
    
    [JsonIgnore]
    private NSGatewaySummariesFetcher _nSGatewaySummaries;
@@ -387,6 +397,8 @@ public class Enterprise: RestObject {
       
       _gateways = new GatewaysFetcher(this);
       
+      _gatewaysLocations = new GatewaysLocationsFetcher(this);
+      
       _gatewayTemplates = new GatewayTemplatesFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -434,6 +446,8 @@ public class Enterprise: RestObject {
       _networkPerformanceMeasurements = new NetworkPerformanceMeasurementsFetcher(this);
       
       _nSGateways = new NSGatewaysFetcher(this);
+      
+      _nSGatewaysCounts = new NSGatewaysCountsFetcher(this);
       
       _nSGatewaySummaries = new NSGatewaySummariesFetcher(this);
       
@@ -577,6 +591,17 @@ public class Enterprise: RestObject {
       }
       set {
          this._allowedForwardingClasses = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EAllowedForwardingMode? NUAllowedForwardingMode {
+      get {
+         return _allowedForwardingMode;
+      }
+      set {
+         this._allowedForwardingMode = value;
       }
    }
 
@@ -916,6 +941,10 @@ public class Enterprise: RestObject {
       return _gateways;
    }
    
+   public GatewaysLocationsFetcher getGatewaysLocations() {
+      return _gatewaysLocations;
+   }
+   
    public GatewayTemplatesFetcher getGatewayTemplates() {
       return _gatewayTemplates;
    }
@@ -1012,6 +1041,10 @@ public class Enterprise: RestObject {
       return _nSGateways;
    }
    
+   public NSGatewaysCountsFetcher getNSGatewaysCounts() {
+      return _nSGatewaysCounts;
+   }
+   
    public NSGatewaySummariesFetcher getNSGatewaySummaries() {
       return _nSGatewaySummaries;
    }
@@ -1102,7 +1135,7 @@ public class Enterprise: RestObject {
    
 
    public String toString() {
-      return "Enterprise [" + "BGPEnabled=" + _BGPEnabled + ", DHCPLeaseInterval=" + _DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + _LDAPAuthorizationEnabled + ", LDAPEnabled=" + _LDAPEnabled + ", VNFManagementEnabled=" + _VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + _allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + _allowGatewayManagement + ", allowTrustedForwardingClass=" + _allowTrustedForwardingClass + ", allowedForwardingClasses=" + _allowedForwardingClasses + ", associatedEnterpriseSecurityID=" + _associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + _associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + _associatedKeyServerMonitorID + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", customerID=" + _customerID + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", enableApplicationPerformanceManagement=" + _enableApplicationPerformanceManagement + ", encryptionManagementMode=" + _encryptionManagementMode + ", enterpriseProfileID=" + _enterpriseProfileID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", floatingIPsQuota=" + _floatingIPsQuota + ", floatingIPsUsed=" + _floatingIPsUsed + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", localAS=" + _localAS + ", name=" + _name + ", receiveMultiCastListID=" + _receiveMultiCastListID + ", sendMultiCastListID=" + _sendMultiCastListID + ", sharedEnterprise=" + _sharedEnterprise + ", virtualFirewallRulesEnabled=" + _virtualFirewallRulesEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Enterprise [" + "BGPEnabled=" + _BGPEnabled + ", DHCPLeaseInterval=" + _DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + _LDAPAuthorizationEnabled + ", LDAPEnabled=" + _LDAPEnabled + ", VNFManagementEnabled=" + _VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + _allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + _allowGatewayManagement + ", allowTrustedForwardingClass=" + _allowTrustedForwardingClass + ", allowedForwardingClasses=" + _allowedForwardingClasses + ", allowedForwardingMode=" + _allowedForwardingMode + ", associatedEnterpriseSecurityID=" + _associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + _associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + _associatedKeyServerMonitorID + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", customerID=" + _customerID + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", enableApplicationPerformanceManagement=" + _enableApplicationPerformanceManagement + ", encryptionManagementMode=" + _encryptionManagementMode + ", enterpriseProfileID=" + _enterpriseProfileID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", floatingIPsQuota=" + _floatingIPsQuota + ", floatingIPsUsed=" + _floatingIPsUsed + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", localAS=" + _localAS + ", name=" + _name + ", receiveMultiCastListID=" + _receiveMultiCastListID + ", sendMultiCastListID=" + _sendMultiCastListID + ", sharedEnterprise=" + _sharedEnterprise + ", virtualFirewallRulesEnabled=" + _virtualFirewallRulesEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

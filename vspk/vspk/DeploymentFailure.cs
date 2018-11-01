@@ -42,6 +42,7 @@ public class DeploymentFailure: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EEventType {CREATE,DELETE,UPDATE };
 
    
@@ -51,11 +52,23 @@ public class DeploymentFailure: RestObject {
    [JsonProperty("affectedEntityType")]
    protected String _affectedEntityType;
    
+   [JsonProperty("assocEntityId")]
+   protected String _assocEntityId;
+   
+   [JsonProperty("assocEntityType")]
+   protected String _assocEntityType;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
    [JsonProperty("errorCondition")]
    protected long? _errorCondition;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("eventType")]
    protected EEventType? _eventType;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
    
    [JsonProperty("lastFailureReason")]
    protected String _lastFailureReason;
@@ -63,12 +76,25 @@ public class DeploymentFailure: RestObject {
    [JsonProperty("lastKnownError")]
    protected String _lastKnownError;
    
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   
    [JsonProperty("numberOfOccurences")]
    protected long? _numberOfOccurences;
    
 
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public DeploymentFailure() {
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
    }
 
@@ -96,6 +122,39 @@ public class DeploymentFailure: RestObject {
 
    
    [JsonIgnore]
+   public String NUAssocEntityId {
+      get {
+         return _assocEntityId;
+      }
+      set {
+         this._assocEntityId = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssocEntityType {
+      get {
+         return _assocEntityType;
+      }
+      set {
+         this._assocEntityType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUErrorCondition {
       get {
          return _errorCondition;
@@ -113,6 +172,17 @@ public class DeploymentFailure: RestObject {
       }
       set {
          this._eventType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
       }
    }
 
@@ -140,6 +210,17 @@ public class DeploymentFailure: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUNumberOfOccurences {
       get {
          return _numberOfOccurences;
@@ -152,9 +233,17 @@ public class DeploymentFailure: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "DeploymentFailure [" + "affectedEntityID=" + _affectedEntityID + ", affectedEntityType=" + _affectedEntityType + ", errorCondition=" + _errorCondition + ", eventType=" + _eventType + ", lastFailureReason=" + _lastFailureReason + ", lastKnownError=" + _lastKnownError + ", numberOfOccurences=" + _numberOfOccurences + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "DeploymentFailure [" + "affectedEntityID=" + _affectedEntityID + ", affectedEntityType=" + _affectedEntityType + ", assocEntityId=" + _assocEntityId + ", assocEntityType=" + _assocEntityType + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", eventType=" + _eventType + ", externalID=" + _externalID + ", lastFailureReason=" + _lastFailureReason + ", lastKnownError=" + _lastKnownError + ", lastUpdatedBy=" + _lastUpdatedBy + ", numberOfOccurences=" + _numberOfOccurences + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

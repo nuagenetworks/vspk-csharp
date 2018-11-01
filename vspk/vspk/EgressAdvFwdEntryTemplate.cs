@@ -44,6 +44,7 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    
    public enum EFCOverride {A,B,C,D,E,F,G,H,NONE };
    public enum EAction {DROP,FORWARD,REDIRECT };
+   public enum EAssociatedTrafficType {L4_SERVICE,L4_SERVICE_GROUP };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFailsafeDatapath {FAIL_TO_BLOCK,FAIL_TO_WIRE };
    public enum ELocationType {ANY,PGEXPRESSION,POLICYGROUP,SUBNET,ZONE };
@@ -78,6 +79,15 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    
    [JsonProperty("associatedLiveEntityID")]
    protected String _associatedLiveEntityID;
+   
+   [JsonProperty("associatedLiveTemplateID")]
+   protected String _associatedLiveTemplateID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("associatedTrafficType")]
+   protected EAssociatedTrafficType? _associatedTrafficType;
+   
+   [JsonProperty("associatedTrafficTypeID")]
+   protected String _associatedTrafficTypeID;
    
    [JsonProperty("description")]
    protected String _description;
@@ -118,9 +128,6 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    [JsonProperty("mirrorDestinationID")]
    protected String _mirrorDestinationID;
    
-   [JsonProperty("name")]
-   protected String _name;
-   
    [JsonProperty("networkID")]
    protected String _networkID;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -159,16 +166,11 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
-   [JsonIgnore]
-   private StatisticsFetcher _statistics;
-   
    public EgressAdvFwdEntryTemplate() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
-      
-      _statistics = new StatisticsFetcher(this);
       
    }
 
@@ -268,6 +270,39 @@ public class EgressAdvFwdEntryTemplate: RestObject {
       }
       set {
          this._associatedLiveEntityID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedLiveTemplateID {
+      get {
+         return _associatedLiveTemplateID;
+      }
+      set {
+         this._associatedLiveTemplateID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EAssociatedTrafficType? NUAssociatedTrafficType {
+      get {
+         return _associatedTrafficType;
+      }
+      set {
+         this._associatedTrafficType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedTrafficTypeID {
+      get {
+         return _associatedTrafficTypeID;
+      }
+      set {
+         this._associatedTrafficTypeID = value;
       }
    }
 
@@ -416,17 +451,6 @@ public class EgressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
-   public String NUName {
-      get {
-         return _name;
-      }
-      set {
-         this._name = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUNetworkID {
       get {
          return _networkID;
@@ -546,13 +570,9 @@ public class EgressAdvFwdEntryTemplate: RestObject {
       return _metadatas;
    }
    
-   public StatisticsFetcher getStatistics() {
-      return _statistics;
-   }
-   
 
    public String toString() {
-      return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", FCOverride=" + _FCOverride + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", failsafeDatapath=" + _failsafeDatapath + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", name=" + _name + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", redirectVPortTagID=" + _redirectVPortTagID + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", FCOverride=" + _FCOverride + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", failsafeDatapath=" + _failsafeDatapath + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", redirectVPortTagID=" + _redirectVPortTagID + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -86,9 +86,6 @@ public class VSP: RestObject {
    [JsonIgnore]
    private VSCsFetcher _vSCs;
    
-   [JsonIgnore]
-   private VSDsFetcher _vSDs;
-   
    public VSP() {
       
       _eventLogs = new EventLogsFetcher(this);
@@ -102,8 +99,6 @@ public class VSP: RestObject {
       _netconfManagers = new NetconfManagersFetcher(this);
       
       _vSCs = new VSCsFetcher(this);
-      
-      _vSDs = new VSDsFetcher(this);
       
    }
 
@@ -209,10 +204,6 @@ public class VSP: RestObject {
    
    public VSCsFetcher getVSCs() {
       return _vSCs;
-   }
-   
-   public VSDsFetcher getVSDs() {
-      return _vSDs;
    }
    
 

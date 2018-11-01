@@ -76,12 +76,18 @@ public class IngressACLEntryTemplate: RestObject {
    
    [JsonProperty("associatedLiveEntityID")]
    protected String _associatedLiveEntityID;
+   
+   [JsonProperty("associatedLiveTemplateID")]
+   protected String _associatedLiveTemplateID;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("associatedTrafficType")]
    protected EAssociatedTrafficType? _associatedTrafficType;
    
    [JsonProperty("associatedTrafficTypeID")]
    protected String _associatedTrafficTypeID;
+   
+   [JsonProperty("associatedVirtualFirewallRuleID")]
+   protected String _associatedVirtualFirewallRuleID;
    
    [JsonProperty("description")]
    protected String _description;
@@ -277,6 +283,17 @@ public class IngressACLEntryTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NUAssociatedLiveTemplateID {
+      get {
+         return _associatedLiveTemplateID;
+      }
+      set {
+         this._associatedLiveTemplateID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EAssociatedTrafficType? NUAssociatedTrafficType {
       get {
          return _associatedTrafficType;
@@ -294,6 +311,17 @@ public class IngressACLEntryTemplate: RestObject {
       }
       set {
          this._associatedTrafficTypeID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedVirtualFirewallRuleID {
+      get {
+         return _associatedVirtualFirewallRuleID;
+      }
+      set {
+         this._associatedVirtualFirewallRuleID = value;
       }
    }
 
@@ -556,7 +584,7 @@ public class IngressACLEntryTemplate: RestObject {
    
 
    public String toString() {
-      return "IngressACLEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", overlayMirrorDestinationID=" + _overlayMirrorDestinationID + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IngressACLEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", associatedVirtualFirewallRuleID=" + _associatedVirtualFirewallRuleID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", overlayMirrorDestinationID=" + _overlayMirrorDestinationID + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

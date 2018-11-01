@@ -49,6 +49,9 @@ public class AllAlarm: RestObject {
    [JsonProperty("acknowledged")]
    protected bool _acknowledged;
    
+   [JsonProperty("alarmedObjectID")]
+   protected String _alarmedObjectID;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -109,6 +112,17 @@ public class AllAlarm: RestObject {
       }
       set {
          this._acknowledged = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAlarmedObjectID {
+      get {
+         return _alarmedObjectID;
+      }
+      set {
+         this._alarmedObjectID = value;
       }
    }
 
@@ -257,7 +271,7 @@ public class AllAlarm: RestObject {
    
 
    public String toString() {
-      return "AllAlarm [" + "acknowledged=" + _acknowledged + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", numberOfOccurances=" + _numberOfOccurances + ", reason=" + _reason + ", severity=" + _severity + ", targetObject=" + _targetObject + ", timestamp=" + _timestamp + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "AllAlarm [" + "acknowledged=" + _acknowledged + ", alarmedObjectID=" + _alarmedObjectID + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", numberOfOccurances=" + _numberOfOccurances + ", reason=" + _reason + ", severity=" + _severity + ", targetObject=" + _targetObject + ", timestamp=" + _timestamp + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

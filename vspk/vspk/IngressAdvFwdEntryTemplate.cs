@@ -94,6 +94,9 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    
    [JsonProperty("associatedLiveEntityID")]
    protected String _associatedLiveEntityID;
+   
+   [JsonProperty("associatedLiveTemplateID")]
+   protected String _associatedLiveTemplateID;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("associatedTrafficType")]
    protected EAssociatedTrafficType? _associatedTrafficType;
@@ -142,9 +145,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    
    [JsonProperty("mirrorDestinationID")]
    protected String _mirrorDestinationID;
-   
-   [JsonProperty("name")]
-   protected String _name;
    
    [JsonProperty("networkID")]
    protected String _networkID;
@@ -360,6 +360,17 @@ public class IngressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NUAssociatedLiveTemplateID {
+      get {
+         return _associatedLiveTemplateID;
+      }
+      set {
+         this._associatedLiveTemplateID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EAssociatedTrafficType? NUAssociatedTrafficType {
       get {
          return _associatedTrafficType;
@@ -536,17 +547,6 @@ public class IngressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
-   public String NUName {
-      get {
-         return _name;
-      }
-      set {
-         this._name = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUNetworkID {
       get {
          return _networkID;
@@ -716,7 +716,7 @@ public class IngressAdvFwdEntryTemplate: RestObject {
    
 
    public String toString() {
-      return "IngressAdvFwdEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", DSCPRemarking=" + _DSCPRemarking + ", FCOverride=" + _FCOverride + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", appType=" + _appType + ", associatedApplicationID=" + _associatedApplicationID + ", associatedForwardingPathListID=" + _associatedForwardingPathListID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", failsafeDatapath=" + _failsafeDatapath + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", isSLAAware=" + _isSLAAware + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", name=" + _name + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", redirectRewriteType=" + _redirectRewriteType + ", redirectRewriteValue=" + _redirectRewriteValue + ", redirectVPortTagID=" + _redirectVPortTagID + ", remoteUplinkPreference=" + _remoteUplinkPreference + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", uplinkPreference=" + _uplinkPreference + ", vlanRange=" + _vlanRange + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IngressAdvFwdEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", DSCPRemarking=" + _DSCPRemarking + ", FCOverride=" + _FCOverride + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", appType=" + _appType + ", associatedApplicationID=" + _associatedApplicationID + ", associatedForwardingPathListID=" + _associatedForwardingPathListID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", failsafeDatapath=" + _failsafeDatapath + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", isSLAAware=" + _isSLAAware + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", redirectRewriteType=" + _redirectRewriteType + ", redirectRewriteValue=" + _redirectRewriteValue + ", redirectVPortTagID=" + _redirectVPortTagID + ", remoteUplinkPreference=" + _remoteUplinkPreference + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", uplinkPreference=" + _uplinkPreference + ", vlanRange=" + _vlanRange + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

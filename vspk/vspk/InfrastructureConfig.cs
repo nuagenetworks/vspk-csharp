@@ -46,6 +46,9 @@ public class InfrastructureConfig: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("associatedEntityType")]
+   protected String _associatedEntityType;
+   
    [JsonProperty("config")]
    protected Object _config;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -75,6 +78,17 @@ public class InfrastructureConfig: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEntityType {
+      get {
+         return _associatedEntityType;
+      }
+      set {
+         this._associatedEntityType = value;
+      }
    }
 
    
@@ -145,7 +159,7 @@ public class InfrastructureConfig: RestObject {
    
 
    public String toString() {
-      return "InfrastructureConfig [" + "config=" + _config + ", configStatus=" + _configStatus + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "InfrastructureConfig [" + "associatedEntityType=" + _associatedEntityType + ", config=" + _config + ", configStatus=" + _configStatus + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -62,6 +62,9 @@ public class Application: RestObject {
    [JsonProperty("bandwidth")]
    protected long? _bandwidth;
    
+   [JsonProperty("certificateCommonName")]
+   protected String _certificateCommonName;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -88,6 +91,9 @@ public class Application: RestObject {
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("networkSymmetry")]
+   protected bool _networkSymmetry;
    
    [JsonProperty("oneWayDelay")]
    protected long? _oneWayDelay;
@@ -197,6 +203,17 @@ public class Application: RestObject {
 
    
    [JsonIgnore]
+   public String NUCertificateCommonName {
+      get {
+         return _certificateCommonName;
+      }
+      set {
+         this._certificateCommonName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -291,6 +308,17 @@ public class Application: RestObject {
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUNetworkSymmetry {
+      get {
+         return _networkSymmetry;
+      }
+      set {
+         this._networkSymmetry = value;
       }
    }
 
@@ -447,7 +475,7 @@ public class Application: RestObject {
    
 
    public String toString() {
-      return "Application [" + "DSCP=" + _DSCP + ", appId=" + _appId + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", bandwidth=" + _bandwidth + ", description=" + _description + ", destinationIP=" + _destinationIP + ", destinationPort=" + _destinationPort + ", enablePPS=" + _enablePPS + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", oneWayDelay=" + _oneWayDelay + ", oneWayJitter=" + _oneWayJitter + ", oneWayLoss=" + _oneWayLoss + ", optimizePathSelection=" + _optimizePathSelection + ", performanceMonitorType=" + _performanceMonitorType + ", postClassificationPath=" + _postClassificationPath + ", preClassificationPath=" + _preClassificationPath + ", protocol=" + _protocol + ", readOnly=" + _readOnly + ", sourceIP=" + _sourceIP + ", sourcePort=" + _sourcePort + ", symmetry=" + _symmetry + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Application [" + "DSCP=" + _DSCP + ", appId=" + _appId + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", bandwidth=" + _bandwidth + ", certificateCommonName=" + _certificateCommonName + ", description=" + _description + ", destinationIP=" + _destinationIP + ", destinationPort=" + _destinationPort + ", enablePPS=" + _enablePPS + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", networkSymmetry=" + _networkSymmetry + ", oneWayDelay=" + _oneWayDelay + ", oneWayJitter=" + _oneWayJitter + ", oneWayLoss=" + _oneWayLoss + ", optimizePathSelection=" + _optimizePathSelection + ", performanceMonitorType=" + _performanceMonitorType + ", postClassificationPath=" + _postClassificationPath + ", preClassificationPath=" + _preClassificationPath + ", protocol=" + _protocol + ", readOnly=" + _readOnly + ", sourceIP=" + _sourceIP + ", sourcePort=" + _sourcePort + ", symmetry=" + _symmetry + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

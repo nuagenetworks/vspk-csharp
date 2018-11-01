@@ -45,6 +45,9 @@ public class GlobalMetadata: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("assocEntityType")]
+   protected String _assocEntityType;
+   
    [JsonProperty("blob")]
    protected String _blob;
    
@@ -86,6 +89,17 @@ public class GlobalMetadata: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssocEntityType {
+      get {
+         return _assocEntityType;
+      }
+      set {
+         this._assocEntityType = value;
+      }
    }
 
    
@@ -200,7 +214,7 @@ public class GlobalMetadata: RestObject {
    
 
    public String toString() {
-      return "GlobalMetadata [" + "blob=" + _blob + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", globalMetadata=" + _globalMetadata + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataTagIDs=" + _metadataTagIDs + ", name=" + _name + ", networkNotificationDisabled=" + _networkNotificationDisabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "GlobalMetadata [" + "assocEntityType=" + _assocEntityType + ", blob=" + _blob + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", globalMetadata=" + _globalMetadata + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataTagIDs=" + _metadataTagIDs + ", name=" + _name + ", networkNotificationDisabled=" + _networkNotificationDisabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

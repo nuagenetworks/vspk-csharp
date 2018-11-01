@@ -32,13 +32,13 @@ using net.nuagenetworks.vspk.v5_0;
 
 namespace net.nuagenetworks.vspk.v5_0.fetchers
 {
-    public class IngressExternalServiceTemplateEntriesFetcher: RestFetcher<IngressExternalServiceTemplateEntry>
+    public class GatewaysLocationsFetcher: RestFetcher<GatewaysLocation>
     {
 
        private const long serialVersionUID = 1L;
        
-       public IngressExternalServiceTemplateEntriesFetcher(RestObject parentRestObj) 
-          : base(parentRestObj, typeof(IngressExternalServiceTemplateEntry))
+       public GatewaysLocationsFetcher(RestObject parentRestObj) 
+          : base(parentRestObj, typeof(GatewaysLocation))
        {
        }
    

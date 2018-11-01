@@ -45,8 +45,8 @@ public class PolicyGroupCategory: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
-   [JsonProperty("defaultTag")]
-   protected bool _defaultTag;
+   [JsonProperty("defaultCategory")]
+   protected bool _defaultCategory;
    
    [JsonProperty("description")]
    protected String _description;
@@ -86,12 +86,12 @@ public class PolicyGroupCategory: RestObject {
 
    
    [JsonIgnore]
-   public bool NUDefaultTag {
+   public bool NUDefaultCategory {
       get {
-         return _defaultTag;
+         return _defaultCategory;
       }
       set {
-         this._defaultTag = value;
+         this._defaultCategory = value;
       }
    }
 
@@ -167,7 +167,7 @@ public class PolicyGroupCategory: RestObject {
    
 
    public String toString() {
-      return "PolicyGroupCategory [" + "defaultTag=" + _defaultTag + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "PolicyGroupCategory [" + "defaultCategory=" + _defaultCategory + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -76,9 +76,6 @@ public class AutoDiscoveredGateway: RestObject {
    [JsonProperty("systemID")]
    protected String _systemID;
    
-   [JsonProperty("useGatewayVLANVNID")]
-   protected bool _useGatewayVLANVNID;
-   
    [JsonProperty("vtep")]
    protected String _vtep;
    
@@ -102,6 +99,9 @@ public class AutoDiscoveredGateway: RestObject {
    [JsonIgnore]
    private WANServicesFetcher _wANServices;
    
+   [JsonIgnore]
+   private WirelessPortsFetcher _wirelessPorts;
+   
    public AutoDiscoveredGateway() {
       
       _eventLogs = new EventLogsFetcher(this);
@@ -115,6 +115,8 @@ public class AutoDiscoveredGateway: RestObject {
       _ports = new PortsFetcher(this);
       
       _wANServices = new WANServicesFetcher(this);
+      
+      _wirelessPorts = new WirelessPortsFetcher(this);
       
    }
 
@@ -230,17 +232,6 @@ public class AutoDiscoveredGateway: RestObject {
 
    
    [JsonIgnore]
-   public bool NUUseGatewayVLANVNID {
-      get {
-         return _useGatewayVLANVNID;
-      }
-      set {
-         this._useGatewayVLANVNID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUVtep {
       get {
          return _vtep;
@@ -277,9 +268,13 @@ public class AutoDiscoveredGateway: RestObject {
       return _wANServices;
    }
    
+   public WirelessPortsFetcher getWirelessPorts() {
+      return _wirelessPorts;
+   }
+   
 
    public String toString() {
-      return "AutoDiscoveredGateway [" + "controllers=" + _controllers + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", peer=" + _peer + ", personality=" + _personality + ", systemID=" + _systemID + ", useGatewayVLANVNID=" + _useGatewayVLANVNID + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "AutoDiscoveredGateway [" + "controllers=" + _controllers + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", peer=" + _peer + ", personality=" + _personality + ", systemID=" + _systemID + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -42,6 +42,7 @@ public class PolicyEntry: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
    [JsonProperty("actions")]
@@ -49,22 +50,35 @@ public class PolicyEntry: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("matchCriteria")]
    protected Object _matchCriteria;
-   
-   [JsonProperty("matchOverlayAddressPoolID")]
-   protected String _matchOverlayAddressPoolID;
-   
-   [JsonProperty("matchPolicyObjectGroupID")]
-   protected String _matchPolicyObjectGroupID;
    
    [JsonProperty("name")]
    protected String _name;
    
 
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public PolicyEntry() {
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
    }
 
@@ -92,34 +106,45 @@ public class PolicyEntry: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public Object NUMatchCriteria {
       get {
          return _matchCriteria;
       }
       set {
          this._matchCriteria = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUMatchOverlayAddressPoolID {
-      get {
-         return _matchOverlayAddressPoolID;
-      }
-      set {
-         this._matchOverlayAddressPoolID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUMatchPolicyObjectGroupID {
-      get {
-         return _matchPolicyObjectGroupID;
-      }
-      set {
-         this._matchPolicyObjectGroupID = value;
       }
    }
 
@@ -137,9 +162,17 @@ public class PolicyEntry: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "PolicyEntry [" + "actions=" + _actions + ", description=" + _description + ", matchCriteria=" + _matchCriteria + ", matchOverlayAddressPoolID=" + _matchOverlayAddressPoolID + ", matchPolicyObjectGroupID=" + _matchPolicyObjectGroupID + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "PolicyEntry [" + "actions=" + _actions + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", matchCriteria=" + _matchCriteria + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

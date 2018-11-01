@@ -43,6 +43,8 @@ public class VNF: RestObject {
 
    
    public enum EAllowedActions {DEPLOY,REDEPLOY,RESTART,START,STOP,UNDEPLOY };
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum ELastUserAction {DEPLOY,REDEPLOY,RESTART,START,STOP,UNDEPLOY };
    public enum EStatus {BLOCKED,CRASHED,DYING,IDLE,INIT,LAST,PAUSED,PMSUSPENDED,RUNNING,SHUTDOWN,SHUTOFF };
    public enum ETaskState {DEPLOYING,NONE,STARTING,STOPPING,UNDEPLOYING };
    public enum EType {FIREWALL,WAN_OPT };
@@ -80,6 +82,12 @@ public class VNF: RestObject {
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
    
    [JsonProperty("isAttachedToDescriptor")]
    protected bool _isAttachedToDescriptor;
@@ -87,11 +95,14 @@ public class VNF: RestObject {
    [JsonProperty("lastKnownError")]
    protected String _lastKnownError;
    
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("lastUserAction")]
+   protected ELastUserAction? _lastUserAction;
+   
    [JsonProperty("memoryMB")]
    protected long? _memoryMB;
-   
-   [JsonProperty("metadataID")]
-   protected String _metadataID;
    
    [JsonProperty("name")]
    protected String _name;
@@ -114,7 +125,13 @@ public class VNF: RestObject {
 
    
    [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
    private JobsFetcher _jobs;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
    private VNFInterfacesFetcher _vNFInterfaces;
@@ -122,13 +139,22 @@ public class VNF: RestObject {
    [JsonIgnore]
    private VNFMetadatasFetcher _vNFMetadatas;
    
+   [JsonIgnore]
+   private VNFThresholdPoliciesFetcher _vNFThresholdPolicies;
+   
    public VNF() {
       
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
       _jobs = new JobsFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
       _vNFInterfaces = new VNFInterfacesFetcher(this);
       
       _vNFMetadatas = new VNFMetadatasFetcher(this);
+      
+      _vNFThresholdPolicies = new VNFThresholdPoliciesFetcher(this);
       
    }
 
@@ -255,6 +281,28 @@ public class VNF: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUIsAttachedToDescriptor {
       get {
          return _isAttachedToDescriptor;
@@ -277,23 +325,34 @@ public class VNF: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public ELastUserAction? NULastUserAction {
+      get {
+         return _lastUserAction;
+      }
+      set {
+         this._lastUserAction = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUMemoryMB {
       get {
          return _memoryMB;
       }
       set {
          this._memoryMB = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUMetadataID {
-      get {
-         return _metadataID;
-      }
-      set {
-         this._metadataID = value;
       }
    }
 
@@ -366,8 +425,16 @@ public class VNF: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
    public JobsFetcher getJobs() {
       return _jobs;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
    }
    
    public VNFInterfacesFetcher getVNFInterfaces() {
@@ -378,9 +445,13 @@ public class VNF: RestObject {
       return _vNFMetadatas;
    }
    
+   public VNFThresholdPoliciesFetcher getVNFThresholdPolicies() {
+      return _vNFThresholdPolicies;
+   }
+   
 
    public String toString() {
-      return "VNF [" + "CPUCount=" + _CPUCount + ", NSGName=" + _NSGName + ", NSGSystemID=" + _NSGSystemID + ", NSGatewayID=" + _NSGatewayID + ", VNFDescriptorID=" + _VNFDescriptorID + ", VNFDescriptorName=" + _VNFDescriptorName + ", allowedActions=" + _allowedActions + ", associatedVNFMetadataID=" + _associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", isAttachedToDescriptor=" + _isAttachedToDescriptor + ", lastKnownError=" + _lastKnownError + ", memoryMB=" + _memoryMB + ", metadataID=" + _metadataID + ", name=" + _name + ", status=" + _status + ", storageGB=" + _storageGB + ", taskState=" + _taskState + ", type=" + _type + ", vendor=" + _vendor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VNF [" + "CPUCount=" + _CPUCount + ", NSGName=" + _NSGName + ", NSGSystemID=" + _NSGSystemID + ", NSGatewayID=" + _NSGatewayID + ", VNFDescriptorID=" + _VNFDescriptorID + ", VNFDescriptorName=" + _VNFDescriptorName + ", allowedActions=" + _allowedActions + ", associatedVNFMetadataID=" + _associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isAttachedToDescriptor=" + _isAttachedToDescriptor + ", lastKnownError=" + _lastKnownError + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUserAction=" + _lastUserAction + ", memoryMB=" + _memoryMB + ", name=" + _name + ", status=" + _status + ", storageGB=" + _storageGB + ", taskState=" + _taskState + ", type=" + _type + ", vendor=" + _vendor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

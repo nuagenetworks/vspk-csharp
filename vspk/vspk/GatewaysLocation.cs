@@ -37,24 +37,25 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class IngressExternalServiceTemplate: RestObject {
+public class GatewaysLocation: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EPolicyState {DRAFT,LIVE };
-   public enum EPriorityType {BOTTOM,NONE,TOP };
 
    
-   [JsonProperty("active")]
-   protected bool _active;
+   [JsonProperty("address")]
+   protected String _address;
    
-   [JsonProperty("associatedLiveEntityID")]
-   protected String _associatedLiveEntityID;
+   [JsonProperty("associatedEntityName")]
+   protected String _associatedEntityName;
    
-   [JsonProperty("description")]
-   protected String _description;
+   [JsonProperty("associatedEntityType")]
+   protected String _associatedEntityType;
+   
+   [JsonProperty("country")]
+   protected String _country;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -62,17 +63,26 @@ public class IngressExternalServiceTemplate: RestObject {
    [JsonProperty("externalID")]
    protected String _externalID;
    
-   [JsonProperty("name")]
-   protected String _name;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("policyState")]
-   protected EPolicyState? _policyState;
+   [JsonProperty("ignoreGeocode")]
+   protected bool _ignoreGeocode;
    
-   [JsonProperty("priority")]
-   protected long? _priority;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("priorityType")]
-   protected EPriorityType? _priorityType;
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   
+   [JsonProperty("latitude")]
+   protected float _latitude;
+   
+   [JsonProperty("locality")]
+   protected String _locality;
+   
+   [JsonProperty("longitude")]
+   protected float _longitude;
+   
+   [JsonProperty("state")]
+   protected String _state;
+   
+   [JsonProperty("timeZoneID")]
+   protected String _timeZoneID;
    
 
    
@@ -80,16 +90,11 @@ public class IngressExternalServiceTemplate: RestObject {
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
-   private IngressExternalServiceTemplateEntriesFetcher _ingressExternalServiceTemplateEntries;
-   
-   [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
-   public IngressExternalServiceTemplate() {
+   public GatewaysLocation() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
-      
-      _ingressExternalServiceTemplateEntries = new IngressExternalServiceTemplateEntriesFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
@@ -97,34 +102,45 @@ public class IngressExternalServiceTemplate: RestObject {
 
    
    [JsonIgnore]
-   public bool NUActive {
+   public String NUAddress {
       get {
-         return _active;
+         return _address;
       }
       set {
-         this._active = value;
+         this._address = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUAssociatedLiveEntityID {
+   public String NUAssociatedEntityName {
       get {
-         return _associatedLiveEntityID;
+         return _associatedEntityName;
       }
       set {
-         this._associatedLiveEntityID = value;
+         this._associatedEntityName = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUDescription {
+   public String NUAssociatedEntityType {
       get {
-         return _description;
+         return _associatedEntityType;
       }
       set {
-         this._description = value;
+         this._associatedEntityType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCountry {
+      get {
+         return _country;
+      }
+      set {
+         this._country = value;
       }
    }
 
@@ -152,45 +168,78 @@ public class IngressExternalServiceTemplate: RestObject {
 
    
    [JsonIgnore]
-   public String NUName {
+   public bool NUIgnoreGeocode {
       get {
-         return _name;
+         return _ignoreGeocode;
       }
       set {
-         this._name = value;
+         this._ignoreGeocode = value;
       }
    }
 
    
    [JsonIgnore]
-   public EPolicyState? NUPolicyState {
+   public String NULastUpdatedBy {
       get {
-         return _policyState;
+         return _lastUpdatedBy;
       }
       set {
-         this._policyState = value;
+         this._lastUpdatedBy = value;
       }
    }
 
    
    [JsonIgnore]
-   public long? NUPriority {
+   public float NULatitude {
       get {
-         return _priority;
+         return _latitude;
       }
       set {
-         this._priority = value;
+         this._latitude = value;
       }
    }
 
    
    [JsonIgnore]
-   public EPriorityType? NUPriorityType {
+   public String NULocality {
       get {
-         return _priorityType;
+         return _locality;
       }
       set {
-         this._priorityType = value;
+         this._locality = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public float NULongitude {
+      get {
+         return _longitude;
+      }
+      set {
+         this._longitude = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUState {
+      get {
+         return _state;
+      }
+      set {
+         this._state = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUTimeZoneID {
+      get {
+         return _timeZoneID;
+      }
+      set {
+         this._timeZoneID = value;
       }
    }
 
@@ -201,17 +250,13 @@ public class IngressExternalServiceTemplate: RestObject {
       return _globalMetadatas;
    }
    
-   public IngressExternalServiceTemplateEntriesFetcher getIngressExternalServiceTemplateEntries() {
-      return _ingressExternalServiceTemplateEntries;
-   }
-   
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
    }
    
 
    public String toString() {
-      return "IngressExternalServiceTemplate [" + "active=" + _active + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", policyState=" + _policyState + ", priority=" + _priority + ", priorityType=" + _priorityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "GatewaysLocation [" + "address=" + _address + ", associatedEntityName=" + _associatedEntityName + ", associatedEntityType=" + _associatedEntityType + ", country=" + _country + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ignoreGeocode=" + _ignoreGeocode + ", lastUpdatedBy=" + _lastUpdatedBy + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", state=" + _state + ", timeZoneID=" + _timeZoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -219,12 +264,12 @@ public class IngressExternalServiceTemplate: RestObject {
 
    public static String getResourceName()
    {
-	return "ingressexternalservicetemplates";
+	return "gatewayslocations";
    }
 
    public static String getRestName()
    {
-	return "ingressexternalservicetemplate";
+	return "gatewayslocation";
    }
 }
 }

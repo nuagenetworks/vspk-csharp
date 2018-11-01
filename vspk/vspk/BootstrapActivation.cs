@@ -49,6 +49,9 @@ public class BootstrapActivation: RestObject {
    [JsonProperty("action")]
    protected EAction? _action;
    
+   [JsonProperty("associatedEntityType")]
+   protected String _associatedEntityType;
+   
    [JsonProperty("autoBootstrap")]
    protected bool _autoBootstrap;
    
@@ -118,6 +121,17 @@ public class BootstrapActivation: RestObject {
       }
       set {
          this._action = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEntityType {
+      get {
+         return _associatedEntityType;
+      }
+      set {
+         this._associatedEntityType = value;
       }
    }
 
@@ -299,7 +313,7 @@ public class BootstrapActivation: RestObject {
    
 
    public String toString() {
-      return "BootstrapActivation [" + "action=" + _action + ", autoBootstrap=" + _autoBootstrap + ", cacert=" + _cacert + ", cert=" + _cert + ", configURL=" + _configURL + ", csr=" + _csr + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hash=" + _hash + ", lastUpdatedBy=" + _lastUpdatedBy + ", seed=" + _seed + ", srkPassword=" + _srkPassword + ", status=" + _status + ", tpmOwnerPassword=" + _tpmOwnerPassword + ", tpmState=" + _tpmState + ", vsdTime=" + _vsdTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BootstrapActivation [" + "action=" + _action + ", associatedEntityType=" + _associatedEntityType + ", autoBootstrap=" + _autoBootstrap + ", cacert=" + _cacert + ", cert=" + _cert + ", configURL=" + _configURL + ", csr=" + _csr + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hash=" + _hash + ", lastUpdatedBy=" + _lastUpdatedBy + ", seed=" + _seed + ", srkPassword=" + _srkPassword + ", status=" + _status + ", tpmOwnerPassword=" + _tpmOwnerPassword + ", tpmState=" + _tpmState + ", vsdTime=" + _vsdTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

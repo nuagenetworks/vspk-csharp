@@ -64,9 +64,6 @@ public class ContainerInterface: RestObject {
    [JsonProperty("VPortName")]
    protected String _VPortName;
    
-   [JsonProperty("associatedFloatingIPAddress")]
-   protected String _associatedFloatingIPAddress;
-   
    [JsonProperty("attachedNetworkID")]
    protected String _attachedNetworkID;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -248,17 +245,6 @@ public class ContainerInterface: RestObject {
       }
       set {
          this._VPortName = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUAssociatedFloatingIPAddress {
-      get {
-         return _associatedFloatingIPAddress;
-      }
-      set {
-         this._associatedFloatingIPAddress = value;
       }
    }
 
@@ -520,7 +506,7 @@ public class ContainerInterface: RestObject {
    
 
    public String toString() {
-      return "ContainerInterface [" + "IPAddress=" + _IPAddress + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", MAC=" + _MAC + ", VPortID=" + _VPortID + ", VPortName=" + _VPortName + ", associatedFloatingIPAddress=" + _associatedFloatingIPAddress + ", attachedNetworkID=" + _attachedNetworkID + ", attachedNetworkType=" + _attachedNetworkType + ", containerUUID=" + _containerUUID + ", domainID=" + _domainID + ", domainName=" + _domainName + ", endpointID=" + _endpointID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiNICVPortName=" + _multiNICVPortName + ", name=" + _name + ", netmask=" + _netmask + ", networkID=" + _networkID + ", networkName=" + _networkName + ", policyDecisionID=" + _policyDecisionID + ", tierID=" + _tierID + ", zoneID=" + _zoneID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "ContainerInterface [" + "IPAddress=" + _IPAddress + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", MAC=" + _MAC + ", VPortID=" + _VPortID + ", VPortName=" + _VPortName + ", attachedNetworkID=" + _attachedNetworkID + ", attachedNetworkType=" + _attachedNetworkType + ", containerUUID=" + _containerUUID + ", domainID=" + _domainID + ", domainName=" + _domainName + ", endpointID=" + _endpointID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiNICVPortName=" + _multiNICVPortName + ", name=" + _name + ", netmask=" + _netmask + ", networkID=" + _networkID + ", networkName=" + _networkName + ", policyDecisionID=" + _policyDecisionID + ", tierID=" + _tierID + ", zoneID=" + _zoneID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -62,9 +62,6 @@ public class NSPortTemplate: RestObject {
    [JsonProperty("externalID")]
    protected String _externalID;
    
-   [JsonProperty("infrastructureProfileID")]
-   protected String _infrastructureProfileID;
-   
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
@@ -161,17 +158,6 @@ public class NSPortTemplate: RestObject {
 
    
    [JsonIgnore]
-   public String NUInfrastructureProfileID {
-      get {
-         return _infrastructureProfileID;
-      }
-      set {
-         this._infrastructureProfileID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -253,7 +239,7 @@ public class NSPortTemplate: RestObject {
    
 
    public String toString() {
-      return "NSPortTemplate [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", infrastructureProfileID=" + _infrastructureProfileID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mtu=" + _mtu + ", name=" + _name + ", physicalName=" + _physicalName + ", portType=" + _portType + ", speed=" + _speed + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSPortTemplate [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mtu=" + _mtu + ", name=" + _name + ", physicalName=" + _physicalName + ", portType=" + _portType + ", speed=" + _speed + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

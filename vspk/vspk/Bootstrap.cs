@@ -42,7 +42,7 @@ public class Bootstrap: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EZFBMatchAttribute {HOSTNAME,IP_ADDRESS,MAC_ADDRESS,NONE,NSGATEWAY_ID,SERIAL_NUMBER };
+   public enum EZFBMatchAttribute {HOSTNAME,IP_ADDRESS,MAC_ADDRESS,NONE,NSGATEWAY_ID,SERIAL_NUMBER,UUID };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EStatus {ACTIVE,CERTIFICATE_SIGNED,INACTIVE,NOTIFICATION_APP_REQ_ACK,NOTIFICATION_APP_REQ_SENT };
 
@@ -55,6 +55,9 @@ public class Bootstrap: RestObject {
    
    [JsonProperty("ZFBMatchValue")]
    protected String _ZFBMatchValue;
+   
+   [JsonProperty("associatedEntityType")]
+   protected String _associatedEntityType;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -118,6 +121,17 @@ public class Bootstrap: RestObject {
       }
       set {
          this._ZFBMatchValue = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEntityType {
+      get {
+         return _associatedEntityType;
+      }
+      set {
+         this._associatedEntityType = value;
       }
    }
 
@@ -189,7 +203,7 @@ public class Bootstrap: RestObject {
    
 
    public String toString() {
-      return "Bootstrap [" + "ZFBInfo=" + _ZFBInfo + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", installerID=" + _installerID + ", lastUpdatedBy=" + _lastUpdatedBy + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Bootstrap [" + "ZFBInfo=" + _ZFBInfo + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedEntityType=" + _associatedEntityType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", installerID=" + _installerID + ", lastUpdatedBy=" + _lastUpdatedBy + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

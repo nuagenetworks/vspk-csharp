@@ -54,6 +54,9 @@ public class ForwardingPathList: RestObject {
    [JsonProperty("externalID")]
    protected String _externalID;
    
+   [JsonProperty("forwardingPathListID")]
+   protected long? _forwardingPathListID;
+   
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
@@ -116,6 +119,17 @@ public class ForwardingPathList: RestObject {
 
    
    [JsonIgnore]
+   public long? NUForwardingPathListID {
+      get {
+         return _forwardingPathListID;
+      }
+      set {
+         this._forwardingPathListID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -153,7 +167,7 @@ public class ForwardingPathList: RestObject {
    
 
    public String toString() {
-      return "ForwardingPathList [" + "description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "ForwardingPathList [" + "description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", forwardingPathListID=" + _forwardingPathListID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

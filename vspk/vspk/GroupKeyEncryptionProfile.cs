@@ -52,6 +52,9 @@ public class GroupKeyEncryptionProfile: RestObject {
    public enum ETrafficEncryptionAlgorithm {AES_128_CBC,AES_192_CBC,AES_256_CBC,TRIPLE_DES_CBC };
 
    
+   [JsonProperty("DRSeedLifetime")]
+   protected long? _DRSeedLifetime;
+   
    [JsonProperty("SEKGenerationInterval")]
    protected long? _SEKGenerationInterval;
    
@@ -138,6 +141,17 @@ public class GroupKeyEncryptionProfile: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public long? NUDRSeedLifetime {
+      get {
+         return _DRSeedLifetime;
+      }
+      set {
+         this._DRSeedLifetime = value;
+      }
    }
 
    
@@ -417,7 +431,7 @@ public class GroupKeyEncryptionProfile: RestObject {
    
 
    public String toString() {
-      return "GroupKeyEncryptionProfile [" + "SEKGenerationInterval=" + _SEKGenerationInterval + ", SEKLifetime=" + _SEKLifetime + ", SEKPayloadEncryptionAlgorithm=" + _SEKPayloadEncryptionAlgorithm + ", SEKPayloadEncryptionBCAlgorithm=" + _SEKPayloadEncryptionBCAlgorithm + ", SEKPayloadEncryptionKeyLength=" + _SEKPayloadEncryptionKeyLength + ", SEKPayloadSigningAlgorithm=" + _SEKPayloadSigningAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", seedGenerationInterval=" + _seedGenerationInterval + ", seedLifetime=" + _seedLifetime + ", seedPayloadAuthenticationAlgorithm=" + _seedPayloadAuthenticationAlgorithm + ", seedPayloadAuthenticationBCAlgorithm=" + _seedPayloadAuthenticationBCAlgorithm + ", seedPayloadAuthenticationKeyLength=" + _seedPayloadAuthenticationKeyLength + ", seedPayloadEncryptionAlgorithm=" + _seedPayloadEncryptionAlgorithm + ", seedPayloadEncryptionBCAlgorithm=" + _seedPayloadEncryptionBCAlgorithm + ", seedPayloadEncryptionKeyLength=" + _seedPayloadEncryptionKeyLength + ", seedPayloadSigningAlgorithm=" + _seedPayloadSigningAlgorithm + ", trafficAuthenticationAlgorithm=" + _trafficAuthenticationAlgorithm + ", trafficEncryptionAlgorithm=" + _trafficEncryptionAlgorithm + ", trafficEncryptionKeyLifetime=" + _trafficEncryptionKeyLifetime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "GroupKeyEncryptionProfile [" + "DRSeedLifetime=" + _DRSeedLifetime + ", SEKGenerationInterval=" + _SEKGenerationInterval + ", SEKLifetime=" + _SEKLifetime + ", SEKPayloadEncryptionAlgorithm=" + _SEKPayloadEncryptionAlgorithm + ", SEKPayloadEncryptionBCAlgorithm=" + _SEKPayloadEncryptionBCAlgorithm + ", SEKPayloadEncryptionKeyLength=" + _SEKPayloadEncryptionKeyLength + ", SEKPayloadSigningAlgorithm=" + _SEKPayloadSigningAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", seedGenerationInterval=" + _seedGenerationInterval + ", seedLifetime=" + _seedLifetime + ", seedPayloadAuthenticationAlgorithm=" + _seedPayloadAuthenticationAlgorithm + ", seedPayloadAuthenticationBCAlgorithm=" + _seedPayloadAuthenticationBCAlgorithm + ", seedPayloadAuthenticationKeyLength=" + _seedPayloadAuthenticationKeyLength + ", seedPayloadEncryptionAlgorithm=" + _seedPayloadEncryptionAlgorithm + ", seedPayloadEncryptionBCAlgorithm=" + _seedPayloadEncryptionBCAlgorithm + ", seedPayloadEncryptionKeyLength=" + _seedPayloadEncryptionKeyLength + ", seedPayloadSigningAlgorithm=" + _seedPayloadSigningAlgorithm + ", trafficAuthenticationAlgorithm=" + _trafficAuthenticationAlgorithm + ", trafficEncryptionAlgorithm=" + _trafficEncryptionAlgorithm + ", trafficEncryptionKeyLifetime=" + _trafficEncryptionKeyLifetime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

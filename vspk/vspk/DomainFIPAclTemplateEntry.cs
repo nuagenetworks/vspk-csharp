@@ -43,12 +43,11 @@ public class DomainFIPAclTemplateEntry: RestObject {
 
    
    public enum EAction {DROP,FORWARD,REDIRECT };
-   public enum EDestinationType {NETWORK,NETWORKPOLICYGROUP,POLICYGROUP };
+   public enum EAssociatedTrafficType {L4_SERVICE,L4_SERVICE_GROUP };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum ELocationType {ANY,POLICYGROUP,REDIRECTIONTARGET,SUBNET,VPORTTAG,ZONE };
    public enum ENetworkType {ANY,ENDPOINT_DOMAIN,ENDPOINT_SUBNET,ENDPOINT_ZONE,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,POLICYGROUP,PUBLIC_NETWORK,SUBNET,ZONE };
    public enum EPolicyState {DRAFT,LIVE };
-   public enum ESourceType {NETWORK,NETWORKPOLICYGROUP,POLICYGROUP };
 
    
    [JsonProperty("ACLTemplateName")]
@@ -69,32 +68,26 @@ public class DomainFIPAclTemplateEntry: RestObject {
    [JsonProperty("action")]
    protected EAction? _action;
    
-   [JsonProperty("actionDetails")]
-   protected Object _actionDetails;
-   
    [JsonProperty("addressOverride")]
    protected String _addressOverride;
    
    [JsonProperty("associatedLiveEntityID")]
    protected String _associatedLiveEntityID;
    
+   [JsonProperty("associatedLiveTemplateID")]
+   protected String _associatedLiveTemplateID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("associatedTrafficType")]
+   protected EAssociatedTrafficType? _associatedTrafficType;
+   
+   [JsonProperty("associatedTrafficTypeID")]
+   protected String _associatedTrafficTypeID;
+   
    [JsonProperty("description")]
    protected String _description;
    
-   [JsonProperty("destPgId")]
-   protected String _destPgId;
-   
-   [JsonProperty("destPgType")]
-   protected String _destPgType;
-   
    [JsonProperty("destinationPort")]
    protected String _destinationPort;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("destinationType")]
-   protected EDestinationType? _destinationType;
-   
-   [JsonProperty("destinationValue")]
-   protected String _destinationValue;
    
    [JsonProperty("domainName")]
    protected String _domainName;
@@ -141,20 +134,8 @@ public class DomainFIPAclTemplateEntry: RestObject {
    [JsonProperty("protocol")]
    protected String _protocol;
    
-   [JsonProperty("sourcePgId")]
-   protected String _sourcePgId;
-   
-   [JsonProperty("sourcePgType")]
-   protected String _sourcePgType;
-   
    [JsonProperty("sourcePort")]
    protected String _sourcePort;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("sourceType")]
-   protected ESourceType? _sourceType;
-   
-   [JsonProperty("sourceValue")]
-   protected String _sourceValue;
    
    [JsonProperty("stateful")]
    protected bool _stateful;
@@ -249,17 +230,6 @@ public class DomainFIPAclTemplateEntry: RestObject {
 
    
    [JsonIgnore]
-   public Object NUActionDetails {
-      get {
-         return _actionDetails;
-      }
-      set {
-         this._actionDetails = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUAddressOverride {
       get {
          return _addressOverride;
@@ -282,6 +252,39 @@ public class DomainFIPAclTemplateEntry: RestObject {
 
    
    [JsonIgnore]
+   public String NUAssociatedLiveTemplateID {
+      get {
+         return _associatedLiveTemplateID;
+      }
+      set {
+         this._associatedLiveTemplateID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EAssociatedTrafficType? NUAssociatedTrafficType {
+      get {
+         return _associatedTrafficType;
+      }
+      set {
+         this._associatedTrafficType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedTrafficTypeID {
+      get {
+         return _associatedTrafficTypeID;
+      }
+      set {
+         this._associatedTrafficTypeID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -293,56 +296,12 @@ public class DomainFIPAclTemplateEntry: RestObject {
 
    
    [JsonIgnore]
-   public String NUDestPgId {
-      get {
-         return _destPgId;
-      }
-      set {
-         this._destPgId = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUDestPgType {
-      get {
-         return _destPgType;
-      }
-      set {
-         this._destPgType = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUDestinationPort {
       get {
          return _destinationPort;
       }
       set {
          this._destinationPort = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EDestinationType? NUDestinationType {
-      get {
-         return _destinationType;
-      }
-      set {
-         this._destinationType = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUDestinationValue {
-      get {
-         return _destinationValue;
-      }
-      set {
-         this._destinationValue = value;
       }
    }
 
@@ -513,56 +472,12 @@ public class DomainFIPAclTemplateEntry: RestObject {
 
    
    [JsonIgnore]
-   public String NUSourcePgId {
-      get {
-         return _sourcePgId;
-      }
-      set {
-         this._sourcePgId = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUSourcePgType {
-      get {
-         return _sourcePgType;
-      }
-      set {
-         this._sourcePgType = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUSourcePort {
       get {
          return _sourcePort;
       }
       set {
          this._sourcePort = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public ESourceType? NUSourceType {
-      get {
-         return _sourceType;
-      }
-      set {
-         this._sourceType = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUSourceValue {
-      get {
-         return _sourceValue;
-      }
-      set {
-         this._sourceValue = value;
       }
    }
 
@@ -612,7 +527,7 @@ public class DomainFIPAclTemplateEntry: RestObject {
    
 
    public String toString() {
-      return "DomainFIPAclTemplateEntry [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", actionDetails=" + _actionDetails + ", addressOverride=" + _addressOverride + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", description=" + _description + ", destPgId=" + _destPgId + ", destPgType=" + _destPgType + ", destinationPort=" + _destinationPort + ", destinationType=" + _destinationType + ", destinationValue=" + _destinationValue + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePgId=" + _sourcePgId + ", sourcePgType=" + _sourcePgType + ", sourcePort=" + _sourcePort + ", sourceType=" + _sourceType + ", sourceValue=" + _sourceValue + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "DomainFIPAclTemplateEntry [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

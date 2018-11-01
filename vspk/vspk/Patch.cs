@@ -37,30 +37,13 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class FloatingIPACLTemplate: RestObject {
+public class Patch: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EPolicyState {DRAFT,LIVE };
-   public enum EPriorityType {BOTTOM,NONE,TOP };
 
-   
-   [JsonProperty("active")]
-   protected bool _active;
-   
-   [JsonProperty("associatedLiveEntityID")]
-   protected String _associatedLiveEntityID;
-   
-   [JsonProperty("autoGeneratePriority")]
-   protected String _autoGeneratePriority;
-   
-   [JsonProperty("defaultAllowIP")]
-   protected bool _defaultAllowIP;
-   
-   [JsonProperty("defaultAllowNonIP")]
-   protected bool _defaultAllowNonIP;
    
    [JsonProperty("description")]
    protected String _description;
@@ -76,20 +59,26 @@ public class FloatingIPACLTemplate: RestObject {
    
    [JsonProperty("name")]
    protected String _name;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("policyState")]
-   protected EPolicyState? _policyState;
    
-   [JsonProperty("priority")]
-   protected long? _priority;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("priorityType")]
-   protected EPriorityType? _priorityType;
+   [JsonProperty("patchBuildNumber")]
+   protected long? _patchBuildNumber;
+   
+   [JsonProperty("patchSummary")]
+   protected String _patchSummary;
+   
+   [JsonProperty("patchTag")]
+   protected String _patchTag;
+   
+   [JsonProperty("patchVersion")]
+   protected String _patchVersion;
+   
+   [JsonProperty("supportsDeletion")]
+   protected bool _supportsDeletion;
+   
+   [JsonProperty("supportsNetworkAcceleration")]
+   protected bool _supportsNetworkAcceleration;
    
 
-   
-   [JsonIgnore]
-   private FloatingIPACLTemplateEntriesFetcher _floatingIPACLTemplateEntries;
    
    [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
@@ -97,69 +86,12 @@ public class FloatingIPACLTemplate: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
-   public FloatingIPACLTemplate() {
-      
-      _floatingIPACLTemplateEntries = new FloatingIPACLTemplateEntriesFetcher(this);
+   public Patch() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
-   }
-
-   
-   [JsonIgnore]
-   public bool NUActive {
-      get {
-         return _active;
-      }
-      set {
-         this._active = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUAssociatedLiveEntityID {
-      get {
-         return _associatedLiveEntityID;
-      }
-      set {
-         this._associatedLiveEntityID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUAutoGeneratePriority {
-      get {
-         return _autoGeneratePriority;
-      }
-      set {
-         this._autoGeneratePriority = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public bool NUDefaultAllowIP {
-      get {
-         return _defaultAllowIP;
-      }
-      set {
-         this._defaultAllowIP = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public bool NUDefaultAllowNonIP {
-      get {
-         return _defaultAllowNonIP;
-      }
-      set {
-         this._defaultAllowNonIP = value;
-      }
    }
 
    
@@ -219,43 +151,72 @@ public class FloatingIPACLTemplate: RestObject {
 
    
    [JsonIgnore]
-   public EPolicyState? NUPolicyState {
+   public long? NUPatchBuildNumber {
       get {
-         return _policyState;
+         return _patchBuildNumber;
       }
       set {
-         this._policyState = value;
+         this._patchBuildNumber = value;
       }
    }
 
    
    [JsonIgnore]
-   public long? NUPriority {
+   public String NUPatchSummary {
       get {
-         return _priority;
+         return _patchSummary;
       }
       set {
-         this._priority = value;
+         this._patchSummary = value;
       }
    }
 
    
    [JsonIgnore]
-   public EPriorityType? NUPriorityType {
+   public String NUPatchTag {
       get {
-         return _priorityType;
+         return _patchTag;
       }
       set {
-         this._priorityType = value;
+         this._patchTag = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUPatchVersion {
+      get {
+         return _patchVersion;
+      }
+      set {
+         this._patchVersion = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUSupportsDeletion {
+      get {
+         return _supportsDeletion;
+      }
+      set {
+         this._supportsDeletion = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUSupportsNetworkAcceleration {
+      get {
+         return _supportsNetworkAcceleration;
+      }
+      set {
+         this._supportsNetworkAcceleration = value;
       }
    }
 
    
 
-   
-   public FloatingIPACLTemplateEntriesFetcher getFloatingIPACLTemplateEntries() {
-      return _floatingIPACLTemplateEntries;
-   }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
@@ -267,7 +228,7 @@ public class FloatingIPACLTemplate: RestObject {
    
 
    public String toString() {
-      return "FloatingIPACLTemplate [" + "active=" + _active + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", autoGeneratePriority=" + _autoGeneratePriority + ", defaultAllowIP=" + _defaultAllowIP + ", defaultAllowNonIP=" + _defaultAllowNonIP + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyState=" + _policyState + ", priority=" + _priority + ", priorityType=" + _priorityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Patch [" + "description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", patchBuildNumber=" + _patchBuildNumber + ", patchSummary=" + _patchSummary + ", patchTag=" + _patchTag + ", patchVersion=" + _patchVersion + ", supportsDeletion=" + _supportsDeletion + ", supportsNetworkAcceleration=" + _supportsNetworkAcceleration + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -275,12 +236,12 @@ public class FloatingIPACLTemplate: RestObject {
 
    public static String getResourceName()
    {
-	return "egressfloatingipacltemplates";
+	return "patches";
    }
 
    public static String getRestName()
    {
-	return "egressfloatingipacltemplate";
+	return "patch";
    }
 }
 }

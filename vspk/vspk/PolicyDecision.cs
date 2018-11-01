@@ -66,9 +66,6 @@ public class PolicyDecision: RestObject {
    [JsonProperty("ingressAdvFwd")]
    protected System.Collections.Generic.List<JObject> _ingressAdvFwd;
    
-   [JsonProperty("ingressExternalServiceACLs")]
-   protected System.Collections.Generic.List<JObject> _ingressExternalServiceACLs;
-   
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
@@ -178,17 +175,6 @@ public class PolicyDecision: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<JObject> NUIngressExternalServiceACLs {
-      get {
-         return _ingressExternalServiceACLs;
-      }
-      set {
-         this._ingressExternalServiceACLs = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -237,7 +223,7 @@ public class PolicyDecision: RestObject {
    
 
    public String toString() {
-      return "PolicyDecision [" + "egressACLs=" + _egressACLs + ", egressQos=" + _egressQos + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fipACLs=" + _fipACLs + ", ingressACLs=" + _ingressACLs + ", ingressAdvFwd=" + _ingressAdvFwd + ", ingressExternalServiceACLs=" + _ingressExternalServiceACLs + ", lastUpdatedBy=" + _lastUpdatedBy + ", qos=" + _qos + ", stats=" + _stats + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "PolicyDecision [" + "egressACLs=" + _egressACLs + ", egressQos=" + _egressQos + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fipACLs=" + _fipACLs + ", ingressACLs=" + _ingressACLs + ", ingressAdvFwd=" + _ingressAdvFwd + ", lastUpdatedBy=" + _lastUpdatedBy + ", qos=" + _qos + ", stats=" + _stats + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

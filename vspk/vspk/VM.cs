@@ -54,6 +54,9 @@ public class VM: RestObject {
    [JsonProperty("VRSID")]
    protected String _VRSID;
    
+   [JsonProperty("computeProvisioned")]
+   protected bool _computeProvisioned;
+   
    [JsonProperty("deleteExpiry")]
    protected long? _deleteExpiry;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -177,6 +180,17 @@ public class VM: RestObject {
       }
       set {
          this._VRSID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUComputeProvisioned {
+      get {
+         return _computeProvisioned;
+      }
+      set {
+         this._computeProvisioned = value;
       }
    }
 
@@ -444,7 +458,7 @@ public class VM: RestObject {
    
 
    public String toString() {
-      return "VM [" + "UUID=" + _UUID + ", VRSID=" + _VRSID + ", deleteExpiry=" + _deleteExpiry + ", deleteMode=" + _deleteMode + ", domainIDs=" + _domainIDs + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", interfaces=" + _interfaces + ", l2DomainIDs=" + _l2DomainIDs + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", orchestrationID=" + _orchestrationID + ", reasonType=" + _reasonType + ", resyncInfo=" + _resyncInfo + ", siteIdentifier=" + _siteIdentifier + ", status=" + _status + ", subnetIDs=" + _subnetIDs + ", userID=" + _userID + ", userName=" + _userName + ", zoneIDs=" + _zoneIDs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VM [" + "UUID=" + _UUID + ", VRSID=" + _VRSID + ", computeProvisioned=" + _computeProvisioned + ", deleteExpiry=" + _deleteExpiry + ", deleteMode=" + _deleteMode + ", domainIDs=" + _domainIDs + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", interfaces=" + _interfaces + ", l2DomainIDs=" + _l2DomainIDs + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", orchestrationID=" + _orchestrationID + ", reasonType=" + _reasonType + ", resyncInfo=" + _resyncInfo + ", siteIdentifier=" + _siteIdentifier + ", status=" + _status + ", subnetIDs=" + _subnetIDs + ", userID=" + _userID + ", userName=" + _userName + ", zoneIDs=" + _zoneIDs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -45,7 +45,7 @@ public class RedundantPort: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
    public enum EPortType {ACCESS };
-   public enum ESpeed {AUTONEGOTIATE,BASE10,BASET1000,BASETX100,BASEX10G };
+   public enum ESpeed {AUTONEGOTIATE,BASET10,BASET1000,BASETX100,BASEX10G };
    public enum EStatus {INITIALIZED,MISMATCH,ORPHAN,READY };
 
    
@@ -109,6 +109,9 @@ public class RedundantPort: RestObject {
 
    
    [JsonIgnore]
+   private EnterprisePermissionsFetcher _enterprisePermissions;
+   
+   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
@@ -118,15 +121,22 @@ public class RedundantPort: RestObject {
    private NSPortsFetcher _nSPorts;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VLANsFetcher _vLANs;
    
    public RedundantPort() {
+      
+      _enterprisePermissions = new EnterprisePermissionsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
       _nSPorts = new NSPortsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _vLANs = new VLANsFetcher(this);
       
@@ -344,6 +354,10 @@ public class RedundantPort: RestObject {
    
 
    
+   public EnterprisePermissionsFetcher getEnterprisePermissions() {
+      return _enterprisePermissions;
+   }
+   
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
    }
@@ -354,6 +368,10 @@ public class RedundantPort: RestObject {
    
    public NSPortsFetcher getNSPorts() {
       return _nSPorts;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VLANsFetcher getVLANs() {

@@ -42,8 +42,12 @@ public class NSGatewaySummary: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EBootstrapStatus {ACTIVE,CERTIFICATE_REQUIRED,INACTIVE,NOTIFICATION_APP_REQ_ACK,NOTIFICATION_APP_REQ_SENT };
+   public enum EBootstrapStatus {ACTIVE,CERTIFICATE_SIGNED,INACTIVE,NOTIFICATION_APP_REQ_ACK,NOTIFICATION_APP_REQ_SENT };
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
+   
+   [JsonProperty("NSGVersion")]
+   protected String _NSGVersion;
    
    [JsonProperty("address")]
    protected String _address;
@@ -59,6 +63,12 @@ public class NSGatewaySummary: RestObject {
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
    
    [JsonProperty("gatewayID")]
    protected String _gatewayID;
@@ -66,8 +76,14 @@ public class NSGatewaySummary: RestObject {
    [JsonProperty("gatewayName")]
    protected String _gatewayName;
    
+   [JsonProperty("gatewayType")]
+   protected String _gatewayType;
+   
    [JsonProperty("infoAlarmsCount")]
-   protected String _infoAlarmsCount;
+   protected long? _infoAlarmsCount;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("latitude")]
    protected float _latitude;
@@ -84,22 +100,40 @@ public class NSGatewaySummary: RestObject {
    [JsonProperty("minorAlarmsCount")]
    protected long? _minorAlarmsCount;
    
-   [JsonProperty("nsgVersion")]
-   protected String _nsgVersion;
-   
    [JsonProperty("state")]
    protected String _state;
    
    [JsonProperty("systemID")]
    protected String _systemID;
    
-   [JsonProperty("timeZoneID")]
-   protected String _timeZoneID;
+   [JsonProperty("timezoneID")]
+   protected String _timezoneID;
    
 
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public NSGatewaySummary() {
       
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
+      
+   }
+
+   
+   [JsonIgnore]
+   public String NUNSGVersion {
+      get {
+         return _NSGVersion;
+      }
+      set {
+         this._NSGVersion = value;
+      }
    }
 
    
@@ -159,6 +193,28 @@ public class NSGatewaySummary: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUGatewayID {
       get {
          return _gatewayID;
@@ -181,12 +237,34 @@ public class NSGatewaySummary: RestObject {
 
    
    [JsonIgnore]
-   public String NUInfoAlarmsCount {
+   public String NUGatewayType {
+      get {
+         return _gatewayType;
+      }
+      set {
+         this._gatewayType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUInfoAlarmsCount {
       get {
          return _infoAlarmsCount;
       }
       set {
          this._infoAlarmsCount = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
       }
    }
 
@@ -247,17 +325,6 @@ public class NSGatewaySummary: RestObject {
 
    
    [JsonIgnore]
-   public String NUNsgVersion {
-      get {
-         return _nsgVersion;
-      }
-      set {
-         this._nsgVersion = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUState {
       get {
          return _state;
@@ -280,21 +347,29 @@ public class NSGatewaySummary: RestObject {
 
    
    [JsonIgnore]
-   public String NUTimeZoneID {
+   public String NUTimezoneID {
       get {
-         return _timeZoneID;
+         return _timezoneID;
       }
       set {
-         this._timeZoneID = value;
+         this._timezoneID = value;
       }
    }
 
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "NSGatewaySummary [" + "address=" + _address + ", bootstrapStatus=" + _bootstrapStatus + ", country=" + _country + ", criticalAlarmsCount=" + _criticalAlarmsCount + ", enterpriseID=" + _enterpriseID + ", gatewayID=" + _gatewayID + ", gatewayName=" + _gatewayName + ", infoAlarmsCount=" + _infoAlarmsCount + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", majorAlarmsCount=" + _majorAlarmsCount + ", minorAlarmsCount=" + _minorAlarmsCount + ", nsgVersion=" + _nsgVersion + ", state=" + _state + ", systemID=" + _systemID + ", timeZoneID=" + _timeZoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGatewaySummary [" + "NSGVersion=" + _NSGVersion + ", address=" + _address + ", bootstrapStatus=" + _bootstrapStatus + ", country=" + _country + ", criticalAlarmsCount=" + _criticalAlarmsCount + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", gatewayName=" + _gatewayName + ", gatewayType=" + _gatewayType + ", infoAlarmsCount=" + _infoAlarmsCount + ", lastUpdatedBy=" + _lastUpdatedBy + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", majorAlarmsCount=" + _majorAlarmsCount + ", minorAlarmsCount=" + _minorAlarmsCount + ", state=" + _state + ", systemID=" + _systemID + ", timezoneID=" + _timezoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

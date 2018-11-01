@@ -45,6 +45,9 @@ public class AggregateMetadata: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("assocEntityType")]
+   protected String _assocEntityType;
+   
    [JsonProperty("blob")]
    protected String _blob;
    
@@ -73,6 +76,17 @@ public class AggregateMetadata: RestObject {
    
    public AggregateMetadata() {
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssocEntityType {
+      get {
+         return _assocEntityType;
+      }
+      set {
+         this._assocEntityType = value;
+      }
    }
 
    
@@ -168,7 +182,7 @@ public class AggregateMetadata: RestObject {
    
 
    public String toString() {
-      return "AggregateMetadata [" + "blob=" + _blob + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", globalMetadata=" + _globalMetadata + ", metadataTagIDs=" + _metadataTagIDs + ", name=" + _name + ", networkNotificationDisabled=" + _networkNotificationDisabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "AggregateMetadata [" + "assocEntityType=" + _assocEntityType + ", blob=" + _blob + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", globalMetadata=" + _globalMetadata + ", metadataTagIDs=" + _metadataTagIDs + ", name=" + _name + ", networkNotificationDisabled=" + _networkNotificationDisabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

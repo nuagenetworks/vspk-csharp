@@ -43,7 +43,10 @@ public class SSIDConnection: RestObject {
 
    
    public enum EAuthenticationMode {CAPTIVE_PORTAL,OPEN,WEP,WPA,WPA2,WPA_OTP,WPA_WPA2 };
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum EPermittedAction {USE,READ,ALL,INSTANTIATE,EXTEND,DEPLOY };
    public enum ERedirectOption {CONFIGURED_URL,ORIGINAL_REQUEST };
+   public enum EStatus {INITIALIZED,ORPHAN,READY,MISMATCH };
 
    
    [JsonProperty("associatedCaptivePortalProfileID")]
@@ -63,6 +66,15 @@ public class SSIDConnection: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("gatewayID")]
+   protected String _gatewayID;
    
    [JsonProperty("genericConfig")]
    protected String _genericConfig;
@@ -70,17 +82,35 @@ public class SSIDConnection: RestObject {
    [JsonProperty("interfaceName")]
    protected String _interfaceName;
    
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   
    [JsonProperty("name")]
    protected String _name;
    
    [JsonProperty("passphrase")]
    protected String _passphrase;
    [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("permittedAction")]
+   protected EPermittedAction? _permittedAction;
+   
+   [JsonProperty("readonly")]
+   protected bool _readonly;
+   [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("redirectOption")]
    protected ERedirectOption? _redirectOption;
    
    [JsonProperty("redirectURL")]
    protected String _redirectURL;
+   
+   [JsonProperty("restricted")]
+   protected bool _restricted;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("status")]
+   protected EStatus? _status;
+   
+   [JsonProperty("vlanID")]
+   protected long? _vlanID;
    
    [JsonProperty("vportID")]
    protected String _vportID;
@@ -94,18 +124,23 @@ public class SSIDConnection: RestObject {
    private AlarmsFetcher _alarms;
    
    [JsonIgnore]
-   private CaptivePortalProfilesFetcher _captivePortalProfiles;
+   private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
-   private EventLogsFetcher _eventLogs;
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
    
    public SSIDConnection() {
       
       _alarms = new AlarmsFetcher(this);
       
-      _captivePortalProfiles = new CaptivePortalProfilesFetcher(this);
-      
       _eventLogs = new EventLogsFetcher(this);
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
    }
 
@@ -177,6 +212,39 @@ public class SSIDConnection: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUGatewayID {
+      get {
+         return _gatewayID;
+      }
+      set {
+         this._gatewayID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUGenericConfig {
       get {
          return _genericConfig;
@@ -194,6 +262,17 @@ public class SSIDConnection: RestObject {
       }
       set {
          this._interfaceName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
       }
    }
 
@@ -221,6 +300,28 @@ public class SSIDConnection: RestObject {
 
    
    [JsonIgnore]
+   public EPermittedAction? NUPermittedAction {
+      get {
+         return _permittedAction;
+      }
+      set {
+         this._permittedAction = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUReadonly {
+      get {
+         return _readonly;
+      }
+      set {
+         this._readonly = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public ERedirectOption? NURedirectOption {
       get {
          return _redirectOption;
@@ -238,6 +339,39 @@ public class SSIDConnection: RestObject {
       }
       set {
          this._redirectURL = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NURestricted {
+      get {
+         return _restricted;
+      }
+      set {
+         this._restricted = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EStatus? NUStatus {
+      get {
+         return _status;
+      }
+      set {
+         this._status = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUVlanID {
+      get {
+         return _vlanID;
+      }
+      set {
+         this._vlanID = value;
       }
    }
 
@@ -270,17 +404,21 @@ public class SSIDConnection: RestObject {
       return _alarms;
    }
    
-   public CaptivePortalProfilesFetcher getCaptivePortalProfiles() {
-      return _captivePortalProfiles;
-   }
-   
    public EventLogsFetcher getEventLogs() {
       return _eventLogs;
    }
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "SSIDConnection [" + "associatedCaptivePortalProfileID=" + _associatedCaptivePortalProfileID + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", authenticationMode=" + _authenticationMode + ", blackList=" + _blackList + ", broadcastSSID=" + _broadcastSSID + ", description=" + _description + ", genericConfig=" + _genericConfig + ", interfaceName=" + _interfaceName + ", name=" + _name + ", passphrase=" + _passphrase + ", redirectOption=" + _redirectOption + ", redirectURL=" + _redirectURL + ", vportID=" + _vportID + ", whiteList=" + _whiteList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "SSIDConnection [" + "associatedCaptivePortalProfileID=" + _associatedCaptivePortalProfileID + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", authenticationMode=" + _authenticationMode + ", blackList=" + _blackList + ", broadcastSSID=" + _broadcastSSID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", genericConfig=" + _genericConfig + ", interfaceName=" + _interfaceName + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", passphrase=" + _passphrase + ", permittedAction=" + _permittedAction + ", readonly=" + _readonly + ", redirectOption=" + _redirectOption + ", redirectURL=" + _redirectURL + ", restricted=" + _restricted + ", status=" + _status + ", vlanID=" + _vlanID + ", vportID=" + _vportID + ", whiteList=" + _whiteList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

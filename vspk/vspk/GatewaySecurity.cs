@@ -44,6 +44,9 @@ public class GatewaySecurity: RestObject {
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
+   
+   [JsonProperty("associatedEntityType")]
+   protected String _associatedEntityType;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -79,6 +82,17 @@ public class GatewaySecurity: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEntityType {
+      get {
+         return _associatedEntityType;
+      }
+      set {
+         this._associatedEntityType = value;
+      }
    }
 
    
@@ -153,7 +167,7 @@ public class GatewaySecurity: RestObject {
    
 
    public String toString() {
-      return "GatewaySecurity [" + "entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", lastUpdatedBy=" + _lastUpdatedBy + ", revision=" + _revision + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "GatewaySecurity [" + "associatedEntityType=" + _associatedEntityType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", lastUpdatedBy=" + _lastUpdatedBy + ", revision=" + _revision + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

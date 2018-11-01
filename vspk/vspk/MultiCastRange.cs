@@ -42,8 +42,12 @@ public class MultiCastRange: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EIPType {DUALSTACK,IPV4,IPV6 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("IPType")]
+   protected EIPType? _IPType;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -79,6 +83,17 @@ public class MultiCastRange: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public EIPType? NUIPType {
+      get {
+         return _IPType;
+      }
+      set {
+         this._IPType = value;
+      }
    }
 
    
@@ -153,7 +168,7 @@ public class MultiCastRange: RestObject {
    
 
    public String toString() {
-      return "MultiCastRange [" + "entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", maxAddress=" + _maxAddress + ", minAddress=" + _minAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "MultiCastRange [" + "IPType=" + _IPType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", maxAddress=" + _maxAddress + ", minAddress=" + _minAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

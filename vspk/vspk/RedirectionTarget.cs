@@ -42,6 +42,7 @@ public class RedirectionTarget: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EDestinationType {OVERLAY_MIRROR_DESTINATION,REDIRECTION_TARGET };
    public enum EEndPointType {L3,NSG_VNF,VIRTUAL_WIRE };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum ETriggerType {GARP,NONE };
@@ -52,6 +53,9 @@ public class RedirectionTarget: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("destinationType")]
+   protected EDestinationType? _destinationType;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("endPointType")]
    protected EEndPointType? _endPointType;
@@ -131,6 +135,17 @@ public class RedirectionTarget: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EDestinationType? NUDestinationType {
+      get {
+         return _destinationType;
+      }
+      set {
+         this._destinationType = value;
       }
    }
 
@@ -258,7 +273,7 @@ public class RedirectionTarget: RestObject {
    
 
    public String toString() {
-      return "RedirectionTarget [" + "ESI=" + _ESI + ", description=" + _description + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", redundancyEnabled=" + _redundancyEnabled + ", templateID=" + _templateID + ", triggerType=" + _triggerType + ", virtualNetworkID=" + _virtualNetworkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "RedirectionTarget [" + "ESI=" + _ESI + ", description=" + _description + ", destinationType=" + _destinationType + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", redundancyEnabled=" + _redundancyEnabled + ", templateID=" + _templateID + ", triggerType=" + _triggerType + ", virtualNetworkID=" + _virtualNetworkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

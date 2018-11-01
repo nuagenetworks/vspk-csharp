@@ -46,6 +46,9 @@ public class Tier: RestObject {
    public enum ETierType {TIER1,TIER2 };
 
    
+   [JsonProperty("description")]
+   protected String _description;
+   
    [JsonProperty("downThresholdCount")]
    protected long? _downThresholdCount;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -89,6 +92,17 @@ public class Tier: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUDescription {
+      get {
+         return _description;
+      }
+      set {
+         this._description = value;
+      }
    }
 
    
@@ -196,7 +210,7 @@ public class Tier: RestObject {
    
 
    public String toString() {
-      return "Tier [" + "downThresholdCount=" + _downThresholdCount + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", packetCount=" + _packetCount + ", probeInterval=" + _probeInterval + ", tierType=" + _tierType + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Tier [" + "description=" + _description + ", downThresholdCount=" + _downThresholdCount + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", packetCount=" + _packetCount + ", probeInterval=" + _probeInterval + ", tierType=" + _tierType + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

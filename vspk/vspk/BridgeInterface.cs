@@ -46,9 +46,6 @@ public class BridgeInterface: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
-   [JsonProperty("IPv6Address")]
-   protected String _IPv6Address;
-   
    [JsonProperty("IPv6Gateway")]
    protected String _IPv6Gateway;
    
@@ -109,6 +106,9 @@ public class BridgeInterface: RestObject {
 
    
    [JsonIgnore]
+   private DeploymentFailuresFetcher _deploymentFailures;
+   
+   [JsonIgnore]
    private DHCPOptionsFetcher _dHCPOptions;
    
    [JsonIgnore]
@@ -140,6 +140,8 @@ public class BridgeInterface: RestObject {
    
    public BridgeInterface() {
       
+      _deploymentFailures = new DeploymentFailuresFetcher(this);
+      
       _dHCPOptions = new DHCPOptionsFetcher(this);
       
       _eventLogs = new EventLogsFetcher(this);
@@ -160,17 +162,6 @@ public class BridgeInterface: RestObject {
       
       _tCAs = new TCAsFetcher(this);
       
-   }
-
-   
-   [JsonIgnore]
-   public String NUIPv6Address {
-      get {
-         return _IPv6Address;
-      }
-      set {
-         this._IPv6Address = value;
-      }
    }
 
    
@@ -385,6 +376,10 @@ public class BridgeInterface: RestObject {
    
 
    
+   public DeploymentFailuresFetcher getDeploymentFailures() {
+      return _deploymentFailures;
+   }
+   
    public DHCPOptionsFetcher getDHCPOptions() {
       return _dHCPOptions;
    }
@@ -427,7 +422,7 @@ public class BridgeInterface: RestObject {
    
 
    public String toString() {
-      return "BridgeInterface [" + "IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", VPortID=" + _VPortID + ", VPortName=" + _VPortName + ", associatedFloatingIPAddress=" + _associatedFloatingIPAddress + ", attachedNetworkID=" + _attachedNetworkID + ", attachedNetworkType=" + _attachedNetworkType + ", domainID=" + _domainID + ", domainName=" + _domainName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", netmask=" + _netmask + ", networkName=" + _networkName + ", policyDecisionID=" + _policyDecisionID + ", tierID=" + _tierID + ", zoneID=" + _zoneID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BridgeInterface [" + "IPv6Gateway=" + _IPv6Gateway + ", VPortID=" + _VPortID + ", VPortName=" + _VPortName + ", associatedFloatingIPAddress=" + _associatedFloatingIPAddress + ", attachedNetworkID=" + _attachedNetworkID + ", attachedNetworkType=" + _attachedNetworkType + ", domainID=" + _domainID + ", domainName=" + _domainName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", netmask=" + _netmask + ", networkName=" + _networkName + ", policyDecisionID=" + _policyDecisionID + ", tierID=" + _tierID + ", zoneID=" + _zoneID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

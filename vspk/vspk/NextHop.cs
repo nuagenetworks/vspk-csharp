@@ -42,8 +42,13 @@ public class NextHop: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EIPType {IPV4,IPV6,DUALSTACK };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum EType {IP,BR_PORT,GATEWAY };
 
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("IPType")]
+   protected EIPType? _IPType;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -59,6 +64,9 @@ public class NextHop: RestObject {
    
    [JsonProperty("routeDistinguisher")]
    protected String _routeDistinguisher;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("type")]
+   protected EType? _type;
    
 
    
@@ -74,6 +82,17 @@ public class NextHop: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public EIPType? NUIPType {
+      get {
+         return _IPType;
+      }
+      set {
+         this._IPType = value;
+      }
    }
 
    
@@ -132,6 +151,17 @@ public class NextHop: RestObject {
    }
 
    
+   [JsonIgnore]
+   public EType? NUType {
+      get {
+         return _type;
+      }
+      set {
+         this._type = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -144,7 +174,7 @@ public class NextHop: RestObject {
    
 
    public String toString() {
-      return "NextHop [" + "entityScope=" + _entityScope + ", externalID=" + _externalID + ", ip=" + _ip + ", lastUpdatedBy=" + _lastUpdatedBy + ", routeDistinguisher=" + _routeDistinguisher + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NextHop [" + "IPType=" + _IPType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ip=" + _ip + ", lastUpdatedBy=" + _lastUpdatedBy + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -61,8 +61,14 @@ public class NATMapEntry: RestObject {
    [JsonProperty("privateIP")]
    protected String _privateIP;
    
+   [JsonProperty("privatePort")]
+   protected long? _privatePort;
+   
    [JsonProperty("publicIP")]
    protected String _publicIP;
+   
+   [JsonProperty("publicPort")]
+   protected long? _publicPort;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("type")]
    protected EType? _type;
@@ -140,12 +146,34 @@ public class NATMapEntry: RestObject {
 
    
    [JsonIgnore]
+   public long? NUPrivatePort {
+      get {
+         return _privatePort;
+      }
+      set {
+         this._privatePort = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUPublicIP {
       get {
          return _publicIP;
       }
       set {
          this._publicIP = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUPublicPort {
+      get {
+         return _publicPort;
+      }
+      set {
+         this._publicPort = value;
       }
    }
 
@@ -173,7 +201,7 @@ public class NATMapEntry: RestObject {
    
 
    public String toString() {
-      return "NATMapEntry [" + "associatedPATNATPoolID=" + _associatedPATNATPoolID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", privateIP=" + _privateIP + ", publicIP=" + _publicIP + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NATMapEntry [" + "associatedPATNATPoolID=" + _associatedPATNATPoolID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", privateIP=" + _privateIP + ", privatePort=" + _privatePort + ", publicIP=" + _publicIP + ", publicPort=" + _publicPort + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

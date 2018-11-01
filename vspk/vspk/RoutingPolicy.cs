@@ -44,6 +44,7 @@ public class RoutingPolicy: RestObject {
    
    public enum EDefaultAction {ACCEPT,REJECT };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum ERoutingProtocol {BGP,OSPFv2,OSPFv3,ISIS,ROUTING };
 
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("defaultAction")]
@@ -63,6 +64,9 @@ public class RoutingPolicy: RestObject {
    
    [JsonProperty("policyDefinition")]
    protected String _policyDefinition;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("routingProtocol")]
+   protected ERoutingProtocol? _routingProtocol;
    
 
    
@@ -147,6 +151,17 @@ public class RoutingPolicy: RestObject {
    }
 
    
+   [JsonIgnore]
+   public ERoutingProtocol? NURoutingProtocol {
+      get {
+         return _routingProtocol;
+      }
+      set {
+         this._routingProtocol = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -159,7 +174,7 @@ public class RoutingPolicy: RestObject {
    
 
    public String toString() {
-      return "RoutingPolicy [" + "defaultAction=" + _defaultAction + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", policyDefinition=" + _policyDefinition + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "RoutingPolicy [" + "defaultAction=" + _defaultAction + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", policyDefinition=" + _policyDefinition + ", routingProtocol=" + _routingProtocol + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

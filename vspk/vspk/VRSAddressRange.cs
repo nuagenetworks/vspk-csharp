@@ -42,8 +42,12 @@ public class VRSAddressRange: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EIPType {IPV4,IPV6,DUALSTACK };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("IPType")]
+   protected EIPType? _IPType;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -74,6 +78,17 @@ public class VRSAddressRange: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public EIPType? NUIPType {
+      get {
+         return _IPType;
+      }
+      set {
+         this._IPType = value;
+      }
    }
 
    
@@ -144,7 +159,7 @@ public class VRSAddressRange: RestObject {
    
 
    public String toString() {
-      return "VRSAddressRange [" + "entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", maxAddress=" + _maxAddress + ", minAddress=" + _minAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VRSAddressRange [" + "IPType=" + _IPType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", maxAddress=" + _maxAddress + ", minAddress=" + _minAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

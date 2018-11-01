@@ -42,6 +42,7 @@ public class L7applicationsignature: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
    [JsonProperty("category")]
@@ -58,9 +59,18 @@ public class L7applicationsignature: RestObject {
    
    [JsonProperty("dictionaryVersion")]
    protected long? _dictionaryVersion;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
    
    [JsonProperty("guidstring")]
    protected String _guidstring;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("name")]
    protected String _name;
@@ -91,9 +101,19 @@ public class L7applicationsignature: RestObject {
    [JsonIgnore]
    private ApplicationsFetcher _applications;
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public L7applicationsignature() {
       
       _applications = new ApplicationsFetcher(this);
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
    }
 
@@ -154,12 +174,45 @@ public class L7applicationsignature: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUGuidstring {
       get {
          return _guidstring;
       }
       set {
          this._guidstring = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
       }
    }
 
@@ -258,9 +311,17 @@ public class L7applicationsignature: RestObject {
       return _applications;
    }
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "L7applicationsignature [" + "category=" + _category + ", deprecated=" + _deprecated + ", deprecatedVersion=" + _deprecatedVersion + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", guidstring=" + _guidstring + ", name=" + _name + ", pluginName=" + _pluginName + ", productivity=" + _productivity + ", readonly=" + _readonly + ", reference=" + _reference + ", risk=" + _risk + ", signatureIndex=" + _signatureIndex + ", softwareFlags=" + _softwareFlags + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "L7applicationsignature [" + "category=" + _category + ", deprecated=" + _deprecated + ", deprecatedVersion=" + _deprecatedVersion + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", guidstring=" + _guidstring + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", pluginName=" + _pluginName + ", productivity=" + _productivity + ", readonly=" + _readonly + ", reference=" + _reference + ", risk=" + _risk + ", signatureIndex=" + _signatureIndex + ", softwareFlags=" + _softwareFlags + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

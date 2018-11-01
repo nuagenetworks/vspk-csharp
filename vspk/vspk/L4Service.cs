@@ -77,7 +77,12 @@ public class L4Service: RestObject {
    
 
    
+   [JsonIgnore]
+   private L4ServiceGroupsFetcher _l4ServiceGroups;
+   
    public L4Service() {
+      
+      _l4ServiceGroups = new L4ServiceGroupsFetcher(this);
       
    }
 
@@ -193,6 +198,10 @@ public class L4Service: RestObject {
 
    
 
+   
+   public L4ServiceGroupsFetcher getL4ServiceGroups() {
+      return _l4ServiceGroups;
+   }
    
 
    public String toString() {

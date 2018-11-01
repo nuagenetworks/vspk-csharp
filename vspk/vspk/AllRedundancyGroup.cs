@@ -37,19 +37,16 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class NSRedundantGatewayGroup: RestObject {
+public class AllRedundancyGroup: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
-   public enum EPersonality {DC7X50,HARDWARE_VTEP,NSG,NSGBR,NSGDUC,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,OTHER,VRSB,VRSG,VSA,VSG };
+   public enum EPersonality {DC7X50,EVDF,EVDFB,HARDWARE_VTEP,NETCONF_7X50,NSG,NSGBR,NSGDUC,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,OTHER,VDFG,VRSB,VRSG,VSA,VSG };
    public enum ERedundantGatewayStatus {FAILED,SUCCESS };
 
-   
-   [JsonProperty("consecutiveFailuresCount")]
-   protected long? _consecutiveFailuresCount;
    
    [JsonProperty("description")]
    protected String _description;
@@ -81,17 +78,8 @@ public class NSRedundantGatewayGroup: RestObject {
    [JsonProperty("gatewayPeer2Connected")]
    protected bool _gatewayPeer2Connected;
    
-   [JsonProperty("gatewayPeer2ID")]
-   protected String _gatewayPeer2ID;
-   
    [JsonProperty("gatewayPeer2Name")]
    protected String _gatewayPeer2Name;
-   
-   [JsonProperty("heartbeatInterval")]
-   protected long? _heartbeatInterval;
-   
-   [JsonProperty("heartbeatVLANID")]
-   protected long? _heartbeatVLANID;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
@@ -104,23 +92,14 @@ public class NSRedundantGatewayGroup: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("personality")]
    protected EPersonality? _personality;
-   
-   [JsonProperty("redundancyPortIDs")]
-   protected System.Collections.Generic.List<String> _redundancyPortIDs;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("redundantGatewayStatus")]
    protected ERedundantGatewayStatus? _redundantGatewayStatus;
    
+   [JsonProperty("vtep")]
+   protected String _vtep;
+   
 
-   
-   [JsonIgnore]
-   private AlarmsFetcher _alarms;
-   
-   [JsonIgnore]
-   private EnterprisePermissionsFetcher _enterprisePermissions;
-   
-   [JsonIgnore]
-   private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
@@ -128,49 +107,12 @@ public class NSRedundantGatewayGroup: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
-   [JsonIgnore]
-   private NSGatewaysFetcher _nSGateways;
-   
-   [JsonIgnore]
-   private RedundantPortsFetcher _redundantPorts;
-   
-   [JsonIgnore]
-   private PermissionsFetcher _permissions;
-   
-   [JsonIgnore]
-   private ShuntLinksFetcher _shuntLinks;
-   
-   public NSRedundantGatewayGroup() {
-      
-      _alarms = new AlarmsFetcher(this);
-      
-      _enterprisePermissions = new EnterprisePermissionsFetcher(this);
-      
-      _eventLogs = new EventLogsFetcher(this);
+   public AllRedundancyGroup() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
-      _nSGateways = new NSGatewaysFetcher(this);
-      
-      _redundantPorts = new RedundantPortsFetcher(this);
-      
-      _permissions = new PermissionsFetcher(this);
-      
-      _shuntLinks = new ShuntLinksFetcher(this);
-      
-   }
-
-   
-   [JsonIgnore]
-   public long? NUConsecutiveFailuresCount {
-      get {
-         return _consecutiveFailuresCount;
-      }
-      set {
-         this._consecutiveFailuresCount = value;
-      }
    }
 
    
@@ -285,45 +227,12 @@ public class NSRedundantGatewayGroup: RestObject {
 
    
    [JsonIgnore]
-   public String NUGatewayPeer2ID {
-      get {
-         return _gatewayPeer2ID;
-      }
-      set {
-         this._gatewayPeer2ID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUGatewayPeer2Name {
       get {
          return _gatewayPeer2Name;
       }
       set {
          this._gatewayPeer2Name = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public long? NUHeartbeatInterval {
-      get {
-         return _heartbeatInterval;
-      }
-      set {
-         this._heartbeatInterval = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public long? NUHeartbeatVLANID {
-      get {
-         return _heartbeatVLANID;
-      }
-      set {
-         this._heartbeatVLANID = value;
       }
    }
 
@@ -373,17 +282,6 @@ public class NSRedundantGatewayGroup: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NURedundancyPortIDs {
-      get {
-         return _redundancyPortIDs;
-      }
-      set {
-         this._redundancyPortIDs = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public ERedundantGatewayStatus? NURedundantGatewayStatus {
       get {
          return _redundantGatewayStatus;
@@ -394,19 +292,18 @@ public class NSRedundantGatewayGroup: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NUVtep {
+      get {
+         return _vtep;
+      }
+      set {
+         this._vtep = value;
+      }
+   }
 
    
-   public AlarmsFetcher getAlarms() {
-      return _alarms;
-   }
-   
-   public EnterprisePermissionsFetcher getEnterprisePermissions() {
-      return _enterprisePermissions;
-   }
-   
-   public EventLogsFetcher getEventLogs() {
-      return _eventLogs;
-   }
+
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
@@ -416,25 +313,9 @@ public class NSRedundantGatewayGroup: RestObject {
       return _metadatas;
    }
    
-   public NSGatewaysFetcher getNSGateways() {
-      return _nSGateways;
-   }
-   
-   public RedundantPortsFetcher getRedundantPorts() {
-      return _redundantPorts;
-   }
-   
-   public PermissionsFetcher getPermissions() {
-      return _permissions;
-   }
-   
-   public ShuntLinksFetcher getShuntLinks() {
-      return _shuntLinks;
-   }
-   
 
    public String toString() {
-      return "NSRedundantGatewayGroup [" + "consecutiveFailuresCount=" + _consecutiveFailuresCount + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayPeer1AutodiscoveredGatewayID=" + _gatewayPeer1AutodiscoveredGatewayID + ", gatewayPeer1Connected=" + _gatewayPeer1Connected + ", gatewayPeer1ID=" + _gatewayPeer1ID + ", gatewayPeer1Name=" + _gatewayPeer1Name + ", gatewayPeer2AutodiscoveredGatewayID=" + _gatewayPeer2AutodiscoveredGatewayID + ", gatewayPeer2Connected=" + _gatewayPeer2Connected + ", gatewayPeer2ID=" + _gatewayPeer2ID + ", gatewayPeer2Name=" + _gatewayPeer2Name + ", heartbeatInterval=" + _heartbeatInterval + ", heartbeatVLANID=" + _heartbeatVLANID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", redundancyPortIDs=" + _redundancyPortIDs + ", redundantGatewayStatus=" + _redundantGatewayStatus + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "AllRedundancyGroup [" + "description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayPeer1AutodiscoveredGatewayID=" + _gatewayPeer1AutodiscoveredGatewayID + ", gatewayPeer1Connected=" + _gatewayPeer1Connected + ", gatewayPeer1ID=" + _gatewayPeer1ID + ", gatewayPeer1Name=" + _gatewayPeer1Name + ", gatewayPeer2AutodiscoveredGatewayID=" + _gatewayPeer2AutodiscoveredGatewayID + ", gatewayPeer2Connected=" + _gatewayPeer2Connected + ", gatewayPeer2Name=" + _gatewayPeer2Name + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", redundantGatewayStatus=" + _redundantGatewayStatus + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -442,12 +323,12 @@ public class NSRedundantGatewayGroup: RestObject {
 
    public static String getResourceName()
    {
-	return "nsgredundancygroups";
+	return "allredundancygroups";
    }
 
    public static String getRestName()
    {
-	return "nsgredundancygroup";
+	return "allredundancygroup";
    }
 }
 }

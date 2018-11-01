@@ -60,6 +60,9 @@ public class AutoDiscoverHypervisorFromCluster: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("managedObjectID")]
+   protected String _managedObjectID;
+   
    [JsonProperty("networkList")]
    protected System.Collections.Generic.List<String> _networkList;
    
@@ -126,6 +129,17 @@ public class AutoDiscoverHypervisorFromCluster: RestObject {
 
    
    [JsonIgnore]
+   public String NUManagedObjectID {
+      get {
+         return _managedObjectID;
+      }
+      set {
+         this._managedObjectID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUNetworkList {
       get {
          return _networkList;
@@ -140,7 +154,7 @@ public class AutoDiscoverHypervisorFromCluster: RestObject {
    
 
    public String toString() {
-      return "AutoDiscoverHypervisorFromCluster [" + "assocEntityID=" + _assocEntityID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", lastUpdatedBy=" + _lastUpdatedBy + ", networkList=" + _networkList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "AutoDiscoverHypervisorFromCluster [" + "assocEntityID=" + _assocEntityID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", lastUpdatedBy=" + _lastUpdatedBy + ", managedObjectID=" + _managedObjectID + ", networkList=" + _networkList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

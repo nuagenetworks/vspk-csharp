@@ -42,10 +42,14 @@ public class PATNATPool: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EIPType {IPV4,IPV6,DUALSTACK };
    public enum EAssociatedGatewayType {AUTO_DISC_GATEWAY,GATEWAY,IKE_GATEWAY,NSGATEWAY };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
 
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("IPType")]
+   protected EIPType? _IPType;
    
    [JsonProperty("addressRange")]
    protected String _addressRange;
@@ -142,6 +146,17 @@ public class PATNATPool: RestObject {
       
       _statisticsPolicies = new StatisticsPoliciesFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public EIPType? NUIPType {
+      get {
+         return _IPType;
+      }
+      set {
+         this._IPType = value;
+      }
    }
 
    
@@ -368,7 +383,7 @@ public class PATNATPool: RestObject {
    
 
    public String toString() {
-      return "PATNATPool [" + "addressRange=" + _addressRange + ", associatedGatewayId=" + _associatedGatewayId + ", associatedGatewayType=" + _associatedGatewayType + ", associatedSubnetId=" + _associatedSubnetId + ", associatedVlanId=" + _associatedVlanId + ", defaultPATIP=" + _defaultPATIP + ", description=" + _description + ", dynamicSourceEnabled=" + _dynamicSourceEnabled + ", endAddressRange=" + _endAddressRange + ", endSourceAddress=" + _endSourceAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", startAddressRange=" + _startAddressRange + ", startSourceAddress=" + _startSourceAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "PATNATPool [" + "IPType=" + _IPType + ", addressRange=" + _addressRange + ", associatedGatewayId=" + _associatedGatewayId + ", associatedGatewayType=" + _associatedGatewayType + ", associatedSubnetId=" + _associatedSubnetId + ", associatedVlanId=" + _associatedVlanId + ", defaultPATIP=" + _defaultPATIP + ", description=" + _description + ", dynamicSourceEnabled=" + _dynamicSourceEnabled + ", endAddressRange=" + _endAddressRange + ", endSourceAddress=" + _endSourceAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", startAddressRange=" + _startAddressRange + ", startSourceAddress=" + _startSourceAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

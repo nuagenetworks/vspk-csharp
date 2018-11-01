@@ -45,6 +45,9 @@ public class Applicationperformancemanagement: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("appGroupUniqueId")]
+   protected long? _appGroupUniqueId;
+   
    [JsonProperty("associatedPerformanceMonitorID")]
    protected String _associatedPerformanceMonitorID;
    
@@ -72,6 +75,9 @@ public class Applicationperformancemanagement: RestObject {
    private ApplicationBindingsFetcher _applicationBindings;
    
    [JsonIgnore]
+   private ApplicationperformancemanagementbindingsFetcher _applicationperformancemanagementbindings;
+   
+   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
@@ -81,10 +87,23 @@ public class Applicationperformancemanagement: RestObject {
       
       _applicationBindings = new ApplicationBindingsFetcher(this);
       
+      _applicationperformancemanagementbindings = new ApplicationperformancemanagementbindingsFetcher(this);
+      
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public long? NUAppGroupUniqueId {
+      get {
+         return _appGroupUniqueId;
+      }
+      set {
+         this._appGroupUniqueId = value;
+      }
    }
 
    
@@ -171,6 +190,10 @@ public class Applicationperformancemanagement: RestObject {
       return _applicationBindings;
    }
    
+   public ApplicationperformancemanagementbindingsFetcher getApplicationperformancemanagementbindings() {
+      return _applicationperformancemanagementbindings;
+   }
+   
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
    }
@@ -181,7 +204,7 @@ public class Applicationperformancemanagement: RestObject {
    
 
    public String toString() {
-      return "Applicationperformancemanagement [" + "associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Applicationperformancemanagement [" + "appGroupUniqueId=" + _appGroupUniqueId + ", associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

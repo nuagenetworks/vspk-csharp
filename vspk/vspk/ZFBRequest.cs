@@ -116,6 +116,9 @@ public class ZFBRequest: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("registrationURL")]
+   protected String _registrationURL;
+   
    [JsonProperty("serialNumber")]
    protected String _serialNumber;
    
@@ -398,6 +401,17 @@ public class ZFBRequest: RestObject {
 
    
    [JsonIgnore]
+   public String NURegistrationURL {
+      get {
+         return _registrationURL;
+      }
+      set {
+         this._registrationURL = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUSerialNumber {
       get {
          return _serialNumber;
@@ -435,7 +449,7 @@ public class ZFBRequest: RestObject {
    
 
    public String toString() {
-      return "ZFBRequest [" + "CPUType=" + _CPUType + ", IPAddress=" + _IPAddress + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", UUID=" + _UUID + ", ZFBApprovalStatus=" + _ZFBApprovalStatus + ", ZFBBootstrapEnabled=" + _ZFBBootstrapEnabled + ", ZFBInfo=" + _ZFBInfo + ", ZFBRequestRetryTimer=" + _ZFBRequestRetryTimer + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedEnterpriseName=" + _associatedEnterpriseName + ", associatedEntityType=" + _associatedEntityType + ", associatedGatewayID=" + _associatedGatewayID + ", associatedGatewayName=" + _associatedGatewayName + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", hostname=" + _hostname + ", lastConnectedTime=" + _lastConnectedTime + ", lastUpdatedBy=" + _lastUpdatedBy + ", serialNumber=" + _serialNumber + ", statusString=" + _statusString + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "ZFBRequest [" + "CPUType=" + _CPUType + ", IPAddress=" + _IPAddress + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", UUID=" + _UUID + ", ZFBApprovalStatus=" + _ZFBApprovalStatus + ", ZFBBootstrapEnabled=" + _ZFBBootstrapEnabled + ", ZFBInfo=" + _ZFBInfo + ", ZFBRequestRetryTimer=" + _ZFBRequestRetryTimer + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedEnterpriseName=" + _associatedEnterpriseName + ", associatedEntityType=" + _associatedEntityType + ", associatedGatewayID=" + _associatedGatewayID + ", associatedGatewayName=" + _associatedGatewayName + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", hostname=" + _hostname + ", lastConnectedTime=" + _lastConnectedTime + ", lastUpdatedBy=" + _lastUpdatedBy + ", registrationURL=" + _registrationURL + ", serialNumber=" + _serialNumber + ", statusString=" + _statusString + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

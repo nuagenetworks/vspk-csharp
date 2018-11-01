@@ -43,11 +43,20 @@ public class WirelessPort: RestObject {
 
    
    public enum ECountryCode {AF,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE,BZ,BJ,BM,BT,BO,BA,BW,BV,BR,IO,VG,BN,BG,BF,BI,KH,CM,CA,CV,KY,CF,TD,CL,CN,CX,CC,CO,KM,CD,CG,CK,CR,CI,CU,CY,CZ,DK,DJ,DM,DO,EC,EG,SV,GQ,ER,EE,ET,FO,FK,FJ,FI,FR,GF,PF,TF,GA,GM,GE,DE,GH,GI,GR,GL,GD,GP,GU,GT,GN,GW,GY,HT,HM,VA,HN,HK,HR,HU,IS,IN,ID,IR,IQ,IE,IL,IT,JM,JP,JO,KZ,KE,KI,KP,KR,KW,KG,LA,LV,LB,LS,LR,LY,LI,LT,LU,MO,MK,MG,MW,MY,MV,ML,MT,MH,MQ,MR,MU,YT,MX,FM,MD,MC,MN,MS,MA,MZ,MM,NA,NR,NP,AN,NL,NC,NZ,NI,NE,NG,NU,NF,MP,NO,OM,PK,PW,PS,PA,PG,PY,PE,PH,PN,PL,PT,PR,QA,RE,RO,RU,RW,SH,KN,LC,PM,VC,WS,SM,ST,SA,SN,CS,SC,SL,SG,SK,SI,SB,SO,ZA,GS,ES,LK,SD,SR,SJ,SZ,SE,CH,SY,TW,TJ,TZ,TH,TL,TG,TK,TO,TT,TN,TR,TM,TC,TV,VI,UG,UA,AE,GB,UM,US,UY,UZ,VU,VE,VN,WF,EH,YE,ZM,ZW };
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFrequencyChannel {CH_0,CH_1,CH_10,CH_100,CH_104,CH_108,CH_11,CH_112,CH_116,CH_12,CH_120,CH_124,CH_128,CH_13,CH_132,CH_136,CH_14,CH_140,CH_144,CH_149,CH_153,CH_157,CH_161,CH_165,CH_2,CH_3,CH_36,CH_4,CH_40,CH_44,CH_48,CH_5,CH_52,CH_56,CH_6,CH_60,CH_64,CH_7,CH_8,CH_9 };
+   public enum EPermittedAction {USE,READ,ALL,INSTANTIATE,EXTEND,DEPLOY };
    public enum EPortType {ACCESS };
+   public enum EStatus {INITIALIZED,ORPHAN,READY,MISMATCH };
    public enum EWifiFrequencyBand {FREQ_2_4_GHZ,FREQ_5_0_GHZ };
    public enum EWifiMode {WIFI_A,WIFI_A_AC,WIFI_A_N,WIFI_A_N_AC,WIFI_B_G,WIFI_B_G_N };
 
+   
+   [JsonProperty("VLANRange")]
+   protected String _VLANRange;
+   
+   [JsonProperty("associatedEgressQOSPolicyID")]
+   protected String _associatedEgressQOSPolicyID;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("countryCode")]
    protected ECountryCode? _countryCode;
@@ -55,20 +64,41 @@ public class WirelessPort: RestObject {
    [JsonProperty("description")]
    protected String _description;
    [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("frequencyChannel")]
    protected EFrequencyChannel? _frequencyChannel;
    
    [JsonProperty("genericConfig")]
    protected String _genericConfig;
    
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   
    [JsonProperty("name")]
    protected String _name;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("permittedAction")]
+   protected EPermittedAction? _permittedAction;
    
    [JsonProperty("physicalName")]
    protected String _physicalName;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("portType")]
    protected EPortType? _portType;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("status")]
+   protected EStatus? _status;
+   
+   [JsonProperty("useUserMnemonic")]
+   protected bool _useUserMnemonic;
+   
+   [JsonProperty("userMnemonic")]
+   protected String _userMnemonic;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("wifiFrequencyBand")]
    protected EWifiFrequencyBand? _wifiFrequencyBand;
@@ -85,10 +115,13 @@ public class WirelessPort: RestObject {
    private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
-   private SSIDConnectionsFetcher _sSIDConnections;
+   private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
-   private StatisticsFetcher _statistics;
+   private MetadatasFetcher _metadatas;
+   
+   [JsonIgnore]
+   private SSIDConnectionsFetcher _sSIDConnections;
    
    public WirelessPort() {
       
@@ -96,10 +129,34 @@ public class WirelessPort: RestObject {
       
       _eventLogs = new EventLogsFetcher(this);
       
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
+      
       _sSIDConnections = new SSIDConnectionsFetcher(this);
       
-      _statistics = new StatisticsFetcher(this);
-      
+   }
+
+   
+   [JsonIgnore]
+   public String NUVLANRange {
+      get {
+         return _VLANRange;
+      }
+      set {
+         this._VLANRange = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEgressQOSPolicyID {
+      get {
+         return _associatedEgressQOSPolicyID;
+      }
+      set {
+         this._associatedEgressQOSPolicyID = value;
+      }
    }
 
    
@@ -121,6 +178,28 @@ public class WirelessPort: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
       }
    }
 
@@ -148,12 +227,34 @@ public class WirelessPort: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EPermittedAction? NUPermittedAction {
+      get {
+         return _permittedAction;
+      }
+      set {
+         this._permittedAction = value;
       }
    }
 
@@ -176,6 +277,39 @@ public class WirelessPort: RestObject {
       }
       set {
          this._portType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EStatus? NUStatus {
+      get {
+         return _status;
+      }
+      set {
+         this._status = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUUseUserMnemonic {
+      get {
+         return _useUserMnemonic;
+      }
+      set {
+         this._useUserMnemonic = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUUserMnemonic {
+      get {
+         return _userMnemonic;
+      }
+      set {
+         this._userMnemonic = value;
       }
    }
 
@@ -212,17 +346,21 @@ public class WirelessPort: RestObject {
       return _eventLogs;
    }
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
    public SSIDConnectionsFetcher getSSIDConnections() {
       return _sSIDConnections;
    }
    
-   public StatisticsFetcher getStatistics() {
-      return _statistics;
-   }
-   
 
    public String toString() {
-      return "WirelessPort [" + "countryCode=" + _countryCode + ", description=" + _description + ", frequencyChannel=" + _frequencyChannel + ", genericConfig=" + _genericConfig + ", name=" + _name + ", physicalName=" + _physicalName + ", portType=" + _portType + ", wifiFrequencyBand=" + _wifiFrequencyBand + ", wifiMode=" + _wifiMode + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "WirelessPort [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", countryCode=" + _countryCode + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", frequencyChannel=" + _frequencyChannel + ", genericConfig=" + _genericConfig + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", status=" + _status + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", wifiFrequencyBand=" + _wifiFrequencyBand + ", wifiMode=" + _wifiMode + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

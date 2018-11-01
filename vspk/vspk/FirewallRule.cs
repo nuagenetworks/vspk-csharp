@@ -42,11 +42,11 @@ public class FirewallRule: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EAction {DROP ,FORWARD ,REDIRECT };
-   public enum EDestinationType {MACROGROUP,NETWORK,NETWORKPOLICYGROUP,POLICYGROUP };
+   public enum EAction {DROP,FORWARD,FORWARDING_PATH_LIST,REDIRECT };
+   public enum EAssociatedTrafficType {L4_SERVICE,L4_SERVICE_GROUP };
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum ELocationType {ANY,POLICYGROUP,REDIRECTIONTARGET,SUBNET,VPORTTAG,ZONE };
    public enum ENetworkType {ANY,ENDPOINT_DOMAIN,ENDPOINT_SUBNET,ENDPOINT_ZONE,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK,NETWORK_MACRO_GROUP,POLICYGROUP,PUBLIC_NETWORK,SUBNET,ZONE };
-   public enum ESourceType {MACROGROUP,NETWORK,NETWORKPOLICYGROUP,POLICYGROUP };
 
    
    [JsonProperty("ACLTemplateName")]
@@ -70,11 +70,14 @@ public class FirewallRule: RestObject {
    [JsonProperty("addressOverride")]
    protected String _addressOverride;
    
-   [JsonProperty("associatedApplicationID")]
-   protected String _associatedApplicationID;
+   [JsonProperty("associatedLiveTemplateID")]
+   protected String _associatedLiveTemplateID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("associatedTrafficType")]
+   protected EAssociatedTrafficType? _associatedTrafficType;
    
-   [JsonProperty("associatedApplicationObjectID")]
-   protected String _associatedApplicationObjectID;
+   [JsonProperty("associatedTrafficTypeID")]
+   protected String _associatedTrafficTypeID;
    
    [JsonProperty("associatedfirewallACLID")]
    protected String _associatedfirewallACLID;
@@ -82,38 +85,29 @@ public class FirewallRule: RestObject {
    [JsonProperty("description")]
    protected String _description;
    
-   [JsonProperty("destNetwork")]
-   protected String _destNetwork;
-   
-   [JsonProperty("destPgId")]
-   protected String _destPgId;
-   
-   [JsonProperty("destPgType")]
-   protected String _destPgType;
-   
-   [JsonProperty("destinationIpv6Value")]
-   protected String _destinationIpv6Value;
-   
    [JsonProperty("destinationPort")]
    protected String _destinationPort;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("destinationType")]
-   protected EDestinationType? _destinationType;
-   
-   [JsonProperty("destinationValue")]
-   protected String _destinationValue;
    
    [JsonProperty("domainName")]
    protected String _domainName;
    
    [JsonProperty("enterpriseName")]
    protected String _enterpriseName;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
    
    [JsonProperty("etherType")]
    protected String _etherType;
    
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
    [JsonProperty("flowLoggingEnabled")]
    protected bool _flowLoggingEnabled;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("locationID")]
    protected String _locationID;
@@ -131,28 +125,13 @@ public class FirewallRule: RestObject {
    protected ENetworkType? _networkType;
    
    [JsonProperty("priority")]
-   protected String _priority;
+   protected long? _priority;
    
-   [JsonProperty("sourceIpv6Value")]
-   protected String _sourceIpv6Value;
-   
-   [JsonProperty("sourceNetwork")]
-   protected String _sourceNetwork;
-   
-   [JsonProperty("sourcePgId")]
-   protected String _sourcePgId;
-   
-   [JsonProperty("sourcePgType")]
-   protected String _sourcePgType;
+   [JsonProperty("protocol")]
+   protected String _protocol;
    
    [JsonProperty("sourcePort")]
    protected String _sourcePort;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("sourceType")]
-   protected ESourceType? _sourceType;
-   
-   [JsonProperty("sourceValue")]
-   protected String _sourceValue;
    
    [JsonProperty("stateful")]
    protected bool _stateful;
@@ -165,7 +144,17 @@ public class FirewallRule: RestObject {
    
 
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public FirewallRule() {
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
    }
 
@@ -248,23 +237,34 @@ public class FirewallRule: RestObject {
 
    
    [JsonIgnore]
-   public String NUAssociatedApplicationID {
+   public String NUAssociatedLiveTemplateID {
       get {
-         return _associatedApplicationID;
+         return _associatedLiveTemplateID;
       }
       set {
-         this._associatedApplicationID = value;
+         this._associatedLiveTemplateID = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUAssociatedApplicationObjectID {
+   public EAssociatedTrafficType? NUAssociatedTrafficType {
       get {
-         return _associatedApplicationObjectID;
+         return _associatedTrafficType;
       }
       set {
-         this._associatedApplicationObjectID = value;
+         this._associatedTrafficType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedTrafficTypeID {
+      get {
+         return _associatedTrafficTypeID;
+      }
+      set {
+         this._associatedTrafficTypeID = value;
       }
    }
 
@@ -292,78 +292,12 @@ public class FirewallRule: RestObject {
 
    
    [JsonIgnore]
-   public String NUDestNetwork {
-      get {
-         return _destNetwork;
-      }
-      set {
-         this._destNetwork = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUDestPgId {
-      get {
-         return _destPgId;
-      }
-      set {
-         this._destPgId = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUDestPgType {
-      get {
-         return _destPgType;
-      }
-      set {
-         this._destPgType = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUDestinationIpv6Value {
-      get {
-         return _destinationIpv6Value;
-      }
-      set {
-         this._destinationIpv6Value = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUDestinationPort {
       get {
          return _destinationPort;
       }
       set {
          this._destinationPort = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EDestinationType? NUDestinationType {
-      get {
-         return _destinationType;
-      }
-      set {
-         this._destinationType = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUDestinationValue {
-      get {
-         return _destinationValue;
-      }
-      set {
-         this._destinationValue = value;
       }
    }
 
@@ -391,6 +325,17 @@ public class FirewallRule: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUEtherType {
       get {
          return _etherType;
@@ -402,12 +347,34 @@ public class FirewallRule: RestObject {
 
    
    [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUFlowLoggingEnabled {
       get {
          return _flowLoggingEnabled;
       }
       set {
          this._flowLoggingEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
       }
    }
 
@@ -468,7 +435,7 @@ public class FirewallRule: RestObject {
 
    
    [JsonIgnore]
-   public String NUPriority {
+   public long? NUPriority {
       get {
          return _priority;
       }
@@ -479,45 +446,12 @@ public class FirewallRule: RestObject {
 
    
    [JsonIgnore]
-   public String NUSourceIpv6Value {
+   public String NUProtocol {
       get {
-         return _sourceIpv6Value;
+         return _protocol;
       }
       set {
-         this._sourceIpv6Value = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUSourceNetwork {
-      get {
-         return _sourceNetwork;
-      }
-      set {
-         this._sourceNetwork = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUSourcePgId {
-      get {
-         return _sourcePgId;
-      }
-      set {
-         this._sourcePgId = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUSourcePgType {
-      get {
-         return _sourcePgType;
-      }
-      set {
-         this._sourcePgType = value;
+         this._protocol = value;
       }
    }
 
@@ -529,28 +463,6 @@ public class FirewallRule: RestObject {
       }
       set {
          this._sourcePort = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public ESourceType? NUSourceType {
-      get {
-         return _sourceType;
-      }
-      set {
-         this._sourceType = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUSourceValue {
-      get {
-         return _sourceValue;
-      }
-      set {
-         this._sourceValue = value;
       }
    }
 
@@ -590,9 +502,17 @@ public class FirewallRule: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "FirewallRule [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedApplicationID=" + _associatedApplicationID + ", associatedApplicationObjectID=" + _associatedApplicationObjectID + ", associatedfirewallACLID=" + _associatedfirewallACLID + ", description=" + _description + ", destNetwork=" + _destNetwork + ", destPgId=" + _destPgId + ", destPgType=" + _destPgType + ", destinationIpv6Value=" + _destinationIpv6Value + ", destinationPort=" + _destinationPort + ", destinationType=" + _destinationType + ", destinationValue=" + _destinationValue + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", etherType=" + _etherType + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", priority=" + _priority + ", sourceIpv6Value=" + _sourceIpv6Value + ", sourceNetwork=" + _sourceNetwork + ", sourcePgId=" + _sourcePgId + ", sourcePgType=" + _sourcePgType + ", sourcePort=" + _sourcePort + ", sourceType=" + _sourceType + ", sourceValue=" + _sourceValue + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "FirewallRule [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", associatedfirewallACLID=" + _associatedfirewallACLID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

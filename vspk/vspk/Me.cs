@@ -112,6 +112,18 @@ public class Me: RestObject {
 
    
    [JsonIgnore]
+   private AllGatewaysFetcher _allGateways;
+   
+   [JsonIgnore]
+   private AllRedundancyGroupsFetcher _allRedundancyGroups;
+   
+   [JsonIgnore]
+   private ApplicationsFetcher _applications;
+   
+   [JsonIgnore]
+   private ApplicationperformancemanagementsFetcher _applicationperformancemanagements;
+   
+   [JsonIgnore]
    private AutoDiscoveredGatewaysFetcher _autoDiscoveredGateways;
    
    [JsonIgnore]
@@ -125,6 +137,9 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private CloudMgmtSystemsFetcher _cloudMgmtSystems;
+   
+   [JsonIgnore]
+   private CommandsFetcher _commands;
    
    [JsonIgnore]
    private ContainersFetcher _containers;
@@ -154,10 +169,10 @@ public class Me: RestObject {
    private EgressACLTemplatesFetcher _egressACLTemplates;
    
    [JsonIgnore]
-   private DomainFIPAclTemplatesFetcher _domainFIPAclTemplates;
+   private EgressAdvFwdEntryTemplatesFetcher _egressAdvFwdEntryTemplates;
    
    [JsonIgnore]
-   private FloatingIPACLTemplatesFetcher _floatingIPACLTemplates;
+   private DomainFIPAclTemplatesFetcher _domainFIPAclTemplates;
    
    [JsonIgnore]
    private EgressQOSPoliciesFetcher _egressQOSPolicies;
@@ -220,6 +235,9 @@ public class Me: RestObject {
    private L4ServicesFetcher _l4Services;
    
    [JsonIgnore]
+   private L7applicationsignaturesFetcher _l7applicationsignatures;
+   
+   [JsonIgnore]
    private LicensesFetcher _licenses;
    
    [JsonIgnore]
@@ -241,6 +259,9 @@ public class Me: RestObject {
    private NetworkLayoutsFetcher _networkLayouts;
    
    [JsonIgnore]
+   private NetworkPerformanceMeasurementsFetcher _networkPerformanceMeasurements;
+   
+   [JsonIgnore]
    private NSGatewaysFetcher _nSGateways;
    
    [JsonIgnore]
@@ -259,6 +280,9 @@ public class Me: RestObject {
    private NSGUpgradeProfilesFetcher _nSGUpgradeProfiles;
    
    [JsonIgnore]
+   private OverlayMirrorDestinationsFetcher _overlayMirrorDestinations;
+   
+   [JsonIgnore]
    private PATMappersFetcher _pATMappers;
    
    [JsonIgnore]
@@ -269,6 +293,9 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private PolicyGroupsFetcher _policyGroups;
+   
+   [JsonIgnore]
+   private PolicyObjectGroupsFetcher _policyObjectGroups;
    
    [JsonIgnore]
    private QosPolicersFetcher _qosPolicers;
@@ -284,6 +311,9 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private RoutingPoliciesFetcher _routingPolicies;
+   
+   [JsonIgnore]
+   private SaaSApplicationTypesFetcher _saaSApplicationTypes;
    
    [JsonIgnore]
    private SharedNetworkResourcesFetcher _sharedNetworkResources;
@@ -328,6 +358,9 @@ public class Me: RestObject {
    private VirtualFirewallPoliciesFetcher _virtualFirewallPolicies;
    
    [JsonIgnore]
+   private VirtualFirewallRulesFetcher _virtualFirewallRules;
+   
+   [JsonIgnore]
    private VMsFetcher _vMs;
    
    [JsonIgnore]
@@ -341,6 +374,9 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private VNFThresholdPoliciesFetcher _vNFThresholdPolicies;
+   
+   [JsonIgnore]
+   private VRSsFetcher _vRSs;
    
    [JsonIgnore]
    private VCenterVRSConfigsFetcher _vCenterVRSConfigs;
@@ -359,6 +395,14 @@ public class Me: RestObject {
    
    public Me() {
       
+      _allGateways = new AllGatewaysFetcher(this);
+      
+      _allRedundancyGroups = new AllRedundancyGroupsFetcher(this);
+      
+      _applications = new ApplicationsFetcher(this);
+      
+      _applicationperformancemanagements = new ApplicationperformancemanagementsFetcher(this);
+      
       _autoDiscoveredGateways = new AutoDiscoveredGatewaysFetcher(this);
       
       _bGPNeighbors = new BGPNeighborsFetcher(this);
@@ -368,6 +412,8 @@ public class Me: RestObject {
       _certificates = new CertificatesFetcher(this);
       
       _cloudMgmtSystems = new CloudMgmtSystemsFetcher(this);
+      
+      _commands = new CommandsFetcher(this);
       
       _containers = new ContainersFetcher(this);
       
@@ -387,9 +433,9 @@ public class Me: RestObject {
       
       _egressACLTemplates = new EgressACLTemplatesFetcher(this);
       
-      _domainFIPAclTemplates = new DomainFIPAclTemplatesFetcher(this);
+      _egressAdvFwdEntryTemplates = new EgressAdvFwdEntryTemplatesFetcher(this);
       
-      _floatingIPACLTemplates = new FloatingIPACLTemplatesFetcher(this);
+      _domainFIPAclTemplates = new DomainFIPAclTemplatesFetcher(this);
       
       _egressQOSPolicies = new EgressQOSPoliciesFetcher(this);
       
@@ -431,6 +477,8 @@ public class Me: RestObject {
       
       _l4Services = new L4ServicesFetcher(this);
       
+      _l7applicationsignatures = new L7applicationsignaturesFetcher(this);
+      
       _licenses = new LicensesFetcher(this);
       
       _licenseStatus = new LicenseStatusFetcher(this);
@@ -445,6 +493,8 @@ public class Me: RestObject {
       
       _networkLayouts = new NetworkLayoutsFetcher(this);
       
+      _networkPerformanceMeasurements = new NetworkPerformanceMeasurementsFetcher(this);
+      
       _nSGateways = new NSGatewaysFetcher(this);
       
       _nSGatewayTemplates = new NSGatewayTemplatesFetcher(this);
@@ -457,6 +507,8 @@ public class Me: RestObject {
       
       _nSGUpgradeProfiles = new NSGUpgradeProfilesFetcher(this);
       
+      _overlayMirrorDestinations = new OverlayMirrorDestinationsFetcher(this);
+      
       _pATMappers = new PATMappersFetcher(this);
       
       _pATNATPools = new PATNATPoolsFetcher(this);
@@ -464,6 +516,8 @@ public class Me: RestObject {
       _performanceMonitors = new PerformanceMonitorsFetcher(this);
       
       _policyGroups = new PolicyGroupsFetcher(this);
+      
+      _policyObjectGroups = new PolicyObjectGroupsFetcher(this);
       
       _qosPolicers = new QosPolicersFetcher(this);
       
@@ -474,6 +528,8 @@ public class Me: RestObject {
       _redundancyGroups = new RedundancyGroupsFetcher(this);
       
       _routingPolicies = new RoutingPoliciesFetcher(this);
+      
+      _saaSApplicationTypes = new SaaSApplicationTypesFetcher(this);
       
       _sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
       
@@ -503,6 +559,8 @@ public class Me: RestObject {
       
       _virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
       
+      _virtualFirewallRules = new VirtualFirewallRulesFetcher(this);
+      
       _vMs = new VMsFetcher(this);
       
       _vMInterfaces = new VMInterfacesFetcher(this);
@@ -512,6 +570,8 @@ public class Me: RestObject {
       _vNFMetadatas = new VNFMetadatasFetcher(this);
       
       _vNFThresholdPolicies = new VNFThresholdPoliciesFetcher(this);
+      
+      _vRSs = new VRSsFetcher(this);
       
       _vCenterVRSConfigs = new VCenterVRSConfigsFetcher(this);
       
@@ -759,6 +819,22 @@ public class Me: RestObject {
    
 
    
+   public AllGatewaysFetcher getAllGateways() {
+      return _allGateways;
+   }
+   
+   public AllRedundancyGroupsFetcher getAllRedundancyGroups() {
+      return _allRedundancyGroups;
+   }
+   
+   public ApplicationsFetcher getApplications() {
+      return _applications;
+   }
+   
+   public ApplicationperformancemanagementsFetcher getApplicationperformancemanagements() {
+      return _applicationperformancemanagements;
+   }
+   
    public AutoDiscoveredGatewaysFetcher getAutoDiscoveredGateways() {
       return _autoDiscoveredGateways;
    }
@@ -777,6 +853,10 @@ public class Me: RestObject {
    
    public CloudMgmtSystemsFetcher getCloudMgmtSystems() {
       return _cloudMgmtSystems;
+   }
+   
+   public CommandsFetcher getCommands() {
+      return _commands;
    }
    
    public ContainersFetcher getContainers() {
@@ -815,12 +895,12 @@ public class Me: RestObject {
       return _egressACLTemplates;
    }
    
-   public DomainFIPAclTemplatesFetcher getDomainFIPAclTemplates() {
-      return _domainFIPAclTemplates;
+   public EgressAdvFwdEntryTemplatesFetcher getEgressAdvFwdEntryTemplates() {
+      return _egressAdvFwdEntryTemplates;
    }
    
-   public FloatingIPACLTemplatesFetcher getFloatingIPACLTemplates() {
-      return _floatingIPACLTemplates;
+   public DomainFIPAclTemplatesFetcher getDomainFIPAclTemplates() {
+      return _domainFIPAclTemplates;
    }
    
    public EgressQOSPoliciesFetcher getEgressQOSPolicies() {
@@ -903,6 +983,10 @@ public class Me: RestObject {
       return _l4Services;
    }
    
+   public L7applicationsignaturesFetcher getL7applicationsignatures() {
+      return _l7applicationsignatures;
+   }
+   
    public LicensesFetcher getLicenses() {
       return _licenses;
    }
@@ -931,6 +1015,10 @@ public class Me: RestObject {
       return _networkLayouts;
    }
    
+   public NetworkPerformanceMeasurementsFetcher getNetworkPerformanceMeasurements() {
+      return _networkPerformanceMeasurements;
+   }
+   
    public NSGatewaysFetcher getNSGateways() {
       return _nSGateways;
    }
@@ -955,6 +1043,10 @@ public class Me: RestObject {
       return _nSGUpgradeProfiles;
    }
    
+   public OverlayMirrorDestinationsFetcher getOverlayMirrorDestinations() {
+      return _overlayMirrorDestinations;
+   }
+   
    public PATMappersFetcher getPATMappers() {
       return _pATMappers;
    }
@@ -969,6 +1061,10 @@ public class Me: RestObject {
    
    public PolicyGroupsFetcher getPolicyGroups() {
       return _policyGroups;
+   }
+   
+   public PolicyObjectGroupsFetcher getPolicyObjectGroups() {
+      return _policyObjectGroups;
    }
    
    public QosPolicersFetcher getQosPolicers() {
@@ -989,6 +1085,10 @@ public class Me: RestObject {
    
    public RoutingPoliciesFetcher getRoutingPolicies() {
       return _routingPolicies;
+   }
+   
+   public SaaSApplicationTypesFetcher getSaaSApplicationTypes() {
+      return _saaSApplicationTypes;
    }
    
    public SharedNetworkResourcesFetcher getSharedNetworkResources() {
@@ -1047,6 +1147,10 @@ public class Me: RestObject {
       return _virtualFirewallPolicies;
    }
    
+   public VirtualFirewallRulesFetcher getVirtualFirewallRules() {
+      return _virtualFirewallRules;
+   }
+   
    public VMsFetcher getVMs() {
       return _vMs;
    }
@@ -1065,6 +1169,10 @@ public class Me: RestObject {
    
    public VNFThresholdPoliciesFetcher getVNFThresholdPolicies() {
       return _vNFThresholdPolicies;
+   }
+   
+   public VRSsFetcher getVRSs() {
+      return _vRSs;
    }
    
    public VCenterVRSConfigsFetcher getVCenterVRSConfigs() {

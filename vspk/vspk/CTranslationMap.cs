@@ -42,8 +42,12 @@ public class CTranslationMap: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EMappingType {NAT,PAT };
 
+   
+   [JsonProperty("associatedDomainID")]
+   protected String _associatedDomainID;
    
    [JsonProperty("customerAliasIP")]
    protected String _customerAliasIP;
@@ -51,13 +55,43 @@ public class CTranslationMap: RestObject {
    [JsonProperty("customerIP")]
    protected String _customerIP;
    [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("mappingType")]
    protected EMappingType? _mappingType;
    
 
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public CTranslationMap() {
       
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
+      
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedDomainID {
+      get {
+         return _associatedDomainID;
+      }
+      set {
+         this._associatedDomainID = value;
+      }
    }
 
    
@@ -84,6 +118,39 @@ public class CTranslationMap: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EMappingType? NUMappingType {
       get {
          return _mappingType;
@@ -96,9 +163,17 @@ public class CTranslationMap: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "CTranslationMap [" + "customerAliasIP=" + _customerAliasIP + ", customerIP=" + _customerIP + ", mappingType=" + _mappingType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "CTranslationMap [" + "associatedDomainID=" + _associatedDomainID + ", customerAliasIP=" + _customerAliasIP + ", customerIP=" + _customerIP + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mappingType=" + _mappingType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

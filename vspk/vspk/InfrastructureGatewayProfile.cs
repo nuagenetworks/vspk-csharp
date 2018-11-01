@@ -56,6 +56,9 @@ public class InfrastructureGatewayProfile: RestObject {
    
    [JsonProperty("controllerLessDuration")]
    protected String _controllerLessDuration;
+   
+   [JsonProperty("controllerLessEnabled")]
+   protected bool _controllerLessEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("controllerLessForwardingMode")]
    protected EControllerLessForwardingMode? _controllerLessForwardingMode;
@@ -178,6 +181,17 @@ public class InfrastructureGatewayProfile: RestObject {
       }
       set {
          this._controllerLessDuration = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUControllerLessEnabled {
+      get {
+         return _controllerLessEnabled;
+      }
+      set {
+         this._controllerLessEnabled = value;
       }
    }
 
@@ -447,7 +461,7 @@ public class InfrastructureGatewayProfile: RestObject {
    
 
    public String toString() {
-      return "InfrastructureGatewayProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", controllerLessDuration=" + _controllerLessDuration + ", controllerLessForwardingMode=" + _controllerLessForwardingMode + ", controllerLessRemoteDuration=" + _controllerLessRemoteDuration + ", datapathSyncTimeout=" + _datapathSyncTimeout + ", deadTimer=" + _deadTimer + ", deadTimerEnabled=" + _deadTimerEnabled + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowEvictionThreshold=" + _flowEvictionThreshold + ", forceImmediateSystemSync=" + _forceImmediateSystemSync + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataUpgradePath=" + _metadataUpgradePath + ", name=" + _name + ", openFlowAuditTimer=" + _openFlowAuditTimer + ", proxyDNSName=" + _proxyDNSName + ", remoteLogMode=" + _remoteLogMode + ", remoteLogServerAddress=" + _remoteLogServerAddress + ", remoteLogServerPort=" + _remoteLogServerPort + ", statsCollectorPort=" + _statsCollectorPort + ", systemSyncScheduler=" + _systemSyncScheduler + ", upgradeAction=" + _upgradeAction + ", useTwoFactor=" + _useTwoFactor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "InfrastructureGatewayProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", controllerLessDuration=" + _controllerLessDuration + ", controllerLessEnabled=" + _controllerLessEnabled + ", controllerLessForwardingMode=" + _controllerLessForwardingMode + ", controllerLessRemoteDuration=" + _controllerLessRemoteDuration + ", datapathSyncTimeout=" + _datapathSyncTimeout + ", deadTimer=" + _deadTimer + ", deadTimerEnabled=" + _deadTimerEnabled + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowEvictionThreshold=" + _flowEvictionThreshold + ", forceImmediateSystemSync=" + _forceImmediateSystemSync + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataUpgradePath=" + _metadataUpgradePath + ", name=" + _name + ", openFlowAuditTimer=" + _openFlowAuditTimer + ", proxyDNSName=" + _proxyDNSName + ", remoteLogMode=" + _remoteLogMode + ", remoteLogServerAddress=" + _remoteLogServerAddress + ", remoteLogServerPort=" + _remoteLogServerPort + ", statsCollectorPort=" + _statsCollectorPort + ", systemSyncScheduler=" + _systemSyncScheduler + ", upgradeAction=" + _upgradeAction + ", useTwoFactor=" + _useTwoFactor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

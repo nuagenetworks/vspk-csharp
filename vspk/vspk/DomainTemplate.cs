@@ -100,9 +100,6 @@ public class DomainTemplate: RestObject {
    private DomainFIPAclTemplatesFetcher _domainFIPAclTemplates;
    
    [JsonIgnore]
-   private FloatingIPACLTemplatesFetcher _floatingIPACLTemplates;
-   
-   [JsonIgnore]
    private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
@@ -116,9 +113,6 @@ public class DomainTemplate: RestObject {
    
    [JsonIgnore]
    private IngressAdvFwdTemplatesFetcher _ingressAdvFwdTemplates;
-   
-   [JsonIgnore]
-   private IngressExternalServiceTemplatesFetcher _ingressExternalServiceTemplates;
    
    [JsonIgnore]
    private JobsFetcher _jobs;
@@ -160,8 +154,6 @@ public class DomainTemplate: RestObject {
       
       _domainFIPAclTemplates = new DomainFIPAclTemplatesFetcher(this);
       
-      _floatingIPACLTemplates = new FloatingIPACLTemplatesFetcher(this);
-      
       _eventLogs = new EventLogsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -171,8 +163,6 @@ public class DomainTemplate: RestObject {
       _ingressACLTemplates = new IngressACLTemplatesFetcher(this);
       
       _ingressAdvFwdTemplates = new IngressAdvFwdTemplatesFetcher(this);
-      
-      _ingressExternalServiceTemplates = new IngressExternalServiceTemplatesFetcher(this);
       
       _jobs = new JobsFetcher(this);
       
@@ -347,10 +337,6 @@ public class DomainTemplate: RestObject {
       return _domainFIPAclTemplates;
    }
    
-   public FloatingIPACLTemplatesFetcher getFloatingIPACLTemplates() {
-      return _floatingIPACLTemplates;
-   }
-   
    public EventLogsFetcher getEventLogs() {
       return _eventLogs;
    }
@@ -369,10 +355,6 @@ public class DomainTemplate: RestObject {
    
    public IngressAdvFwdTemplatesFetcher getIngressAdvFwdTemplates() {
       return _ingressAdvFwdTemplates;
-   }
-   
-   public IngressExternalServiceTemplatesFetcher getIngressExternalServiceTemplates() {
-      return _ingressExternalServiceTemplates;
    }
    
    public JobsFetcher getJobs() {

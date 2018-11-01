@@ -42,7 +42,8 @@ public class OverlayMirrorDestination: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EEndPointType {VIRTUAL_WIRE };
+   public enum EDestinationType {REDIRECTION_TARGET,OVERLAY_MIRROR_DESTINATION };
+   public enum EEndPointType {NONE,VIRTUAL_WIRE };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum ETriggerType {GARP,NONE };
 
@@ -52,6 +53,9 @@ public class OverlayMirrorDestination: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("destinationType")]
+   protected EDestinationType? _destinationType;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("endPointType")]
    protected EEndPointType? _endPointType;
@@ -120,6 +124,17 @@ public class OverlayMirrorDestination: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EDestinationType? NUDestinationType {
+      get {
+         return _destinationType;
+      }
+      set {
+         this._destinationType = value;
       }
    }
 
@@ -239,7 +254,7 @@ public class OverlayMirrorDestination: RestObject {
    
 
    public String toString() {
-      return "OverlayMirrorDestination [" + "ESI=" + _ESI + ", description=" + _description + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", redundancyEnabled=" + _redundancyEnabled + ", templateID=" + _templateID + ", triggerType=" + _triggerType + ", virtualNetworkID=" + _virtualNetworkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "OverlayMirrorDestination [" + "ESI=" + _ESI + ", description=" + _description + ", destinationType=" + _destinationType + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", redundancyEnabled=" + _redundancyEnabled + ", templateID=" + _templateID + ", triggerType=" + _triggerType + ", virtualNetworkID=" + _virtualNetworkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

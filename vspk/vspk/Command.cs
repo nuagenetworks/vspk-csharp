@@ -42,11 +42,14 @@ public class Command: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum ECommand {NSG_APPLY_PATCH,NSG_DOWNLOAD_OS_IMAGE,NSG_UPGRADE_TO_IMAGE,UNKNOWN };
+   public enum ECommand {NSG_APPLY_PATCH,NSG_DELETE_PATCH,NSG_DOWNLOAD_OS_IMAGE,NSG_UPGRADE_TO_IMAGE,UNKNOWN };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EOverride {ABANDON,UNSPECIFIED };
-   public enum EStatus {COMPLETE,FAILED,STARTED,UNKNOWN };
+   public enum EStatus {ABANDONED,COMPLETED,FAILED,RUNNING,STARTED,UNKNOWN };
 
+   
+   [JsonProperty("assocEntityType")]
+   protected String _assocEntityType;
    
    [JsonProperty("associatedParam")]
    protected String _associatedParam;
@@ -94,6 +97,17 @@ public class Command: RestObject {
    
    public Command() {
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssocEntityType {
+      get {
+         return _assocEntityType;
+      }
+      set {
+         this._assocEntityType = value;
+      }
    }
 
    
@@ -255,7 +269,7 @@ public class Command: RestObject {
    
 
    public String toString() {
-      return "Command [" + "associatedParam=" + _associatedParam + ", associatedParamType=" + _associatedParamType + ", command=" + _command + ", commandInformation=" + _commandInformation + ", detail=" + _detail + ", detailedStatus=" + _detailedStatus + ", detailedStatusCode=" + _detailedStatusCode + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fullCommand=" + _fullCommand + ", lastUpdatedBy=" + _lastUpdatedBy + ", override=" + _override + ", status=" + _status + ", summary=" + _summary + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Command [" + "assocEntityType=" + _assocEntityType + ", associatedParam=" + _associatedParam + ", associatedParamType=" + _associatedParamType + ", command=" + _command + ", commandInformation=" + _commandInformation + ", detail=" + _detail + ", detailedStatus=" + _detailedStatus + ", detailedStatusCode=" + _detailedStatusCode + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fullCommand=" + _fullCommand + ", lastUpdatedBy=" + _lastUpdatedBy + ", override=" + _override + ", status=" + _status + ", summary=" + _summary + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

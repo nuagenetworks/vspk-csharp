@@ -45,6 +45,9 @@ public class GatewaySecuredData: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("associatedEnterpriseID")]
+   protected String _associatedEnterpriseID;
+   
    [JsonProperty("data")]
    protected String _data;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -80,6 +83,17 @@ public class GatewaySecuredData: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEnterpriseID {
+      get {
+         return _associatedEnterpriseID;
+      }
+      set {
+         this._associatedEnterpriseID = value;
+      }
    }
 
    
@@ -172,7 +186,7 @@ public class GatewaySecuredData: RestObject {
    
 
    public String toString() {
-      return "GatewaySecuredData [" + "data=" + _data + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayCertSerialNumber=" + _gatewayCertSerialNumber + ", keyserverCertSerialNumber=" + _keyserverCertSerialNumber + ", lastUpdatedBy=" + _lastUpdatedBy + ", signedData=" + _signedData + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "GatewaySecuredData [" + "associatedEnterpriseID=" + _associatedEnterpriseID + ", data=" + _data + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayCertSerialNumber=" + _gatewayCertSerialNumber + ", keyserverCertSerialNumber=" + _keyserverCertSerialNumber + ", lastUpdatedBy=" + _lastUpdatedBy + ", signedData=" + _signedData + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

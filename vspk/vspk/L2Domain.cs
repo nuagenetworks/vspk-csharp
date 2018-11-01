@@ -52,7 +52,7 @@ public class L2Domain: RestObject {
    public enum EMulticast {DISABLED,ENABLED,INHERITED };
    public enum EPolicyChangeStatus {APPLIED,DISCARDED,STARTED };
    public enum EUplinkPreference {PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY,SYMMETRIC };
-   public enum EUseGlobalMAC {DISABLED ,ENABLED };
+   public enum EUseGlobalMAC {DISABLED,ENABLED };
 
    
    [JsonProperty("DHCPManaged")]
@@ -160,6 +160,12 @@ public class L2Domain: RestObject {
    private AddressRangesFetcher _addressRanges;
    
    [JsonIgnore]
+   private AlarmsFetcher _alarms;
+   
+   [JsonIgnore]
+   private ApplicationsFetcher _applications;
+   
+   [JsonIgnore]
    private ApplicationperformancemanagementbindingsFetcher _applicationperformancemanagementbindings;
    
    [JsonIgnore]
@@ -170,6 +176,9 @@ public class L2Domain: RestObject {
    
    [JsonIgnore]
    private ContainerInterfacesFetcher _containerInterfaces;
+   
+   [JsonIgnore]
+   private DeploymentFailuresFetcher _deploymentFailures;
    
    [JsonIgnore]
    private DHCPOptionsFetcher _dHCPOptions;
@@ -185,6 +194,9 @@ public class L2Domain: RestObject {
    
    [JsonIgnore]
    private EventLogsFetcher _eventLogs;
+   
+   [JsonIgnore]
+   private GatewaysFetcher _gateways;
    
    [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
@@ -203,9 +215,6 @@ public class L2Domain: RestObject {
    
    [JsonIgnore]
    private IngressAdvFwdTemplatesFetcher _ingressAdvFwdTemplates;
-   
-   [JsonIgnore]
-   private IngressExternalServiceTemplatesFetcher _ingressExternalServiceTemplates;
    
    [JsonIgnore]
    private JobsFetcher _jobs;
@@ -232,10 +241,19 @@ public class L2Domain: RestObject {
    private PolicyGroupsFetcher _policyGroups;
    
    [JsonIgnore]
+   private ProxyARPFiltersFetcher _proxyARPFilters;
+   
+   [JsonIgnore]
    private QOSsFetcher _qOSs;
    
    [JsonIgnore]
    private RedirectionTargetsFetcher _redirectionTargets;
+   
+   [JsonIgnore]
+   private RedundancyGroupsFetcher _redundancyGroups;
+   
+   [JsonIgnore]
+   private StaticRoutesFetcher _staticRoutes;
    
    [JsonIgnore]
    private StatisticsFetcher _statistics;
@@ -251,6 +269,9 @@ public class L2Domain: RestObject {
    
    [JsonIgnore]
    private VirtualFirewallPoliciesFetcher _virtualFirewallPolicies;
+   
+   [JsonIgnore]
+   private VirtualFirewallRulesFetcher _virtualFirewallRules;
    
    [JsonIgnore]
    private VMsFetcher _vMs;
@@ -269,6 +290,10 @@ public class L2Domain: RestObject {
       
       _addressRanges = new AddressRangesFetcher(this);
       
+      _alarms = new AlarmsFetcher(this);
+      
+      _applications = new ApplicationsFetcher(this);
+      
       _applicationperformancemanagementbindings = new ApplicationperformancemanagementbindingsFetcher(this);
       
       _bridgeInterfaces = new BridgeInterfacesFetcher(this);
@@ -276,6 +301,8 @@ public class L2Domain: RestObject {
       _containers = new ContainersFetcher(this);
       
       _containerInterfaces = new ContainerInterfacesFetcher(this);
+      
+      _deploymentFailures = new DeploymentFailuresFetcher(this);
       
       _dHCPOptions = new DHCPOptionsFetcher(this);
       
@@ -286,6 +313,8 @@ public class L2Domain: RestObject {
       _egressAdvFwdTemplates = new EgressAdvFwdTemplatesFetcher(this);
       
       _eventLogs = new EventLogsFetcher(this);
+      
+      _gateways = new GatewaysFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -298,8 +327,6 @@ public class L2Domain: RestObject {
       _ingressACLTemplates = new IngressACLTemplatesFetcher(this);
       
       _ingressAdvFwdTemplates = new IngressAdvFwdTemplatesFetcher(this);
-      
-      _ingressExternalServiceTemplates = new IngressExternalServiceTemplatesFetcher(this);
       
       _jobs = new JobsFetcher(this);
       
@@ -317,9 +344,15 @@ public class L2Domain: RestObject {
       
       _policyGroups = new PolicyGroupsFetcher(this);
       
+      _proxyARPFilters = new ProxyARPFiltersFetcher(this);
+      
       _qOSs = new QOSsFetcher(this);
       
       _redirectionTargets = new RedirectionTargetsFetcher(this);
+      
+      _redundancyGroups = new RedundancyGroupsFetcher(this);
+      
+      _staticRoutes = new StaticRoutesFetcher(this);
       
       _statistics = new StatisticsFetcher(this);
       
@@ -330,6 +363,8 @@ public class L2Domain: RestObject {
       _uplinkRDs = new UplinkRDsFetcher(this);
       
       _virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
+      
+      _virtualFirewallRules = new VirtualFirewallRulesFetcher(this);
       
       _vMs = new VMsFetcher(this);
       
@@ -711,6 +746,14 @@ public class L2Domain: RestObject {
       return _addressRanges;
    }
    
+   public AlarmsFetcher getAlarms() {
+      return _alarms;
+   }
+   
+   public ApplicationsFetcher getApplications() {
+      return _applications;
+   }
+   
    public ApplicationperformancemanagementbindingsFetcher getApplicationperformancemanagementbindings() {
       return _applicationperformancemanagementbindings;
    }
@@ -725,6 +768,10 @@ public class L2Domain: RestObject {
    
    public ContainerInterfacesFetcher getContainerInterfaces() {
       return _containerInterfaces;
+   }
+   
+   public DeploymentFailuresFetcher getDeploymentFailures() {
+      return _deploymentFailures;
    }
    
    public DHCPOptionsFetcher getDHCPOptions() {
@@ -745,6 +792,10 @@ public class L2Domain: RestObject {
    
    public EventLogsFetcher getEventLogs() {
       return _eventLogs;
+   }
+   
+   public GatewaysFetcher getGateways() {
+      return _gateways;
    }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -769,10 +820,6 @@ public class L2Domain: RestObject {
    
    public IngressAdvFwdTemplatesFetcher getIngressAdvFwdTemplates() {
       return _ingressAdvFwdTemplates;
-   }
-   
-   public IngressExternalServiceTemplatesFetcher getIngressExternalServiceTemplates() {
-      return _ingressExternalServiceTemplates;
    }
    
    public JobsFetcher getJobs() {
@@ -807,12 +854,24 @@ public class L2Domain: RestObject {
       return _policyGroups;
    }
    
+   public ProxyARPFiltersFetcher getProxyARPFilters() {
+      return _proxyARPFilters;
+   }
+   
    public QOSsFetcher getQOSs() {
       return _qOSs;
    }
    
    public RedirectionTargetsFetcher getRedirectionTargets() {
       return _redirectionTargets;
+   }
+   
+   public RedundancyGroupsFetcher getRedundancyGroups() {
+      return _redundancyGroups;
+   }
+   
+   public StaticRoutesFetcher getStaticRoutes() {
+      return _staticRoutes;
    }
    
    public StatisticsFetcher getStatistics() {
@@ -833,6 +892,10 @@ public class L2Domain: RestObject {
    
    public VirtualFirewallPoliciesFetcher getVirtualFirewallPolicies() {
       return _virtualFirewallPolicies;
+   }
+   
+   public VirtualFirewallRulesFetcher getVirtualFirewallRules() {
+      return _virtualFirewallRules;
    }
    
    public VMsFetcher getVMs() {

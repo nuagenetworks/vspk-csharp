@@ -42,8 +42,9 @@ public class Connectionendpoint: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EIPType {IPV4 };
+   public enum EIPType {IPV4,IPV6 };
    public enum EEndPointType {SOURCE };
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
    [JsonProperty("IPAddress")]
@@ -52,18 +53,40 @@ public class Connectionendpoint: RestObject {
    [JsonProperty("IPType")]
    protected EIPType? _IPType;
    
+   [JsonProperty("IPv6Address")]
+   protected String _IPv6Address;
+   
    [JsonProperty("description")]
    protected String _description;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("endPointType")]
    protected EEndPointType? _endPointType;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
    [JsonProperty("name")]
    protected String _name;
    
 
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
    public Connectionendpoint() {
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
    }
 
@@ -91,6 +114,17 @@ public class Connectionendpoint: RestObject {
 
    
    [JsonIgnore]
+   public String NUIPv6Address {
+      get {
+         return _IPv6Address;
+      }
+      set {
+         this._IPv6Address = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -113,6 +147,39 @@ public class Connectionendpoint: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -125,9 +192,17 @@ public class Connectionendpoint: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
 
    public String toString() {
-      return "Connectionendpoint [" + "IPAddress=" + _IPAddress + ", IPType=" + _IPType + ", description=" + _description + ", endPointType=" + _endPointType + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Connectionendpoint [" + "IPAddress=" + _IPAddress + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", description=" + _description + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

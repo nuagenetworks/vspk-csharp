@@ -48,9 +48,6 @@ public class Location: RestObject {
    [JsonProperty("address")]
    protected String _address;
    
-   [JsonProperty("associatedEntityID")]
-   protected String _associatedEntityID;
-   
    [JsonProperty("associatedEntityName")]
    protected String _associatedEntityName;
    
@@ -112,17 +109,6 @@ public class Location: RestObject {
       }
       set {
          this._address = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUAssociatedEntityID {
-      get {
-         return _associatedEntityID;
-      }
-      set {
-         this._associatedEntityID = value;
       }
    }
 
@@ -271,7 +257,7 @@ public class Location: RestObject {
    
 
    public String toString() {
-      return "Location [" + "address=" + _address + ", associatedEntityID=" + _associatedEntityID + ", associatedEntityName=" + _associatedEntityName + ", associatedEntityType=" + _associatedEntityType + ", country=" + _country + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ignoreGeocode=" + _ignoreGeocode + ", lastUpdatedBy=" + _lastUpdatedBy + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", state=" + _state + ", timeZoneID=" + _timeZoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Location [" + "address=" + _address + ", associatedEntityName=" + _associatedEntityName + ", associatedEntityType=" + _associatedEntityType + ", country=" + _country + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ignoreGeocode=" + _ignoreGeocode + ", lastUpdatedBy=" + _lastUpdatedBy + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", state=" + _state + ", timeZoneID=" + _timeZoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

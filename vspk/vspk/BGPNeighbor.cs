@@ -79,6 +79,9 @@ public class BGPNeighbor: RestObject {
    [JsonProperty("peerAS")]
    protected long? _peerAS;
    
+   [JsonProperty("peerConfiguration")]
+   protected String _peerConfiguration;
+   
    [JsonProperty("peerIP")]
    protected String _peerIP;
    
@@ -224,6 +227,17 @@ public class BGPNeighbor: RestObject {
 
    
    [JsonIgnore]
+   public String NUPeerConfiguration {
+      get {
+         return _peerConfiguration;
+      }
+      set {
+         this._peerConfiguration = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUPeerIP {
       get {
          return _peerIP;
@@ -257,7 +271,7 @@ public class BGPNeighbor: RestObject {
    
 
    public String toString() {
-      return "BGPNeighbor [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningEnabled=" + _dampeningEnabled + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", peerAS=" + _peerAS + ", peerIP=" + _peerIP + ", session=" + _session + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BGPNeighbor [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningEnabled=" + _dampeningEnabled + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", peerAS=" + _peerAS + ", peerConfiguration=" + _peerConfiguration + ", peerIP=" + _peerIP + ", session=" + _session + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
