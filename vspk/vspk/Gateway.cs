@@ -47,7 +47,8 @@ public class Gateway: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFamily {ANY,NSG_AMI,NSG_AZ,NSG_C,NSG_E,NSG_E200,NSG_E300,NSG_V,NSG_X,NSG_X200,VRS };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
-   public enum EPersonality {DC7X50,EVDF,EVDFB,HARDWARE_VTEP,NETCONF_7X50,NSG,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,OTHER,VDFG,VRSB,VRSG,VSA,VSG };
+   public enum EPersonality {DC7X50,EVDF,EVDFB,HARDWARE_VTEP,NETCONF_7X50,NETCONF_THIRDPARTY_HW_VTEP,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,OTHER,VDFG,VRSB,VRSG,VSA,VSG };
+   public enum EVendor {CISCO };
 
    
    [JsonProperty("BIOSReleaseDate")]
@@ -113,6 +114,9 @@ public class Gateway: RestObject {
    [JsonProperty("gatewayConnected")]
    protected bool _gatewayConnected;
    
+   [JsonProperty("gatewayModel")]
+   protected String _gatewayModel;
+   
    [JsonProperty("gatewayVersion")]
    protected String _gatewayVersion;
    
@@ -163,6 +167,9 @@ public class Gateway: RestObject {
    
    [JsonProperty("useGatewayVLANVNID")]
    protected bool _useGatewayVLANVNID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("vendor")]
+   protected EVendor? _vendor;
    
    [JsonProperty("vtep")]
    protected String _vtep;
@@ -180,6 +187,9 @@ public class Gateway: RestObject {
    
    [JsonIgnore]
    private DeploymentFailuresFetcher _deploymentFailures;
+   
+   [JsonIgnore]
+   private DomainsFetcher _domains;
    
    [JsonIgnore]
    private EgressProfilesFetcher _egressProfiles;
@@ -241,6 +251,9 @@ public class Gateway: RestObject {
    [JsonIgnore]
    private WANServicesFetcher _wANServices;
    
+   [JsonIgnore]
+   private SubnetsFetcher _subnets;
+   
    public Gateway() {
       _personality = EPersonality.VRSG;
       
@@ -251,6 +264,8 @@ public class Gateway: RestObject {
       _bootstrapActivations = new BootstrapActivationsFetcher(this);
       
       _deploymentFailures = new DeploymentFailuresFetcher(this);
+      
+      _domains = new DomainsFetcher(this);
       
       _egressProfiles = new EgressProfilesFetcher(this);
       
@@ -291,6 +306,8 @@ public class Gateway: RestObject {
       _sAPIngressQoSProfiles = new SAPIngressQoSProfilesFetcher(this);
       
       _wANServices = new WANServicesFetcher(this);
+      
+      _subnets = new SubnetsFetcher(this);
       
    }
 
@@ -527,6 +544,17 @@ public class Gateway: RestObject {
 
    
    [JsonIgnore]
+   public String NUGatewayModel {
+      get {
+         return _gatewayModel;
+      }
+      set {
+         this._gatewayModel = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUGatewayVersion {
       get {
          return _gatewayVersion;
@@ -714,6 +742,17 @@ public class Gateway: RestObject {
 
    
    [JsonIgnore]
+   public EVendor? NUVendor {
+      get {
+         return _vendor;
+      }
+      set {
+         this._vendor = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUVtep {
       get {
          return _vtep;
@@ -740,6 +779,10 @@ public class Gateway: RestObject {
    
    public DeploymentFailuresFetcher getDeploymentFailures() {
       return _deploymentFailures;
+   }
+   
+   public DomainsFetcher getDomains() {
+      return _domains;
    }
    
    public EgressProfilesFetcher getEgressProfiles() {
@@ -822,9 +865,13 @@ public class Gateway: RestObject {
       return _wANServices;
    }
    
+   public SubnetsFetcher getSubnets() {
+      return _subnets;
+   }
+   
 
    public String toString() {
-      return "Gateway [" + "BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", UUID=" + _UUID + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNetconfProfileID=" + _associatedNetconfProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", datapathID=" + _datapathID + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", gatewayConnected=" + _gatewayConnected + ", gatewayVersion=" + _gatewayVersion + ", lastUpdatedBy=" + _lastUpdatedBy + ", libraries=" + _libraries + ", locationID=" + _locationID + ", managementID=" + _managementID + ", name=" + _name + ", patches=" + _patches + ", peer=" + _peer + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", systemID=" + _systemID + ", templateID=" + _templateID + ", useGatewayVLANVNID=" + _useGatewayVLANVNID + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Gateway [" + "BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", UUID=" + _UUID + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNetconfProfileID=" + _associatedNetconfProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", datapathID=" + _datapathID + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", gatewayConnected=" + _gatewayConnected + ", gatewayModel=" + _gatewayModel + ", gatewayVersion=" + _gatewayVersion + ", lastUpdatedBy=" + _lastUpdatedBy + ", libraries=" + _libraries + ", locationID=" + _locationID + ", managementID=" + _managementID + ", name=" + _name + ", patches=" + _patches + ", peer=" + _peer + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", systemID=" + _systemID + ", templateID=" + _templateID + ", useGatewayVLANVNID=" + _useGatewayVLANVNID + ", vendor=" + _vendor + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

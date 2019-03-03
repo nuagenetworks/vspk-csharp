@@ -96,19 +96,34 @@ public class GatewayRedundantPort: RestObject {
 
    
    [JsonIgnore]
+   private AlarmsFetcher _alarms;
+   
+   [JsonIgnore]
+   private EnterprisePermissionsFetcher _enterprisePermissions;
+   
+   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VLANsFetcher _vLANs;
    
    public GatewayRedundantPort() {
       
+      _alarms = new AlarmsFetcher(this);
+      
+      _enterprisePermissions = new EnterprisePermissionsFetcher(this);
+      
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _vLANs = new VLANsFetcher(this);
       
@@ -282,12 +297,24 @@ public class GatewayRedundantPort: RestObject {
    
 
    
+   public AlarmsFetcher getAlarms() {
+      return _alarms;
+   }
+   
+   public EnterprisePermissionsFetcher getEnterprisePermissions() {
+      return _enterprisePermissions;
+   }
+   
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
    }
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VLANsFetcher getVLANs() {

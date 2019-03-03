@@ -43,7 +43,7 @@ public class Enterprise: RestObject {
 
    
    public enum EAllowedForwardingClasses {A,B,C,D,E,F,G,H,NONE };
-   public enum EAllowedForwardingMode {DISABLED,LOCAL_ONLY,LOCAL_AND_REMOTE };
+   public enum EAllowedForwardingMode {DISABLED,LOCAL_AND_REMOTE,LOCAL_ONLY };
    public enum EAvatarType {BASE64,COMPUTEDURL,URL };
    public enum EEncryptionManagementMode {DISABLED,MANAGED };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
@@ -146,8 +146,14 @@ public class Enterprise: RestObject {
    [JsonProperty("sharedEnterprise")]
    protected bool _sharedEnterprise;
    
+   [JsonProperty("useGlobalMAC")]
+   protected bool _useGlobalMAC;
+   
    [JsonProperty("virtualFirewallRulesEnabled")]
    protected bool _virtualFirewallRulesEnabled;
+   
+   [JsonProperty("webFilterEnabled")]
+   protected bool _webFilterEnabled;
    
 
    
@@ -302,6 +308,9 @@ public class Enterprise: RestObject {
    private NSRedundantGatewayGroupsFetcher _nSRedundantGatewayGroups;
    
    [JsonIgnore]
+   private OverlayManagementProfilesFetcher _overlayManagementProfiles;
+   
+   [JsonIgnore]
    private PATNATPoolsFetcher _pATNATPools;
    
    [JsonIgnore]
@@ -335,6 +344,9 @@ public class Enterprise: RestObject {
    private SharedNetworkResourcesFetcher _sharedNetworkResources;
    
    [JsonIgnore]
+   private SyslogDestinationsFetcher _syslogDestinations;
+   
+   [JsonIgnore]
    private TrunksFetcher _trunks;
    
    [JsonIgnore]
@@ -351,6 +363,12 @@ public class Enterprise: RestObject {
    
    [JsonIgnore]
    private VNFThresholdPoliciesFetcher _vNFThresholdPolicies;
+   
+   [JsonIgnore]
+   private WebCategoriesFetcher _webCategories;
+   
+   [JsonIgnore]
+   private WebDomainNamesFetcher _webDomainNames;
    
    [JsonIgnore]
    private ZFBRequestsFetcher _zFBRequests;
@@ -457,6 +475,8 @@ public class Enterprise: RestObject {
       
       _nSRedundantGatewayGroups = new NSRedundantGatewayGroupsFetcher(this);
       
+      _overlayManagementProfiles = new OverlayManagementProfilesFetcher(this);
+      
       _pATNATPools = new PATNATPoolsFetcher(this);
       
       _performanceMonitors = new PerformanceMonitorsFetcher(this);
@@ -479,6 +499,8 @@ public class Enterprise: RestObject {
       
       _sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
       
+      _syslogDestinations = new SyslogDestinationsFetcher(this);
+      
       _trunks = new TrunksFetcher(this);
       
       _users = new UsersFetcher(this);
@@ -490,6 +512,10 @@ public class Enterprise: RestObject {
       _vNFMetadatas = new VNFMetadatasFetcher(this);
       
       _vNFThresholdPolicies = new VNFThresholdPoliciesFetcher(this);
+      
+      _webCategories = new WebCategoriesFetcher(this);
+      
+      _webDomainNames = new WebDomainNamesFetcher(this);
       
       _zFBRequests = new ZFBRequestsFetcher(this);
       
@@ -849,12 +875,34 @@ public class Enterprise: RestObject {
 
    
    [JsonIgnore]
+   public bool NUUseGlobalMAC {
+      get {
+         return _useGlobalMAC;
+      }
+      set {
+         this._useGlobalMAC = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUVirtualFirewallRulesEnabled {
       get {
          return _virtualFirewallRulesEnabled;
       }
       set {
          this._virtualFirewallRulesEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUWebFilterEnabled {
+      get {
+         return _webFilterEnabled;
+      }
+      set {
+         this._webFilterEnabled = value;
       }
    }
 
@@ -1061,6 +1109,10 @@ public class Enterprise: RestObject {
       return _nSRedundantGatewayGroups;
    }
    
+   public OverlayManagementProfilesFetcher getOverlayManagementProfiles() {
+      return _overlayManagementProfiles;
+   }
+   
    public PATNATPoolsFetcher getPATNATPools() {
       return _pATNATPools;
    }
@@ -1105,6 +1157,10 @@ public class Enterprise: RestObject {
       return _sharedNetworkResources;
    }
    
+   public SyslogDestinationsFetcher getSyslogDestinations() {
+      return _syslogDestinations;
+   }
+   
    public TrunksFetcher getTrunks() {
       return _trunks;
    }
@@ -1129,13 +1185,21 @@ public class Enterprise: RestObject {
       return _vNFThresholdPolicies;
    }
    
+   public WebCategoriesFetcher getWebCategories() {
+      return _webCategories;
+   }
+   
+   public WebDomainNamesFetcher getWebDomainNames() {
+      return _webDomainNames;
+   }
+   
    public ZFBRequestsFetcher getZFBRequests() {
       return _zFBRequests;
    }
    
 
    public String toString() {
-      return "Enterprise [" + "BGPEnabled=" + _BGPEnabled + ", DHCPLeaseInterval=" + _DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + _LDAPAuthorizationEnabled + ", LDAPEnabled=" + _LDAPEnabled + ", VNFManagementEnabled=" + _VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + _allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + _allowGatewayManagement + ", allowTrustedForwardingClass=" + _allowTrustedForwardingClass + ", allowedForwardingClasses=" + _allowedForwardingClasses + ", allowedForwardingMode=" + _allowedForwardingMode + ", associatedEnterpriseSecurityID=" + _associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + _associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + _associatedKeyServerMonitorID + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", customerID=" + _customerID + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", enableApplicationPerformanceManagement=" + _enableApplicationPerformanceManagement + ", encryptionManagementMode=" + _encryptionManagementMode + ", enterpriseProfileID=" + _enterpriseProfileID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", floatingIPsQuota=" + _floatingIPsQuota + ", floatingIPsUsed=" + _floatingIPsUsed + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", localAS=" + _localAS + ", name=" + _name + ", receiveMultiCastListID=" + _receiveMultiCastListID + ", sendMultiCastListID=" + _sendMultiCastListID + ", sharedEnterprise=" + _sharedEnterprise + ", virtualFirewallRulesEnabled=" + _virtualFirewallRulesEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Enterprise [" + "BGPEnabled=" + _BGPEnabled + ", DHCPLeaseInterval=" + _DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + _LDAPAuthorizationEnabled + ", LDAPEnabled=" + _LDAPEnabled + ", VNFManagementEnabled=" + _VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + _allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + _allowGatewayManagement + ", allowTrustedForwardingClass=" + _allowTrustedForwardingClass + ", allowedForwardingClasses=" + _allowedForwardingClasses + ", allowedForwardingMode=" + _allowedForwardingMode + ", associatedEnterpriseSecurityID=" + _associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + _associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + _associatedKeyServerMonitorID + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", customerID=" + _customerID + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", enableApplicationPerformanceManagement=" + _enableApplicationPerformanceManagement + ", encryptionManagementMode=" + _encryptionManagementMode + ", enterpriseProfileID=" + _enterpriseProfileID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", floatingIPsQuota=" + _floatingIPsQuota + ", floatingIPsUsed=" + _floatingIPsUsed + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", localAS=" + _localAS + ", name=" + _name + ", receiveMultiCastListID=" + _receiveMultiCastListID + ", sendMultiCastListID=" + _sendMultiCastListID + ", sharedEnterprise=" + _sharedEnterprise + ", useGlobalMAC=" + _useGlobalMAC + ", virtualFirewallRulesEnabled=" + _virtualFirewallRulesEnabled + ", webFilterEnabled=" + _webFilterEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

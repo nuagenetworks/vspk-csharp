@@ -42,8 +42,11 @@ public class NSGInfo: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum ECmdStatus {ABANDONED,COMPLETED,FAILED,RUNNING,SKIPPED,STARTED,UNKNOWN };
+   public enum ECmdType {NSG_DOWNLOAD_OS_IMAGE,NSG_UPGRADE_TO_IMAGE };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFamily {ANY,NSG_AMI,NSG_AZ,NSG_C,NSG_DOCKER,NSG_E,NSG_E200,NSG_E300,NSG_V,NSG_X,NSG_X200 };
+   public enum EPersonality {NSG,NSGBR,NSGDUC };
 
    
    [JsonProperty("AARApplicationReleaseDate")]
@@ -84,6 +87,36 @@ public class NSGInfo: RestObject {
    
    [JsonProperty("associatedNSGatewayID")]
    protected String _associatedNSGatewayID;
+   
+   [JsonProperty("bootstrapStatus")]
+   protected String _bootstrapStatus;
+   
+   [JsonProperty("cmdDetailedStatus")]
+   protected String _cmdDetailedStatus;
+   
+   [JsonProperty("cmdDetailedStatusCode")]
+   protected long? _cmdDetailedStatusCode;
+   
+   [JsonProperty("cmdDownloadProgress")]
+   protected Object _cmdDownloadProgress;
+   
+   [JsonProperty("cmdID")]
+   protected String _cmdID;
+   
+   [JsonProperty("cmdLastUpdatedDate")]
+   protected String _cmdLastUpdatedDate;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("cmdStatus")]
+   protected ECmdStatus? _cmdStatus;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("cmdType")]
+   protected ECmdType? _cmdType;
+   
+   [JsonProperty("enterpriseID")]
+   protected String _enterpriseID;
+   
+   [JsonProperty("enterpriseName")]
+   protected String _enterpriseName;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -97,14 +130,23 @@ public class NSGInfo: RestObject {
    [JsonProperty("libraries")]
    protected String _libraries;
    
+   [JsonProperty("name")]
+   protected String _name;
+   
    [JsonProperty("patchesDetail")]
    protected String _patchesDetail;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("personality")]
+   protected EPersonality? _personality;
    
    [JsonProperty("productName")]
    protected String _productName;
    
    [JsonProperty("serialNumber")]
    protected String _serialNumber;
+   
+   [JsonProperty("systemID")]
+   protected String _systemID;
    
 
    
@@ -257,6 +299,116 @@ public class NSGInfo: RestObject {
 
    
    [JsonIgnore]
+   public String NUBootstrapStatus {
+      get {
+         return _bootstrapStatus;
+      }
+      set {
+         this._bootstrapStatus = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCmdDetailedStatus {
+      get {
+         return _cmdDetailedStatus;
+      }
+      set {
+         this._cmdDetailedStatus = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUCmdDetailedStatusCode {
+      get {
+         return _cmdDetailedStatusCode;
+      }
+      set {
+         this._cmdDetailedStatusCode = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public Object NUCmdDownloadProgress {
+      get {
+         return _cmdDownloadProgress;
+      }
+      set {
+         this._cmdDownloadProgress = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCmdID {
+      get {
+         return _cmdID;
+      }
+      set {
+         this._cmdID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCmdLastUpdatedDate {
+      get {
+         return _cmdLastUpdatedDate;
+      }
+      set {
+         this._cmdLastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public ECmdStatus? NUCmdStatus {
+      get {
+         return _cmdStatus;
+      }
+      set {
+         this._cmdStatus = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public ECmdType? NUCmdType {
+      get {
+         return _cmdType;
+      }
+      set {
+         this._cmdType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUEnterpriseID {
+      get {
+         return _enterpriseID;
+      }
+      set {
+         this._enterpriseID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUEnterpriseName {
+      get {
+         return _enterpriseName;
+      }
+      set {
+         this._enterpriseName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -301,12 +453,34 @@ public class NSGInfo: RestObject {
 
    
    [JsonIgnore]
+   public String NUName {
+      get {
+         return _name;
+      }
+      set {
+         this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUPatchesDetail {
       get {
          return _patchesDetail;
       }
       set {
          this._patchesDetail = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EPersonality? NUPersonality {
+      get {
+         return _personality;
+      }
+      set {
+         this._personality = value;
       }
    }
 
@@ -333,11 +507,22 @@ public class NSGInfo: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NUSystemID {
+      get {
+         return _systemID;
+      }
+      set {
+         this._systemID = value;
+      }
+   }
+
+   
 
    
 
    public String toString() {
-      return "NSGInfo [" + "AARApplicationReleaseDate=" + _AARApplicationReleaseDate + ", AARApplicationVersion=" + _AARApplicationVersion + ", BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", associatedEntityType=" + _associatedEntityType + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", libraries=" + _libraries + ", patchesDetail=" + _patchesDetail + ", productName=" + _productName + ", serialNumber=" + _serialNumber + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGInfo [" + "AARApplicationReleaseDate=" + _AARApplicationReleaseDate + ", AARApplicationVersion=" + _AARApplicationVersion + ", BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", associatedEntityType=" + _associatedEntityType + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", bootstrapStatus=" + _bootstrapStatus + ", cmdDetailedStatus=" + _cmdDetailedStatus + ", cmdDetailedStatusCode=" + _cmdDetailedStatusCode + ", cmdDownloadProgress=" + _cmdDownloadProgress + ", cmdID=" + _cmdID + ", cmdLastUpdatedDate=" + _cmdLastUpdatedDate + ", cmdStatus=" + _cmdStatus + ", cmdType=" + _cmdType + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", libraries=" + _libraries + ", name=" + _name + ", patchesDetail=" + _patchesDetail + ", personality=" + _personality + ", productName=" + _productName + ", serialNumber=" + _serialNumber + ", systemID=" + _systemID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

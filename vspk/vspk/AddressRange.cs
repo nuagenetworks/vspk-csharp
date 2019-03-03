@@ -42,8 +42,8 @@ public class AddressRange: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EDHCPPoolType {BRIDGE,HOST };
-   public enum EIPType {DUALSTACK,IPV4,IPV6 };
+   public enum EDHCPPoolType {BRIDGE,HOST,VRRP };
+   public enum EIPType {IPV4,IPV6 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    [JsonConverter(typeof(StringEnumConverter))]

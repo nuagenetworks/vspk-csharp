@@ -42,7 +42,7 @@ public class OverlayMirrorDestinationTemplate: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EDestinationType {REDIRECTION_TARGET,OVERLAY_MIRROR_DESTINATION };
+   public enum EDestinationType {OVERLAY_MIRROR_DESTINATION,REDIRECTION_TARGET };
    public enum EEndPointType {NONE,VIRTUAL_WIRE };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum ETriggerType {GARP,NONE };

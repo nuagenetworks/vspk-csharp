@@ -43,6 +43,7 @@ public class NetconfSession: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum EGatewayVendor {CISCO };
    public enum EStatus {CONNECTED,DISCONNECTED };
 
    
@@ -57,6 +58,15 @@ public class NetconfSession: RestObject {
    
    [JsonProperty("externalID")]
    protected String _externalID;
+   
+   [JsonProperty("gatewayModel")]
+   protected String _gatewayModel;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("gatewayVendor")]
+   protected EGatewayVendor? _gatewayVendor;
+   
+   [JsonProperty("gatewayVersion")]
+   protected String _gatewayVersion;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
@@ -126,6 +136,39 @@ public class NetconfSession: RestObject {
 
    
    [JsonIgnore]
+   public String NUGatewayModel {
+      get {
+         return _gatewayModel;
+      }
+      set {
+         this._gatewayModel = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EGatewayVendor? NUGatewayVendor {
+      get {
+         return _gatewayVendor;
+      }
+      set {
+         this._gatewayVendor = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUGatewayVersion {
+      get {
+         return _gatewayVersion;
+      }
+      set {
+         this._gatewayVersion = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -159,7 +202,7 @@ public class NetconfSession: RestObject {
    
 
    public String toString() {
-      return "NetconfSession [" + "associatedGatewayID=" + _associatedGatewayID + ", associatedGatewayName=" + _associatedGatewayName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NetconfSession [" + "associatedGatewayID=" + _associatedGatewayID + ", associatedGatewayName=" + _associatedGatewayName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayModel=" + _gatewayModel + ", gatewayVendor=" + _gatewayVendor + ", gatewayVersion=" + _gatewayVersion + ", lastUpdatedBy=" + _lastUpdatedBy + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

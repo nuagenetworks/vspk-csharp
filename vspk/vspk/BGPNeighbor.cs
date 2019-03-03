@@ -66,6 +66,9 @@ public class BGPNeighbor: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("domainServiceLabel")]
+   protected String _domainServiceLabel;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -91,12 +94,17 @@ public class BGPNeighbor: RestObject {
 
    
    [JsonIgnore]
+   private DeploymentFailuresFetcher _deploymentFailures;
+   
+   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    public BGPNeighbor() {
+      
+      _deploymentFailures = new DeploymentFailuresFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -183,6 +191,17 @@ public class BGPNeighbor: RestObject {
 
    
    [JsonIgnore]
+   public String NUDomainServiceLabel {
+      get {
+         return _domainServiceLabel;
+      }
+      set {
+         this._domainServiceLabel = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -261,6 +280,10 @@ public class BGPNeighbor: RestObject {
    
 
    
+   public DeploymentFailuresFetcher getDeploymentFailures() {
+      return _deploymentFailures;
+   }
+   
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
    }
@@ -271,7 +294,7 @@ public class BGPNeighbor: RestObject {
    
 
    public String toString() {
-      return "BGPNeighbor [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningEnabled=" + _dampeningEnabled + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", peerAS=" + _peerAS + ", peerConfiguration=" + _peerConfiguration + ", peerIP=" + _peerIP + ", session=" + _session + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BGPNeighbor [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningEnabled=" + _dampeningEnabled + ", description=" + _description + ", domainServiceLabel=" + _domainServiceLabel + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", peerAS=" + _peerAS + ", peerConfiguration=" + _peerConfiguration + ", peerIP=" + _peerIP + ", session=" + _session + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

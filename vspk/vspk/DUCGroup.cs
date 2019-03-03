@@ -43,6 +43,7 @@ public class DUCGroup: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum EFunction {GATEWAY,UBR };
 
    
    [JsonProperty("associatedPerformanceMonitorID")]
@@ -56,6 +57,9 @@ public class DUCGroup: RestObject {
    
    [JsonProperty("externalID")]
    protected String _externalID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("function")]
+   protected EFunction? _function;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
@@ -130,6 +134,17 @@ public class DUCGroup: RestObject {
 
    
    [JsonIgnore]
+   public EFunction? NUFunction {
+      get {
+         return _function;
+      }
+      set {
+         this._function = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -167,7 +182,7 @@ public class DUCGroup: RestObject {
    
 
    public String toString() {
-      return "DUCGroup [" + "associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "DUCGroup [" + "associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", function=" + _function + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -37,129 +37,86 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class NSGUpgradeProfile: RestObject {
+public class NSGatewayMonitor: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
-   [JsonProperty("description")]
-   protected String _description;
+   [JsonProperty("nsginfo")]
+   protected Object _nsginfo;
    
-   [JsonProperty("downloadRateLimit")]
-   protected long? _downloadRateLimit;
+   [JsonProperty("nsgstate")]
+   protected Object _nsgstate;
    
-   [JsonProperty("enterpriseID")]
-   protected String _enterpriseID;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("entityScope")]
-   protected EEntityScope? _entityScope;
+   [JsonProperty("nsgsummary")]
+   protected Object _nsgsummary;
    
-   [JsonProperty("externalID")]
-   protected String _externalID;
+   [JsonProperty("vrsinfo")]
+   protected Object _vrsinfo;
    
-   [JsonProperty("lastUpdatedBy")]
-   protected String _lastUpdatedBy;
-   
-   [JsonProperty("metadataUpgradePath")]
-   protected String _metadataUpgradePath;
-   
-   [JsonProperty("name")]
-   protected String _name;
+   [JsonProperty("vscs")]
+   protected System.Collections.Generic.List<String> _vscs;
    
 
    
-   public NSGUpgradeProfile() {
+   public NSGatewayMonitor() {
       
    }
 
    
    [JsonIgnore]
-   public String NUDescription {
+   public Object NUNsginfo {
       get {
-         return _description;
+         return _nsginfo;
       }
       set {
-         this._description = value;
+         this._nsginfo = value;
       }
    }
 
    
    [JsonIgnore]
-   public long? NUDownloadRateLimit {
+   public Object NUNsgstate {
       get {
-         return _downloadRateLimit;
+         return _nsgstate;
       }
       set {
-         this._downloadRateLimit = value;
+         this._nsgstate = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUEnterpriseID {
+   public Object NUNsgsummary {
       get {
-         return _enterpriseID;
+         return _nsgsummary;
       }
       set {
-         this._enterpriseID = value;
+         this._nsgsummary = value;
       }
    }
 
    
    [JsonIgnore]
-   public EEntityScope? NUEntityScope {
+   public Object NUVrsinfo {
       get {
-         return _entityScope;
+         return _vrsinfo;
       }
       set {
-         this._entityScope = value;
+         this._vrsinfo = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUExternalID {
+   public System.Collections.Generic.List<String> NUVscs {
       get {
-         return _externalID;
+         return _vscs;
       }
       set {
-         this._externalID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NULastUpdatedBy {
-      get {
-         return _lastUpdatedBy;
-      }
-      set {
-         this._lastUpdatedBy = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUMetadataUpgradePath {
-      get {
-         return _metadataUpgradePath;
-      }
-      set {
-         this._metadataUpgradePath = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUName {
-      get {
-         return _name;
-      }
-      set {
-         this._name = value;
+         this._vscs = value;
       }
    }
 
@@ -168,7 +125,7 @@ public class NSGUpgradeProfile: RestObject {
    
 
    public String toString() {
-      return "NSGUpgradeProfile [" + "description=" + _description + ", downloadRateLimit=" + _downloadRateLimit + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataUpgradePath=" + _metadataUpgradePath + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGatewayMonitor [" + "nsginfo=" + _nsginfo + ", nsgstate=" + _nsgstate + ", nsgsummary=" + _nsgsummary + ", vrsinfo=" + _vrsinfo + ", vscs=" + _vscs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -176,12 +133,12 @@ public class NSGUpgradeProfile: RestObject {
 
    public static String getResourceName()
    {
-	return "nsgupgradeprofiles";
+	return "nsgatewaysmonitors";
    }
 
    public static String getRestName()
    {
-	return "nsgupgradeprofile";
+	return "nsgatewaysmonitor";
    }
 }
 }

@@ -37,25 +37,13 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class RoutingPolicy: RestObject {
+public class WebDomainName: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EContentType {DEFAULT,NETCONF_7X50 };
-   public enum EDefaultAction {ACCEPT,REJECT };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum ERoutingProtocol {BGP,ISIS,OSPFv2,OSPFv3,ROUTING };
 
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("contentType")]
-   protected EContentType? _contentType;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("defaultAction")]
-   protected EDefaultAction? _defaultAction;
-   
-   [JsonProperty("description")]
-   protected String _description;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -63,14 +51,11 @@ public class RoutingPolicy: RestObject {
    [JsonProperty("externalID")]
    protected String _externalID;
    
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   
    [JsonProperty("name")]
    protected String _name;
-   
-   [JsonProperty("policyDefinition")]
-   protected String _policyDefinition;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("routingProtocol")]
-   protected ERoutingProtocol? _routingProtocol;
    
 
    
@@ -80,45 +65,17 @@ public class RoutingPolicy: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
-   public RoutingPolicy() {
+   [JsonIgnore]
+   private WebCategoriesFetcher _webCategories;
+   
+   public WebDomainName() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
-   }
-
-   
-   [JsonIgnore]
-   public EContentType? NUContentType {
-      get {
-         return _contentType;
-      }
-      set {
-         this._contentType = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EDefaultAction? NUDefaultAction {
-      get {
-         return _defaultAction;
-      }
-      set {
-         this._defaultAction = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUDescription {
-      get {
-         return _description;
-      }
-      set {
-         this._description = value;
-      }
+      _webCategories = new WebCategoriesFetcher(this);
+      
    }
 
    
@@ -145,34 +102,23 @@ public class RoutingPolicy: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUPolicyDefinition {
-      get {
-         return _policyDefinition;
-      }
-      set {
-         this._policyDefinition = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public ERoutingProtocol? NURoutingProtocol {
-      get {
-         return _routingProtocol;
-      }
-      set {
-         this._routingProtocol = value;
       }
    }
 
@@ -187,9 +133,13 @@ public class RoutingPolicy: RestObject {
       return _metadatas;
    }
    
+   public WebCategoriesFetcher getWebCategories() {
+      return _webCategories;
+   }
+   
 
    public String toString() {
-      return "RoutingPolicy [" + "contentType=" + _contentType + ", defaultAction=" + _defaultAction + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", policyDefinition=" + _policyDefinition + ", routingProtocol=" + _routingProtocol + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "WebDomainName [" + "entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -197,12 +147,12 @@ public class RoutingPolicy: RestObject {
 
    public static String getResourceName()
    {
-	return "routingpolicies";
+	return "webdomainnames";
    }
 
    public static String getRestName()
    {
-	return "routingpolicy";
+	return "webdomainname";
    }
 }
 }

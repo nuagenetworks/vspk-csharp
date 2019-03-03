@@ -42,11 +42,18 @@ public class DUCGroupBinding: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EAssociatedUBRGroupFunction {GATEWAY,UBR };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
    [JsonProperty("associatedDUCGroupID")]
    protected String _associatedDUCGroupID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("associatedUBRGroupFunction")]
+   protected EAssociatedUBRGroupFunction? _associatedUBRGroupFunction;
+   
+   [JsonProperty("associatedUBRGroupName")]
+   protected String _associatedUBRGroupName;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -87,6 +94,28 @@ public class DUCGroupBinding: RestObject {
       }
       set {
          this._associatedDUCGroupID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EAssociatedUBRGroupFunction? NUAssociatedUBRGroupFunction {
+      get {
+         return _associatedUBRGroupFunction;
+      }
+      set {
+         this._associatedUBRGroupFunction = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedUBRGroupName {
+      get {
+         return _associatedUBRGroupName;
+      }
+      set {
+         this._associatedUBRGroupName = value;
       }
    }
 
@@ -158,7 +187,7 @@ public class DUCGroupBinding: RestObject {
    
 
    public String toString() {
-      return "DUCGroupBinding [" + "associatedDUCGroupID=" + _associatedDUCGroupID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", oneWayDelay=" + _oneWayDelay + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "DUCGroupBinding [" + "associatedDUCGroupID=" + _associatedDUCGroupID + ", associatedUBRGroupFunction=" + _associatedUBRGroupFunction + ", associatedUBRGroupName=" + _associatedUBRGroupName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", oneWayDelay=" + _oneWayDelay + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

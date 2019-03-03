@@ -78,6 +78,9 @@ public class UserContext: RestObject {
    [JsonProperty("statisticsEnabled")]
    protected bool _statisticsEnabled;
    
+   [JsonProperty("statsDatabaseProxy")]
+   protected String _statsDatabaseProxy;
+   
    [JsonProperty("statsTSDBServerAddress")]
    protected String _statsTSDBServerAddress;
    
@@ -220,6 +223,17 @@ public class UserContext: RestObject {
 
    
    [JsonIgnore]
+   public String NUStatsDatabaseProxy {
+      get {
+         return _statsDatabaseProxy;
+      }
+      set {
+         this._statsDatabaseProxy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUStatsTSDBServerAddress {
       get {
          return _statsTSDBServerAddress;
@@ -242,7 +256,7 @@ public class UserContext: RestObject {
    
 
    public String toString() {
-      return "UserContext [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSFeatureEnabled=" + _VSSFeatureEnabled + ", VSSStatsInterval=" + _VSSStatsInterval + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", lastUpdatedBy=" + _lastUpdatedBy + ", pageSize=" + _pageSize + ", statisticsEnabled=" + _statisticsEnabled + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "UserContext [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSFeatureEnabled=" + _VSSFeatureEnabled + ", VSSStatsInterval=" + _VSSStatsInterval + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", lastUpdatedBy=" + _lastUpdatedBy + ", pageSize=" + _pageSize + ", statisticsEnabled=" + _statisticsEnabled + ", statsDatabaseProxy=" + _statsDatabaseProxy + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -42,11 +42,18 @@ public class BFDSession: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EBFDDestinationIPType {IPV4,IPV6 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
    [JsonProperty("BFDDestinationIP")]
    protected String _BFDDestinationIP;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("BFDDestinationIPType")]
+   protected EBFDDestinationIPType? _BFDDestinationIPType;
+   
+   [JsonProperty("BFDDestinationIPv6")]
+   protected String _BFDDestinationIPv6;
    
    [JsonProperty("BFDMultiplier")]
    protected long? _BFDMultiplier;
@@ -90,6 +97,28 @@ public class BFDSession: RestObject {
       }
       set {
          this._BFDDestinationIP = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EBFDDestinationIPType? NUBFDDestinationIPType {
+      get {
+         return _BFDDestinationIPType;
+      }
+      set {
+         this._BFDDestinationIPType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUBFDDestinationIPv6 {
+      get {
+         return _BFDDestinationIPv6;
+      }
+      set {
+         this._BFDDestinationIPv6 = value;
       }
    }
 
@@ -172,7 +201,7 @@ public class BFDSession: RestObject {
    
 
    public String toString() {
-      return "BFDSession [" + "BFDDestinationIP=" + _BFDDestinationIP + ", BFDMultiplier=" + _BFDMultiplier + ", BFDTimer=" + _BFDTimer + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiHopEnabled=" + _multiHopEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BFDSession [" + "BFDDestinationIP=" + _BFDDestinationIP + ", BFDDestinationIPType=" + _BFDDestinationIPType + ", BFDDestinationIPv6=" + _BFDDestinationIPv6 + ", BFDMultiplier=" + _BFDMultiplier + ", BFDTimer=" + _BFDTimer + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiHopEnabled=" + _multiHopEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

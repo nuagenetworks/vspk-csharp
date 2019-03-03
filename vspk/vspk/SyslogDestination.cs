@@ -37,76 +37,58 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class RoutingPolicy: RestObject {
+public class SyslogDestination: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EContentType {DEFAULT,NETCONF_7X50 };
-   public enum EDefaultAction {ACCEPT,REJECT };
-   public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum ERoutingProtocol {BGP,ISIS,OSPFv2,OSPFv3,ROUTING };
+   public enum EIPType {IPV4 };
+   public enum EType {UDP };
 
+   
+   [JsonProperty("IPAddress")]
+   protected String _IPAddress;
    [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("contentType")]
-   protected EContentType? _contentType;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("defaultAction")]
-   protected EDefaultAction? _defaultAction;
+   [JsonProperty("IPType")]
+   protected EIPType? _IPType;
    
    [JsonProperty("description")]
    protected String _description;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("entityScope")]
-   protected EEntityScope? _entityScope;
-   
-   [JsonProperty("externalID")]
-   protected String _externalID;
    
    [JsonProperty("name")]
    protected String _name;
    
-   [JsonProperty("policyDefinition")]
-   protected String _policyDefinition;
+   [JsonProperty("port")]
+   protected long? _port;
    [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("routingProtocol")]
-   protected ERoutingProtocol? _routingProtocol;
+   [JsonProperty("type")]
+   protected EType? _type;
    
 
    
-   [JsonIgnore]
-   private GlobalMetadatasFetcher _globalMetadatas;
-   
-   [JsonIgnore]
-   private MetadatasFetcher _metadatas;
-   
-   public RoutingPolicy() {
-      
-      _globalMetadatas = new GlobalMetadatasFetcher(this);
-      
-      _metadatas = new MetadatasFetcher(this);
+   public SyslogDestination() {
       
    }
 
    
    [JsonIgnore]
-   public EContentType? NUContentType {
+   public String NUIPAddress {
       get {
-         return _contentType;
+         return _IPAddress;
       }
       set {
-         this._contentType = value;
+         this._IPAddress = value;
       }
    }
 
    
    [JsonIgnore]
-   public EDefaultAction? NUDefaultAction {
+   public EIPType? NUIPType {
       get {
-         return _defaultAction;
+         return _IPType;
       }
       set {
-         this._defaultAction = value;
+         this._IPType = value;
       }
    }
 
@@ -123,28 +105,6 @@ public class RoutingPolicy: RestObject {
 
    
    [JsonIgnore]
-   public EEntityScope? NUEntityScope {
-      get {
-         return _entityScope;
-      }
-      set {
-         this._entityScope = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUExternalID {
-      get {
-         return _externalID;
-      }
-      set {
-         this._externalID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -156,40 +116,32 @@ public class RoutingPolicy: RestObject {
 
    
    [JsonIgnore]
-   public String NUPolicyDefinition {
+   public long? NUPort {
       get {
-         return _policyDefinition;
+         return _port;
       }
       set {
-         this._policyDefinition = value;
+         this._port = value;
       }
    }
 
    
    [JsonIgnore]
-   public ERoutingProtocol? NURoutingProtocol {
+   public EType? NUType {
       get {
-         return _routingProtocol;
+         return _type;
       }
       set {
-         this._routingProtocol = value;
+         this._type = value;
       }
    }
 
    
 
-   
-   public GlobalMetadatasFetcher getGlobalMetadatas() {
-      return _globalMetadatas;
-   }
-   
-   public MetadatasFetcher getMetadatas() {
-      return _metadatas;
-   }
    
 
    public String toString() {
-      return "RoutingPolicy [" + "contentType=" + _contentType + ", defaultAction=" + _defaultAction + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", policyDefinition=" + _policyDefinition + ", routingProtocol=" + _routingProtocol + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "SyslogDestination [" + "IPAddress=" + _IPAddress + ", IPType=" + _IPType + ", description=" + _description + ", name=" + _name + ", port=" + _port + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -197,12 +149,12 @@ public class RoutingPolicy: RestObject {
 
    public static String getResourceName()
    {
-	return "routingpolicies";
+	return "syslogdestinations";
    }
 
    public static String getRestName()
    {
-	return "routingpolicy";
+	return "syslogdestination";
    }
 }
 }

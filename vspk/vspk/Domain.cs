@@ -55,7 +55,7 @@ public class Domain: RestObject {
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
    public enum EPolicyChangeStatus {APPLIED,DISCARDED,STARTED };
    public enum ETunnelType {DC_DEFAULT,GRE,VLAN,VXLAN };
-   public enum EUnderlayEnabled {DISABLED,ENABLED,INHERITED };
+   public enum EUnderlayEnabled {DISABLED,ENABLED };
    public enum EUplinkPreference {PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY,SYMMETRIC };
 
    
@@ -82,9 +82,15 @@ public class Domain: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("PATEnabled")]
    protected EPATEnabled? _PATEnabled;
+   
+   [JsonProperty("VXLANECMPEnabled")]
+   protected bool _VXLANECMPEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("advertiseCriteria")]
    protected EAdvertiseCriteria? _advertiseCriteria;
+   
+   [JsonProperty("aggregateFlowsEnabled")]
+   protected bool _aggregateFlowsEnabled;
    
    [JsonProperty("associatedBGPProfileID")]
    protected String _associatedBGPProfileID;
@@ -142,6 +148,9 @@ public class Domain: RestObject {
    
    [JsonProperty("externalID")]
    protected String _externalID;
+   
+   [JsonProperty("externalLabel")]
+   protected String _externalLabel;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("flowCollectionEnabled")]
    protected EFlowCollectionEnabled? _flowCollectionEnabled;
@@ -225,6 +234,9 @@ public class Domain: RestObject {
    
    [JsonIgnore]
    private ContainerInterfacesFetcher _containerInterfaces;
+   
+   [JsonIgnore]
+   private DeploymentFailuresFetcher _deploymentFailures;
    
    [JsonIgnore]
    private DHCPOptionsFetcher _dHCPOptions;
@@ -362,7 +374,6 @@ public class Domain: RestObject {
    private ZonesFetcher _zones;
    
    public Domain() {
-      _PATEnabled = EPATEnabled.INHERITED;
       _DHCPBehavior = EDHCPBehavior.CONSUME;
       _tunnelType = ETunnelType.DC_DEFAULT;
       _maintenanceMode = EMaintenanceMode.DISABLED;
@@ -378,6 +389,8 @@ public class Domain: RestObject {
       _containers = new ContainersFetcher(this);
       
       _containerInterfaces = new ContainerInterfacesFetcher(this);
+      
+      _deploymentFailures = new DeploymentFailuresFetcher(this);
       
       _dHCPOptions = new DHCPOptionsFetcher(this);
       
@@ -561,12 +574,34 @@ public class Domain: RestObject {
 
    
    [JsonIgnore]
+   public bool NUVXLANECMPEnabled {
+      get {
+         return _VXLANECMPEnabled;
+      }
+      set {
+         this._VXLANECMPEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EAdvertiseCriteria? NUAdvertiseCriteria {
       get {
          return _advertiseCriteria;
       }
       set {
          this._advertiseCriteria = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUAggregateFlowsEnabled {
+      get {
+         return _aggregateFlowsEnabled;
+      }
+      set {
+         this._aggregateFlowsEnabled = value;
       }
    }
 
@@ -776,6 +811,17 @@ public class Domain: RestObject {
       }
       set {
          this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalLabel {
+      get {
+         return _externalLabel;
+      }
+      set {
+         this._externalLabel = value;
       }
    }
 
@@ -1037,6 +1083,10 @@ public class Domain: RestObject {
       return _containerInterfaces;
    }
    
+   public DeploymentFailuresFetcher getDeploymentFailures() {
+      return _deploymentFailures;
+   }
+   
    public DHCPOptionsFetcher getDHCPOptions() {
       return _dHCPOptions;
    }
@@ -1219,7 +1269,7 @@ public class Domain: RestObject {
    
 
    public String toString() {
-      return "Domain [" + "BGPEnabled=" + _BGPEnabled + ", DHCPBehavior=" + _DHCPBehavior + ", DHCPServerAddress=" + _DHCPServerAddress + ", DPI=" + _DPI + ", ECMPCount=" + _ECMPCount + ", FIPIgnoreDefaultRoute=" + _FIPIgnoreDefaultRoute + ", FIPUnderlay=" + _FIPUnderlay + ", PATEnabled=" + _PATEnabled + ", advertiseCriteria=" + _advertiseCriteria + ", associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedPATMapperID=" + _associatedPATMapperID + ", associatedSharedPATMapperID=" + _associatedSharedPATMapperID + ", associatedUnderlayID=" + _associatedUnderlayID + ", backHaulRouteDistinguisher=" + _backHaulRouteDistinguisher + ", backHaulRouteTarget=" + _backHaulRouteTarget + ", backHaulServiceID=" + _backHaulServiceID + ", backHaulVNID=" + _backHaulVNID + ", customerID=" + _customerID + ", description=" + _description + ", dhcpServerAddresses=" + _dhcpServerAddresses + ", domainID=" + _domainID + ", domainVLANID=" + _domainVLANID + ", encryption=" + _encryption + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", exportRouteTarget=" + _exportRouteTarget + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", globalRoutingEnabled=" + _globalRoutingEnabled + ", importRouteTarget=" + _importRouteTarget + ", labelID=" + _labelID + ", lastUpdatedBy=" + _lastUpdatedBy + ", leakingEnabled=" + _leakingEnabled + ", localAS=" + _localAS + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", permittedAction=" + _permittedAction + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", secondaryDHCPServerAddress=" + _secondaryDHCPServerAddress + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", tunnelType=" + _tunnelType + ", underlayEnabled=" + _underlayEnabled + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Domain [" + "BGPEnabled=" + _BGPEnabled + ", DHCPBehavior=" + _DHCPBehavior + ", DHCPServerAddress=" + _DHCPServerAddress + ", DPI=" + _DPI + ", ECMPCount=" + _ECMPCount + ", FIPIgnoreDefaultRoute=" + _FIPIgnoreDefaultRoute + ", FIPUnderlay=" + _FIPUnderlay + ", PATEnabled=" + _PATEnabled + ", VXLANECMPEnabled=" + _VXLANECMPEnabled + ", advertiseCriteria=" + _advertiseCriteria + ", aggregateFlowsEnabled=" + _aggregateFlowsEnabled + ", associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedPATMapperID=" + _associatedPATMapperID + ", associatedSharedPATMapperID=" + _associatedSharedPATMapperID + ", associatedUnderlayID=" + _associatedUnderlayID + ", backHaulRouteDistinguisher=" + _backHaulRouteDistinguisher + ", backHaulRouteTarget=" + _backHaulRouteTarget + ", backHaulServiceID=" + _backHaulServiceID + ", backHaulVNID=" + _backHaulVNID + ", customerID=" + _customerID + ", description=" + _description + ", dhcpServerAddresses=" + _dhcpServerAddresses + ", domainID=" + _domainID + ", domainVLANID=" + _domainVLANID + ", encryption=" + _encryption + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", exportRouteTarget=" + _exportRouteTarget + ", externalID=" + _externalID + ", externalLabel=" + _externalLabel + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", globalRoutingEnabled=" + _globalRoutingEnabled + ", importRouteTarget=" + _importRouteTarget + ", labelID=" + _labelID + ", lastUpdatedBy=" + _lastUpdatedBy + ", leakingEnabled=" + _leakingEnabled + ", localAS=" + _localAS + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", permittedAction=" + _permittedAction + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", secondaryDHCPServerAddress=" + _secondaryDHCPServerAddress + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", tunnelType=" + _tunnelType + ", underlayEnabled=" + _underlayEnabled + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -44,7 +44,7 @@ public class StaticRoute: RestObject {
    
    public enum EIPType {IPV4,IPV6 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EType {EXIT_DOMAIN,OVERLAY,OVERLAY_ADDRESS_TRANSLATION };
+   public enum EType {EXIT_DOMAIN,NETCONF,OVERLAY,OVERLAY_ADDRESS_TRANSLATION };
 
    
    [JsonProperty("BFDEnabled")]
@@ -59,8 +59,14 @@ public class StaticRoute: RestObject {
    [JsonProperty("address")]
    protected String _address;
    
+   [JsonProperty("associatedGatewayIDs")]
+   protected System.Collections.Generic.List<String> _associatedGatewayIDs;
+   
    [JsonProperty("associatedSubnetID")]
    protected String _associatedSubnetID;
+   
+   [JsonProperty("blackHoleEnabled")]
+   protected bool _blackHoleEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -86,6 +92,9 @@ public class StaticRoute: RestObject {
 
    
    [JsonIgnore]
+   private DeploymentFailuresFetcher _deploymentFailures;
+   
+   [JsonIgnore]
    private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
@@ -95,6 +104,8 @@ public class StaticRoute: RestObject {
    private MetadatasFetcher _metadatas;
    
    public StaticRoute() {
+      
+      _deploymentFailures = new DeploymentFailuresFetcher(this);
       
       _eventLogs = new EventLogsFetcher(this);
       
@@ -150,12 +161,34 @@ public class StaticRoute: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUAssociatedGatewayIDs {
+      get {
+         return _associatedGatewayIDs;
+      }
+      set {
+         this._associatedGatewayIDs = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAssociatedSubnetID {
       get {
          return _associatedSubnetID;
       }
       set {
          this._associatedSubnetID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUBlackHoleEnabled {
+      get {
+         return _blackHoleEnabled;
+      }
+      set {
+         this._blackHoleEnabled = value;
       }
    }
 
@@ -239,6 +272,10 @@ public class StaticRoute: RestObject {
    
 
    
+   public DeploymentFailuresFetcher getDeploymentFailures() {
+      return _deploymentFailures;
+   }
+   
    public EventLogsFetcher getEventLogs() {
       return _eventLogs;
    }
@@ -253,7 +290,7 @@ public class StaticRoute: RestObject {
    
 
    public String toString() {
-      return "StaticRoute [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedSubnetID=" + _associatedSubnetID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", netmask=" + _netmask + ", nextHopIp=" + _nextHopIp + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "StaticRoute [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedGatewayIDs=" + _associatedGatewayIDs + ", associatedSubnetID=" + _associatedSubnetID + ", blackHoleEnabled=" + _blackHoleEnabled + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", netmask=" + _netmask + ", nextHopIp=" + _nextHopIp + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

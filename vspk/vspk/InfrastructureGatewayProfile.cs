@@ -129,6 +129,12 @@ public class InfrastructureGatewayProfile: RestObject {
    [JsonProperty("useTwoFactor")]
    protected bool _useTwoFactor;
    
+   [JsonProperty("webFilterDownloadPort")]
+   protected long? _webFilterDownloadPort;
+   
+   [JsonProperty("webFilterQueryPort")]
+   protected long? _webFilterQueryPort;
+   
 
    
    [JsonIgnore]
@@ -140,7 +146,7 @@ public class InfrastructureGatewayProfile: RestObject {
    public InfrastructureGatewayProfile() {
       _upgradeAction = EUpgradeAction.NONE;
       _statsCollectorPort = 29090L;
-      _systemSyncScheduler = "0 0 * * 0";
+      _systemSyncScheduler = "0 0 * * *";
       _useTwoFactor = true;
       _remoteLogMode = ERemoteLogMode.DISABLED;
       _datapathSyncTimeout = 1000L;
@@ -449,6 +455,28 @@ public class InfrastructureGatewayProfile: RestObject {
    }
 
    
+   [JsonIgnore]
+   public long? NUWebFilterDownloadPort {
+      get {
+         return _webFilterDownloadPort;
+      }
+      set {
+         this._webFilterDownloadPort = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUWebFilterQueryPort {
+      get {
+         return _webFilterQueryPort;
+      }
+      set {
+         this._webFilterQueryPort = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -461,7 +489,7 @@ public class InfrastructureGatewayProfile: RestObject {
    
 
    public String toString() {
-      return "InfrastructureGatewayProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", controllerLessDuration=" + _controllerLessDuration + ", controllerLessEnabled=" + _controllerLessEnabled + ", controllerLessForwardingMode=" + _controllerLessForwardingMode + ", controllerLessRemoteDuration=" + _controllerLessRemoteDuration + ", datapathSyncTimeout=" + _datapathSyncTimeout + ", deadTimer=" + _deadTimer + ", deadTimerEnabled=" + _deadTimerEnabled + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowEvictionThreshold=" + _flowEvictionThreshold + ", forceImmediateSystemSync=" + _forceImmediateSystemSync + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataUpgradePath=" + _metadataUpgradePath + ", name=" + _name + ", openFlowAuditTimer=" + _openFlowAuditTimer + ", proxyDNSName=" + _proxyDNSName + ", remoteLogMode=" + _remoteLogMode + ", remoteLogServerAddress=" + _remoteLogServerAddress + ", remoteLogServerPort=" + _remoteLogServerPort + ", statsCollectorPort=" + _statsCollectorPort + ", systemSyncScheduler=" + _systemSyncScheduler + ", upgradeAction=" + _upgradeAction + ", useTwoFactor=" + _useTwoFactor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "InfrastructureGatewayProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", controllerLessDuration=" + _controllerLessDuration + ", controllerLessEnabled=" + _controllerLessEnabled + ", controllerLessForwardingMode=" + _controllerLessForwardingMode + ", controllerLessRemoteDuration=" + _controllerLessRemoteDuration + ", datapathSyncTimeout=" + _datapathSyncTimeout + ", deadTimer=" + _deadTimer + ", deadTimerEnabled=" + _deadTimerEnabled + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowEvictionThreshold=" + _flowEvictionThreshold + ", forceImmediateSystemSync=" + _forceImmediateSystemSync + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataUpgradePath=" + _metadataUpgradePath + ", name=" + _name + ", openFlowAuditTimer=" + _openFlowAuditTimer + ", proxyDNSName=" + _proxyDNSName + ", remoteLogMode=" + _remoteLogMode + ", remoteLogServerAddress=" + _remoteLogServerAddress + ", remoteLogServerPort=" + _remoteLogServerPort + ", statsCollectorPort=" + _statsCollectorPort + ", systemSyncScheduler=" + _systemSyncScheduler + ", upgradeAction=" + _upgradeAction + ", useTwoFactor=" + _useTwoFactor + ", webFilterDownloadPort=" + _webFilterDownloadPort + ", webFilterQueryPort=" + _webFilterQueryPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

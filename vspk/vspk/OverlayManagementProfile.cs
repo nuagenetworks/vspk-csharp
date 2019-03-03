@@ -37,41 +37,27 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class NSGUpgradeProfile: RestObject {
+public class OverlayManagementProfile: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
    [JsonProperty("description")]
    protected String _description;
-   
-   [JsonProperty("downloadRateLimit")]
-   protected long? _downloadRateLimit;
-   
-   [JsonProperty("enterpriseID")]
-   protected String _enterpriseID;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("entityScope")]
-   protected EEntityScope? _entityScope;
-   
-   [JsonProperty("externalID")]
-   protected String _externalID;
-   
-   [JsonProperty("lastUpdatedBy")]
-   protected String _lastUpdatedBy;
-   
-   [JsonProperty("metadataUpgradePath")]
-   protected String _metadataUpgradePath;
    
    [JsonProperty("name")]
    protected String _name;
    
 
    
-   public NSGUpgradeProfile() {
+   [JsonIgnore]
+   private OverlayManagementSubnetProfilesFetcher _overlayManagementSubnetProfiles;
+   
+   public OverlayManagementProfile() {
+      
+      _overlayManagementSubnetProfiles = new OverlayManagementSubnetProfilesFetcher(this);
       
    }
 
@@ -83,72 +69,6 @@ public class NSGUpgradeProfile: RestObject {
       }
       set {
          this._description = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public long? NUDownloadRateLimit {
-      get {
-         return _downloadRateLimit;
-      }
-      set {
-         this._downloadRateLimit = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUEnterpriseID {
-      get {
-         return _enterpriseID;
-      }
-      set {
-         this._enterpriseID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EEntityScope? NUEntityScope {
-      get {
-         return _entityScope;
-      }
-      set {
-         this._entityScope = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUExternalID {
-      get {
-         return _externalID;
-      }
-      set {
-         this._externalID = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NULastUpdatedBy {
-      get {
-         return _lastUpdatedBy;
-      }
-      set {
-         this._lastUpdatedBy = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUMetadataUpgradePath {
-      get {
-         return _metadataUpgradePath;
-      }
-      set {
-         this._metadataUpgradePath = value;
       }
    }
 
@@ -166,9 +86,13 @@ public class NSGUpgradeProfile: RestObject {
    
 
    
+   public OverlayManagementSubnetProfilesFetcher getOverlayManagementSubnetProfiles() {
+      return _overlayManagementSubnetProfiles;
+   }
+   
 
    public String toString() {
-      return "NSGUpgradeProfile [" + "description=" + _description + ", downloadRateLimit=" + _downloadRateLimit + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataUpgradePath=" + _metadataUpgradePath + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "OverlayManagementProfile [" + "description=" + _description + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -176,12 +100,12 @@ public class NSGUpgradeProfile: RestObject {
 
    public static String getResourceName()
    {
-	return "nsgupgradeprofiles";
+	return "overlaymanagementprofiles";
    }
 
    public static String getRestName()
    {
-	return "nsgupgradeprofile";
+	return "overlaymanagementprofile";
    }
 }
 }

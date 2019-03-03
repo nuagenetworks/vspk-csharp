@@ -70,6 +70,9 @@ public class L2Domain: RestObject {
    [JsonProperty("IPv6Gateway")]
    protected String _IPv6Gateway;
    
+   [JsonProperty("VXLANECMPEnabled")]
+   protected bool _VXLANECMPEnabled;
+   
    [JsonProperty("address")]
    protected String _address;
    
@@ -81,6 +84,9 @@ public class L2Domain: RestObject {
    
    [JsonProperty("associatedUnderlayID")]
    protected String _associatedUnderlayID;
+   
+   [JsonProperty("customerID")]
+   protected long? _customerID;
    
    [JsonProperty("description")]
    protected String _description;
@@ -108,6 +114,9 @@ public class L2Domain: RestObject {
    
    [JsonProperty("gatewayMACAddress")]
    protected String _gatewayMACAddress;
+   
+   [JsonProperty("ingressReplicationEnabled")]
+   protected bool _ingressReplicationEnabled;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
@@ -433,6 +442,17 @@ public class L2Domain: RestObject {
 
    
    [JsonIgnore]
+   public bool NUVXLANECMPEnabled {
+      get {
+         return _VXLANECMPEnabled;
+      }
+      set {
+         this._VXLANECMPEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAddress {
       get {
          return _address;
@@ -472,6 +492,17 @@ public class L2Domain: RestObject {
       }
       set {
          this._associatedUnderlayID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUCustomerID {
+      get {
+         return _customerID;
+      }
+      set {
+         this._customerID = value;
       }
    }
 
@@ -571,6 +602,17 @@ public class L2Domain: RestObject {
       }
       set {
          this._gatewayMACAddress = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUIngressReplicationEnabled {
+      get {
+         return _ingressReplicationEnabled;
+      }
+      set {
+         this._ingressReplicationEnabled = value;
       }
    }
 
@@ -916,7 +958,7 @@ public class L2Domain: RestObject {
    
 
    public String toString() {
-      return "L2Domain [" + "DHCPManaged=" + _DHCPManaged + ", DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", associatedUnderlayID=" + _associatedUnderlayID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", routedVPLSEnabled=" + _routedVPLSEnabled + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", uplinkPreference=" + _uplinkPreference + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "L2Domain [" + "DHCPManaged=" + _DHCPManaged + ", DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", VXLANECMPEnabled=" + _VXLANECMPEnabled + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", associatedUnderlayID=" + _associatedUnderlayID + ", customerID=" + _customerID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", ingressReplicationEnabled=" + _ingressReplicationEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", routedVPLSEnabled=" + _routedVPLSEnabled + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", uplinkPreference=" + _uplinkPreference + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

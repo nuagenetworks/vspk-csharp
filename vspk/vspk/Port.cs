@@ -44,7 +44,7 @@ public class Port: RestObject {
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
-   public enum EPortType {ACCESS,NETWORK,MANAGEMENT };
+   public enum EPortType {ACCESS,MANAGEMENT,NETWORK };
    public enum EStatus {INITIALIZED,MISMATCH,ORPHAN,READY };
 
    

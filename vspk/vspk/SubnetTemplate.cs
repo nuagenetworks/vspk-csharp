@@ -47,7 +47,7 @@ public class SubnetTemplate: RestObject {
    public enum EEncryption {DISABLED,ENABLED,INHERITED };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EMulticast {DISABLED,ENABLED,INHERITED };
-   public enum EUseGlobalMAC {DISABLED,ENABLED };
+   public enum EUseGlobalMAC {DISABLED,ENABLED,ENTERPRISE_DEFAULT };
 
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("DPI")]

@@ -146,11 +146,17 @@ public class License: RestObject {
    [JsonProperty("provider")]
    protected String _provider;
    
+   [JsonProperty("requestID")]
+   protected String _requestID;
+   
    [JsonProperty("state")]
    protected String _state;
    
    [JsonProperty("street")]
    protected String _street;
+   
+   [JsonProperty("system")]
+   protected String _system;
    
    [JsonProperty("uniqueLicenseIdentifier")]
    protected String _uniqueLicenseIdentifier;
@@ -547,6 +553,17 @@ public class License: RestObject {
 
    
    [JsonIgnore]
+   public String NURequestID {
+      get {
+         return _requestID;
+      }
+      set {
+         this._requestID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUState {
       get {
          return _state;
@@ -564,6 +581,17 @@ public class License: RestObject {
       }
       set {
          this._street = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUSystem {
+      get {
+         return _system;
+      }
+      set {
+         this._system = value;
       }
    }
 
@@ -617,7 +645,7 @@ public class License: RestObject {
    
 
    public String toString() {
-      return "License [" + "additionalSupportedVersions=" + _additionalSupportedVersions + ", allowedAVRSGsCount=" + _allowedAVRSGsCount + ", allowedAVRSsCount=" + _allowedAVRSsCount + ", allowedCPEsCount=" + _allowedCPEsCount + ", allowedNICsCount=" + _allowedNICsCount + ", allowedVDFGsCount=" + _allowedVDFGsCount + ", allowedVDFsCount=" + _allowedVDFsCount + ", allowedVMsCount=" + _allowedVMsCount + ", allowedVRSGsCount=" + _allowedVRSGsCount + ", allowedVRSsCount=" + _allowedVRSsCount + ", city=" + _city + ", company=" + _company + ", country=" + _country + ", customerKey=" + _customerKey + ", email=" + _email + ", encryptionMode=" + _encryptionMode + ", entityScope=" + _entityScope + ", expirationDate=" + _expirationDate + ", expiryTimestamp=" + _expiryTimestamp + ", externalID=" + _externalID + ", isClusterLicense=" + _isClusterLicense + ", lastUpdatedBy=" + _lastUpdatedBy + ", license=" + _license + ", licenseEncryption=" + _licenseEncryption + ", licenseEntities=" + _licenseEntities + ", licenseID=" + _licenseID + ", licenseType=" + _licenseType + ", licensedFeature=" + _licensedFeature + ", majorRelease=" + _majorRelease + ", minorRelease=" + _minorRelease + ", phone=" + _phone + ", productVersion=" + _productVersion + ", provider=" + _provider + ", state=" + _state + ", street=" + _street + ", uniqueLicenseIdentifier=" + _uniqueLicenseIdentifier + ", userName=" + _userName + ", zip=" + _zip + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "License [" + "additionalSupportedVersions=" + _additionalSupportedVersions + ", allowedAVRSGsCount=" + _allowedAVRSGsCount + ", allowedAVRSsCount=" + _allowedAVRSsCount + ", allowedCPEsCount=" + _allowedCPEsCount + ", allowedNICsCount=" + _allowedNICsCount + ", allowedVDFGsCount=" + _allowedVDFGsCount + ", allowedVDFsCount=" + _allowedVDFsCount + ", allowedVMsCount=" + _allowedVMsCount + ", allowedVRSGsCount=" + _allowedVRSGsCount + ", allowedVRSsCount=" + _allowedVRSsCount + ", city=" + _city + ", company=" + _company + ", country=" + _country + ", customerKey=" + _customerKey + ", email=" + _email + ", encryptionMode=" + _encryptionMode + ", entityScope=" + _entityScope + ", expirationDate=" + _expirationDate + ", expiryTimestamp=" + _expiryTimestamp + ", externalID=" + _externalID + ", isClusterLicense=" + _isClusterLicense + ", lastUpdatedBy=" + _lastUpdatedBy + ", license=" + _license + ", licenseEncryption=" + _licenseEncryption + ", licenseEntities=" + _licenseEntities + ", licenseID=" + _licenseID + ", licenseType=" + _licenseType + ", licensedFeature=" + _licensedFeature + ", majorRelease=" + _majorRelease + ", minorRelease=" + _minorRelease + ", phone=" + _phone + ", productVersion=" + _productVersion + ", provider=" + _provider + ", requestID=" + _requestID + ", state=" + _state + ", street=" + _street + ", system=" + _system + ", uniqueLicenseIdentifier=" + _uniqueLicenseIdentifier + ", userName=" + _userName + ", zip=" + _zip + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

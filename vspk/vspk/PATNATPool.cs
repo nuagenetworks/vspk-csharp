@@ -42,7 +42,7 @@ public class PATNATPool: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EIPType {IPV4,IPV6,DUALSTACK };
+   public enum EIPType {DUALSTACK,IPV4,IPV6 };
    public enum EAssociatedGatewayType {AUTO_DISC_GATEWAY,GATEWAY,IKE_GATEWAY,NSGATEWAY };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };

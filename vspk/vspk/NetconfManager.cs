@@ -70,6 +70,9 @@ public class NetconfManager: RestObject {
 
    
    [JsonIgnore]
+   private AlarmsFetcher _alarms;
+   
+   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
@@ -79,6 +82,8 @@ public class NetconfManager: RestObject {
    private NetconfSessionsFetcher _netconfSessions;
    
    public NetconfManager() {
+      
+      _alarms = new AlarmsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -167,6 +172,10 @@ public class NetconfManager: RestObject {
 
    
 
+   
+   public AlarmsFetcher getAlarms() {
+      return _alarms;
+   }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;

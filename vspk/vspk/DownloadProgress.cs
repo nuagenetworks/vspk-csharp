@@ -37,143 +37,137 @@ using net.nuagenetworks.vspk.v5_0.fetchers;
 namespace net.nuagenetworks.vspk.v5_0
 {
 
-public class PSPATMap: RestObject {
+public class DownloadProgress: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EFamily {DUALSTACK,IPV4,IPV6 };
 
    
-   [JsonProperty("associatedSPATSourcesPoolID")]
-   protected String _associatedSPATSourcesPoolID;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("entityScope")]
-   protected EEntityScope? _entityScope;
+   [JsonProperty("averageSpeed")]
+   protected long? _averageSpeed;
    
-   [JsonProperty("externalID")]
-   protected String _externalID;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("family")]
-   protected EFamily? _family;
+   [JsonProperty("currentSpeed")]
+   protected long? _currentSpeed;
    
-   [JsonProperty("lastUpdatedBy")]
-   protected String _lastUpdatedBy;
+   [JsonProperty("imageFileName")]
+   protected String _imageFileName;
    
-   [JsonProperty("name")]
-   protected String _name;
+   [JsonProperty("imageVersion")]
+   protected String _imageVersion;
    
-   [JsonProperty("reservedSPATIPs")]
-   protected System.Collections.Generic.List<String> _reservedSPATIPs;
+   [JsonProperty("percentage")]
+   protected long? _percentage;
+   
+   [JsonProperty("startTime")]
+   protected long? _startTime;
+   
+   [JsonProperty("timeLeft")]
+   protected String _timeLeft;
+   
+   [JsonProperty("timeSpent")]
+   protected String _timeSpent;
    
 
    
-   [JsonIgnore]
-   private GlobalMetadatasFetcher _globalMetadatas;
-   
-   [JsonIgnore]
-   private MetadatasFetcher _metadatas;
-   
-   public PSPATMap() {
-      
-      _globalMetadatas = new GlobalMetadatasFetcher(this);
-      
-      _metadatas = new MetadatasFetcher(this);
+   public DownloadProgress() {
       
    }
 
    
    [JsonIgnore]
-   public String NUAssociatedSPATSourcesPoolID {
+   public long? NUAverageSpeed {
       get {
-         return _associatedSPATSourcesPoolID;
+         return _averageSpeed;
       }
       set {
-         this._associatedSPATSourcesPoolID = value;
+         this._averageSpeed = value;
       }
    }
 
    
    [JsonIgnore]
-   public EEntityScope? NUEntityScope {
+   public long? NUCurrentSpeed {
       get {
-         return _entityScope;
+         return _currentSpeed;
       }
       set {
-         this._entityScope = value;
+         this._currentSpeed = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUExternalID {
+   public String NUImageFileName {
       get {
-         return _externalID;
+         return _imageFileName;
       }
       set {
-         this._externalID = value;
+         this._imageFileName = value;
       }
    }
 
    
    [JsonIgnore]
-   public EFamily? NUFamily {
+   public String NUImageVersion {
       get {
-         return _family;
+         return _imageVersion;
       }
       set {
-         this._family = value;
+         this._imageVersion = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NULastUpdatedBy {
+   public long? NUPercentage {
       get {
-         return _lastUpdatedBy;
+         return _percentage;
       }
       set {
-         this._lastUpdatedBy = value;
+         this._percentage = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUName {
+   public long? NUStartTime {
       get {
-         return _name;
+         return _startTime;
       }
       set {
-         this._name = value;
+         this._startTime = value;
       }
    }
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUReservedSPATIPs {
+   public String NUTimeLeft {
       get {
-         return _reservedSPATIPs;
+         return _timeLeft;
       }
       set {
-         this._reservedSPATIPs = value;
+         this._timeLeft = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUTimeSpent {
+      get {
+         return _timeSpent;
+      }
+      set {
+         this._timeSpent = value;
       }
    }
 
    
 
-   
-   public GlobalMetadatasFetcher getGlobalMetadatas() {
-      return _globalMetadatas;
-   }
-   
-   public MetadatasFetcher getMetadatas() {
-      return _metadatas;
-   }
    
 
    public String toString() {
-      return "PSPATMap [" + "associatedSPATSourcesPoolID=" + _associatedSPATSourcesPoolID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", reservedSPATIPs=" + _reservedSPATIPs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "DownloadProgress [" + "averageSpeed=" + _averageSpeed + ", currentSpeed=" + _currentSpeed + ", imageFileName=" + _imageFileName + ", imageVersion=" + _imageVersion + ", percentage=" + _percentage + ", startTime=" + _startTime + ", timeLeft=" + _timeLeft + ", timeSpent=" + _timeSpent + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
@@ -181,12 +175,12 @@ public class PSPATMap: RestObject {
 
    public static String getResourceName()
    {
-	return "pspatmaps";
+	return "None";
    }
 
    public static String getRestName()
    {
-	return "pspatmap";
+	return "None";
    }
 }
 }
