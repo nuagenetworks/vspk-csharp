@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class IKESubnet: RestObject {
@@ -47,6 +47,9 @@ public class IKESubnet: RestObject {
    
    [JsonProperty("associatedIKEGatewayID")]
    protected String _associatedIKEGatewayID;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -84,6 +87,17 @@ public class IKESubnet: RestObject {
       }
       set {
          this._associatedIKEGatewayID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -144,7 +158,7 @@ public class IKESubnet: RestObject {
    
 
    public String toString() {
-      return "IKESubnet [" + "associatedIKEGatewayID=" + _associatedIKEGatewayID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", prefix=" + _prefix + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IKESubnet [" + "associatedIKEGatewayID=" + _associatedIKEGatewayID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", prefix=" + _prefix + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

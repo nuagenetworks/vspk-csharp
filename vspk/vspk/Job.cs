@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class Job: RestObject {
@@ -42,7 +42,7 @@ public class Job: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum ECommand {APPLICATION_SIGNATURE_IMPORT,APPLY_POLICY_CHANGES,BATCH_CRUD_REQUEST,BEGIN_POLICY_CHANGES,CERTIFICATE_NSG_RENEW,CERTIFICATE_NSG_REVOKE,CLEAR_IPSEC_DATA,CLEAR_MAC_MOVE_ALARMS,DEPLOY,DISCARD_POLICY_CHANGES,EXPORT,FORCE_KEYSERVER_UPDATE,FORCE_KEYSERVER_UPDATE_ACK,FORCE_KEYSERVER_VSD_RESYNC,GATEWAY_AUDIT,GET_ZFB_INFO,IMPORT,KEYSERVER_NOTIFICATION_TEST,NETCONF_FORCE_DEPLOY,NETCONF_SYNC,NOTIFY_NSG_REGISTRATION,NOTIFY_NSG_REGISTRATION_ACK,NOTIFY_NSG_REGISTRATION_TEST,NSG_NOTIFICATION_TEST,NSG_REGISTRATION_INFO,REDEPLOY,REJECT_ZFB_REQUEST,RELOAD,RELOAD_GEO_REDUNDANT_INFO,RELOAD_NSG_CONFIG,RESTART,RETRIEVE_ACTIVE_NSGS,SAAS_APPLICATION_TYPE,START,STATUS,STOP,SYNC,UNDEPLOY,VCENTER_ADD_COMPUTERESOURCE_INSCOPE,VCENTER_DELETE_AGENCY,VCENTER_MARK_AGENT_VM_AVAILABLE,VCENTER_RECONNECT,VCENTER_RELOAD,VCENTER_REMOVE_COMPUTERESOURCE_INSCOPE,VCENTER_SCRIPT_UPGRADE_VRS,VCENTER_SYNC,VCENTER_UPGRADE_VRS };
+   public enum ECommand {APPLICATION_SIGNATURE_IMPORT,APPLY_POLICY_CHANGES,BATCH_CRUD_REQUEST,BEGIN_POLICY_CHANGES,CERTIFICATE_NSG_RENEW,CERTIFICATE_NSG_REVOKE,CLEAR_IPSEC_DATA,CLEAR_MAC_MOVE_ALARMS,CLOUD_FORCE_CONFIG,CLOUD_SYNC,DEPLOY,DISCARD_POLICY_CHANGES,EXPORT,FORCE_KEYSERVER_UPDATE,FORCE_KEYSERVER_UPDATE_ACK,FORCE_KEYSERVER_VSD_RESYNC,GATEWAY_AUDIT,GET_ZFB_INFO,IMPORT,KEYSERVER_NOTIFICATION_TEST,NETCONF_FORCE_DEPLOY,NETCONF_SYNC,NOTIFY_NSG_REGISTRATION,NOTIFY_NSG_REGISTRATION_ACK,NOTIFY_NSG_REGISTRATION_TEST,NSG_NOTIFICATION_TEST,NSG_REGISTRATION_INFO,REDEPLOY,REJECT_ZFB_REQUEST,RELOAD,RELOAD_GEO_REDUNDANT_INFO,RELOAD_NSG_CONFIG,RESTART,RETRIEVE_ACTIVE_NSGS,SAAS_APPLICATION_TYPE,START,STATUS,STOP,SYNC,UNDEPLOY,VCENTER_ADD_COMPUTERESOURCE_INSCOPE,VCENTER_DELETE_AGENCY,VCENTER_MARK_AGENT_VM_AVAILABLE,VCENTER_RECONNECT,VCENTER_RELOAD,VCENTER_REMOVE_COMPUTERESOURCE_INSCOPE,VCENTER_SCRIPT_UPGRADE_VRS,VCENTER_SYNC,VCENTER_UPGRADE_VRS };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EStatus {FAILED,RUNNING,SUCCESS };
 
@@ -52,6 +52,9 @@ public class Job: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("command")]
    protected ECommand? _command;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -109,6 +112,17 @@ public class Job: RestObject {
       }
       set {
          this._command = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -202,7 +216,7 @@ public class Job: RestObject {
    
 
    public String toString() {
-      return "Job [" + "assocEntityType=" + _assocEntityType + ", command=" + _command + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", parameters=" + _parameters + ", progress=" + _progress + ", result=" + _result + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Job [" + "assocEntityType=" + _assocEntityType + ", command=" + _command + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", parameters=" + _parameters + ", progress=" + _progress + ", result=" + _result + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

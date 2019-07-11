@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class OverlayPATNATEntry: RestObject {
@@ -53,6 +53,9 @@ public class OverlayPATNATEntry: RestObject {
    
    [JsonProperty("associatedLinkID")]
    protected String _associatedLinkID;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -115,6 +118,17 @@ public class OverlayPATNATEntry: RestObject {
       }
       set {
          this._associatedLinkID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -186,7 +200,7 @@ public class OverlayPATNATEntry: RestObject {
    
 
    public String toString() {
-      return "OverlayPATNATEntry [" + "NATEnabled=" + _NATEnabled + ", associatedDomainID=" + _associatedDomainID + ", associatedLinkID=" + _associatedLinkID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", privateIP=" + _privateIP + ", publicIP=" + _publicIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "OverlayPATNATEntry [" + "NATEnabled=" + _NATEnabled + ", associatedDomainID=" + _associatedDomainID + ", associatedLinkID=" + _associatedLinkID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", privateIP=" + _privateIP + ", publicIP=" + _publicIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

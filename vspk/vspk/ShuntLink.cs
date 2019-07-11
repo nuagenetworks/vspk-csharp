@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class ShuntLink: RestObject {
@@ -54,6 +54,9 @@ public class ShuntLink: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -127,6 +130,17 @@ public class ShuntLink: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -224,7 +238,7 @@ public class ShuntLink: RestObject {
    
 
    public String toString() {
-      return "ShuntLink [" + "VLANPeer1ID=" + _VLANPeer1ID + ", VLANPeer2ID=" + _VLANPeer2ID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayPeer1ID=" + _gatewayPeer1ID + ", gatewayPeer2ID=" + _gatewayPeer2ID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "ShuntLink [" + "VLANPeer1ID=" + _VLANPeer1ID + ", VLANPeer2ID=" + _VLANPeer2ID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayPeer1ID=" + _gatewayPeer1ID + ", gatewayPeer2ID=" + _gatewayPeer2ID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

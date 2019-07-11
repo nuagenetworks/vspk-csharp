@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class TCA: RestObject {
@@ -44,7 +44,7 @@ public class TCA: RestObject {
    
    public enum EAction {Alert,Alert_PolicyGroupChange };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EMetric {ACL_DENY_EVENT_COUNT,ADDRESS_MAP_EGRESS_BYTE_CNT,ADDRESS_MAP_EGRESS_PKT_CNT,ADDRESS_MAP_INGRESS_BYTE_CNT,ADDRESS_MAP_INGRESS_PKT_CNT,ANTI_SPOOF_EVENT_COUNT,BYTES_IN,BYTES_OUT,CONNECTION_TYPE,EGRESS_BYTE_COUNT,EGRESS_PACKET_COUNT,FIP_PRE_RATE_LIMIT_BYTES,FIP_PRE_RATE_LIMIT_PACKETS,FIP_RATE_LIMIT_DROPPED_BYTES,FIP_RATE_LIMIT_DROPPED_PACKETS,INGRESS_BYTE_COUNT,INGRESS_PACKET_COUNT,L7_BYTES_IN,L7_BYTES_OUT,L7_PACKETS_IN,L7_PACKETS_OUT,PACKETS_DROPPED_BY_RATE_LIMIT,PACKETS_IN,PACKETS_IN_DROPPED,PACKETS_IN_ERROR,PACKETS_OUT,PACKETS_OUT_DROPPED,PACKETS_OUT_ERROR,Q0_BYTES,Q0_DROPPED,Q0_PKT_COUNT,Q10_BYTES,Q10_DROPPED,Q10_PKT_COUNT,Q1_BYTES,Q1_DROPPED,Q1_PKT_COUNT,Q2_BYTES,Q2_DROPPED,Q2_PKT_COUNT,Q3_BYTES,Q3_DROPPED,Q3_PKT_COUNT,Q4_BYTES,Q4_DROPPED,Q4_PKT_COUNT,RX_BYTES,RX_DROPPED,RX_ERRORS,RX_PKT_COUNT,TCP_FLAG_ACK_IN,TCP_FLAG_ACK_OUT,TCP_FLAG_NULL_IN,TCP_FLAG_NULL_OUT,TCP_FLAG_RST_IN,TCP_FLAG_RST_OUT,TCP_FLAG_SYN_IN,TCP_FLAG_SYN_OUT,TCP_SYN_EVENT_COUNT,TX_BYTES,TX_DROPPED,TX_ERRORS,TX_PKT_COUNT };
+   public enum EMetric {ACL_DENY_EVENT_COUNT,ANTI_SPOOF_EVENT_COUNT,BYTES_IN,BYTES_OUT,FIP_PRE_RATE_LIMIT_BYTES,FIP_PRE_RATE_LIMIT_PACKETS,FIP_RATE_LIMIT_DROPPED_BYTES,FIP_RATE_LIMIT_DROPPED_PACKETS,L7_BYTES_IN,L7_BYTES_OUT,L7_PACKETS_IN,L7_PACKETS_OUT,PACKETS_DROPPED_BY_RATE_LIMIT,PACKETS_IN,PACKETS_IN_DROPPED,PACKETS_IN_ERROR,PACKETS_OUT,PACKETS_OUT_DROPPED,PACKETS_OUT_ERROR,TCP_FLAG_ACK_IN,TCP_FLAG_ACK_OUT,TCP_FLAG_NULL_IN,TCP_FLAG_NULL_OUT,TCP_FLAG_RST_IN,TCP_FLAG_RST_OUT,TCP_FLAG_SYN_IN,TCP_FLAG_SYN_OUT };
    public enum EType {BREACH,ROLLING_AVERAGE };
 
    
@@ -65,6 +65,9 @@ public class TCA: RestObject {
    
    [JsonProperty("displayStatus")]
    protected String _displayStatus;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -190,6 +193,17 @@ public class TCA: RestObject {
       }
       set {
          this._displayStatus = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -335,7 +349,7 @@ public class TCA: RestObject {
    
 
    public String toString() {
-      return "TCA [" + "URLEndPoint=" + _URLEndPoint + ", action=" + _action + ", count=" + _count + ", description=" + _description + ", disable=" + _disable + ", displayStatus=" + _displayStatus + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", metric=" + _metric + ", name=" + _name + ", period=" + _period + ", status=" + _status + ", targetPolicyGroupID=" + _targetPolicyGroupID + ", threshold=" + _threshold + ", throttleTime=" + _throttleTime + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "TCA [" + "URLEndPoint=" + _URLEndPoint + ", action=" + _action + ", count=" + _count + ", description=" + _description + ", disable=" + _disable + ", displayStatus=" + _displayStatus + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", metric=" + _metric + ", name=" + _name + ", period=" + _period + ", status=" + _status + ", targetPolicyGroupID=" + _targetPolicyGroupID + ", threshold=" + _threshold + ", throttleTime=" + _throttleTime + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

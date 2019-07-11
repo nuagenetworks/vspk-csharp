@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class WebDomainName: RestObject {
@@ -44,6 +44,9 @@ public class WebDomainName: RestObject {
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -56,6 +59,9 @@ public class WebDomainName: RestObject {
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("webCategoryIdentifier")]
+   protected long? _webCategoryIdentifier;
    
 
    
@@ -76,6 +82,17 @@ public class WebDomainName: RestObject {
       
       _webCategories = new WebCategoriesFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
    }
 
    
@@ -123,6 +140,17 @@ public class WebDomainName: RestObject {
    }
 
    
+   [JsonIgnore]
+   public long? NUWebCategoryIdentifier {
+      get {
+         return _webCategoryIdentifier;
+      }
+      set {
+         this._webCategoryIdentifier = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -139,7 +167,7 @@ public class WebDomainName: RestObject {
    
 
    public String toString() {
-      return "WebDomainName [" + "entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "WebDomainName [" + "embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", webCategoryIdentifier=" + _webCategoryIdentifier + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

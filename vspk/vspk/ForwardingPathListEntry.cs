@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class ForwardingPathListEntry: RestObject {
@@ -44,12 +44,19 @@ public class ForwardingPathListEntry: RestObject {
    
    public enum EFCOverride {A,B,C,D,E,F,G,H,NONE };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EForwardingAction {IKE,UNDERLAY_PAT,UNDERLAY_ROUTE };
-   public enum EUplinkPreference {PRIMARY,SECONDARY };
+   public enum EForwardingAction {IKE,OVERLAY,UNDERLAY_PAT,UNDERLAY_ROUTE };
+   public enum ERemoteUplinkPreference {DEFAULT,PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY };
+   public enum EUplinkPreference {DEFAULT,PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY };
 
+   
+   [JsonProperty("DSCPRemarking")]
+   protected String _DSCPRemarking;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("FCOverride")]
    protected EFCOverride? _FCOverride;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -60,11 +67,17 @@ public class ForwardingPathListEntry: RestObject {
    [JsonProperty("forwardingAction")]
    protected EForwardingAction? _forwardingAction;
    
+   [JsonProperty("isSLAAware")]
+   protected bool _isSLAAware;
+   
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
    [JsonProperty("priority")]
    protected long? _priority;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("remoteUplinkPreference")]
+   protected ERemoteUplinkPreference? _remoteUplinkPreference;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("uplinkPreference")]
    protected EUplinkPreference? _uplinkPreference;
@@ -87,12 +100,34 @@ public class ForwardingPathListEntry: RestObject {
 
    
    [JsonIgnore]
+   public String NUDSCPRemarking {
+      get {
+         return _DSCPRemarking;
+      }
+      set {
+         this._DSCPRemarking = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EFCOverride? NUFCOverride {
       get {
          return _FCOverride;
       }
       set {
          this._FCOverride = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -131,6 +166,17 @@ public class ForwardingPathListEntry: RestObject {
 
    
    [JsonIgnore]
+   public bool NUIsSLAAware {
+      get {
+         return _isSLAAware;
+      }
+      set {
+         this._isSLAAware = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -148,6 +194,17 @@ public class ForwardingPathListEntry: RestObject {
       }
       set {
          this._priority = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public ERemoteUplinkPreference? NURemoteUplinkPreference {
+      get {
+         return _remoteUplinkPreference;
+      }
+      set {
+         this._remoteUplinkPreference = value;
       }
    }
 
@@ -175,7 +232,7 @@ public class ForwardingPathListEntry: RestObject {
    
 
    public String toString() {
-      return "ForwardingPathListEntry [" + "FCOverride=" + _FCOverride + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", forwardingAction=" + _forwardingAction + ", lastUpdatedBy=" + _lastUpdatedBy + ", priority=" + _priority + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "ForwardingPathListEntry [" + "DSCPRemarking=" + _DSCPRemarking + ", FCOverride=" + _FCOverride + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", forwardingAction=" + _forwardingAction + ", isSLAAware=" + _isSLAAware + ", lastUpdatedBy=" + _lastUpdatedBy + ", priority=" + _priority + ", remoteUplinkPreference=" + _remoteUplinkPreference + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

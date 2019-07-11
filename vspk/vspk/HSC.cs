@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class HSC: RestObject {
@@ -73,6 +73,9 @@ public class HSC: RestObject {
    
    [JsonProperty("disks")]
    protected System.Collections.Generic.List<DiskStat> _disks;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -131,6 +134,9 @@ public class HSC: RestObject {
    private BGPPeersFetcher _bGPPeers;
    
    [JsonIgnore]
+   private ControllerVRSLinksFetcher _controllerVRSLinks;
+   
+   [JsonIgnore]
    private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
@@ -145,14 +151,13 @@ public class HSC: RestObject {
    [JsonIgnore]
    private MonitoringPortsFetcher _monitoringPorts;
    
-   [JsonIgnore]
-   private VRSsFetcher _vRSs;
-   
    public HSC() {
       
       _alarms = new AlarmsFetcher(this);
       
       _bGPPeers = new BGPPeersFetcher(this);
+      
+      _controllerVRSLinks = new ControllerVRSLinksFetcher(this);
       
       _eventLogs = new EventLogsFetcher(this);
       
@@ -163,8 +168,6 @@ public class HSC: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _monitoringPorts = new MonitoringPortsFetcher(this);
-      
-      _vRSs = new VRSsFetcher(this);
       
    }
 
@@ -264,6 +267,17 @@ public class HSC: RestObject {
       }
       set {
          this._disks = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -454,6 +468,10 @@ public class HSC: RestObject {
       return _bGPPeers;
    }
    
+   public ControllerVRSLinksFetcher getControllerVRSLinks() {
+      return _controllerVRSLinks;
+   }
+   
    public EventLogsFetcher getEventLogs() {
       return _eventLogs;
    }
@@ -474,13 +492,9 @@ public class HSC: RestObject {
       return _monitoringPorts;
    }
    
-   public VRSsFetcher getVRSs() {
-      return _vRSs;
-   }
-   
 
    public String toString() {
-      return "HSC [" + "address=" + _address + ", addresses=" + _addresses + ", alreadyMarkedForUnavailable=" + _alreadyMarkedForUnavailable + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", description=" + _description + ", disks=" + _disks + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", model=" + _model + ", name=" + _name + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", productVersion=" + _productVersion + ", status=" + _status + ", type=" + _type + ", unavailableTimestamp=" + _unavailableTimestamp + ", vsds=" + _vsds + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "HSC [" + "address=" + _address + ", addresses=" + _addresses + ", alreadyMarkedForUnavailable=" + _alreadyMarkedForUnavailable + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", description=" + _description + ", disks=" + _disks + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", model=" + _model + ", name=" + _name + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", productVersion=" + _productVersion + ", status=" + _status + ", type=" + _type + ", unavailableTimestamp=" + _unavailableTimestamp + ", vsds=" + _vsds + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

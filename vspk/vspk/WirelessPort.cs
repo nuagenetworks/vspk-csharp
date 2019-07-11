@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class WirelessPort: RestObject {
@@ -42,12 +42,13 @@ public class WirelessPort: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum ECountryCode {AF,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE,BZ,BJ,BM,BT,BO,BA,BW,BV,BR,IO,VG,BN,BG,BF,BI,KH,CM,CA,CV,KY,CF,TD,CL,CN,CX,CC,CO,KM,CD,CG,CK,CR,CI,CU,CY,CZ,DK,DJ,DM,DO,EC,EG,SV,GQ,ER,EE,ET,FO,FK,FJ,FI,FR,GF,PF,TF,GA,GM,GE,DE,GH,GI,GR,GL,GD,GP,GU,GT,GN,GW,GY,HT,HM,VA,HN,HK,HR,HU,IS,IN,ID,IR,IQ,IE,IL,IT,JM,JP,JO,KZ,KE,KI,KP,KR,KW,KG,LA,LV,LB,LS,LR,LY,LI,LT,LU,MO,MK,MG,MW,MY,MV,ML,MT,MH,MQ,MR,MU,YT,MX,FM,MD,MC,MN,MS,MA,MZ,MM,NA,NR,NP,AN,NL,NC,NZ,NI,NE,NG,NU,NF,MP,NO,OM,PK,PW,PS,PA,PG,PY,PE,PH,PN,PL,PT,PR,QA,RE,RO,RU,RW,SH,KN,LC,PM,VC,WS,SM,ST,SA,SN,CS,SC,SL,SG,SK,SI,SB,SO,ZA,GS,ES,LK,SD,SR,SJ,SZ,SE,CH,SY,TW,TJ,TZ,TH,TL,TG,TK,TO,TT,TN,TR,TM,TC,TV,VI,UG,UA,AE,GB,UM,US,UY,UZ,VU,VE,VN,WF,EH,YE,ZM,ZW };
+   public enum EChannelWidth {WIDTH_20_MHZ,WIDTH_80_MHZ,WIDTH_LESS_40_MHZ,WIDTH_PLUS_40_MHZ };
+   public enum ECountryCode {AD,AE,AF,AG,AI,AL,AM,AN,AO,AQ,AR,AS,AT,AU,AW,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BM,BN,BO,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CS,CU,CV,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IN,IO,IQ,IR,IS,IT,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,ST,SV,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFrequencyChannel {CH_0,CH_1,CH_10,CH_100,CH_104,CH_108,CH_11,CH_112,CH_116,CH_12,CH_120,CH_124,CH_128,CH_13,CH_132,CH_136,CH_14,CH_140,CH_144,CH_149,CH_153,CH_157,CH_161,CH_165,CH_2,CH_3,CH_36,CH_4,CH_40,CH_44,CH_48,CH_5,CH_52,CH_56,CH_6,CH_60,CH_64,CH_7,CH_8,CH_9 };
-   public enum EPermittedAction {USE,READ,ALL,INSTANTIATE,EXTEND,DEPLOY };
+   public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
    public enum EPortType {ACCESS };
-   public enum EStatus {INITIALIZED,ORPHAN,READY,MISMATCH };
+   public enum EStatus {INITIALIZED,MISMATCH,ORPHAN,READY };
    public enum EWifiFrequencyBand {FREQ_2_4_GHZ,FREQ_5_0_GHZ };
    public enum EWifiMode {WIFI_A,WIFI_A_AC,WIFI_A_N,WIFI_A_N_AC,WIFI_B_G,WIFI_B_G_N };
 
@@ -58,11 +59,17 @@ public class WirelessPort: RestObject {
    [JsonProperty("associatedEgressQOSPolicyID")]
    protected String _associatedEgressQOSPolicyID;
    [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("channelWidth")]
+   protected EChannelWidth? _channelWidth;
+   [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("countryCode")]
    protected ECountryCode? _countryCode;
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -161,6 +168,17 @@ public class WirelessPort: RestObject {
 
    
    [JsonIgnore]
+   public EChannelWidth? NUChannelWidth {
+      get {
+         return _channelWidth;
+      }
+      set {
+         this._channelWidth = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public ECountryCode? NUCountryCode {
       get {
          return _countryCode;
@@ -178,6 +196,17 @@ public class WirelessPort: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -360,7 +389,7 @@ public class WirelessPort: RestObject {
    
 
    public String toString() {
-      return "WirelessPort [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", countryCode=" + _countryCode + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", frequencyChannel=" + _frequencyChannel + ", genericConfig=" + _genericConfig + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", status=" + _status + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", wifiFrequencyBand=" + _wifiFrequencyBand + ", wifiMode=" + _wifiMode + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "WirelessPort [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", channelWidth=" + _channelWidth + ", countryCode=" + _countryCode + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", frequencyChannel=" + _frequencyChannel + ", genericConfig=" + _genericConfig + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", status=" + _status + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", wifiFrequencyBand=" + _wifiFrequencyBand + ", wifiMode=" + _wifiMode + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

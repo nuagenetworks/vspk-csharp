@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class EventLog: RestObject {
@@ -47,6 +47,9 @@ public class EventLog: RestObject {
    
    [JsonProperty("diff")]
    protected Object _diff;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("enterprise")]
    protected String _enterprise;
@@ -108,6 +111,17 @@ public class EventLog: RestObject {
       }
       set {
          this._diff = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -256,7 +270,7 @@ public class EventLog: RestObject {
    
 
    public String toString() {
-      return "EventLog [" + "diff=" + _diff + ", enterprise=" + _enterprise + ", entities=" + _entities + ", entityID=" + _entityID + ", entityParentID=" + _entityParentID + ", entityParentType=" + _entityParentType + ", entityScope=" + _entityScope + ", entityType=" + _entityType + ", eventReceivedTime=" + _eventReceivedTime + ", externalID=" + _externalID + ", requestID=" + _requestID + ", type=" + _type + ", user=" + _user + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "EventLog [" + "diff=" + _diff + ", embeddedMetadata=" + _embeddedMetadata + ", enterprise=" + _enterprise + ", entities=" + _entities + ", entityID=" + _entityID + ", entityParentID=" + _entityParentID + ", entityParentType=" + _entityParentType + ", entityScope=" + _entityScope + ", entityType=" + _entityType + ", eventReceivedTime=" + _eventReceivedTime + ", externalID=" + _externalID + ", requestID=" + _requestID + ", type=" + _type + ", user=" + _user + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

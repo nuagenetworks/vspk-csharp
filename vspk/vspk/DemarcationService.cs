@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class DemarcationService: RestObject {
@@ -51,6 +51,9 @@ public class DemarcationService: RestObject {
    
    [JsonProperty("associatedVLANID")]
    protected String _associatedVLANID;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -105,6 +108,17 @@ public class DemarcationService: RestObject {
       }
       set {
          this._associatedVLANID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -187,7 +201,7 @@ public class DemarcationService: RestObject {
    
 
    public String toString() {
-      return "DemarcationService [" + "associatedGatewayID=" + _associatedGatewayID + ", associatedVLANID=" + _associatedVLANID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", priority=" + _priority + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "DemarcationService [" + "associatedGatewayID=" + _associatedGatewayID + ", associatedVLANID=" + _associatedVLANID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", priority=" + _priority + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

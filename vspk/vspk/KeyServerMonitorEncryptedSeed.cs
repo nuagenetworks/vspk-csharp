@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class KeyServerMonitorEncryptedSeed: RestObject {
@@ -60,6 +60,9 @@ public class KeyServerMonitorEncryptedSeed: RestObject {
    
    [JsonProperty("associatedKeyServerMonitorSeedID")]
    protected String _associatedKeyServerMonitorSeedID;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("enterpriseSecuredDataID")]
    protected String _enterpriseSecuredDataID;
@@ -152,6 +155,17 @@ public class KeyServerMonitorEncryptedSeed: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUEnterpriseSecuredDataID {
       get {
          return _enterpriseSecuredDataID;
@@ -229,7 +243,7 @@ public class KeyServerMonitorEncryptedSeed: RestObject {
    
 
    public String toString() {
-      return "KeyServerMonitorEncryptedSeed [" + "SEKCreationTime=" + _SEKCreationTime + ", associatedKeyServerMonitorSEKCreationTime=" + _associatedKeyServerMonitorSEKCreationTime + ", associatedKeyServerMonitorSEKID=" + _associatedKeyServerMonitorSEKID + ", associatedKeyServerMonitorSeedCreationTime=" + _associatedKeyServerMonitorSeedCreationTime + ", associatedKeyServerMonitorSeedID=" + _associatedKeyServerMonitorSeedID + ", enterpriseSecuredDataID=" + _enterpriseSecuredDataID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", keyServerCertificateSerialNumber=" + _keyServerCertificateSerialNumber + ", lastUpdatedBy=" + _lastUpdatedBy + ", seedType=" + _seedType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "KeyServerMonitorEncryptedSeed [" + "SEKCreationTime=" + _SEKCreationTime + ", associatedKeyServerMonitorSEKCreationTime=" + _associatedKeyServerMonitorSEKCreationTime + ", associatedKeyServerMonitorSEKID=" + _associatedKeyServerMonitorSEKID + ", associatedKeyServerMonitorSeedCreationTime=" + _associatedKeyServerMonitorSeedCreationTime + ", associatedKeyServerMonitorSeedID=" + _associatedKeyServerMonitorSeedID + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseSecuredDataID=" + _enterpriseSecuredDataID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", keyServerCertificateSerialNumber=" + _keyServerCertificateSerialNumber + ", lastUpdatedBy=" + _lastUpdatedBy + ", seedType=" + _seedType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

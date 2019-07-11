@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class NetworkMacroGroup: RestObject {
@@ -43,10 +43,14 @@ public class NetworkMacroGroup: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum EMacroGroupType {GATEWAY_AGGREGATE };
 
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -59,6 +63,9 @@ public class NetworkMacroGroup: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("macroGroupType")]
+   protected EMacroGroupType? _macroGroupType;
    
    [JsonProperty("name")]
    protected String _name;
@@ -92,6 +99,17 @@ public class NetworkMacroGroup: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -141,6 +159,17 @@ public class NetworkMacroGroup: RestObject {
 
    
    [JsonIgnore]
+   public EMacroGroupType? NUMacroGroupType {
+      get {
+         return _macroGroupType;
+      }
+      set {
+         this._macroGroupType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -167,7 +196,7 @@ public class NetworkMacroGroup: RestObject {
    
 
    public String toString() {
-      return "NetworkMacroGroup [" + "description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isSaaSType=" + _isSaaSType + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NetworkMacroGroup [" + "description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isSaaSType=" + _isSaaSType + ", lastUpdatedBy=" + _lastUpdatedBy + ", macroGroupType=" + _macroGroupType + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

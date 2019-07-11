@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class AllRedundancyGroup: RestObject {
@@ -50,6 +50,9 @@ public class AllRedundancyGroup: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -123,6 +126,17 @@ public class AllRedundancyGroup: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -315,7 +329,7 @@ public class AllRedundancyGroup: RestObject {
    
 
    public String toString() {
-      return "AllRedundancyGroup [" + "description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayPeer1AutodiscoveredGatewayID=" + _gatewayPeer1AutodiscoveredGatewayID + ", gatewayPeer1Connected=" + _gatewayPeer1Connected + ", gatewayPeer1ID=" + _gatewayPeer1ID + ", gatewayPeer1Name=" + _gatewayPeer1Name + ", gatewayPeer2AutodiscoveredGatewayID=" + _gatewayPeer2AutodiscoveredGatewayID + ", gatewayPeer2Connected=" + _gatewayPeer2Connected + ", gatewayPeer2Name=" + _gatewayPeer2Name + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", redundantGatewayStatus=" + _redundantGatewayStatus + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "AllRedundancyGroup [" + "description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayPeer1AutodiscoveredGatewayID=" + _gatewayPeer1AutodiscoveredGatewayID + ", gatewayPeer1Connected=" + _gatewayPeer1Connected + ", gatewayPeer1ID=" + _gatewayPeer1ID + ", gatewayPeer1Name=" + _gatewayPeer1Name + ", gatewayPeer2AutodiscoveredGatewayID=" + _gatewayPeer2AutodiscoveredGatewayID + ", gatewayPeer2Connected=" + _gatewayPeer2Connected + ", gatewayPeer2Name=" + _gatewayPeer2Name + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", redundantGatewayStatus=" + _redundantGatewayStatus + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

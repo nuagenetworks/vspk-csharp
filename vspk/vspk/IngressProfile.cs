@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class IngressProfile: RestObject {
@@ -74,6 +74,9 @@ public class IngressProfile: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -225,6 +228,17 @@ public class IngressProfile: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -288,7 +302,7 @@ public class IngressProfile: RestObject {
    
 
    public String toString() {
-      return "IngressProfile [" + "assocEntityType=" + _assocEntityType + ", associatedIPFilterProfileID=" + _associatedIPFilterProfileID + ", associatedIPFilterProfileName=" + _associatedIPFilterProfileName + ", associatedIPv6FilterProfileID=" + _associatedIPv6FilterProfileID + ", associatedIPv6FilterProfileName=" + _associatedIPv6FilterProfileName + ", associatedMACFilterProfileID=" + _associatedMACFilterProfileID + ", associatedMACFilterProfileName=" + _associatedMACFilterProfileName + ", associatedSAPIngressQoSProfileID=" + _associatedSAPIngressQoSProfileID + ", associatedSAPIngressQoSProfileName=" + _associatedSAPIngressQoSProfileName + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IngressProfile [" + "assocEntityType=" + _assocEntityType + ", associatedIPFilterProfileID=" + _associatedIPFilterProfileID + ", associatedIPFilterProfileName=" + _associatedIPFilterProfileName + ", associatedIPv6FilterProfileID=" + _associatedIPv6FilterProfileID + ", associatedIPv6FilterProfileName=" + _associatedIPv6FilterProfileName + ", associatedMACFilterProfileID=" + _associatedMACFilterProfileID + ", associatedMACFilterProfileName=" + _associatedMACFilterProfileName + ", associatedSAPIngressQoSProfileID=" + _associatedSAPIngressQoSProfileID + ", associatedSAPIngressQoSProfileName=" + _associatedSAPIngressQoSProfileName + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

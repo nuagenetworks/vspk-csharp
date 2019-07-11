@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class IKEPSK: RestObject {
@@ -53,6 +53,9 @@ public class IKEPSK: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("encryptedPSK")]
    protected String _encryptedPSK;
@@ -127,6 +130,17 @@ public class IKEPSK: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -242,7 +256,7 @@ public class IKEPSK: RestObject {
    
 
    public String toString() {
-      return "IKEPSK [" + "associatedEnterpriseID=" + _associatedEnterpriseID + ", autoCreated=" + _autoCreated + ", description=" + _description + ", encryptedPSK=" + _encryptedPSK + ", encryptingCertificateSerialNumber=" + _encryptingCertificateSerialNumber + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", signature=" + _signature + ", signingCertificateSerialNumber=" + _signingCertificateSerialNumber + ", unencryptedPSK=" + _unencryptedPSK + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IKEPSK [" + "associatedEnterpriseID=" + _associatedEnterpriseID + ", autoCreated=" + _autoCreated + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", encryptedPSK=" + _encryptedPSK + ", encryptingCertificateSerialNumber=" + _encryptingCertificateSerialNumber + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", signature=" + _signature + ", signingCertificateSerialNumber=" + _signingCertificateSerialNumber + ", unencryptedPSK=" + _unencryptedPSK + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

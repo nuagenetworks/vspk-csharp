@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class SubnetTemplate: RestObject {
@@ -43,7 +43,7 @@ public class SubnetTemplate: RestObject {
 
    
    public enum EDPI {DISABLED,ENABLED,INHERITED };
-   public enum EIPType {DUALSTACK,IPV4 };
+   public enum EIPType {DUALSTACK,IPV4,IPV6 };
    public enum EEncryption {DISABLED,ENABLED,INHERITED };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EMulticast {DISABLED,ENABLED,INHERITED };
@@ -71,8 +71,17 @@ public class SubnetTemplate: RestObject {
    [JsonProperty("description")]
    protected String _description;
    
-   [JsonProperty("dynamicIpv6Address")]
-   protected bool _dynamicIpv6Address;
+   [JsonProperty("dualStackDynamicIPAllocation")]
+   protected bool _dualStackDynamicIPAllocation;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   
+   [JsonProperty("enableDHCPv4")]
+   protected bool _enableDHCPv4;
+   
+   [JsonProperty("enableDHCPv6")]
+   protected bool _enableDHCPv6;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("encryption")]
    protected EEncryption? _encryption;
@@ -224,12 +233,45 @@ public class SubnetTemplate: RestObject {
 
    
    [JsonIgnore]
-   public bool NUDynamicIpv6Address {
+   public bool NUDualStackDynamicIPAllocation {
       get {
-         return _dynamicIpv6Address;
+         return _dualStackDynamicIPAllocation;
       }
       set {
-         this._dynamicIpv6Address = value;
+         this._dualStackDynamicIPAllocation = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUEnableDHCPv4 {
+      get {
+         return _enableDHCPv4;
+      }
+      set {
+         this._enableDHCPv4 = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUEnableDHCPv6 {
+      get {
+         return _enableDHCPv6;
+      }
+      set {
+         this._enableDHCPv6 = value;
       }
    }
 
@@ -383,7 +425,7 @@ public class SubnetTemplate: RestObject {
    
 
    public String toString() {
-      return "SubnetTemplate [" + "DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", proxyARP=" + _proxyARP + ", splitSubnet=" + _splitSubnet + ", useGlobalMAC=" + _useGlobalMAC + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "SubnetTemplate [" + "DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", description=" + _description + ", dualStackDynamicIPAllocation=" + _dualStackDynamicIPAllocation + ", embeddedMetadata=" + _embeddedMetadata + ", enableDHCPv4=" + _enableDHCPv4 + ", enableDHCPv6=" + _enableDHCPv6 + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", proxyARP=" + _proxyARP + ", splitSubnet=" + _splitSubnet + ", useGlobalMAC=" + _useGlobalMAC + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class SSIDConnection: RestObject {
@@ -66,6 +66,9 @@ public class SSIDConnection: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -207,6 +210,17 @@ public class SSIDConnection: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -418,7 +432,7 @@ public class SSIDConnection: RestObject {
    
 
    public String toString() {
-      return "SSIDConnection [" + "associatedCaptivePortalProfileID=" + _associatedCaptivePortalProfileID + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", authenticationMode=" + _authenticationMode + ", blackList=" + _blackList + ", broadcastSSID=" + _broadcastSSID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", genericConfig=" + _genericConfig + ", interfaceName=" + _interfaceName + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", passphrase=" + _passphrase + ", permittedAction=" + _permittedAction + ", readonly=" + _readonly + ", redirectOption=" + _redirectOption + ", redirectURL=" + _redirectURL + ", restricted=" + _restricted + ", status=" + _status + ", vlanID=" + _vlanID + ", vportID=" + _vportID + ", whiteList=" + _whiteList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "SSIDConnection [" + "associatedCaptivePortalProfileID=" + _associatedCaptivePortalProfileID + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", authenticationMode=" + _authenticationMode + ", blackList=" + _blackList + ", broadcastSSID=" + _broadcastSSID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", genericConfig=" + _genericConfig + ", interfaceName=" + _interfaceName + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", passphrase=" + _passphrase + ", permittedAction=" + _permittedAction + ", readonly=" + _readonly + ", redirectOption=" + _redirectOption + ", redirectURL=" + _redirectURL + ", restricted=" + _restricted + ", status=" + _status + ", vlanID=" + _vlanID + ", vportID=" + _vportID + ", whiteList=" + _whiteList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

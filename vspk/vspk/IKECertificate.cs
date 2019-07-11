@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class IKECertificate: RestObject {
@@ -53,6 +53,9 @@ public class IKECertificate: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -127,6 +130,17 @@ public class IKECertificate: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -242,7 +256,7 @@ public class IKECertificate: RestObject {
    
 
    public String toString() {
-      return "IKECertificate [" + "PEMEncoded=" + _PEMEncoded + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", issuerDN=" + _issuerDN + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", notAfter=" + _notAfter + ", notBefore=" + _notBefore + ", serialNumber=" + _serialNumber + ", subjectDN=" + _subjectDN + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IKECertificate [" + "PEMEncoded=" + _PEMEncoded + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", issuerDN=" + _issuerDN + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", notAfter=" + _notAfter + ", notBefore=" + _notBefore + ", serialNumber=" + _serialNumber + ", subjectDN=" + _subjectDN + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

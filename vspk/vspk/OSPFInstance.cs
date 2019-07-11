@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class OSPFInstance: RestObject {
@@ -53,6 +53,9 @@ public class OSPFInstance: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -132,6 +135,17 @@ public class OSPFInstance: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -251,7 +265,7 @@ public class OSPFInstance: RestObject {
    
 
    public String toString() {
-      return "OSPFInstance [" + "associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", description=" + _description + ", entityScope=" + _entityScope + ", exportLimit=" + _exportLimit + ", exportToOverlay=" + _exportToOverlay + ", externalID=" + _externalID + ", externalPreference=" + _externalPreference + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", preference=" + _preference + ", superBackboneEnabled=" + _superBackboneEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "OSPFInstance [" + "associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", exportLimit=" + _exportLimit + ", exportToOverlay=" + _exportToOverlay + ", externalID=" + _externalID + ", externalPreference=" + _externalPreference + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", preference=" + _preference + ", superBackboneEnabled=" + _superBackboneEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

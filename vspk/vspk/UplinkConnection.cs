@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class UplinkConnection: RestObject {
@@ -44,6 +44,7 @@ public class UplinkConnection: RestObject {
    
    public enum EAddressFamily {IPV4,IPV6 };
    public enum EAdvertisementCriteria {BFD,CONTROL_SESSION,OPERATIONAL_LINK };
+   public enum EAuxMode {COLD,HOT,NONE };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EInterfaceConnectionType {AUTOMATIC,EMBEDDED,PCI_EXPRESS,USB_ETHERNET,USB_MODEM };
    public enum EMode {Any,Dynamic,LTE,PPPoE,Static };
@@ -79,12 +80,18 @@ public class UplinkConnection: RestObject {
    
    [JsonProperty("associatedUnderlayName")]
    protected String _associatedUnderlayName;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("auxMode")]
+   protected EAuxMode? _auxMode;
    
    [JsonProperty("auxiliaryLink")]
    protected bool _auxiliaryLink;
    
    [JsonProperty("downloadRateLimit")]
    protected float _downloadRateLimit;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -284,6 +291,17 @@ public class UplinkConnection: RestObject {
 
    
    [JsonIgnore]
+   public EAuxMode? NUAuxMode {
+      get {
+         return _auxMode;
+      }
+      set {
+         this._auxMode = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUAuxiliaryLink {
       get {
          return _auxiliaryLink;
@@ -301,6 +319,17 @@ public class UplinkConnection: RestObject {
       }
       set {
          this._downloadRateLimit = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -545,7 +574,7 @@ public class UplinkConnection: RestObject {
    
 
    public String toString() {
-      return "UplinkConnection [" + "DNSAddress=" + _DNSAddress + ", DNSAddressV6=" + _DNSAddressV6 + ", PATEnabled=" + _PATEnabled + ", address=" + _address + ", addressFamily=" + _addressFamily + ", addressV6=" + _addressV6 + ", advertisementCriteria=" + _advertisementCriteria + ", assocUnderlayID=" + _assocUnderlayID + ", associatedBGPNeighborID=" + _associatedBGPNeighborID + ", associatedUnderlayName=" + _associatedUnderlayName + ", auxiliaryLink=" + _auxiliaryLink + ", downloadRateLimit=" + _downloadRateLimit + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayV6=" + _gatewayV6 + ", inherited=" + _inherited + ", installerManaged=" + _installerManaged + ", interfaceConnectionType=" + _interfaceConnectionType + ", lastUpdatedBy=" + _lastUpdatedBy + ", mode=" + _mode + ", netmask=" + _netmask + ", password=" + _password + ", portName=" + _portName + ", role=" + _role + ", roleOrder=" + _roleOrder + ", secondaryAddress=" + _secondaryAddress + ", underlayEnabled=" + _underlayEnabled + ", underlayID=" + _underlayID + ", uplinkID=" + _uplinkID + ", username=" + _username + ", vlan=" + _vlan + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "UplinkConnection [" + "DNSAddress=" + _DNSAddress + ", DNSAddressV6=" + _DNSAddressV6 + ", PATEnabled=" + _PATEnabled + ", address=" + _address + ", addressFamily=" + _addressFamily + ", addressV6=" + _addressV6 + ", advertisementCriteria=" + _advertisementCriteria + ", assocUnderlayID=" + _assocUnderlayID + ", associatedBGPNeighborID=" + _associatedBGPNeighborID + ", associatedUnderlayName=" + _associatedUnderlayName + ", auxMode=" + _auxMode + ", auxiliaryLink=" + _auxiliaryLink + ", downloadRateLimit=" + _downloadRateLimit + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayV6=" + _gatewayV6 + ", inherited=" + _inherited + ", installerManaged=" + _installerManaged + ", interfaceConnectionType=" + _interfaceConnectionType + ", lastUpdatedBy=" + _lastUpdatedBy + ", mode=" + _mode + ", netmask=" + _netmask + ", password=" + _password + ", portName=" + _portName + ", role=" + _role + ", roleOrder=" + _roleOrder + ", secondaryAddress=" + _secondaryAddress + ", underlayEnabled=" + _underlayEnabled + ", underlayID=" + _underlayID + ", uplinkID=" + _uplinkID + ", username=" + _username + ", vlan=" + _vlan + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

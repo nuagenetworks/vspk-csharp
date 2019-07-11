@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class DUCGroup: RestObject {
@@ -43,7 +43,7 @@ public class DUCGroup: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EFunction {GATEWAY,UBR };
+   public enum EFunction {GATEWAY,HUB,UBR };
 
    
    [JsonProperty("associatedPerformanceMonitorID")]
@@ -51,6 +51,12 @@ public class DUCGroup: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("ducMeshGroupID")]
+   protected long? _ducMeshGroupID;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -107,6 +113,28 @@ public class DUCGroup: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUDucMeshGroupID {
+      get {
+         return _ducMeshGroupID;
+      }
+      set {
+         this._ducMeshGroupID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -182,7 +210,7 @@ public class DUCGroup: RestObject {
    
 
    public String toString() {
-      return "DUCGroup [" + "associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", function=" + _function + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "DUCGroup [" + "associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", description=" + _description + ", ducMeshGroupID=" + _ducMeshGroupID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", function=" + _function + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

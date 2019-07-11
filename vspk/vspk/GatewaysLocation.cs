@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class GatewaysLocation: RestObject {
@@ -56,6 +56,9 @@ public class GatewaysLocation: RestObject {
    
    [JsonProperty("country")]
    protected String _country;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -141,6 +144,17 @@ public class GatewaysLocation: RestObject {
       }
       set {
          this._country = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -256,7 +270,7 @@ public class GatewaysLocation: RestObject {
    
 
    public String toString() {
-      return "GatewaysLocation [" + "address=" + _address + ", associatedEntityName=" + _associatedEntityName + ", associatedEntityType=" + _associatedEntityType + ", country=" + _country + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ignoreGeocode=" + _ignoreGeocode + ", lastUpdatedBy=" + _lastUpdatedBy + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", state=" + _state + ", timeZoneID=" + _timeZoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "GatewaysLocation [" + "address=" + _address + ", associatedEntityName=" + _associatedEntityName + ", associatedEntityType=" + _associatedEntityType + ", country=" + _country + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ignoreGeocode=" + _ignoreGeocode + ", lastUpdatedBy=" + _lastUpdatedBy + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", state=" + _state + ", timeZoneID=" + _timeZoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

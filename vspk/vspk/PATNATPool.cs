@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class PATNATPool: RestObject {
@@ -74,6 +74,9 @@ public class PATNATPool: RestObject {
    
    [JsonProperty("dynamicSourceEnabled")]
    protected bool _dynamicSourceEnabled;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("endAddressRange")]
    protected String _endAddressRange;
@@ -249,6 +252,17 @@ public class PATNATPool: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUEndAddressRange {
       get {
          return _endAddressRange;
@@ -383,7 +397,7 @@ public class PATNATPool: RestObject {
    
 
    public String toString() {
-      return "PATNATPool [" + "IPType=" + _IPType + ", addressRange=" + _addressRange + ", associatedGatewayId=" + _associatedGatewayId + ", associatedGatewayType=" + _associatedGatewayType + ", associatedSubnetId=" + _associatedSubnetId + ", associatedVlanId=" + _associatedVlanId + ", defaultPATIP=" + _defaultPATIP + ", description=" + _description + ", dynamicSourceEnabled=" + _dynamicSourceEnabled + ", endAddressRange=" + _endAddressRange + ", endSourceAddress=" + _endSourceAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", startAddressRange=" + _startAddressRange + ", startSourceAddress=" + _startSourceAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "PATNATPool [" + "IPType=" + _IPType + ", addressRange=" + _addressRange + ", associatedGatewayId=" + _associatedGatewayId + ", associatedGatewayType=" + _associatedGatewayType + ", associatedSubnetId=" + _associatedSubnetId + ", associatedVlanId=" + _associatedVlanId + ", defaultPATIP=" + _defaultPATIP + ", description=" + _description + ", dynamicSourceEnabled=" + _dynamicSourceEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", endAddressRange=" + _endAddressRange + ", endSourceAddress=" + _endSourceAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", startAddressRange=" + _startAddressRange + ", startSourceAddress=" + _startSourceAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

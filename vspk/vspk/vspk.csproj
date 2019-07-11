@@ -74,6 +74,8 @@
     <Compile Include="DSCPForwardingClassTablesFetcher.cs" />
     <Compile Include="MultiCastChannelMap.cs" />
     <Compile Include="MultiCastChannelMapsFetcher.cs" />
+    <Compile Include="AzureCloud.cs" />
+    <Compile Include="AzureCloudsFetcher.cs" />
     <Compile Include="RedundancyGroup.cs" />
     <Compile Include="RedundancyGroupsFetcher.cs" />
     <Compile Include="EgressACLEntryTemplate.cs" />
@@ -144,6 +146,8 @@
     <Compile Include="SubnetTemplatesFetcher.cs" />
     <Compile Include="RedirectionTarget.cs" />
     <Compile Include="RedirectionTargetsFetcher.cs" />
+    <Compile Include="TestRun.cs" />
+    <Compile Include="TestRunsFetcher.cs" />
     <Compile Include="WANService.cs" />
     <Compile Include="WANServicesFetcher.cs" />
     <Compile Include="IKEGatewayConnection.cs" />
@@ -210,6 +214,8 @@
     <Compile Include="VSCsFetcher.cs" />
     <Compile Include="DeploymentFailure.cs" />
     <Compile Include="DeploymentFailuresFetcher.cs" />
+    <Compile Include="ControllerVRSLink.cs" />
+    <Compile Include="ControllerVRSLinksFetcher.cs" />
     <Compile Include="VPort.cs" />
     <Compile Include="VPortsFetcher.cs" />
     <Compile Include="Tier.cs" />
@@ -224,6 +230,8 @@
     <Compile Include="PolicyGroupCategoriesFetcher.cs" />
     <Compile Include="Subnet.cs" />
     <Compile Include="SubnetsFetcher.cs" />
+    <Compile Include="TestSuiteRun.cs" />
+    <Compile Include="TestSuiteRunsFetcher.cs" />
     <Compile Include="Container.cs" />
     <Compile Include="ContainersFetcher.cs" />
     <Compile Include="LDAPConfiguration.cs" />
@@ -238,6 +246,8 @@
     <Compile Include="AllGatewaysFetcher.cs" />
     <Compile Include="Certificate.cs" />
     <Compile Include="CertificatesFetcher.cs" />
+    <Compile Include="ForwardingClass.cs" />
+    <Compile Include="ForwardingClassFetcher.cs" />
     <Compile Include="ZoneTemplate.cs" />
     <Compile Include="ZoneTemplatesFetcher.cs" />
     <Compile Include="KeyServerMonitorSeed.cs" />
@@ -262,6 +272,8 @@
     <Compile Include="ZFBRequestsFetcher.cs" />
     <Compile Include="IngressAdvFwdTemplate.cs" />
     <Compile Include="IngressAdvFwdTemplatesFetcher.cs" />
+    <Compile Include="NetconfGateway.cs" />
+    <Compile Include="NetconfGatewaysFetcher.cs" />
     <Compile Include="StaticRoute.cs" />
     <Compile Include="StaticRoutesFetcher.cs" />
     <Compile Include="Connectionendpoint.cs" />
@@ -280,6 +292,8 @@
     <Compile Include="PolicyEntriesFetcher.cs" />
     <Compile Include="KeyServerMonitor.cs" />
     <Compile Include="KeyServerMonitorsFetcher.cs" />
+    <Compile Include="TestSuite.cs" />
+    <Compile Include="TestSuitesFetcher.cs" />
     <Compile Include="QosPolicer.cs" />
     <Compile Include="QosPolicersFetcher.cs" />
     <Compile Include="VRSMetrics.cs" />
@@ -288,6 +302,8 @@
     <Compile Include="UserContextsFetcher.cs" />
     <Compile Include="License.cs" />
     <Compile Include="LicensesFetcher.cs" />
+    <Compile Include="TestDefinition.cs" />
+    <Compile Include="TestDefinitionsFetcher.cs" />
     <Compile Include="EnterpriseProfile.cs" />
     <Compile Include="EnterpriseProfilesFetcher.cs" />
     <Compile Include="NetconfManager.cs" />
@@ -324,8 +340,12 @@
     <Compile Include="VCenterHypervisorsFetcher.cs" />
     <Compile Include="Domain.cs" />
     <Compile Include="DomainsFetcher.cs" />
+    <Compile Include="DomainKindSummary.cs" />
+    <Compile Include="DomainKindSummariesFetcher.cs" />
     <Compile Include="NATMapEntry.cs" />
     <Compile Include="NATMapEntriesFetcher.cs" />
+    <Compile Include="DHCPv6Option.cs" />
+    <Compile Include="DHCPv6OptionsFetcher.cs" />
     <Compile Include="DomainFIPAclTemplate.cs" />
     <Compile Include="DomainFIPAclTemplatesFetcher.cs" />
     <Compile Include="OSPFInterface.cs" />
@@ -396,6 +416,8 @@
     <Compile Include="L2DomainsFetcher.cs" />
     <Compile Include="IKEGateway.cs" />
     <Compile Include="IKEGatewaysFetcher.cs" />
+    <Compile Include="vrsInfo.cs" />
+    <Compile Include="vrsInfosFetcher.cs" />
     <Compile Include="HostInterface.cs" />
     <Compile Include="HostInterfacesFetcher.cs" />
     <Compile Include="EnterpriseSecuredData.cs" />
@@ -412,6 +434,8 @@
     <Compile Include="PortTemplatesFetcher.cs" />
     <Compile Include="NSPortInfo.cs" />
     <Compile Include="NSPortInfosFetcher.cs" />
+    <Compile Include="SysmonUplinkConnection.cs" />
+    <Compile Include="SysmonUplinkConnectionsFetcher.cs" />
     <Compile Include="GatewaysLocation.cs" />
     <Compile Include="GatewaysLocationsFetcher.cs" />
     <Compile Include="L7applicationsignature.cs" />
@@ -442,8 +466,8 @@
     <Compile Include="NSGRoutingPolicyBindingsFetcher.cs" />
     <Compile Include="NSGatewaysCount.cs" />
     <Compile Include="NSGatewaysCountsFetcher.cs" />
-    <Compile Include="Bootstrap.cs" />
-    <Compile Include="BootstrapsFetcher.cs" />
+    <Compile Include="VRSAddressRange.cs" />
+    <Compile Include="VRSAddressRangesFetcher.cs" />
     <Compile Include="BGPProfile.cs" />
     <Compile Include="BGPProfilesFetcher.cs" />
     <Compile Include="CTranslationMap.cs" />
@@ -468,6 +492,8 @@
     <Compile Include="VMResyncsFetcher.cs" />
     <Compile Include="PortMapping.cs" />
     <Compile Include="PortMappingsFetcher.cs" />
+    <Compile Include="Bootstrap.cs" />
+    <Compile Include="BootstrapsFetcher.cs" />
     <Compile Include="GatewaySecurity.cs" />
     <Compile Include="GatewaySecuritiesFetcher.cs" />
     <Compile Include="PolicyDecision.cs" />
@@ -506,6 +532,10 @@
     <Compile Include="COSRemarkingPolicyTablesFetcher.cs" />
     <Compile Include="VPortMirror.cs" />
     <Compile Include="VPortMirrorsFetcher.cs" />
+    <Compile Include="MirrorDestinationGroup.cs" />
+    <Compile Include="MirrorDestinationGroupsFetcher.cs" />
+    <Compile Include="Test.cs" />
+    <Compile Include="TestsFetcher.cs" />
     <Compile Include="PATMapper.cs" />
     <Compile Include="PATMappersFetcher.cs" />
     <Compile Include="PSNATPool.cs" />
@@ -552,8 +582,8 @@
     <Compile Include="FirewallRulesFetcher.cs" />
     <Compile Include="NSPort.cs" />
     <Compile Include="NSPortsFetcher.cs" />
-    <Compile Include="VRSAddressRange.cs" />
-    <Compile Include="VRSAddressRangesFetcher.cs" />
+    <Compile Include="AggregatedDomain.cs" />
+    <Compile Include="AggregatedDomainsFetcher.cs" />
     <Compile Include="VLANTemplate.cs" />
     <Compile Include="VLANTemplatesFetcher.cs" />
     <Compile Include="NSGUpgradeProfile.cs" />
@@ -576,6 +606,8 @@
     <Compile Include="IngressACLTemplatesFetcher.cs" />
     <Compile Include="Monitorscope.cs" />
     <Compile Include="MonitorscopesFetcher.cs" />
+    <Compile Include="RemoteVrsInfo.cs" />
+    <Compile Include="RemoteVrsInfosFetcher.cs" />
     <Compile Include="SdkInfo.cs" />
     <Compile Include="VSDSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

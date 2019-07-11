@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class Enterprise: RestObject {
@@ -104,6 +104,9 @@ public class Enterprise: RestObject {
    [JsonProperty("dictionaryVersion")]
    protected long? _dictionaryVersion;
    
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   
    [JsonProperty("enableApplicationPerformanceManagement")]
    protected bool _enableApplicationPerformanceManagement;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -127,6 +130,9 @@ public class Enterprise: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("flowCollectionEnabled")]
    protected EFlowCollectionEnabled? _flowCollectionEnabled;
+   
+   [JsonProperty("forwardingClass")]
+   protected System.Collections.Generic.List<String> _forwardingClass;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
@@ -173,6 +179,9 @@ public class Enterprise: RestObject {
    private AvatarsFetcher _avatars;
    
    [JsonIgnore]
+   private AzureCloudsFetcher _azureClouds;
+   
+   [JsonIgnore]
    private BGPProfilesFetcher _bGPProfiles;
    
    [JsonIgnore]
@@ -185,7 +194,13 @@ public class Enterprise: RestObject {
    private COSRemarkingPolicyTablesFetcher _cOSRemarkingPolicyTables;
    
    [JsonIgnore]
+   private DeploymentFailuresFetcher _deploymentFailures;
+   
+   [JsonIgnore]
    private DomainsFetcher _domains;
+   
+   [JsonIgnore]
+   private DomainKindSummariesFetcher _domainKindSummaries;
    
    [JsonIgnore]
    private DomainTemplatesFetcher _domainTemplates;
@@ -347,6 +362,9 @@ public class Enterprise: RestObject {
    private SyslogDestinationsFetcher _syslogDestinations;
    
    [JsonIgnore]
+   private TestSuitesFetcher _testSuites;
+   
+   [JsonIgnore]
    private TrunksFetcher _trunks;
    
    [JsonIgnore]
@@ -385,6 +403,8 @@ public class Enterprise: RestObject {
       
       _avatars = new AvatarsFetcher(this);
       
+      _azureClouds = new AzureCloudsFetcher(this);
+      
       _bGPProfiles = new BGPProfilesFetcher(this);
       
       _captivePortalProfiles = new CaptivePortalProfilesFetcher(this);
@@ -393,7 +413,11 @@ public class Enterprise: RestObject {
       
       _cOSRemarkingPolicyTables = new COSRemarkingPolicyTablesFetcher(this);
       
+      _deploymentFailures = new DeploymentFailuresFetcher(this);
+      
       _domains = new DomainsFetcher(this);
+      
+      _domainKindSummaries = new DomainKindSummariesFetcher(this);
       
       _domainTemplates = new DomainTemplatesFetcher(this);
       
@@ -500,6 +524,8 @@ public class Enterprise: RestObject {
       _sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
       
       _syslogDestinations = new SyslogDestinationsFetcher(this);
+      
+      _testSuites = new TestSuitesFetcher(this);
       
       _trunks = new TrunksFetcher(this);
       
@@ -721,6 +747,17 @@ public class Enterprise: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUEnableApplicationPerformanceManagement {
       get {
          return _enableApplicationPerformanceManagement;
@@ -804,6 +841,17 @@ public class Enterprise: RestObject {
       }
       set {
          this._flowCollectionEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUForwardingClass {
+      get {
+         return _forwardingClass;
+      }
+      set {
+         this._forwardingClass = value;
       }
    }
 
@@ -929,6 +977,10 @@ public class Enterprise: RestObject {
       return _avatars;
    }
    
+   public AzureCloudsFetcher getAzureClouds() {
+      return _azureClouds;
+   }
+   
    public BGPProfilesFetcher getBGPProfiles() {
       return _bGPProfiles;
    }
@@ -945,8 +997,16 @@ public class Enterprise: RestObject {
       return _cOSRemarkingPolicyTables;
    }
    
+   public DeploymentFailuresFetcher getDeploymentFailures() {
+      return _deploymentFailures;
+   }
+   
    public DomainsFetcher getDomains() {
       return _domains;
+   }
+   
+   public DomainKindSummariesFetcher getDomainKindSummaries() {
+      return _domainKindSummaries;
    }
    
    public DomainTemplatesFetcher getDomainTemplates() {
@@ -1161,6 +1221,10 @@ public class Enterprise: RestObject {
       return _syslogDestinations;
    }
    
+   public TestSuitesFetcher getTestSuites() {
+      return _testSuites;
+   }
+   
    public TrunksFetcher getTrunks() {
       return _trunks;
    }
@@ -1199,7 +1263,7 @@ public class Enterprise: RestObject {
    
 
    public String toString() {
-      return "Enterprise [" + "BGPEnabled=" + _BGPEnabled + ", DHCPLeaseInterval=" + _DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + _LDAPAuthorizationEnabled + ", LDAPEnabled=" + _LDAPEnabled + ", VNFManagementEnabled=" + _VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + _allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + _allowGatewayManagement + ", allowTrustedForwardingClass=" + _allowTrustedForwardingClass + ", allowedForwardingClasses=" + _allowedForwardingClasses + ", allowedForwardingMode=" + _allowedForwardingMode + ", associatedEnterpriseSecurityID=" + _associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + _associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + _associatedKeyServerMonitorID + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", customerID=" + _customerID + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", enableApplicationPerformanceManagement=" + _enableApplicationPerformanceManagement + ", encryptionManagementMode=" + _encryptionManagementMode + ", enterpriseProfileID=" + _enterpriseProfileID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", floatingIPsQuota=" + _floatingIPsQuota + ", floatingIPsUsed=" + _floatingIPsUsed + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", localAS=" + _localAS + ", name=" + _name + ", receiveMultiCastListID=" + _receiveMultiCastListID + ", sendMultiCastListID=" + _sendMultiCastListID + ", sharedEnterprise=" + _sharedEnterprise + ", useGlobalMAC=" + _useGlobalMAC + ", virtualFirewallRulesEnabled=" + _virtualFirewallRulesEnabled + ", webFilterEnabled=" + _webFilterEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Enterprise [" + "BGPEnabled=" + _BGPEnabled + ", DHCPLeaseInterval=" + _DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + _LDAPAuthorizationEnabled + ", LDAPEnabled=" + _LDAPEnabled + ", VNFManagementEnabled=" + _VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + _allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + _allowGatewayManagement + ", allowTrustedForwardingClass=" + _allowTrustedForwardingClass + ", allowedForwardingClasses=" + _allowedForwardingClasses + ", allowedForwardingMode=" + _allowedForwardingMode + ", associatedEnterpriseSecurityID=" + _associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + _associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + _associatedKeyServerMonitorID + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", customerID=" + _customerID + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", embeddedMetadata=" + _embeddedMetadata + ", enableApplicationPerformanceManagement=" + _enableApplicationPerformanceManagement + ", encryptionManagementMode=" + _encryptionManagementMode + ", enterpriseProfileID=" + _enterpriseProfileID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", floatingIPsQuota=" + _floatingIPsQuota + ", floatingIPsUsed=" + _floatingIPsUsed + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", forwardingClass=" + _forwardingClass + ", lastUpdatedBy=" + _lastUpdatedBy + ", localAS=" + _localAS + ", name=" + _name + ", receiveMultiCastListID=" + _receiveMultiCastListID + ", sendMultiCastListID=" + _sendMultiCastListID + ", sharedEnterprise=" + _sharedEnterprise + ", useGlobalMAC=" + _useGlobalMAC + ", virtualFirewallRulesEnabled=" + _virtualFirewallRulesEnabled + ", webFilterEnabled=" + _webFilterEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

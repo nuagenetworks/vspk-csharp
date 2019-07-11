@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class Ltestatistics: RestObject {
@@ -43,6 +43,9 @@ public class Ltestatistics: RestObject {
 
    
 
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("endTime")]
    protected long? _endTime;
@@ -70,6 +73,17 @@ public class Ltestatistics: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
    }
 
    
@@ -129,7 +143,7 @@ public class Ltestatistics: RestObject {
    
 
    public String toString() {
-      return "Ltestatistics [" + "endTime=" + _endTime + ", startTime=" + _startTime + ", statsData=" + _statsData + ", version=" + _version + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Ltestatistics [" + "embeddedMetadata=" + _embeddedMetadata + ", endTime=" + _endTime + ", startTime=" + _startTime + ", statsData=" + _statsData + ", version=" + _version + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

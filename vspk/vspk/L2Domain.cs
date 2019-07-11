@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class L2Domain: RestObject {
@@ -43,11 +43,12 @@ public class L2Domain: RestObject {
 
    
    public enum EDPI {DISABLED,ENABLED };
-   public enum EIPType {DUALSTACK,IPV4 };
+   public enum EIPType {DUALSTACK,IPV4,IPV6 };
    public enum EEncryption {DISABLED,ENABLED };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EEntityState {MARKED_FOR_DELETION,UNDER_CONSTRUCTION };
    public enum EFlowCollectionEnabled {DISABLED,ENABLED,INHERITED };
+   public enum EL2EncapType {MPLSoUDP,VXLAN };
    public enum EMaintenanceMode {DISABLED,ENABLED,ENABLED_INHERITED };
    public enum EMulticast {DISABLED,ENABLED,INHERITED };
    public enum EPolicyChangeStatus {APPLIED,DISCARDED,STARTED };
@@ -85,14 +86,26 @@ public class L2Domain: RestObject {
    [JsonProperty("associatedUnderlayID")]
    protected String _associatedUnderlayID;
    
+   [JsonProperty("color")]
+   protected long? _color;
+   
    [JsonProperty("customerID")]
    protected long? _customerID;
    
    [JsonProperty("description")]
    protected String _description;
    
-   [JsonProperty("dynamicIpv6Address")]
-   protected bool _dynamicIpv6Address;
+   [JsonProperty("dualStackDynamicIPAllocation")]
+   protected bool _dualStackDynamicIPAllocation;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   
+   [JsonProperty("enableDHCPv4")]
+   protected bool _enableDHCPv4;
+   
+   [JsonProperty("enableDHCPv6")]
+   protected bool _enableDHCPv6;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("encryption")]
    protected EEncryption? _encryption;
@@ -117,6 +130,9 @@ public class L2Domain: RestObject {
    
    [JsonProperty("ingressReplicationEnabled")]
    protected bool _ingressReplicationEnabled;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("l2EncapType")]
+   protected EL2EncapType? _l2EncapType;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
@@ -193,6 +209,9 @@ public class L2Domain: RestObject {
    private DHCPOptionsFetcher _dHCPOptions;
    
    [JsonIgnore]
+   private DHCPv6OptionsFetcher _dHCPv6Options;
+   
+   [JsonIgnore]
    private EgressACLEntryTemplatesFetcher _egressACLEntryTemplates;
    
    [JsonIgnore]
@@ -230,6 +249,9 @@ public class L2Domain: RestObject {
    
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
+   
+   [JsonIgnore]
+   private MirrorDestinationGroupsFetcher _mirrorDestinationGroups;
    
    [JsonIgnore]
    private NetworkPerformanceBindingsFetcher _networkPerformanceBindings;
@@ -315,6 +337,8 @@ public class L2Domain: RestObject {
       
       _dHCPOptions = new DHCPOptionsFetcher(this);
       
+      _dHCPv6Options = new DHCPv6OptionsFetcher(this);
+      
       _egressACLEntryTemplates = new EgressACLEntryTemplatesFetcher(this);
       
       _egressACLTemplates = new EgressACLTemplatesFetcher(this);
@@ -340,6 +364,8 @@ public class L2Domain: RestObject {
       _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _mirrorDestinationGroups = new MirrorDestinationGroupsFetcher(this);
       
       _networkPerformanceBindings = new NetworkPerformanceBindingsFetcher(this);
       
@@ -497,6 +523,17 @@ public class L2Domain: RestObject {
 
    
    [JsonIgnore]
+   public long? NUColor {
+      get {
+         return _color;
+      }
+      set {
+         this._color = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUCustomerID {
       get {
          return _customerID;
@@ -519,12 +556,45 @@ public class L2Domain: RestObject {
 
    
    [JsonIgnore]
-   public bool NUDynamicIpv6Address {
+   public bool NUDualStackDynamicIPAllocation {
       get {
-         return _dynamicIpv6Address;
+         return _dualStackDynamicIPAllocation;
       }
       set {
-         this._dynamicIpv6Address = value;
+         this._dualStackDynamicIPAllocation = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUEnableDHCPv4 {
+      get {
+         return _enableDHCPv4;
+      }
+      set {
+         this._enableDHCPv4 = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUEnableDHCPv6 {
+      get {
+         return _enableDHCPv6;
+      }
+      set {
+         this._enableDHCPv6 = value;
       }
    }
 
@@ -613,6 +683,17 @@ public class L2Domain: RestObject {
       }
       set {
          this._ingressReplicationEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EL2EncapType? NUL2EncapType {
+      get {
+         return _l2EncapType;
+      }
+      set {
+         this._l2EncapType = value;
       }
    }
 
@@ -820,6 +901,10 @@ public class L2Domain: RestObject {
       return _dHCPOptions;
    }
    
+   public DHCPv6OptionsFetcher getDHCPv6Options() {
+      return _dHCPv6Options;
+   }
+   
    public EgressACLEntryTemplatesFetcher getEgressACLEntryTemplates() {
       return _egressACLEntryTemplates;
    }
@@ -870,6 +955,10 @@ public class L2Domain: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public MirrorDestinationGroupsFetcher getMirrorDestinationGroups() {
+      return _mirrorDestinationGroups;
    }
    
    public NetworkPerformanceBindingsFetcher getNetworkPerformanceBindings() {
@@ -958,7 +1047,7 @@ public class L2Domain: RestObject {
    
 
    public String toString() {
-      return "L2Domain [" + "DHCPManaged=" + _DHCPManaged + ", DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", VXLANECMPEnabled=" + _VXLANECMPEnabled + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", associatedUnderlayID=" + _associatedUnderlayID + ", customerID=" + _customerID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", ingressReplicationEnabled=" + _ingressReplicationEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", routedVPLSEnabled=" + _routedVPLSEnabled + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", uplinkPreference=" + _uplinkPreference + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "L2Domain [" + "DHCPManaged=" + _DHCPManaged + ", DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", VXLANECMPEnabled=" + _VXLANECMPEnabled + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", associatedUnderlayID=" + _associatedUnderlayID + ", color=" + _color + ", customerID=" + _customerID + ", description=" + _description + ", dualStackDynamicIPAllocation=" + _dualStackDynamicIPAllocation + ", embeddedMetadata=" + _embeddedMetadata + ", enableDHCPv4=" + _enableDHCPv4 + ", enableDHCPv6=" + _enableDHCPv6 + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", ingressReplicationEnabled=" + _ingressReplicationEnabled + ", l2EncapType=" + _l2EncapType + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", routedVPLSEnabled=" + _routedVPLSEnabled + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", uplinkPreference=" + _uplinkPreference + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

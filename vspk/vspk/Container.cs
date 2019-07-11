@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class Container: RestObject {
@@ -65,6 +65,9 @@ public class Container: RestObject {
    
    [JsonProperty("domainIDs")]
    protected System.Collections.Generic.List<String> _domainIDs;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -122,6 +125,12 @@ public class Container: RestObject {
    
    [JsonProperty("userName")]
    protected String _userName;
+   
+   [JsonProperty("vrsRawVersion")]
+   protected String _vrsRawVersion;
+   
+   [JsonProperty("vrsVersion")]
+   protected String _vrsVersion;
    
    [JsonProperty("zoneIDs")]
    protected System.Collections.Generic.List<String> _zoneIDs;
@@ -230,6 +239,17 @@ public class Container: RestObject {
       }
       set {
          this._domainIDs = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -444,6 +464,28 @@ public class Container: RestObject {
 
    
    [JsonIgnore]
+   public String NUVrsRawVersion {
+      get {
+         return _vrsRawVersion;
+      }
+      set {
+         this._vrsRawVersion = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUVrsVersion {
+      get {
+         return _vrsVersion;
+      }
+      set {
+         this._vrsVersion = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUZoneIDs {
       get {
          return _zoneIDs;
@@ -486,7 +528,7 @@ public class Container: RestObject {
    
 
    public String toString() {
-      return "Container [" + "UUID=" + _UUID + ", VRSID=" + _VRSID + ", computeProvisioned=" + _computeProvisioned + ", deleteExpiry=" + _deleteExpiry + ", deleteMode=" + _deleteMode + ", domainIDs=" + _domainIDs + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", imageID=" + _imageID + ", imageName=" + _imageName + ", interfaces=" + _interfaces + ", l2DomainIDs=" + _l2DomainIDs + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", orchestrationID=" + _orchestrationID + ", reasonType=" + _reasonType + ", resyncInfo=" + _resyncInfo + ", siteIdentifier=" + _siteIdentifier + ", status=" + _status + ", subnetIDs=" + _subnetIDs + ", userID=" + _userID + ", userName=" + _userName + ", zoneIDs=" + _zoneIDs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Container [" + "UUID=" + _UUID + ", VRSID=" + _VRSID + ", computeProvisioned=" + _computeProvisioned + ", deleteExpiry=" + _deleteExpiry + ", deleteMode=" + _deleteMode + ", domainIDs=" + _domainIDs + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", imageID=" + _imageID + ", imageName=" + _imageName + ", interfaces=" + _interfaces + ", l2DomainIDs=" + _l2DomainIDs + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", orchestrationID=" + _orchestrationID + ", reasonType=" + _reasonType + ", resyncInfo=" + _resyncInfo + ", siteIdentifier=" + _siteIdentifier + ", status=" + _status + ", subnetIDs=" + _subnetIDs + ", userID=" + _userID + ", userName=" + _userName + ", vrsRawVersion=" + _vrsRawVersion + ", vrsVersion=" + _vrsVersion + ", zoneIDs=" + _zoneIDs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

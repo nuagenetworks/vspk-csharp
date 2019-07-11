@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class VPort: RestObject {
@@ -115,6 +115,9 @@ public class VPort: RestObject {
    [JsonProperty("backhaulSubnetVNID")]
    protected long? _backhaulSubnetVNID;
    
+   [JsonProperty("color")]
+   protected long? _color;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -129,6 +132,9 @@ public class VPort: RestObject {
    
    [JsonProperty("domainVLANID")]
    protected long? _domainVLANID;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -220,6 +226,9 @@ public class VPort: RestObject {
    private DHCPOptionsFetcher _dHCPOptions;
    
    [JsonIgnore]
+   private DHCPv6OptionsFetcher _dHCPv6Options;
+   
+   [JsonIgnore]
    private EgressACLEntryTemplatesFetcher _egressACLEntryTemplates;
    
    [JsonIgnore]
@@ -265,6 +274,9 @@ public class VPort: RestObject {
    private TCAsFetcher _tCAs;
    
    [JsonIgnore]
+   private TestSuiteRunsFetcher _testSuiteRuns;
+   
+   [JsonIgnore]
    private TrunksFetcher _trunks;
    
    [JsonIgnore]
@@ -307,6 +319,8 @@ public class VPort: RestObject {
       
       _dHCPOptions = new DHCPOptionsFetcher(this);
       
+      _dHCPv6Options = new DHCPv6OptionsFetcher(this);
+      
       _egressACLEntryTemplates = new EgressACLEntryTemplatesFetcher(this);
       
       _eventLogs = new EventLogsFetcher(this);
@@ -336,6 +350,8 @@ public class VPort: RestObject {
       _statisticsPolicies = new StatisticsPoliciesFetcher(this);
       
       _tCAs = new TCAsFetcher(this);
+      
+      _testSuiteRuns = new TestSuiteRunsFetcher(this);
       
       _trunks = new TrunksFetcher(this);
       
@@ -564,6 +580,17 @@ public class VPort: RestObject {
 
    
    [JsonIgnore]
+   public long? NUColor {
+      get {
+         return _color;
+      }
+      set {
+         this._color = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -614,6 +641,17 @@ public class VPort: RestObject {
       }
       set {
          this._domainVLANID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -883,6 +921,10 @@ public class VPort: RestObject {
       return _dHCPOptions;
    }
    
+   public DHCPv6OptionsFetcher getDHCPv6Options() {
+      return _dHCPv6Options;
+   }
+   
    public EgressACLEntryTemplatesFetcher getEgressACLEntryTemplates() {
       return _egressACLEntryTemplates;
    }
@@ -943,6 +985,10 @@ public class VPort: RestObject {
       return _tCAs;
    }
    
+   public TestSuiteRunsFetcher getTestSuiteRuns() {
+      return _testSuiteRuns;
+   }
+   
    public TrunksFetcher getTrunks() {
       return _trunks;
    }
@@ -973,7 +1019,7 @@ public class VPort: RestObject {
    
 
    public String toString() {
-      return "VPort [" + "DPI=" + _DPI + ", FIPIgnoreDefaultRoute=" + _FIPIgnoreDefaultRoute + ", VLAN=" + _VLAN + ", VLANID=" + _VLANID + ", accessRestrictionEnabled=" + _accessRestrictionEnabled + ", active=" + _active + ", addressSpoofing=" + _addressSpoofing + ", assocEntityID=" + _assocEntityID + ", associatedEgressProfileID=" + _associatedEgressProfileID + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", associatedGatewayID=" + _associatedGatewayID + ", associatedGatewayPersonality=" + _associatedGatewayPersonality + ", associatedGatewayType=" + _associatedGatewayType + ", associatedIngressProfileID=" + _associatedIngressProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSSID=" + _associatedSSID + ", associatedSendMulticastChannelMapID=" + _associatedSendMulticastChannelMapID + ", associatedTrunkID=" + _associatedTrunkID + ", backhaulSubnetVNID=" + _backhaulSubnetVNID + ", description=" + _description + ", domainID=" + _domainID + ", domainName=" + _domainName + ", domainServiceLabel=" + _domainServiceLabel + ", domainVLANID=" + _domainVLANID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayMACMoveRole=" + _gatewayMACMoveRole + ", gatewayPortName=" + _gatewayPortName + ", gwEligible=" + _gwEligible + ", hasAttachedInterfaces=" + _hasAttachedInterfaces + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiNICVPortID=" + _multiNICVPortID + ", multicast=" + _multicast + ", name=" + _name + ", operationalState=" + _operationalState + ", peerOperationalState=" + _peerOperationalState + ", segmentationID=" + _segmentationID + ", segmentationType=" + _segmentationType + ", serviceID=" + _serviceID + ", subType=" + _subType + ", subnetVNID=" + _subnetVNID + ", systemType=" + _systemType + ", trunkRole=" + _trunkRole + ", type=" + _type + ", zoneID=" + _zoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VPort [" + "DPI=" + _DPI + ", FIPIgnoreDefaultRoute=" + _FIPIgnoreDefaultRoute + ", VLAN=" + _VLAN + ", VLANID=" + _VLANID + ", accessRestrictionEnabled=" + _accessRestrictionEnabled + ", active=" + _active + ", addressSpoofing=" + _addressSpoofing + ", assocEntityID=" + _assocEntityID + ", associatedEgressProfileID=" + _associatedEgressProfileID + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", associatedGatewayID=" + _associatedGatewayID + ", associatedGatewayPersonality=" + _associatedGatewayPersonality + ", associatedGatewayType=" + _associatedGatewayType + ", associatedIngressProfileID=" + _associatedIngressProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSSID=" + _associatedSSID + ", associatedSendMulticastChannelMapID=" + _associatedSendMulticastChannelMapID + ", associatedTrunkID=" + _associatedTrunkID + ", backhaulSubnetVNID=" + _backhaulSubnetVNID + ", color=" + _color + ", description=" + _description + ", domainID=" + _domainID + ", domainName=" + _domainName + ", domainServiceLabel=" + _domainServiceLabel + ", domainVLANID=" + _domainVLANID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayMACMoveRole=" + _gatewayMACMoveRole + ", gatewayPortName=" + _gatewayPortName + ", gwEligible=" + _gwEligible + ", hasAttachedInterfaces=" + _hasAttachedInterfaces + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiNICVPortID=" + _multiNICVPortID + ", multicast=" + _multicast + ", name=" + _name + ", operationalState=" + _operationalState + ", peerOperationalState=" + _peerOperationalState + ", segmentationID=" + _segmentationID + ", segmentationType=" + _segmentationType + ", serviceID=" + _serviceID + ", subType=" + _subType + ", subnetVNID=" + _subnetVNID + ", systemType=" + _systemType + ", trunkRole=" + _trunkRole + ", type=" + _type + ", zoneID=" + _zoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

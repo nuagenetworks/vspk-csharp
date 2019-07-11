@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class ZoneTemplate: RestObject {
@@ -69,6 +69,9 @@ public class ZoneTemplate: RestObject {
    
    [JsonProperty("dynamicIpv6Address")]
    protected bool _dynamicIpv6Address;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("encryption")]
    protected EEncryption? _encryption;
@@ -208,6 +211,17 @@ public class ZoneTemplate: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEncryption? NUEncryption {
       get {
          return _encryption;
@@ -330,7 +344,7 @@ public class ZoneTemplate: RestObject {
    
 
    public String toString() {
-      return "ZoneTemplate [" + "DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", numberOfHostsInSubnets=" + _numberOfHostsInSubnets + ", publicZone=" + _publicZone + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "ZoneTemplate [" + "DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", embeddedMetadata=" + _embeddedMetadata + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", numberOfHostsInSubnets=" + _numberOfHostsInSubnets + ", publicZone=" + _publicZone + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

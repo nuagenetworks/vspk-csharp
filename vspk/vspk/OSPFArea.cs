@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class OSPFArea: RestObject {
@@ -67,6 +67,9 @@ public class OSPFArea: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -189,6 +192,17 @@ public class OSPFArea: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -281,7 +295,7 @@ public class OSPFArea: RestObject {
    
 
    public String toString() {
-      return "OSPFArea [" + "aggregateAreaRange=" + _aggregateAreaRange + ", aggregateAreaRangeNSSA=" + _aggregateAreaRangeNSSA + ", areaID=" + _areaID + ", areaType=" + _areaType + ", defaultMetric=" + _defaultMetric + ", defaultOriginateOption=" + _defaultOriginateOption + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", redistributeExternalEnabled=" + _redistributeExternalEnabled + ", summariesEnabled=" + _summariesEnabled + ", suppressAreaRange=" + _suppressAreaRange + ", suppressAreaRangeNSSA=" + _suppressAreaRangeNSSA + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "OSPFArea [" + "aggregateAreaRange=" + _aggregateAreaRange + ", aggregateAreaRangeNSSA=" + _aggregateAreaRangeNSSA + ", areaID=" + _areaID + ", areaType=" + _areaType + ", defaultMetric=" + _defaultMetric + ", defaultOriginateOption=" + _defaultOriginateOption + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", redistributeExternalEnabled=" + _redistributeExternalEnabled + ", summariesEnabled=" + _summariesEnabled + ", suppressAreaRange=" + _suppressAreaRange + ", suppressAreaRangeNSSA=" + _suppressAreaRangeNSSA + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

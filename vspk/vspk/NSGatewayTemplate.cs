@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class NSGatewayTemplate: RestObject {
@@ -53,6 +53,9 @@ public class NSGatewayTemplate: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -121,6 +124,17 @@ public class NSGatewayTemplate: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -240,7 +254,7 @@ public class NSGatewayTemplate: RestObject {
    
 
    public String toString() {
-      return "NSGatewayTemplate [" + "SSHService=" + _SSHService + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", infrastructureAccessProfileID=" + _infrastructureAccessProfileID + ", infrastructureProfileID=" + _infrastructureProfileID + ", instanceSSHOverride=" + _instanceSSHOverride + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", personality=" + _personality + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGatewayTemplate [" + "SSHService=" + _SSHService + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", infrastructureAccessProfileID=" + _infrastructureAccessProfileID + ", infrastructureProfileID=" + _infrastructureProfileID + ", instanceSSHOverride=" + _instanceSSHOverride + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", personality=" + _personality + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

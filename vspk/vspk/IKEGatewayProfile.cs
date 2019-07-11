@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class IKEGatewayProfile: RestObject {
@@ -43,7 +43,9 @@ public class IKEGatewayProfile: RestObject {
 
    
    public enum EIKEGatewayIdentifierType {ID_DER_ASN1_DN,ID_FQDN,ID_IPV4_ADDR,ID_KEY_ID,ID_RFC822_ADDR };
+   public enum EAssociatedCloudType {AZURECLOUD };
    public enum EAssociatedIKEAuthenticationType {IKE_CERTIFICATE,IKE_PSK };
+   public enum EConfigurationStatus {CANCELING,CANCELLED,CLOUD_CONFIGURATION_REMOVED,FAILED,IN_PROGRESS,NOT_APPLICABLE,PAUSING,SUCCESS,SYNCED_FROM_CLOUD,UNKNOWN,WAITING,WAITING_FOR_RESOURCES };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EServiceClass {A,B,C,D,E,F,G,H,NONE };
 
@@ -56,6 +58,12 @@ public class IKEGatewayProfile: RestObject {
    
    [JsonProperty("antiReplayCheck")]
    protected bool _antiReplayCheck;
+   
+   [JsonProperty("associatedCloudID")]
+   protected String _associatedCloudID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("associatedCloudType")]
+   protected EAssociatedCloudType? _associatedCloudType;
    
    [JsonProperty("associatedEnterpriseID")]
    protected String _associatedEnterpriseID;
@@ -71,9 +79,15 @@ public class IKEGatewayProfile: RestObject {
    
    [JsonProperty("associatedIKEGatewayID")]
    protected String _associatedIKEGatewayID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("configurationStatus")]
+   protected EConfigurationStatus? _configurationStatus;
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -141,6 +155,28 @@ public class IKEGatewayProfile: RestObject {
 
    
    [JsonIgnore]
+   public String NUAssociatedCloudID {
+      get {
+         return _associatedCloudID;
+      }
+      set {
+         this._associatedCloudID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EAssociatedCloudType? NUAssociatedCloudType {
+      get {
+         return _associatedCloudType;
+      }
+      set {
+         this._associatedCloudType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAssociatedEnterpriseID {
       get {
          return _associatedEnterpriseID;
@@ -196,12 +232,34 @@ public class IKEGatewayProfile: RestObject {
 
    
    [JsonIgnore]
+   public EConfigurationStatus? NUConfigurationStatus {
+      get {
+         return _configurationStatus;
+      }
+      set {
+         this._configurationStatus = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -273,7 +331,7 @@ public class IKEGatewayProfile: RestObject {
    
 
    public String toString() {
-      return "IKEGatewayProfile [" + "IKEGatewayIdentifier=" + _IKEGatewayIdentifier + ", IKEGatewayIdentifierType=" + _IKEGatewayIdentifierType + ", antiReplayCheck=" + _antiReplayCheck + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedIKEAuthenticationID=" + _associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + _associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + _associatedIKEEncryptionProfileID + ", associatedIKEGatewayID=" + _associatedIKEGatewayID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", serviceClass=" + _serviceClass + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IKEGatewayProfile [" + "IKEGatewayIdentifier=" + _IKEGatewayIdentifier + ", IKEGatewayIdentifierType=" + _IKEGatewayIdentifierType + ", antiReplayCheck=" + _antiReplayCheck + ", associatedCloudID=" + _associatedCloudID + ", associatedCloudType=" + _associatedCloudType + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedIKEAuthenticationID=" + _associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + _associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + _associatedIKEEncryptionProfileID + ", associatedIKEGatewayID=" + _associatedIKEGatewayID + ", configurationStatus=" + _configurationStatus + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", serviceClass=" + _serviceClass + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

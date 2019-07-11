@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class IKEGatewayConnection: RestObject {
@@ -44,7 +44,9 @@ public class IKEGatewayConnection: RestObject {
    
    public enum ENSGIdentifierType {ID_DER_ASN1_DN,ID_FQDN,ID_IPV4_ADDR,ID_KEY_ID,ID_RFC822_ADDR };
    public enum ENSGRole {INITIATOR,RESPONDER };
+   public enum EAssociatedCloudType {AZURECLOUD };
    public enum EAssociatedIKEAuthenticationType {IKE_CERTIFICATE,IKE_PSK };
+   public enum EConfigurationStatus {CANCELING,CANCELLED,CLOUD_CONFIGURATION_REMOVED,FAILED,IN_PROGRESS,NOT_APPLICABLE,PAUSING,SUCCESS,SYNCED_FROM_CLOUD,UNKNOWN,WAITING,WAITING_FOR_RESOURCES };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
@@ -60,6 +62,12 @@ public class IKEGatewayConnection: RestObject {
    [JsonProperty("allowAnySubnet")]
    protected bool _allowAnySubnet;
    
+   [JsonProperty("associatedCloudID")]
+   protected String _associatedCloudID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("associatedCloudType")]
+   protected EAssociatedCloudType? _associatedCloudType;
+   
    [JsonProperty("associatedIKEAuthenticationID")]
    protected String _associatedIKEAuthenticationID;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -74,6 +82,12 @@ public class IKEGatewayConnection: RestObject {
    
    [JsonProperty("associatedVLANID")]
    protected String _associatedVLANID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("configurationStatus")]
+   protected EConfigurationStatus? _configurationStatus;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -111,6 +125,9 @@ public class IKEGatewayConnection: RestObject {
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
+   private JobsFetcher _jobs;
+   
+   [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
@@ -124,6 +141,8 @@ public class IKEGatewayConnection: RestObject {
       _alarms = new AlarmsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
@@ -179,6 +198,28 @@ public class IKEGatewayConnection: RestObject {
 
    
    [JsonIgnore]
+   public String NUAssociatedCloudID {
+      get {
+         return _associatedCloudID;
+      }
+      set {
+         this._associatedCloudID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EAssociatedCloudType? NUAssociatedCloudType {
+      get {
+         return _associatedCloudType;
+      }
+      set {
+         this._associatedCloudType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAssociatedIKEAuthenticationID {
       get {
          return _associatedIKEAuthenticationID;
@@ -229,6 +270,28 @@ public class IKEGatewayConnection: RestObject {
       }
       set {
          this._associatedVLANID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EConfigurationStatus? NUConfigurationStatus {
+      get {
+         return _configurationStatus;
+      }
+      set {
+         this._configurationStatus = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -342,6 +405,10 @@ public class IKEGatewayConnection: RestObject {
       return _globalMetadatas;
    }
    
+   public JobsFetcher getJobs() {
+      return _jobs;
+   }
+   
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
    }
@@ -356,7 +423,7 @@ public class IKEGatewayConnection: RestObject {
    
 
    public String toString() {
-      return "IKEGatewayConnection [" + "NSGIdentifier=" + _NSGIdentifier + ", NSGIdentifierType=" + _NSGIdentifierType + ", NSGRole=" + _NSGRole + ", allowAnySubnet=" + _allowAnySubnet + ", associatedIKEAuthenticationID=" + _associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + _associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + _associatedIKEEncryptionProfileID + ", associatedIKEGatewayProfileID=" + _associatedIKEGatewayProfileID + ", associatedVLANID=" + _associatedVLANID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mark=" + _mark + ", name=" + _name + ", portVLANName=" + _portVLANName + ", priority=" + _priority + ", sequence=" + _sequence + ", unencryptedPSK=" + _unencryptedPSK + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IKEGatewayConnection [" + "NSGIdentifier=" + _NSGIdentifier + ", NSGIdentifierType=" + _NSGIdentifierType + ", NSGRole=" + _NSGRole + ", allowAnySubnet=" + _allowAnySubnet + ", associatedCloudID=" + _associatedCloudID + ", associatedCloudType=" + _associatedCloudType + ", associatedIKEAuthenticationID=" + _associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + _associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + _associatedIKEEncryptionProfileID + ", associatedIKEGatewayProfileID=" + _associatedIKEGatewayProfileID + ", associatedVLANID=" + _associatedVLANID + ", configurationStatus=" + _configurationStatus + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mark=" + _mark + ", name=" + _name + ", portVLANName=" + _portVLANName + ", priority=" + _priority + ", sequence=" + _sequence + ", unencryptedPSK=" + _unencryptedPSK + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

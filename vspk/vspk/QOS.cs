@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class QOS: RestObject {
@@ -111,6 +111,9 @@ public class QOS: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -414,6 +417,17 @@ public class QOS: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -536,7 +550,7 @@ public class QOS: RestObject {
    
 
    public String toString() {
-      return "QOS [" + "BUMCommittedBurstSize=" + _BUMCommittedBurstSize + ", BUMCommittedInformationRate=" + _BUMCommittedInformationRate + ", BUMPeakBurstSize=" + _BUMPeakBurstSize + ", BUMPeakInformationRate=" + _BUMPeakInformationRate + ", BUMRateLimitingActive=" + _BUMRateLimitingActive + ", EgressFIPCommittedBurstSize=" + _EgressFIPCommittedBurstSize + ", EgressFIPCommittedInformationRate=" + _EgressFIPCommittedInformationRate + ", EgressFIPPeakBurstSize=" + _EgressFIPPeakBurstSize + ", EgressFIPPeakInformationRate=" + _EgressFIPPeakInformationRate + ", FIPCommittedBurstSize=" + _FIPCommittedBurstSize + ", FIPCommittedInformationRate=" + _FIPCommittedInformationRate + ", FIPPeakBurstSize=" + _FIPPeakBurstSize + ", FIPPeakInformationRate=" + _FIPPeakInformationRate + ", FIPRateLimitingActive=" + _FIPRateLimitingActive + ", active=" + _active + ", assocQosId=" + _assocQosId + ", associatedDSCPForwardingClassTableID=" + _associatedDSCPForwardingClassTableID + ", associatedDSCPForwardingClassTableName=" + _associatedDSCPForwardingClassTableName + ", burst=" + _burst + ", committedBurstSize=" + _committedBurstSize + ", committedInformationRate=" + _committedInformationRate + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", peak=" + _peak + ", rateLimitingActive=" + _rateLimitingActive + ", rewriteForwardingClass=" + _rewriteForwardingClass + ", serviceClass=" + _serviceClass + ", trustedForwardingClass=" + _trustedForwardingClass + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "QOS [" + "BUMCommittedBurstSize=" + _BUMCommittedBurstSize + ", BUMCommittedInformationRate=" + _BUMCommittedInformationRate + ", BUMPeakBurstSize=" + _BUMPeakBurstSize + ", BUMPeakInformationRate=" + _BUMPeakInformationRate + ", BUMRateLimitingActive=" + _BUMRateLimitingActive + ", EgressFIPCommittedBurstSize=" + _EgressFIPCommittedBurstSize + ", EgressFIPCommittedInformationRate=" + _EgressFIPCommittedInformationRate + ", EgressFIPPeakBurstSize=" + _EgressFIPPeakBurstSize + ", EgressFIPPeakInformationRate=" + _EgressFIPPeakInformationRate + ", FIPCommittedBurstSize=" + _FIPCommittedBurstSize + ", FIPCommittedInformationRate=" + _FIPCommittedInformationRate + ", FIPPeakBurstSize=" + _FIPPeakBurstSize + ", FIPPeakInformationRate=" + _FIPPeakInformationRate + ", FIPRateLimitingActive=" + _FIPRateLimitingActive + ", active=" + _active + ", assocQosId=" + _assocQosId + ", associatedDSCPForwardingClassTableID=" + _associatedDSCPForwardingClassTableID + ", associatedDSCPForwardingClassTableName=" + _associatedDSCPForwardingClassTableName + ", burst=" + _burst + ", committedBurstSize=" + _committedBurstSize + ", committedInformationRate=" + _committedInformationRate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", peak=" + _peak + ", rateLimitingActive=" + _rateLimitingActive + ", rewriteForwardingClass=" + _rewriteForwardingClass + ", serviceClass=" + _serviceClass + ", trustedForwardingClass=" + _trustedForwardingClass + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

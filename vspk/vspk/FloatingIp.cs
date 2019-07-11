@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class FloatingIp: RestObject {
@@ -59,6 +59,9 @@ public class FloatingIp: RestObject {
    
    [JsonProperty("associatedSharedNetworkResourceID")]
    protected String _associatedSharedNetworkResourceID;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -152,6 +155,17 @@ public class FloatingIp: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -204,7 +218,7 @@ public class FloatingIp: RestObject {
    
 
    public String toString() {
-      return "FloatingIp [" + "accessControl=" + _accessControl + ", address=" + _address + ", assigned=" + _assigned + ", assignedToObjectType=" + _assignedToObjectType + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "FloatingIp [" + "accessControl=" + _accessControl + ", address=" + _address + ", assigned=" + _assigned + ", assignedToObjectType=" + _assignedToObjectType + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class DSCPForwardingClassMapping: RestObject {
@@ -48,6 +48,9 @@ public class DSCPForwardingClassMapping: RestObject {
    
    [JsonProperty("DSCP")]
    protected String _DSCP;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -85,6 +88,17 @@ public class DSCPForwardingClassMapping: RestObject {
       }
       set {
          this._DSCP = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -145,7 +159,7 @@ public class DSCPForwardingClassMapping: RestObject {
    
 
    public String toString() {
-      return "DSCPForwardingClassMapping [" + "DSCP=" + _DSCP + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", forwardingClass=" + _forwardingClass + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "DSCPForwardingClassMapping [" + "DSCP=" + _DSCP + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", forwardingClass=" + _forwardingClass + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

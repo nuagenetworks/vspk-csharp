@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class User: RestObject {
@@ -56,11 +56,20 @@ public class User: RestObject {
    [JsonProperty("avatarType")]
    protected EAvatarType? _avatarType;
    
+   [JsonProperty("disableCertificateAuth")]
+   protected bool _disableCertificateAuth;
+   
+   [JsonProperty("disablePasswordAuth")]
+   protected bool _disablePasswordAuth;
+   
    [JsonProperty("disabled")]
    protected bool _disabled;
    
    [JsonProperty("email")]
    protected String _email;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -165,6 +174,28 @@ public class User: RestObject {
 
    
    [JsonIgnore]
+   public bool NUDisableCertificateAuth {
+      get {
+         return _disableCertificateAuth;
+      }
+      set {
+         this._disableCertificateAuth = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUDisablePasswordAuth {
+      get {
+         return _disablePasswordAuth;
+      }
+      set {
+         this._disablePasswordAuth = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUDisabled {
       get {
          return _disabled;
@@ -182,6 +213,17 @@ public class User: RestObject {
       }
       set {
          this._email = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -317,7 +359,7 @@ public class User: RestObject {
    
 
    public String toString() {
-      return "User [" + "LDAPUserDN=" + _LDAPUserDN + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", disabled=" + _disabled + ", email=" + _email + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", managementMode=" + _managementMode + ", mobileNumber=" + _mobileNumber + ", password=" + _password + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "User [" + "LDAPUserDN=" + _LDAPUserDN + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", disableCertificateAuth=" + _disableCertificateAuth + ", disablePasswordAuth=" + _disablePasswordAuth + ", disabled=" + _disabled + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", managementMode=" + _managementMode + ", mobileNumber=" + _mobileNumber + ", password=" + _password + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

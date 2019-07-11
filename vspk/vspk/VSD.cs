@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class VSD: RestObject {
@@ -73,6 +73,9 @@ public class VSD: RestObject {
    
    [JsonProperty("disks")]
    protected System.Collections.Generic.List<DiskStat> _disks;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -251,6 +254,17 @@ public class VSD: RestObject {
       }
       set {
          this._disks = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -448,7 +462,7 @@ public class VSD: RestObject {
    
 
    public String toString() {
-      return "VSD [" + "URL=" + _URL + ", address=" + _address + ", alreadyMarkedForUnavailable=" + _alreadyMarkedForUnavailable + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", description=" + _description + ", disks=" + _disks + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", mode=" + _mode + ", name=" + _name + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", peerAddresses=" + _peerAddresses + ", productVersion=" + _productVersion + ", status=" + _status + ", unavailableTimestamp=" + _unavailableTimestamp + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VSD [" + "URL=" + _URL + ", address=" + _address + ", alreadyMarkedForUnavailable=" + _alreadyMarkedForUnavailable + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", description=" + _description + ", disks=" + _disks + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", mode=" + _mode + ", name=" + _name + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", peerAddresses=" + _peerAddresses + ", productVersion=" + _productVersion + ", status=" + _status + ", unavailableTimestamp=" + _unavailableTimestamp + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class Gateway: RestObject {
@@ -99,6 +99,9 @@ public class Gateway: RestObject {
    [JsonProperty("description")]
    protected String _description;
    
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -110,6 +113,12 @@ public class Gateway: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("family")]
    protected EFamily? _family;
+   
+   [JsonProperty("gatewayConfigRawVersion")]
+   protected String _gatewayConfigRawVersion;
+   
+   [JsonProperty("gatewayConfigVersion")]
+   protected String _gatewayConfigVersion;
    
    [JsonProperty("gatewayConnected")]
    protected bool _gatewayConnected;
@@ -489,6 +498,17 @@ public class Gateway: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUEnterpriseID {
       get {
          return _enterpriseID;
@@ -528,6 +548,28 @@ public class Gateway: RestObject {
       }
       set {
          this._family = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUGatewayConfigRawVersion {
+      get {
+         return _gatewayConfigRawVersion;
+      }
+      set {
+         this._gatewayConfigRawVersion = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUGatewayConfigVersion {
+      get {
+         return _gatewayConfigVersion;
+      }
+      set {
+         this._gatewayConfigVersion = value;
       }
    }
 
@@ -871,7 +913,7 @@ public class Gateway: RestObject {
    
 
    public String toString() {
-      return "Gateway [" + "BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", UUID=" + _UUID + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNetconfProfileID=" + _associatedNetconfProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", datapathID=" + _datapathID + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", gatewayConnected=" + _gatewayConnected + ", gatewayModel=" + _gatewayModel + ", gatewayVersion=" + _gatewayVersion + ", lastUpdatedBy=" + _lastUpdatedBy + ", libraries=" + _libraries + ", locationID=" + _locationID + ", managementID=" + _managementID + ", name=" + _name + ", patches=" + _patches + ", peer=" + _peer + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", systemID=" + _systemID + ", templateID=" + _templateID + ", useGatewayVLANVNID=" + _useGatewayVLANVNID + ", vendor=" + _vendor + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Gateway [" + "BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", UUID=" + _UUID + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNetconfProfileID=" + _associatedNetconfProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", datapathID=" + _datapathID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", gatewayConfigRawVersion=" + _gatewayConfigRawVersion + ", gatewayConfigVersion=" + _gatewayConfigVersion + ", gatewayConnected=" + _gatewayConnected + ", gatewayModel=" + _gatewayModel + ", gatewayVersion=" + _gatewayVersion + ", lastUpdatedBy=" + _lastUpdatedBy + ", libraries=" + _libraries + ", locationID=" + _locationID + ", managementID=" + _managementID + ", name=" + _name + ", patches=" + _patches + ", peer=" + _peer + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", systemID=" + _systemID + ", templateID=" + _templateID + ", useGatewayVLANVNID=" + _useGatewayVLANVNID + ", vendor=" + _vendor + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

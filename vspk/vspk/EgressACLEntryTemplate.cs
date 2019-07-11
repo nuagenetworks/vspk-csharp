@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class EgressACLEntryTemplate: RestObject {
@@ -42,7 +42,7 @@ public class EgressACLEntryTemplate: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EAction {DROP,FORWARD };
+   public enum EAction {DROP,FORWARD,TRANSPARENT };
    public enum EAssociatedTrafficType {L4_SERVICE,L4_SERVICE_GROUP };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum ELocationType {ANY,PGEXPRESSION,POLICYGROUP,SUBNET,ZONE };
@@ -99,6 +99,9 @@ public class EgressACLEntryTemplate: RestObject {
    [JsonProperty("domainName")]
    protected String _domainName;
    
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   
    [JsonProperty("enterpriseName")]
    protected String _enterpriseName;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -122,6 +125,9 @@ public class EgressACLEntryTemplate: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("locationType")]
    protected ELocationType? _locationType;
+   
+   [JsonProperty("mirrorDestinationGroupID")]
+   protected String _mirrorDestinationGroupID;
    
    [JsonProperty("mirrorDestinationID")]
    protected String _mirrorDestinationID;
@@ -155,6 +161,9 @@ public class EgressACLEntryTemplate: RestObject {
    
    [JsonProperty("webFilterID")]
    protected String _webFilterID;
+   
+   [JsonProperty("webFilterStatsLoggingEnabled")]
+   protected bool _webFilterStatsLoggingEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("webFilterType")]
    protected EWebFilterType? _webFilterType;
@@ -364,6 +373,17 @@ public class EgressACLEntryTemplate: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUEnterpriseName {
       get {
          return _enterpriseName;
@@ -447,6 +467,17 @@ public class EgressACLEntryTemplate: RestObject {
       }
       set {
          this._locationType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUMirrorDestinationGroupID {
+      get {
+         return _mirrorDestinationGroupID;
+      }
+      set {
+         this._mirrorDestinationGroupID = value;
       }
    }
 
@@ -573,6 +604,17 @@ public class EgressACLEntryTemplate: RestObject {
 
    
    [JsonIgnore]
+   public bool NUWebFilterStatsLoggingEnabled {
+      get {
+         return _webFilterStatsLoggingEnabled;
+      }
+      set {
+         this._webFilterStatsLoggingEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EWebFilterType? NUWebFilterType {
       get {
          return _webFilterType;
@@ -599,7 +641,7 @@ public class EgressACLEntryTemplate: RestObject {
    
 
    public String toString() {
-      return "EgressACLEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", associatedVirtualFirewallRuleID=" + _associatedVirtualFirewallRuleID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", webFilterID=" + _webFilterID + ", webFilterType=" + _webFilterType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "EgressACLEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", associatedVirtualFirewallRuleID=" + _associatedVirtualFirewallRuleID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationGroupID=" + _mirrorDestinationGroupID + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", webFilterID=" + _webFilterID + ", webFilterStatsLoggingEnabled=" + _webFilterStatsLoggingEnabled + ", webFilterType=" + _webFilterType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

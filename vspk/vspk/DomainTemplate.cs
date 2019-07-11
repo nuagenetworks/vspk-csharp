@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class DomainTemplate: RestObject {
@@ -63,6 +63,9 @@ public class DomainTemplate: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("encryption")]
    protected EEncryption? _encryption;
@@ -243,6 +246,17 @@ public class DomainTemplate: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEncryption? NUEncryption {
       get {
          return _encryption;
@@ -399,7 +413,7 @@ public class DomainTemplate: RestObject {
    
 
    public String toString() {
-      return "DomainTemplate [" + "DPI=" + _DPI + ", associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedPATMapperID=" + _associatedPATMapperID + ", description=" + _description + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", multicast=" + _multicast + ", name=" + _name + ", policyChangeStatus=" + _policyChangeStatus + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "DomainTemplate [" + "DPI=" + _DPI + ", associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedPATMapperID=" + _associatedPATMapperID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", multicast=" + _multicast + ", name=" + _name + ", policyChangeStatus=" + _policyChangeStatus + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

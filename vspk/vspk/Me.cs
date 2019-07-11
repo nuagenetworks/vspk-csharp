@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class Me: RestObject {
@@ -69,6 +69,9 @@ public class Me: RestObject {
    
    [JsonProperty("email")]
    protected String _email;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -313,6 +316,9 @@ public class Me: RestObject {
    private RedundancyGroupsFetcher _redundancyGroups;
    
    [JsonIgnore]
+   private RemoteVrsInfosFetcher _remoteVrsInfos;
+   
+   [JsonIgnore]
    private RoutingPoliciesFetcher _routingPolicies;
    
    [JsonIgnore]
@@ -338,6 +344,9 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private TCAsFetcher _tCAs;
+   
+   [JsonIgnore]
+   private TestDefinitionsFetcher _testDefinitions;
    
    [JsonIgnore]
    private UnderlaysFetcher _underlays;
@@ -383,6 +392,9 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private VCenterVRSConfigsFetcher _vCenterVRSConfigs;
+   
+   [JsonIgnore]
+   private vrsInfosFetcher _vrsInfos;
    
    [JsonIgnore]
    private VSPsFetcher _vSPs;
@@ -532,6 +544,8 @@ public class Me: RestObject {
       
       _redundancyGroups = new RedundancyGroupsFetcher(this);
       
+      _remoteVrsInfos = new RemoteVrsInfosFetcher(this);
+      
       _routingPolicies = new RoutingPoliciesFetcher(this);
       
       _saaSApplicationTypes = new SaaSApplicationTypesFetcher(this);
@@ -549,6 +563,8 @@ public class Me: RestObject {
       _systemConfigs = new SystemConfigsFetcher(this);
       
       _tCAs = new TCAsFetcher(this);
+      
+      _testDefinitions = new TestDefinitionsFetcher(this);
       
       _underlays = new UnderlaysFetcher(this);
       
@@ -579,6 +595,8 @@ public class Me: RestObject {
       _vRSs = new VRSsFetcher(this);
       
       _vCenterVRSConfigs = new VCenterVRSConfigsFetcher(this);
+      
+      _vrsInfos = new vrsInfosFetcher(this);
       
       _vSPs = new VSPsFetcher(this);
       
@@ -675,6 +693,17 @@ public class Me: RestObject {
       }
       set {
          this._email = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -1092,6 +1121,10 @@ public class Me: RestObject {
       return _redundancyGroups;
    }
    
+   public RemoteVrsInfosFetcher getRemoteVrsInfos() {
+      return _remoteVrsInfos;
+   }
+   
    public RoutingPoliciesFetcher getRoutingPolicies() {
       return _routingPolicies;
    }
@@ -1126,6 +1159,10 @@ public class Me: RestObject {
    
    public TCAsFetcher getTCAs() {
       return _tCAs;
+   }
+   
+   public TestDefinitionsFetcher getTestDefinitions() {
+      return _testDefinitions;
    }
    
    public UnderlaysFetcher getUnderlays() {
@@ -1188,6 +1225,10 @@ public class Me: RestObject {
       return _vCenterVRSConfigs;
    }
    
+   public vrsInfosFetcher getvrsInfos() {
+      return _vrsInfos;
+   }
+   
    public VSPsFetcher getVSPs() {
       return _vSPs;
    }
@@ -1206,7 +1247,7 @@ public class Me: RestObject {
    
 
    public String toString() {
-      return "Me [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSStatsInterval=" + _VSSStatsInterval + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", disabled=" + _disabled + ", elasticSearchAddress=" + _elasticSearchAddress + ", email=" + _email + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", mobileNumber=" + _mobileNumber + ", password=" + _password + ", role=" + _role + ", statisticsEnabled=" + _statisticsEnabled + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Me [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSStatsInterval=" + _VSSStatsInterval + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", disabled=" + _disabled + ", elasticSearchAddress=" + _elasticSearchAddress + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", mobileNumber=" + _mobileNumber + ", password=" + _password + ", role=" + _role + ", statisticsEnabled=" + _statisticsEnabled + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

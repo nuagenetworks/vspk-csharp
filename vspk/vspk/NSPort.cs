@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class NSPort: RestObject {
@@ -67,6 +67,9 @@ public class NSPort: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("enableNATProbes")]
    protected bool _enableNATProbes;
@@ -232,6 +235,17 @@ public class NSPort: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -445,7 +459,7 @@ public class NSPort: RestObject {
    
 
    public String toString() {
-      return "NSPort [" + "NATTraversal=" + _NATTraversal + ", TrafficThroughUBROnly=" + _TrafficThroughUBROnly + ", VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + _associatedRedundantPortID + ", description=" + _description + ", enableNATProbes=" + _enableNATProbes + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mtu=" + _mtu + ", name=" + _name + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", shuntPort=" + _shuntPort + ", speed=" + _speed + ", status=" + _status + ", templateID=" + _templateID + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSPort [" + "NATTraversal=" + _NATTraversal + ", TrafficThroughUBROnly=" + _TrafficThroughUBROnly + ", VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + _associatedRedundantPortID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enableNATProbes=" + _enableNATProbes + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mtu=" + _mtu + ", name=" + _name + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", shuntPort=" + _shuntPort + ", speed=" + _speed + ", status=" + _status + ", templateID=" + _templateID + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

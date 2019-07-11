@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class NSGateway: RestObject {
@@ -48,14 +48,17 @@ public class NSGateway: RestObject {
    public enum EBootstrapStatus {ACTIVE,CERTIFICATE_SIGNED,INACTIVE,NOTIFICATION_APP_REQ_ACK,NOTIFICATION_APP_REQ_SENT };
    public enum EConfigurationReloadState {APPLIED,FAILED_TO_APPLY,PENDING,SENT,UNKNOWN };
    public enum EConfigurationStatus {FAILURE,SUCCESS,UNKNOWN };
+   public enum EConfigureLoadBalancing {DISABLED,INHERITED };
    public enum EDerivedSSHServiceState {INHERITED_DISABLED,INHERITED_ENABLED,INSTANCE_DISABLED,INSTANCE_ENABLED,UNKNOWN };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFamily {ANY,NSG_AMI,NSG_AZ,NSG_C,NSG_E,NSG_E200,NSG_E300,NSG_V,NSG_X,NSG_X200 };
-   public enum EFunctions {GATEWAY,UBR };
+   public enum EFunctions {GATEWAY,HUB,UBR };
    public enum EInheritedSSHServiceState {DISABLED,ENABLED };
-   public enum ENetworkAcceleration {NONE,PERFORMANCE };
+   public enum ENetworkAcceleration {NONE,PERFORMANCE,SESSION_OPTIMIZED,VNF_AWARE };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
    public enum EPersonality {NSG,NSGBR,NSGDUC };
+   public enum ESyslogLevel {ALERT,CRITICAL,EMERGENCY,ERROR,INFO,NOTICE,WARNING };
+   public enum ETunnelShaping {DISABLED,ENABLED };
 
    
    [JsonProperty("AARApplicationReleaseDate")]
@@ -141,6 +144,9 @@ public class NSGateway: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("configurationStatus")]
    protected EConfigurationStatus? _configurationStatus;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("configureLoadBalancing")]
+   protected EConfigureLoadBalancing? _configureLoadBalancing;
    
    [JsonProperty("controlTrafficCOSValue")]
    protected long? _controlTrafficCOSValue;
@@ -157,6 +163,9 @@ public class NSGateway: RestObject {
    [JsonProperty("description")]
    protected String _description;
    
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -171,6 +180,12 @@ public class NSGateway: RestObject {
    
    [JsonProperty("functions")]
    protected System.Collections.Generic.List<EFunctions> _functions;
+   
+   [JsonProperty("gatewayConfigRawVersion")]
+   protected String _gatewayConfigRawVersion;
+   
+   [JsonProperty("gatewayConfigVersion")]
+   protected String _gatewayConfigVersion;
    
    [JsonProperty("gatewayConnected")]
    protected bool _gatewayConnected;
@@ -219,12 +234,18 @@ public class NSGateway: RestObject {
    
    [JsonProperty("serialNumber")]
    protected String _serialNumber;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("syslogLevel")]
+   protected ESyslogLevel? _syslogLevel;
    
    [JsonProperty("systemID")]
    protected String _systemID;
    
    [JsonProperty("templateID")]
    protected String _templateID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("tunnelShaping")]
+   protected ETunnelShaping? _tunnelShaping;
    
 
    
@@ -662,6 +683,17 @@ public class NSGateway: RestObject {
 
    
    [JsonIgnore]
+   public EConfigureLoadBalancing? NUConfigureLoadBalancing {
+      get {
+         return _configureLoadBalancing;
+      }
+      set {
+         this._configureLoadBalancing = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUControlTrafficCOSValue {
       get {
          return _controlTrafficCOSValue;
@@ -717,6 +749,17 @@ public class NSGateway: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUEnterpriseID {
       get {
          return _enterpriseID;
@@ -767,6 +810,28 @@ public class NSGateway: RestObject {
       }
       set {
          this._functions = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUGatewayConfigRawVersion {
+      get {
+         return _gatewayConfigRawVersion;
+      }
+      set {
+         this._gatewayConfigRawVersion = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUGatewayConfigVersion {
+      get {
+         return _gatewayConfigVersion;
+      }
+      set {
+         this._gatewayConfigVersion = value;
       }
    }
 
@@ -948,6 +1013,17 @@ public class NSGateway: RestObject {
 
    
    [JsonIgnore]
+   public ESyslogLevel? NUSyslogLevel {
+      get {
+         return _syslogLevel;
+      }
+      set {
+         this._syslogLevel = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUSystemID {
       get {
          return _systemID;
@@ -965,6 +1041,17 @@ public class NSGateway: RestObject {
       }
       set {
          this._templateID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public ETunnelShaping? NUTunnelShaping {
+      get {
+         return _tunnelShaping;
+      }
+      set {
+         this._tunnelShaping = value;
       }
    }
 
@@ -1069,7 +1156,7 @@ public class NSGateway: RestObject {
    
 
    public String toString() {
-      return "NSGateway [" + "AARApplicationReleaseDate=" + _AARApplicationReleaseDate + ", AARApplicationVersion=" + _AARApplicationVersion + ", BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NATTraversalEnabled=" + _NATTraversalEnabled + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", SSHService=" + _SSHService + ", TCPMSSEnabled=" + _TCPMSSEnabled + ", TCPMaximumSegmentSize=" + _TCPMaximumSegmentSize + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", VSDAARApplicationVersion=" + _VSDAARApplicationVersion + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + _associatedNSGUpgradeProfileID + ", associatedOverlayManagementProfileID=" + _associatedOverlayManagementProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", configurationReloadState=" + _configurationReloadState + ", configurationStatus=" + _configurationStatus + ", controlTrafficCOSValue=" + _controlTrafficCOSValue + ", controlTrafficDSCPValue=" + _controlTrafficDSCPValue + ", datapathID=" + _datapathID + ", derivedSSHServiceState=" + _derivedSSHServiceState + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", functions=" + _functions + ", gatewayConnected=" + _gatewayConnected + ", inheritedSSHServiceState=" + _inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + _lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + _lastUpdatedBy + ", libraries=" + _libraries + ", locationID=" + _locationID + ", name=" + _name + ", networkAcceleration=" + _networkAcceleration + ", operationMode=" + _operationMode + ", operationStatus=" + _operationStatus + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", systemID=" + _systemID + ", templateID=" + _templateID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGateway [" + "AARApplicationReleaseDate=" + _AARApplicationReleaseDate + ", AARApplicationVersion=" + _AARApplicationVersion + ", BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NATTraversalEnabled=" + _NATTraversalEnabled + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", SSHService=" + _SSHService + ", TCPMSSEnabled=" + _TCPMSSEnabled + ", TCPMaximumSegmentSize=" + _TCPMaximumSegmentSize + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", VSDAARApplicationVersion=" + _VSDAARApplicationVersion + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + _associatedNSGUpgradeProfileID + ", associatedOverlayManagementProfileID=" + _associatedOverlayManagementProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", configurationReloadState=" + _configurationReloadState + ", configurationStatus=" + _configurationStatus + ", configureLoadBalancing=" + _configureLoadBalancing + ", controlTrafficCOSValue=" + _controlTrafficCOSValue + ", controlTrafficDSCPValue=" + _controlTrafficDSCPValue + ", datapathID=" + _datapathID + ", derivedSSHServiceState=" + _derivedSSHServiceState + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", functions=" + _functions + ", gatewayConfigRawVersion=" + _gatewayConfigRawVersion + ", gatewayConfigVersion=" + _gatewayConfigVersion + ", gatewayConnected=" + _gatewayConnected + ", inheritedSSHServiceState=" + _inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + _lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + _lastUpdatedBy + ", libraries=" + _libraries + ", locationID=" + _locationID + ", name=" + _name + ", networkAcceleration=" + _networkAcceleration + ", operationMode=" + _operationMode + ", operationStatus=" + _operationStatus + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", syslogLevel=" + _syslogLevel + ", systemID=" + _systemID + ", templateID=" + _templateID + ", tunnelShaping=" + _tunnelShaping + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

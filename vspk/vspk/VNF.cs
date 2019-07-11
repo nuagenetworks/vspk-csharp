@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class VNF: RestObject {
@@ -79,6 +79,9 @@ public class VNF: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -270,6 +273,17 @@ public class VNF: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUEnterpriseID {
       get {
          return _enterpriseID;
@@ -451,7 +465,7 @@ public class VNF: RestObject {
    
 
    public String toString() {
-      return "VNF [" + "CPUCount=" + _CPUCount + ", NSGName=" + _NSGName + ", NSGSystemID=" + _NSGSystemID + ", NSGatewayID=" + _NSGatewayID + ", VNFDescriptorID=" + _VNFDescriptorID + ", VNFDescriptorName=" + _VNFDescriptorName + ", allowedActions=" + _allowedActions + ", associatedVNFMetadataID=" + _associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isAttachedToDescriptor=" + _isAttachedToDescriptor + ", lastKnownError=" + _lastKnownError + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUserAction=" + _lastUserAction + ", memoryMB=" + _memoryMB + ", name=" + _name + ", status=" + _status + ", storageGB=" + _storageGB + ", taskState=" + _taskState + ", type=" + _type + ", vendor=" + _vendor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VNF [" + "CPUCount=" + _CPUCount + ", NSGName=" + _NSGName + ", NSGSystemID=" + _NSGSystemID + ", NSGatewayID=" + _NSGatewayID + ", VNFDescriptorID=" + _VNFDescriptorID + ", VNFDescriptorName=" + _VNFDescriptorName + ", allowedActions=" + _allowedActions + ", associatedVNFMetadataID=" + _associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isAttachedToDescriptor=" + _isAttachedToDescriptor + ", lastKnownError=" + _lastKnownError + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUserAction=" + _lastUserAction + ", memoryMB=" + _memoryMB + ", name=" + _name + ", status=" + _status + ", storageGB=" + _storageGB + ", taskState=" + _taskState + ", type=" + _type + ", vendor=" + _vendor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

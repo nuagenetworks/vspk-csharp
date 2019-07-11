@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class SharedNetworkResource: RestObject {
@@ -83,6 +83,9 @@ public class SharedNetworkResource: RestObject {
    
    [JsonProperty("dynamicPATAllocationEnabled")]
    protected bool _dynamicPATAllocationEnabled;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -321,6 +324,17 @@ public class SharedNetworkResource: RestObject {
       }
       set {
          this._dynamicPATAllocationEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -581,7 +595,7 @@ public class SharedNetworkResource: RestObject {
    
 
    public String toString() {
-      return "SharedNetworkResource [" + "DHCPManaged=" + _DHCPManaged + ", ECMPCount=" + _ECMPCount + ", accessRestrictionEnabled=" + _accessRestrictionEnabled + ", address=" + _address + ", associatedPATMapperID=" + _associatedPATMapperID + ", backHaulRouteDistinguisher=" + _backHaulRouteDistinguisher + ", backHaulRouteTarget=" + _backHaulRouteTarget + ", backHaulVNID=" + _backHaulVNID + ", description=" + _description + ", domainRouteDistinguisher=" + _domainRouteDistinguisher + ", domainRouteTarget=" + _domainRouteTarget + ", dynamicPATAllocationEnabled=" + _dynamicPATAllocationEnabled + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", netmask=" + _netmask + ", permittedActionType=" + _permittedActionType + ", sharedResourceParentID=" + _sharedResourceParentID + ", subnetRouteDistinguisher=" + _subnetRouteDistinguisher + ", subnetRouteTarget=" + _subnetRouteTarget + ", type=" + _type + ", underlay=" + _underlay + ", uplinkGWVlanAttachmentID=" + _uplinkGWVlanAttachmentID + ", uplinkInterfaceIP=" + _uplinkInterfaceIP + ", uplinkInterfaceMAC=" + _uplinkInterfaceMAC + ", uplinkVPortName=" + _uplinkVPortName + ", useGlobalMAC=" + _useGlobalMAC + ", vnID=" + _vnID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "SharedNetworkResource [" + "DHCPManaged=" + _DHCPManaged + ", ECMPCount=" + _ECMPCount + ", accessRestrictionEnabled=" + _accessRestrictionEnabled + ", address=" + _address + ", associatedPATMapperID=" + _associatedPATMapperID + ", backHaulRouteDistinguisher=" + _backHaulRouteDistinguisher + ", backHaulRouteTarget=" + _backHaulRouteTarget + ", backHaulVNID=" + _backHaulVNID + ", description=" + _description + ", domainRouteDistinguisher=" + _domainRouteDistinguisher + ", domainRouteTarget=" + _domainRouteTarget + ", dynamicPATAllocationEnabled=" + _dynamicPATAllocationEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", netmask=" + _netmask + ", permittedActionType=" + _permittedActionType + ", sharedResourceParentID=" + _sharedResourceParentID + ", subnetRouteDistinguisher=" + _subnetRouteDistinguisher + ", subnetRouteTarget=" + _subnetRouteTarget + ", type=" + _type + ", underlay=" + _underlay + ", uplinkGWVlanAttachmentID=" + _uplinkGWVlanAttachmentID + ", uplinkInterfaceIP=" + _uplinkInterfaceIP + ", uplinkInterfaceMAC=" + _uplinkInterfaceMAC + ", uplinkVPortName=" + _uplinkVPortName + ", useGlobalMAC=" + _useGlobalMAC + ", vnID=" + _vnID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

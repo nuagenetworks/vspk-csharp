@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class UplinkRD: RestObject {
@@ -43,8 +43,11 @@ public class UplinkRD: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EUplinkType {RD_PRIMARY1,RD_PRIMARY2,RD_SECONDARY1,RD_SECONDARY2 };
+   public enum EUplinkType {RD_PRIMARY1,RD_PRIMARY2,RD_PRIMARY3,RD_SECONDARY1,RD_SECONDARY2,RD_SECONDARY3 };
 
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -75,6 +78,17 @@ public class UplinkRD: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
    }
 
    
@@ -145,7 +159,7 @@ public class UplinkRD: RestObject {
    
 
    public String toString() {
-      return "UplinkRD [" + "entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", routeDistinguisher=" + _routeDistinguisher + ", uplinkType=" + _uplinkType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "UplinkRD [" + "embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", routeDistinguisher=" + _routeDistinguisher + ", uplinkType=" + _uplinkType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

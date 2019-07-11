@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class Zone: RestObject {
@@ -70,6 +70,9 @@ public class Zone: RestObject {
    
    [JsonProperty("dynamicIpv6Address")]
    protected bool _dynamicIpv6Address;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("encryption")]
    protected EEncryption? _encryption;
@@ -119,6 +122,9 @@ public class Zone: RestObject {
    private DHCPOptionsFetcher _dHCPOptions;
    
    [JsonIgnore]
+   private DHCPv6OptionsFetcher _dHCPv6Options;
+   
+   [JsonIgnore]
    private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
@@ -166,6 +172,8 @@ public class Zone: RestObject {
       _containerInterfaces = new ContainerInterfacesFetcher(this);
       
       _dHCPOptions = new DHCPOptionsFetcher(this);
+      
+      _dHCPv6Options = new DHCPv6OptionsFetcher(this);
       
       _eventLogs = new EventLogsFetcher(this);
       
@@ -269,6 +277,17 @@ public class Zone: RestObject {
       }
       set {
          this._dynamicIpv6Address = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -419,6 +438,10 @@ public class Zone: RestObject {
       return _dHCPOptions;
    }
    
+   public DHCPv6OptionsFetcher getDHCPv6Options() {
+      return _dHCPv6Options;
+   }
+   
    public EventLogsFetcher getEventLogs() {
       return _eventLogs;
    }
@@ -473,7 +496,7 @@ public class Zone: RestObject {
    
 
    public String toString() {
-      return "Zone [" + "DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", numberOfHostsInSubnets=" + _numberOfHostsInSubnets + ", policyGroupID=" + _policyGroupID + ", publicZone=" + _publicZone + ", templateID=" + _templateID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Zone [" + "DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", embeddedMetadata=" + _embeddedMetadata + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", numberOfHostsInSubnets=" + _numberOfHostsInSubnets + ", policyGroupID=" + _policyGroupID + ", publicZone=" + _publicZone + ", templateID=" + _templateID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

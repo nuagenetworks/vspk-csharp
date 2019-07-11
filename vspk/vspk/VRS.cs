@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class VRS: RestObject {
@@ -42,20 +42,13 @@ public class VRS: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EJSONRPCConnectionState {ADMIN_DOWN,DOWN,UP };
-   public enum EClusterNodeRole {NONE,PRIMARY,SECONDARY };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EHypervisorConnectionState {ADMIN_DOWN,DOWN,UP };
    public enum ELicensedState {LICENSED,UNLICENSED };
    public enum EPersonality {HARDWARE_VTEP,NONE,NSG,NSGBR,NSGDUC,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,VRS,VRSB,VRSG };
    public enum ERole {MASTER,NONE,SLAVE };
    public enum EStatus {ADMIN_DOWN,DOWN,UP };
-   public enum EVscConfigState {PRIMARY,SECONDARY };
-   public enum EVscCurrentState {PRIMARY,SECONDARY };
 
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("JSONRPCConnectionState")]
-   protected EJSONRPCConnectionState? _JSONRPCConnectionState;
    
    [JsonProperty("address")]
    protected String _address;
@@ -65,9 +58,6 @@ public class VRS: RestObject {
    
    [JsonProperty("averageMemoryUsage")]
    protected float _averageMemoryUsage;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("clusterNodeRole")]
-   protected EClusterNodeRole? _clusterNodeRole;
    
    [JsonProperty("currentCPUUsage")]
    protected float _currentCPUUsage;
@@ -84,8 +74,8 @@ public class VRS: RestObject {
    [JsonProperty("disks")]
    protected System.Collections.Generic.List<DiskStat> _disks;
    
-   [JsonProperty("dynamic")]
-   protected bool _dynamic;
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -164,9 +154,6 @@ public class VRS: RestObject {
    
    [JsonProperty("peakMemoryUsage")]
    protected float _peakMemoryUsage;
-   
-   [JsonProperty("peer")]
-   protected String _peer;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("personality")]
    protected EPersonality? _personality;
@@ -197,12 +184,6 @@ public class VRS: RestObject {
    
    [JsonProperty("uptime")]
    protected long? _uptime;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("vscConfigState")]
-   protected EVscConfigState? _vscConfigState;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("vscCurrentState")]
-   protected EVscCurrentState? _vscCurrentState;
    
 
    
@@ -211,6 +192,9 @@ public class VRS: RestObject {
    
    [JsonIgnore]
    private ContainersFetcher _containers;
+   
+   [JsonIgnore]
+   private ControllerVRSLinksFetcher _controllerVRSLinks;
    
    [JsonIgnore]
    private EventLogsFetcher _eventLogs;
@@ -251,6 +235,8 @@ public class VRS: RestObject {
       
       _containers = new ContainersFetcher(this);
       
+      _controllerVRSLinks = new ControllerVRSLinksFetcher(this);
+      
       _eventLogs = new EventLogsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -273,17 +259,6 @@ public class VRS: RestObject {
       
       _vSCs = new VSCsFetcher(this);
       
-   }
-
-   
-   [JsonIgnore]
-   public EJSONRPCConnectionState? NUJSONRPCConnectionState {
-      get {
-         return _JSONRPCConnectionState;
-      }
-      set {
-         this._JSONRPCConnectionState = value;
-      }
    }
 
    
@@ -316,17 +291,6 @@ public class VRS: RestObject {
       }
       set {
          this._averageMemoryUsage = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EClusterNodeRole? NUClusterNodeRole {
-      get {
-         return _clusterNodeRole;
-      }
-      set {
-         this._clusterNodeRole = value;
       }
    }
 
@@ -387,12 +351,12 @@ public class VRS: RestObject {
 
    
    [JsonIgnore]
-   public bool NUDynamic {
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
-         return _dynamic;
+         return _embeddedMetadata;
       }
       set {
-         this._dynamic = value;
+         this._embeddedMetadata = value;
       }
    }
 
@@ -684,17 +648,6 @@ public class VRS: RestObject {
 
    
    [JsonIgnore]
-   public String NUPeer {
-      get {
-         return _peer;
-      }
-      set {
-         this._peer = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public EPersonality? NUPersonality {
       get {
          return _personality;
@@ -804,28 +757,6 @@ public class VRS: RestObject {
    }
 
    
-   [JsonIgnore]
-   public EVscConfigState? NUVscConfigState {
-      get {
-         return _vscConfigState;
-      }
-      set {
-         this._vscConfigState = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EVscCurrentState? NUVscCurrentState {
-      get {
-         return _vscCurrentState;
-      }
-      set {
-         this._vscCurrentState = value;
-      }
-   }
-
-   
 
    
    public AlarmsFetcher getAlarms() {
@@ -834,6 +765,10 @@ public class VRS: RestObject {
    
    public ContainersFetcher getContainers() {
       return _containers;
+   }
+   
+   public ControllerVRSLinksFetcher getControllerVRSLinks() {
+      return _controllerVRSLinks;
    }
    
    public EventLogsFetcher getEventLogs() {
@@ -882,7 +817,7 @@ public class VRS: RestObject {
    
 
    public String toString() {
-      return "VRS [" + "JSONRPCConnectionState=" + _JSONRPCConnectionState + ", address=" + _address + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", clusterNodeRole=" + _clusterNodeRole + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", dbSynced=" + _dbSynced + ", description=" + _description + ", disks=" + _disks + ", dynamic=" + _dynamic + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayUUID=" + _gatewayUUID + ", hypervisorConnectionState=" + _hypervisorConnectionState + ", hypervisorIdentifier=" + _hypervisorIdentifier + ", hypervisorName=" + _hypervisorName + ", hypervisorType=" + _hypervisorType + ", isResilient=" + _isResilient + ", lastEventName=" + _lastEventName + ", lastEventObject=" + _lastEventObject + ", lastEventTimestamp=" + _lastEventTimestamp + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", licensedState=" + _licensedState + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", multiNICVPortEnabled=" + _multiNICVPortEnabled + ", name=" + _name + ", numberOfBridgeInterfaces=" + _numberOfBridgeInterfaces + ", numberOfContainers=" + _numberOfContainers + ", numberOfHostInterfaces=" + _numberOfHostInterfaces + ", numberOfVirtualMachines=" + _numberOfVirtualMachines + ", parentIDs=" + _parentIDs + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", peer=" + _peer + ", personality=" + _personality + ", primaryVSCConnectionLost=" + _primaryVSCConnectionLost + ", productVersion=" + _productVersion + ", revertBehaviorEnabled=" + _revertBehaviorEnabled + ", revertCompleted=" + _revertCompleted + ", revertCount=" + _revertCount + ", revertFailedCount=" + _revertFailedCount + ", role=" + _role + ", status=" + _status + ", uptime=" + _uptime + ", vscConfigState=" + _vscConfigState + ", vscCurrentState=" + _vscCurrentState + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VRS [" + "address=" + _address + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", dbSynced=" + _dbSynced + ", description=" + _description + ", disks=" + _disks + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayUUID=" + _gatewayUUID + ", hypervisorConnectionState=" + _hypervisorConnectionState + ", hypervisorIdentifier=" + _hypervisorIdentifier + ", hypervisorName=" + _hypervisorName + ", hypervisorType=" + _hypervisorType + ", isResilient=" + _isResilient + ", lastEventName=" + _lastEventName + ", lastEventObject=" + _lastEventObject + ", lastEventTimestamp=" + _lastEventTimestamp + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", licensedState=" + _licensedState + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", multiNICVPortEnabled=" + _multiNICVPortEnabled + ", name=" + _name + ", numberOfBridgeInterfaces=" + _numberOfBridgeInterfaces + ", numberOfContainers=" + _numberOfContainers + ", numberOfHostInterfaces=" + _numberOfHostInterfaces + ", numberOfVirtualMachines=" + _numberOfVirtualMachines + ", parentIDs=" + _parentIDs + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", personality=" + _personality + ", primaryVSCConnectionLost=" + _primaryVSCConnectionLost + ", productVersion=" + _productVersion + ", revertBehaviorEnabled=" + _revertBehaviorEnabled + ", revertCompleted=" + _revertCompleted + ", revertCount=" + _revertCount + ", revertFailedCount=" + _revertFailedCount + ", role=" + _role + ", status=" + _status + ", uptime=" + _uptime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

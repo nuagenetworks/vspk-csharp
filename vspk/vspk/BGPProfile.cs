@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class BGPProfile: RestObject {
@@ -68,6 +68,9 @@ public class BGPProfile: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -184,6 +187,17 @@ public class BGPProfile: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -228,7 +242,7 @@ public class BGPProfile: RestObject {
    
 
    public String toString() {
-      return "BGPProfile [" + "associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningHalfLife=" + _dampeningHalfLife + ", dampeningMaxSuppress=" + _dampeningMaxSuppress + ", dampeningName=" + _dampeningName + ", dampeningReuse=" + _dampeningReuse + ", dampeningSuppress=" + _dampeningSuppress + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BGPProfile [" + "associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningHalfLife=" + _dampeningHalfLife + ", dampeningMaxSuppress=" + _dampeningMaxSuppress + ", dampeningName=" + _dampeningName + ", dampeningReuse=" + _dampeningReuse + ", dampeningSuppress=" + _dampeningSuppress + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

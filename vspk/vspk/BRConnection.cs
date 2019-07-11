@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class BRConnection: RestObject {
@@ -43,7 +43,7 @@ public class BRConnection: RestObject {
 
    
    public enum EAddressFamily {IPV4,IPV6 };
-   public enum EAdvertisementCriteria {OPERATIONAL_LINK };
+   public enum EAdvertisementCriteria {BFD,OPERATIONAL_LINK };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EMode {Static };
 
@@ -65,6 +65,9 @@ public class BRConnection: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("advertisementCriteria")]
    protected EAdvertisementCriteria? _advertisementCriteria;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -177,6 +180,17 @@ public class BRConnection: RestObject {
       }
       set {
          this._advertisementCriteria = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -296,7 +310,7 @@ public class BRConnection: RestObject {
    
 
    public String toString() {
-      return "BRConnection [" + "DNSAddress=" + _DNSAddress + ", DNSAddressV6=" + _DNSAddressV6 + ", address=" + _address + ", addressFamily=" + _addressFamily + ", addressV6=" + _addressV6 + ", advertisementCriteria=" + _advertisementCriteria + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayV6=" + _gatewayV6 + ", inherited=" + _inherited + ", lastUpdatedBy=" + _lastUpdatedBy + ", mode=" + _mode + ", netmask=" + _netmask + ", uplinkID=" + _uplinkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BRConnection [" + "DNSAddress=" + _DNSAddress + ", DNSAddressV6=" + _DNSAddressV6 + ", address=" + _address + ", addressFamily=" + _addressFamily + ", addressV6=" + _addressV6 + ", advertisementCriteria=" + _advertisementCriteria + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayV6=" + _gatewayV6 + ", inherited=" + _inherited + ", lastUpdatedBy=" + _lastUpdatedBy + ", mode=" + _mode + ", netmask=" + _netmask + ", uplinkID=" + _uplinkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class GroupKeyEncryptionProfile: RestObject {
@@ -78,6 +78,9 @@ public class GroupKeyEncryptionProfile: RestObject {
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -239,6 +242,17 @@ public class GroupKeyEncryptionProfile: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -431,7 +445,7 @@ public class GroupKeyEncryptionProfile: RestObject {
    
 
    public String toString() {
-      return "GroupKeyEncryptionProfile [" + "DRSeedLifetime=" + _DRSeedLifetime + ", SEKGenerationInterval=" + _SEKGenerationInterval + ", SEKLifetime=" + _SEKLifetime + ", SEKPayloadEncryptionAlgorithm=" + _SEKPayloadEncryptionAlgorithm + ", SEKPayloadEncryptionBCAlgorithm=" + _SEKPayloadEncryptionBCAlgorithm + ", SEKPayloadEncryptionKeyLength=" + _SEKPayloadEncryptionKeyLength + ", SEKPayloadSigningAlgorithm=" + _SEKPayloadSigningAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", seedGenerationInterval=" + _seedGenerationInterval + ", seedLifetime=" + _seedLifetime + ", seedPayloadAuthenticationAlgorithm=" + _seedPayloadAuthenticationAlgorithm + ", seedPayloadAuthenticationBCAlgorithm=" + _seedPayloadAuthenticationBCAlgorithm + ", seedPayloadAuthenticationKeyLength=" + _seedPayloadAuthenticationKeyLength + ", seedPayloadEncryptionAlgorithm=" + _seedPayloadEncryptionAlgorithm + ", seedPayloadEncryptionBCAlgorithm=" + _seedPayloadEncryptionBCAlgorithm + ", seedPayloadEncryptionKeyLength=" + _seedPayloadEncryptionKeyLength + ", seedPayloadSigningAlgorithm=" + _seedPayloadSigningAlgorithm + ", trafficAuthenticationAlgorithm=" + _trafficAuthenticationAlgorithm + ", trafficEncryptionAlgorithm=" + _trafficEncryptionAlgorithm + ", trafficEncryptionKeyLifetime=" + _trafficEncryptionKeyLifetime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "GroupKeyEncryptionProfile [" + "DRSeedLifetime=" + _DRSeedLifetime + ", SEKGenerationInterval=" + _SEKGenerationInterval + ", SEKLifetime=" + _SEKLifetime + ", SEKPayloadEncryptionAlgorithm=" + _SEKPayloadEncryptionAlgorithm + ", SEKPayloadEncryptionBCAlgorithm=" + _SEKPayloadEncryptionBCAlgorithm + ", SEKPayloadEncryptionKeyLength=" + _SEKPayloadEncryptionKeyLength + ", SEKPayloadSigningAlgorithm=" + _SEKPayloadSigningAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", seedGenerationInterval=" + _seedGenerationInterval + ", seedLifetime=" + _seedLifetime + ", seedPayloadAuthenticationAlgorithm=" + _seedPayloadAuthenticationAlgorithm + ", seedPayloadAuthenticationBCAlgorithm=" + _seedPayloadAuthenticationBCAlgorithm + ", seedPayloadAuthenticationKeyLength=" + _seedPayloadAuthenticationKeyLength + ", seedPayloadEncryptionAlgorithm=" + _seedPayloadEncryptionAlgorithm + ", seedPayloadEncryptionBCAlgorithm=" + _seedPayloadEncryptionBCAlgorithm + ", seedPayloadEncryptionKeyLength=" + _seedPayloadEncryptionKeyLength + ", seedPayloadSigningAlgorithm=" + _seedPayloadSigningAlgorithm + ", trafficAuthenticationAlgorithm=" + _trafficAuthenticationAlgorithm + ", trafficEncryptionAlgorithm=" + _trafficEncryptionAlgorithm + ", trafficEncryptionKeyLifetime=" + _trafficEncryptionKeyLifetime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class EnterpriseProfile: RestObject {
@@ -71,6 +71,9 @@ public class EnterpriseProfile: RestObject {
    [JsonProperty("description")]
    protected String _description;
    
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   
    [JsonProperty("enableApplicationPerformanceManagement")]
    protected bool _enableApplicationPerformanceManagement;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -85,6 +88,9 @@ public class EnterpriseProfile: RestObject {
    
    [JsonProperty("floatingIPsQuota")]
    protected long? _floatingIPsQuota;
+   
+   [JsonProperty("forwardingClass")]
+   protected System.Collections.Generic.List<String> _forwardingClass;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
@@ -224,6 +230,17 @@ public class EnterpriseProfile: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUEnableApplicationPerformanceManagement {
       get {
          return _enableApplicationPerformanceManagement;
@@ -274,6 +291,17 @@ public class EnterpriseProfile: RestObject {
       }
       set {
          this._floatingIPsQuota = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUForwardingClass {
+      get {
+         return _forwardingClass;
+      }
+      set {
+         this._forwardingClass = value;
       }
    }
 
@@ -357,7 +385,7 @@ public class EnterpriseProfile: RestObject {
    
 
    public String toString() {
-      return "EnterpriseProfile [" + "BGPEnabled=" + _BGPEnabled + ", DHCPLeaseInterval=" + _DHCPLeaseInterval + ", VNFManagementEnabled=" + _VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + _allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + _allowGatewayManagement + ", allowTrustedForwardingClass=" + _allowTrustedForwardingClass + ", allowedForwardingClasses=" + _allowedForwardingClasses + ", description=" + _description + ", enableApplicationPerformanceManagement=" + _enableApplicationPerformanceManagement + ", encryptionManagementMode=" + _encryptionManagementMode + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", floatingIPsQuota=" + _floatingIPsQuota + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", receiveMultiCastListID=" + _receiveMultiCastListID + ", sendMultiCastListID=" + _sendMultiCastListID + ", webFilterEnabled=" + _webFilterEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "EnterpriseProfile [" + "BGPEnabled=" + _BGPEnabled + ", DHCPLeaseInterval=" + _DHCPLeaseInterval + ", VNFManagementEnabled=" + _VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + _allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + _allowGatewayManagement + ", allowTrustedForwardingClass=" + _allowTrustedForwardingClass + ", allowedForwardingClasses=" + _allowedForwardingClasses + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enableApplicationPerformanceManagement=" + _enableApplicationPerformanceManagement + ", encryptionManagementMode=" + _encryptionManagementMode + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", floatingIPsQuota=" + _floatingIPsQuota + ", forwardingClass=" + _forwardingClass + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", receiveMultiCastListID=" + _receiveMultiCastListID + ", sendMultiCastListID=" + _sendMultiCastListID + ", webFilterEnabled=" + _webFilterEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

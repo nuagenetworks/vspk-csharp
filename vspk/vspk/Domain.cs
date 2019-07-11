@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class Domain: RestObject {
@@ -44,9 +44,11 @@ public class Domain: RestObject {
    
    public enum EDHCPBehavior {CONSUME,FLOOD,OVERLAY_RELAY,UNDERLAY_RELAY };
    public enum EDPI {DISABLED,ENABLED };
+   public enum EEVPNRT5Type {IP,MAC };
    public enum EFIPIgnoreDefaultRoute {DISABLED,ENABLED };
    public enum EPATEnabled {DISABLED,ENABLED,INHERITED };
    public enum EAdvertiseCriteria {HUB_ROUTES };
+   public enum EAggregationFlowType {PBR_BASED,ROUTE_BASED };
    public enum EEncryption {DISABLED,ENABLED };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFlowCollectionEnabled {DISABLED,ENABLED,INHERITED };
@@ -54,7 +56,7 @@ public class Domain: RestObject {
    public enum EMulticast {DISABLED,ENABLED,INHERITED };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
    public enum EPolicyChangeStatus {APPLIED,DISCARDED,STARTED };
-   public enum ETunnelType {DC_DEFAULT,GRE,VLAN,VXLAN };
+   public enum ETunnelType {DC_DEFAULT,GRE,MPLSoUDP,VLAN,VXLAN };
    public enum EUnderlayEnabled {DISABLED,ENABLED };
    public enum EUplinkPreference {PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY,SYMMETRIC };
 
@@ -74,11 +76,17 @@ public class Domain: RestObject {
    [JsonProperty("ECMPCount")]
    protected long? _ECMPCount;
    [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("EVPNRT5Type")]
+   protected EEVPNRT5Type? _EVPNRT5Type;
+   [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("FIPIgnoreDefaultRoute")]
    protected EFIPIgnoreDefaultRoute? _FIPIgnoreDefaultRoute;
    
    [JsonProperty("FIPUnderlay")]
    protected bool _FIPUnderlay;
+   
+   [JsonProperty("GRTEnabled")]
+   protected bool _GRTEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("PATEnabled")]
    protected EPATEnabled? _PATEnabled;
@@ -91,6 +99,9 @@ public class Domain: RestObject {
    
    [JsonProperty("aggregateFlowsEnabled")]
    protected bool _aggregateFlowsEnabled;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("aggregationFlowType")]
+   protected EAggregationFlowType? _aggregationFlowType;
    
    [JsonProperty("associatedBGPProfileID")]
    protected String _associatedBGPProfileID;
@@ -119,6 +130,12 @@ public class Domain: RestObject {
    [JsonProperty("backHaulVNID")]
    protected long? _backHaulVNID;
    
+   [JsonProperty("color")]
+   protected long? _color;
+   
+   [JsonProperty("createBackHaulSubnet")]
+   protected bool _createBackHaulSubnet;
+   
    [JsonProperty("customerID")]
    protected long? _customerID;
    
@@ -128,11 +145,17 @@ public class Domain: RestObject {
    [JsonProperty("dhcpServerAddresses")]
    protected System.Collections.Generic.List<String> _dhcpServerAddresses;
    
+   [JsonProperty("domainAggregationEnabled")]
+   protected bool _domainAggregationEnabled;
+   
    [JsonProperty("domainID")]
    protected long? _domainID;
    
    [JsonProperty("domainVLANID")]
    protected long? _domainVLANID;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("encryption")]
    protected EEncryption? _encryption;
@@ -197,6 +220,9 @@ public class Domain: RestObject {
    [JsonProperty("secondaryDHCPServerAddress")]
    protected String _secondaryDHCPServerAddress;
    
+   [JsonProperty("secondaryRouteTarget")]
+   protected String _secondaryRouteTarget;
+   
    [JsonProperty("serviceID")]
    protected long? _serviceID;
    
@@ -216,6 +242,9 @@ public class Domain: RestObject {
    protected EUplinkPreference? _uplinkPreference;
    
 
+   
+   [JsonIgnore]
+   private AggregatedDomainsFetcher _aggregatedDomains;
    
    [JsonIgnore]
    private AlarmsFetcher _alarms;
@@ -240,6 +269,9 @@ public class Domain: RestObject {
    
    [JsonIgnore]
    private DHCPOptionsFetcher _dHCPOptions;
+   
+   [JsonIgnore]
+   private DHCPv6OptionsFetcher _dHCPv6Options;
    
    [JsonIgnore]
    private DomainsFetcher _domains;
@@ -272,6 +304,9 @@ public class Domain: RestObject {
    private ForwardingPathListsFetcher _forwardingPathLists;
    
    [JsonIgnore]
+   private GatewaysFetcher _gateways;
+   
+   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
@@ -297,6 +332,15 @@ public class Domain: RestObject {
    
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
+   
+   [JsonIgnore]
+   private MirrorDestinationGroupsFetcher _mirrorDestinationGroups;
+   
+   [JsonIgnore]
+   private NetconfGatewaysFetcher _netconfGateways;
+   
+   [JsonIgnore]
+   private NetworkMacroGroupsFetcher _networkMacroGroups;
    
    [JsonIgnore]
    private NetworkPerformanceBindingsFetcher _networkPerformanceBindings;
@@ -378,6 +422,8 @@ public class Domain: RestObject {
       _tunnelType = ETunnelType.DC_DEFAULT;
       _maintenanceMode = EMaintenanceMode.DISABLED;
       
+      _aggregatedDomains = new AggregatedDomainsFetcher(this);
+      
       _alarms = new AlarmsFetcher(this);
       
       _applications = new ApplicationsFetcher(this);
@@ -393,6 +439,8 @@ public class Domain: RestObject {
       _deploymentFailures = new DeploymentFailuresFetcher(this);
       
       _dHCPOptions = new DHCPOptionsFetcher(this);
+      
+      _dHCPv6Options = new DHCPv6OptionsFetcher(this);
       
       _domains = new DomainsFetcher(this);
       
@@ -414,6 +462,8 @@ public class Domain: RestObject {
       
       _forwardingPathLists = new ForwardingPathListsFetcher(this);
       
+      _gateways = new GatewaysFetcher(this);
+      
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _groups = new GroupsFetcher(this);
@@ -431,6 +481,12 @@ public class Domain: RestObject {
       _links = new LinksFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _mirrorDestinationGroups = new MirrorDestinationGroupsFetcher(this);
+      
+      _netconfGateways = new NetconfGatewaysFetcher(this);
+      
+      _networkMacroGroups = new NetworkMacroGroupsFetcher(this);
       
       _networkPerformanceBindings = new NetworkPerformanceBindingsFetcher(this);
       
@@ -541,6 +597,17 @@ public class Domain: RestObject {
 
    
    [JsonIgnore]
+   public EEVPNRT5Type? NUEVPNRT5Type {
+      get {
+         return _EVPNRT5Type;
+      }
+      set {
+         this._EVPNRT5Type = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EFIPIgnoreDefaultRoute? NUFIPIgnoreDefaultRoute {
       get {
          return _FIPIgnoreDefaultRoute;
@@ -558,6 +625,17 @@ public class Domain: RestObject {
       }
       set {
          this._FIPUnderlay = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUGRTEnabled {
+      get {
+         return _GRTEnabled;
+      }
+      set {
+         this._GRTEnabled = value;
       }
    }
 
@@ -602,6 +680,17 @@ public class Domain: RestObject {
       }
       set {
          this._aggregateFlowsEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EAggregationFlowType? NUAggregationFlowType {
+      get {
+         return _aggregationFlowType;
+      }
+      set {
+         this._aggregationFlowType = value;
       }
    }
 
@@ -706,6 +795,28 @@ public class Domain: RestObject {
 
    
    [JsonIgnore]
+   public long? NUColor {
+      get {
+         return _color;
+      }
+      set {
+         this._color = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUCreateBackHaulSubnet {
+      get {
+         return _createBackHaulSubnet;
+      }
+      set {
+         this._createBackHaulSubnet = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUCustomerID {
       get {
          return _customerID;
@@ -739,6 +850,17 @@ public class Domain: RestObject {
 
    
    [JsonIgnore]
+   public bool NUDomainAggregationEnabled {
+      get {
+         return _domainAggregationEnabled;
+      }
+      set {
+         this._domainAggregationEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUDomainID {
       get {
          return _domainID;
@@ -756,6 +878,17 @@ public class Domain: RestObject {
       }
       set {
          this._domainVLANID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -992,6 +1125,17 @@ public class Domain: RestObject {
 
    
    [JsonIgnore]
+   public String NUSecondaryRouteTarget {
+      get {
+         return _secondaryRouteTarget;
+      }
+      set {
+         this._secondaryRouteTarget = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUServiceID {
       get {
          return _serviceID;
@@ -1059,6 +1203,10 @@ public class Domain: RestObject {
    
 
    
+   public AggregatedDomainsFetcher getAggregatedDomains() {
+      return _aggregatedDomains;
+   }
+   
    public AlarmsFetcher getAlarms() {
       return _alarms;
    }
@@ -1089,6 +1237,10 @@ public class Domain: RestObject {
    
    public DHCPOptionsFetcher getDHCPOptions() {
       return _dHCPOptions;
+   }
+   
+   public DHCPv6OptionsFetcher getDHCPv6Options() {
+      return _dHCPv6Options;
    }
    
    public DomainsFetcher getDomains() {
@@ -1131,6 +1283,10 @@ public class Domain: RestObject {
       return _forwardingPathLists;
    }
    
+   public GatewaysFetcher getGateways() {
+      return _gateways;
+   }
+   
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
    }
@@ -1165,6 +1321,18 @@ public class Domain: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public MirrorDestinationGroupsFetcher getMirrorDestinationGroups() {
+      return _mirrorDestinationGroups;
+   }
+   
+   public NetconfGatewaysFetcher getNetconfGateways() {
+      return _netconfGateways;
+   }
+   
+   public NetworkMacroGroupsFetcher getNetworkMacroGroups() {
+      return _networkMacroGroups;
    }
    
    public NetworkPerformanceBindingsFetcher getNetworkPerformanceBindings() {
@@ -1269,7 +1437,7 @@ public class Domain: RestObject {
    
 
    public String toString() {
-      return "Domain [" + "BGPEnabled=" + _BGPEnabled + ", DHCPBehavior=" + _DHCPBehavior + ", DHCPServerAddress=" + _DHCPServerAddress + ", DPI=" + _DPI + ", ECMPCount=" + _ECMPCount + ", FIPIgnoreDefaultRoute=" + _FIPIgnoreDefaultRoute + ", FIPUnderlay=" + _FIPUnderlay + ", PATEnabled=" + _PATEnabled + ", VXLANECMPEnabled=" + _VXLANECMPEnabled + ", advertiseCriteria=" + _advertiseCriteria + ", aggregateFlowsEnabled=" + _aggregateFlowsEnabled + ", associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedPATMapperID=" + _associatedPATMapperID + ", associatedSharedPATMapperID=" + _associatedSharedPATMapperID + ", associatedUnderlayID=" + _associatedUnderlayID + ", backHaulRouteDistinguisher=" + _backHaulRouteDistinguisher + ", backHaulRouteTarget=" + _backHaulRouteTarget + ", backHaulServiceID=" + _backHaulServiceID + ", backHaulVNID=" + _backHaulVNID + ", customerID=" + _customerID + ", description=" + _description + ", dhcpServerAddresses=" + _dhcpServerAddresses + ", domainID=" + _domainID + ", domainVLANID=" + _domainVLANID + ", encryption=" + _encryption + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", exportRouteTarget=" + _exportRouteTarget + ", externalID=" + _externalID + ", externalLabel=" + _externalLabel + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", globalRoutingEnabled=" + _globalRoutingEnabled + ", importRouteTarget=" + _importRouteTarget + ", labelID=" + _labelID + ", lastUpdatedBy=" + _lastUpdatedBy + ", leakingEnabled=" + _leakingEnabled + ", localAS=" + _localAS + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", permittedAction=" + _permittedAction + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", secondaryDHCPServerAddress=" + _secondaryDHCPServerAddress + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", tunnelType=" + _tunnelType + ", underlayEnabled=" + _underlayEnabled + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Domain [" + "BGPEnabled=" + _BGPEnabled + ", DHCPBehavior=" + _DHCPBehavior + ", DHCPServerAddress=" + _DHCPServerAddress + ", DPI=" + _DPI + ", ECMPCount=" + _ECMPCount + ", EVPNRT5Type=" + _EVPNRT5Type + ", FIPIgnoreDefaultRoute=" + _FIPIgnoreDefaultRoute + ", FIPUnderlay=" + _FIPUnderlay + ", GRTEnabled=" + _GRTEnabled + ", PATEnabled=" + _PATEnabled + ", VXLANECMPEnabled=" + _VXLANECMPEnabled + ", advertiseCriteria=" + _advertiseCriteria + ", aggregateFlowsEnabled=" + _aggregateFlowsEnabled + ", aggregationFlowType=" + _aggregationFlowType + ", associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedPATMapperID=" + _associatedPATMapperID + ", associatedSharedPATMapperID=" + _associatedSharedPATMapperID + ", associatedUnderlayID=" + _associatedUnderlayID + ", backHaulRouteDistinguisher=" + _backHaulRouteDistinguisher + ", backHaulRouteTarget=" + _backHaulRouteTarget + ", backHaulServiceID=" + _backHaulServiceID + ", backHaulVNID=" + _backHaulVNID + ", color=" + _color + ", createBackHaulSubnet=" + _createBackHaulSubnet + ", customerID=" + _customerID + ", description=" + _description + ", dhcpServerAddresses=" + _dhcpServerAddresses + ", domainAggregationEnabled=" + _domainAggregationEnabled + ", domainID=" + _domainID + ", domainVLANID=" + _domainVLANID + ", embeddedMetadata=" + _embeddedMetadata + ", encryption=" + _encryption + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", exportRouteTarget=" + _exportRouteTarget + ", externalID=" + _externalID + ", externalLabel=" + _externalLabel + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", globalRoutingEnabled=" + _globalRoutingEnabled + ", importRouteTarget=" + _importRouteTarget + ", labelID=" + _labelID + ", lastUpdatedBy=" + _lastUpdatedBy + ", leakingEnabled=" + _leakingEnabled + ", localAS=" + _localAS + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", permittedAction=" + _permittedAction + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", secondaryDHCPServerAddress=" + _secondaryDHCPServerAddress + ", secondaryRouteTarget=" + _secondaryRouteTarget + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", tunnelType=" + _tunnelType + ", underlayEnabled=" + _underlayEnabled + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

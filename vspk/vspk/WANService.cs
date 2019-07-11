@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class WANService: RestObject {
@@ -69,6 +69,9 @@ public class WANService: RestObject {
    
    [JsonProperty("domainName")]
    protected String _domainName;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("enterpriseName")]
    protected String _enterpriseName;
@@ -224,6 +227,17 @@ public class WANService: RestObject {
       }
       set {
          this._domainName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -410,7 +424,7 @@ public class WANService: RestObject {
    
 
    public String toString() {
-      return "WANService [" + "IRBEnabled=" + _IRBEnabled + ", WANServiceIdentifier=" + _WANServiceIdentifier + ", associatedDomainID=" + _associatedDomainID + ", associatedVPNConnectID=" + _associatedVPNConnectID + ", configType=" + _configType + ", description=" + _description + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", externalRouteTarget=" + _externalRouteTarget + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", orphan=" + _orphan + ", permittedAction=" + _permittedAction + ", servicePolicy=" + _servicePolicy + ", serviceType=" + _serviceType + ", tunnelType=" + _tunnelType + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "WANService [" + "IRBEnabled=" + _IRBEnabled + ", WANServiceIdentifier=" + _WANServiceIdentifier + ", associatedDomainID=" + _associatedDomainID + ", associatedVPNConnectID=" + _associatedVPNConnectID + ", configType=" + _configType + ", description=" + _description + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", externalRouteTarget=" + _externalRouteTarget + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", orphan=" + _orphan + ", permittedAction=" + _permittedAction + ", servicePolicy=" + _servicePolicy + ", serviceType=" + _serviceType + ", tunnelType=" + _tunnelType + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

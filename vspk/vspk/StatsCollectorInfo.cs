@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class StatsCollectorInfo: RestObject {
@@ -48,6 +48,9 @@ public class StatsCollectorInfo: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("addressType")]
    protected EAddressType? _addressType;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -91,6 +94,17 @@ public class StatsCollectorInfo: RestObject {
       }
       set {
          this._addressType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -173,7 +187,7 @@ public class StatsCollectorInfo: RestObject {
    
 
    public String toString() {
-      return "StatsCollectorInfo [" + "addressType=" + _addressType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ipAddress=" + _ipAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", port=" + _port + ", protoBufPort=" + _protoBufPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "StatsCollectorInfo [" + "addressType=" + _addressType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ipAddress=" + _ipAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", port=" + _port + ", protoBufPort=" + _protoBufPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

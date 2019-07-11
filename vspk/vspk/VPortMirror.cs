@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class VPortMirror: RestObject {
@@ -51,6 +51,9 @@ public class VPortMirror: RestObject {
    
    [JsonProperty("domainName")]
    protected String _domainName;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("enterpiseName")]
    protected String _enterpiseName;
@@ -118,6 +121,17 @@ public class VPortMirror: RestObject {
       }
       set {
          this._domainName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -244,7 +258,7 @@ public class VPortMirror: RestObject {
    
 
    public String toString() {
-      return "VPortMirror [" + "attachedNetworkType=" + _attachedNetworkType + ", domainName=" + _domainName + ", enterpiseName=" + _enterpiseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mirrorDestinationID=" + _mirrorDestinationID + ", mirrorDestinationName=" + _mirrorDestinationName + ", mirrorDirection=" + _mirrorDirection + ", networkName=" + _networkName + ", vportId=" + _vportId + ", vportName=" + _vportName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VPortMirror [" + "attachedNetworkType=" + _attachedNetworkType + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpiseName=" + _enterpiseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mirrorDestinationID=" + _mirrorDestinationID + ", mirrorDestinationName=" + _mirrorDestinationName + ", mirrorDirection=" + _mirrorDirection + ", networkName=" + _networkName + ", vportId=" + _vportId + ", vportName=" + _vportName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

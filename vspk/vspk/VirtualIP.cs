@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class VirtualIP: RestObject {
@@ -54,6 +54,9 @@ public class VirtualIP: RestObject {
    
    [JsonProperty("associatedFloatingIPID")]
    protected String _associatedFloatingIPID;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -121,6 +124,17 @@ public class VirtualIP: RestObject {
       }
       set {
          this._associatedFloatingIPID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -196,7 +210,7 @@ public class VirtualIP: RestObject {
    
 
    public String toString() {
-      return "VirtualIP [" + "IPType=" + _IPType + ", MAC=" + _MAC + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", subnetID=" + _subnetID + ", virtualIP=" + _virtualIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VirtualIP [" + "IPType=" + _IPType + ", MAC=" + _MAC + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", subnetID=" + _subnetID + ", virtualIP=" + _virtualIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

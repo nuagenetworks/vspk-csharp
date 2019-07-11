@@ -28,9 +28,9 @@
 
 
 using net.nuagenetworks.bambou;
-using net.nuagenetworks.vspk.v5_0; 
+using net.nuagenetworks.vspk.v6; 
 
-namespace net.nuagenetworks.vspk.v5_0.fetchers
+namespace net.nuagenetworks.vspk.v6.fetchers
 {
     public class NSPortsFetcher: RestFetcher<NSPort>
     {

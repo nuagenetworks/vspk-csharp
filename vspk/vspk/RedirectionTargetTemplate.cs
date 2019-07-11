@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class RedirectionTargetTemplate: RestObject {
@@ -53,6 +53,9 @@ public class RedirectionTargetTemplate: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("destinationType")]
    protected EDestinationType? _destinationType;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("endPointType")]
    protected EEndPointType? _endPointType;
@@ -116,6 +119,17 @@ public class RedirectionTargetTemplate: RestObject {
       }
       set {
          this._destinationType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -213,7 +227,7 @@ public class RedirectionTargetTemplate: RestObject {
    
 
    public String toString() {
-      return "RedirectionTargetTemplate [" + "description=" + _description + ", destinationType=" + _destinationType + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", redundancyEnabled=" + _redundancyEnabled + ", triggerType=" + _triggerType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "RedirectionTargetTemplate [" + "description=" + _description + ", destinationType=" + _destinationType + ", embeddedMetadata=" + _embeddedMetadata + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", redundancyEnabled=" + _redundancyEnabled + ", triggerType=" + _triggerType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class Link: RestObject {
@@ -68,6 +68,9 @@ public class Link: RestObject {
    
    [JsonProperty("associatedSourceType")]
    protected String _associatedSourceType;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -209,6 +212,17 @@ public class Link: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -299,7 +313,7 @@ public class Link: RestObject {
    
 
    public String toString() {
-      return "Link [" + "acceptanceCriteria=" + _acceptanceCriteria + ", associatedDestinationID=" + _associatedDestinationID + ", associatedDestinationName=" + _associatedDestinationName + ", associatedDestinationType=" + _associatedDestinationType + ", associatedSourceID=" + _associatedSourceID + ", associatedSourceName=" + _associatedSourceName + ", associatedSourceType=" + _associatedSourceType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", readOnly=" + _readOnly + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Link [" + "acceptanceCriteria=" + _acceptanceCriteria + ", associatedDestinationID=" + _associatedDestinationID + ", associatedDestinationName=" + _associatedDestinationName + ", associatedDestinationType=" + _associatedDestinationType + ", associatedSourceID=" + _associatedSourceID + ", associatedSourceName=" + _associatedSourceName + ", associatedSourceType=" + _associatedSourceType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", readOnly=" + _readOnly + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

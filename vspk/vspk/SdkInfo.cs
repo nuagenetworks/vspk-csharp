@@ -27,11 +27,11 @@
 
 using System;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
     public class SdkInfo 
     {
-       public double API_VERSION      = 5.0;
+       public double API_VERSION      = 6;
        public String API_PREFIX       = "nuage/api";
        public String PRODUCT_ACCRONYM = "VSD";
        public String PRODUCT_NAME     = "VSD";

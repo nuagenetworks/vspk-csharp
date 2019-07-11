@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class Alarm: RestObject {
@@ -55,6 +55,9 @@ public class Alarm: RestObject {
    [JsonProperty("description")]
    protected String _description;
    
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -70,14 +73,11 @@ public class Alarm: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
-   [JsonProperty("name")]
-   protected String _name;
-   
    [JsonProperty("numberOfOccurances")]
    protected long? _numberOfOccurances;
    
-   [JsonProperty("reason")]
-   protected String _reason;
+   [JsonProperty("remedy")]
+   protected String _remedy;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("severity")]
    protected ESeverity? _severity;
@@ -87,6 +87,9 @@ public class Alarm: RestObject {
    
    [JsonProperty("timestamp")]
    protected long? _timestamp;
+   
+   [JsonProperty("title")]
+   protected String _title;
    
 
    
@@ -134,6 +137,17 @@ public class Alarm: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -194,17 +208,6 @@ public class Alarm: RestObject {
 
    
    [JsonIgnore]
-   public String NUName {
-      get {
-         return _name;
-      }
-      set {
-         this._name = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public long? NUNumberOfOccurances {
       get {
          return _numberOfOccurances;
@@ -216,12 +219,12 @@ public class Alarm: RestObject {
 
    
    [JsonIgnore]
-   public String NUReason {
+   public String NURemedy {
       get {
-         return _reason;
+         return _remedy;
       }
       set {
-         this._reason = value;
+         this._remedy = value;
       }
    }
 
@@ -259,6 +262,17 @@ public class Alarm: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NUTitle {
+      get {
+         return _title;
+      }
+      set {
+         this._title = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -271,7 +285,7 @@ public class Alarm: RestObject {
    
 
    public String toString() {
-      return "Alarm [" + "acknowledged=" + _acknowledged + ", alarmedObjectID=" + _alarmedObjectID + ", description=" + _description + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", numberOfOccurances=" + _numberOfOccurances + ", reason=" + _reason + ", severity=" + _severity + ", targetObject=" + _targetObject + ", timestamp=" + _timestamp + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Alarm [" + "acknowledged=" + _acknowledged + ", alarmedObjectID=" + _alarmedObjectID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", numberOfOccurances=" + _numberOfOccurances + ", remedy=" + _remedy + ", severity=" + _severity + ", targetObject=" + _targetObject + ", timestamp=" + _timestamp + ", title=" + _title + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

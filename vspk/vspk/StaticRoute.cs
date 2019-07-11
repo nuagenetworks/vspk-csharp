@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class StaticRoute: RestObject {
@@ -67,6 +67,9 @@ public class StaticRoute: RestObject {
    
    [JsonProperty("blackHoleEnabled")]
    protected bool _blackHoleEnabled;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -194,6 +197,17 @@ public class StaticRoute: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -290,7 +304,7 @@ public class StaticRoute: RestObject {
    
 
    public String toString() {
-      return "StaticRoute [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedGatewayIDs=" + _associatedGatewayIDs + ", associatedSubnetID=" + _associatedSubnetID + ", blackHoleEnabled=" + _blackHoleEnabled + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", netmask=" + _netmask + ", nextHopIp=" + _nextHopIp + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "StaticRoute [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedGatewayIDs=" + _associatedGatewayIDs + ", associatedSubnetID=" + _associatedSubnetID + ", blackHoleEnabled=" + _blackHoleEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", netmask=" + _netmask + ", nextHopIp=" + _nextHopIp + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

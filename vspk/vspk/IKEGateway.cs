@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class IKEGateway: RestObject {
@@ -44,6 +44,8 @@ public class IKEGateway: RestObject {
    
    public enum EIKEVersion {V1,V2 };
    public enum EIKEv1Mode {AGGRESSIVE,MAIN,NONE };
+   public enum EAssociatedCloudType {AZURECLOUD };
+   public enum EConfigurationStatus {CANCELING,CANCELLED,CLOUD_CONFIGURATION_REMOVED,FAILED,IN_PROGRESS,NOT_APPLICABLE,PAUSING,SUCCESS,SYNCED_FROM_CLOUD,UNKNOWN,WAITING,WAITING_FOR_RESOURCES };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    [JsonConverter(typeof(StringEnumConverter))]
@@ -56,11 +58,23 @@ public class IKEGateway: RestObject {
    [JsonProperty("IPAddress")]
    protected String _IPAddress;
    
+   [JsonProperty("associatedCloudID")]
+   protected String _associatedCloudID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("associatedCloudType")]
+   protected EAssociatedCloudType? _associatedCloudType;
+   
    [JsonProperty("associatedEnterpriseID")]
    protected String _associatedEnterpriseID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("configurationStatus")]
+   protected EConfigurationStatus? _configurationStatus;
    
    [JsonProperty("description")]
    protected String _description;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -135,6 +149,28 @@ public class IKEGateway: RestObject {
 
    
    [JsonIgnore]
+   public String NUAssociatedCloudID {
+      get {
+         return _associatedCloudID;
+      }
+      set {
+         this._associatedCloudID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EAssociatedCloudType? NUAssociatedCloudType {
+      get {
+         return _associatedCloudType;
+      }
+      set {
+         this._associatedCloudType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAssociatedEnterpriseID {
       get {
          return _associatedEnterpriseID;
@@ -146,12 +182,34 @@ public class IKEGateway: RestObject {
 
    
    [JsonIgnore]
+   public EConfigurationStatus? NUConfigurationStatus {
+      get {
+         return _configurationStatus;
+      }
+      set {
+         this._configurationStatus = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -220,7 +278,7 @@ public class IKEGateway: RestObject {
    
 
    public String toString() {
-      return "IKEGateway [" + "IKEVersion=" + _IKEVersion + ", IKEv1Mode=" + _IKEv1Mode + ", IPAddress=" + _IPAddress + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IKEGateway [" + "IKEVersion=" + _IKEVersion + ", IKEv1Mode=" + _IKEv1Mode + ", IPAddress=" + _IPAddress + ", associatedCloudID=" + _associatedCloudID + ", associatedCloudType=" + _associatedCloudType + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", configurationStatus=" + _configurationStatus + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

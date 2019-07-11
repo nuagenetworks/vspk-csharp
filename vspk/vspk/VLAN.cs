@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class VLAN: RestObject {
@@ -78,6 +78,9 @@ public class VLAN: RestObject {
    
    [JsonProperty("ducVlan")]
    protected bool _ducVlan;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -305,6 +308,17 @@ public class VLAN: RestObject {
       }
       set {
          this._ducVlan = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -541,7 +555,7 @@ public class VLAN: RestObject {
    
 
    public String toString() {
-      return "VLAN [" + "associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedConnectionType=" + _associatedConnectionType + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + _associatedIngressOverlayQoSPolicerID + ", associatedIngressQOSPolicyID=" + _associatedIngressQOSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + _associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + _associatedUplinkConnectionID + ", associatedVSCProfileID=" + _associatedVSCProfileID + ", description=" + _description + ", ducVlan=" + _ducVlan + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", isUplink=" + _isUplink + ", lastUpdatedBy=" + _lastUpdatedBy + ", permittedAction=" + _permittedAction + ", readonly=" + _readonly + ", restricted=" + _restricted + ", shuntVLAN=" + _shuntVLAN + ", status=" + _status + ", templateID=" + _templateID + ", type=" + _type + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", value=" + _value + ", vportID=" + _vportID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VLAN [" + "associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedConnectionType=" + _associatedConnectionType + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + _associatedIngressOverlayQoSPolicerID + ", associatedIngressQOSPolicyID=" + _associatedIngressQOSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + _associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + _associatedUplinkConnectionID + ", associatedVSCProfileID=" + _associatedVSCProfileID + ", description=" + _description + ", ducVlan=" + _ducVlan + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", isUplink=" + _isUplink + ", lastUpdatedBy=" + _lastUpdatedBy + ", permittedAction=" + _permittedAction + ", readonly=" + _readonly + ", restricted=" + _restricted + ", shuntVLAN=" + _shuntVLAN + ", status=" + _status + ", templateID=" + _templateID + ", type=" + _type + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", value=" + _value + ", vportID=" + _vportID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

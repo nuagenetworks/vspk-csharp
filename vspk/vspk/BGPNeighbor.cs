@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class BGPNeighbor: RestObject {
@@ -69,6 +69,9 @@ public class BGPNeighbor: RestObject {
    
    [JsonProperty("domainServiceLabel")]
    protected String _domainServiceLabel;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -202,6 +205,17 @@ public class BGPNeighbor: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -294,7 +308,7 @@ public class BGPNeighbor: RestObject {
    
 
    public String toString() {
-      return "BGPNeighbor [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningEnabled=" + _dampeningEnabled + ", description=" + _description + ", domainServiceLabel=" + _domainServiceLabel + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", peerAS=" + _peerAS + ", peerConfiguration=" + _peerConfiguration + ", peerIP=" + _peerIP + ", session=" + _session + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BGPNeighbor [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningEnabled=" + _dampeningEnabled + ", description=" + _description + ", domainServiceLabel=" + _domainServiceLabel + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", peerAS=" + _peerAS + ", peerConfiguration=" + _peerConfiguration + ", peerIP=" + _peerIP + ", session=" + _session + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

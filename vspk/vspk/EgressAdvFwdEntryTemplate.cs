@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class EgressAdvFwdEntryTemplate: RestObject {
@@ -43,7 +43,7 @@ public class EgressAdvFwdEntryTemplate: RestObject {
 
    
    public enum EFCOverride {A,B,C,D,E,F,G,H,NONE };
-   public enum EAction {DROP,FORWARD,REDIRECT };
+   public enum EAction {DROP,FORWARD,REDIRECT,TRANSPARENT };
    public enum EAssociatedTrafficType {L4_SERVICE,L4_SERVICE_GROUP };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFailsafeDatapath {FAIL_TO_BLOCK,FAIL_TO_WIRE };
@@ -99,6 +99,9 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    [JsonProperty("domainName")]
    protected String _domainName;
    
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   
    [JsonProperty("enterpriseName")]
    protected String _enterpriseName;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -125,6 +128,9 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("locationType")]
    protected ELocationType? _locationType;
+   
+   [JsonProperty("mirrorDestinationGroupID")]
+   protected String _mirrorDestinationGroupID;
    
    [JsonProperty("mirrorDestinationID")]
    protected String _mirrorDestinationID;
@@ -161,6 +167,9 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    
    [JsonProperty("webFilterID")]
    protected String _webFilterID;
+   
+   [JsonProperty("webFilterStatsLoggingEnabled")]
+   protected bool _webFilterStatsLoggingEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("webFilterType")]
    protected EWebFilterType? _webFilterType;
@@ -348,6 +357,17 @@ public class EgressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUEnterpriseName {
       get {
          return _enterpriseName;
@@ -442,6 +462,17 @@ public class EgressAdvFwdEntryTemplate: RestObject {
       }
       set {
          this._locationType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUMirrorDestinationGroupID {
+      get {
+         return _mirrorDestinationGroupID;
+      }
+      set {
+         this._mirrorDestinationGroupID = value;
       }
    }
 
@@ -579,6 +610,17 @@ public class EgressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
+   public bool NUWebFilterStatsLoggingEnabled {
+      get {
+         return _webFilterStatsLoggingEnabled;
+      }
+      set {
+         this._webFilterStatsLoggingEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EWebFilterType? NUWebFilterType {
       get {
          return _webFilterType;
@@ -601,7 +643,7 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    
 
    public String toString() {
-      return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", FCOverride=" + _FCOverride + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", failsafeDatapath=" + _failsafeDatapath + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", redirectVPortTagID=" + _redirectVPortTagID + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", uplinkPreference=" + _uplinkPreference + ", webFilterID=" + _webFilterID + ", webFilterType=" + _webFilterType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", FCOverride=" + _FCOverride + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", failsafeDatapath=" + _failsafeDatapath + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationGroupID=" + _mirrorDestinationGroupID + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", redirectVPortTagID=" + _redirectVPortTagID + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", uplinkPreference=" + _uplinkPreference + ", webFilterID=" + _webFilterID + ", webFilterStatsLoggingEnabled=" + _webFilterStatsLoggingEnabled + ", webFilterType=" + _webFilterType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

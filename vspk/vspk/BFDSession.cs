@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class BFDSession: RestObject {
@@ -60,6 +60,9 @@ public class BFDSession: RestObject {
    
    [JsonProperty("BFDTimer")]
    protected long? _BFDTimer;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -146,6 +149,17 @@ public class BFDSession: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -201,7 +215,7 @@ public class BFDSession: RestObject {
    
 
    public String toString() {
-      return "BFDSession [" + "BFDDestinationIP=" + _BFDDestinationIP + ", BFDDestinationIPType=" + _BFDDestinationIPType + ", BFDDestinationIPv6=" + _BFDDestinationIPv6 + ", BFDMultiplier=" + _BFDMultiplier + ", BFDTimer=" + _BFDTimer + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiHopEnabled=" + _multiHopEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "BFDSession [" + "BFDDestinationIP=" + _BFDDestinationIP + ", BFDDestinationIPType=" + _BFDDestinationIPType + ", BFDDestinationIPv6=" + _BFDDestinationIPv6 + ", BFDMultiplier=" + _BFDMultiplier + ", BFDTimer=" + _BFDTimer + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiHopEnabled=" + _multiHopEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

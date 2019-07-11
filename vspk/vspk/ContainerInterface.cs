@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class ContainerInterface: RestObject {
@@ -78,6 +78,9 @@ public class ContainerInterface: RestObject {
    
    [JsonProperty("domainName")]
    protected String _domainName;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("endpointID")]
    protected String _endpointID;
@@ -127,6 +130,9 @@ public class ContainerInterface: RestObject {
    private DHCPOptionsFetcher _dHCPOptions;
    
    [JsonIgnore]
+   private DHCPv6OptionsFetcher _dHCPv6Options;
+   
+   [JsonIgnore]
    private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
@@ -159,6 +165,8 @@ public class ContainerInterface: RestObject {
    public ContainerInterface() {
       
       _dHCPOptions = new DHCPOptionsFetcher(this);
+      
+      _dHCPv6Options = new DHCPv6OptionsFetcher(this);
       
       _eventLogs = new EventLogsFetcher(this);
       
@@ -300,6 +308,17 @@ public class ContainerInterface: RestObject {
       }
       set {
          this._domainName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -464,6 +483,10 @@ public class ContainerInterface: RestObject {
       return _dHCPOptions;
    }
    
+   public DHCPv6OptionsFetcher getDHCPv6Options() {
+      return _dHCPv6Options;
+   }
+   
    public EventLogsFetcher getEventLogs() {
       return _eventLogs;
    }
@@ -506,7 +529,7 @@ public class ContainerInterface: RestObject {
    
 
    public String toString() {
-      return "ContainerInterface [" + "IPAddress=" + _IPAddress + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", MAC=" + _MAC + ", VPortID=" + _VPortID + ", VPortName=" + _VPortName + ", attachedNetworkID=" + _attachedNetworkID + ", attachedNetworkType=" + _attachedNetworkType + ", containerUUID=" + _containerUUID + ", domainID=" + _domainID + ", domainName=" + _domainName + ", endpointID=" + _endpointID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiNICVPortName=" + _multiNICVPortName + ", name=" + _name + ", netmask=" + _netmask + ", networkID=" + _networkID + ", networkName=" + _networkName + ", policyDecisionID=" + _policyDecisionID + ", tierID=" + _tierID + ", zoneID=" + _zoneID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "ContainerInterface [" + "IPAddress=" + _IPAddress + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", MAC=" + _MAC + ", VPortID=" + _VPortID + ", VPortName=" + _VPortName + ", attachedNetworkID=" + _attachedNetworkID + ", attachedNetworkType=" + _attachedNetworkType + ", containerUUID=" + _containerUUID + ", domainID=" + _domainID + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", endpointID=" + _endpointID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiNICVPortName=" + _multiNICVPortName + ", name=" + _name + ", netmask=" + _netmask + ", networkID=" + _networkID + ", networkName=" + _networkName + ", policyDecisionID=" + _policyDecisionID + ", tierID=" + _tierID + ", zoneID=" + _zoneID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

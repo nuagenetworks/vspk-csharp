@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class NSGatewaySummary: RestObject {
@@ -60,6 +60,9 @@ public class NSGatewaySummary: RestObject {
    
    [JsonProperty("criticalAlarmsCount")]
    protected long? _criticalAlarmsCount;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -177,6 +180,17 @@ public class NSGatewaySummary: RestObject {
       }
       set {
          this._criticalAlarmsCount = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -369,7 +383,7 @@ public class NSGatewaySummary: RestObject {
    
 
    public String toString() {
-      return "NSGatewaySummary [" + "NSGVersion=" + _NSGVersion + ", address=" + _address + ", bootstrapStatus=" + _bootstrapStatus + ", country=" + _country + ", criticalAlarmsCount=" + _criticalAlarmsCount + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", gatewayName=" + _gatewayName + ", gatewayType=" + _gatewayType + ", infoAlarmsCount=" + _infoAlarmsCount + ", lastUpdatedBy=" + _lastUpdatedBy + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", majorAlarmsCount=" + _majorAlarmsCount + ", minorAlarmsCount=" + _minorAlarmsCount + ", state=" + _state + ", systemID=" + _systemID + ", timezoneID=" + _timezoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGatewaySummary [" + "NSGVersion=" + _NSGVersion + ", address=" + _address + ", bootstrapStatus=" + _bootstrapStatus + ", country=" + _country + ", criticalAlarmsCount=" + _criticalAlarmsCount + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", gatewayName=" + _gatewayName + ", gatewayType=" + _gatewayType + ", infoAlarmsCount=" + _infoAlarmsCount + ", lastUpdatedBy=" + _lastUpdatedBy + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", majorAlarmsCount=" + _majorAlarmsCount + ", minorAlarmsCount=" + _minorAlarmsCount + ", state=" + _state + ", systemID=" + _systemID + ", timezoneID=" + _timezoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

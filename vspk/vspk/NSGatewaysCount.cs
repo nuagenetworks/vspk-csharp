@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class NSGatewaysCount: RestObject {
@@ -50,6 +50,9 @@ public class NSGatewaysCount: RestObject {
    
    [JsonProperty("alarmedNSGCount")]
    protected Object _alarmedNSGCount;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -100,6 +103,17 @@ public class NSGatewaysCount: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -144,7 +158,7 @@ public class NSGatewaysCount: RestObject {
    
 
    public String toString() {
-      return "NSGatewaysCount [" + "activeNSGCount=" + _activeNSGCount + ", alarmedNSGCount=" + _alarmedNSGCount + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", inactiveNSGCount=" + _inactiveNSGCount + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGatewaysCount [" + "activeNSGCount=" + _activeNSGCount + ", alarmedNSGCount=" + _alarmedNSGCount + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", inactiveNSGCount=" + _inactiveNSGCount + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

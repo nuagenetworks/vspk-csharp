@@ -29,12 +29,12 @@
 using net.nuagenetworks.bambou;
 using System;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class VSDSession: RestSession<Me> {
     
-   public static double VERSION = 5.0;
+   public static double VERSION = 6;
 
    public VSDSession(String username, String password, String enterprise, String apiUrl) {
       setUsername(username);

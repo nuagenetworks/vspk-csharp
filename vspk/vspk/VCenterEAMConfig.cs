@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class VCenterEAMConfig: RestObject {
@@ -53,6 +53,9 @@ public class VCenterEAMConfig: RestObject {
    
    [JsonProperty("eamServerPortType")]
    protected String _eamServerPortType;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -118,6 +121,17 @@ public class VCenterEAMConfig: RestObject {
       }
       set {
          this._eamServerPortType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -200,7 +214,7 @@ public class VCenterEAMConfig: RestObject {
    
 
    public String toString() {
-      return "VCenterEAMConfig [" + "eamServerIP=" + _eamServerIP + ", eamServerPortNumber=" + _eamServerPortNumber + ", eamServerPortType=" + _eamServerPortType + ", entityScope=" + _entityScope + ", extensionKey=" + _extensionKey + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", ovfURL=" + _ovfURL + ", vibURL=" + _vibURL + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VCenterEAMConfig [" + "eamServerIP=" + _eamServerIP + ", eamServerPortNumber=" + _eamServerPortNumber + ", eamServerPortType=" + _eamServerPortType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", extensionKey=" + _extensionKey + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", ovfURL=" + _ovfURL + ", vibURL=" + _vibURL + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

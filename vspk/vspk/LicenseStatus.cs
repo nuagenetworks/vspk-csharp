@@ -32,9 +32,9 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using net.nuagenetworks.bambou;
 
-using net.nuagenetworks.vspk.v5_0.fetchers;
+using net.nuagenetworks.vspk.v6.fetchers;
 
-namespace net.nuagenetworks.vspk.v5_0
+namespace net.nuagenetworks.vspk.v6
 {
 
 public class LicenseStatus: RestObject {
@@ -47,6 +47,9 @@ public class LicenseStatus: RestObject {
    
    [JsonProperty("accumulateLicensesEnabled")]
    protected bool _accumulateLicensesEnabled;
+   
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -138,6 +141,17 @@ public class LicenseStatus: RestObject {
       }
       set {
          this._accumulateLicensesEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -396,7 +410,7 @@ public class LicenseStatus: RestObject {
    
 
    public String toString() {
-      return "LicenseStatus [" + "accumulateLicensesEnabled=" + _accumulateLicensesEnabled + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", totalLicensedAVRSGsCount=" + _totalLicensedAVRSGsCount + ", totalLicensedAVRSsCount=" + _totalLicensedAVRSsCount + ", totalLicensedGatewaysCount=" + _totalLicensedGatewaysCount + ", totalLicensedNICsCount=" + _totalLicensedNICsCount + ", totalLicensedNSGsCount=" + _totalLicensedNSGsCount + ", totalLicensedUsedAVRSGsCount=" + _totalLicensedUsedAVRSGsCount + ", totalLicensedUsedAVRSsCount=" + _totalLicensedUsedAVRSsCount + ", totalLicensedUsedNICsCount=" + _totalLicensedUsedNICsCount + ", totalLicensedUsedNSGsCount=" + _totalLicensedUsedNSGsCount + ", totalLicensedUsedVDFGsCount=" + _totalLicensedUsedVDFGsCount + ", totalLicensedUsedVDFsCount=" + _totalLicensedUsedVDFsCount + ", totalLicensedUsedVMsCount=" + _totalLicensedUsedVMsCount + ", totalLicensedUsedVRSGsCount=" + _totalLicensedUsedVRSGsCount + ", totalLicensedUsedVRSsCount=" + _totalLicensedUsedVRSsCount + ", totalLicensedVDFGsCount=" + _totalLicensedVDFGsCount + ", totalLicensedVDFsCount=" + _totalLicensedVDFsCount + ", totalLicensedVMsCount=" + _totalLicensedVMsCount + ", totalLicensedVRSGsCount=" + _totalLicensedVRSGsCount + ", totalLicensedVRSsCount=" + _totalLicensedVRSsCount + ", totalUsedGatewaysCount=" + _totalUsedGatewaysCount + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "LicenseStatus [" + "accumulateLicensesEnabled=" + _accumulateLicensesEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", totalLicensedAVRSGsCount=" + _totalLicensedAVRSGsCount + ", totalLicensedAVRSsCount=" + _totalLicensedAVRSsCount + ", totalLicensedGatewaysCount=" + _totalLicensedGatewaysCount + ", totalLicensedNICsCount=" + _totalLicensedNICsCount + ", totalLicensedNSGsCount=" + _totalLicensedNSGsCount + ", totalLicensedUsedAVRSGsCount=" + _totalLicensedUsedAVRSGsCount + ", totalLicensedUsedAVRSsCount=" + _totalLicensedUsedAVRSsCount + ", totalLicensedUsedNICsCount=" + _totalLicensedUsedNICsCount + ", totalLicensedUsedNSGsCount=" + _totalLicensedUsedNSGsCount + ", totalLicensedUsedVDFGsCount=" + _totalLicensedUsedVDFGsCount + ", totalLicensedUsedVDFsCount=" + _totalLicensedUsedVDFsCount + ", totalLicensedUsedVMsCount=" + _totalLicensedUsedVMsCount + ", totalLicensedUsedVRSGsCount=" + _totalLicensedUsedVRSGsCount + ", totalLicensedUsedVRSsCount=" + _totalLicensedUsedVRSsCount + ", totalLicensedVDFGsCount=" + _totalLicensedVDFGsCount + ", totalLicensedVDFsCount=" + _totalLicensedVDFsCount + ", totalLicensedVMsCount=" + _totalLicensedVMsCount + ", totalLicensedVRSGsCount=" + _totalLicensedVRSGsCount + ", totalLicensedVRSsCount=" + _totalLicensedVRSsCount + ", totalUsedGatewaysCount=" + _totalUsedGatewaysCount + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
