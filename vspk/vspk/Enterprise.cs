@@ -362,6 +362,9 @@ public class Enterprise: RestObject {
    private SyslogDestinationsFetcher _syslogDestinations;
    
    [JsonIgnore]
+   private TestDefinitionsFetcher _testDefinitions;
+   
+   [JsonIgnore]
    private TestSuitesFetcher _testSuites;
    
    [JsonIgnore]
@@ -524,6 +527,8 @@ public class Enterprise: RestObject {
       _sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
       
       _syslogDestinations = new SyslogDestinationsFetcher(this);
+      
+      _testDefinitions = new TestDefinitionsFetcher(this);
       
       _testSuites = new TestSuitesFetcher(this);
       
@@ -1219,6 +1224,10 @@ public class Enterprise: RestObject {
    
    public SyslogDestinationsFetcher getSyslogDestinations() {
       return _syslogDestinations;
+   }
+   
+   public TestDefinitionsFetcher getTestDefinitions() {
+      return _testDefinitions;
    }
    
    public TestSuitesFetcher getTestSuites() {

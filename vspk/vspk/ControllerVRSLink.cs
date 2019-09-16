@@ -47,6 +47,7 @@ public class ControllerVRSLink: RestObject {
    public enum EVSCConfigState {PRIMARY,SECONDARY };
    public enum EVSCCurrentState {PRIMARY,SECONDARY };
    public enum EClusterNodeRole {NONE,PRIMARY,SECONDARY };
+   public enum EControllerType {HSC,VSC };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum ERole {MASTER,NONE,SLAVE };
    public enum EStatus {ADMIN_DOWN,DOWN,UP };
@@ -75,9 +76,9 @@ public class ControllerVRSLink: RestObject {
    
    [JsonProperty("controllerID")]
    protected String _controllerID;
-   
+   [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("controllerType")]
-   protected String _controllerType;
+   protected EControllerType? _controllerType;
    
    [JsonProperty("dynamic")]
    protected bool _dynamic;
@@ -227,7 +228,7 @@ public class ControllerVRSLink: RestObject {
 
    
    [JsonIgnore]
-   public String NUControllerType {
+   public EControllerType? NUControllerType {
       get {
          return _controllerType;
       }

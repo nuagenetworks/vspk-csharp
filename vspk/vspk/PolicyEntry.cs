@@ -64,7 +64,7 @@ public class PolicyEntry: RestObject {
    protected String _lastUpdatedBy;
    
    [JsonProperty("matchCriteria")]
-   protected Object _matchCriteria;
+   protected String _matchCriteria;
    
    [JsonProperty("name")]
    protected String _name;
@@ -153,7 +153,7 @@ public class PolicyEntry: RestObject {
 
    
    [JsonIgnore]
-   public Object NUMatchCriteria {
+   public String NUMatchCriteria {
       get {
          return _matchCriteria;
       }

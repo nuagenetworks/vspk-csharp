@@ -42,19 +42,20 @@ public class SysmonUplinkConnection: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EDTLSState {ADMIN_DOWN,DOWN,NONE,UP };
-   public enum EJSONState {ADMIN_DOWN,DOWN,NONE,UP };
+   public enum EIpsecDtlsState {ADMIN_DOWN,DOWN,NONE,UP };
+   public enum EJsonState {ADMIN_DOWN,DOWN,NONE,UP };
    public enum EOpenflowState {ADMIN_DOWN,DOWN,NONE,UP };
+   public enum EVxlanDtlsState {ADMIN_DOWN,DOWN,NONE,UP };
 
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("DTLSState")]
-   protected EDTLSState? _DTLSState;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("JSONState")]
-   protected EJSONState? _JSONState;
    
    [JsonProperty("datapathUplinkId")]
    protected String _datapathUplinkId;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("ipsecDtlsState")]
+   protected EIpsecDtlsState? _ipsecDtlsState;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("jsonState")]
+   protected EJsonState? _jsonState;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("openflowState")]
    protected EOpenflowState? _openflowState;
@@ -64,33 +65,14 @@ public class SysmonUplinkConnection: RestObject {
    
    [JsonProperty("publicIP")]
    protected String _publicIP;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("vxlanDtlsState")]
+   protected EVxlanDtlsState? _vxlanDtlsState;
    
 
    
    public SysmonUplinkConnection() {
       
-   }
-
-   
-   [JsonIgnore]
-   public EDTLSState? NUDTLSState {
-      get {
-         return _DTLSState;
-      }
-      set {
-         this._DTLSState = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EJSONState? NUJSONState {
-      get {
-         return _JSONState;
-      }
-      set {
-         this._JSONState = value;
-      }
    }
 
    
@@ -101,6 +83,28 @@ public class SysmonUplinkConnection: RestObject {
       }
       set {
          this._datapathUplinkId = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EIpsecDtlsState? NUIpsecDtlsState {
+      get {
+         return _ipsecDtlsState;
+      }
+      set {
+         this._ipsecDtlsState = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EJsonState? NUJsonState {
+      get {
+         return _jsonState;
+      }
+      set {
+         this._jsonState = value;
       }
    }
 
@@ -138,11 +142,22 @@ public class SysmonUplinkConnection: RestObject {
    }
 
    
+   [JsonIgnore]
+   public EVxlanDtlsState? NUVxlanDtlsState {
+      get {
+         return _vxlanDtlsState;
+      }
+      set {
+         this._vxlanDtlsState = value;
+      }
+   }
+
+   
 
    
 
    public String toString() {
-      return "SysmonUplinkConnection [" + "DTLSState=" + _DTLSState + ", JSONState=" + _JSONState + ", datapathUplinkId=" + _datapathUplinkId + ", openflowState=" + _openflowState + ", privateIP=" + _privateIP + ", publicIP=" + _publicIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "SysmonUplinkConnection [" + "datapathUplinkId=" + _datapathUplinkId + ", ipsecDtlsState=" + _ipsecDtlsState + ", jsonState=" + _jsonState + ", openflowState=" + _openflowState + ", privateIP=" + _privateIP + ", publicIP=" + _publicIP + ", vxlanDtlsState=" + _vxlanDtlsState + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
