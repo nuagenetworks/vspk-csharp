@@ -42,6 +42,7 @@ public class NSGInfo: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EBootstrapStatus {ACTIVE,CERTIFICATE_SIGNED,INACTIVE,NOTIFICATION_APP_REQ_ACK,NOTIFICATION_APP_REQ_SENT };
    public enum ECmdStatus {ABANDONED,COMPLETED,FAILED,RUNNING,SKIPPED,STARTED,UNKNOWN };
    public enum ECmdType {NSG_DOWNLOAD_OS_IMAGE,NSG_UPGRADE_TO_IMAGE };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
@@ -87,9 +88,9 @@ public class NSGInfo: RestObject {
    
    [JsonProperty("associatedNSGatewayID")]
    protected String _associatedNSGatewayID;
-   
+   [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("bootstrapStatus")]
-   protected String _bootstrapStatus;
+   protected EBootstrapStatus? _bootstrapStatus;
    
    [JsonProperty("cmdDetailedStatus")]
    protected String _cmdDetailedStatus;
@@ -104,7 +105,7 @@ public class NSGInfo: RestObject {
    protected String _cmdID;
    
    [JsonProperty("cmdLastUpdatedDate")]
-   protected String _cmdLastUpdatedDate;
+   protected long? _cmdLastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("cmdStatus")]
    protected ECmdStatus? _cmdStatus;
@@ -299,7 +300,7 @@ public class NSGInfo: RestObject {
 
    
    [JsonIgnore]
-   public String NUBootstrapStatus {
+   public EBootstrapStatus? NUBootstrapStatus {
       get {
          return _bootstrapStatus;
       }
@@ -354,7 +355,7 @@ public class NSGInfo: RestObject {
 
    
    [JsonIgnore]
-   public String NUCmdLastUpdatedDate {
+   public long? NUCmdLastUpdatedDate {
       get {
          return _cmdLastUpdatedDate;
       }

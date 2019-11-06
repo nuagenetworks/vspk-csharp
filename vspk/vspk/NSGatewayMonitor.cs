@@ -44,6 +44,9 @@ public class NSGatewayMonitor: RestObject {
    
 
    
+   [JsonProperty("controllervrslinks")]
+   protected System.Collections.Generic.List<String> _controllervrslinks;
+   
    [JsonProperty("nsginfo")]
    protected Object _nsginfo;
    
@@ -63,6 +66,17 @@ public class NSGatewayMonitor: RestObject {
    
    public NSGatewayMonitor() {
       
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<String> NUControllervrslinks {
+      get {
+         return _controllervrslinks;
+      }
+      set {
+         this._controllervrslinks = value;
+      }
    }
 
    
@@ -125,7 +139,7 @@ public class NSGatewayMonitor: RestObject {
    
 
    public String toString() {
-      return "NSGatewayMonitor [" + "nsginfo=" + _nsginfo + ", nsgstate=" + _nsgstate + ", nsgsummary=" + _nsgsummary + ", vrsinfo=" + _vrsinfo + ", vscs=" + _vscs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGatewayMonitor [" + "controllervrslinks=" + _controllervrslinks + ", nsginfo=" + _nsginfo + ", nsgstate=" + _nsgstate + ", nsgsummary=" + _nsgsummary + ", vrsinfo=" + _vrsinfo + ", vscs=" + _vscs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

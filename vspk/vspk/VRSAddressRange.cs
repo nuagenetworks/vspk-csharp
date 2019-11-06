@@ -42,7 +42,7 @@ public class VRSAddressRange: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EIPType {IPV4,IPV6,DUALSTACK };
+   public enum EIPType {DUALSTACK,IPV4,IPV6 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    [JsonConverter(typeof(StringEnumConverter))]
