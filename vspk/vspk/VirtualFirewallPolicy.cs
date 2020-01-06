@@ -44,7 +44,7 @@ public class VirtualFirewallPolicy: RestObject {
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EPolicyState {DRAFT,LIVE };
-   public enum EPriorityType {BOTTOM,TOP };
+   public enum EPriorityType {BOTTOM,NONE,TOP };
 
    
    [JsonProperty("active")]

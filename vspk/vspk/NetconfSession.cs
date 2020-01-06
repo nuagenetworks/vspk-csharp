@@ -43,7 +43,7 @@ public class NetconfSession: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EGatewayVendor {CISCO };
+   public enum EGatewayVendor {CISCO,NOKIA };
    public enum EStatus {CONNECTED,DISCONNECTED };
 
    
