@@ -45,6 +45,7 @@ public class ZFBRequest: RestObject {
    public enum EZFBApprovalStatus {APPROVED,ASSIGNED,DENIED,UNASSIGNED };
    public enum EAssociatedEntityType {GATEWAY,NSGATEWAY };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum ERequestType {SELF_REBOOTSTRAP,ZFB };
 
    
    [JsonProperty("CPUType")]
@@ -119,8 +120,23 @@ public class ZFBRequest: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("originalEnterpriseName")]
+   protected String _originalEnterpriseName;
+   
+   [JsonProperty("originalGatewayDatapathID")]
+   protected String _originalGatewayDatapathID;
+   
+   [JsonProperty("originalGatewayName")]
+   protected String _originalGatewayName;
+   
+   [JsonProperty("originalUplinkConnectionInfo")]
+   protected String _originalUplinkConnectionInfo;
+   
    [JsonProperty("registrationURL")]
    protected String _registrationURL;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("requestType")]
+   protected ERequestType? _requestType;
    
    [JsonProperty("serialNumber")]
    protected String _serialNumber;
@@ -415,12 +431,67 @@ public class ZFBRequest: RestObject {
 
    
    [JsonIgnore]
+   public String NUOriginalEnterpriseName {
+      get {
+         return _originalEnterpriseName;
+      }
+      set {
+         this._originalEnterpriseName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOriginalGatewayDatapathID {
+      get {
+         return _originalGatewayDatapathID;
+      }
+      set {
+         this._originalGatewayDatapathID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOriginalGatewayName {
+      get {
+         return _originalGatewayName;
+      }
+      set {
+         this._originalGatewayName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOriginalUplinkConnectionInfo {
+      get {
+         return _originalUplinkConnectionInfo;
+      }
+      set {
+         this._originalUplinkConnectionInfo = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NURegistrationURL {
       get {
          return _registrationURL;
       }
       set {
          this._registrationURL = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public ERequestType? NURequestType {
+      get {
+         return _requestType;
+      }
+      set {
+         this._requestType = value;
       }
    }
 
@@ -463,7 +534,7 @@ public class ZFBRequest: RestObject {
    
 
    public String toString() {
-      return "ZFBRequest [" + "CPUType=" + _CPUType + ", IPAddress=" + _IPAddress + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", UUID=" + _UUID + ", ZFBApprovalStatus=" + _ZFBApprovalStatus + ", ZFBBootstrapEnabled=" + _ZFBBootstrapEnabled + ", ZFBInfo=" + _ZFBInfo + ", ZFBRequestRetryTimer=" + _ZFBRequestRetryTimer + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedEnterpriseName=" + _associatedEnterpriseName + ", associatedEntityType=" + _associatedEntityType + ", associatedGatewayID=" + _associatedGatewayID + ", associatedGatewayName=" + _associatedGatewayName + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", hostname=" + _hostname + ", lastConnectedTime=" + _lastConnectedTime + ", lastUpdatedBy=" + _lastUpdatedBy + ", registrationURL=" + _registrationURL + ", serialNumber=" + _serialNumber + ", statusString=" + _statusString + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "ZFBRequest [" + "CPUType=" + _CPUType + ", IPAddress=" + _IPAddress + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", UUID=" + _UUID + ", ZFBApprovalStatus=" + _ZFBApprovalStatus + ", ZFBBootstrapEnabled=" + _ZFBBootstrapEnabled + ", ZFBInfo=" + _ZFBInfo + ", ZFBRequestRetryTimer=" + _ZFBRequestRetryTimer + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedEnterpriseName=" + _associatedEnterpriseName + ", associatedEntityType=" + _associatedEntityType + ", associatedGatewayID=" + _associatedGatewayID + ", associatedGatewayName=" + _associatedGatewayName + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", hostname=" + _hostname + ", lastConnectedTime=" + _lastConnectedTime + ", lastUpdatedBy=" + _lastUpdatedBy + ", originalEnterpriseName=" + _originalEnterpriseName + ", originalGatewayDatapathID=" + _originalGatewayDatapathID + ", originalGatewayName=" + _originalGatewayName + ", originalUplinkConnectionInfo=" + _originalUplinkConnectionInfo + ", registrationURL=" + _registrationURL + ", requestType=" + _requestType + ", serialNumber=" + _serialNumber + ", statusString=" + _statusString + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -46,7 +46,7 @@ public class Domain: RestObject {
    public enum EDPI {DISABLED,ENABLED };
    public enum EEVPNRT5Type {IP,MAC };
    public enum EFIPIgnoreDefaultRoute {DISABLED,ENABLED };
-   public enum EPATEnabled {DISABLED,ENABLED,INHERITED };
+   public enum EPATEnabled {DISABLED,ENABLED };
    public enum EAdvertiseCriteria {HUB_ROUTES };
    public enum EAggregationFlowType {PBR_BASED,ROUTE_BASED };
    public enum EEncryption {DISABLED,ENABLED };
