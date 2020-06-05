@@ -73,6 +73,9 @@ public class NSGateway: RestObject {
    [JsonProperty("BIOSVersion")]
    protected String _BIOSVersion;
    
+   [JsonProperty("CPUCoreAllocation")]
+   protected String _CPUCoreAllocation;
+   
    [JsonProperty("CPUType")]
    protected String _CPUType;
    
@@ -138,6 +141,9 @@ public class NSGateway: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("bootstrapStatus")]
    protected EBootstrapStatus? _bootstrapStatus;
+   
+   [JsonProperty("certValidityDays")]
+   protected long? _certValidityDays;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("configurationReloadState")]
    protected EConfigurationReloadState? _configurationReloadState;
@@ -189,6 +195,9 @@ public class NSGateway: RestObject {
    
    [JsonProperty("gatewayConnected")]
    protected bool _gatewayConnected;
+   
+   [JsonProperty("hugePageSetting")]
+   protected String _hugePageSetting;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("inheritedSSHServiceState")]
    protected EInheritedSSHServiceState? _inheritedSSHServiceState;
@@ -243,6 +252,9 @@ public class NSGateway: RestObject {
    
    [JsonProperty("templateID")]
    protected String _templateID;
+   
+   [JsonProperty("threatPreventionEnabled")]
+   protected bool _threatPreventionEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("tunnelShaping")]
    protected ETunnelShaping? _tunnelShaping;
@@ -313,6 +325,12 @@ public class NSGateway: RestObject {
    private SubnetsFetcher _subnets;
    
    [JsonIgnore]
+   private ThreatPreventionInfosFetcher _threatPreventionInfos;
+   
+   [JsonIgnore]
+   private UnderlayTestsFetcher _underlayTests;
+   
+   [JsonIgnore]
    private UplinkConnectionsFetcher _uplinkConnections;
    
    [JsonIgnore]
@@ -365,6 +383,10 @@ public class NSGateway: RestObject {
       
       _subnets = new SubnetsFetcher(this);
       
+      _threatPreventionInfos = new ThreatPreventionInfosFetcher(this);
+      
+      _underlayTests = new UnderlayTestsFetcher(this);
+      
       _uplinkConnections = new UplinkConnectionsFetcher(this);
       
       _vNFs = new VNFsFetcher(this);
@@ -414,6 +436,17 @@ public class NSGateway: RestObject {
       }
       set {
          this._BIOSVersion = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCPUCoreAllocation {
+      get {
+         return _CPUCoreAllocation;
+      }
+      set {
+         this._CPUCoreAllocation = value;
       }
    }
 
@@ -661,6 +694,17 @@ public class NSGateway: RestObject {
 
    
    [JsonIgnore]
+   public long? NUCertValidityDays {
+      get {
+         return _certValidityDays;
+      }
+      set {
+         this._certValidityDays = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EConfigurationReloadState? NUConfigurationReloadState {
       get {
          return _configurationReloadState;
@@ -843,6 +887,17 @@ public class NSGateway: RestObject {
       }
       set {
          this._gatewayConnected = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUHugePageSetting {
+      get {
+         return _hugePageSetting;
+      }
+      set {
+         this._hugePageSetting = value;
       }
    }
 
@@ -1046,6 +1101,17 @@ public class NSGateway: RestObject {
 
    
    [JsonIgnore]
+   public bool NUThreatPreventionEnabled {
+      get {
+         return _threatPreventionEnabled;
+      }
+      set {
+         this._threatPreventionEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public ETunnelShaping? NUTunnelShaping {
       get {
          return _tunnelShaping;
@@ -1142,6 +1208,14 @@ public class NSGateway: RestObject {
       return _subnets;
    }
    
+   public ThreatPreventionInfosFetcher getThreatPreventionInfos() {
+      return _threatPreventionInfos;
+   }
+   
+   public UnderlayTestsFetcher getUnderlayTests() {
+      return _underlayTests;
+   }
+   
    public UplinkConnectionsFetcher getUplinkConnections() {
       return _uplinkConnections;
    }
@@ -1156,7 +1230,7 @@ public class NSGateway: RestObject {
    
 
    public String toString() {
-      return "NSGateway [" + "AARApplicationReleaseDate=" + _AARApplicationReleaseDate + ", AARApplicationVersion=" + _AARApplicationVersion + ", BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NATTraversalEnabled=" + _NATTraversalEnabled + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", SSHService=" + _SSHService + ", TCPMSSEnabled=" + _TCPMSSEnabled + ", TCPMaximumSegmentSize=" + _TCPMaximumSegmentSize + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", VSDAARApplicationVersion=" + _VSDAARApplicationVersion + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + _associatedNSGUpgradeProfileID + ", associatedOverlayManagementProfileID=" + _associatedOverlayManagementProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", configurationReloadState=" + _configurationReloadState + ", configurationStatus=" + _configurationStatus + ", configureLoadBalancing=" + _configureLoadBalancing + ", controlTrafficCOSValue=" + _controlTrafficCOSValue + ", controlTrafficDSCPValue=" + _controlTrafficDSCPValue + ", datapathID=" + _datapathID + ", derivedSSHServiceState=" + _derivedSSHServiceState + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", functions=" + _functions + ", gatewayConfigRawVersion=" + _gatewayConfigRawVersion + ", gatewayConfigVersion=" + _gatewayConfigVersion + ", gatewayConnected=" + _gatewayConnected + ", inheritedSSHServiceState=" + _inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + _lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + _lastUpdatedBy + ", libraries=" + _libraries + ", locationID=" + _locationID + ", name=" + _name + ", networkAcceleration=" + _networkAcceleration + ", operationMode=" + _operationMode + ", operationStatus=" + _operationStatus + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", syslogLevel=" + _syslogLevel + ", systemID=" + _systemID + ", templateID=" + _templateID + ", tunnelShaping=" + _tunnelShaping + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGateway [" + "AARApplicationReleaseDate=" + _AARApplicationReleaseDate + ", AARApplicationVersion=" + _AARApplicationVersion + ", BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUCoreAllocation=" + _CPUCoreAllocation + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NATTraversalEnabled=" + _NATTraversalEnabled + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", SSHService=" + _SSHService + ", TCPMSSEnabled=" + _TCPMSSEnabled + ", TCPMaximumSegmentSize=" + _TCPMaximumSegmentSize + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", VSDAARApplicationVersion=" + _VSDAARApplicationVersion + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + _associatedNSGUpgradeProfileID + ", associatedOverlayManagementProfileID=" + _associatedOverlayManagementProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", certValidityDays=" + _certValidityDays + ", configurationReloadState=" + _configurationReloadState + ", configurationStatus=" + _configurationStatus + ", configureLoadBalancing=" + _configureLoadBalancing + ", controlTrafficCOSValue=" + _controlTrafficCOSValue + ", controlTrafficDSCPValue=" + _controlTrafficDSCPValue + ", datapathID=" + _datapathID + ", derivedSSHServiceState=" + _derivedSSHServiceState + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", functions=" + _functions + ", gatewayConfigRawVersion=" + _gatewayConfigRawVersion + ", gatewayConfigVersion=" + _gatewayConfigVersion + ", gatewayConnected=" + _gatewayConnected + ", hugePageSetting=" + _hugePageSetting + ", inheritedSSHServiceState=" + _inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + _lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + _lastUpdatedBy + ", libraries=" + _libraries + ", locationID=" + _locationID + ", name=" + _name + ", networkAcceleration=" + _networkAcceleration + ", operationMode=" + _operationMode + ", operationStatus=" + _operationStatus + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", syslogLevel=" + _syslogLevel + ", systemID=" + _systemID + ", templateID=" + _templateID + ", threatPreventionEnabled=" + _threatPreventionEnabled + ", tunnelShaping=" + _tunnelShaping + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -53,6 +53,9 @@ public class IngressAdvFwdTemplate: RestObject {
    [JsonProperty("associatedLiveEntityID")]
    protected String _associatedLiveEntityID;
    
+   [JsonProperty("associatedVirtualFirewallPolicyID")]
+   protected String _associatedVirtualFirewallPolicyID;
+   
    [JsonProperty("autoGeneratePriority")]
    protected bool _autoGeneratePriority;
    
@@ -134,6 +137,17 @@ public class IngressAdvFwdTemplate: RestObject {
       }
       set {
          this._associatedLiveEntityID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedVirtualFirewallPolicyID {
+      get {
+         return _associatedVirtualFirewallPolicyID;
+      }
+      set {
+         this._associatedVirtualFirewallPolicyID = value;
       }
    }
 
@@ -290,7 +304,7 @@ public class IngressAdvFwdTemplate: RestObject {
    
 
    public String toString() {
-      return "IngressAdvFwdTemplate [" + "active=" + _active + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", autoGeneratePriority=" + _autoGeneratePriority + ", defaultAllowIP=" + _defaultAllowIP + ", defaultAllowNonIP=" + _defaultAllowNonIP + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyState=" + _policyState + ", priority=" + _priority + ", priorityType=" + _priorityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "IngressAdvFwdTemplate [" + "active=" + _active + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedVirtualFirewallPolicyID=" + _associatedVirtualFirewallPolicyID + ", autoGeneratePriority=" + _autoGeneratePriority + ", defaultAllowIP=" + _defaultAllowIP + ", defaultAllowNonIP=" + _defaultAllowNonIP + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyState=" + _policyState + ", priority=" + _priority + ", priorityType=" + _priorityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

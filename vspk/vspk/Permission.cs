@@ -46,6 +46,24 @@ public class Permission: RestObject {
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
 
    
+   [JsonProperty("associatedGroupDescription")]
+   protected String _associatedGroupDescription;
+   
+   [JsonProperty("associatedGroupID")]
+   protected String _associatedGroupID;
+   
+   [JsonProperty("associatedGroupName")]
+   protected String _associatedGroupName;
+   
+   [JsonProperty("associatedRoleDescription")]
+   protected String _associatedRoleDescription;
+   
+   [JsonProperty("associatedRoleID")]
+   protected String _associatedRoleID;
+   
+   [JsonProperty("associatedRoleName")]
+   protected String _associatedRoleName;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -64,8 +82,11 @@ public class Permission: RestObject {
    [JsonProperty("permittedAction")]
    protected EPermittedAction? _permittedAction;
    
-   [JsonProperty("permittedEntityDescription")]
-   protected String _permittedEntityDescription;
+   [JsonProperty("permittedEnterpriseDescription")]
+   protected String _permittedEnterpriseDescription;
+   
+   [JsonProperty("permittedEnterpriseName")]
+   protected String _permittedEnterpriseName;
    
    [JsonProperty("permittedEntityID")]
    protected String _permittedEntityID;
@@ -95,6 +116,72 @@ public class Permission: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedGroupDescription {
+      get {
+         return _associatedGroupDescription;
+      }
+      set {
+         this._associatedGroupDescription = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedGroupID {
+      get {
+         return _associatedGroupID;
+      }
+      set {
+         this._associatedGroupID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedGroupName {
+      get {
+         return _associatedGroupName;
+      }
+      set {
+         this._associatedGroupName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedRoleDescription {
+      get {
+         return _associatedRoleDescription;
+      }
+      set {
+         this._associatedRoleDescription = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedRoleID {
+      get {
+         return _associatedRoleID;
+      }
+      set {
+         this._associatedRoleID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedRoleName {
+      get {
+         return _associatedRoleName;
+      }
+      set {
+         this._associatedRoleName = value;
+      }
    }
 
    
@@ -165,12 +252,23 @@ public class Permission: RestObject {
 
    
    [JsonIgnore]
-   public String NUPermittedEntityDescription {
+   public String NUPermittedEnterpriseDescription {
       get {
-         return _permittedEntityDescription;
+         return _permittedEnterpriseDescription;
       }
       set {
-         this._permittedEntityDescription = value;
+         this._permittedEnterpriseDescription = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUPermittedEnterpriseName {
+      get {
+         return _permittedEnterpriseName;
+      }
+      set {
+         this._permittedEnterpriseName = value;
       }
    }
 
@@ -224,7 +322,7 @@ public class Permission: RestObject {
    
 
    public String toString() {
-      return "Permission [" + "embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", permittedEntityDescription=" + _permittedEntityDescription + ", permittedEntityID=" + _permittedEntityID + ", permittedEntityName=" + _permittedEntityName + ", permittedEntityType=" + _permittedEntityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Permission [" + "associatedGroupDescription=" + _associatedGroupDescription + ", associatedGroupID=" + _associatedGroupID + ", associatedGroupName=" + _associatedGroupName + ", associatedRoleDescription=" + _associatedRoleDescription + ", associatedRoleID=" + _associatedRoleID + ", associatedRoleName=" + _associatedRoleName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", permittedEnterpriseDescription=" + _permittedEnterpriseDescription + ", permittedEnterpriseName=" + _permittedEnterpriseName + ", permittedEntityID=" + _permittedEntityID + ", permittedEntityName=" + _permittedEntityName + ", permittedEntityType=" + _permittedEntityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

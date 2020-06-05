@@ -51,6 +51,9 @@ public class RedirectionTarget: RestObject {
    [JsonProperty("ESI")]
    protected String _ESI;
    
+   [JsonProperty("autoCreated")]
+   protected bool _autoCreated;
+   
    [JsonProperty("description")]
    protected String _description;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -127,6 +130,17 @@ public class RedirectionTarget: RestObject {
       }
       set {
          this._ESI = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUAutoCreated {
+      get {
+         return _autoCreated;
+      }
+      set {
+         this._autoCreated = value;
       }
    }
 
@@ -287,7 +301,7 @@ public class RedirectionTarget: RestObject {
    
 
    public String toString() {
-      return "RedirectionTarget [" + "ESI=" + _ESI + ", description=" + _description + ", destinationType=" + _destinationType + ", embeddedMetadata=" + _embeddedMetadata + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", redundancyEnabled=" + _redundancyEnabled + ", templateID=" + _templateID + ", triggerType=" + _triggerType + ", virtualNetworkID=" + _virtualNetworkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "RedirectionTarget [" + "ESI=" + _ESI + ", autoCreated=" + _autoCreated + ", description=" + _description + ", destinationType=" + _destinationType + ", embeddedMetadata=" + _embeddedMetadata + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", redundancyEnabled=" + _redundancyEnabled + ", templateID=" + _templateID + ", triggerType=" + _triggerType + ", virtualNetworkID=" + _virtualNetworkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

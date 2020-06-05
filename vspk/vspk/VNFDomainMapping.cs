@@ -46,14 +46,29 @@ public class VNFDomainMapping: RestObject {
    public enum ESegmentationType {VLAN };
 
    
+   [JsonProperty("associatedDomainID")]
+   protected String _associatedDomainID;
+   
+   [JsonProperty("associatedDomainName")]
+   protected String _associatedDomainName;
+   
+   [JsonProperty("associatedEnterpriseID")]
+   protected String _associatedEnterpriseID;
+   
    [JsonProperty("associatedNSGatewayID")]
    protected String _associatedNSGatewayID;
    
    [JsonProperty("associatedNSGatewayName")]
    protected String _associatedNSGatewayName;
    
+   [JsonProperty("autoCreated")]
+   protected bool _autoCreated;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
+   
+   [JsonProperty("enterpriseName")]
+   protected String _enterpriseName;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -70,6 +85,9 @@ public class VNFDomainMapping: RestObject {
    [JsonProperty("segmentationType")]
    protected ESegmentationType? _segmentationType;
    
+   [JsonProperty("serviceId")]
+   protected String _serviceId;
+   
 
    
    [JsonIgnore]
@@ -84,6 +102,39 @@ public class VNFDomainMapping: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedDomainID {
+      get {
+         return _associatedDomainID;
+      }
+      set {
+         this._associatedDomainID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedDomainName {
+      get {
+         return _associatedDomainName;
+      }
+      set {
+         this._associatedDomainName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEnterpriseID {
+      get {
+         return _associatedEnterpriseID;
+      }
+      set {
+         this._associatedEnterpriseID = value;
+      }
    }
 
    
@@ -110,12 +161,34 @@ public class VNFDomainMapping: RestObject {
 
    
    [JsonIgnore]
+   public bool NUAutoCreated {
+      get {
+         return _autoCreated;
+      }
+      set {
+         this._autoCreated = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
       set {
          this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUEnterpriseName {
+      get {
+         return _enterpriseName;
+      }
+      set {
+         this._enterpriseName = value;
       }
    }
 
@@ -175,6 +248,17 @@ public class VNFDomainMapping: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NUServiceId {
+      get {
+         return _serviceId;
+      }
+      set {
+         this._serviceId = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -187,7 +271,7 @@ public class VNFDomainMapping: RestObject {
    
 
    public String toString() {
-      return "VNFDomainMapping [" + "associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", segmentationID=" + _segmentationID + ", segmentationType=" + _segmentationType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VNFDomainMapping [" + "associatedDomainID=" + _associatedDomainID + ", associatedDomainName=" + _associatedDomainName + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", autoCreated=" + _autoCreated + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", segmentationID=" + _segmentationID + ", segmentationType=" + _segmentationType + ", serviceId=" + _serviceId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

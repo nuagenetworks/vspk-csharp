@@ -47,6 +47,9 @@ public class OSPFInterface: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EInterfaceType {BROADCAST,POINT_TO_POINT };
 
+   
+   [JsonProperty("BFDEnabled")]
+   protected bool _BFDEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("adminState")]
    protected EAdminState? _adminState;
@@ -116,6 +119,17 @@ public class OSPFInterface: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public bool NUBFDEnabled {
+      get {
+         return _BFDEnabled;
+      }
+      set {
+         this._BFDEnabled = value;
+      }
    }
 
    
@@ -329,7 +343,7 @@ public class OSPFInterface: RestObject {
    
 
    public String toString() {
-      return "OSPFInterface [" + "adminState=" + _adminState + ", associatedSubnetID=" + _associatedSubnetID + ", authenticationKey=" + _authenticationKey + ", authenticationType=" + _authenticationType + ", deadInterval=" + _deadInterval + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", helloInterval=" + _helloInterval + ", interfaceType=" + _interfaceType + ", lastUpdatedBy=" + _lastUpdatedBy + ", messageDigestKeys=" + _messageDigestKeys + ", metric=" + _metric + ", mtu=" + _mtu + ", name=" + _name + ", passiveEnabled=" + _passiveEnabled + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "OSPFInterface [" + "BFDEnabled=" + _BFDEnabled + ", adminState=" + _adminState + ", associatedSubnetID=" + _associatedSubnetID + ", authenticationKey=" + _authenticationKey + ", authenticationType=" + _authenticationType + ", deadInterval=" + _deadInterval + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", helloInterval=" + _helloInterval + ", interfaceType=" + _interfaceType + ", lastUpdatedBy=" + _lastUpdatedBy + ", messageDigestKeys=" + _messageDigestKeys + ", metric=" + _metric + ", mtu=" + _mtu + ", name=" + _name + ", passiveEnabled=" + _passiveEnabled + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

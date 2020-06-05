@@ -187,6 +187,9 @@ public class Me: RestObject {
    private EnterpriseProfilesFetcher _enterpriseProfiles;
    
    [JsonIgnore]
+   private EthernetSegmentGWGroupsFetcher _ethernetSegmentGWGroups;
+   
+   [JsonIgnore]
    private FloatingIpsFetcher _floatingIps;
    
    [JsonIgnore]
@@ -319,6 +322,9 @@ public class Me: RestObject {
    private RemoteVrsInfosFetcher _remoteVrsInfos;
    
    [JsonIgnore]
+   private RolesFetcher _roles;
+   
+   [JsonIgnore]
    private RoutingPoliciesFetcher _routingPolicies;
    
    [JsonIgnore]
@@ -397,6 +403,9 @@ public class Me: RestObject {
    private vrsInfosFetcher _vrsInfos;
    
    [JsonIgnore]
+   private VSDConfigsFetcher _vSDConfigs;
+   
+   [JsonIgnore]
    private VSPsFetcher _vSPs;
    
    [JsonIgnore]
@@ -457,6 +466,8 @@ public class Me: RestObject {
       _enterprises = new EnterprisesFetcher(this);
       
       _enterpriseProfiles = new EnterpriseProfilesFetcher(this);
+      
+      _ethernetSegmentGWGroups = new EthernetSegmentGWGroupsFetcher(this);
       
       _floatingIps = new FloatingIpsFetcher(this);
       
@@ -546,6 +557,8 @@ public class Me: RestObject {
       
       _remoteVrsInfos = new RemoteVrsInfosFetcher(this);
       
+      _roles = new RolesFetcher(this);
+      
       _routingPolicies = new RoutingPoliciesFetcher(this);
       
       _saaSApplicationTypes = new SaaSApplicationTypesFetcher(this);
@@ -597,6 +610,8 @@ public class Me: RestObject {
       _vCenterVRSConfigs = new VCenterVRSConfigsFetcher(this);
       
       _vrsInfos = new vrsInfosFetcher(this);
+      
+      _vSDConfigs = new VSDConfigsFetcher(this);
       
       _vSPs = new VSPsFetcher(this);
       
@@ -949,6 +964,10 @@ public class Me: RestObject {
       return _enterpriseProfiles;
    }
    
+   public EthernetSegmentGWGroupsFetcher getEthernetSegmentGWGroups() {
+      return _ethernetSegmentGWGroups;
+   }
+   
    public FloatingIpsFetcher getFloatingIps() {
       return _floatingIps;
    }
@@ -1125,6 +1144,10 @@ public class Me: RestObject {
       return _remoteVrsInfos;
    }
    
+   public RolesFetcher getRoles() {
+      return _roles;
+   }
+   
    public RoutingPoliciesFetcher getRoutingPolicies() {
       return _routingPolicies;
    }
@@ -1227,6 +1250,10 @@ public class Me: RestObject {
    
    public vrsInfosFetcher getvrsInfos() {
       return _vrsInfos;
+   }
+   
+   public VSDConfigsFetcher getVSDConfigs() {
+      return _vSDConfigs;
    }
    
    public VSPsFetcher getVSPs() {

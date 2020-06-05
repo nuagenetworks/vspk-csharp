@@ -47,7 +47,7 @@ public class VNF: RestObject {
    public enum ELastUserAction {DEPLOY,NONE,REDEPLOY,RESTART,START,STOP,UNDEPLOY };
    public enum EStatus {BLOCKED,CRASHED,DYING,IDLE,INIT,LAST,PAUSED,PMSUSPENDED,RUNNING,SHUTDOWN,SHUTOFF };
    public enum ETaskState {DEPLOYING,NONE,STARTING,STOPPING,UNDEPLOYING };
-   public enum EType {FIREWALL,WAN_OPT };
+   public enum EType {FIREWALL,THREAT_PREVENTION,WAN_OPT };
 
    
    [JsonProperty("CPUCount")]

@@ -66,6 +66,9 @@ public class TestSuite: RestObject {
    [JsonProperty("name")]
    protected String _name;
    
+   [JsonProperty("underlayTest")]
+   protected bool _underlayTest;
+   
 
    
    [JsonIgnore]
@@ -170,6 +173,17 @@ public class TestSuite: RestObject {
    }
 
    
+   [JsonIgnore]
+   public bool NUUnderlayTest {
+      get {
+         return _underlayTest;
+      }
+      set {
+         this._underlayTest = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -190,7 +204,7 @@ public class TestSuite: RestObject {
    
 
    public String toString() {
-      return "TestSuite [" + "description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "TestSuite [" + "description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", underlayTest=" + _underlayTest + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

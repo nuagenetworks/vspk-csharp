@@ -53,8 +53,14 @@ public class VirtualFirewallPolicy: RestObject {
    [JsonProperty("allowAddressSpoof")]
    protected bool _allowAddressSpoof;
    
+   [JsonProperty("associatedEgressAdvFwdRuleTemplateID")]
+   protected String _associatedEgressAdvFwdRuleTemplateID;
+   
    [JsonProperty("associatedEgressTemplateID")]
    protected String _associatedEgressTemplateID;
+   
+   [JsonProperty("associatedIngressAdvFwdRuleTemplateID")]
+   protected String _associatedIngressAdvFwdRuleTemplateID;
    
    [JsonProperty("associatedIngressTemplateID")]
    protected String _associatedIngressTemplateID;
@@ -146,12 +152,34 @@ public class VirtualFirewallPolicy: RestObject {
 
    
    [JsonIgnore]
+   public String NUAssociatedEgressAdvFwdRuleTemplateID {
+      get {
+         return _associatedEgressAdvFwdRuleTemplateID;
+      }
+      set {
+         this._associatedEgressAdvFwdRuleTemplateID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAssociatedEgressTemplateID {
       get {
          return _associatedEgressTemplateID;
       }
       set {
          this._associatedEgressTemplateID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedIngressAdvFwdRuleTemplateID {
+      get {
+         return _associatedIngressAdvFwdRuleTemplateID;
+      }
+      set {
+         this._associatedIngressAdvFwdRuleTemplateID = value;
       }
    }
 
@@ -337,7 +365,7 @@ public class VirtualFirewallPolicy: RestObject {
    
 
    public String toString() {
-      return "VirtualFirewallPolicy [" + "active=" + _active + ", allowAddressSpoof=" + _allowAddressSpoof + ", associatedEgressTemplateID=" + _associatedEgressTemplateID + ", associatedIngressTemplateID=" + _associatedIngressTemplateID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", autoGeneratePriority=" + _autoGeneratePriority + ", defaultAllowIP=" + _defaultAllowIP + ", defaultAllowNonIP=" + _defaultAllowNonIP + ", defaultInstallACLImplicitRules=" + _defaultInstallACLImplicitRules + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyState=" + _policyState + ", priority=" + _priority + ", priorityType=" + _priorityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VirtualFirewallPolicy [" + "active=" + _active + ", allowAddressSpoof=" + _allowAddressSpoof + ", associatedEgressAdvFwdRuleTemplateID=" + _associatedEgressAdvFwdRuleTemplateID + ", associatedEgressTemplateID=" + _associatedEgressTemplateID + ", associatedIngressAdvFwdRuleTemplateID=" + _associatedIngressAdvFwdRuleTemplateID + ", associatedIngressTemplateID=" + _associatedIngressTemplateID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", autoGeneratePriority=" + _autoGeneratePriority + ", defaultAllowIP=" + _defaultAllowIP + ", defaultAllowNonIP=" + _defaultAllowNonIP + ", defaultInstallACLImplicitRules=" + _defaultInstallACLImplicitRules + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyState=" + _policyState + ", priority=" + _priority + ", priorityType=" + _priorityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

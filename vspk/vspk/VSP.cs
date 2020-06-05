@@ -87,6 +87,9 @@ public class VSP: RestObject {
    private NetconfManagersFetcher _netconfManagers;
    
    [JsonIgnore]
+   private ThreatPreventionServerConnectionsFetcher _threatPreventionServerConnections;
+   
+   [JsonIgnore]
    private VSCsFetcher _vSCs;
    
    public VSP() {
@@ -100,6 +103,8 @@ public class VSP: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _netconfManagers = new NetconfManagersFetcher(this);
+      
+      _threatPreventionServerConnections = new ThreatPreventionServerConnectionsFetcher(this);
       
       _vSCs = new VSCsFetcher(this);
       
@@ -214,6 +219,10 @@ public class VSP: RestObject {
    
    public NetconfManagersFetcher getNetconfManagers() {
       return _netconfManagers;
+   }
+   
+   public ThreatPreventionServerConnectionsFetcher getThreatPreventionServerConnections() {
+      return _threatPreventionServerConnections;
    }
    
    public VSCsFetcher getVSCs() {

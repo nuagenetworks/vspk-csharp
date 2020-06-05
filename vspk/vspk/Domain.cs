@@ -56,6 +56,7 @@ public class Domain: RestObject {
    public enum EMulticast {DISABLED,ENABLED,INHERITED };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
    public enum EPolicyChangeStatus {APPLIED,DISCARDED,STARTED };
+   public enum EThreatIntelligenceEnabled {DISABLED,ENABLED,INHERITED };
    public enum ETunnelType {DC_DEFAULT,GRE,MPLSoUDP,VLAN,VXLAN };
    public enum EUnderlayEnabled {DISABLED,ENABLED };
    public enum EUplinkPreference {PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY,SYMMETRIC };
@@ -105,6 +106,9 @@ public class Domain: RestObject {
    
    [JsonProperty("associatedBGPProfileID")]
    protected String _associatedBGPProfileID;
+   
+   [JsonProperty("associatedIDPProfileID")]
+   protected String _associatedIDPProfileID;
    
    [JsonProperty("associatedMulticastChannelMapID")]
    protected String _associatedMulticastChannelMapID;
@@ -231,6 +235,9 @@ public class Domain: RestObject {
    
    [JsonProperty("templateID")]
    protected String _templateID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("threatIntelligenceEnabled")]
+   protected EThreatIntelligenceEnabled? _threatIntelligenceEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("tunnelType")]
    protected ETunnelType? _tunnelType;
@@ -373,6 +380,9 @@ public class Domain: RestObject {
    private RoutingPoliciesFetcher _routingPolicies;
    
    [JsonIgnore]
+   private RoutingPolicyBindingsFetcher _routingPolicyBindings;
+   
+   [JsonIgnore]
    private SPATSourcesPoolsFetcher _sPATSourcesPools;
    
    [JsonIgnore]
@@ -507,6 +517,8 @@ public class Domain: RestObject {
       _redirectionTargets = new RedirectionTargetsFetcher(this);
       
       _routingPolicies = new RoutingPoliciesFetcher(this);
+      
+      _routingPolicyBindings = new RoutingPolicyBindingsFetcher(this);
       
       _sPATSourcesPools = new SPATSourcesPoolsFetcher(this);
       
@@ -702,6 +714,17 @@ public class Domain: RestObject {
       }
       set {
          this._associatedBGPProfileID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedIDPProfileID {
+      get {
+         return _associatedIDPProfileID;
+      }
+      set {
+         this._associatedIDPProfileID = value;
       }
    }
 
@@ -1169,6 +1192,17 @@ public class Domain: RestObject {
 
    
    [JsonIgnore]
+   public EThreatIntelligenceEnabled? NUThreatIntelligenceEnabled {
+      get {
+         return _threatIntelligenceEnabled;
+      }
+      set {
+         this._threatIntelligenceEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public ETunnelType? NUTunnelType {
       get {
          return _tunnelType;
@@ -1375,6 +1409,10 @@ public class Domain: RestObject {
       return _routingPolicies;
    }
    
+   public RoutingPolicyBindingsFetcher getRoutingPolicyBindings() {
+      return _routingPolicyBindings;
+   }
+   
    public SPATSourcesPoolsFetcher getSPATSourcesPools() {
       return _sPATSourcesPools;
    }
@@ -1437,7 +1475,7 @@ public class Domain: RestObject {
    
 
    public String toString() {
-      return "Domain [" + "BGPEnabled=" + _BGPEnabled + ", DHCPBehavior=" + _DHCPBehavior + ", DHCPServerAddress=" + _DHCPServerAddress + ", DPI=" + _DPI + ", ECMPCount=" + _ECMPCount + ", EVPNRT5Type=" + _EVPNRT5Type + ", FIPIgnoreDefaultRoute=" + _FIPIgnoreDefaultRoute + ", FIPUnderlay=" + _FIPUnderlay + ", GRTEnabled=" + _GRTEnabled + ", PATEnabled=" + _PATEnabled + ", VXLANECMPEnabled=" + _VXLANECMPEnabled + ", advertiseCriteria=" + _advertiseCriteria + ", aggregateFlowsEnabled=" + _aggregateFlowsEnabled + ", aggregationFlowType=" + _aggregationFlowType + ", associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedPATMapperID=" + _associatedPATMapperID + ", associatedSharedPATMapperID=" + _associatedSharedPATMapperID + ", associatedUnderlayID=" + _associatedUnderlayID + ", backHaulRouteDistinguisher=" + _backHaulRouteDistinguisher + ", backHaulRouteTarget=" + _backHaulRouteTarget + ", backHaulServiceID=" + _backHaulServiceID + ", backHaulVNID=" + _backHaulVNID + ", color=" + _color + ", createBackHaulSubnet=" + _createBackHaulSubnet + ", customerID=" + _customerID + ", description=" + _description + ", dhcpServerAddresses=" + _dhcpServerAddresses + ", domainAggregationEnabled=" + _domainAggregationEnabled + ", domainID=" + _domainID + ", domainVLANID=" + _domainVLANID + ", embeddedMetadata=" + _embeddedMetadata + ", encryption=" + _encryption + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", exportRouteTarget=" + _exportRouteTarget + ", externalID=" + _externalID + ", externalLabel=" + _externalLabel + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", globalRoutingEnabled=" + _globalRoutingEnabled + ", importRouteTarget=" + _importRouteTarget + ", labelID=" + _labelID + ", lastUpdatedBy=" + _lastUpdatedBy + ", leakingEnabled=" + _leakingEnabled + ", localAS=" + _localAS + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", permittedAction=" + _permittedAction + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", secondaryDHCPServerAddress=" + _secondaryDHCPServerAddress + ", secondaryRouteTarget=" + _secondaryRouteTarget + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", tunnelType=" + _tunnelType + ", underlayEnabled=" + _underlayEnabled + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Domain [" + "BGPEnabled=" + _BGPEnabled + ", DHCPBehavior=" + _DHCPBehavior + ", DHCPServerAddress=" + _DHCPServerAddress + ", DPI=" + _DPI + ", ECMPCount=" + _ECMPCount + ", EVPNRT5Type=" + _EVPNRT5Type + ", FIPIgnoreDefaultRoute=" + _FIPIgnoreDefaultRoute + ", FIPUnderlay=" + _FIPUnderlay + ", GRTEnabled=" + _GRTEnabled + ", PATEnabled=" + _PATEnabled + ", VXLANECMPEnabled=" + _VXLANECMPEnabled + ", advertiseCriteria=" + _advertiseCriteria + ", aggregateFlowsEnabled=" + _aggregateFlowsEnabled + ", aggregationFlowType=" + _aggregationFlowType + ", associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedIDPProfileID=" + _associatedIDPProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedPATMapperID=" + _associatedPATMapperID + ", associatedSharedPATMapperID=" + _associatedSharedPATMapperID + ", associatedUnderlayID=" + _associatedUnderlayID + ", backHaulRouteDistinguisher=" + _backHaulRouteDistinguisher + ", backHaulRouteTarget=" + _backHaulRouteTarget + ", backHaulServiceID=" + _backHaulServiceID + ", backHaulVNID=" + _backHaulVNID + ", color=" + _color + ", createBackHaulSubnet=" + _createBackHaulSubnet + ", customerID=" + _customerID + ", description=" + _description + ", dhcpServerAddresses=" + _dhcpServerAddresses + ", domainAggregationEnabled=" + _domainAggregationEnabled + ", domainID=" + _domainID + ", domainVLANID=" + _domainVLANID + ", embeddedMetadata=" + _embeddedMetadata + ", encryption=" + _encryption + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", exportRouteTarget=" + _exportRouteTarget + ", externalID=" + _externalID + ", externalLabel=" + _externalLabel + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", globalRoutingEnabled=" + _globalRoutingEnabled + ", importRouteTarget=" + _importRouteTarget + ", labelID=" + _labelID + ", lastUpdatedBy=" + _lastUpdatedBy + ", leakingEnabled=" + _leakingEnabled + ", localAS=" + _localAS + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", permittedAction=" + _permittedAction + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", secondaryDHCPServerAddress=" + _secondaryDHCPServerAddress + ", secondaryRouteTarget=" + _secondaryRouteTarget + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", tunnelType=" + _tunnelType + ", underlayEnabled=" + _underlayEnabled + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

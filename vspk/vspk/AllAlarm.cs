@@ -82,6 +82,9 @@ public class AllAlarm: RestObject {
    [JsonProperty("severity")]
    protected ESeverity? _severity;
    
+   [JsonProperty("systemID")]
+   protected String _systemID;
+   
    [JsonProperty("targetObject")]
    protected String _targetObject;
    
@@ -241,6 +244,17 @@ public class AllAlarm: RestObject {
 
    
    [JsonIgnore]
+   public String NUSystemID {
+      get {
+         return _systemID;
+      }
+      set {
+         this._systemID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUTargetObject {
       get {
          return _targetObject;
@@ -285,7 +299,7 @@ public class AllAlarm: RestObject {
    
 
    public String toString() {
-      return "AllAlarm [" + "acknowledged=" + _acknowledged + ", alarmedObjectID=" + _alarmedObjectID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", numberOfOccurances=" + _numberOfOccurances + ", remedy=" + _remedy + ", severity=" + _severity + ", targetObject=" + _targetObject + ", timestamp=" + _timestamp + ", title=" + _title + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "AllAlarm [" + "acknowledged=" + _acknowledged + ", alarmedObjectID=" + _alarmedObjectID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", numberOfOccurances=" + _numberOfOccurances + ", remedy=" + _remedy + ", severity=" + _severity + ", systemID=" + _systemID + ", targetObject=" + _targetObject + ", timestamp=" + _timestamp + ", title=" + _title + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

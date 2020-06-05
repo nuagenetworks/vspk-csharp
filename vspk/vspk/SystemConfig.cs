@@ -92,6 +92,9 @@ public class SystemConfig: RestObject {
    [JsonProperty("EVPNBGPCommunityTagUpperLimit")]
    protected long? _EVPNBGPCommunityTagUpperLimit;
    
+   [JsonProperty("IPv6ExtendedPrefixesEnabled")]
+   protected bool _IPv6ExtendedPrefixesEnabled;
+   
    [JsonProperty("LDAPSyncInterval")]
    protected long? _LDAPSyncInterval;
    
@@ -238,6 +241,9 @@ public class SystemConfig: RestObject {
    
    [JsonProperty("customerKey")]
    protected String _customerKey;
+   
+   [JsonProperty("deniedFlowCollectionEnabled")]
+   protected bool _deniedFlowCollectionEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("domainTunnelType")]
    protected EDomainTunnelType? _domainTunnelType;
@@ -289,6 +295,9 @@ public class SystemConfig: RestObject {
    
    [JsonProperty("eventProcessorTimeout")]
    protected long? _eventProcessorTimeout;
+   
+   [JsonProperty("explicitACLMatchingEnabled")]
+   protected bool _explicitACLMatchingEnabled;
    
    [JsonProperty("externalID")]
    protected String _externalID;
@@ -422,6 +431,9 @@ public class SystemConfig: RestObject {
    [JsonProperty("postProcessorThreadsCount")]
    protected long? _postProcessorThreadsCount;
    
+   [JsonProperty("rbacEnabled")]
+   protected bool _rbacEnabled;
+   
    [JsonProperty("secondaryASNumber")]
    protected long? _secondaryASNumber;
    
@@ -505,6 +517,24 @@ public class SystemConfig: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("systemAvatarType")]
    protected ESystemAvatarType? _systemAvatarType;
+   
+   [JsonProperty("threatIntelligenceEnabled")]
+   protected bool _threatIntelligenceEnabled;
+   
+   [JsonProperty("threatPreventionServer")]
+   protected String _threatPreventionServer;
+   
+   [JsonProperty("threatPreventionServerPassword")]
+   protected String _threatPreventionServerPassword;
+   
+   [JsonProperty("threatPreventionServerProxyPort")]
+   protected long? _threatPreventionServerProxyPort;
+   
+   [JsonProperty("threatPreventionServerUsername")]
+   protected String _threatPreventionServerUsername;
+   
+   [JsonProperty("threatPreventionSyslogProxyPort")]
+   protected long? _threatPreventionSyslogProxyPort;
    
    [JsonProperty("twoFactorCodeExpiry")]
    protected long? _twoFactorCodeExpiry;
@@ -666,6 +696,17 @@ public class SystemConfig: RestObject {
       }
       set {
          this._EVPNBGPCommunityTagUpperLimit = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUIPv6ExtendedPrefixesEnabled {
+      get {
+         return _IPv6ExtendedPrefixesEnabled;
+      }
+      set {
+         this._IPv6ExtendedPrefixesEnabled = value;
       }
    }
 
@@ -1210,6 +1251,17 @@ public class SystemConfig: RestObject {
 
    
    [JsonIgnore]
+   public bool NUDeniedFlowCollectionEnabled {
+      get {
+         return _deniedFlowCollectionEnabled;
+      }
+      set {
+         this._deniedFlowCollectionEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EDomainTunnelType? NUDomainTunnelType {
       get {
          return _domainTunnelType;
@@ -1392,6 +1444,17 @@ public class SystemConfig: RestObject {
       }
       set {
          this._eventProcessorTimeout = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUExplicitACLMatchingEnabled {
+      get {
+         return _explicitACLMatchingEnabled;
+      }
+      set {
+         this._explicitACLMatchingEnabled = value;
       }
    }
 
@@ -1881,6 +1944,17 @@ public class SystemConfig: RestObject {
 
    
    [JsonIgnore]
+   public bool NURbacEnabled {
+      get {
+         return _rbacEnabled;
+      }
+      set {
+         this._rbacEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUSecondaryASNumber {
       get {
          return _secondaryASNumber;
@@ -2189,6 +2263,72 @@ public class SystemConfig: RestObject {
 
    
    [JsonIgnore]
+   public bool NUThreatIntelligenceEnabled {
+      get {
+         return _threatIntelligenceEnabled;
+      }
+      set {
+         this._threatIntelligenceEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUThreatPreventionServer {
+      get {
+         return _threatPreventionServer;
+      }
+      set {
+         this._threatPreventionServer = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUThreatPreventionServerPassword {
+      get {
+         return _threatPreventionServerPassword;
+      }
+      set {
+         this._threatPreventionServerPassword = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUThreatPreventionServerProxyPort {
+      get {
+         return _threatPreventionServerProxyPort;
+      }
+      set {
+         this._threatPreventionServerProxyPort = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUThreatPreventionServerUsername {
+      get {
+         return _threatPreventionServerUsername;
+      }
+      set {
+         this._threatPreventionServerUsername = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUThreatPreventionSyslogProxyPort {
+      get {
+         return _threatPreventionSyslogProxyPort;
+      }
+      set {
+         this._threatPreventionSyslogProxyPort = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUTwoFactorCodeExpiry {
       get {
          return _twoFactorCodeExpiry;
@@ -2255,7 +2395,7 @@ public class SystemConfig: RestObject {
    
 
    public String toString() {
-      return "SystemConfig [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", ACLAllowOrigin=" + _ACLAllowOrigin + ", ADGatewayPurgeTime=" + _ADGatewayPurgeTime + ", APIKeyRenewalInterval=" + _APIKeyRenewalInterval + ", APIKeyValidity=" + _APIKeyValidity + ", ASNumber=" + _ASNumber + ", DHCPOptionSize=" + _DHCPOptionSize + ", ECMPCount=" + _ECMPCount + ", EVPNBGPCommunityTagASNumber=" + _EVPNBGPCommunityTagASNumber + ", EVPNBGPCommunityTagLowerLimit=" + _EVPNBGPCommunityTagLowerLimit + ", EVPNBGPCommunityTagUpperLimit=" + _EVPNBGPCommunityTagUpperLimit + ", LDAPSyncInterval=" + _LDAPSyncInterval + ", LDAPTrustStoreCertifcate=" + _LDAPTrustStoreCertifcate + ", LDAPTrustStorePassword=" + _LDAPTrustStorePassword + ", LRUCacheSizePerSubnet=" + _LRUCacheSizePerSubnet + ", NSGUplinkHoldDownTimer=" + _NSGUplinkHoldDownTimer + ", PGIDLowerLimit=" + _PGIDLowerLimit + ", PGIDUpperLimit=" + _PGIDUpperLimit + ", RDLowerLimit=" + _RDLowerLimit + ", RDPublicNetworkLowerLimit=" + _RDPublicNetworkLowerLimit + ", RDPublicNetworkUpperLimit=" + _RDPublicNetworkUpperLimit + ", RDUpperLimit=" + _RDUpperLimit + ", RTLowerLimit=" + _RTLowerLimit + ", RTPublicNetworkLowerLimit=" + _RTPublicNetworkLowerLimit + ", RTPublicNetworkUpperLimit=" + _RTPublicNetworkUpperLimit + ", RTUpperLimit=" + _RTUpperLimit + ", SaaSApplicationsPublishDate=" + _SaaSApplicationsPublishDate + ", VLANIDLowerLimit=" + _VLANIDLowerLimit + ", VLANIDUpperLimit=" + _VLANIDUpperLimit + ", VMCacheSize=" + _VMCacheSize + ", VMPurgeTime=" + _VMPurgeTime + ", VMResyncDeletionWaitTime=" + _VMResyncDeletionWaitTime + ", VMResyncOutstandingInterval=" + _VMResyncOutstandingInterval + ", VMUnreachableCleanupTime=" + _VMUnreachableCleanupTime + ", VMUnreachableTime=" + _VMUnreachableTime + ", VNFTaskTimeout=" + _VNFTaskTimeout + ", VNIDLowerLimit=" + _VNIDLowerLimit + ", VNIDPublicNetworkLowerLimit=" + _VNIDPublicNetworkLowerLimit + ", VNIDPublicNetworkUpperLimit=" + _VNIDPublicNetworkUpperLimit + ", VNIDUpperLimit=" + _VNIDUpperLimit + ", VPortInitStatefulTimer=" + _VPortInitStatefulTimer + ", VSCOnSameVersionAsVSD=" + _VSCOnSameVersionAsVSD + ", VSDAARApplicationVersion=" + _VSDAARApplicationVersion + ", VSDAARApplicationVersionPublishDate=" + _VSDAARApplicationVersionPublishDate + ", VSDReadOnlyMode=" + _VSDReadOnlyMode + ", VSDUpgradeIsComplete=" + _VSDUpgradeIsComplete + ", VSSStatsInterval=" + _VSSStatsInterval + ", ZFBBootstrapEnabled=" + _ZFBBootstrapEnabled + ", ZFBRequestRetryTimer=" + _ZFBRequestRetryTimer + ", ZFBSchedulerStaleRequestTimeout=" + _ZFBSchedulerStaleRequestTimeout + ", accumulateLicensesEnabled=" + _accumulateLicensesEnabled + ", alarmsMaxPerObject=" + _alarmsMaxPerObject + ", allowEnterpriseAvatarOnNSG=" + _allowEnterpriseAvatarOnNSG + ", attachProbeToIPsecNPM=" + _attachProbeToIPsecNPM + ", attachProbeToVXLANNPM=" + _attachProbeToVXLANNPM + ", avatarBasePath=" + _avatarBasePath + ", avatarBaseURL=" + _avatarBaseURL + ", csprootAuthenticationMethod=" + _csprootAuthenticationMethod + ", customerIDUpperLimit=" + _customerIDUpperLimit + ", customerKey=" + _customerKey + ", domainTunnelType=" + _domainTunnelType + ", dynamicWANServiceDiffTime=" + _dynamicWANServiceDiffTime + ", ejbcaNSGCertificateProfile=" + _ejbcaNSGCertificateProfile + ", ejbcaNSGEndEntityProfile=" + _ejbcaNSGEndEntityProfile + ", ejbcaOCSPResponderCN=" + _ejbcaOCSPResponderCN + ", ejbcaOCSPResponderURI=" + _ejbcaOCSPResponderURI + ", ejbcaVspRootCa=" + _ejbcaVspRootCa + ", elasticClusterName=" + _elasticClusterName + ", embeddedMetadata=" + _embeddedMetadata + ", embeddedMetadataSize=" + _embeddedMetadataSize + ", entityScope=" + _entityScope + ", esiID=" + _esiID + ", eventLogCleanupInterval=" + _eventLogCleanupInterval + ", eventLogEntryMaxAge=" + _eventLogEntryMaxAge + ", eventProcessorInterval=" + _eventProcessorInterval + ", eventProcessorMaxEventsCount=" + _eventProcessorMaxEventsCount + ", eventProcessorTimeout=" + _eventProcessorTimeout + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", gatewayProbeInterval=" + _gatewayProbeInterval + ", gatewayProbeWindow=" + _gatewayProbeWindow + ", gatewayRebalancingInterval=" + _gatewayRebalancingInterval + ", globalMACAddress=" + _globalMACAddress + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", groupKeyDefaultSEKGenerationInterval=" + _groupKeyDefaultSEKGenerationInterval + ", groupKeyDefaultSEKLifetime=" + _groupKeyDefaultSEKLifetime + ", groupKeyDefaultSEKPayloadEncryptionAlgorithm=" + _groupKeyDefaultSEKPayloadEncryptionAlgorithm + ", groupKeyDefaultSEKPayloadSigningAlgorithm=" + _groupKeyDefaultSEKPayloadSigningAlgorithm + ", groupKeyDefaultSeedGenerationInterval=" + _groupKeyDefaultSeedGenerationInterval + ", groupKeyDefaultSeedLifetime=" + _groupKeyDefaultSeedLifetime + ", groupKeyDefaultSeedPayloadAuthenticationAlgorithm=" + _groupKeyDefaultSeedPayloadAuthenticationAlgorithm + ", groupKeyDefaultSeedPayloadEncryptionAlgorithm=" + _groupKeyDefaultSeedPayloadEncryptionAlgorithm + ", groupKeyDefaultSeedPayloadSigningAlgorithm=" + _groupKeyDefaultSeedPayloadSigningAlgorithm + ", groupKeyDefaultTrafficAuthenticationAlgorithm=" + _groupKeyDefaultTrafficAuthenticationAlgorithm + ", groupKeyDefaultTrafficEncryptionAlgorithm=" + _groupKeyDefaultTrafficEncryptionAlgorithm + ", groupKeyDefaultTrafficEncryptionKeyLifetime=" + _groupKeyDefaultTrafficEncryptionKeyLifetime + ", groupKeyGenerationIntervalOnForcedReKey=" + _groupKeyGenerationIntervalOnForcedReKey + ", groupKeyGenerationIntervalOnRevoke=" + _groupKeyGenerationIntervalOnRevoke + ", groupKeyMinimumSEKGenerationInterval=" + _groupKeyMinimumSEKGenerationInterval + ", groupKeyMinimumSEKLifetime=" + _groupKeyMinimumSEKLifetime + ", groupKeyMinimumSeedGenerationInterval=" + _groupKeyMinimumSeedGenerationInterval + ", groupKeyMinimumSeedLifetime=" + _groupKeyMinimumSeedLifetime + ", groupKeyMinimumTrafficEncryptionKeyLifetime=" + _groupKeyMinimumTrafficEncryptionKeyLifetime + ", importedSaaSApplicationsVersion=" + _importedSaaSApplicationsVersion + ", inactiveTimeout=" + _inactiveTimeout + ", infrastructureBGPASNumber=" + _infrastructureBGPASNumber + ", keyServerMonitorEnabled=" + _keyServerMonitorEnabled + ", keyServerVSDDataSynchronizationInterval=" + _keyServerVSDDataSynchronizationInterval + ", lastExecutedMigrationPhase=" + _lastExecutedMigrationPhase + ", lastUpdatedBy=" + _lastUpdatedBy + ", maxFailedLogins=" + _maxFailedLogins + ", maxResponse=" + _maxResponse + ", nsgBootstrapEndpoint=" + _nsgBootstrapEndpoint + ", nsgConfigEndpoint=" + _nsgConfigEndpoint + ", nsgLocalUiUrl=" + _nsgLocalUiUrl + ", offsetCustomerID=" + _offsetCustomerID + ", offsetServiceID=" + _offsetServiceID + ", pageMaxSize=" + _pageMaxSize + ", pageSize=" + _pageSize + ", perDomainVlanIdEnabled=" + _perDomainVlanIdEnabled + ", postProcessorThreadsCount=" + _postProcessorThreadsCount + ", secondaryASNumber=" + _secondaryASNumber + ", secondaryRTLowerLimit=" + _secondaryRTLowerLimit + ", secondaryRTUpperLimit=" + _secondaryRTUpperLimit + ", serviceIDUpperLimit=" + _serviceIDUpperLimit + ", stackTraceEnabled=" + _stackTraceEnabled + ", statefulACLNonTCPTimeout=" + _statefulACLNonTCPTimeout + ", statefulACLTCPTimeout=" + _statefulACLTCPTimeout + ", staticWANServicePurgeTime=" + _staticWANServicePurgeTime + ", statisticsEnabled=" + _statisticsEnabled + ", statsCollectorAddress=" + _statsCollectorAddress + ", statsCollectorPort=" + _statsCollectorPort + ", statsCollectorProtoBufPort=" + _statsCollectorProtoBufPort + ", statsDatabaseProxy=" + _statsDatabaseProxy + ", statsMaxDataPoints=" + _statsMaxDataPoints + ", statsMinDuration=" + _statsMinDuration + ", statsNumberOfDataPoints=" + _statsNumberOfDataPoints + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", stickyECMPIdleTimeout=" + _stickyECMPIdleTimeout + ", subnetResyncInterval=" + _subnetResyncInterval + ", subnetResyncOutstandingInterval=" + _subnetResyncOutstandingInterval + ", syslogDestinationHost=" + _syslogDestinationHost + ", syslogDestinationPort=" + _syslogDestinationPort + ", sysmonCleanupTaskInterval=" + _sysmonCleanupTaskInterval + ", sysmonNodePresenceTimeout=" + _sysmonNodePresenceTimeout + ", sysmonProbeResponseTimeout=" + _sysmonProbeResponseTimeout + ", sysmonPurgeInterval=" + _sysmonPurgeInterval + ", systemAvatarData=" + _systemAvatarData + ", systemAvatarType=" + _systemAvatarType + ", twoFactorCodeExpiry=" + _twoFactorCodeExpiry + ", twoFactorCodeLength=" + _twoFactorCodeLength + ", twoFactorCodeSeedLength=" + _twoFactorCodeSeedLength + ", vcinLoadBalancerIP=" + _vcinLoadBalancerIP + ", virtualFirewallRulesEnabled=" + _virtualFirewallRulesEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "SystemConfig [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", ACLAllowOrigin=" + _ACLAllowOrigin + ", ADGatewayPurgeTime=" + _ADGatewayPurgeTime + ", APIKeyRenewalInterval=" + _APIKeyRenewalInterval + ", APIKeyValidity=" + _APIKeyValidity + ", ASNumber=" + _ASNumber + ", DHCPOptionSize=" + _DHCPOptionSize + ", ECMPCount=" + _ECMPCount + ", EVPNBGPCommunityTagASNumber=" + _EVPNBGPCommunityTagASNumber + ", EVPNBGPCommunityTagLowerLimit=" + _EVPNBGPCommunityTagLowerLimit + ", EVPNBGPCommunityTagUpperLimit=" + _EVPNBGPCommunityTagUpperLimit + ", IPv6ExtendedPrefixesEnabled=" + _IPv6ExtendedPrefixesEnabled + ", LDAPSyncInterval=" + _LDAPSyncInterval + ", LDAPTrustStoreCertifcate=" + _LDAPTrustStoreCertifcate + ", LDAPTrustStorePassword=" + _LDAPTrustStorePassword + ", LRUCacheSizePerSubnet=" + _LRUCacheSizePerSubnet + ", NSGUplinkHoldDownTimer=" + _NSGUplinkHoldDownTimer + ", PGIDLowerLimit=" + _PGIDLowerLimit + ", PGIDUpperLimit=" + _PGIDUpperLimit + ", RDLowerLimit=" + _RDLowerLimit + ", RDPublicNetworkLowerLimit=" + _RDPublicNetworkLowerLimit + ", RDPublicNetworkUpperLimit=" + _RDPublicNetworkUpperLimit + ", RDUpperLimit=" + _RDUpperLimit + ", RTLowerLimit=" + _RTLowerLimit + ", RTPublicNetworkLowerLimit=" + _RTPublicNetworkLowerLimit + ", RTPublicNetworkUpperLimit=" + _RTPublicNetworkUpperLimit + ", RTUpperLimit=" + _RTUpperLimit + ", SaaSApplicationsPublishDate=" + _SaaSApplicationsPublishDate + ", VLANIDLowerLimit=" + _VLANIDLowerLimit + ", VLANIDUpperLimit=" + _VLANIDUpperLimit + ", VMCacheSize=" + _VMCacheSize + ", VMPurgeTime=" + _VMPurgeTime + ", VMResyncDeletionWaitTime=" + _VMResyncDeletionWaitTime + ", VMResyncOutstandingInterval=" + _VMResyncOutstandingInterval + ", VMUnreachableCleanupTime=" + _VMUnreachableCleanupTime + ", VMUnreachableTime=" + _VMUnreachableTime + ", VNFTaskTimeout=" + _VNFTaskTimeout + ", VNIDLowerLimit=" + _VNIDLowerLimit + ", VNIDPublicNetworkLowerLimit=" + _VNIDPublicNetworkLowerLimit + ", VNIDPublicNetworkUpperLimit=" + _VNIDPublicNetworkUpperLimit + ", VNIDUpperLimit=" + _VNIDUpperLimit + ", VPortInitStatefulTimer=" + _VPortInitStatefulTimer + ", VSCOnSameVersionAsVSD=" + _VSCOnSameVersionAsVSD + ", VSDAARApplicationVersion=" + _VSDAARApplicationVersion + ", VSDAARApplicationVersionPublishDate=" + _VSDAARApplicationVersionPublishDate + ", VSDReadOnlyMode=" + _VSDReadOnlyMode + ", VSDUpgradeIsComplete=" + _VSDUpgradeIsComplete + ", VSSStatsInterval=" + _VSSStatsInterval + ", ZFBBootstrapEnabled=" + _ZFBBootstrapEnabled + ", ZFBRequestRetryTimer=" + _ZFBRequestRetryTimer + ", ZFBSchedulerStaleRequestTimeout=" + _ZFBSchedulerStaleRequestTimeout + ", accumulateLicensesEnabled=" + _accumulateLicensesEnabled + ", alarmsMaxPerObject=" + _alarmsMaxPerObject + ", allowEnterpriseAvatarOnNSG=" + _allowEnterpriseAvatarOnNSG + ", attachProbeToIPsecNPM=" + _attachProbeToIPsecNPM + ", attachProbeToVXLANNPM=" + _attachProbeToVXLANNPM + ", avatarBasePath=" + _avatarBasePath + ", avatarBaseURL=" + _avatarBaseURL + ", csprootAuthenticationMethod=" + _csprootAuthenticationMethod + ", customerIDUpperLimit=" + _customerIDUpperLimit + ", customerKey=" + _customerKey + ", deniedFlowCollectionEnabled=" + _deniedFlowCollectionEnabled + ", domainTunnelType=" + _domainTunnelType + ", dynamicWANServiceDiffTime=" + _dynamicWANServiceDiffTime + ", ejbcaNSGCertificateProfile=" + _ejbcaNSGCertificateProfile + ", ejbcaNSGEndEntityProfile=" + _ejbcaNSGEndEntityProfile + ", ejbcaOCSPResponderCN=" + _ejbcaOCSPResponderCN + ", ejbcaOCSPResponderURI=" + _ejbcaOCSPResponderURI + ", ejbcaVspRootCa=" + _ejbcaVspRootCa + ", elasticClusterName=" + _elasticClusterName + ", embeddedMetadata=" + _embeddedMetadata + ", embeddedMetadataSize=" + _embeddedMetadataSize + ", entityScope=" + _entityScope + ", esiID=" + _esiID + ", eventLogCleanupInterval=" + _eventLogCleanupInterval + ", eventLogEntryMaxAge=" + _eventLogEntryMaxAge + ", eventProcessorInterval=" + _eventProcessorInterval + ", eventProcessorMaxEventsCount=" + _eventProcessorMaxEventsCount + ", eventProcessorTimeout=" + _eventProcessorTimeout + ", explicitACLMatchingEnabled=" + _explicitACLMatchingEnabled + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", gatewayProbeInterval=" + _gatewayProbeInterval + ", gatewayProbeWindow=" + _gatewayProbeWindow + ", gatewayRebalancingInterval=" + _gatewayRebalancingInterval + ", globalMACAddress=" + _globalMACAddress + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", groupKeyDefaultSEKGenerationInterval=" + _groupKeyDefaultSEKGenerationInterval + ", groupKeyDefaultSEKLifetime=" + _groupKeyDefaultSEKLifetime + ", groupKeyDefaultSEKPayloadEncryptionAlgorithm=" + _groupKeyDefaultSEKPayloadEncryptionAlgorithm + ", groupKeyDefaultSEKPayloadSigningAlgorithm=" + _groupKeyDefaultSEKPayloadSigningAlgorithm + ", groupKeyDefaultSeedGenerationInterval=" + _groupKeyDefaultSeedGenerationInterval + ", groupKeyDefaultSeedLifetime=" + _groupKeyDefaultSeedLifetime + ", groupKeyDefaultSeedPayloadAuthenticationAlgorithm=" + _groupKeyDefaultSeedPayloadAuthenticationAlgorithm + ", groupKeyDefaultSeedPayloadEncryptionAlgorithm=" + _groupKeyDefaultSeedPayloadEncryptionAlgorithm + ", groupKeyDefaultSeedPayloadSigningAlgorithm=" + _groupKeyDefaultSeedPayloadSigningAlgorithm + ", groupKeyDefaultTrafficAuthenticationAlgorithm=" + _groupKeyDefaultTrafficAuthenticationAlgorithm + ", groupKeyDefaultTrafficEncryptionAlgorithm=" + _groupKeyDefaultTrafficEncryptionAlgorithm + ", groupKeyDefaultTrafficEncryptionKeyLifetime=" + _groupKeyDefaultTrafficEncryptionKeyLifetime + ", groupKeyGenerationIntervalOnForcedReKey=" + _groupKeyGenerationIntervalOnForcedReKey + ", groupKeyGenerationIntervalOnRevoke=" + _groupKeyGenerationIntervalOnRevoke + ", groupKeyMinimumSEKGenerationInterval=" + _groupKeyMinimumSEKGenerationInterval + ", groupKeyMinimumSEKLifetime=" + _groupKeyMinimumSEKLifetime + ", groupKeyMinimumSeedGenerationInterval=" + _groupKeyMinimumSeedGenerationInterval + ", groupKeyMinimumSeedLifetime=" + _groupKeyMinimumSeedLifetime + ", groupKeyMinimumTrafficEncryptionKeyLifetime=" + _groupKeyMinimumTrafficEncryptionKeyLifetime + ", importedSaaSApplicationsVersion=" + _importedSaaSApplicationsVersion + ", inactiveTimeout=" + _inactiveTimeout + ", infrastructureBGPASNumber=" + _infrastructureBGPASNumber + ", keyServerMonitorEnabled=" + _keyServerMonitorEnabled + ", keyServerVSDDataSynchronizationInterval=" + _keyServerVSDDataSynchronizationInterval + ", lastExecutedMigrationPhase=" + _lastExecutedMigrationPhase + ", lastUpdatedBy=" + _lastUpdatedBy + ", maxFailedLogins=" + _maxFailedLogins + ", maxResponse=" + _maxResponse + ", nsgBootstrapEndpoint=" + _nsgBootstrapEndpoint + ", nsgConfigEndpoint=" + _nsgConfigEndpoint + ", nsgLocalUiUrl=" + _nsgLocalUiUrl + ", offsetCustomerID=" + _offsetCustomerID + ", offsetServiceID=" + _offsetServiceID + ", pageMaxSize=" + _pageMaxSize + ", pageSize=" + _pageSize + ", perDomainVlanIdEnabled=" + _perDomainVlanIdEnabled + ", postProcessorThreadsCount=" + _postProcessorThreadsCount + ", rbacEnabled=" + _rbacEnabled + ", secondaryASNumber=" + _secondaryASNumber + ", secondaryRTLowerLimit=" + _secondaryRTLowerLimit + ", secondaryRTUpperLimit=" + _secondaryRTUpperLimit + ", serviceIDUpperLimit=" + _serviceIDUpperLimit + ", stackTraceEnabled=" + _stackTraceEnabled + ", statefulACLNonTCPTimeout=" + _statefulACLNonTCPTimeout + ", statefulACLTCPTimeout=" + _statefulACLTCPTimeout + ", staticWANServicePurgeTime=" + _staticWANServicePurgeTime + ", statisticsEnabled=" + _statisticsEnabled + ", statsCollectorAddress=" + _statsCollectorAddress + ", statsCollectorPort=" + _statsCollectorPort + ", statsCollectorProtoBufPort=" + _statsCollectorProtoBufPort + ", statsDatabaseProxy=" + _statsDatabaseProxy + ", statsMaxDataPoints=" + _statsMaxDataPoints + ", statsMinDuration=" + _statsMinDuration + ", statsNumberOfDataPoints=" + _statsNumberOfDataPoints + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", stickyECMPIdleTimeout=" + _stickyECMPIdleTimeout + ", subnetResyncInterval=" + _subnetResyncInterval + ", subnetResyncOutstandingInterval=" + _subnetResyncOutstandingInterval + ", syslogDestinationHost=" + _syslogDestinationHost + ", syslogDestinationPort=" + _syslogDestinationPort + ", sysmonCleanupTaskInterval=" + _sysmonCleanupTaskInterval + ", sysmonNodePresenceTimeout=" + _sysmonNodePresenceTimeout + ", sysmonProbeResponseTimeout=" + _sysmonProbeResponseTimeout + ", sysmonPurgeInterval=" + _sysmonPurgeInterval + ", systemAvatarData=" + _systemAvatarData + ", systemAvatarType=" + _systemAvatarType + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", threatPreventionServer=" + _threatPreventionServer + ", threatPreventionServerPassword=" + _threatPreventionServerPassword + ", threatPreventionServerProxyPort=" + _threatPreventionServerProxyPort + ", threatPreventionServerUsername=" + _threatPreventionServerUsername + ", threatPreventionSyslogProxyPort=" + _threatPreventionSyslogProxyPort + ", twoFactorCodeExpiry=" + _twoFactorCodeExpiry + ", twoFactorCodeLength=" + _twoFactorCodeLength + ", twoFactorCodeSeedLength=" + _twoFactorCodeSeedLength + ", vcinLoadBalancerIP=" + _vcinLoadBalancerIP + ", virtualFirewallRulesEnabled=" + _virtualFirewallRulesEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

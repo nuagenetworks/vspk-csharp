@@ -46,9 +46,6 @@ public class VSC: RestObject {
    public enum EStatus {ADMIN_DOWN,DOWN,UP };
 
    
-   [JsonProperty("address")]
-   protected String _address;
-   
    [JsonProperty("addresses")]
    protected System.Collections.Generic.List<String> _addresses;
    
@@ -60,6 +57,9 @@ public class VSC: RestObject {
    
    [JsonProperty("averageMemoryUsage")]
    protected float _averageMemoryUsage;
+   
+   [JsonProperty("communicationId")]
+   protected String _communicationId;
    
    [JsonProperty("currentCPUUsage")]
    protected float _currentCPUUsage;
@@ -171,17 +171,6 @@ public class VSC: RestObject {
 
    
    [JsonIgnore]
-   public String NUAddress {
-      get {
-         return _address;
-      }
-      set {
-         this._address = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public System.Collections.Generic.List<String> NUAddresses {
       get {
          return _addresses;
@@ -221,6 +210,17 @@ public class VSC: RestObject {
       }
       set {
          this._averageMemoryUsage = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCommunicationId {
+      get {
+         return _communicationId;
+      }
+      set {
+         this._communicationId = value;
       }
    }
 
@@ -474,7 +474,7 @@ public class VSC: RestObject {
    
 
    public String toString() {
-      return "VSC [" + "address=" + _address + ", addresses=" + _addresses + ", alreadyMarkedForUnavailable=" + _alreadyMarkedForUnavailable + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", description=" + _description + ", disks=" + _disks + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", name=" + _name + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", productVersion=" + _productVersion + ", status=" + _status + ", unavailableTimestamp=" + _unavailableTimestamp + ", vsds=" + _vsds + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "VSC [" + "addresses=" + _addresses + ", alreadyMarkedForUnavailable=" + _alreadyMarkedForUnavailable + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", communicationId=" + _communicationId + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", description=" + _description + ", disks=" + _disks + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", name=" + _name + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", productVersion=" + _productVersion + ", status=" + _status + ", unavailableTimestamp=" + _unavailableTimestamp + ", vsds=" + _vsds + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

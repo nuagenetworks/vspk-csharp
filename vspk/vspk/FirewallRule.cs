@@ -45,7 +45,9 @@ public class FirewallRule: RestObject {
    public enum EAction {DROP,FORWARD,FORWARDING_PATH_LIST,REDIRECT };
    public enum EAssociatedTrafficType {L4_SERVICE,L4_SERVICE_GROUP };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum ELocationEntityType {ENTERPRISENETWORK,NETWORKMACROGROUP,PGEXPRESSION,PGEXPRESSIONTEMPLATE,POLICYGROUP,POLICYGROUPTEMPLATE,PUBLICNETWORK,REDIRECTIONTARGET,REDIRECTIONTARGETTEMPLATE,SUBNET,SUBNETTEMPLATE,ZONE,ZONETEMPLATE };
    public enum ELocationType {ANY,POLICYGROUP,REDIRECTIONTARGET,SUBNET,VPORTTAG,ZONE };
+   public enum ENetworkEntityType {ENTERPRISENETWORK,NETWORKMACROGROUP,PGEXPRESSION,PGEXPRESSIONTEMPLATE,POLICYGROUP,POLICYGROUPTEMPLATE,PUBLICNETWORK,SAASAPPLICATIONGROUP,SUBNET,SUBNETTEMPLATE,ZONE,ZONETEMPLATE };
    public enum ENetworkType {ANY,ENDPOINT_DOMAIN,ENDPOINT_SUBNET,ENDPOINT_ZONE,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK,NETWORK_MACRO_GROUP,POLICYGROUP,PUBLIC_NETWORK,SUBNET,ZONE };
    public enum EWebFilterType {WEB_CATEGORY,WEB_DOMAIN_NAME };
 
@@ -112,6 +114,9 @@ public class FirewallRule: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("locationEntityType")]
+   protected ELocationEntityType? _locationEntityType;
    
    [JsonProperty("locationID")]
    protected String _locationID;
@@ -119,8 +124,14 @@ public class FirewallRule: RestObject {
    [JsonProperty("locationType")]
    protected ELocationType? _locationType;
    
+   [JsonProperty("mirrorDestinationGroupID")]
+   protected String _mirrorDestinationGroupID;
+   
    [JsonProperty("mirrorDestinationID")]
    protected String _mirrorDestinationID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("networkEntityType")]
+   protected ENetworkEntityType? _networkEntityType;
    
    [JsonProperty("networkID")]
    protected String _networkID;
@@ -404,6 +415,17 @@ public class FirewallRule: RestObject {
 
    
    [JsonIgnore]
+   public ELocationEntityType? NULocationEntityType {
+      get {
+         return _locationEntityType;
+      }
+      set {
+         this._locationEntityType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULocationID {
       get {
          return _locationID;
@@ -426,12 +448,34 @@ public class FirewallRule: RestObject {
 
    
    [JsonIgnore]
+   public String NUMirrorDestinationGroupID {
+      get {
+         return _mirrorDestinationGroupID;
+      }
+      set {
+         this._mirrorDestinationGroupID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUMirrorDestinationID {
       get {
          return _mirrorDestinationID;
       }
       set {
          this._mirrorDestinationID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public ENetworkEntityType? NUNetworkEntityType {
+      get {
+         return _networkEntityType;
+      }
+      set {
+         this._networkEntityType = value;
       }
    }
 
@@ -569,7 +613,7 @@ public class FirewallRule: RestObject {
    
 
    public String toString() {
-      return "FirewallRule [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", associatedfirewallACLID=" + _associatedfirewallACLID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkID=" + _networkID + ", networkType=" + _networkType + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", webFilterID=" + _webFilterID + ", webFilterStatsLoggingEnabled=" + _webFilterStatsLoggingEnabled + ", webFilterType=" + _webFilterType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "FirewallRule [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", associatedfirewallACLID=" + _associatedfirewallACLID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationEntityType=" + _locationEntityType + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationGroupID=" + _mirrorDestinationGroupID + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkEntityType=" + _networkEntityType + ", networkID=" + _networkID + ", networkType=" + _networkType + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", webFilterID=" + _webFilterID + ", webFilterStatsLoggingEnabled=" + _webFilterStatsLoggingEnabled + ", webFilterType=" + _webFilterType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -81,6 +81,9 @@ public class InfrastructureGatewayProfile: RestObject {
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    
+   [JsonProperty("enableUnderlayTestsDuringActivation")]
+   protected bool _enableUnderlayTestsDuringActivation;
+   
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -120,11 +123,23 @@ public class InfrastructureGatewayProfile: RestObject {
    [JsonProperty("remoteLogServerPort")]
    protected long? _remoteLogServerPort;
    
+   [JsonProperty("runUnderlayBandwidthTest")]
+   protected bool _runUnderlayBandwidthTest;
+   
+   [JsonProperty("runUnderlayConnectivityTest")]
+   protected bool _runUnderlayConnectivityTest;
+   
+   [JsonProperty("runUnderlayMTUDiscoveryTest")]
+   protected bool _runUnderlayMTUDiscoveryTest;
+   
    [JsonProperty("statsCollectorPort")]
    protected long? _statsCollectorPort;
    
    [JsonProperty("systemSyncScheduler")]
    protected String _systemSyncScheduler;
+   
+   [JsonProperty("underlayTestServer")]
+   protected String _underlayTestServer;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("upgradeAction")]
    protected EUpgradeAction? _upgradeAction;
@@ -283,6 +298,17 @@ public class InfrastructureGatewayProfile: RestObject {
 
    
    [JsonIgnore]
+   public bool NUEnableUnderlayTestsDuringActivation {
+      get {
+         return _enableUnderlayTestsDuringActivation;
+      }
+      set {
+         this._enableUnderlayTestsDuringActivation = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUEnterpriseID {
       get {
          return _enterpriseID;
@@ -426,6 +452,39 @@ public class InfrastructureGatewayProfile: RestObject {
 
    
    [JsonIgnore]
+   public bool NURunUnderlayBandwidthTest {
+      get {
+         return _runUnderlayBandwidthTest;
+      }
+      set {
+         this._runUnderlayBandwidthTest = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NURunUnderlayConnectivityTest {
+      get {
+         return _runUnderlayConnectivityTest;
+      }
+      set {
+         this._runUnderlayConnectivityTest = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NURunUnderlayMTUDiscoveryTest {
+      get {
+         return _runUnderlayMTUDiscoveryTest;
+      }
+      set {
+         this._runUnderlayMTUDiscoveryTest = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUStatsCollectorPort {
       get {
          return _statsCollectorPort;
@@ -443,6 +502,17 @@ public class InfrastructureGatewayProfile: RestObject {
       }
       set {
          this._systemSyncScheduler = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUUnderlayTestServer {
+      get {
+         return _underlayTestServer;
+      }
+      set {
+         this._underlayTestServer = value;
       }
    }
 
@@ -503,7 +573,7 @@ public class InfrastructureGatewayProfile: RestObject {
    
 
    public String toString() {
-      return "InfrastructureGatewayProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", controllerLessDuration=" + _controllerLessDuration + ", controllerLessEnabled=" + _controllerLessEnabled + ", controllerLessForwardingMode=" + _controllerLessForwardingMode + ", controllerLessRemoteDuration=" + _controllerLessRemoteDuration + ", datapathSyncTimeout=" + _datapathSyncTimeout + ", deadTimer=" + _deadTimer + ", deadTimerEnabled=" + _deadTimerEnabled + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowEvictionThreshold=" + _flowEvictionThreshold + ", forceImmediateSystemSync=" + _forceImmediateSystemSync + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataUpgradePath=" + _metadataUpgradePath + ", name=" + _name + ", openFlowAuditTimer=" + _openFlowAuditTimer + ", proxyDNSName=" + _proxyDNSName + ", remoteLogMode=" + _remoteLogMode + ", remoteLogServerAddress=" + _remoteLogServerAddress + ", remoteLogServerPort=" + _remoteLogServerPort + ", statsCollectorPort=" + _statsCollectorPort + ", systemSyncScheduler=" + _systemSyncScheduler + ", upgradeAction=" + _upgradeAction + ", useTwoFactor=" + _useTwoFactor + ", webFilterDownloadPort=" + _webFilterDownloadPort + ", webFilterQueryPort=" + _webFilterQueryPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "InfrastructureGatewayProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", controllerLessDuration=" + _controllerLessDuration + ", controllerLessEnabled=" + _controllerLessEnabled + ", controllerLessForwardingMode=" + _controllerLessForwardingMode + ", controllerLessRemoteDuration=" + _controllerLessRemoteDuration + ", datapathSyncTimeout=" + _datapathSyncTimeout + ", deadTimer=" + _deadTimer + ", deadTimerEnabled=" + _deadTimerEnabled + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enableUnderlayTestsDuringActivation=" + _enableUnderlayTestsDuringActivation + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowEvictionThreshold=" + _flowEvictionThreshold + ", forceImmediateSystemSync=" + _forceImmediateSystemSync + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataUpgradePath=" + _metadataUpgradePath + ", name=" + _name + ", openFlowAuditTimer=" + _openFlowAuditTimer + ", proxyDNSName=" + _proxyDNSName + ", remoteLogMode=" + _remoteLogMode + ", remoteLogServerAddress=" + _remoteLogServerAddress + ", remoteLogServerPort=" + _remoteLogServerPort + ", runUnderlayBandwidthTest=" + _runUnderlayBandwidthTest + ", runUnderlayConnectivityTest=" + _runUnderlayConnectivityTest + ", runUnderlayMTUDiscoveryTest=" + _runUnderlayMTUDiscoveryTest + ", statsCollectorPort=" + _statsCollectorPort + ", systemSyncScheduler=" + _systemSyncScheduler + ", underlayTestServer=" + _underlayTestServer + ", upgradeAction=" + _upgradeAction + ", useTwoFactor=" + _useTwoFactor + ", webFilterDownloadPort=" + _webFilterDownloadPort + ", webFilterQueryPort=" + _webFilterQueryPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

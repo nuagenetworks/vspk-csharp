@@ -350,6 +350,9 @@ public class AggregatedDomain: RestObject {
    private RoutingPoliciesFetcher _routingPolicies;
    
    [JsonIgnore]
+   private RoutingPolicyBindingsFetcher _routingPolicyBindings;
+   
+   [JsonIgnore]
    private SPATSourcesPoolsFetcher _sPATSourcesPools;
    
    [JsonIgnore]
@@ -471,6 +474,8 @@ public class AggregatedDomain: RestObject {
       _redirectionTargets = new RedirectionTargetsFetcher(this);
       
       _routingPolicies = new RoutingPoliciesFetcher(this);
+      
+      _routingPolicyBindings = new RoutingPolicyBindingsFetcher(this);
       
       _sPATSourcesPools = new SPATSourcesPoolsFetcher(this);
       
@@ -1295,6 +1300,10 @@ public class AggregatedDomain: RestObject {
    
    public RoutingPoliciesFetcher getRoutingPolicies() {
       return _routingPolicies;
+   }
+   
+   public RoutingPolicyBindingsFetcher getRoutingPolicyBindings() {
+      return _routingPolicyBindings;
    }
    
    public SPATSourcesPoolsFetcher getSPATSourcesPools() {

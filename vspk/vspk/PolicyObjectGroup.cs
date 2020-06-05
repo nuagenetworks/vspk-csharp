@@ -43,7 +43,7 @@ public class PolicyObjectGroup: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EType {NSGateway };
+   public enum EType {Gateway,NSGateway };
 
    
    [JsonProperty("description")]
@@ -70,6 +70,9 @@ public class PolicyObjectGroup: RestObject {
 
    
    [JsonIgnore]
+   private GatewaysFetcher _gateways;
+   
+   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
@@ -79,6 +82,8 @@ public class PolicyObjectGroup: RestObject {
    private NSGatewaysFetcher _nSGateways;
    
    public PolicyObjectGroup() {
+      
+      _gateways = new GatewaysFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -167,6 +172,10 @@ public class PolicyObjectGroup: RestObject {
 
    
 
+   
+   public GatewaysFetcher getGateways() {
+      return _gateways;
+   }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;

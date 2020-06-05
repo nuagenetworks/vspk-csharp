@@ -44,6 +44,9 @@ public class TestRun: RestObject {
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EOperationStatus {COMPLETED,FAILED,STARTED,TIMED_OUT,UNKNOWN };
+   public enum ETestResult {DEGRADED,FAIL,NOT_APPLICABLE,PASS };
+   public enum ETestResultDataType {BandwidthTestResult,MTUDiscoveryTestResult,None,TCPConnectTestResult,UDPProbeTestResult };
+   public enum EUnderlayTestCategory {BANDWIDTH,CONNECTIVITY,MTU_DISCOVERY };
 
    
    [JsonProperty("associatedTestID")]
@@ -87,6 +90,27 @@ public class TestRun: RestObject {
    
    [JsonProperty("stopDateTime")]
    protected long? _stopDateTime;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("testResult")]
+   protected ETestResult? _testResult;
+   
+   [JsonProperty("testResultData")]
+   protected Object _testResultData;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("testResultDataType")]
+   protected ETestResultDataType? _testResultDataType;
+   
+   [JsonProperty("testResultSpecificationEntityName")]
+   protected String _testResultSpecificationEntityName;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("underlayTestCategory")]
+   protected EUnderlayTestCategory? _underlayTestCategory;
+   
+   [JsonProperty("underlayTestDescription")]
+   protected String _underlayTestDescription;
+   
+   [JsonProperty("underlayTestName")]
+   protected String _underlayTestName;
    
 
    
@@ -259,6 +283,83 @@ public class TestRun: RestObject {
    }
 
    
+   [JsonIgnore]
+   public ETestResult? NUTestResult {
+      get {
+         return _testResult;
+      }
+      set {
+         this._testResult = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public Object NUTestResultData {
+      get {
+         return _testResultData;
+      }
+      set {
+         this._testResultData = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public ETestResultDataType? NUTestResultDataType {
+      get {
+         return _testResultDataType;
+      }
+      set {
+         this._testResultDataType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUTestResultSpecificationEntityName {
+      get {
+         return _testResultSpecificationEntityName;
+      }
+      set {
+         this._testResultSpecificationEntityName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EUnderlayTestCategory? NUUnderlayTestCategory {
+      get {
+         return _underlayTestCategory;
+      }
+      set {
+         this._underlayTestCategory = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUUnderlayTestDescription {
+      get {
+         return _underlayTestDescription;
+      }
+      set {
+         this._underlayTestDescription = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUUnderlayTestName {
+      get {
+         return _underlayTestName;
+      }
+      set {
+         this._underlayTestName = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -271,7 +372,7 @@ public class TestRun: RestObject {
    
 
    public String toString() {
-      return "TestRun [" + "associatedTestID=" + _associatedTestID + ", associatedTestSuiteRunID=" + _associatedTestSuiteRunID + ", command=" + _command + ", commandExitCode=" + _commandExitCode + ", commandOutput=" + _commandOutput + ", commandOutputSummary=" + _commandOutputSummary + ", duration=" + _duration + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", operationStatus=" + _operationStatus + ", startDateTime=" + _startDateTime + ", stopDateTime=" + _stopDateTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "TestRun [" + "associatedTestID=" + _associatedTestID + ", associatedTestSuiteRunID=" + _associatedTestSuiteRunID + ", command=" + _command + ", commandExitCode=" + _commandExitCode + ", commandOutput=" + _commandOutput + ", commandOutputSummary=" + _commandOutputSummary + ", duration=" + _duration + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", operationStatus=" + _operationStatus + ", startDateTime=" + _startDateTime + ", stopDateTime=" + _stopDateTime + ", testResult=" + _testResult + ", testResultData=" + _testResultData + ", testResultDataType=" + _testResultDataType + ", testResultSpecificationEntityName=" + _testResultSpecificationEntityName + ", underlayTestCategory=" + _underlayTestCategory + ", underlayTestDescription=" + _underlayTestDescription + ", underlayTestName=" + _underlayTestName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

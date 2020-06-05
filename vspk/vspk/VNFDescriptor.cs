@@ -43,7 +43,7 @@ public class VNFDescriptor: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EType {FIREWALL,WAN_OPT };
+   public enum EType {FIREWALL,THREAT_PREVENTION,WAN_OPT };
 
    
    [JsonProperty("CPUCount")]

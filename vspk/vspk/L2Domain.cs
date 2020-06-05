@@ -48,10 +48,11 @@ public class L2Domain: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EEntityState {MARKED_FOR_DELETION,UNDER_CONSTRUCTION };
    public enum EFlowCollectionEnabled {DISABLED,ENABLED,INHERITED };
-   public enum EL2EncapType {MPLSoUDP,VXLAN };
+   public enum EL2EncapType {MPLS,MPLSoUDP,VXLAN };
    public enum EMaintenanceMode {DISABLED,ENABLED,ENABLED_INHERITED };
    public enum EMulticast {DISABLED,ENABLED,INHERITED };
    public enum EPolicyChangeStatus {APPLIED,DISCARDED,STARTED };
+   public enum EThreatIntelligenceEnabled {DISABLED,ENABLED,INHERITED };
    public enum EUplinkPreference {PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY,SYMMETRIC };
    public enum EUseGlobalMAC {DISABLED,ENABLED };
 
@@ -169,6 +170,9 @@ public class L2Domain: RestObject {
    
    [JsonProperty("templateID")]
    protected String _templateID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("threatIntelligenceEnabled")]
+   protected EThreatIntelligenceEnabled? _threatIntelligenceEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("uplinkPreference")]
    protected EUplinkPreference? _uplinkPreference;
@@ -311,6 +315,9 @@ public class L2Domain: RestObject {
    private VMInterfacesFetcher _vMInterfaces;
    
    [JsonIgnore]
+   private VMIPReservationsFetcher _vMIPReservations;
+   
+   [JsonIgnore]
    private VPNConnectionsFetcher _vPNConnections;
    
    [JsonIgnore]
@@ -404,6 +411,8 @@ public class L2Domain: RestObject {
       _vMs = new VMsFetcher(this);
       
       _vMInterfaces = new VMInterfacesFetcher(this);
+      
+      _vMIPReservations = new VMIPReservationsFetcher(this);
       
       _vPNConnections = new VPNConnectionsFetcher(this);
       
@@ -831,6 +840,17 @@ public class L2Domain: RestObject {
 
    
    [JsonIgnore]
+   public EThreatIntelligenceEnabled? NUThreatIntelligenceEnabled {
+      get {
+         return _threatIntelligenceEnabled;
+      }
+      set {
+         this._threatIntelligenceEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EUplinkPreference? NUUplinkPreference {
       get {
          return _uplinkPreference;
@@ -1037,6 +1057,10 @@ public class L2Domain: RestObject {
       return _vMInterfaces;
    }
    
+   public VMIPReservationsFetcher getVMIPReservations() {
+      return _vMIPReservations;
+   }
+   
    public VPNConnectionsFetcher getVPNConnections() {
       return _vPNConnections;
    }
@@ -1047,7 +1071,7 @@ public class L2Domain: RestObject {
    
 
    public String toString() {
-      return "L2Domain [" + "DHCPManaged=" + _DHCPManaged + ", DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", VXLANECMPEnabled=" + _VXLANECMPEnabled + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", associatedUnderlayID=" + _associatedUnderlayID + ", color=" + _color + ", customerID=" + _customerID + ", description=" + _description + ", dualStackDynamicIPAllocation=" + _dualStackDynamicIPAllocation + ", embeddedMetadata=" + _embeddedMetadata + ", enableDHCPv4=" + _enableDHCPv4 + ", enableDHCPv6=" + _enableDHCPv6 + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", ingressReplicationEnabled=" + _ingressReplicationEnabled + ", l2EncapType=" + _l2EncapType + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", routedVPLSEnabled=" + _routedVPLSEnabled + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", uplinkPreference=" + _uplinkPreference + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "L2Domain [" + "DHCPManaged=" + _DHCPManaged + ", DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", VXLANECMPEnabled=" + _VXLANECMPEnabled + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", associatedUnderlayID=" + _associatedUnderlayID + ", color=" + _color + ", customerID=" + _customerID + ", description=" + _description + ", dualStackDynamicIPAllocation=" + _dualStackDynamicIPAllocation + ", embeddedMetadata=" + _embeddedMetadata + ", enableDHCPv4=" + _enableDHCPv4 + ", enableDHCPv6=" + _enableDHCPv6 + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", ingressReplicationEnabled=" + _ingressReplicationEnabled + ", l2EncapType=" + _l2EncapType + ", lastUpdatedBy=" + _lastUpdatedBy + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", routedVPLSEnabled=" + _routedVPLSEnabled + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", uplinkPreference=" + _uplinkPreference + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

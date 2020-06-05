@@ -57,11 +57,17 @@ public class UserContext: RestObject {
    [JsonProperty("VSSStatsInterval")]
    protected long? _VSSStatsInterval;
    
+   [JsonProperty("deniedFlowCollectionEnabled")]
+   protected bool _deniedFlowCollectionEnabled;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
+   
+   [JsonProperty("explicitACLMatchingEnabled")]
+   protected bool _explicitACLMatchingEnabled;
    
    [JsonProperty("externalID")]
    protected String _externalID;
@@ -86,6 +92,9 @@ public class UserContext: RestObject {
    
    [JsonProperty("statsTSDBServerAddress")]
    protected String _statsTSDBServerAddress;
+   
+   [JsonProperty("threatIntelligenceEnabled")]
+   protected bool _threatIntelligenceEnabled;
    
 
    
@@ -149,6 +158,17 @@ public class UserContext: RestObject {
 
    
    [JsonIgnore]
+   public bool NUDeniedFlowCollectionEnabled {
+      get {
+         return _deniedFlowCollectionEnabled;
+      }
+      set {
+         this._deniedFlowCollectionEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -166,6 +186,17 @@ public class UserContext: RestObject {
       }
       set {
          this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUExplicitACLMatchingEnabled {
+      get {
+         return _explicitACLMatchingEnabled;
+      }
+      set {
+         this._explicitACLMatchingEnabled = value;
       }
    }
 
@@ -258,6 +289,17 @@ public class UserContext: RestObject {
    }
 
    
+   [JsonIgnore]
+   public bool NUThreatIntelligenceEnabled {
+      get {
+         return _threatIntelligenceEnabled;
+      }
+      set {
+         this._threatIntelligenceEnabled = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -270,7 +312,7 @@ public class UserContext: RestObject {
    
 
    public String toString() {
-      return "UserContext [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSFeatureEnabled=" + _VSSFeatureEnabled + ", VSSStatsInterval=" + _VSSStatsInterval + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", lastUpdatedBy=" + _lastUpdatedBy + ", pageSize=" + _pageSize + ", statisticsEnabled=" + _statisticsEnabled + ", statsDatabaseProxy=" + _statsDatabaseProxy + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "UserContext [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSFeatureEnabled=" + _VSSFeatureEnabled + ", VSSStatsInterval=" + _VSSStatsInterval + ", deniedFlowCollectionEnabled=" + _deniedFlowCollectionEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", explicitACLMatchingEnabled=" + _explicitACLMatchingEnabled + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", lastUpdatedBy=" + _lastUpdatedBy + ", pageSize=" + _pageSize + ", statisticsEnabled=" + _statisticsEnabled + ", statsDatabaseProxy=" + _statsDatabaseProxy + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -61,6 +61,12 @@ public class TestSuiteRun: RestObject {
    [JsonProperty("associatedTestSuiteName")]
    protected String _associatedTestSuiteName;
    
+   [JsonProperty("associatedUnderlayTestID")]
+   protected String _associatedUnderlayTestID;
+   
+   [JsonProperty("birthCertificate")]
+   protected bool _birthCertificate;
+   
    [JsonProperty("datapathID")]
    protected String _datapathID;
    
@@ -164,6 +170,28 @@ public class TestSuiteRun: RestObject {
       }
       set {
          this._associatedTestSuiteName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedUnderlayTestID {
+      get {
+         return _associatedUnderlayTestID;
+      }
+      set {
+         this._associatedUnderlayTestID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUBirthCertificate {
+      get {
+         return _birthCertificate;
+      }
+      set {
+         this._birthCertificate = value;
       }
    }
 
@@ -294,7 +322,7 @@ public class TestSuiteRun: RestObject {
    
 
    public String toString() {
-      return "TestSuiteRun [" + "NSGatewayName=" + _NSGatewayName + ", VPortName=" + _VPortName + ", associatedEntityType=" + _associatedEntityType + ", associatedTestSuiteID=" + _associatedTestSuiteID + ", associatedTestSuiteName=" + _associatedTestSuiteName + ", datapathID=" + _datapathID + ", destination=" + _destination + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", operationStatus=" + _operationStatus + ", subnetName=" + _subnetName + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "TestSuiteRun [" + "NSGatewayName=" + _NSGatewayName + ", VPortName=" + _VPortName + ", associatedEntityType=" + _associatedEntityType + ", associatedTestSuiteID=" + _associatedTestSuiteID + ", associatedTestSuiteName=" + _associatedTestSuiteName + ", associatedUnderlayTestID=" + _associatedUnderlayTestID + ", birthCertificate=" + _birthCertificate + ", datapathID=" + _datapathID + ", destination=" + _destination + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", operationStatus=" + _operationStatus + ", subnetName=" + _subnetName + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

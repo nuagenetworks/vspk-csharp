@@ -54,6 +54,18 @@ public class Port: RestObject {
    [JsonProperty("associatedEgressQOSPolicyID")]
    protected String _associatedEgressQOSPolicyID;
    
+   [JsonProperty("associatedEthernetSegmentGroupID")]
+   protected String _associatedEthernetSegmentGroupID;
+   
+   [JsonProperty("associatedEthernetSegmentID")]
+   protected String _associatedEthernetSegmentID;
+   
+   [JsonProperty("associatedEthernetSegmentVLANRange")]
+   protected String _associatedEthernetSegmentVLANRange;
+   
+   [JsonProperty("associatedEthernetSegmentVirtual")]
+   protected bool _associatedEthernetSegmentVirtual;
+   
    [JsonProperty("associatedRedundantPortID")]
    protected String _associatedRedundantPortID;
    
@@ -159,6 +171,50 @@ public class Port: RestObject {
       }
       set {
          this._associatedEgressQOSPolicyID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEthernetSegmentGroupID {
+      get {
+         return _associatedEthernetSegmentGroupID;
+      }
+      set {
+         this._associatedEthernetSegmentGroupID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEthernetSegmentID {
+      get {
+         return _associatedEthernetSegmentID;
+      }
+      set {
+         this._associatedEthernetSegmentID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedEthernetSegmentVLANRange {
+      get {
+         return _associatedEthernetSegmentVLANRange;
+      }
+      set {
+         this._associatedEthernetSegmentVLANRange = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUAssociatedEthernetSegmentVirtual {
+      get {
+         return _associatedEthernetSegmentVirtual;
+      }
+      set {
+         this._associatedEthernetSegmentVirtual = value;
       }
    }
 
@@ -360,7 +416,7 @@ public class Port: RestObject {
    
 
    public String toString() {
-      return "Port [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + _associatedRedundantPortID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isResilient=" + _isResilient + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", status=" + _status + ", templateID=" + _templateID + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Port [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedEthernetSegmentGroupID=" + _associatedEthernetSegmentGroupID + ", associatedEthernetSegmentID=" + _associatedEthernetSegmentID + ", associatedEthernetSegmentVLANRange=" + _associatedEthernetSegmentVLANRange + ", associatedEthernetSegmentVirtual=" + _associatedEthernetSegmentVirtual + ", associatedRedundantPortID=" + _associatedRedundantPortID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isResilient=" + _isResilient + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", status=" + _status + ", templateID=" + _templateID + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

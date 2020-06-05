@@ -42,8 +42,12 @@ public class OSPFInstance: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EIPType {IPV4 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("IPType")]
+   protected EIPType? _IPType;
    
    [JsonProperty("associatedExportRoutingPolicyID")]
    protected String _associatedExportRoutingPolicyID;
@@ -103,6 +107,17 @@ public class OSPFInstance: RestObject {
       
       _oSPFAreas = new OSPFAreasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public EIPType? NUIPType {
+      get {
+         return _IPType;
+      }
+      set {
+         this._IPType = value;
+      }
    }
 
    
@@ -265,7 +280,7 @@ public class OSPFInstance: RestObject {
    
 
    public String toString() {
-      return "OSPFInstance [" + "associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", exportLimit=" + _exportLimit + ", exportToOverlay=" + _exportToOverlay + ", externalID=" + _externalID + ", externalPreference=" + _externalPreference + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", preference=" + _preference + ", superBackboneEnabled=" + _superBackboneEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "OSPFInstance [" + "IPType=" + _IPType + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", exportLimit=" + _exportLimit + ", exportToOverlay=" + _exportToOverlay + ", externalID=" + _externalID + ", externalPreference=" + _externalPreference + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", preference=" + _preference + ", superBackboneEnabled=" + _superBackboneEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    

@@ -62,6 +62,12 @@ public class NSGInfo: RestObject {
    [JsonProperty("BIOSVersion")]
    protected String _BIOSVersion;
    
+   [JsonProperty("CACertificate")]
+   protected Object _CACertificate;
+   
+   [JsonProperty("CPUCoreAllocation")]
+   protected String _CPUCoreAllocation;
+   
    [JsonProperty("CPUType")]
    protected String _CPUType;
    
@@ -91,6 +97,9 @@ public class NSGInfo: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("bootstrapStatus")]
    protected EBootstrapStatus? _bootstrapStatus;
+   
+   [JsonProperty("certificate")]
+   protected Object _certificate;
    
    [JsonProperty("cmdDetailedStatus")]
    protected String _cmdDetailedStatus;
@@ -127,6 +136,9 @@ public class NSGInfo: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("family")]
    protected EFamily? _family;
+   
+   [JsonProperty("hugePageSetting")]
+   protected String _hugePageSetting;
    
    [JsonProperty("libraries")]
    protected String _libraries;
@@ -196,6 +208,28 @@ public class NSGInfo: RestObject {
       }
       set {
          this._BIOSVersion = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public Object NUCACertificate {
+      get {
+         return _CACertificate;
+      }
+      set {
+         this._CACertificate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCPUCoreAllocation {
+      get {
+         return _CPUCoreAllocation;
+      }
+      set {
+         this._CPUCoreAllocation = value;
       }
    }
 
@@ -306,6 +340,17 @@ public class NSGInfo: RestObject {
       }
       set {
          this._bootstrapStatus = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public Object NUCertificate {
+      get {
+         return _certificate;
+      }
+      set {
+         this._certificate = value;
       }
    }
 
@@ -443,6 +488,17 @@ public class NSGInfo: RestObject {
 
    
    [JsonIgnore]
+   public String NUHugePageSetting {
+      get {
+         return _hugePageSetting;
+      }
+      set {
+         this._hugePageSetting = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULibraries {
       get {
          return _libraries;
@@ -523,7 +579,7 @@ public class NSGInfo: RestObject {
    
 
    public String toString() {
-      return "NSGInfo [" + "AARApplicationReleaseDate=" + _AARApplicationReleaseDate + ", AARApplicationVersion=" + _AARApplicationVersion + ", BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", associatedEntityType=" + _associatedEntityType + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", bootstrapStatus=" + _bootstrapStatus + ", cmdDetailedStatus=" + _cmdDetailedStatus + ", cmdDetailedStatusCode=" + _cmdDetailedStatusCode + ", cmdDownloadProgress=" + _cmdDownloadProgress + ", cmdID=" + _cmdID + ", cmdLastUpdatedDate=" + _cmdLastUpdatedDate + ", cmdStatus=" + _cmdStatus + ", cmdType=" + _cmdType + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", libraries=" + _libraries + ", name=" + _name + ", patchesDetail=" + _patchesDetail + ", personality=" + _personality + ", productName=" + _productName + ", serialNumber=" + _serialNumber + ", systemID=" + _systemID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "NSGInfo [" + "AARApplicationReleaseDate=" + _AARApplicationReleaseDate + ", AARApplicationVersion=" + _AARApplicationVersion + ", BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CACertificate=" + _CACertificate + ", CPUCoreAllocation=" + _CPUCoreAllocation + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", associatedEntityType=" + _associatedEntityType + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", bootstrapStatus=" + _bootstrapStatus + ", certificate=" + _certificate + ", cmdDetailedStatus=" + _cmdDetailedStatus + ", cmdDetailedStatusCode=" + _cmdDetailedStatusCode + ", cmdDownloadProgress=" + _cmdDownloadProgress + ", cmdID=" + _cmdID + ", cmdLastUpdatedDate=" + _cmdLastUpdatedDate + ", cmdStatus=" + _cmdStatus + ", cmdType=" + _cmdType + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", hugePageSetting=" + _hugePageSetting + ", libraries=" + _libraries + ", name=" + _name + ", patchesDetail=" + _patchesDetail + ", personality=" + _personality + ", productName=" + _productName + ", serialNumber=" + _serialNumber + ", systemID=" + _systemID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
