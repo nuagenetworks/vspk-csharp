@@ -45,8 +45,8 @@ public class Roleentry: RestObject {
    public enum ERoleAccessTypeList {CREATE,CUD_CHILDREN,DELETE,MODIFY,NO_ACCESS,NO_ACCESS_CHILDREN,READ,READ_CHILDREN };
 
    
-   [JsonProperty("associatedEntityType")]
-   protected String _associatedEntityType;
+   [JsonProperty("endPointType")]
+   protected String _endPointType;
    
    [JsonProperty("roleAccessTypeList")]
    protected System.Collections.Generic.List<ERoleAccessTypeList> _roleAccessTypeList;
@@ -59,12 +59,12 @@ public class Roleentry: RestObject {
 
    
    [JsonIgnore]
-   public String NUAssociatedEntityType {
+   public String NUEndPointType {
       get {
-         return _associatedEntityType;
+         return _endPointType;
       }
       set {
-         this._associatedEntityType = value;
+         this._endPointType = value;
       }
    }
 
@@ -84,7 +84,7 @@ public class Roleentry: RestObject {
    
 
    public String toString() {
-      return "Roleentry [" + "associatedEntityType=" + _associatedEntityType + ", roleAccessTypeList=" + _roleAccessTypeList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
+      return "Roleentry [" + "endPointType=" + _endPointType + ", roleAccessTypeList=" + _roleAccessTypeList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
               + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
    }
    
