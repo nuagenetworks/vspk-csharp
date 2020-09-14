@@ -72,7 +72,7 @@ public class VRS: RestObject {
    protected String _description;
    
    [JsonProperty("disks")]
-   protected System.Collections.Generic.List<DiskStat> _disks;
+   protected System.Collections.Generic.List<String> _disks;
    
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
@@ -340,7 +340,7 @@ public class VRS: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<DiskStat> NUDisks {
+   public System.Collections.Generic.List<String> NUDisks {
       get {
          return _disks;
       }
