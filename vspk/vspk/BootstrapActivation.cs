@@ -108,11 +108,16 @@ public class BootstrapActivation: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public BootstrapActivation() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -323,6 +328,10 @@ public class BootstrapActivation: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

@@ -390,6 +390,9 @@ public class VCenterCluster: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VCenterHypervisorsFetcher _vCenterHypervisors;
    
    [JsonIgnore]
@@ -407,6 +410,8 @@ public class VCenterCluster: RestObject {
       _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _vCenterHypervisors = new VCenterHypervisorsFetcher(this);
       
@@ -1621,6 +1626,10 @@ public class VCenterCluster: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VCenterHypervisorsFetcher getVCenterHypervisors() {

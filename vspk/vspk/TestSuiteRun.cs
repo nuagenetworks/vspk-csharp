@@ -106,6 +106,9 @@ public class TestSuiteRun: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private TestRunsFetcher _testRuns;
    
    public TestSuiteRun() {
@@ -113,6 +116,8 @@ public class TestSuiteRun: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _testRuns = new TestRunsFetcher(this);
       
@@ -314,6 +319,10 @@ public class TestSuiteRun: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public TestRunsFetcher getTestRuns() {

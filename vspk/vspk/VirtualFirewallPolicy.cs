@@ -116,6 +116,9 @@ public class VirtualFirewallPolicy: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VirtualFirewallRulesFetcher _virtualFirewallRules;
    
    public VirtualFirewallPolicy() {
@@ -123,6 +126,8 @@ public class VirtualFirewallPolicy: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _virtualFirewallRules = new VirtualFirewallRulesFetcher(this);
       
@@ -357,6 +362,10 @@ public class VirtualFirewallPolicy: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VirtualFirewallRulesFetcher getVirtualFirewallRules() {

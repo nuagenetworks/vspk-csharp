@@ -87,6 +87,9 @@ public class NetworkPerformanceMeasurement: RestObject {
    [JsonIgnore]
    private NetworkPerformanceBindingsFetcher _networkPerformanceBindings;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public NetworkPerformanceMeasurement() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -96,6 +99,8 @@ public class NetworkPerformanceMeasurement: RestObject {
       _monitorscopes = new MonitorscopesFetcher(this);
       
       _networkPerformanceBindings = new NetworkPerformanceBindingsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -215,6 +220,10 @@ public class NetworkPerformanceMeasurement: RestObject {
    
    public NetworkPerformanceBindingsFetcher getNetworkPerformanceBindings() {
       return _networkPerformanceBindings;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

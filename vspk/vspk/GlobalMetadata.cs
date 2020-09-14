@@ -86,11 +86,16 @@ public class GlobalMetadata: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public GlobalMetadata() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -224,6 +229,10 @@ public class GlobalMetadata: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

@@ -127,6 +127,9 @@ public class EnterpriseProfile: RestObject {
    [JsonIgnore]
    private MultiCastListsFetcher _multiCastLists;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public EnterpriseProfile() {
       _floatingIPsQuota = 100L;
       _DHCPLeaseInterval = 24L;
@@ -140,6 +143,8 @@ public class EnterpriseProfile: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _multiCastLists = new MultiCastListsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -395,6 +400,10 @@ public class EnterpriseProfile: RestObject {
    
    public MultiCastListsFetcher getMultiCastLists() {
       return _multiCastLists;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

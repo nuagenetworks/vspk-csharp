@@ -258,6 +258,9 @@ public class Subnet: RestObject {
    private PATIPEntriesFetcher _pATIPEntries;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private ProxyARPFiltersFetcher _proxyARPFilters;
    
    [JsonIgnore]
@@ -327,6 +330,8 @@ public class Subnet: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _pATIPEntries = new PATIPEntriesFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _proxyARPFilters = new ProxyARPFiltersFetcher(this);
       
@@ -967,6 +972,10 @@ public class Subnet: RestObject {
    
    public PATIPEntriesFetcher getPATIPEntries() {
       return _pATIPEntries;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public ProxyARPFiltersFetcher getProxyARPFilters() {

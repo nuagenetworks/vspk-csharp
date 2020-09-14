@@ -72,6 +72,9 @@ public class MultiCastList: RestObject {
    [JsonIgnore]
    private MultiCastChannelMapsFetcher _multiCastChannelMaps;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public MultiCastList() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -79,6 +82,8 @@ public class MultiCastList: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _multiCastChannelMaps = new MultiCastChannelMapsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -150,6 +155,10 @@ public class MultiCastList: RestObject {
    
    public MultiCastChannelMapsFetcher getMultiCastChannelMaps() {
       return _multiCastChannelMaps;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

@@ -95,6 +95,9 @@ public class NSGatewayTemplate: RestObject {
    [JsonIgnore]
    private NSPortTemplatesFetcher _nSPortTemplates;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public NSGatewayTemplate() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -102,6 +105,8 @@ public class NSGatewayTemplate: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _nSPortTemplates = new NSPortTemplatesFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -250,6 +255,10 @@ public class NSGatewayTemplate: RestObject {
    
    public NSPortTemplatesFetcher getNSPortTemplates() {
       return _nSPortTemplates;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

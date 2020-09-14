@@ -99,6 +99,9 @@ public class OSPFInstance: RestObject {
    [JsonIgnore]
    private OSPFAreasFetcher _oSPFAreas;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public OSPFInstance() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -106,6 +109,8 @@ public class OSPFInstance: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _oSPFAreas = new OSPFAreasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -276,6 +281,10 @@ public class OSPFInstance: RestObject {
    
    public OSPFAreasFetcher getOSPFAreas() {
       return _oSPFAreas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

@@ -181,6 +181,9 @@ public class License: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public License() {
       
       _eventLogs = new EventLogsFetcher(this);
@@ -188,6 +191,8 @@ public class License: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -655,6 +660,10 @@ public class License: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

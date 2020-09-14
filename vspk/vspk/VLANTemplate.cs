@@ -107,6 +107,9 @@ public class VLANTemplate: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private UplinkConnectionsFetcher _uplinkConnections;
    
    public VLANTemplate() {
@@ -116,6 +119,8 @@ public class VLANTemplate: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _uplinkConnections = new UplinkConnectionsFetcher(this);
       
@@ -310,6 +315,10 @@ public class VLANTemplate: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public UplinkConnectionsFetcher getUplinkConnections() {

@@ -84,6 +84,9 @@ public class DUCGroup: RestObject {
    [JsonIgnore]
    private NSGatewaysFetcher _nSGateways;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public DUCGroup() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -91,6 +94,8 @@ public class DUCGroup: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _nSGateways = new NSGatewaysFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -206,6 +211,10 @@ public class DUCGroup: RestObject {
    
    public NSGatewaysFetcher getNSGateways() {
       return _nSGateways;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

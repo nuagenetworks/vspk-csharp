@@ -142,6 +142,9 @@ public class VSD: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public VSD() {
       
       _alarms = new AlarmsFetcher(this);
@@ -155,6 +158,8 @@ public class VSD: RestObject {
       _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -458,6 +463,10 @@ public class VSD: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

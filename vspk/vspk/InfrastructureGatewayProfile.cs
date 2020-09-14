@@ -161,6 +161,9 @@ public class InfrastructureGatewayProfile: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public InfrastructureGatewayProfile() {
       _upgradeAction = EUpgradeAction.NONE;
       _statsCollectorPort = 29090L;
@@ -172,6 +175,8 @@ public class InfrastructureGatewayProfile: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -569,6 +574,10 @@ public class InfrastructureGatewayProfile: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

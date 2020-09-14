@@ -342,6 +342,9 @@ public class Enterprise: RestObject {
    private PerformanceMonitorsFetcher _performanceMonitors;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private PolicyGroupCategoriesFetcher _policyGroupCategories;
    
    [JsonIgnore]
@@ -522,6 +525,8 @@ public class Enterprise: RestObject {
       _pATNATPools = new PATNATPoolsFetcher(this);
       
       _performanceMonitors = new PerformanceMonitorsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _policyGroupCategories = new PolicyGroupCategoriesFetcher(this);
       
@@ -1227,6 +1232,10 @@ public class Enterprise: RestObject {
    
    public PerformanceMonitorsFetcher getPerformanceMonitors() {
       return _performanceMonitors;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public PolicyGroupCategoriesFetcher getPolicyGroupCategories() {

@@ -87,6 +87,9 @@ public class PolicyDecision: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private QOSsFetcher _qOSs;
    
    public PolicyDecision() {
@@ -94,6 +97,8 @@ public class PolicyDecision: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _qOSs = new QOSsFetcher(this);
       
@@ -229,6 +234,10 @@ public class PolicyDecision: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public QOSsFetcher getQOSs() {

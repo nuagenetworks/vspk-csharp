@@ -72,6 +72,9 @@ public class VNFCatalog: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VNFDescriptorsFetcher _vNFDescriptors;
    
    public VNFCatalog() {
@@ -79,6 +82,8 @@ public class VNFCatalog: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _vNFDescriptors = new VNFDescriptorsFetcher(this);
       
@@ -159,6 +164,10 @@ public class VNFCatalog: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VNFDescriptorsFetcher getVNFDescriptors() {

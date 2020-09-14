@@ -102,6 +102,9 @@ public class EgressProfile: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VPortsFetcher _vPorts;
    
    public EgressProfile() {
@@ -111,6 +114,8 @@ public class EgressProfile: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _vPorts = new VPortsFetcher(this);
       
@@ -294,6 +299,10 @@ public class EgressProfile: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VPortsFetcher getVPorts() {

@@ -92,6 +92,9 @@ public class KeyServerMonitorSeed: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public KeyServerMonitorSeed() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -99,6 +102,8 @@ public class KeyServerMonitorSeed: RestObject {
       _keyServerMonitorEncryptedSeeds = new KeyServerMonitorEncryptedSeedsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -236,6 +241,10 @@ public class KeyServerMonitorSeed: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

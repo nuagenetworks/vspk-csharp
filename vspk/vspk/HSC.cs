@@ -151,6 +151,9 @@ public class HSC: RestObject {
    [JsonIgnore]
    private MonitoringPortsFetcher _monitoringPorts;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public HSC() {
       
       _alarms = new AlarmsFetcher(this);
@@ -168,6 +171,8 @@ public class HSC: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _monitoringPorts = new MonitoringPortsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -490,6 +495,10 @@ public class HSC: RestObject {
    
    public MonitoringPortsFetcher getMonitoringPorts() {
       return _monitoringPorts;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

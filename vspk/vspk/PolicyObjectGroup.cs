@@ -81,6 +81,9 @@ public class PolicyObjectGroup: RestObject {
    [JsonIgnore]
    private NSGatewaysFetcher _nSGateways;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public PolicyObjectGroup() {
       
       _gateways = new GatewaysFetcher(this);
@@ -90,6 +93,8 @@ public class PolicyObjectGroup: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _nSGateways = new NSGatewaysFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -187,6 +192,10 @@ public class PolicyObjectGroup: RestObject {
    
    public NSGatewaysFetcher getNSGateways() {
       return _nSGateways;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

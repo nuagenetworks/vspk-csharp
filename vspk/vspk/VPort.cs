@@ -256,6 +256,9 @@ public class VPort: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private PolicyGroupsFetcher _policyGroups;
    
    [JsonIgnore]
@@ -339,6 +342,8 @@ public class VPort: RestObject {
       _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _policyGroups = new PolicyGroupsFetcher(this);
       
@@ -969,6 +974,10 @@ public class VPort: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public PolicyGroupsFetcher getPolicyGroups() {

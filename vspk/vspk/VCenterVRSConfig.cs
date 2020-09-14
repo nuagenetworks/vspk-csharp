@@ -360,6 +360,9 @@ public class VCenterVRSConfig: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VRSAddressRangesFetcher _vRSAddressRanges;
    
    [JsonIgnore]
@@ -370,6 +373,8 @@ public class VCenterVRSConfig: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _vRSAddressRanges = new VRSAddressRangesFetcher(this);
       
@@ -1486,6 +1491,10 @@ public class VCenterVRSConfig: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VRSAddressRangesFetcher getVRSAddressRanges() {

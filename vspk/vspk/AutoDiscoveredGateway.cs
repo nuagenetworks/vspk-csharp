@@ -97,6 +97,9 @@ public class AutoDiscoveredGateway: RestObject {
    private NSPortsFetcher _nSPorts;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private PortsFetcher _ports;
    
    [JsonIgnore]
@@ -114,6 +117,8 @@ public class AutoDiscoveredGateway: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _nSPorts = new NSPortsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _ports = new PortsFetcher(this);
       
@@ -272,6 +277,10 @@ public class AutoDiscoveredGateway: RestObject {
    
    public NSPortsFetcher getNSPorts() {
       return _nSPorts;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public PortsFetcher getPorts() {

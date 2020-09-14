@@ -77,6 +77,9 @@ public class MultiCastChannelMap: RestObject {
    [JsonIgnore]
    private MultiCastRangesFetcher _multiCastRanges;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public MultiCastChannelMap() {
       
       _eventLogs = new EventLogsFetcher(this);
@@ -86,6 +89,8 @@ public class MultiCastChannelMap: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _multiCastRanges = new MultiCastRangesFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -172,6 +177,10 @@ public class MultiCastChannelMap: RestObject {
    
    public MultiCastRangesFetcher getMultiCastRanges() {
       return _multiCastRanges;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

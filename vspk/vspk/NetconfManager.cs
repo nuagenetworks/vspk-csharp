@@ -84,6 +84,9 @@ public class NetconfManager: RestObject {
    [JsonIgnore]
    private NetconfSessionsFetcher _netconfSessions;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public NetconfManager() {
       
       _alarms = new AlarmsFetcher(this);
@@ -93,6 +96,8 @@ public class NetconfManager: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _netconfSessions = new NetconfSessionsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -201,6 +206,10 @@ public class NetconfManager: RestObject {
    
    public NetconfSessionsFetcher getNetconfSessions() {
       return _netconfSessions;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

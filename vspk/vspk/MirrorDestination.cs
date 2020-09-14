@@ -84,6 +84,9 @@ public class MirrorDestination: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VPortMirrorsFetcher _vPortMirrors;
    
    public MirrorDestination() {
@@ -97,6 +100,8 @@ public class MirrorDestination: RestObject {
       _ingressAdvFwdEntryTemplates = new IngressAdvFwdEntryTemplatesFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _vPortMirrors = new VPortMirrorsFetcher(this);
       
@@ -200,6 +205,10 @@ public class MirrorDestination: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VPortMirrorsFetcher getVPortMirrors() {

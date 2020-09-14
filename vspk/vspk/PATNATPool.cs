@@ -126,6 +126,9 @@ public class PATNATPool: RestObject {
    private NATMapEntriesFetcher _nATMapEntries;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private StatisticsFetcher _statistics;
    
    [JsonIgnore]
@@ -144,6 +147,8 @@ public class PATNATPool: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _nATMapEntries = new NATMapEntriesFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _statistics = new StatisticsFetcher(this);
       
@@ -385,6 +390,10 @@ public class PATNATPool: RestObject {
    
    public NATMapEntriesFetcher getNATMapEntries() {
       return _nATMapEntries;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public StatisticsFetcher getStatistics() {

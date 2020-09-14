@@ -95,6 +95,9 @@ public class InfrastructureAccessProfile: RestObject {
    private NSGatewayTemplatesFetcher _nSGatewayTemplates;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private SSHKeysFetcher _sSHKeys;
    
    public InfrastructureAccessProfile() {
@@ -106,6 +109,8 @@ public class InfrastructureAccessProfile: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _nSGatewayTemplates = new NSGatewayTemplatesFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _sSHKeys = new SSHKeysFetcher(this);
       
@@ -249,6 +254,10 @@ public class InfrastructureAccessProfile: RestObject {
    
    public NSGatewayTemplatesFetcher getNSGatewayTemplates() {
       return _nSGatewayTemplates;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public SSHKeysFetcher getSSHKeys() {

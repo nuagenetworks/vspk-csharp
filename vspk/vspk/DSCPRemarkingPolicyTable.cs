@@ -74,6 +74,9 @@ public class DSCPRemarkingPolicyTable: RestObject {
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public DSCPRemarkingPolicyTable() {
       
       _dSCPRemarkingPolicies = new DSCPRemarkingPoliciesFetcher(this);
@@ -81,6 +84,8 @@ public class DSCPRemarkingPolicyTable: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -163,6 +168,10 @@ public class DSCPRemarkingPolicyTable: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

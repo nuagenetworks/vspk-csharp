@@ -102,6 +102,9 @@ public class RedirectionTarget: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VirtualIPsFetcher _virtualIPs;
    
    [JsonIgnore]
@@ -115,6 +118,8 @@ public class RedirectionTarget: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _virtualIPs = new VirtualIPsFetcher(this);
       
@@ -289,6 +294,10 @@ public class RedirectionTarget: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VirtualIPsFetcher getVirtualIPs() {

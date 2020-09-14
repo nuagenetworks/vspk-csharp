@@ -134,6 +134,9 @@ public class IKEGatewayConnection: RestObject {
    private PerformanceMonitorsFetcher _performanceMonitors;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private SubnetsFetcher _subnets;
    
    public IKEGatewayConnection() {
@@ -147,6 +150,8 @@ public class IKEGatewayConnection: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _performanceMonitors = new PerformanceMonitorsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _subnets = new SubnetsFetcher(this);
       
@@ -415,6 +420,10 @@ public class IKEGatewayConnection: RestObject {
    
    public PerformanceMonitorsFetcher getPerformanceMonitors() {
       return _performanceMonitors;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public SubnetsFetcher getSubnets() {

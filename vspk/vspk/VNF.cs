@@ -137,6 +137,9 @@ public class VNF: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VNFInterfacesFetcher _vNFInterfaces;
    
    [JsonIgnore]
@@ -152,6 +155,8 @@ public class VNF: RestObject {
       _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _vNFInterfaces = new VNFInterfacesFetcher(this);
       
@@ -449,6 +454,10 @@ public class VNF: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VNFInterfacesFetcher getVNFInterfaces() {

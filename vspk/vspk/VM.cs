@@ -144,6 +144,9 @@ public class VM: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VMResyncsFetcher _vMResyncs;
    
    [JsonIgnore]
@@ -161,6 +164,8 @@ public class VM: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _vMResyncs = new VMResyncsFetcher(this);
       
@@ -484,6 +489,10 @@ public class VM: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VMResyncsFetcher getVMResyncs() {

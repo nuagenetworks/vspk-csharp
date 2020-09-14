@@ -116,6 +116,9 @@ public class EgressACLTemplate: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VMsFetcher _vMs;
    
    public EgressACLTemplate() {
@@ -131,6 +134,8 @@ public class EgressACLTemplate: RestObject {
       _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _vMs = new VMsFetcher(this);
       
@@ -337,6 +342,10 @@ public class EgressACLTemplate: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VMsFetcher getVMs() {

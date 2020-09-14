@@ -145,6 +145,9 @@ public class ContainerInterface: RestObject {
    private MultiCastChannelMapsFetcher _multiCastChannelMaps;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private PolicyDecisionsFetcher _policyDecisions;
    
    [JsonIgnore]
@@ -175,6 +178,8 @@ public class ContainerInterface: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _multiCastChannelMaps = new MultiCastChannelMapsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _policyDecisions = new PolicyDecisionsFetcher(this);
       
@@ -501,6 +506,10 @@ public class ContainerInterface: RestObject {
    
    public MultiCastChannelMapsFetcher getMultiCastChannelMaps() {
       return _multiCastChannelMaps;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public PolicyDecisionsFetcher getPolicyDecisions() {

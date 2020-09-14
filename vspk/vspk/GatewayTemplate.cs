@@ -82,6 +82,9 @@ public class GatewayTemplate: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private PortTemplatesFetcher _portTemplates;
    
    public GatewayTemplate() {
@@ -90,6 +93,8 @@ public class GatewayTemplate: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _portTemplates = new PortTemplatesFetcher(this);
       
@@ -203,6 +208,10 @@ public class GatewayTemplate: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public PortTemplatesFetcher getPortTemplates() {

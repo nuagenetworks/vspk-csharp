@@ -87,6 +87,9 @@ public class EnterpriseNetwork: RestObject {
    [JsonIgnore]
    private NetworkMacroGroupsFetcher _networkMacroGroups;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public EnterpriseNetwork() {
       _IPType = EIPType.IPV4;
       
@@ -97,6 +100,8 @@ public class EnterpriseNetwork: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _networkMacroGroups = new NetworkMacroGroupsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -216,6 +221,10 @@ public class EnterpriseNetwork: RestObject {
    
    public NetworkMacroGroupsFetcher getNetworkMacroGroups() {
       return _networkMacroGroups;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

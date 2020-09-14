@@ -101,6 +101,9 @@ public class PolicyGroup: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private PolicyGroupCategoriesFetcher _policyGroupCategories;
    
    [JsonIgnore]
@@ -114,6 +117,8 @@ public class PolicyGroup: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _policyGroupCategories = new PolicyGroupCategoriesFetcher(this);
       
@@ -288,6 +293,10 @@ public class PolicyGroup: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public PolicyGroupCategoriesFetcher getPolicyGroupCategories() {

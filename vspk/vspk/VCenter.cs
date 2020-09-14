@@ -408,6 +408,9 @@ public class VCenter: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VCenterDataCentersFetcher _vCenterDataCenters;
    
    [JsonIgnore]
@@ -425,6 +428,8 @@ public class VCenter: RestObject {
       _jobs = new JobsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _vCenterDataCenters = new VCenterDataCentersFetcher(this);
       
@@ -1705,6 +1710,10 @@ public class VCenter: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VCenterDataCentersFetcher getVCenterDataCenters() {

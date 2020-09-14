@@ -77,6 +77,9 @@ public class MirrorDestinationGroup: RestObject {
    [JsonIgnore]
    private OverlayMirrorDestinationsFetcher _overlayMirrorDestinations;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public MirrorDestinationGroup() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -86,6 +89,8 @@ public class MirrorDestinationGroup: RestObject {
       _mirrorDestinations = new MirrorDestinationsFetcher(this);
       
       _overlayMirrorDestinations = new OverlayMirrorDestinationsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -172,6 +177,10 @@ public class MirrorDestinationGroup: RestObject {
    
    public OverlayMirrorDestinationsFetcher getOverlayMirrorDestinations() {
       return _overlayMirrorDestinations;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

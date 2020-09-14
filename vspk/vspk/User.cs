@@ -119,6 +119,9 @@ public class User: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private VMsFetcher _vMs;
    
    public User() {
@@ -134,6 +137,8 @@ public class User: RestObject {
       _groups = new GroupsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _vMs = new VMsFetcher(this);
       
@@ -351,6 +356,10 @@ public class User: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public VMsFetcher getVMs() {

@@ -82,6 +82,9 @@ public class PSNATPool: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private PSPATMapsFetcher _pSPATMaps;
    
    [JsonIgnore]
@@ -92,6 +95,8 @@ public class PSNATPool: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _pSPATMaps = new PSPATMapsFetcher(this);
       
@@ -207,6 +212,10 @@ public class PSNATPool: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public PSPATMapsFetcher getPSPATMaps() {

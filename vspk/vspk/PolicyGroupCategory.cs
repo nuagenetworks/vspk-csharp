@@ -75,6 +75,9 @@ public class PolicyGroupCategory: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private PolicyGroupsFetcher _policyGroups;
    
    public PolicyGroupCategory() {
@@ -82,6 +85,8 @@ public class PolicyGroupCategory: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _policyGroups = new PolicyGroupsFetcher(this);
       
@@ -173,6 +178,10 @@ public class PolicyGroupCategory: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public PolicyGroupsFetcher getPolicyGroups() {

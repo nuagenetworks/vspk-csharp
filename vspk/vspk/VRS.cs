@@ -218,6 +218,9 @@ public class VRS: RestObject {
    private MultiNICVPortsFetcher _multiNICVPorts;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private StatisticsFetcher _statistics;
    
    [JsonIgnore]
@@ -250,6 +253,8 @@ public class VRS: RestObject {
       _monitoringPorts = new MonitoringPortsFetcher(this);
       
       _multiNICVPorts = new MultiNICVPortsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _statistics = new StatisticsFetcher(this);
       
@@ -797,6 +802,10 @@ public class VRS: RestObject {
    
    public MultiNICVPortsFetcher getMultiNICVPorts() {
       return _multiNICVPorts;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public StatisticsFetcher getStatistics() {

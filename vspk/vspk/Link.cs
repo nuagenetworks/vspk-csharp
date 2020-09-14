@@ -108,6 +108,9 @@ public class Link: RestObject {
    private OverlayAddressPoolsFetcher _overlayAddressPools;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private PolicyStatementsFetcher _policyStatements;
    
    [JsonIgnore]
@@ -126,6 +129,8 @@ public class Link: RestObject {
       _nextHops = new NextHopsFetcher(this);
       
       _overlayAddressPools = new OverlayAddressPoolsFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _policyStatements = new PolicyStatementsFetcher(this);
       
@@ -301,6 +306,10 @@ public class Link: RestObject {
    
    public OverlayAddressPoolsFetcher getOverlayAddressPools() {
       return _overlayAddressPools;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public PolicyStatementsFetcher getPolicyStatements() {

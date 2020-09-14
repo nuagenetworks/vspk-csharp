@@ -148,6 +148,9 @@ public class Application: RestObject {
    [JsonIgnore]
    private MonitorscopesFetcher _monitorscopes;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public Application() {
       
       _applicationBindings = new ApplicationBindingsFetcher(this);
@@ -157,6 +160,8 @@ public class Application: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _monitorscopes = new MonitorscopesFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -485,6 +490,10 @@ public class Application: RestObject {
    
    public MonitorscopesFetcher getMonitorscopes() {
       return _monitorscopes;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

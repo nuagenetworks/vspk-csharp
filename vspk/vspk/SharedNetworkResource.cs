@@ -168,6 +168,9 @@ public class SharedNetworkResource: RestObject {
    private PATIPEntriesFetcher _pATIPEntries;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private StaticRoutesFetcher _staticRoutes;
    
    [JsonIgnore]
@@ -188,6 +191,8 @@ public class SharedNetworkResource: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _pATIPEntries = new PATIPEntriesFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _staticRoutes = new StaticRoutesFetcher(this);
       
@@ -583,6 +588,10 @@ public class SharedNetworkResource: RestObject {
    
    public PATIPEntriesFetcher getPATIPEntries() {
       return _pATIPEntries;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public StaticRoutesFetcher getStaticRoutes() {

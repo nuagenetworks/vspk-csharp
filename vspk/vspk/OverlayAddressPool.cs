@@ -87,6 +87,9 @@ public class OverlayAddressPool: RestObject {
    [JsonIgnore]
    private OverlayPATNATEntriesFetcher _overlayPATNATEntries;
    
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public OverlayAddressPool() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -94,6 +97,8 @@ public class OverlayAddressPool: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _overlayPATNATEntries = new OverlayPATNATEntriesFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
    }
 
@@ -220,6 +225,10 @@ public class OverlayAddressPool: RestObject {
    
    public OverlayPATNATEntriesFetcher getOverlayPATNATEntries() {
       return _overlayPATNATEntries;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
 

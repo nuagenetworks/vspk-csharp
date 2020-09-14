@@ -82,6 +82,9 @@ public class WebCategory: RestObject {
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
+   [JsonIgnore]
    private WebDomainNamesFetcher _webDomainNames;
    
    public WebCategory() {
@@ -89,6 +92,8 @@ public class WebCategory: RestObject {
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
       
       _webDomainNames = new WebDomainNamesFetcher(this);
       
@@ -202,6 +207,10 @@ public class WebCategory: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
    }
    
    public WebDomainNamesFetcher getWebDomainNames() {
