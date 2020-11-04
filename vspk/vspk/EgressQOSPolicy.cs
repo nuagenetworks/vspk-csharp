@@ -58,6 +58,9 @@ public class EgressQOSPolicy: RestObject {
    
    [JsonProperty("associatedDSCPRemarkingPolicyTableID")]
    protected String _associatedDSCPRemarkingPolicyTableID;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("defaultServiceClass")]
    protected EDefaultServiceClass? _defaultServiceClass;
@@ -77,6 +80,9 @@ public class EgressQOSPolicy: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("mgmtQueueAssociatedRateLimiterID")]
    protected String _mgmtQueueAssociatedRateLimiterID;
    
@@ -85,6 +91,9 @@ public class EgressQOSPolicy: RestObject {
    
    [JsonProperty("networkCtrlQueueAssociatedRateLimiterID")]
    protected String _networkCtrlQueueAssociatedRateLimiterID;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("parentQueueAssociatedRateLimiterID")]
    protected String _parentQueueAssociatedRateLimiterID;
@@ -169,6 +178,17 @@ public class EgressQOSPolicy: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EDefaultServiceClass? NUDefaultServiceClass {
       get {
          return _defaultServiceClass;
@@ -235,6 +255,17 @@ public class EgressQOSPolicy: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUMgmtQueueAssociatedRateLimiterID {
       get {
          return _mgmtQueueAssociatedRateLimiterID;
@@ -263,6 +294,17 @@ public class EgressQOSPolicy: RestObject {
       }
       set {
          this._networkCtrlQueueAssociatedRateLimiterID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -382,8 +424,7 @@ public class EgressQOSPolicy: RestObject {
    
 
    public String toString() {
-      return "EgressQOSPolicy [" + "assocEgressQosId=" + _assocEgressQosId + ", associatedCOSRemarkingPolicyTableID=" + _associatedCOSRemarkingPolicyTableID + ", associatedDSCPRemarkingPolicyTableID=" + _associatedDSCPRemarkingPolicyTableID + ", defaultServiceClass=" + _defaultServiceClass + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mgmtQueueAssociatedRateLimiterID=" + _mgmtQueueAssociatedRateLimiterID + ", name=" + _name + ", networkCtrlQueueAssociatedRateLimiterID=" + _networkCtrlQueueAssociatedRateLimiterID + ", parentQueueAssociatedRateLimiterID=" + _parentQueueAssociatedRateLimiterID + ", queue1AssociatedRateLimiterID=" + _queue1AssociatedRateLimiterID + ", queue1ForwardingClasses=" + _queue1ForwardingClasses + ", queue2AssociatedRateLimiterID=" + _queue2AssociatedRateLimiterID + ", queue2ForwardingClasses=" + _queue2ForwardingClasses + ", queue3AssociatedRateLimiterID=" + _queue3AssociatedRateLimiterID + ", queue3ForwardingClasses=" + _queue3ForwardingClasses + ", queue4AssociatedRateLimiterID=" + _queue4AssociatedRateLimiterID + ", queue4ForwardingClasses=" + _queue4ForwardingClasses + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "EgressQOSPolicy [" + "assocEgressQosId=" + _assocEgressQosId + ", associatedCOSRemarkingPolicyTableID=" + _associatedCOSRemarkingPolicyTableID + ", associatedDSCPRemarkingPolicyTableID=" + _associatedDSCPRemarkingPolicyTableID + ", creationDate=" + _creationDate + ", defaultServiceClass=" + _defaultServiceClass + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", mgmtQueueAssociatedRateLimiterID=" + _mgmtQueueAssociatedRateLimiterID + ", name=" + _name + ", networkCtrlQueueAssociatedRateLimiterID=" + _networkCtrlQueueAssociatedRateLimiterID + ", owner=" + _owner + ", parentQueueAssociatedRateLimiterID=" + _parentQueueAssociatedRateLimiterID + ", queue1AssociatedRateLimiterID=" + _queue1AssociatedRateLimiterID + ", queue1ForwardingClasses=" + _queue1ForwardingClasses + ", queue2AssociatedRateLimiterID=" + _queue2AssociatedRateLimiterID + ", queue2ForwardingClasses=" + _queue2ForwardingClasses + ", queue3AssociatedRateLimiterID=" + _queue3AssociatedRateLimiterID + ", queue3ForwardingClasses=" + _queue3ForwardingClasses + ", queue4AssociatedRateLimiterID=" + _queue4AssociatedRateLimiterID + ", queue4ForwardingClasses=" + _queue4ForwardingClasses + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -153,8 +153,7 @@ public class TCPConnectTestResult: RestObject {
    
 
    public String toString() {
-      return "TCPConnectTestResult [" + "averageRoundTripTime=" + _averageRoundTripTime + ", connectionAttempts=" + _connectionAttempts + ", failedAttempts=" + _failedAttempts + ", failedPercent=" + _failedPercent + ", maximumRoundTripTime=" + _maximumRoundTripTime + ", minimumRoundTripTime=" + _minimumRoundTripTime + ", successfulConnections=" + _successfulConnections + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "TCPConnectTestResult [" + "averageRoundTripTime=" + _averageRoundTripTime + ", connectionAttempts=" + _connectionAttempts + ", failedAttempts=" + _failedAttempts + ", failedPercent=" + _failedPercent + ", maximumRoundTripTime=" + _maximumRoundTripTime + ", minimumRoundTripTime=" + _minimumRoundTripTime + ", successfulConnections=" + _successfulConnections + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

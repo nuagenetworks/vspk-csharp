@@ -46,6 +46,9 @@ public class NetworkMacroGroup: RestObject {
    public enum EMacroGroupType {GATEWAY_AGGREGATE };
 
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -63,12 +66,18 @@ public class NetworkMacroGroup: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("macroGroupType")]
    protected EMacroGroupType? _macroGroupType;
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -94,6 +103,17 @@ public class NetworkMacroGroup: RestObject {
       
       _permissions = new PermissionsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -164,6 +184,17 @@ public class NetworkMacroGroup: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EMacroGroupType? NUMacroGroupType {
       get {
          return _macroGroupType;
@@ -181,6 +212,17 @@ public class NetworkMacroGroup: RestObject {
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -205,8 +247,7 @@ public class NetworkMacroGroup: RestObject {
    
 
    public String toString() {
-      return "NetworkMacroGroup [" + "description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isSaaSType=" + _isSaaSType + ", lastUpdatedBy=" + _lastUpdatedBy + ", macroGroupType=" + _macroGroupType + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "NetworkMacroGroup [" + "creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isSaaSType=" + _isSaaSType + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", macroGroupType=" + _macroGroupType + ", name=" + _name + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

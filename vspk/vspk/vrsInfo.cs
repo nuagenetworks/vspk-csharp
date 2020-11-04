@@ -45,6 +45,9 @@ public class vrsInfo: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -57,8 +60,14 @@ public class vrsInfo: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("nodeSegmentID")]
    protected long? _nodeSegmentID;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("vrsIP")]
    protected String _vrsIP;
@@ -82,6 +91,17 @@ public class vrsInfo: RestObject {
       
       _permissions = new PermissionsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -130,12 +150,34 @@ public class vrsInfo: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUNodeSegmentID {
       get {
          return _nodeSegmentID;
       }
       set {
          this._nodeSegmentID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -167,8 +209,7 @@ public class vrsInfo: RestObject {
    
 
    public String toString() {
-      return "vrsInfo [" + "embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", nodeSegmentID=" + _nodeSegmentID + ", vrsIP=" + _vrsIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "vrsInfo [" + "creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", nodeSegmentID=" + _nodeSegmentID + ", owner=" + _owner + ", vrsIP=" + _vrsIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

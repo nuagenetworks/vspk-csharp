@@ -56,6 +56,9 @@ public class User: RestObject {
    [JsonProperty("avatarType")]
    protected EAvatarType? _avatarType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("disableCertificateAuth")]
    protected bool _disableCertificateAuth;
    
@@ -85,12 +88,18 @@ public class User: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("managementMode")]
    protected EManagementMode? _managementMode;
    
    [JsonProperty("mobileNumber")]
    protected String _mobileNumber;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("password")]
    protected String _password;
@@ -174,6 +183,17 @@ public class User: RestObject {
       }
       set {
          this._avatarType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -289,6 +309,17 @@ public class User: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EManagementMode? NUManagementMode {
       get {
          return _managementMode;
@@ -306,6 +337,17 @@ public class User: RestObject {
       }
       set {
          this._mobileNumber = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -368,8 +410,7 @@ public class User: RestObject {
    
 
    public String toString() {
-      return "User [" + "LDAPUserDN=" + _LDAPUserDN + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", disableCertificateAuth=" + _disableCertificateAuth + ", disablePasswordAuth=" + _disablePasswordAuth + ", disabled=" + _disabled + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", managementMode=" + _managementMode + ", mobileNumber=" + _mobileNumber + ", password=" + _password + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "User [" + "LDAPUserDN=" + _LDAPUserDN + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", creationDate=" + _creationDate + ", disableCertificateAuth=" + _disableCertificateAuth + ", disablePasswordAuth=" + _disablePasswordAuth + ", disabled=" + _disabled + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", managementMode=" + _managementMode + ", mobileNumber=" + _mobileNumber + ", owner=" + _owner + ", password=" + _password + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

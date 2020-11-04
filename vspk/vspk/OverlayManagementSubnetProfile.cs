@@ -111,8 +111,7 @@ public class OverlayManagementSubnetProfile: RestObject {
    
 
    public String toString() {
-      return "OverlayManagementSubnetProfile [" + "associatedDNASubnetID=" + _associatedDNASubnetID + ", description=" + _description + ", name=" + _name + ", syslogDestinationIDs=" + _syslogDestinationIDs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "OverlayManagementSubnetProfile [" + "associatedDNASubnetID=" + _associatedDNASubnetID + ", description=" + _description + ", name=" + _name + ", syslogDestinationIDs=" + _syslogDestinationIDs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

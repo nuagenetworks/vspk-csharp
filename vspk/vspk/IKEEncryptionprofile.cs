@@ -104,6 +104,9 @@ public class IKEEncryptionprofile: RestObject {
    [JsonProperty("associatedEnterpriseID")]
    protected String _associatedEnterpriseID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -119,8 +122,14 @@ public class IKEEncryptionprofile: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("sequence")]
    protected long? _sequence;
@@ -335,6 +344,17 @@ public class IKEEncryptionprofile: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -390,12 +410,34 @@ public class IKEEncryptionprofile: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -427,8 +469,7 @@ public class IKEEncryptionprofile: RestObject {
    
 
    public String toString() {
-      return "IKEEncryptionprofile [" + "DPDInterval=" + _DPDInterval + ", DPDMode=" + _DPDMode + ", DPDTimeout=" + _DPDTimeout + ", IPsecAuthenticationAlgorithm=" + _IPsecAuthenticationAlgorithm + ", IPsecDontFragment=" + _IPsecDontFragment + ", IPsecEnablePFS=" + _IPsecEnablePFS + ", IPsecEncryptionAlgorithm=" + _IPsecEncryptionAlgorithm + ", IPsecPreFragment=" + _IPsecPreFragment + ", IPsecSALifetime=" + _IPsecSALifetime + ", IPsecSAReplayWindowSize=" + _IPsecSAReplayWindowSize + ", IPsecSAReplayWindowSizeValue=" + _IPsecSAReplayWindowSizeValue + ", ISAKMPAuthenticationMode=" + _ISAKMPAuthenticationMode + ", ISAKMPDiffieHelmanGroupIdentifier=" + _ISAKMPDiffieHelmanGroupIdentifier + ", ISAKMPEncryptionAlgorithm=" + _ISAKMPEncryptionAlgorithm + ", ISAKMPEncryptionKeyLifetime=" + _ISAKMPEncryptionKeyLifetime + ", ISAKMPHashAlgorithm=" + _ISAKMPHashAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", sequence=" + _sequence + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "IKEEncryptionprofile [" + "DPDInterval=" + _DPDInterval + ", DPDMode=" + _DPDMode + ", DPDTimeout=" + _DPDTimeout + ", IPsecAuthenticationAlgorithm=" + _IPsecAuthenticationAlgorithm + ", IPsecDontFragment=" + _IPsecDontFragment + ", IPsecEnablePFS=" + _IPsecEnablePFS + ", IPsecEncryptionAlgorithm=" + _IPsecEncryptionAlgorithm + ", IPsecPreFragment=" + _IPsecPreFragment + ", IPsecSALifetime=" + _IPsecSALifetime + ", IPsecSAReplayWindowSize=" + _IPsecSAReplayWindowSize + ", IPsecSAReplayWindowSizeValue=" + _IPsecSAReplayWindowSizeValue + ", ISAKMPAuthenticationMode=" + _ISAKMPAuthenticationMode + ", ISAKMPDiffieHelmanGroupIdentifier=" + _ISAKMPDiffieHelmanGroupIdentifier + ", ISAKMPEncryptionAlgorithm=" + _ISAKMPEncryptionAlgorithm + ", ISAKMPEncryptionKeyLifetime=" + _ISAKMPEncryptionKeyLifetime + ", ISAKMPHashAlgorithm=" + _ISAKMPHashAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", sequence=" + _sequence + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

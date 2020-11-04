@@ -52,6 +52,9 @@ public class ShuntLink: RestObject {
    [JsonProperty("VLANPeer2ID")]
    protected String _VLANPeer2ID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -73,8 +76,14 @@ public class ShuntLink: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("permittedAction")]
    protected EPermittedAction? _permittedAction;
@@ -93,6 +102,9 @@ public class ShuntLink: RestObject {
    [JsonIgnore]
    private PermissionsFetcher _permissions;
    
+   [JsonIgnore]
+   private VirtualUplinksFetcher _virtualUplinks;
+   
    public ShuntLink() {
       
       _alarms = new AlarmsFetcher(this);
@@ -102,6 +114,8 @@ public class ShuntLink: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _permissions = new PermissionsFetcher(this);
+      
+      _virtualUplinks = new VirtualUplinksFetcher(this);
       
    }
 
@@ -124,6 +138,17 @@ public class ShuntLink: RestObject {
       }
       set {
          this._VLANPeer2ID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -206,12 +231,34 @@ public class ShuntLink: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -245,10 +292,13 @@ public class ShuntLink: RestObject {
       return _permissions;
    }
    
+   public VirtualUplinksFetcher getVirtualUplinks() {
+      return _virtualUplinks;
+   }
+   
 
    public String toString() {
-      return "ShuntLink [" + "VLANPeer1ID=" + _VLANPeer1ID + ", VLANPeer2ID=" + _VLANPeer2ID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayPeer1ID=" + _gatewayPeer1ID + ", gatewayPeer2ID=" + _gatewayPeer2ID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ShuntLink [" + "VLANPeer1ID=" + _VLANPeer1ID + ", VLANPeer2ID=" + _VLANPeer2ID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayPeer1ID=" + _gatewayPeer1ID + ", gatewayPeer2ID=" + _gatewayPeer2ID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", permittedAction=" + _permittedAction + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

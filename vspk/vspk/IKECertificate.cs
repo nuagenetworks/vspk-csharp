@@ -51,6 +51,9 @@ public class IKECertificate: RestObject {
    [JsonProperty("associatedEnterpriseID")]
    protected String _associatedEnterpriseID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -69,6 +72,9 @@ public class IKECertificate: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
    
@@ -77,6 +83,9 @@ public class IKECertificate: RestObject {
    
    [JsonProperty("notBefore")]
    protected long? _notBefore;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("serialNumber")]
    protected long? _serialNumber;
@@ -124,6 +133,17 @@ public class IKECertificate: RestObject {
       }
       set {
          this._associatedEnterpriseID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -195,6 +215,17 @@ public class IKECertificate: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -223,6 +254,17 @@ public class IKECertificate: RestObject {
       }
       set {
          this._notBefore = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -265,8 +307,7 @@ public class IKECertificate: RestObject {
    
 
    public String toString() {
-      return "IKECertificate [" + "PEMEncoded=" + _PEMEncoded + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", issuerDN=" + _issuerDN + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", notAfter=" + _notAfter + ", notBefore=" + _notBefore + ", serialNumber=" + _serialNumber + ", subjectDN=" + _subjectDN + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "IKECertificate [" + "PEMEncoded=" + _PEMEncoded + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", issuerDN=" + _issuerDN + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", notAfter=" + _notAfter + ", notBefore=" + _notBefore + ", owner=" + _owner + ", serialNumber=" + _serialNumber + ", subjectDN=" + _subjectDN + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

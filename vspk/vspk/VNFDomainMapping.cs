@@ -64,6 +64,9 @@ public class VNFDomainMapping: RestObject {
    [JsonProperty("autoCreated")]
    protected bool _autoCreated;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    
@@ -78,6 +81,12 @@ public class VNFDomainMapping: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("segmentationID")]
    protected long? _segmentationID;
@@ -177,6 +186,17 @@ public class VNFDomainMapping: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -232,6 +252,28 @@ public class VNFDomainMapping: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUSegmentationID {
       get {
          return _segmentationID;
@@ -280,8 +322,7 @@ public class VNFDomainMapping: RestObject {
    
 
    public String toString() {
-      return "VNFDomainMapping [" + "associatedDomainID=" + _associatedDomainID + ", associatedDomainName=" + _associatedDomainName + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", autoCreated=" + _autoCreated + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", segmentationID=" + _segmentationID + ", segmentationType=" + _segmentationType + ", serviceId=" + _serviceId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VNFDomainMapping [" + "associatedDomainID=" + _associatedDomainID + ", associatedDomainName=" + _associatedDomainName + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", autoCreated=" + _autoCreated + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", segmentationID=" + _segmentationID + ", segmentationType=" + _segmentationType + ", serviceId=" + _serviceId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

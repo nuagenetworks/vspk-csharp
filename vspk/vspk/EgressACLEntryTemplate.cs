@@ -92,6 +92,9 @@ public class EgressACLEntryTemplate: RestObject {
    [JsonProperty("associatedVirtualFirewallRuleID")]
    protected String _associatedVirtualFirewallRuleID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -121,6 +124,9 @@ public class EgressACLEntryTemplate: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("locationEntityType")]
    protected ELocationEntityType? _locationEntityType;
@@ -145,6 +151,12 @@ public class EgressACLEntryTemplate: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("networkType")]
    protected ENetworkType? _networkType;
+   
+   [JsonProperty("overlayMirrorDestinationID")]
+   protected String _overlayMirrorDestinationID;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("policyState")]
    protected EPolicyState? _policyState;
@@ -353,6 +365,17 @@ public class EgressACLEntryTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -463,6 +486,17 @@ public class EgressACLEntryTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public ELocationEntityType? NULocationEntityType {
       get {
          return _locationEntityType;
@@ -546,6 +580,28 @@ public class EgressACLEntryTemplate: RestObject {
       }
       set {
          this._networkType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOverlayMirrorDestinationID {
+      get {
+         return _overlayMirrorDestinationID;
+      }
+      set {
+         this._overlayMirrorDestinationID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -680,8 +736,7 @@ public class EgressACLEntryTemplate: RestObject {
    
 
    public String toString() {
-      return "EgressACLEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", associatedVirtualFirewallRuleID=" + _associatedVirtualFirewallRuleID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationEntityType=" + _locationEntityType + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationGroupID=" + _mirrorDestinationGroupID + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkEntityType=" + _networkEntityType + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", webFilterID=" + _webFilterID + ", webFilterStatsLoggingEnabled=" + _webFilterStatsLoggingEnabled + ", webFilterType=" + _webFilterType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "EgressACLEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedL7ApplicationSignatureID=" + _associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", associatedVirtualFirewallRuleID=" + _associatedVirtualFirewallRuleID + ", creationDate=" + _creationDate + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", locationEntityType=" + _locationEntityType + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationGroupID=" + _mirrorDestinationGroupID + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkEntityType=" + _networkEntityType + ", networkID=" + _networkID + ", networkType=" + _networkType + ", overlayMirrorDestinationID=" + _overlayMirrorDestinationID + ", owner=" + _owner + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", sourcePort=" + _sourcePort + ", stateful=" + _stateful + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", webFilterID=" + _webFilterID + ", webFilterStatsLoggingEnabled=" + _webFilterStatsLoggingEnabled + ", webFilterType=" + _webFilterType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

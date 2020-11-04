@@ -49,6 +49,9 @@ public class DUCGroup: RestObject {
    [JsonProperty("associatedPerformanceMonitorID")]
    protected String _associatedPerformanceMonitorID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -70,8 +73,14 @@ public class DUCGroup: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -107,6 +116,17 @@ public class DUCGroup: RestObject {
       }
       set {
          this._associatedPerformanceMonitorID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -189,12 +209,34 @@ public class DUCGroup: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -219,8 +261,7 @@ public class DUCGroup: RestObject {
    
 
    public String toString() {
-      return "DUCGroup [" + "associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", description=" + _description + ", ducMeshGroupID=" + _ducMeshGroupID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", function=" + _function + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "DUCGroup [" + "associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", creationDate=" + _creationDate + ", description=" + _description + ", ducMeshGroupID=" + _ducMeshGroupID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", function=" + _function + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

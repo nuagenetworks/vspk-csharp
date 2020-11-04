@@ -45,6 +45,7 @@ public class InfrastructureGatewayProfile: RestObject {
    public enum EControllerLessForwardingMode {DISABLED,LOCAL_AND_REMOTE,LOCAL_ONLY };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum ERemoteLogMode {DISABLED,RSYSLOG };
+   public enum EUnderlayTestUplinkMode {ALL_UPLINKS,BOOTSTRAP_UPLINK };
    public enum EUpgradeAction {DOWNLOAD_AND_UPGRADE_AT_WINDOW,DOWNLOAD_AND_UPGRADE_NOW,DOWNLOAD_ONLY,NONE,UPGRADE_AT_BOOTSTRAPPING,UPGRADE_NOW };
 
    
@@ -65,6 +66,9 @@ public class InfrastructureGatewayProfile: RestObject {
    
    [JsonProperty("controllerLessRemoteDuration")]
    protected String _controllerLessRemoteDuration;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    
    [JsonProperty("datapathSyncTimeout")]
    protected long? _datapathSyncTimeout;
@@ -102,6 +106,9 @@ public class InfrastructureGatewayProfile: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("metadataUpgradePath")]
    protected String _metadataUpgradePath;
    
@@ -110,6 +117,9 @@ public class InfrastructureGatewayProfile: RestObject {
    
    [JsonProperty("openFlowAuditTimer")]
    protected long? _openFlowAuditTimer;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("proxyDNSName")]
    protected String _proxyDNSName;
@@ -140,6 +150,9 @@ public class InfrastructureGatewayProfile: RestObject {
    
    [JsonProperty("underlayTestServer")]
    protected String _underlayTestServer;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("underlayTestUplinkMode")]
+   protected EUnderlayTestUplinkMode? _underlayTestUplinkMode;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("upgradeAction")]
    protected EUpgradeAction? _upgradeAction;
@@ -243,6 +256,17 @@ public class InfrastructureGatewayProfile: RestObject {
       }
       set {
          this._controllerLessRemoteDuration = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -380,6 +404,17 @@ public class InfrastructureGatewayProfile: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUMetadataUpgradePath {
       get {
          return _metadataUpgradePath;
@@ -408,6 +443,17 @@ public class InfrastructureGatewayProfile: RestObject {
       }
       set {
          this._openFlowAuditTimer = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -523,6 +569,17 @@ public class InfrastructureGatewayProfile: RestObject {
 
    
    [JsonIgnore]
+   public EUnderlayTestUplinkMode? NUUnderlayTestUplinkMode {
+      get {
+         return _underlayTestUplinkMode;
+      }
+      set {
+         this._underlayTestUplinkMode = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EUpgradeAction? NUUpgradeAction {
       get {
          return _upgradeAction;
@@ -582,8 +639,7 @@ public class InfrastructureGatewayProfile: RestObject {
    
 
    public String toString() {
-      return "InfrastructureGatewayProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", controllerLessDuration=" + _controllerLessDuration + ", controllerLessEnabled=" + _controllerLessEnabled + ", controllerLessForwardingMode=" + _controllerLessForwardingMode + ", controllerLessRemoteDuration=" + _controllerLessRemoteDuration + ", datapathSyncTimeout=" + _datapathSyncTimeout + ", deadTimer=" + _deadTimer + ", deadTimerEnabled=" + _deadTimerEnabled + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enableUnderlayTestsDuringActivation=" + _enableUnderlayTestsDuringActivation + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowEvictionThreshold=" + _flowEvictionThreshold + ", forceImmediateSystemSync=" + _forceImmediateSystemSync + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataUpgradePath=" + _metadataUpgradePath + ", name=" + _name + ", openFlowAuditTimer=" + _openFlowAuditTimer + ", proxyDNSName=" + _proxyDNSName + ", remoteLogMode=" + _remoteLogMode + ", remoteLogServerAddress=" + _remoteLogServerAddress + ", remoteLogServerPort=" + _remoteLogServerPort + ", runUnderlayBandwidthTest=" + _runUnderlayBandwidthTest + ", runUnderlayConnectivityTest=" + _runUnderlayConnectivityTest + ", runUnderlayMTUDiscoveryTest=" + _runUnderlayMTUDiscoveryTest + ", statsCollectorPort=" + _statsCollectorPort + ", systemSyncScheduler=" + _systemSyncScheduler + ", underlayTestServer=" + _underlayTestServer + ", upgradeAction=" + _upgradeAction + ", useTwoFactor=" + _useTwoFactor + ", webFilterDownloadPort=" + _webFilterDownloadPort + ", webFilterQueryPort=" + _webFilterQueryPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "InfrastructureGatewayProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", controllerLessDuration=" + _controllerLessDuration + ", controllerLessEnabled=" + _controllerLessEnabled + ", controllerLessForwardingMode=" + _controllerLessForwardingMode + ", controllerLessRemoteDuration=" + _controllerLessRemoteDuration + ", creationDate=" + _creationDate + ", datapathSyncTimeout=" + _datapathSyncTimeout + ", deadTimer=" + _deadTimer + ", deadTimerEnabled=" + _deadTimerEnabled + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enableUnderlayTestsDuringActivation=" + _enableUnderlayTestsDuringActivation + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", flowEvictionThreshold=" + _flowEvictionThreshold + ", forceImmediateSystemSync=" + _forceImmediateSystemSync + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", metadataUpgradePath=" + _metadataUpgradePath + ", name=" + _name + ", openFlowAuditTimer=" + _openFlowAuditTimer + ", owner=" + _owner + ", proxyDNSName=" + _proxyDNSName + ", remoteLogMode=" + _remoteLogMode + ", remoteLogServerAddress=" + _remoteLogServerAddress + ", remoteLogServerPort=" + _remoteLogServerPort + ", runUnderlayBandwidthTest=" + _runUnderlayBandwidthTest + ", runUnderlayConnectivityTest=" + _runUnderlayConnectivityTest + ", runUnderlayMTUDiscoveryTest=" + _runUnderlayMTUDiscoveryTest + ", statsCollectorPort=" + _statsCollectorPort + ", systemSyncScheduler=" + _systemSyncScheduler + ", underlayTestServer=" + _underlayTestServer + ", underlayTestUplinkMode=" + _underlayTestUplinkMode + ", upgradeAction=" + _upgradeAction + ", useTwoFactor=" + _useTwoFactor + ", webFilterDownloadPort=" + _webFilterDownloadPort + ", webFilterQueryPort=" + _webFilterQueryPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

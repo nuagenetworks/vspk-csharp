@@ -45,6 +45,9 @@ public class PolicyGroupCategory: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("defaultCategory")]
    protected bool _defaultCategory;
    
@@ -63,8 +66,14 @@ public class PolicyGroupCategory: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -90,6 +99,17 @@ public class PolicyGroupCategory: RestObject {
       
       _policyGroups = new PolicyGroupsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -160,12 +180,34 @@ public class PolicyGroupCategory: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -190,8 +232,7 @@ public class PolicyGroupCategory: RestObject {
    
 
    public String toString() {
-      return "PolicyGroupCategory [" + "defaultCategory=" + _defaultCategory + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "PolicyGroupCategory [" + "creationDate=" + _creationDate + ", defaultCategory=" + _defaultCategory + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

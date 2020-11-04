@@ -47,6 +47,9 @@ public class AutoDiscoverCluster: RestObject {
    
    [JsonProperty("assocVCenterDataCenterID")]
    protected String _assocVCenterDataCenterID;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -57,11 +60,17 @@ public class AutoDiscoverCluster: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("managedObjectID")]
    protected String _managedObjectID;
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -77,6 +86,17 @@ public class AutoDiscoverCluster: RestObject {
       }
       set {
          this._assocVCenterDataCenterID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -115,6 +135,17 @@ public class AutoDiscoverCluster: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUManagedObjectID {
       get {
          return _managedObjectID;
@@ -136,12 +167,22 @@ public class AutoDiscoverCluster: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
 
    
 
    public String toString() {
-      return "AutoDiscoverCluster [" + "assocVCenterDataCenterID=" + _assocVCenterDataCenterID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", managedObjectID=" + _managedObjectID + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "AutoDiscoverCluster [" + "assocVCenterDataCenterID=" + _assocVCenterDataCenterID + ", creationDate=" + _creationDate + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", managedObjectID=" + _managedObjectID + ", name=" + _name + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

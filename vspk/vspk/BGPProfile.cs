@@ -251,8 +251,7 @@ public class BGPProfile: RestObject {
    
 
    public String toString() {
-      return "BGPProfile [" + "associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningHalfLife=" + _dampeningHalfLife + ", dampeningMaxSuppress=" + _dampeningMaxSuppress + ", dampeningName=" + _dampeningName + ", dampeningReuse=" + _dampeningReuse + ", dampeningSuppress=" + _dampeningSuppress + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "BGPProfile [" + "associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningHalfLife=" + _dampeningHalfLife + ", dampeningMaxSuppress=" + _dampeningMaxSuppress + ", dampeningName=" + _dampeningName + ", dampeningReuse=" + _dampeningReuse + ", dampeningSuppress=" + _dampeningSuppress + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

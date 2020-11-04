@@ -97,8 +97,7 @@ public class NSPortInfo: RestObject {
    
 
    public String toString() {
-      return "NSPortInfo [" + "monitoringPorts=" + _monitoringPorts + ", ports=" + _ports + ", wirelessPorts=" + _wirelessPorts + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "NSPortInfo [" + "monitoringPorts=" + _monitoringPorts + ", ports=" + _ports + ", wirelessPorts=" + _wirelessPorts + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

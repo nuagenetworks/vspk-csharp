@@ -54,6 +54,9 @@ public class OverlayPATNATEntry: RestObject {
    [JsonProperty("associatedLinkID")]
    protected String _associatedLinkID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -65,6 +68,12 @@ public class OverlayPATNATEntry: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("privateIP")]
    protected String _privateIP;
@@ -128,6 +137,17 @@ public class OverlayPATNATEntry: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -172,6 +192,28 @@ public class OverlayPATNATEntry: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUPrivateIP {
       get {
          return _privateIP;
@@ -209,8 +251,7 @@ public class OverlayPATNATEntry: RestObject {
    
 
    public String toString() {
-      return "OverlayPATNATEntry [" + "NATEnabled=" + _NATEnabled + ", associatedDomainID=" + _associatedDomainID + ", associatedLinkID=" + _associatedLinkID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", privateIP=" + _privateIP + ", publicIP=" + _publicIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "OverlayPATNATEntry [" + "NATEnabled=" + _NATEnabled + ", associatedDomainID=" + _associatedDomainID + ", associatedLinkID=" + _associatedLinkID + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", privateIP=" + _privateIP + ", publicIP=" + _publicIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

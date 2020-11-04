@@ -61,6 +61,9 @@ public class DomainTemplate: RestObject {
    [JsonProperty("associatedPATMapperID")]
    protected String _associatedPATMapperID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -78,12 +81,18 @@ public class DomainTemplate: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("multicast")]
    protected EMulticast? _multicast;
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("policyChangeStatus")]
    protected EPolicyChangeStatus? _policyChangeStatus;
@@ -235,6 +244,17 @@ public class DomainTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -301,6 +321,17 @@ public class DomainTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EMulticast? NUMulticast {
       get {
          return _multicast;
@@ -318,6 +349,17 @@ public class DomainTemplate: RestObject {
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -413,8 +455,7 @@ public class DomainTemplate: RestObject {
    
 
    public String toString() {
-      return "DomainTemplate [" + "DPI=" + _DPI + ", associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedPATMapperID=" + _associatedPATMapperID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", multicast=" + _multicast + ", name=" + _name + ", policyChangeStatus=" + _policyChangeStatus + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "DomainTemplate [" + "DPI=" + _DPI + ", associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedPATMapperID=" + _associatedPATMapperID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", multicast=" + _multicast + ", name=" + _name + ", owner=" + _owner + ", policyChangeStatus=" + _policyChangeStatus + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

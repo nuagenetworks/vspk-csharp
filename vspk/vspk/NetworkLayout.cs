@@ -49,6 +49,9 @@ public class NetworkLayout: RestObject {
    [JsonProperty("autonomousSystemNum")]
    protected long? _autonomousSystemNum;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -60,6 +63,12 @@ public class NetworkLayout: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("routeReflectorIP")]
    protected String _routeReflectorIP;
@@ -96,6 +105,17 @@ public class NetworkLayout: RestObject {
       }
       set {
          this._autonomousSystemNum = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -145,6 +165,28 @@ public class NetworkLayout: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NURouteReflectorIP {
       get {
          return _routeReflectorIP;
@@ -182,8 +224,7 @@ public class NetworkLayout: RestObject {
    
 
    public String toString() {
-      return "NetworkLayout [" + "autonomousSystemNum=" + _autonomousSystemNum + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", routeReflectorIP=" + _routeReflectorIP + ", serviceType=" + _serviceType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "NetworkLayout [" + "autonomousSystemNum=" + _autonomousSystemNum + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", routeReflectorIP=" + _routeReflectorIP + ", serviceType=" + _serviceType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -253,8 +253,7 @@ public class MonitoringPort: RestObject {
    
 
    public String toString() {
-      return "MonitoringPort [" + "access=" + _access + ", description=" + _description + ", dpdkEnabled=" + _dpdkEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", name=" + _name + ", resiliencyState=" + _resiliencyState + ", resilient=" + _resilient + ", state=" + _state + ", uplink=" + _uplink + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "MonitoringPort [" + "access=" + _access + ", description=" + _description + ", dpdkEnabled=" + _dpdkEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", name=" + _name + ", resiliencyState=" + _resiliencyState + ", resilient=" + _resilient + ", state=" + _state + ", uplink=" + _uplink + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

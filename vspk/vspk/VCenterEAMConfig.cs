@@ -45,6 +45,9 @@ public class VCenterEAMConfig: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("eamServerIP")]
    protected String _eamServerIP;
    
@@ -69,8 +72,14 @@ public class VCenterEAMConfig: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("ovfURL")]
    protected String _ovfURL;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("vibURL")]
    protected String _vibURL;
@@ -94,6 +103,17 @@ public class VCenterEAMConfig: RestObject {
       
       _permissions = new PermissionsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -186,12 +206,34 @@ public class VCenterEAMConfig: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUOvfURL {
       get {
          return _ovfURL;
       }
       set {
          this._ovfURL = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -223,8 +265,7 @@ public class VCenterEAMConfig: RestObject {
    
 
    public String toString() {
-      return "VCenterEAMConfig [" + "eamServerIP=" + _eamServerIP + ", eamServerPortNumber=" + _eamServerPortNumber + ", eamServerPortType=" + _eamServerPortType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", extensionKey=" + _extensionKey + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", ovfURL=" + _ovfURL + ", vibURL=" + _vibURL + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VCenterEAMConfig [" + "creationDate=" + _creationDate + ", eamServerIP=" + _eamServerIP + ", eamServerPortNumber=" + _eamServerPortNumber + ", eamServerPortType=" + _eamServerPortType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", extensionKey=" + _extensionKey + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", ovfURL=" + _ovfURL + ", owner=" + _owner + ", vibURL=" + _vibURL + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

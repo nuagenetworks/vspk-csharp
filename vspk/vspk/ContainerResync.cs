@@ -46,6 +46,9 @@ public class ContainerResync: RestObject {
    public enum EStatus {IN_PROGRESS,SUCCESS };
 
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -63,6 +66,12 @@ public class ContainerResync: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("status")]
    protected EStatus? _status;
@@ -86,6 +95,17 @@ public class ContainerResync: RestObject {
       
       _permissions = new PermissionsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -156,6 +176,28 @@ public class ContainerResync: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EStatus? NUStatus {
       get {
          return _status;
@@ -182,8 +224,7 @@ public class ContainerResync: RestObject {
    
 
    public String toString() {
-      return "ContainerResync [" + "embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastRequestTimestamp=" + _lastRequestTimestamp + ", lastTimeResyncInitiated=" + _lastTimeResyncInitiated + ", lastUpdatedBy=" + _lastUpdatedBy + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ContainerResync [" + "creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastRequestTimestamp=" + _lastRequestTimestamp + ", lastTimeResyncInitiated=" + _lastTimeResyncInitiated + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

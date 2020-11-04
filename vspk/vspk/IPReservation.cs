@@ -51,6 +51,9 @@ public class IPReservation: RestObject {
    [JsonProperty("MAC")]
    protected String _MAC;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("dynamicAllocationEnabled")]
    protected bool _dynamicAllocationEnabled;
    
@@ -65,6 +68,12 @@ public class IPReservation: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -111,6 +120,17 @@ public class IPReservation: RestObject {
       }
       set {
          this._MAC = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -170,6 +190,28 @@ public class IPReservation: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
 
    
    public EventLogsFetcher getEventLogs() {
@@ -190,8 +232,7 @@ public class IPReservation: RestObject {
    
 
    public String toString() {
-      return "IPReservation [" + "IPAddress=" + _IPAddress + ", MAC=" + _MAC + ", dynamicAllocationEnabled=" + _dynamicAllocationEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "IPReservation [" + "IPAddress=" + _IPAddress + ", MAC=" + _MAC + ", creationDate=" + _creationDate + ", dynamicAllocationEnabled=" + _dynamicAllocationEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

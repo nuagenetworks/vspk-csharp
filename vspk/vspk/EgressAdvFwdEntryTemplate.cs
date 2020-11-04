@@ -47,10 +47,10 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    public enum EAssociatedTrafficType {L4_SERVICE,L4_SERVICE_GROUP };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFailsafeDatapath {FAIL_TO_BLOCK,FAIL_TO_WIRE };
-   public enum ELocationEntityType {PGEXPRESSION,PGEXPRESSIONTEMPLATE,POLICYGROUP,POLICYGROUPTEMPLATE,REDIRECTIONTARGET,REDIRECTIONTARGETTEMPLATE,SUBNET,SUBNETTEMPLATE,ZONE,ZONETEMPLATE };
+   public enum ELocationEntityType {ENTERPRISENETWORK,NETWORKMACROGROUP,PGEXPRESSION,PGEXPRESSIONTEMPLATE,POLICYGROUP,POLICYGROUPTEMPLATE,PUBLICNETWORK,REDIRECTIONTARGET,REDIRECTIONTARGETTEMPLATE,SUBNET,SUBNETTEMPLATE,ZONE,ZONETEMPLATE };
    public enum ELocationType {ANY,PGEXPRESSION,POLICYGROUP,SUBNET,ZONE };
-   public enum ENetworkEntityType {PGEXPRESSION,PGEXPRESSIONTEMPLATE,POLICYGROUP,POLICYGROUPTEMPLATE,SUBNET,SUBNETTEMPLATE,ZONE,ZONETEMPLATE };
-   public enum ENetworkType {ANY,ENDPOINT_DOMAIN,ENDPOINT_SUBNET,ENDPOINT_ZONE,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,PUBLIC_NETWORK,SUBNET,UNDERLAY_INTERNET_POLICYGROUP,ZONE };
+   public enum ENetworkEntityType {ENTERPRISENETWORK,NETWORKMACROGROUP,PGEXPRESSION,PGEXPRESSIONTEMPLATE,POLICYGROUP,POLICYGROUPTEMPLATE,PUBLICNETWORK,SAASAPPLICATIONGROUP,SUBNET,SUBNETTEMPLATE,ZONE,ZONETEMPLATE };
+   public enum ENetworkType {ANY,ENDPOINT_DOMAIN,ENDPOINT_SUBNET,ENDPOINT_ZONE,ENTERPRISE_NETWORK,INTERNET_POLICYGROUP,NETWORK_MACRO_GROUP,PGEXPRESSION,POLICYGROUP,PUBLIC_NETWORK,SAAS_APPLICATION_GROUP,SUBNET,UNDERLAY_INTERNET_POLICYGROUP,ZONE };
    public enum EPolicyState {DRAFT,LIVE };
    public enum ERedirectionTargetEntityType {REDIRECTIONTARGET,REDIRECTIONTARGETTEMPLATE };
    public enum EUplinkPreference {DEFAULT,PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY,SYMMETRIC };
@@ -96,6 +96,9 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    [JsonProperty("associatedVirtualFirewallRuleID")]
    protected String _associatedVirtualFirewallRuleID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -128,6 +131,9 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("locationEntityType")]
    protected ELocationEntityType? _locationEntityType;
@@ -152,6 +158,9 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("networkType")]
    protected ENetworkType? _networkType;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("policyState")]
    protected EPolicyState? _policyState;
@@ -355,6 +364,17 @@ public class EgressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -476,6 +496,17 @@ public class EgressAdvFwdEntryTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public ELocationEntityType? NULocationEntityType {
       get {
          return _locationEntityType;
@@ -559,6 +590,17 @@ public class EgressAdvFwdEntryTemplate: RestObject {
       }
       set {
          this._networkType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -711,8 +753,7 @@ public class EgressAdvFwdEntryTemplate: RestObject {
    
 
    public String toString() {
-      return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", FCOverride=" + _FCOverride + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", associatedVirtualFirewallRuleID=" + _associatedVirtualFirewallRuleID + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", failsafeDatapath=" + _failsafeDatapath + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", locationEntityType=" + _locationEntityType + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationGroupID=" + _mirrorDestinationGroupID + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkEntityType=" + _networkEntityType + ", networkID=" + _networkID + ", networkType=" + _networkType + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", redirectVPortTagID=" + _redirectVPortTagID + ", redirectionTargetEntityType=" + _redirectionTargetEntityType + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", uplinkPreference=" + _uplinkPreference + ", webFilterID=" + _webFilterID + ", webFilterStatsLoggingEnabled=" + _webFilterStatsLoggingEnabled + ", webFilterType=" + _webFilterType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + _ACLTemplateName + ", DSCP=" + _DSCP + ", FCOverride=" + _FCOverride + ", ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", IPv6AddressOverride=" + _IPv6AddressOverride + ", action=" + _action + ", addressOverride=" + _addressOverride + ", associatedLiveEntityID=" + _associatedLiveEntityID + ", associatedLiveTemplateID=" + _associatedLiveTemplateID + ", associatedTrafficType=" + _associatedTrafficType + ", associatedTrafficTypeID=" + _associatedTrafficTypeID + ", associatedVirtualFirewallRuleID=" + _associatedVirtualFirewallRuleID + ", creationDate=" + _creationDate + ", description=" + _description + ", destinationPort=" + _destinationPort + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", etherType=" + _etherType + ", externalID=" + _externalID + ", failsafeDatapath=" + _failsafeDatapath + ", flowLoggingEnabled=" + _flowLoggingEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", locationEntityType=" + _locationEntityType + ", locationID=" + _locationID + ", locationType=" + _locationType + ", mirrorDestinationGroupID=" + _mirrorDestinationGroupID + ", mirrorDestinationID=" + _mirrorDestinationID + ", networkEntityType=" + _networkEntityType + ", networkID=" + _networkID + ", networkType=" + _networkType + ", owner=" + _owner + ", policyState=" + _policyState + ", priority=" + _priority + ", protocol=" + _protocol + ", redirectVPortTagID=" + _redirectVPortTagID + ", redirectionTargetEntityType=" + _redirectionTargetEntityType + ", sourcePort=" + _sourcePort + ", statsID=" + _statsID + ", statsLoggingEnabled=" + _statsLoggingEnabled + ", uplinkPreference=" + _uplinkPreference + ", webFilterID=" + _webFilterID + ", webFilterStatsLoggingEnabled=" + _webFilterStatsLoggingEnabled + ", webFilterType=" + _webFilterType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

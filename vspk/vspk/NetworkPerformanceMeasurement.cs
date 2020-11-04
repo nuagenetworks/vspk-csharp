@@ -52,6 +52,9 @@ public class NetworkPerformanceMeasurement: RestObject {
    [JsonProperty("associatedPerformanceMonitorID")]
    protected String _associatedPerformanceMonitorID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -67,8 +70,14 @@ public class NetworkPerformanceMeasurement: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("readOnly")]
    protected bool _readOnly;
@@ -123,6 +132,17 @@ public class NetworkPerformanceMeasurement: RestObject {
       }
       set {
          this._associatedPerformanceMonitorID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -183,12 +203,34 @@ public class NetworkPerformanceMeasurement: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -228,8 +270,7 @@ public class NetworkPerformanceMeasurement: RestObject {
    
 
    public String toString() {
-      return "NetworkPerformanceMeasurement [" + "NPMType=" + _NPMType + ", associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "NetworkPerformanceMeasurement [" + "NPMType=" + _NPMType + ", associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

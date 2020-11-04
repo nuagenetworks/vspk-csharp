@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="net.nuagenetworks.bambou, Version=1.0.6521.25133, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\net.nuagenetworks.bambou.dll.1.1.1\lib\net452\net.nuagenetworks.bambou.dll</HintPath>
+    <Reference Include="net.nuagenetworks.bambou, Version=1.0.7566.30399, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\net.nuagenetworks.bambou.dll.1.1.2\lib\net452\net.nuagenetworks.bambou.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -56,8 +56,8 @@
     <Compile Include="QOSsFetcher.cs" />
     <Compile Include="AggregatedDomain.cs" />
     <Compile Include="AggregatedDomainsFetcher.cs" />
-    <Compile Include="IngressAdvFwdEntryTemplate.cs" />
-    <Compile Include="IngressAdvFwdEntryTemplatesFetcher.cs" />
+    <Compile Include="EgressAuditACLEntryTemplate.cs" />
+    <Compile Include="EgressAuditACLEntryTemplatesFetcher.cs" />
     <Compile Include="BGPPeer.cs" />
     <Compile Include="BGPPeersFetcher.cs" />
     <Compile Include="UDPProbeTestResult.cs" />
@@ -88,8 +88,8 @@
     <Compile Include="VNFCatalogsFetcher.cs" />
     <Compile Include="SAPEgressQoSProfile.cs" />
     <Compile Include="SAPEgressQoSProfilesFetcher.cs" />
-    <Compile Include="IKESubnet.cs" />
-    <Compile Include="IKESubnetsFetcher.cs" />
+    <Compile Include="NSRedundantGatewayGroup.cs" />
+    <Compile Include="NSRedundantGatewayGroupsFetcher.cs" />
     <Compile Include="MACFilterProfile.cs" />
     <Compile Include="MACFilterProfilesFetcher.cs" />
     <Compile Include="Group.cs" />
@@ -116,6 +116,8 @@
     <Compile Include="OverlayManagementProfilesFetcher.cs" />
     <Compile Include="RoutingPolicy.cs" />
     <Compile Include="RoutingPoliciesFetcher.cs" />
+    <Compile Include="IKEGatewayConnection.cs" />
+    <Compile Include="IKEGatewayConnectionsFetcher.cs" />
     <Compile Include="EnterpriseSecurity.cs" />
     <Compile Include="EnterpriseSecuritiesFetcher.cs" />
     <Compile Include="StatisticsPolicy.cs" />
@@ -128,6 +130,8 @@
     <Compile Include="DUCGroupsFetcher.cs" />
     <Compile Include="VSDConfig.cs" />
     <Compile Include="VSDConfigsFetcher.cs" />
+    <Compile Include="VPortInfo.cs" />
+    <Compile Include="VPortInfosFetcher.cs" />
     <Compile Include="InfrastructureVscProfile.cs" />
     <Compile Include="InfrastructureVscProfilesFetcher.cs" />
     <Compile Include="Permission.cs" />
@@ -142,6 +146,8 @@
     <Compile Include="MesFetcher.cs" />
     <Compile Include="IPReservation.cs" />
     <Compile Include="IPReservationsFetcher.cs" />
+    <Compile Include="ThreatPreventionNodeInfo.cs" />
+    <Compile Include="ThreatPreventionNodeInfosFetcher.cs" />
     <Compile Include="RedirectionTargetTemplate.cs" />
     <Compile Include="RedirectionTargetTemplatesFetcher.cs" />
     <Compile Include="SubnetTemplate.cs" />
@@ -150,8 +156,8 @@
     <Compile Include="VNFDomainMappingsFetcher.cs" />
     <Compile Include="TestRun.cs" />
     <Compile Include="TestRunsFetcher.cs" />
-    <Compile Include="IKEGatewayConnection.cs" />
-    <Compile Include="IKEGatewayConnectionsFetcher.cs" />
+    <Compile Include="DemarcationService.cs" />
+    <Compile Include="DemarcationServicesFetcher.cs" />
     <Compile Include="RedirectionTarget.cs" />
     <Compile Include="RedirectionTargetsFetcher.cs" />
     <Compile Include="FirewallAcl.cs" />
@@ -220,8 +226,8 @@
     <Compile Include="AddressMapsFetcher.cs" />
     <Compile Include="OverlayPATNATEntry.cs" />
     <Compile Include="OverlayPATNATEntriesFetcher.cs" />
-    <Compile Include="VSC.cs" />
-    <Compile Include="VSCsFetcher.cs" />
+    <Compile Include="GNMIProfile.cs" />
+    <Compile Include="GNMIProfilesFetcher.cs" />
     <Compile Include="DeploymentFailure.cs" />
     <Compile Include="DeploymentFailuresFetcher.cs" />
     <Compile Include="ControllerVRSLink.cs" />
@@ -254,6 +260,8 @@
     <Compile Include="RedundantPortsFetcher.cs" />
     <Compile Include="SaaSApplicationType.cs" />
     <Compile Include="SaaSApplicationTypesFetcher.cs" />
+    <Compile Include="IngressAuditACLTemplate.cs" />
+    <Compile Include="IngressAuditACLTemplatesFetcher.cs" />
     <Compile Include="TCPConnectTestResult.cs" />
     <Compile Include="TCPConnectTestResultsFetcher.cs" />
     <Compile Include="ForwardingClass.cs" />
@@ -310,8 +318,8 @@
     <Compile Include="PTranslationMapsFetcher.cs" />
     <Compile Include="Roleentry.cs" />
     <Compile Include="RoleentriesFetcher.cs" />
-    <Compile Include="TestSuite.cs" />
-    <Compile Include="TestSuitesFetcher.cs" />
+    <Compile Include="SupplementalInfraConfig.cs" />
+    <Compile Include="SupplementalInfraConfigsFetcher.cs" />
     <Compile Include="QosPolicer.cs" />
     <Compile Include="QosPolicersFetcher.cs" />
     <Compile Include="VRSMetrics.cs" />
@@ -342,8 +350,8 @@
     <Compile Include="NetworkMacroGroupsFetcher.cs" />
     <Compile Include="EgressACLEntryTemplate.cs" />
     <Compile Include="EgressACLEntryTemplatesFetcher.cs" />
-    <Compile Include="InfrastructureAccessProfile.cs" />
-    <Compile Include="InfrastructureAccessProfilesFetcher.cs" />
+    <Compile Include="EsIlmPolicy.cs" />
+    <Compile Include="EsIlmPoliciesFetcher.cs" />
     <Compile Include="MultiCastList.cs" />
     <Compile Include="MultiCastListsFetcher.cs" />
     <Compile Include="Destinationurl.cs" />
@@ -356,6 +364,8 @@
     <Compile Include="MTUDiscoveryTestResultsFetcher.cs" />
     <Compile Include="NextHop.cs" />
     <Compile Include="NextHopsFetcher.cs" />
+    <Compile Include="InfrastructureAccessProfile.cs" />
+    <Compile Include="InfrastructureAccessProfilesFetcher.cs" />
     <Compile Include="MirrorDestination.cs" />
     <Compile Include="MirrorDestinationsFetcher.cs" />
     <Compile Include="BRConnection.cs" />
@@ -372,6 +382,8 @@
     <Compile Include="L4ServicesFetcher.cs" />
     <Compile Include="NetconfProfile.cs" />
     <Compile Include="NetconfProfilesFetcher.cs" />
+    <Compile Include="VirtualUplink.cs" />
+    <Compile Include="VirtualUplinksFetcher.cs" />
     <Compile Include="Underlay.cs" />
     <Compile Include="UnderlaysFetcher.cs" />
     <Compile Include="Gateway.cs" />
@@ -422,6 +434,8 @@
     <Compile Include="IngressACLEntryTemplatesFetcher.cs" />
     <Compile Include="AutoDiscoverCluster.cs" />
     <Compile Include="AutoDiscoverClustersFetcher.cs" />
+    <Compile Include="IKESubnet.cs" />
+    <Compile Include="IKESubnetsFetcher.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="LocationsFetcher.cs" />
     <Compile Include="NetworkPerformanceBinding.cs" />
@@ -432,6 +446,8 @@
     <Compile Include="DefaultGatewaysFetcher.cs" />
     <Compile Include="SaaSApplicationGroup.cs" />
     <Compile Include="SaaSApplicationGroupsFetcher.cs" />
+    <Compile Include="SystemConfig.cs" />
+    <Compile Include="SystemConfigsFetcher.cs" />
     <Compile Include="L2Domain.cs" />
     <Compile Include="L2DomainsFetcher.cs" />
     <Compile Include="IKEGateway.cs" />
@@ -454,6 +470,8 @@
     <Compile Include="DSCPRemarkingPoliciesFetcher.cs" />
     <Compile Include="SSIDConnection.cs" />
     <Compile Include="SSIDConnectionsFetcher.cs" />
+    <Compile Include="EgressAuditACLTemplate.cs" />
+    <Compile Include="EgressAuditACLTemplatesFetcher.cs" />
     <Compile Include="EgressAdvFwdTemplate.cs" />
     <Compile Include="EgressAdvFwdTemplatesFetcher.cs" />
     <Compile Include="SysmonUplinkConnection.cs" />
@@ -480,12 +498,16 @@
     <Compile Include="NSGatewaysFetcher.cs" />
     <Compile Include="NSGatewayTemplate.cs" />
     <Compile Include="NSGatewayTemplatesFetcher.cs" />
+    <Compile Include="VSC.cs" />
+    <Compile Include="VSCsFetcher.cs" />
     <Compile Include="ZoneTemplate.cs" />
     <Compile Include="ZoneTemplatesFetcher.cs" />
     <Compile Include="ZFBAutoAssignment.cs" />
     <Compile Include="ZFBAutoAssignmentsFetcher.cs" />
     <Compile Include="VSD.cs" />
     <Compile Include="VSDsFetcher.cs" />
+    <Compile Include="PolicyGroup.cs" />
+    <Compile Include="PolicyGroupsFetcher.cs" />
     <Compile Include="PerformanceMonitor.cs" />
     <Compile Include="PerformanceMonitorsFetcher.cs" />
     <Compile Include="NSGRoutingPolicyBinding.cs" />
@@ -552,8 +574,8 @@
     <Compile Include="AutoDiscoverHypervisorFromClustersFetcher.cs" />
     <Compile Include="Port.cs" />
     <Compile Include="PortsFetcher.cs" />
-    <Compile Include="NSRedundantGatewayGroup.cs" />
-    <Compile Include="NSRedundantGatewayGroupsFetcher.cs" />
+    <Compile Include="IngressAuditACLEntryTemplate.cs" />
+    <Compile Include="IngressAuditACLEntryTemplatesFetcher.cs" />
     <Compile Include="OverlayMirrorDestination.cs" />
     <Compile Include="OverlayMirrorDestinationsFetcher.cs" />
     <Compile Include="KeyServerMonitorSEK.cs" />
@@ -584,14 +606,16 @@
     <Compile Include="AllAlarmsFetcher.cs" />
     <Compile Include="EthernetSegmentGWGroup.cs" />
     <Compile Include="EthernetSegmentGWGroupsFetcher.cs" />
-    <Compile Include="PolicyGroup.cs" />
-    <Compile Include="PolicyGroupsFetcher.cs" />
+    <Compile Include="TestSuite.cs" />
+    <Compile Include="TestSuitesFetcher.cs" />
     <Compile Include="Enterprise.cs" />
     <Compile Include="EnterprisesFetcher.cs" />
     <Compile Include="WirelessPort.cs" />
     <Compile Include="WirelessPortsFetcher.cs" />
-    <Compile Include="SystemConfig.cs" />
-    <Compile Include="SystemConfigsFetcher.cs" />
+    <Compile Include="GNMISession.cs" />
+    <Compile Include="GNMISessionsFetcher.cs" />
+    <Compile Include="EsIndexConfig.cs" />
+    <Compile Include="EsIndexConfigsFetcher.cs" />
     <Compile Include="IKEEncryptionprofile.cs" />
     <Compile Include="IKEEncryptionprofilesFetcher.cs" />
     <Compile Include="AllocationPool.cs" />
@@ -606,8 +630,8 @@
     <Compile Include="VMIPReservationsFetcher.cs" />
     <Compile Include="EnterpriseSecuredData.cs" />
     <Compile Include="EnterpriseSecuredDatasFetcher.cs" />
-    <Compile Include="DemarcationService.cs" />
-    <Compile Include="DemarcationServicesFetcher.cs" />
+    <Compile Include="IngressAdvFwdEntryTemplate.cs" />
+    <Compile Include="IngressAdvFwdEntryTemplatesFetcher.cs" />
     <Compile Include="NSGInfo.cs" />
     <Compile Include="NSGInfosFetcher.cs" />
     <Compile Include="Metadata.cs" />

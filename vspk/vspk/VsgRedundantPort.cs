@@ -43,6 +43,7 @@ public class VsgRedundantPort: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum EOperationalState {DOWN,INIT,UP };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
    public enum EPortType {ACCESS,NETWORK };
    public enum EStatus {INITIALIZED,MISMATCH,ORPHAN,READY };
@@ -53,6 +54,9 @@ public class VsgRedundantPort: RestObject {
    
    [JsonProperty("associatedEgressQOSPolicyID")]
    protected String _associatedEgressQOSPolicyID;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    
    [JsonProperty("description")]
    protected String _description;
@@ -69,8 +73,17 @@ public class VsgRedundantPort: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("operationalState")]
+   protected EOperationalState? _operationalState;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("peerLink")]
    protected bool _peerLink;
@@ -159,6 +172,17 @@ public class VsgRedundantPort: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -214,12 +238,45 @@ public class VsgRedundantPort: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EOperationalState? NUOperationalState {
+      get {
+         return _operationalState;
+      }
+      set {
+         this._operationalState = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -351,8 +408,7 @@ public class VsgRedundantPort: RestObject {
    
 
    public String toString() {
-      return "VsgRedundantPort [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", peerLink=" + _peerLink + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portPeer1ID=" + _portPeer1ID + ", portPeer2ID=" + _portPeer2ID + ", portType=" + _portType + ", status=" + _status + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VsgRedundantPort [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", operationalState=" + _operationalState + ", owner=" + _owner + ", peerLink=" + _peerLink + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portPeer1ID=" + _portPeer1ID + ", portPeer2ID=" + _portPeer2ID + ", portType=" + _portType + ", status=" + _status + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

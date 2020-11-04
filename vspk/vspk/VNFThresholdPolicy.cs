@@ -55,6 +55,9 @@ public class VNFThresholdPolicy: RestObject {
    [JsonProperty("assocEntityType")]
    protected String _assocEntityType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -70,6 +73,9 @@ public class VNFThresholdPolicy: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("memoryThreshold")]
    protected long? _memoryThreshold;
    
@@ -81,6 +87,9 @@ public class VNFThresholdPolicy: RestObject {
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("storageThreshold")]
    protected long? _storageThreshold;
@@ -141,6 +150,17 @@ public class VNFThresholdPolicy: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -196,6 +216,17 @@ public class VNFThresholdPolicy: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUMemoryThreshold {
       get {
          return _memoryThreshold;
@@ -240,6 +271,17 @@ public class VNFThresholdPolicy: RestObject {
 
    
    [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUStorageThreshold {
       get {
          return _storageThreshold;
@@ -266,8 +308,7 @@ public class VNFThresholdPolicy: RestObject {
    
 
    public String toString() {
-      return "VNFThresholdPolicy [" + "CPUThreshold=" + _CPUThreshold + ", action=" + _action + ", assocEntityType=" + _assocEntityType + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", memoryThreshold=" + _memoryThreshold + ", minOccurrence=" + _minOccurrence + ", monitInterval=" + _monitInterval + ", name=" + _name + ", storageThreshold=" + _storageThreshold + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VNFThresholdPolicy [" + "CPUThreshold=" + _CPUThreshold + ", action=" + _action + ", assocEntityType=" + _assocEntityType + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", memoryThreshold=" + _memoryThreshold + ", minOccurrence=" + _minOccurrence + ", monitInterval=" + _monitInterval + ", name=" + _name + ", owner=" + _owner + ", storageThreshold=" + _storageThreshold + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

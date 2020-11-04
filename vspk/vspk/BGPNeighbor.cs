@@ -317,8 +317,7 @@ public class BGPNeighbor: RestObject {
    
 
    public String toString() {
-      return "BGPNeighbor [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningEnabled=" + _dampeningEnabled + ", description=" + _description + ", domainServiceLabel=" + _domainServiceLabel + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", peerAS=" + _peerAS + ", peerConfiguration=" + _peerConfiguration + ", peerIP=" + _peerIP + ", session=" + _session + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "BGPNeighbor [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", dampeningEnabled=" + _dampeningEnabled + ", description=" + _description + ", domainServiceLabel=" + _domainServiceLabel + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", peerAS=" + _peerAS + ", peerConfiguration=" + _peerConfiguration + ", peerIP=" + _peerIP + ", session=" + _session + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -72,6 +72,12 @@ public class EgressProfile: RestObject {
    [JsonProperty("associatedSAPEgressQoSProfileName")]
    protected String _associatedSAPEgressQoSProfileName;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
+   [JsonProperty("customerID")]
+   protected long? _customerID;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -87,8 +93,14 @@ public class EgressProfile: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -222,6 +234,28 @@ public class EgressProfile: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUCustomerID {
+      get {
+         return _customerID;
+      }
+      set {
+         this._customerID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -277,12 +311,34 @@ public class EgressProfile: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -311,8 +367,7 @@ public class EgressProfile: RestObject {
    
 
    public String toString() {
-      return "EgressProfile [" + "assocEntityType=" + _assocEntityType + ", associatedIPFilterProfileID=" + _associatedIPFilterProfileID + ", associatedIPFilterProfileName=" + _associatedIPFilterProfileName + ", associatedIPv6FilterProfileID=" + _associatedIPv6FilterProfileID + ", associatedIPv6FilterProfileName=" + _associatedIPv6FilterProfileName + ", associatedMACFilterProfileID=" + _associatedMACFilterProfileID + ", associatedMACFilterProfileName=" + _associatedMACFilterProfileName + ", associatedSAPEgressQoSProfileID=" + _associatedSAPEgressQoSProfileID + ", associatedSAPEgressQoSProfileName=" + _associatedSAPEgressQoSProfileName + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "EgressProfile [" + "assocEntityType=" + _assocEntityType + ", associatedIPFilterProfileID=" + _associatedIPFilterProfileID + ", associatedIPFilterProfileName=" + _associatedIPFilterProfileName + ", associatedIPv6FilterProfileID=" + _associatedIPv6FilterProfileID + ", associatedIPv6FilterProfileName=" + _associatedIPv6FilterProfileName + ", associatedMACFilterProfileID=" + _associatedMACFilterProfileID + ", associatedMACFilterProfileName=" + _associatedMACFilterProfileName + ", associatedSAPEgressQoSProfileID=" + _associatedSAPEgressQoSProfileID + ", associatedSAPEgressQoSProfileName=" + _associatedSAPEgressQoSProfileName + ", creationDate=" + _creationDate + ", customerID=" + _customerID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -46,6 +46,9 @@ public class EnterpriseSecuredData: RestObject {
    public enum ESeedType {STANDARD,DR };
 
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("data")]
    protected String _data;
    
@@ -66,6 +69,12 @@ public class EnterpriseSecuredData: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("seedType")]
    protected ESeedType? _seedType;
@@ -95,6 +104,17 @@ public class EnterpriseSecuredData: RestObject {
       
       _permissions = new PermissionsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -176,6 +196,28 @@ public class EnterpriseSecuredData: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public ESeedType? NUSeedType {
       get {
          return _seedType;
@@ -224,8 +266,7 @@ public class EnterpriseSecuredData: RestObject {
    
 
    public String toString() {
-      return "EnterpriseSecuredData [" + "data=" + _data + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hash=" + _hash + ", keyserverCertSerialNumber=" + _keyserverCertSerialNumber + ", lastUpdatedBy=" + _lastUpdatedBy + ", seedType=" + _seedType + ", sekId=" + _sekId + ", signedHash=" + _signedHash + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "EnterpriseSecuredData [" + "creationDate=" + _creationDate + ", data=" + _data + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hash=" + _hash + ", keyserverCertSerialNumber=" + _keyserverCertSerialNumber + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", seedType=" + _seedType + ", sekId=" + _sekId + ", signedHash=" + _signedHash + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

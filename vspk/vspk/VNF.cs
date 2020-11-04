@@ -77,6 +77,9 @@ public class VNF: RestObject {
    [JsonProperty("associatedVNFThresholdPolicyID")]
    protected String _associatedVNFThresholdPolicyID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -100,6 +103,9 @@ public class VNF: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("lastUserAction")]
    protected ELastUserAction? _lastUserAction;
@@ -109,6 +115,9 @@ public class VNF: RestObject {
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("status")]
    protected EStatus? _status;
@@ -267,6 +276,17 @@ public class VNF: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -355,6 +375,17 @@ public class VNF: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public ELastUserAction? NULastUserAction {
       get {
          return _lastUserAction;
@@ -383,6 +414,17 @@ public class VNF: RestObject {
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -474,8 +516,7 @@ public class VNF: RestObject {
    
 
    public String toString() {
-      return "VNF [" + "CPUCount=" + _CPUCount + ", NSGName=" + _NSGName + ", NSGSystemID=" + _NSGSystemID + ", NSGatewayID=" + _NSGatewayID + ", VNFDescriptorID=" + _VNFDescriptorID + ", VNFDescriptorName=" + _VNFDescriptorName + ", allowedActions=" + _allowedActions + ", associatedVNFMetadataID=" + _associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isAttachedToDescriptor=" + _isAttachedToDescriptor + ", lastKnownError=" + _lastKnownError + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUserAction=" + _lastUserAction + ", memoryMB=" + _memoryMB + ", name=" + _name + ", status=" + _status + ", storageGB=" + _storageGB + ", taskState=" + _taskState + ", type=" + _type + ", vendor=" + _vendor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VNF [" + "CPUCount=" + _CPUCount + ", NSGName=" + _NSGName + ", NSGSystemID=" + _NSGSystemID + ", NSGatewayID=" + _NSGatewayID + ", VNFDescriptorID=" + _VNFDescriptorID + ", VNFDescriptorName=" + _VNFDescriptorName + ", allowedActions=" + _allowedActions + ", associatedVNFMetadataID=" + _associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isAttachedToDescriptor=" + _isAttachedToDescriptor + ", lastKnownError=" + _lastKnownError + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", lastUserAction=" + _lastUserAction + ", memoryMB=" + _memoryMB + ", name=" + _name + ", owner=" + _owner + ", status=" + _status + ", storageGB=" + _storageGB + ", taskState=" + _taskState + ", type=" + _type + ", vendor=" + _vendor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

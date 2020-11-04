@@ -51,6 +51,9 @@ public class L4Service: RestObject {
    [JsonProperty("ICMPType")]
    protected String _ICMPType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("defaultService")]
    protected bool _defaultService;
    
@@ -66,8 +69,14 @@ public class L4Service: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("ports")]
    protected String _ports;
@@ -105,6 +114,17 @@ public class L4Service: RestObject {
       }
       set {
          this._ICMPType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -165,12 +185,34 @@ public class L4Service: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -205,8 +247,7 @@ public class L4Service: RestObject {
    
 
    public String toString() {
-      return "L4Service [" + "ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", defaultService=" + _defaultService + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", ports=" + _ports + ", protocol=" + _protocol + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "L4Service [" + "ICMPCode=" + _ICMPCode + ", ICMPType=" + _ICMPType + ", creationDate=" + _creationDate + ", defaultService=" + _defaultService + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", ports=" + _ports + ", protocol=" + _protocol + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

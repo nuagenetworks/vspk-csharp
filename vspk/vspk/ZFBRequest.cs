@@ -99,6 +99,9 @@ public class ZFBRequest: RestObject {
    [JsonProperty("associatedNSGatewayName")]
    protected String _associatedNSGatewayName;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -120,6 +123,9 @@ public class ZFBRequest: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("originalEnterpriseName")]
    protected String _originalEnterpriseName;
    
@@ -131,6 +137,9 @@ public class ZFBRequest: RestObject {
    
    [JsonProperty("originalUplinkConnectionInfo")]
    protected String _originalUplinkConnectionInfo;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("registrationURL")]
    protected String _registrationURL;
@@ -359,6 +368,17 @@ public class ZFBRequest: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -436,6 +456,17 @@ public class ZFBRequest: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUOriginalEnterpriseName {
       get {
          return _originalEnterpriseName;
@@ -475,6 +506,17 @@ public class ZFBRequest: RestObject {
       }
       set {
          this._originalUplinkConnectionInfo = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -543,8 +585,7 @@ public class ZFBRequest: RestObject {
    
 
    public String toString() {
-      return "ZFBRequest [" + "CPUType=" + _CPUType + ", IPAddress=" + _IPAddress + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", UUID=" + _UUID + ", ZFBApprovalStatus=" + _ZFBApprovalStatus + ", ZFBBootstrapEnabled=" + _ZFBBootstrapEnabled + ", ZFBInfo=" + _ZFBInfo + ", ZFBRequestRetryTimer=" + _ZFBRequestRetryTimer + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedEnterpriseName=" + _associatedEnterpriseName + ", associatedEntityType=" + _associatedEntityType + ", associatedGatewayID=" + _associatedGatewayID + ", associatedGatewayName=" + _associatedGatewayName + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", hostname=" + _hostname + ", lastConnectedTime=" + _lastConnectedTime + ", lastUpdatedBy=" + _lastUpdatedBy + ", originalEnterpriseName=" + _originalEnterpriseName + ", originalGatewayDatapathID=" + _originalGatewayDatapathID + ", originalGatewayName=" + _originalGatewayName + ", originalUplinkConnectionInfo=" + _originalUplinkConnectionInfo + ", registrationURL=" + _registrationURL + ", requestType=" + _requestType + ", serialNumber=" + _serialNumber + ", statusString=" + _statusString + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ZFBRequest [" + "CPUType=" + _CPUType + ", IPAddress=" + _IPAddress + ", MACAddress=" + _MACAddress + ", NSGVersion=" + _NSGVersion + ", SKU=" + _SKU + ", UUID=" + _UUID + ", ZFBApprovalStatus=" + _ZFBApprovalStatus + ", ZFBBootstrapEnabled=" + _ZFBBootstrapEnabled + ", ZFBInfo=" + _ZFBInfo + ", ZFBRequestRetryTimer=" + _ZFBRequestRetryTimer + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedEnterpriseName=" + _associatedEnterpriseName + ", associatedEntityType=" + _associatedEntityType + ", associatedGatewayID=" + _associatedGatewayID + ", associatedGatewayName=" + _associatedGatewayName + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", hostname=" + _hostname + ", lastConnectedTime=" + _lastConnectedTime + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", originalEnterpriseName=" + _originalEnterpriseName + ", originalGatewayDatapathID=" + _originalGatewayDatapathID + ", originalGatewayName=" + _originalGatewayName + ", originalUplinkConnectionInfo=" + _originalUplinkConnectionInfo + ", owner=" + _owner + ", registrationURL=" + _registrationURL + ", requestType=" + _requestType + ", serialNumber=" + _serialNumber + ", statusString=" + _statusString + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

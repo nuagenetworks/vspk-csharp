@@ -55,6 +55,9 @@ public class EnterpriseNetwork: RestObject {
    [JsonProperty("address")]
    protected String _address;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -67,11 +70,17 @@ public class EnterpriseNetwork: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
    
    [JsonProperty("netmask")]
    protected String _netmask;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -140,6 +149,17 @@ public class EnterpriseNetwork: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -184,6 +204,17 @@ public class EnterpriseNetwork: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -201,6 +232,17 @@ public class EnterpriseNetwork: RestObject {
       }
       set {
          this._netmask = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -229,8 +271,7 @@ public class EnterpriseNetwork: RestObject {
    
 
    public String toString() {
-      return "EnterpriseNetwork [" + "IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", netmask=" + _netmask + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "EnterpriseNetwork [" + "IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", netmask=" + _netmask + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

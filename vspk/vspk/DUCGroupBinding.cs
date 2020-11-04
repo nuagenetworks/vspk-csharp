@@ -55,6 +55,9 @@ public class DUCGroupBinding: RestObject {
    [JsonProperty("associatedUBRGroupName")]
    protected String _associatedUBRGroupName;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -67,8 +70,14 @@ public class DUCGroupBinding: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("oneWayDelay")]
    protected long? _oneWayDelay;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("priority")]
    protected long? _priority;
@@ -129,6 +138,17 @@ public class DUCGroupBinding: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -173,12 +193,34 @@ public class DUCGroupBinding: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUOneWayDelay {
       get {
          return _oneWayDelay;
       }
       set {
          this._oneWayDelay = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -210,8 +252,7 @@ public class DUCGroupBinding: RestObject {
    
 
    public String toString() {
-      return "DUCGroupBinding [" + "associatedDUCGroupID=" + _associatedDUCGroupID + ", associatedUBRGroupFunction=" + _associatedUBRGroupFunction + ", associatedUBRGroupName=" + _associatedUBRGroupName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", oneWayDelay=" + _oneWayDelay + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "DUCGroupBinding [" + "associatedDUCGroupID=" + _associatedDUCGroupID + ", associatedUBRGroupFunction=" + _associatedUBRGroupFunction + ", associatedUBRGroupName=" + _associatedUBRGroupName + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", oneWayDelay=" + _oneWayDelay + ", owner=" + _owner + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

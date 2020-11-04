@@ -275,8 +275,7 @@ public class VNFDescriptor: RestObject {
    
 
    public String toString() {
-      return "VNFDescriptor [" + "CPUCount=" + _CPUCount + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", memoryMB=" + _memoryMB + ", metadataID=" + _metadataID + ", name=" + _name + ", storageGB=" + _storageGB + ", type=" + _type + ", vendor=" + _vendor + ", visible=" + _visible + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VNFDescriptor [" + "CPUCount=" + _CPUCount + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", memoryMB=" + _memoryMB + ", metadataID=" + _metadataID + ", name=" + _name + ", storageGB=" + _storageGB + ", type=" + _type + ", vendor=" + _vendor + ", visible=" + _visible + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

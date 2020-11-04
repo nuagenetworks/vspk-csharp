@@ -54,6 +54,9 @@ public class Test: RestObject {
    [JsonProperty("command")]
    protected String _command;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -72,11 +75,17 @@ public class Test: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
    
    [JsonProperty("order")]
    protected long? _order;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("timeout")]
    protected long? _timeout;
@@ -132,6 +141,17 @@ public class Test: RestObject {
       }
       set {
          this._command = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -203,6 +223,17 @@ public class Test: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -220,6 +251,17 @@ public class Test: RestObject {
       }
       set {
          this._order = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -251,8 +293,7 @@ public class Test: RestObject {
    
 
    public String toString() {
-      return "Test [" + "associatedTestDefinitionID=" + _associatedTestDefinitionID + ", associatedTestSuiteID=" + _associatedTestSuiteID + ", command=" + _command + ", description=" + _description + ", destination=" + _destination + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", order=" + _order + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Test [" + "associatedTestDefinitionID=" + _associatedTestDefinitionID + ", associatedTestSuiteID=" + _associatedTestSuiteID + ", command=" + _command + ", creationDate=" + _creationDate + ", description=" + _description + ", destination=" + _destination + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", order=" + _order + ", owner=" + _owner + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

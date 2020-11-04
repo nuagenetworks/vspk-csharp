@@ -167,8 +167,7 @@ public class NSGatewaysCount: RestObject {
    
 
    public String toString() {
-      return "NSGatewaysCount [" + "activeNSGCount=" + _activeNSGCount + ", alarmedNSGCount=" + _alarmedNSGCount + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", inactiveNSGCount=" + _inactiveNSGCount + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "NSGatewaysCount [" + "activeNSGCount=" + _activeNSGCount + ", alarmedNSGCount=" + _alarmedNSGCount + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", inactiveNSGCount=" + _inactiveNSGCount + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

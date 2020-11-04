@@ -67,6 +67,9 @@ public class TestRun: RestObject {
    [JsonProperty("commandOutputSummary")]
    protected String _commandOutputSummary;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("duration")]
    protected long? _duration;
    
@@ -81,9 +84,15 @@ public class TestRun: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("operationStatus")]
    protected EOperationStatus? _operationStatus;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("startDateTime")]
    protected long? _startDateTime;
@@ -201,6 +210,17 @@ public class TestRun: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUDuration {
       get {
          return _duration;
@@ -256,12 +276,34 @@ public class TestRun: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EOperationStatus? NUOperationStatus {
       get {
          return _operationStatus;
       }
       set {
          this._operationStatus = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -381,8 +423,7 @@ public class TestRun: RestObject {
    
 
    public String toString() {
-      return "TestRun [" + "associatedTestID=" + _associatedTestID + ", associatedTestSuiteRunID=" + _associatedTestSuiteRunID + ", command=" + _command + ", commandExitCode=" + _commandExitCode + ", commandOutput=" + _commandOutput + ", commandOutputSummary=" + _commandOutputSummary + ", duration=" + _duration + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", operationStatus=" + _operationStatus + ", startDateTime=" + _startDateTime + ", stopDateTime=" + _stopDateTime + ", testResult=" + _testResult + ", testResultData=" + _testResultData + ", testResultDataType=" + _testResultDataType + ", testResultSpecificationEntityName=" + _testResultSpecificationEntityName + ", underlayTestCategory=" + _underlayTestCategory + ", underlayTestDescription=" + _underlayTestDescription + ", underlayTestName=" + _underlayTestName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "TestRun [" + "associatedTestID=" + _associatedTestID + ", associatedTestSuiteRunID=" + _associatedTestSuiteRunID + ", command=" + _command + ", commandExitCode=" + _commandExitCode + ", commandOutput=" + _commandOutput + ", commandOutputSummary=" + _commandOutputSummary + ", creationDate=" + _creationDate + ", duration=" + _duration + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", operationStatus=" + _operationStatus + ", owner=" + _owner + ", startDateTime=" + _startDateTime + ", stopDateTime=" + _stopDateTime + ", testResult=" + _testResult + ", testResultData=" + _testResultData + ", testResultDataType=" + _testResultDataType + ", testResultSpecificationEntityName=" + _testResultSpecificationEntityName + ", underlayTestCategory=" + _underlayTestCategory + ", underlayTestDescription=" + _underlayTestDescription + ", underlayTestName=" + _underlayTestName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

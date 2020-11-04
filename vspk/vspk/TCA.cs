@@ -44,7 +44,7 @@ public class TCA: RestObject {
    
    public enum EAction {Alert,Alert_Add_Network_Macro,Alert_Add_Policy_Group,Alert_PolicyGroupChange };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EMetric {ACL_DENY_EVENT_COUNT,ANTI_SPOOF_EVENT_COUNT,BYTES_IN,BYTES_OUT,FIP_PRE_RATE_LIMIT_BYTES,FIP_PRE_RATE_LIMIT_PACKETS,FIP_RATE_LIMIT_DROPPED_BYTES,FIP_RATE_LIMIT_DROPPED_PACKETS,L7_BYTES_IN,L7_BYTES_OUT,L7_PACKETS_IN,L7_PACKETS_OUT,PACKETS_DROPPED_BY_RATE_LIMIT,PACKETS_IN,PACKETS_IN_DROPPED,PACKETS_IN_ERROR,PACKETS_OUT,PACKETS_OUT_DROPPED,PACKETS_OUT_ERROR,PORT_SCAN_PORT_COUNT,PORT_SWEEP_IP_COUNT,TCP_FLAG_ACK_IN,TCP_FLAG_ACK_OUT,TCP_FLAG_NULL_IN,TCP_FLAG_NULL_OUT,TCP_FLAG_RST_IN,TCP_FLAG_RST_OUT,TCP_FLAG_SYN_IN,TCP_FLAG_SYN_OUT };
+   public enum EMetric {ACL_DENY_EVENT_COUNT,ANTI_SPOOF_EVENT_COUNT,BYTES_IN,BYTES_OUT,FIP_PRE_RATE_LIMIT_BYTES,FIP_PRE_RATE_LIMIT_PACKETS,FIP_RATE_LIMIT_DROPPED_BYTES,FIP_RATE_LIMIT_DROPPED_PACKETS,HIGH_RISK_IP_ACCESS_EVENT_COUNT,IDP_EVENT_COUNT,L7_BYTES_IN,L7_BYTES_OUT,L7_PACKETS_IN,L7_PACKETS_OUT,MEDIUM_RISK_IP_ACCESS_EVENT_COUNT,PACKETS_DROPPED_BY_RATE_LIMIT,PACKETS_IN,PACKETS_IN_DROPPED,PACKETS_IN_ERROR,PACKETS_OUT,PACKETS_OUT_DROPPED,PACKETS_OUT_ERROR,PORT_SCAN_PORT_COUNT,PORT_SWEEP_IP_COUNT,TCP_FLAG_ACK_IN,TCP_FLAG_ACK_OUT,TCP_FLAG_NULL_IN,TCP_FLAG_NULL_OUT,TCP_FLAG_RST_IN,TCP_FLAG_RST_OUT,TCP_FLAG_SYN_IN,TCP_FLAG_SYN_OUT };
    public enum EType {BREACH,ROLLING_AVERAGE,UNIQUE_COUNT };
 
    
@@ -56,6 +56,9 @@ public class TCA: RestObject {
    
    [JsonProperty("count")]
    protected long? _count;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    
    [JsonProperty("description")]
    protected String _description;
@@ -77,12 +80,18 @@ public class TCA: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("metric")]
    protected EMetric? _metric;
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("period")]
    protected long? _period;
@@ -176,6 +185,17 @@ public class TCA: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -253,6 +273,17 @@ public class TCA: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EMetric? NUMetric {
       get {
          return _metric;
@@ -270,6 +301,17 @@ public class TCA: RestObject {
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -386,8 +428,7 @@ public class TCA: RestObject {
    
 
    public String toString() {
-      return "TCA [" + "URLEndPoint=" + _URLEndPoint + ", action=" + _action + ", count=" + _count + ", description=" + _description + ", disable=" + _disable + ", displayStatus=" + _displayStatus + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", metric=" + _metric + ", name=" + _name + ", period=" + _period + ", status=" + _status + ", targetEntityID=" + _targetEntityID + ", targetPolicyGroupID=" + _targetPolicyGroupID + ", threshold=" + _threshold + ", throttleTime=" + _throttleTime + ", triggerInterval=" + _triggerInterval + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "TCA [" + "URLEndPoint=" + _URLEndPoint + ", action=" + _action + ", count=" + _count + ", creationDate=" + _creationDate + ", description=" + _description + ", disable=" + _disable + ", displayStatus=" + _displayStatus + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", metric=" + _metric + ", name=" + _name + ", owner=" + _owner + ", period=" + _period + ", status=" + _status + ", targetEntityID=" + _targetEntityID + ", targetPolicyGroupID=" + _targetPolicyGroupID + ", threshold=" + _threshold + ", throttleTime=" + _throttleTime + ", triggerInterval=" + _triggerInterval + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

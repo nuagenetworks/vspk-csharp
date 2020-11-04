@@ -62,6 +62,9 @@ public class VMIPReservation: RestObject {
    [JsonProperty("allocationPools")]
    protected System.Collections.Generic.List<String> _allocationPools;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -73,6 +76,12 @@ public class VMIPReservation: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("state")]
    protected EState? _state;
@@ -155,6 +164,17 @@ public class VMIPReservation: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -199,6 +219,28 @@ public class VMIPReservation: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EState? NUState {
       get {
          return _state;
@@ -225,8 +267,7 @@ public class VMIPReservation: RestObject {
    
 
    public String toString() {
-      return "VMIPReservation [" + "IPType=" + _IPType + ", IPV4Address=" + _IPV4Address + ", IPV6Address=" + _IPV6Address + ", IPV6AllocationPools=" + _IPV6AllocationPools + ", allocationPools=" + _allocationPools + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", state=" + _state + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VMIPReservation [" + "IPType=" + _IPType + ", IPV4Address=" + _IPV4Address + ", IPV6Address=" + _IPV6Address + ", IPV6AllocationPools=" + _IPV6AllocationPools + ", allocationPools=" + _allocationPools + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", state=" + _state + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -64,6 +64,9 @@ public class WANService: RestObject {
    [JsonProperty("configType")]
    protected EConfigType? _configType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -88,11 +91,17 @@ public class WANService: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
    
    [JsonProperty("orphan")]
    protected bool _orphan;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("permittedAction")]
    protected EPermittedAction? _permittedAction;
@@ -210,6 +219,17 @@ public class WANService: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -298,6 +318,17 @@ public class WANService: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -315,6 +346,17 @@ public class WANService: RestObject {
       }
       set {
          this._orphan = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -424,8 +466,7 @@ public class WANService: RestObject {
    
 
    public String toString() {
-      return "WANService [" + "IRBEnabled=" + _IRBEnabled + ", WANServiceIdentifier=" + _WANServiceIdentifier + ", associatedDomainID=" + _associatedDomainID + ", associatedVPNConnectID=" + _associatedVPNConnectID + ", configType=" + _configType + ", description=" + _description + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", externalRouteTarget=" + _externalRouteTarget + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", orphan=" + _orphan + ", permittedAction=" + _permittedAction + ", servicePolicy=" + _servicePolicy + ", serviceType=" + _serviceType + ", tunnelType=" + _tunnelType + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "WANService [" + "IRBEnabled=" + _IRBEnabled + ", WANServiceIdentifier=" + _WANServiceIdentifier + ", associatedDomainID=" + _associatedDomainID + ", associatedVPNConnectID=" + _associatedVPNConnectID + ", configType=" + _configType + ", creationDate=" + _creationDate + ", description=" + _description + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", externalRouteTarget=" + _externalRouteTarget + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", orphan=" + _orphan + ", owner=" + _owner + ", permittedAction=" + _permittedAction + ", servicePolicy=" + _servicePolicy + ", serviceType=" + _serviceType + ", tunnelType=" + _tunnelType + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

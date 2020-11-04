@@ -46,6 +46,7 @@ public class Enterprise: RestObject {
    public enum EAllowedForwardingMode {DISABLED,LOCAL_AND_REMOTE,LOCAL_ONLY };
    public enum EAvatarType {BASE64,COMPUTEDURL,URL };
    public enum EEncryptionManagementMode {DISABLED,MANAGED };
+   public enum EEnterpriseType {AUDIT,CSP,NORMAL,SHARED,SYSTEM };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFlowCollectionEnabled {DISABLED,ENABLED };
    public enum EThreatIntelligenceEnabled {DISABLED,ENABLED };
@@ -96,6 +97,12 @@ public class Enterprise: RestObject {
    [JsonProperty("avatarType")]
    protected EAvatarType? _avatarType;
    
+   [JsonProperty("blockedPageText")]
+   protected String _blockedPageText;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("customerID")]
    protected long? _customerID;
    
@@ -116,6 +123,9 @@ public class Enterprise: RestObject {
    
    [JsonProperty("enterpriseProfileID")]
    protected String _enterpriseProfileID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("enterpriseType")]
+   protected EEnterpriseType? _enterpriseType;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -138,11 +148,17 @@ public class Enterprise: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("localAS")]
    protected long? _localAS;
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("receiveMultiCastListID")]
    protected String _receiveMultiCastListID;
@@ -219,6 +235,9 @@ public class Enterprise: RestObject {
    private DSCPRemarkingPolicyTablesFetcher _dSCPRemarkingPolicyTables;
    
    [JsonIgnore]
+   private EgressProfilesFetcher _egressProfiles;
+   
+   [JsonIgnore]
    private EgressQOSPoliciesFetcher _egressQOSPolicies;
    
    [JsonIgnore]
@@ -249,6 +268,9 @@ public class Enterprise: RestObject {
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
+   private GNMIProfilesFetcher _gNMIProfiles;
+   
+   [JsonIgnore]
    private GroupsFetcher _groups;
    
    [JsonIgnore]
@@ -273,7 +295,16 @@ public class Enterprise: RestObject {
    private IKEPSKsFetcher _iKEPSKs;
    
    [JsonIgnore]
+   private IngressProfilesFetcher _ingressProfiles;
+   
+   [JsonIgnore]
    private IngressQOSPoliciesFetcher _ingressQOSPolicies;
+   
+   [JsonIgnore]
+   private IPFilterProfilesFetcher _iPFilterProfiles;
+   
+   [JsonIgnore]
+   private IPv6FilterProfilesFetcher _iPv6FilterProfiles;
    
    [JsonIgnore]
    private JobsFetcher _jobs;
@@ -372,6 +403,12 @@ public class Enterprise: RestObject {
    private SaaSApplicationTypesFetcher _saaSApplicationTypes;
    
    [JsonIgnore]
+   private SAPEgressQoSProfilesFetcher _sAPEgressQoSProfiles;
+   
+   [JsonIgnore]
+   private SAPIngressQoSProfilesFetcher _sAPIngressQoSProfiles;
+   
+   [JsonIgnore]
    private SharedNetworkResourcesFetcher _sharedNetworkResources;
    
    [JsonIgnore]
@@ -444,6 +481,8 @@ public class Enterprise: RestObject {
       
       _dSCPRemarkingPolicyTables = new DSCPRemarkingPolicyTablesFetcher(this);
       
+      _egressProfiles = new EgressProfilesFetcher(this);
+      
       _egressQOSPolicies = new EgressQOSPoliciesFetcher(this);
       
       _enterpriseNetworks = new EnterpriseNetworksFetcher(this);
@@ -464,6 +503,8 @@ public class Enterprise: RestObject {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
+      _gNMIProfiles = new GNMIProfilesFetcher(this);
+      
       _groups = new GroupsFetcher(this);
       
       _groupKeyEncryptionProfiles = new GroupKeyEncryptionProfilesFetcher(this);
@@ -480,7 +521,13 @@ public class Enterprise: RestObject {
       
       _iKEPSKs = new IKEPSKsFetcher(this);
       
+      _ingressProfiles = new IngressProfilesFetcher(this);
+      
       _ingressQOSPolicies = new IngressQOSPoliciesFetcher(this);
+      
+      _iPFilterProfiles = new IPFilterProfilesFetcher(this);
+      
+      _iPv6FilterProfiles = new IPv6FilterProfilesFetcher(this);
       
       _jobs = new JobsFetcher(this);
       
@@ -545,6 +592,10 @@ public class Enterprise: RestObject {
       _saaSApplicationGroups = new SaaSApplicationGroupsFetcher(this);
       
       _saaSApplicationTypes = new SaaSApplicationTypesFetcher(this);
+      
+      _sAPEgressQoSProfiles = new SAPEgressQoSProfilesFetcher(this);
+      
+      _sAPIngressQoSProfiles = new SAPIngressQoSProfilesFetcher(this);
       
       _sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
       
@@ -741,6 +792,28 @@ public class Enterprise: RestObject {
 
    
    [JsonIgnore]
+   public String NUBlockedPageText {
+      get {
+         return _blockedPageText;
+      }
+      set {
+         this._blockedPageText = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUCustomerID {
       get {
          return _customerID;
@@ -813,6 +886,17 @@ public class Enterprise: RestObject {
       }
       set {
          this._enterpriseProfileID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EEnterpriseType? NUEnterpriseType {
+      get {
+         return _enterpriseType;
+      }
+      set {
+         this._enterpriseType = value;
       }
    }
 
@@ -895,6 +979,17 @@ public class Enterprise: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NULocalAS {
       get {
          return _localAS;
@@ -912,6 +1007,17 @@ public class Enterprise: RestObject {
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -1070,6 +1176,10 @@ public class Enterprise: RestObject {
       return _dSCPRemarkingPolicyTables;
    }
    
+   public EgressProfilesFetcher getEgressProfiles() {
+      return _egressProfiles;
+   }
+   
    public EgressQOSPoliciesFetcher getEgressQOSPolicies() {
       return _egressQOSPolicies;
    }
@@ -1110,6 +1220,10 @@ public class Enterprise: RestObject {
       return _globalMetadatas;
    }
    
+   public GNMIProfilesFetcher getGNMIProfiles() {
+      return _gNMIProfiles;
+   }
+   
    public GroupsFetcher getGroups() {
       return _groups;
    }
@@ -1142,8 +1256,20 @@ public class Enterprise: RestObject {
       return _iKEPSKs;
    }
    
+   public IngressProfilesFetcher getIngressProfiles() {
+      return _ingressProfiles;
+   }
+   
    public IngressQOSPoliciesFetcher getIngressQOSPolicies() {
       return _ingressQOSPolicies;
+   }
+   
+   public IPFilterProfilesFetcher getIPFilterProfiles() {
+      return _iPFilterProfiles;
+   }
+   
+   public IPv6FilterProfilesFetcher getIPv6FilterProfiles() {
+      return _iPv6FilterProfiles;
    }
    
    public JobsFetcher getJobs() {
@@ -1274,6 +1400,14 @@ public class Enterprise: RestObject {
       return _saaSApplicationTypes;
    }
    
+   public SAPEgressQoSProfilesFetcher getSAPEgressQoSProfiles() {
+      return _sAPEgressQoSProfiles;
+   }
+   
+   public SAPIngressQoSProfilesFetcher getSAPIngressQoSProfiles() {
+      return _sAPIngressQoSProfiles;
+   }
+   
    public SharedNetworkResourcesFetcher getSharedNetworkResources() {
       return _sharedNetworkResources;
    }
@@ -1328,8 +1462,7 @@ public class Enterprise: RestObject {
    
 
    public String toString() {
-      return "Enterprise [" + "BGPEnabled=" + _BGPEnabled + ", DHCPLeaseInterval=" + _DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + _LDAPAuthorizationEnabled + ", LDAPEnabled=" + _LDAPEnabled + ", VNFManagementEnabled=" + _VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + _allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + _allowGatewayManagement + ", allowTrustedForwardingClass=" + _allowTrustedForwardingClass + ", allowedForwardingClasses=" + _allowedForwardingClasses + ", allowedForwardingMode=" + _allowedForwardingMode + ", associatedEnterpriseSecurityID=" + _associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + _associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + _associatedKeyServerMonitorID + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", customerID=" + _customerID + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", embeddedMetadata=" + _embeddedMetadata + ", enableApplicationPerformanceManagement=" + _enableApplicationPerformanceManagement + ", encryptionManagementMode=" + _encryptionManagementMode + ", enterpriseProfileID=" + _enterpriseProfileID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", floatingIPsQuota=" + _floatingIPsQuota + ", floatingIPsUsed=" + _floatingIPsUsed + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", forwardingClass=" + _forwardingClass + ", lastUpdatedBy=" + _lastUpdatedBy + ", localAS=" + _localAS + ", name=" + _name + ", receiveMultiCastListID=" + _receiveMultiCastListID + ", sendMultiCastListID=" + _sendMultiCastListID + ", sharedEnterprise=" + _sharedEnterprise + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", threatPreventionManagementEnabled=" + _threatPreventionManagementEnabled + ", useGlobalMAC=" + _useGlobalMAC + ", virtualFirewallRulesEnabled=" + _virtualFirewallRulesEnabled + ", webFilterEnabled=" + _webFilterEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Enterprise [" + "BGPEnabled=" + _BGPEnabled + ", DHCPLeaseInterval=" + _DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + _LDAPAuthorizationEnabled + ", LDAPEnabled=" + _LDAPEnabled + ", VNFManagementEnabled=" + _VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + _allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + _allowGatewayManagement + ", allowTrustedForwardingClass=" + _allowTrustedForwardingClass + ", allowedForwardingClasses=" + _allowedForwardingClasses + ", allowedForwardingMode=" + _allowedForwardingMode + ", associatedEnterpriseSecurityID=" + _associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + _associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + _associatedKeyServerMonitorID + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", blockedPageText=" + _blockedPageText + ", creationDate=" + _creationDate + ", customerID=" + _customerID + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", embeddedMetadata=" + _embeddedMetadata + ", enableApplicationPerformanceManagement=" + _enableApplicationPerformanceManagement + ", encryptionManagementMode=" + _encryptionManagementMode + ", enterpriseProfileID=" + _enterpriseProfileID + ", enterpriseType=" + _enterpriseType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", floatingIPsQuota=" + _floatingIPsQuota + ", floatingIPsUsed=" + _floatingIPsUsed + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", forwardingClass=" + _forwardingClass + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", localAS=" + _localAS + ", name=" + _name + ", owner=" + _owner + ", receiveMultiCastListID=" + _receiveMultiCastListID + ", sendMultiCastListID=" + _sendMultiCastListID + ", sharedEnterprise=" + _sharedEnterprise + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", threatPreventionManagementEnabled=" + _threatPreventionManagementEnabled + ", useGlobalMAC=" + _useGlobalMAC + ", virtualFirewallRulesEnabled=" + _virtualFirewallRulesEnabled + ", webFilterEnabled=" + _webFilterEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

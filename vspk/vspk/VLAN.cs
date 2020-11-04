@@ -49,6 +49,9 @@ public class VLAN: RestObject {
    public enum EType {ACCESS,BR,DUC,UPLINK };
 
    
+   [JsonProperty("TrafficThroughUBROnly")]
+   protected bool _TrafficThroughUBROnly;
+   
    [JsonProperty("associatedBGPProfileID")]
    protected String _associatedBGPProfileID;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -73,6 +76,9 @@ public class VLAN: RestObject {
    [JsonProperty("associatedVSCProfileID")]
    protected String _associatedVSCProfileID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -81,6 +87,9 @@ public class VLAN: RestObject {
    
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
+   
+   [JsonProperty("enableNATProbes")]
+   protected bool _enableNATProbes;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -91,11 +100,23 @@ public class VLAN: RestObject {
    [JsonProperty("gatewayID")]
    protected String _gatewayID;
    
+   [JsonProperty("inheritedPortPropertiesDiverged")]
+   protected bool _inheritedPortPropertiesDiverged;
+   
    [JsonProperty("isUplink")]
    protected bool _isUplink;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("mtu")]
+   protected long? _mtu;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("permittedAction")]
    protected EPermittedAction? _permittedAction;
@@ -203,6 +224,17 @@ public class VLAN: RestObject {
 
    
    [JsonIgnore]
+   public bool NUTrafficThroughUBROnly {
+      get {
+         return _TrafficThroughUBROnly;
+      }
+      set {
+         this._TrafficThroughUBROnly = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAssociatedBGPProfileID {
       get {
          return _associatedBGPProfileID;
@@ -291,6 +323,17 @@ public class VLAN: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -319,6 +362,17 @@ public class VLAN: RestObject {
       }
       set {
          this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUEnableNATProbes {
+      get {
+         return _enableNATProbes;
+      }
+      set {
+         this._enableNATProbes = value;
       }
    }
 
@@ -357,6 +411,17 @@ public class VLAN: RestObject {
 
    
    [JsonIgnore]
+   public bool NUInheritedPortPropertiesDiverged {
+      get {
+         return _inheritedPortPropertiesDiverged;
+      }
+      set {
+         this._inheritedPortPropertiesDiverged = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUIsUplink {
       get {
          return _isUplink;
@@ -374,6 +439,39 @@ public class VLAN: RestObject {
       }
       set {
          this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUMtu {
+      get {
+         return _mtu;
+      }
+      set {
+         this._mtu = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -555,8 +653,7 @@ public class VLAN: RestObject {
    
 
    public String toString() {
-      return "VLAN [" + "associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedConnectionType=" + _associatedConnectionType + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + _associatedIngressOverlayQoSPolicerID + ", associatedIngressQOSPolicyID=" + _associatedIngressQOSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + _associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + _associatedUplinkConnectionID + ", associatedVSCProfileID=" + _associatedVSCProfileID + ", description=" + _description + ", ducVlan=" + _ducVlan + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", isUplink=" + _isUplink + ", lastUpdatedBy=" + _lastUpdatedBy + ", permittedAction=" + _permittedAction + ", readonly=" + _readonly + ", restricted=" + _restricted + ", shuntVLAN=" + _shuntVLAN + ", status=" + _status + ", templateID=" + _templateID + ", type=" + _type + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", value=" + _value + ", vportID=" + _vportID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VLAN [" + "TrafficThroughUBROnly=" + _TrafficThroughUBROnly + ", associatedBGPProfileID=" + _associatedBGPProfileID + ", associatedConnectionType=" + _associatedConnectionType + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + _associatedIngressOverlayQoSPolicerID + ", associatedIngressQOSPolicyID=" + _associatedIngressQOSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + _associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + _associatedUplinkConnectionID + ", associatedVSCProfileID=" + _associatedVSCProfileID + ", creationDate=" + _creationDate + ", description=" + _description + ", ducVlan=" + _ducVlan + ", embeddedMetadata=" + _embeddedMetadata + ", enableNATProbes=" + _enableNATProbes + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", inheritedPortPropertiesDiverged=" + _inheritedPortPropertiesDiverged + ", isUplink=" + _isUplink + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", mtu=" + _mtu + ", owner=" + _owner + ", permittedAction=" + _permittedAction + ", readonly=" + _readonly + ", restricted=" + _restricted + ", shuntVLAN=" + _shuntVLAN + ", status=" + _status + ", templateID=" + _templateID + ", type=" + _type + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", value=" + _value + ", vportID=" + _vportID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

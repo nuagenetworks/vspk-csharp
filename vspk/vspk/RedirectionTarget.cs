@@ -54,6 +54,9 @@ public class RedirectionTarget: RestObject {
    [JsonProperty("autoCreated")]
    protected bool _autoCreated;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -75,8 +78,14 @@ public class RedirectionTarget: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("redundancyEnabled")]
    protected bool _redundancyEnabled;
@@ -146,6 +155,17 @@ public class RedirectionTarget: RestObject {
       }
       set {
          this._autoCreated = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -228,12 +248,34 @@ public class RedirectionTarget: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -310,8 +352,7 @@ public class RedirectionTarget: RestObject {
    
 
    public String toString() {
-      return "RedirectionTarget [" + "ESI=" + _ESI + ", autoCreated=" + _autoCreated + ", description=" + _description + ", destinationType=" + _destinationType + ", embeddedMetadata=" + _embeddedMetadata + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", redundancyEnabled=" + _redundancyEnabled + ", templateID=" + _templateID + ", triggerType=" + _triggerType + ", virtualNetworkID=" + _virtualNetworkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "RedirectionTarget [" + "ESI=" + _ESI + ", autoCreated=" + _autoCreated + ", creationDate=" + _creationDate + ", description=" + _description + ", destinationType=" + _destinationType + ", embeddedMetadata=" + _embeddedMetadata + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", redundancyEnabled=" + _redundancyEnabled + ", templateID=" + _templateID + ", triggerType=" + _triggerType + ", virtualNetworkID=" + _virtualNetworkID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -49,6 +49,9 @@ public class CTranslationMap: RestObject {
    [JsonProperty("associatedDomainID")]
    protected String _associatedDomainID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("customerAliasIP")]
    protected String _customerAliasIP;
    
@@ -66,9 +69,15 @@ public class CTranslationMap: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("mappingType")]
    protected EMappingType? _mappingType;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -99,6 +108,17 @@ public class CTranslationMap: RestObject {
       }
       set {
          this._associatedDomainID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -170,12 +190,34 @@ public class CTranslationMap: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EMappingType? NUMappingType {
       get {
          return _mappingType;
       }
       set {
          this._mappingType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -196,8 +238,7 @@ public class CTranslationMap: RestObject {
    
 
    public String toString() {
-      return "CTranslationMap [" + "associatedDomainID=" + _associatedDomainID + ", customerAliasIP=" + _customerAliasIP + ", customerIP=" + _customerIP + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mappingType=" + _mappingType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "CTranslationMap [" + "associatedDomainID=" + _associatedDomainID + ", creationDate=" + _creationDate + ", customerAliasIP=" + _customerAliasIP + ", customerIP=" + _customerIP + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", mappingType=" + _mappingType + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

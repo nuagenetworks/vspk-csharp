@@ -57,6 +57,9 @@ public class AzureCloud: RestObject {
    [JsonProperty("clientSecret")]
    protected String _clientSecret;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -69,8 +72,14 @@ public class AzureCloud: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("subscriptionID")]
    protected String _subscriptionID;
@@ -79,6 +88,9 @@ public class AzureCloud: RestObject {
    protected String _tenantID;
    
 
+   
+   [JsonIgnore]
+   private AlarmsFetcher _alarms;
    
    [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
@@ -96,6 +108,8 @@ public class AzureCloud: RestObject {
    private PermissionsFetcher _permissions;
    
    public AzureCloud() {
+      
+      _alarms = new AlarmsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -155,6 +169,17 @@ public class AzureCloud: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -199,12 +224,34 @@ public class AzureCloud: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -233,6 +280,10 @@ public class AzureCloud: RestObject {
    
 
    
+   public AlarmsFetcher getAlarms() {
+      return _alarms;
+   }
+   
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
    }
@@ -255,8 +306,7 @@ public class AzureCloud: RestObject {
    
 
    public String toString() {
-      return "AzureCloud [" + "associatedIKEEncryptionProfileID=" + _associatedIKEEncryptionProfileID + ", associatedIKEPSKID=" + _associatedIKEPSKID + ", clientID=" + _clientID + ", clientSecret=" + _clientSecret + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", subscriptionID=" + _subscriptionID + ", tenantID=" + _tenantID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "AzureCloud [" + "associatedIKEEncryptionProfileID=" + _associatedIKEEncryptionProfileID + ", associatedIKEPSKID=" + _associatedIKEPSKID + ", clientID=" + _clientID + ", clientSecret=" + _clientSecret + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", subscriptionID=" + _subscriptionID + ", tenantID=" + _tenantID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -64,6 +64,9 @@ public class Permission: RestObject {
    [JsonProperty("associatedRoleName")]
    protected String _associatedRoleName;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -76,8 +79,14 @@ public class Permission: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("permittedAction")]
    protected EPermittedAction? _permittedAction;
@@ -191,6 +200,17 @@ public class Permission: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -235,12 +255,34 @@ public class Permission: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -331,8 +373,7 @@ public class Permission: RestObject {
    
 
    public String toString() {
-      return "Permission [" + "associatedGroupDescription=" + _associatedGroupDescription + ", associatedGroupID=" + _associatedGroupID + ", associatedGroupName=" + _associatedGroupName + ", associatedRoleDescription=" + _associatedRoleDescription + ", associatedRoleID=" + _associatedRoleID + ", associatedRoleName=" + _associatedRoleName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", permittedEnterpriseDescription=" + _permittedEnterpriseDescription + ", permittedEnterpriseName=" + _permittedEnterpriseName + ", permittedEntityID=" + _permittedEntityID + ", permittedEntityName=" + _permittedEntityName + ", permittedEntityType=" + _permittedEntityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Permission [" + "associatedGroupDescription=" + _associatedGroupDescription + ", associatedGroupID=" + _associatedGroupID + ", associatedGroupName=" + _associatedGroupName + ", associatedRoleDescription=" + _associatedRoleDescription + ", associatedRoleID=" + _associatedRoleID + ", associatedRoleName=" + _associatedRoleName + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", permittedAction=" + _permittedAction + ", permittedEnterpriseDescription=" + _permittedEnterpriseDescription + ", permittedEnterpriseName=" + _permittedEnterpriseName + ", permittedEntityID=" + _permittedEntityID + ", permittedEntityName=" + _permittedEntityName + ", permittedEntityType=" + _permittedEntityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

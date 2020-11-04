@@ -106,8 +106,7 @@ public class Role: RestObject {
    
 
    public String toString() {
-      return "Role [" + "cspOnly=" + _cspOnly + ", description=" + _description + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Role [" + "cspOnly=" + _cspOnly + ", description=" + _description + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -43,17 +43,24 @@ public class OSPFInstance: RestObject {
 
    
    public enum EIPType {IPV4 };
+   public enum EOSPFType {OSPFv2,OSPFv3 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("IPType")]
    protected EIPType? _IPType;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("OSPFType")]
+   protected EOSPFType? _OSPFType;
    
    [JsonProperty("associatedExportRoutingPolicyID")]
    protected String _associatedExportRoutingPolicyID;
    
    [JsonProperty("associatedImportRoutingPolicyID")]
    protected String _associatedImportRoutingPolicyID;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    
    [JsonProperty("description")]
    protected String _description;
@@ -79,8 +86,14 @@ public class OSPFInstance: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("preference")]
    protected long? _preference;
@@ -127,6 +140,17 @@ public class OSPFInstance: RestObject {
 
    
    [JsonIgnore]
+   public EOSPFType? NUOSPFType {
+      get {
+         return _OSPFType;
+      }
+      set {
+         this._OSPFType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAssociatedExportRoutingPolicyID {
       get {
          return _associatedExportRoutingPolicyID;
@@ -144,6 +168,17 @@ public class OSPFInstance: RestObject {
       }
       set {
          this._associatedImportRoutingPolicyID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -237,12 +272,34 @@ public class OSPFInstance: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -289,8 +346,7 @@ public class OSPFInstance: RestObject {
    
 
    public String toString() {
-      return "OSPFInstance [" + "IPType=" + _IPType + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", exportLimit=" + _exportLimit + ", exportToOverlay=" + _exportToOverlay + ", externalID=" + _externalID + ", externalPreference=" + _externalPreference + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", preference=" + _preference + ", superBackboneEnabled=" + _superBackboneEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "OSPFInstance [" + "IPType=" + _IPType + ", OSPFType=" + _OSPFType + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", exportLimit=" + _exportLimit + ", exportToOverlay=" + _exportToOverlay + ", externalID=" + _externalID + ", externalPreference=" + _externalPreference + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", preference=" + _preference + ", superBackboneEnabled=" + _superBackboneEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

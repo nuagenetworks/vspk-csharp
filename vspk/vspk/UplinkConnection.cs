@@ -46,9 +46,11 @@ public class UplinkConnection: RestObject {
    public enum EAdvertisementCriteria {BFD,CONTROL_SESSION,OPERATIONAL_LINK };
    public enum EAuxMode {COLD,HOT,NONE };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum EFecEnabled {DISABLED,ENABLED,SUPPORTED };
    public enum EInterfaceConnectionType {AUTOMATIC,EMBEDDED,PCI_EXPRESS,USB_ETHERNET,USB_MODEM };
    public enum EMode {Any,Dynamic,LTE,PPPoE,Static };
    public enum ERole {NONE,PRIMARY,SECONDARY,TERTIARY,UNKNOWN };
+   public enum EUplinkType {CONTROL,DATA,SHUNT,UPLINK };
 
    
    [JsonProperty("DNSAddress")]
@@ -87,6 +89,9 @@ public class UplinkConnection: RestObject {
    [JsonProperty("auxiliaryLink")]
    protected bool _auxiliaryLink;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("downloadRateLimit")]
    protected float _downloadRateLimit;
    
@@ -98,9 +103,15 @@ public class UplinkConnection: RestObject {
    
    [JsonProperty("externalID")]
    protected String _externalID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("fecEnabled")]
+   protected EFecEnabled? _fecEnabled;
    
    [JsonProperty("gateway")]
    protected String _gateway;
+   
+   [JsonProperty("gatewayID")]
+   protected String _gatewayID;
    
    [JsonProperty("gatewayV6")]
    protected String _gatewayV6;
@@ -116,6 +127,9 @@ public class UplinkConnection: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("mode")]
    protected EMode? _mode;
@@ -123,8 +137,14 @@ public class UplinkConnection: RestObject {
    [JsonProperty("netmask")]
    protected String _netmask;
    
+   [JsonProperty("owner")]
+   protected String _owner;
+   
    [JsonProperty("password")]
    protected String _password;
+   
+   [JsonProperty("portID")]
+   protected String _portID;
    
    [JsonProperty("portName")]
    protected String _portName;
@@ -150,11 +170,20 @@ public class UplinkConnection: RestObject {
    [JsonProperty("uplinkID")]
    protected long? _uplinkID;
    
+   [JsonProperty("uplinkName")]
+   protected String _uplinkName;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("uplinkType")]
+   protected EUplinkType? _uplinkType;
+   
    [JsonProperty("username")]
    protected String _username;
    
    [JsonProperty("vlan")]
    protected long? _vlan;
+   
+   [JsonProperty("vlanID")]
+   protected String _vlanID;
    
 
    
@@ -173,6 +202,9 @@ public class UplinkConnection: RestObject {
    [JsonIgnore]
    private PermissionsFetcher _permissions;
    
+   [JsonIgnore]
+   private UnderlayTestsFetcher _underlayTests;
+   
    public UplinkConnection() {
       
       _bFDSessions = new BFDSessionsFetcher(this);
@@ -184,6 +216,8 @@ public class UplinkConnection: RestObject {
       _metadatas = new MetadatasFetcher(this);
       
       _permissions = new PermissionsFetcher(this);
+      
+      _underlayTests = new UnderlayTestsFetcher(this);
       
    }
 
@@ -321,6 +355,17 @@ public class UplinkConnection: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public float NUDownloadRateLimit {
       get {
          return _downloadRateLimit;
@@ -365,12 +410,34 @@ public class UplinkConnection: RestObject {
 
    
    [JsonIgnore]
+   public EFecEnabled? NUFecEnabled {
+      get {
+         return _fecEnabled;
+      }
+      set {
+         this._fecEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUGateway {
       get {
          return _gateway;
       }
       set {
          this._gateway = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUGatewayID {
+      get {
+         return _gatewayID;
+      }
+      set {
+         this._gatewayID = value;
       }
    }
 
@@ -431,6 +498,17 @@ public class UplinkConnection: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EMode? NUMode {
       get {
          return _mode;
@@ -453,12 +531,34 @@ public class UplinkConnection: RestObject {
 
    
    [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUPassword {
       get {
          return _password;
       }
       set {
          this._password = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUPortID {
+      get {
+         return _portID;
+      }
+      set {
+         this._portID = value;
       }
    }
 
@@ -552,6 +652,28 @@ public class UplinkConnection: RestObject {
 
    
    [JsonIgnore]
+   public String NUUplinkName {
+      get {
+         return _uplinkName;
+      }
+      set {
+         this._uplinkName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EUplinkType? NUUplinkType {
+      get {
+         return _uplinkType;
+      }
+      set {
+         this._uplinkType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUUsername {
       get {
          return _username;
@@ -569,6 +691,17 @@ public class UplinkConnection: RestObject {
       }
       set {
          this._vlan = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUVlanID {
+      get {
+         return _vlanID;
+      }
+      set {
+         this._vlanID = value;
       }
    }
 
@@ -595,10 +728,13 @@ public class UplinkConnection: RestObject {
       return _permissions;
    }
    
+   public UnderlayTestsFetcher getUnderlayTests() {
+      return _underlayTests;
+   }
+   
 
    public String toString() {
-      return "UplinkConnection [" + "DNSAddress=" + _DNSAddress + ", DNSAddressV6=" + _DNSAddressV6 + ", PATEnabled=" + _PATEnabled + ", address=" + _address + ", addressFamily=" + _addressFamily + ", addressV6=" + _addressV6 + ", advertisementCriteria=" + _advertisementCriteria + ", assocUnderlayID=" + _assocUnderlayID + ", associatedBGPNeighborID=" + _associatedBGPNeighborID + ", associatedUnderlayName=" + _associatedUnderlayName + ", auxMode=" + _auxMode + ", auxiliaryLink=" + _auxiliaryLink + ", downloadRateLimit=" + _downloadRateLimit + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayV6=" + _gatewayV6 + ", inherited=" + _inherited + ", installerManaged=" + _installerManaged + ", interfaceConnectionType=" + _interfaceConnectionType + ", lastUpdatedBy=" + _lastUpdatedBy + ", mode=" + _mode + ", netmask=" + _netmask + ", password=" + _password + ", portName=" + _portName + ", primaryDataPathID=" + _primaryDataPathID + ", role=" + _role + ", roleOrder=" + _roleOrder + ", secondaryAddress=" + _secondaryAddress + ", underlayEnabled=" + _underlayEnabled + ", underlayID=" + _underlayID + ", uplinkID=" + _uplinkID + ", username=" + _username + ", vlan=" + _vlan + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "UplinkConnection [" + "DNSAddress=" + _DNSAddress + ", DNSAddressV6=" + _DNSAddressV6 + ", PATEnabled=" + _PATEnabled + ", address=" + _address + ", addressFamily=" + _addressFamily + ", addressV6=" + _addressV6 + ", advertisementCriteria=" + _advertisementCriteria + ", assocUnderlayID=" + _assocUnderlayID + ", associatedBGPNeighborID=" + _associatedBGPNeighborID + ", associatedUnderlayName=" + _associatedUnderlayName + ", auxMode=" + _auxMode + ", auxiliaryLink=" + _auxiliaryLink + ", creationDate=" + _creationDate + ", downloadRateLimit=" + _downloadRateLimit + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fecEnabled=" + _fecEnabled + ", gateway=" + _gateway + ", gatewayID=" + _gatewayID + ", gatewayV6=" + _gatewayV6 + ", inherited=" + _inherited + ", installerManaged=" + _installerManaged + ", interfaceConnectionType=" + _interfaceConnectionType + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", mode=" + _mode + ", netmask=" + _netmask + ", owner=" + _owner + ", password=" + _password + ", portID=" + _portID + ", portName=" + _portName + ", primaryDataPathID=" + _primaryDataPathID + ", role=" + _role + ", roleOrder=" + _roleOrder + ", secondaryAddress=" + _secondaryAddress + ", underlayEnabled=" + _underlayEnabled + ", underlayID=" + _underlayID + ", uplinkID=" + _uplinkID + ", uplinkName=" + _uplinkName + ", uplinkType=" + _uplinkType + ", username=" + _username + ", vlan=" + _vlan + ", vlanID=" + _vlanID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -57,6 +57,9 @@ public class PATIPEntry: RestObject {
    
    [JsonProperty("associatedDomainID")]
    protected String _associatedDomainID;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -69,6 +72,12 @@ public class PATIPEntry: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -122,6 +131,17 @@ public class PATIPEntry: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -165,12 +185,33 @@ public class PATIPEntry: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
 
    
 
    public String toString() {
-      return "PATIPEntry [" + "IPAddress=" + _IPAddress + ", IPType=" + _IPType + ", PATCentralized=" + _PATCentralized + ", associatedDomainID=" + _associatedDomainID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorID=" + _hypervisorID + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "PATIPEntry [" + "IPAddress=" + _IPAddress + ", IPType=" + _IPType + ", PATCentralized=" + _PATCentralized + ", associatedDomainID=" + _associatedDomainID + ", creationDate=" + _creationDate + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorID=" + _hypervisorID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

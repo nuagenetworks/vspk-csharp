@@ -44,6 +44,9 @@ public class PortMapping: RestObject {
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -53,6 +56,12 @@ public class PortMapping: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("privatePort")]
    protected String _privatePort;
@@ -64,6 +73,17 @@ public class PortMapping: RestObject {
    
    public PortMapping() {
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -101,6 +121,28 @@ public class PortMapping: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUPrivatePort {
       get {
          return _privatePort;
@@ -126,8 +168,7 @@ public class PortMapping: RestObject {
    
 
    public String toString() {
-      return "PortMapping [" + "entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", privatePort=" + _privatePort + ", publicPort=" + _publicPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "PortMapping [" + "creationDate=" + _creationDate + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", privatePort=" + _privatePort + ", publicPort=" + _publicPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

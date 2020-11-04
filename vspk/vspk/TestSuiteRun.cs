@@ -67,6 +67,9 @@ public class TestSuiteRun: RestObject {
    [JsonProperty("birthCertificate")]
    protected bool _birthCertificate;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("datapathID")]
    protected String _datapathID;
    
@@ -87,12 +90,21 @@ public class TestSuiteRun: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("operationStatus")]
    protected EOperationStatus? _operationStatus;
    
+   [JsonProperty("owner")]
+   protected String _owner;
+   
    [JsonProperty("subnetName")]
    protected String _subnetName;
+   
+   [JsonProperty("systemID")]
+   protected String _systemID;
    
    [JsonProperty("zoneName")]
    protected String _zoneName;
@@ -202,6 +214,17 @@ public class TestSuiteRun: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDatapathID {
       get {
          return _datapathID;
@@ -279,6 +302,17 @@ public class TestSuiteRun: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EOperationStatus? NUOperationStatus {
       get {
          return _operationStatus;
@@ -290,12 +324,34 @@ public class TestSuiteRun: RestObject {
 
    
    [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUSubnetName {
       get {
          return _subnetName;
       }
       set {
          this._subnetName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUSystemID {
+      get {
+         return _systemID;
+      }
+      set {
+         this._systemID = value;
       }
    }
 
@@ -331,8 +387,7 @@ public class TestSuiteRun: RestObject {
    
 
    public String toString() {
-      return "TestSuiteRun [" + "NSGatewayName=" + _NSGatewayName + ", VPortName=" + _VPortName + ", associatedEntityType=" + _associatedEntityType + ", associatedTestSuiteID=" + _associatedTestSuiteID + ", associatedTestSuiteName=" + _associatedTestSuiteName + ", associatedUnderlayTestID=" + _associatedUnderlayTestID + ", birthCertificate=" + _birthCertificate + ", datapathID=" + _datapathID + ", destination=" + _destination + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", operationStatus=" + _operationStatus + ", subnetName=" + _subnetName + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "TestSuiteRun [" + "NSGatewayName=" + _NSGatewayName + ", VPortName=" + _VPortName + ", associatedEntityType=" + _associatedEntityType + ", associatedTestSuiteID=" + _associatedTestSuiteID + ", associatedTestSuiteName=" + _associatedTestSuiteName + ", associatedUnderlayTestID=" + _associatedUnderlayTestID + ", birthCertificate=" + _birthCertificate + ", creationDate=" + _creationDate + ", datapathID=" + _datapathID + ", destination=" + _destination + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", operationStatus=" + _operationStatus + ", owner=" + _owner + ", subnetName=" + _subnetName + ", systemID=" + _systemID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

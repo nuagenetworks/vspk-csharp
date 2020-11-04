@@ -44,7 +44,7 @@ public class HSC: RestObject {
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EStatus {ADMIN_DOWN,DOWN,UP };
-   public enum EType {DC7X50,NONE,VSA,VSG };
+   public enum EType {DC7X50,NONE,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,VSA,VSG };
 
    
    [JsonProperty("addresses")]
@@ -61,6 +61,9 @@ public class HSC: RestObject {
    
    [JsonProperty("communicationId")]
    protected String _communicationId;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    
    [JsonProperty("currentCPUUsage")]
    protected float _currentCPUUsage;
@@ -89,6 +92,9 @@ public class HSC: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("location")]
    protected String _location;
    
@@ -103,6 +109,9 @@ public class HSC: RestObject {
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("peakCPUUsage")]
    protected float _peakCPUUsage;
@@ -233,6 +242,17 @@ public class HSC: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public float NUCurrentCPUUsage {
       get {
          return _currentCPUUsage;
@@ -332,6 +352,17 @@ public class HSC: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULocation {
       get {
          return _location;
@@ -382,6 +413,17 @@ public class HSC: RestObject {
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -503,8 +545,7 @@ public class HSC: RestObject {
    
 
    public String toString() {
-      return "HSC [" + "addresses=" + _addresses + ", alreadyMarkedForUnavailable=" + _alreadyMarkedForUnavailable + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", communicationId=" + _communicationId + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", description=" + _description + ", disks=" + _disks + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", model=" + _model + ", name=" + _name + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", productVersion=" + _productVersion + ", status=" + _status + ", type=" + _type + ", unavailableTimestamp=" + _unavailableTimestamp + ", vsds=" + _vsds + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "HSC [" + "addresses=" + _addresses + ", alreadyMarkedForUnavailable=" + _alreadyMarkedForUnavailable + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", communicationId=" + _communicationId + ", creationDate=" + _creationDate + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", description=" + _description + ", disks=" + _disks + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", model=" + _model + ", name=" + _name + ", owner=" + _owner + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", productVersion=" + _productVersion + ", status=" + _status + ", type=" + _type + ", unavailableTimestamp=" + _unavailableTimestamp + ", vsds=" + _vsds + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

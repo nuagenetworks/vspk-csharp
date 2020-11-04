@@ -176,8 +176,7 @@ public class EthernetSegmentGroup: RestObject {
    
 
    public String toString() {
-      return "EthernetSegmentGroup [" + "VLANRange=" + _VLANRange + ", description=" + _description + ", ethernetSegmentID=" + _ethernetSegmentID + ", name=" + _name + ", portType=" + _portType + ", virtual=" + _virtual + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "EthernetSegmentGroup [" + "VLANRange=" + _VLANRange + ", description=" + _description + ", ethernetSegmentID=" + _ethernetSegmentID + ", name=" + _name + ", portType=" + _portType + ", virtual=" + _virtual + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

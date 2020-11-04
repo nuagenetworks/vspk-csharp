@@ -43,6 +43,7 @@ public class Port: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum EOperationalState {DOWN,INIT,UP };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
    public enum EPortType {ACCESS,MANAGEMENT,NETWORK };
    public enum EStatus {INITIALIZED,MISMATCH,ORPHAN,READY };
@@ -69,6 +70,9 @@ public class Port: RestObject {
    [JsonProperty("associatedRedundantPortID")]
    protected String _associatedRedundantPortID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -87,8 +91,20 @@ public class Port: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("nativeVLAN")]
+   protected String _nativeVLAN;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("operationalState")]
+   protected EOperationalState? _operationalState;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("permittedAction")]
    protected EPermittedAction? _permittedAction;
@@ -231,6 +247,17 @@ public class Port: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -297,12 +324,56 @@ public class Port: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUNativeVLAN {
+      get {
+         return _nativeVLAN;
+      }
+      set {
+         this._nativeVLAN = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EOperationalState? NUOperationalState {
+      get {
+         return _operationalState;
+      }
+      set {
+         this._operationalState = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -416,8 +487,7 @@ public class Port: RestObject {
    
 
    public String toString() {
-      return "Port [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedEthernetSegmentGroupID=" + _associatedEthernetSegmentGroupID + ", associatedEthernetSegmentID=" + _associatedEthernetSegmentID + ", associatedEthernetSegmentVLANRange=" + _associatedEthernetSegmentVLANRange + ", associatedEthernetSegmentVirtual=" + _associatedEthernetSegmentVirtual + ", associatedRedundantPortID=" + _associatedRedundantPortID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isResilient=" + _isResilient + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", status=" + _status + ", templateID=" + _templateID + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Port [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedEthernetSegmentGroupID=" + _associatedEthernetSegmentGroupID + ", associatedEthernetSegmentID=" + _associatedEthernetSegmentID + ", associatedEthernetSegmentVLANRange=" + _associatedEthernetSegmentVLANRange + ", associatedEthernetSegmentVirtual=" + _associatedEthernetSegmentVirtual + ", associatedRedundantPortID=" + _associatedRedundantPortID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isResilient=" + _isResilient + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", nativeVLAN=" + _nativeVLAN + ", operationalState=" + _operationalState + ", owner=" + _owner + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", status=" + _status + ", templateID=" + _templateID + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

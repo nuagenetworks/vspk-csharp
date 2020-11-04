@@ -55,8 +55,17 @@ public class UnderlayTest: RestObject {
    [JsonProperty("associatedNSGatewayName")]
    protected String _associatedNSGatewayName;
    
+   [JsonProperty("associatedSystemID")]
+   protected String _associatedSystemID;
+   
    [JsonProperty("associatedTestSuiteRunID")]
    protected String _associatedTestSuiteRunID;
+   
+   [JsonProperty("associatedUplinkConnectionID")]
+   protected String _associatedUplinkConnectionID;
+   
+   [JsonProperty("associatedUplinkInterface")]
+   protected String _associatedUplinkInterface;
    
    [JsonProperty("createOnly")]
    protected bool _createOnly;
@@ -132,12 +141,45 @@ public class UnderlayTest: RestObject {
 
    
    [JsonIgnore]
+   public String NUAssociatedSystemID {
+      get {
+         return _associatedSystemID;
+      }
+      set {
+         this._associatedSystemID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAssociatedTestSuiteRunID {
       get {
          return _associatedTestSuiteRunID;
       }
       set {
          this._associatedTestSuiteRunID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedUplinkConnectionID {
+      get {
+         return _associatedUplinkConnectionID;
+      }
+      set {
+         this._associatedUplinkConnectionID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedUplinkInterface {
+      get {
+         return _associatedUplinkInterface;
+      }
+      set {
+         this._associatedUplinkInterface = value;
       }
    }
 
@@ -267,8 +309,7 @@ public class UnderlayTest: RestObject {
    
 
    public String toString() {
-      return "UnderlayTest [" + "associatedDataPathID=" + _associatedDataPathID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", associatedTestSuiteRunID=" + _associatedTestSuiteRunID + ", createOnly=" + _createOnly + ", duration=" + _duration + ", name=" + _name + ", runBandwidthTest=" + _runBandwidthTest + ", runConnectivityTest=" + _runConnectivityTest + ", runMTUDiscoveryTest=" + _runMTUDiscoveryTest + ", startDateTime=" + _startDateTime + ", stopDateTime=" + _stopDateTime + ", testResult=" + _testResult + ", underlayTestServer=" + _underlayTestServer + ", underlayTestType=" + _underlayTestType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "UnderlayTest [" + "associatedDataPathID=" + _associatedDataPathID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", associatedSystemID=" + _associatedSystemID + ", associatedTestSuiteRunID=" + _associatedTestSuiteRunID + ", associatedUplinkConnectionID=" + _associatedUplinkConnectionID + ", associatedUplinkInterface=" + _associatedUplinkInterface + ", createOnly=" + _createOnly + ", duration=" + _duration + ", name=" + _name + ", runBandwidthTest=" + _runBandwidthTest + ", runConnectivityTest=" + _runConnectivityTest + ", runMTUDiscoveryTest=" + _runMTUDiscoveryTest + ", startDateTime=" + _startDateTime + ", stopDateTime=" + _stopDateTime + ", testResult=" + _testResult + ", underlayTestServer=" + _underlayTestServer + ", underlayTestType=" + _underlayTestType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

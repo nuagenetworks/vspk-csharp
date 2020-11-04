@@ -61,6 +61,9 @@ public class Me: RestObject {
    [JsonProperty("avatarType")]
    protected EAvatarType? _avatarType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("disabled")]
    protected bool _disabled;
    
@@ -97,8 +100,14 @@ public class Me: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("mobileNumber")]
    protected String _mobileNumber;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("password")]
    protected String _password;
@@ -185,6 +194,12 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private EnterpriseProfilesFetcher _enterpriseProfiles;
+   
+   [JsonIgnore]
+   private EsIlmPoliciesFetcher _esIlmPolicies;
+   
+   [JsonIgnore]
+   private EsIndexConfigsFetcher _esIndexConfigs;
    
    [JsonIgnore]
    private EthernetSegmentGWGroupsFetcher _ethernetSegmentGWGroups;
@@ -305,6 +320,9 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private PolicyObjectGroupsFetcher _policyObjectGroups;
+   
+   [JsonIgnore]
+   private QOSsFetcher _qOSs;
    
    [JsonIgnore]
    private QosPolicersFetcher _qosPolicers;
@@ -467,6 +485,10 @@ public class Me: RestObject {
       
       _enterpriseProfiles = new EnterpriseProfilesFetcher(this);
       
+      _esIlmPolicies = new EsIlmPoliciesFetcher(this);
+      
+      _esIndexConfigs = new EsIndexConfigsFetcher(this);
+      
       _ethernetSegmentGWGroups = new EthernetSegmentGWGroupsFetcher(this);
       
       _floatingIps = new FloatingIpsFetcher(this);
@@ -546,6 +568,8 @@ public class Me: RestObject {
       _policyGroups = new PolicyGroupsFetcher(this);
       
       _policyObjectGroups = new PolicyObjectGroupsFetcher(this);
+      
+      _qOSs = new QOSsFetcher(this);
       
       _qosPolicers = new QosPolicersFetcher(this);
       
@@ -675,6 +699,17 @@ public class Me: RestObject {
       }
       set {
          this._avatarType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -812,12 +847,34 @@ public class Me: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUMobileNumber {
       get {
          return _mobileNumber;
       }
       set {
          this._mobileNumber = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -962,6 +1019,14 @@ public class Me: RestObject {
    
    public EnterpriseProfilesFetcher getEnterpriseProfiles() {
       return _enterpriseProfiles;
+   }
+   
+   public EsIlmPoliciesFetcher getEsIlmPolicies() {
+      return _esIlmPolicies;
+   }
+   
+   public EsIndexConfigsFetcher getEsIndexConfigs() {
+      return _esIndexConfigs;
    }
    
    public EthernetSegmentGWGroupsFetcher getEthernetSegmentGWGroups() {
@@ -1124,6 +1189,10 @@ public class Me: RestObject {
       return _policyObjectGroups;
    }
    
+   public QOSsFetcher getQOSs() {
+      return _qOSs;
+   }
+   
    public QosPolicersFetcher getQosPolicers() {
       return _qosPolicers;
    }
@@ -1274,8 +1343,7 @@ public class Me: RestObject {
    
 
    public String toString() {
-      return "Me [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSStatsInterval=" + _VSSStatsInterval + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", disabled=" + _disabled + ", elasticSearchAddress=" + _elasticSearchAddress + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", mobileNumber=" + _mobileNumber + ", password=" + _password + ", role=" + _role + ", statisticsEnabled=" + _statisticsEnabled + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Me [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSStatsInterval=" + _VSSStatsInterval + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", creationDate=" + _creationDate + ", disabled=" + _disabled + ", elasticSearchAddress=" + _elasticSearchAddress + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", mobileNumber=" + _mobileNumber + ", owner=" + _owner + ", password=" + _password + ", role=" + _role + ", statisticsEnabled=" + _statisticsEnabled + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

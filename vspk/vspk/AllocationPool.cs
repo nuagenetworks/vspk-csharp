@@ -83,8 +83,7 @@ public class AllocationPool: RestObject {
    
 
    public String toString() {
-      return "AllocationPool [" + "maxAddress=" + _maxAddress + ", minAddress=" + _minAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "AllocationPool [" + "maxAddress=" + _maxAddress + ", minAddress=" + _minAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

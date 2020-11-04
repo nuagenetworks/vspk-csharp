@@ -47,7 +47,7 @@ public class Gateway: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFamily {ANY,NSG_AMI,NSG_AZ,NSG_C,NSG_E,NSG_E200,NSG_E300,NSG_V,NSG_X,NSG_X200,VRS };
    public enum EPermittedAction {ALL,DEPLOY,EXTEND,INSTANTIATE,READ,USE };
-   public enum EPersonality {DC7X50,EVDF,EVDFB,HARDWARE_VTEP,NETCONF_7X50,NETCONF_THIRDPARTY_HW_VTEP,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,OTHER,UNMANAGED_GATEWAY,VDFG,VRSB,VRSG,VSA,VSG };
+   public enum EPersonality {DC7X50,EVDF,EVDFB,HARDWARE_VTEP,NETCONF_7X50,NETCONF_THIRDPARTY_HW_VTEP,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,OTHER,SR_LINUX,UNMANAGED_GATEWAY,VDFG,VRSB,VRSG,VSA,VSG };
    public enum EVendor {CISCO,NOKIA };
 
    
@@ -72,6 +72,9 @@ public class Gateway: RestObject {
    [JsonProperty("ZFBMatchValue")]
    protected String _ZFBMatchValue;
    
+   [JsonProperty("associatedGNMIProfileID")]
+   protected String _associatedGNMIProfileID;
+   
    [JsonProperty("associatedGatewaySecurityID")]
    protected String _associatedGatewaySecurityID;
    
@@ -92,6 +95,9 @@ public class Gateway: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("bootstrapStatus")]
    protected EBootstrapStatus? _bootstrapStatus;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    
    [JsonProperty("datapathID")]
    protected String _datapathID;
@@ -132,6 +138,9 @@ public class Gateway: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("libraries")]
    protected String _libraries;
    
@@ -143,6 +152,12 @@ public class Gateway: RestObject {
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("nativeVLAN")]
+   protected String _nativeVLAN;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("patches")]
    protected String _patches;
@@ -252,6 +267,9 @@ public class Gateway: RestObject {
    private PortsFetcher _ports;
    
    [JsonIgnore]
+   private RoutingPoliciesFetcher _routingPolicies;
+   
+   [JsonIgnore]
    private SAPEgressQoSProfilesFetcher _sAPEgressQoSProfiles;
    
    [JsonIgnore]
@@ -309,6 +327,8 @@ public class Gateway: RestObject {
       _permissions = new PermissionsFetcher(this);
       
       _ports = new PortsFetcher(this);
+      
+      _routingPolicies = new RoutingPoliciesFetcher(this);
       
       _sAPEgressQoSProfiles = new SAPEgressQoSProfilesFetcher(this);
       
@@ -399,6 +419,17 @@ public class Gateway: RestObject {
 
    
    [JsonIgnore]
+   public String NUAssociatedGNMIProfileID {
+      get {
+         return _associatedGNMIProfileID;
+      }
+      set {
+         this._associatedGNMIProfileID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAssociatedGatewaySecurityID {
       get {
          return _associatedGatewaySecurityID;
@@ -471,6 +502,17 @@ public class Gateway: RestObject {
       }
       set {
          this._bootstrapStatus = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -619,6 +661,17 @@ public class Gateway: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULibraries {
       get {
          return _libraries;
@@ -658,6 +711,28 @@ public class Gateway: RestObject {
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUNativeVLAN {
+      get {
+         return _nativeVLAN;
+      }
+      set {
+         this._nativeVLAN = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -895,6 +970,10 @@ public class Gateway: RestObject {
       return _ports;
    }
    
+   public RoutingPoliciesFetcher getRoutingPolicies() {
+      return _routingPolicies;
+   }
+   
    public SAPEgressQoSProfilesFetcher getSAPEgressQoSProfiles() {
       return _sAPEgressQoSProfiles;
    }
@@ -913,8 +992,7 @@ public class Gateway: RestObject {
    
 
    public String toString() {
-      return "Gateway [" + "BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", UUID=" + _UUID + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNetconfProfileID=" + _associatedNetconfProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", datapathID=" + _datapathID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", gatewayConfigRawVersion=" + _gatewayConfigRawVersion + ", gatewayConfigVersion=" + _gatewayConfigVersion + ", gatewayConnected=" + _gatewayConnected + ", gatewayModel=" + _gatewayModel + ", gatewayVersion=" + _gatewayVersion + ", lastUpdatedBy=" + _lastUpdatedBy + ", libraries=" + _libraries + ", locationID=" + _locationID + ", managementID=" + _managementID + ", name=" + _name + ", patches=" + _patches + ", peer=" + _peer + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", systemID=" + _systemID + ", templateID=" + _templateID + ", useGatewayVLANVNID=" + _useGatewayVLANVNID + ", vendor=" + _vendor + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Gateway [" + "BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", UUID=" + _UUID + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedGNMIProfileID=" + _associatedGNMIProfileID + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNetconfProfileID=" + _associatedNetconfProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", creationDate=" + _creationDate + ", datapathID=" + _datapathID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", gatewayConfigRawVersion=" + _gatewayConfigRawVersion + ", gatewayConfigVersion=" + _gatewayConfigVersion + ", gatewayConnected=" + _gatewayConnected + ", gatewayModel=" + _gatewayModel + ", gatewayVersion=" + _gatewayVersion + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", libraries=" + _libraries + ", locationID=" + _locationID + ", managementID=" + _managementID + ", name=" + _name + ", nativeVLAN=" + _nativeVLAN + ", owner=" + _owner + ", patches=" + _patches + ", peer=" + _peer + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", systemID=" + _systemID + ", templateID=" + _templateID + ", useGatewayVLANVNID=" + _useGatewayVLANVNID + ", vendor=" + _vendor + ", vtep=" + _vtep + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

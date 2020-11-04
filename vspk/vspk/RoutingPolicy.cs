@@ -42,11 +42,14 @@ public class RoutingPolicy: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EContentType {DEFAULT,NETCONF_7X50 };
+   public enum EContentType {DEFAULT,NETCONF_7X50,SR_LINUX };
    public enum EDefaultAction {ACCEPT,REJECT };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum ERoutingProtocol {BGP,ISIS,OSPFv2,OSPFv3,ROUTING };
 
+   
+   [JsonProperty("CustomerID")]
+   protected long? _CustomerID;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("contentType")]
    protected EContentType? _contentType;
@@ -94,6 +97,17 @@ public class RoutingPolicy: RestObject {
       
       _permissions = new PermissionsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public long? NUCustomerID {
+      get {
+         return _CustomerID;
+      }
+      set {
+         this._CustomerID = value;
+      }
    }
 
    
@@ -212,8 +226,7 @@ public class RoutingPolicy: RestObject {
    
 
    public String toString() {
-      return "RoutingPolicy [" + "contentType=" + _contentType + ", defaultAction=" + _defaultAction + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", policyDefinition=" + _policyDefinition + ", routingProtocol=" + _routingProtocol + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "RoutingPolicy [" + "CustomerID=" + _CustomerID + ", contentType=" + _contentType + ", defaultAction=" + _defaultAction + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", policyDefinition=" + _policyDefinition + ", routingProtocol=" + _routingProtocol + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

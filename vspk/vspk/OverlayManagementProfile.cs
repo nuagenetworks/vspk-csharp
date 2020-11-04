@@ -92,8 +92,7 @@ public class OverlayManagementProfile: RestObject {
    
 
    public String toString() {
-      return "OverlayManagementProfile [" + "description=" + _description + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "OverlayManagementProfile [" + "description=" + _description + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

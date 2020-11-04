@@ -49,6 +49,9 @@ public class VRSAddressRange: RestObject {
    [JsonProperty("IPType")]
    protected EIPType? _IPType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -61,11 +64,17 @@ public class VRSAddressRange: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("maxAddress")]
    protected String _maxAddress;
    
    [JsonProperty("minAddress")]
    protected String _minAddress;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -96,6 +105,17 @@ public class VRSAddressRange: RestObject {
       }
       set {
          this._IPType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -145,6 +165,17 @@ public class VRSAddressRange: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUMaxAddress {
       get {
          return _maxAddress;
@@ -166,6 +197,17 @@ public class VRSAddressRange: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -182,8 +224,7 @@ public class VRSAddressRange: RestObject {
    
 
    public String toString() {
-      return "VRSAddressRange [" + "IPType=" + _IPType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", maxAddress=" + _maxAddress + ", minAddress=" + _minAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VRSAddressRange [" + "IPType=" + _IPType + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", maxAddress=" + _maxAddress + ", minAddress=" + _minAddress + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

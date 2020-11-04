@@ -48,6 +48,9 @@ public class GatewaySecuredData: RestObject {
    [JsonProperty("associatedEnterpriseID")]
    protected String _associatedEnterpriseID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("data")]
    protected String _data;
    
@@ -68,6 +71,12 @@ public class GatewaySecuredData: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("signedData")]
    protected String _signedData;
@@ -101,6 +110,17 @@ public class GatewaySecuredData: RestObject {
       }
       set {
          this._associatedEnterpriseID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -183,6 +203,28 @@ public class GatewaySecuredData: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUSignedData {
       get {
          return _signedData;
@@ -209,8 +251,7 @@ public class GatewaySecuredData: RestObject {
    
 
    public String toString() {
-      return "GatewaySecuredData [" + "associatedEnterpriseID=" + _associatedEnterpriseID + ", data=" + _data + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayCertSerialNumber=" + _gatewayCertSerialNumber + ", keyserverCertSerialNumber=" + _keyserverCertSerialNumber + ", lastUpdatedBy=" + _lastUpdatedBy + ", signedData=" + _signedData + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "GatewaySecuredData [" + "associatedEnterpriseID=" + _associatedEnterpriseID + ", creationDate=" + _creationDate + ", data=" + _data + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayCertSerialNumber=" + _gatewayCertSerialNumber + ", keyserverCertSerialNumber=" + _keyserverCertSerialNumber + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", signedData=" + _signedData + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

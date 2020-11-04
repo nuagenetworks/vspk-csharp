@@ -47,6 +47,9 @@ public class PerformanceMonitor: RestObject {
    public enum EServiceClass {A,B,C,D,E,F,G,H };
 
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -65,11 +68,17 @@ public class PerformanceMonitor: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
    
    [JsonProperty("numberOfPackets")]
    protected long? _numberOfPackets;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("payloadSize")]
    protected long? _payloadSize;
@@ -97,6 +106,17 @@ public class PerformanceMonitor: RestObject {
       
       _tiers = new TiersFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -167,6 +187,17 @@ public class PerformanceMonitor: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -184,6 +215,17 @@ public class PerformanceMonitor: RestObject {
       }
       set {
          this._numberOfPackets = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -244,8 +286,7 @@ public class PerformanceMonitor: RestObject {
    
 
    public String toString() {
-      return "PerformanceMonitor [" + "description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", holdDownTimer=" + _holdDownTimer + ", interval=" + _interval + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", numberOfPackets=" + _numberOfPackets + ", payloadSize=" + _payloadSize + ", probeType=" + _probeType + ", readOnly=" + _readOnly + ", serviceClass=" + _serviceClass + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "PerformanceMonitor [" + "creationDate=" + _creationDate + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", holdDownTimer=" + _holdDownTimer + ", interval=" + _interval + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", numberOfPackets=" + _numberOfPackets + ", owner=" + _owner + ", payloadSize=" + _payloadSize + ", probeType=" + _probeType + ", readOnly=" + _readOnly + ", serviceClass=" + _serviceClass + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

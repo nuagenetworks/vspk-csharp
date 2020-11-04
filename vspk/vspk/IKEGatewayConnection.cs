@@ -86,6 +86,9 @@ public class IKEGatewayConnection: RestObject {
    [JsonProperty("configurationStatus")]
    protected EConfigurationStatus? _configurationStatus;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -98,11 +101,20 @@ public class IKEGatewayConnection: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("mark")]
    protected long? _mark;
    
+   [JsonProperty("mirroredConnection")]
+   protected bool _mirroredConnection;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("portVLANName")]
    protected String _portVLANName;
@@ -291,6 +303,17 @@ public class IKEGatewayConnection: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -335,6 +358,17 @@ public class IKEGatewayConnection: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUMark {
       get {
          return _mark;
@@ -346,12 +380,34 @@ public class IKEGatewayConnection: RestObject {
 
    
    [JsonIgnore]
+   public bool NUMirroredConnection {
+      get {
+         return _mirroredConnection;
+      }
+      set {
+         this._mirroredConnection = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -432,8 +488,7 @@ public class IKEGatewayConnection: RestObject {
    
 
    public String toString() {
-      return "IKEGatewayConnection [" + "NSGIdentifier=" + _NSGIdentifier + ", NSGIdentifierType=" + _NSGIdentifierType + ", NSGRole=" + _NSGRole + ", allowAnySubnet=" + _allowAnySubnet + ", associatedCloudID=" + _associatedCloudID + ", associatedCloudType=" + _associatedCloudType + ", associatedIKEAuthenticationID=" + _associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + _associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + _associatedIKEEncryptionProfileID + ", associatedIKEGatewayProfileID=" + _associatedIKEGatewayProfileID + ", associatedVLANID=" + _associatedVLANID + ", configurationStatus=" + _configurationStatus + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mark=" + _mark + ", name=" + _name + ", portVLANName=" + _portVLANName + ", priority=" + _priority + ", sequence=" + _sequence + ", unencryptedPSK=" + _unencryptedPSK + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "IKEGatewayConnection [" + "NSGIdentifier=" + _NSGIdentifier + ", NSGIdentifierType=" + _NSGIdentifierType + ", NSGRole=" + _NSGRole + ", allowAnySubnet=" + _allowAnySubnet + ", associatedCloudID=" + _associatedCloudID + ", associatedCloudType=" + _associatedCloudType + ", associatedIKEAuthenticationID=" + _associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + _associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + _associatedIKEEncryptionProfileID + ", associatedIKEGatewayProfileID=" + _associatedIKEGatewayProfileID + ", associatedVLANID=" + _associatedVLANID + ", configurationStatus=" + _configurationStatus + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", mark=" + _mark + ", mirroredConnection=" + _mirroredConnection + ", name=" + _name + ", owner=" + _owner + ", portVLANName=" + _portVLANName + ", priority=" + _priority + ", sequence=" + _sequence + ", unencryptedPSK=" + _unencryptedPSK + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

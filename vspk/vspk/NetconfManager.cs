@@ -49,11 +49,17 @@ public class NetconfManager: RestObject {
    [JsonProperty("assocEntityType")]
    protected String _assocEntityType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
+   
+   [JsonProperty("eventProcessingEnabled")]
+   protected bool _eventProcessingEnabled;
    
    [JsonProperty("externalID")]
    protected String _externalID;
@@ -61,8 +67,14 @@ public class NetconfManager: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("release")]
    protected String _release;
@@ -79,6 +91,9 @@ public class NetconfManager: RestObject {
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
+   private GNMISessionsFetcher _gNMISessions;
+   
+   [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    [JsonIgnore]
@@ -92,6 +107,8 @@ public class NetconfManager: RestObject {
       _alarms = new AlarmsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _gNMISessions = new GNMISessionsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
       
@@ -109,6 +126,17 @@ public class NetconfManager: RestObject {
       }
       set {
          this._assocEntityType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -136,6 +164,17 @@ public class NetconfManager: RestObject {
 
    
    [JsonIgnore]
+   public bool NUEventProcessingEnabled {
+      get {
+         return _eventProcessingEnabled;
+      }
+      set {
+         this._eventProcessingEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUExternalID {
       get {
          return _externalID;
@@ -158,12 +197,34 @@ public class NetconfManager: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -200,6 +261,10 @@ public class NetconfManager: RestObject {
       return _globalMetadatas;
    }
    
+   public GNMISessionsFetcher getGNMISessions() {
+      return _gNMISessions;
+   }
+   
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
    }
@@ -214,8 +279,7 @@ public class NetconfManager: RestObject {
    
 
    public String toString() {
-      return "NetconfManager [" + "assocEntityType=" + _assocEntityType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", release=" + _release + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "NetconfManager [" + "assocEntityType=" + _assocEntityType + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", eventProcessingEnabled=" + _eventProcessingEnabled + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", release=" + _release + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

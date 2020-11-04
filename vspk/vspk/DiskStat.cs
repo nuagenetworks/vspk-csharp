@@ -196,8 +196,7 @@ public class DiskStat: RestObject {
    
 
    public String toString() {
-      return "DiskStat [" + "available=" + _available + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", size=" + _size + ", unit=" + _unit + ", used=" + _used + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "DiskStat [" + "available=" + _available + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", size=" + _size + ", unit=" + _unit + ", used=" + _used + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

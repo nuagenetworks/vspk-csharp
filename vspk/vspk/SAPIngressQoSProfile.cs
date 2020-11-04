@@ -42,11 +42,24 @@ public class SAPIngressQoSProfile: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EBlobType {SR_LINUX };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
    [JsonProperty("assocEntityType")]
    protected String _assocEntityType;
+   
+   [JsonProperty("blobText")]
+   protected String _blobText;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("blobType")]
+   protected EBlobType? _blobType;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
+   [JsonProperty("customerID")]
+   protected long? _customerID;
    
    [JsonProperty("description")]
    protected String _description;
@@ -63,8 +76,14 @@ public class SAPIngressQoSProfile: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -95,6 +114,50 @@ public class SAPIngressQoSProfile: RestObject {
       }
       set {
          this._assocEntityType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUBlobText {
+      get {
+         return _blobText;
+      }
+      set {
+         this._blobText = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EBlobType? NUBlobType {
+      get {
+         return _blobType;
+      }
+      set {
+         this._blobType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUCustomerID {
+      get {
+         return _customerID;
+      }
+      set {
+         this._customerID = value;
       }
    }
 
@@ -155,12 +218,34 @@ public class SAPIngressQoSProfile: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -181,8 +266,7 @@ public class SAPIngressQoSProfile: RestObject {
    
 
    public String toString() {
-      return "SAPIngressQoSProfile [" + "assocEntityType=" + _assocEntityType + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "SAPIngressQoSProfile [" + "assocEntityType=" + _assocEntityType + ", blobText=" + _blobText + ", blobType=" + _blobType + ", creationDate=" + _creationDate + ", customerID=" + _customerID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

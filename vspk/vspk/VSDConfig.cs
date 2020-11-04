@@ -83,8 +83,7 @@ public class VSDConfig: RestObject {
    
 
    public String toString() {
-      return "VSDConfig [" + "attributeValue=" + _attributeValue + ", id=" + _id + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VSDConfig [" + "attributeValue=" + _attributeValue + ", id=" + _id + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

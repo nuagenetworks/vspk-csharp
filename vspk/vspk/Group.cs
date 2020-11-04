@@ -44,7 +44,7 @@ public class Group: RestObject {
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EManagementMode {CMS,DEFAULT,RESERVED };
-   public enum ERole {ADMINOPERATOR,CMS,CSPOPERATOR,CSPROOT,JMS,ORGADMIN,PREACTIVATION,POSTACTIVATION,NETCONFMGR,STATS,ORGNETWORKDESIGNER,ORGUSER,SECURITYADMINISTRATOR,SYSTEM,UNKNOWN,USER };
+   public enum ERole {ADMINOPERATOR,AUDITADMIN,CMS,CSPOPERATOR,CSPROOT,JMS,NETCONFMGR,ORGADMIN,ORGNETWORKDESIGNER,ORGUSER,POSTACTIVATION,PREACTIVATION,SECURITYADMINISTRATOR,STATS,SYSTEM,UNKNOWN,USER };
 
    
    [JsonProperty("LDAPGroupDN")]
@@ -52,6 +52,9 @@ public class Group: RestObject {
    
    [JsonProperty("accountRestrictions")]
    protected bool _accountRestrictions;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    
    [JsonProperty("description")]
    protected String _description;
@@ -67,12 +70,18 @@ public class Group: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("managementMode")]
    protected EManagementMode? _managementMode;
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("private")]
    protected bool _private;
@@ -138,6 +147,17 @@ public class Group: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -193,6 +213,17 @@ public class Group: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EManagementMode? NUManagementMode {
       get {
          return _managementMode;
@@ -210,6 +241,17 @@ public class Group: RestObject {
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -271,8 +313,7 @@ public class Group: RestObject {
    
 
    public String toString() {
-      return "Group [" + "LDAPGroupDN=" + _LDAPGroupDN + ", accountRestrictions=" + _accountRestrictions + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", managementMode=" + _managementMode + ", name=" + _name + ", private=" + _private + ", restrictionDate=" + _restrictionDate + ", role=" + _role + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Group [" + "LDAPGroupDN=" + _LDAPGroupDN + ", accountRestrictions=" + _accountRestrictions + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", managementMode=" + _managementMode + ", name=" + _name + ", owner=" + _owner + ", private=" + _private + ", restrictionDate=" + _restrictionDate + ", role=" + _role + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -84,8 +84,7 @@ public class Roleentry: RestObject {
    
 
    public String toString() {
-      return "Roleentry [" + "endPointType=" + _endPointType + ", roleAccessTypeList=" + _roleAccessTypeList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Roleentry [" + "endPointType=" + _endPointType + ", roleAccessTypeList=" + _roleAccessTypeList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -239,8 +239,7 @@ public class VSDComponent: RestObject {
    
 
    public String toString() {
-      return "VSDComponent [" + "address=" + _address + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", location=" + _location + ", managementIP=" + _managementIP + ", name=" + _name + ", productVersion=" + _productVersion + ", status=" + _status + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VSDComponent [" + "address=" + _address + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", location=" + _location + ", managementIP=" + _managementIP + ", name=" + _name + ", productVersion=" + _productVersion + ", status=" + _status + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

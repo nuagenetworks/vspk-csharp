@@ -152,8 +152,7 @@ public class Ltestatistics: RestObject {
    
 
    public String toString() {
-      return "Ltestatistics [" + "embeddedMetadata=" + _embeddedMetadata + ", endTime=" + _endTime + ", startTime=" + _startTime + ", statsData=" + _statsData + ", version=" + _version + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Ltestatistics [" + "embeddedMetadata=" + _embeddedMetadata + ", endTime=" + _endTime + ", startTime=" + _startTime + ", statsData=" + _statsData + ", version=" + _version + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

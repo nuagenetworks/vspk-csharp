@@ -69,6 +69,9 @@ public class Link: RestObject {
    [JsonProperty("associatedSourceType")]
    protected String _associatedSourceType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -80,6 +83,12 @@ public class Link: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("readOnly")]
    protected bool _readOnly;
@@ -217,6 +226,17 @@ public class Link: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -256,6 +276,28 @@ public class Link: RestObject {
       }
       set {
          this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -322,8 +364,7 @@ public class Link: RestObject {
    
 
    public String toString() {
-      return "Link [" + "acceptanceCriteria=" + _acceptanceCriteria + ", associatedDestinationID=" + _associatedDestinationID + ", associatedDestinationName=" + _associatedDestinationName + ", associatedDestinationType=" + _associatedDestinationType + ", associatedSourceID=" + _associatedSourceID + ", associatedSourceName=" + _associatedSourceName + ", associatedSourceType=" + _associatedSourceType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", readOnly=" + _readOnly + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Link [" + "acceptanceCriteria=" + _acceptanceCriteria + ", associatedDestinationID=" + _associatedDestinationID + ", associatedDestinationName=" + _associatedDestinationName + ", associatedDestinationType=" + _associatedDestinationType + ", associatedSourceID=" + _associatedSourceID + ", associatedSourceName=" + _associatedSourceName + ", associatedSourceType=" + _associatedSourceType + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", readOnly=" + _readOnly + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

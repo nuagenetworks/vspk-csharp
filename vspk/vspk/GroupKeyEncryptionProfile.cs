@@ -76,6 +76,9 @@ public class GroupKeyEncryptionProfile: RestObject {
    [JsonProperty("associatedEnterpriseID")]
    protected String _associatedEnterpriseID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -91,8 +94,14 @@ public class GroupKeyEncryptionProfile: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("seedGenerationInterval")]
    protected long? _seedGenerationInterval;
@@ -241,6 +250,17 @@ public class GroupKeyEncryptionProfile: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -296,12 +316,34 @@ public class GroupKeyEncryptionProfile: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -454,8 +496,7 @@ public class GroupKeyEncryptionProfile: RestObject {
    
 
    public String toString() {
-      return "GroupKeyEncryptionProfile [" + "DRSeedLifetime=" + _DRSeedLifetime + ", SEKGenerationInterval=" + _SEKGenerationInterval + ", SEKLifetime=" + _SEKLifetime + ", SEKPayloadEncryptionAlgorithm=" + _SEKPayloadEncryptionAlgorithm + ", SEKPayloadEncryptionBCAlgorithm=" + _SEKPayloadEncryptionBCAlgorithm + ", SEKPayloadEncryptionKeyLength=" + _SEKPayloadEncryptionKeyLength + ", SEKPayloadSigningAlgorithm=" + _SEKPayloadSigningAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", seedGenerationInterval=" + _seedGenerationInterval + ", seedLifetime=" + _seedLifetime + ", seedPayloadAuthenticationAlgorithm=" + _seedPayloadAuthenticationAlgorithm + ", seedPayloadAuthenticationBCAlgorithm=" + _seedPayloadAuthenticationBCAlgorithm + ", seedPayloadAuthenticationKeyLength=" + _seedPayloadAuthenticationKeyLength + ", seedPayloadEncryptionAlgorithm=" + _seedPayloadEncryptionAlgorithm + ", seedPayloadEncryptionBCAlgorithm=" + _seedPayloadEncryptionBCAlgorithm + ", seedPayloadEncryptionKeyLength=" + _seedPayloadEncryptionKeyLength + ", seedPayloadSigningAlgorithm=" + _seedPayloadSigningAlgorithm + ", trafficAuthenticationAlgorithm=" + _trafficAuthenticationAlgorithm + ", trafficEncryptionAlgorithm=" + _trafficEncryptionAlgorithm + ", trafficEncryptionKeyLifetime=" + _trafficEncryptionKeyLifetime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "GroupKeyEncryptionProfile [" + "DRSeedLifetime=" + _DRSeedLifetime + ", SEKGenerationInterval=" + _SEKGenerationInterval + ", SEKLifetime=" + _SEKLifetime + ", SEKPayloadEncryptionAlgorithm=" + _SEKPayloadEncryptionAlgorithm + ", SEKPayloadEncryptionBCAlgorithm=" + _SEKPayloadEncryptionBCAlgorithm + ", SEKPayloadEncryptionKeyLength=" + _SEKPayloadEncryptionKeyLength + ", SEKPayloadSigningAlgorithm=" + _SEKPayloadSigningAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", seedGenerationInterval=" + _seedGenerationInterval + ", seedLifetime=" + _seedLifetime + ", seedPayloadAuthenticationAlgorithm=" + _seedPayloadAuthenticationAlgorithm + ", seedPayloadAuthenticationBCAlgorithm=" + _seedPayloadAuthenticationBCAlgorithm + ", seedPayloadAuthenticationKeyLength=" + _seedPayloadAuthenticationKeyLength + ", seedPayloadEncryptionAlgorithm=" + _seedPayloadEncryptionAlgorithm + ", seedPayloadEncryptionBCAlgorithm=" + _seedPayloadEncryptionBCAlgorithm + ", seedPayloadEncryptionKeyLength=" + _seedPayloadEncryptionKeyLength + ", seedPayloadSigningAlgorithm=" + _seedPayloadSigningAlgorithm + ", trafficAuthenticationAlgorithm=" + _trafficAuthenticationAlgorithm + ", trafficEncryptionAlgorithm=" + _trafficEncryptionAlgorithm + ", trafficEncryptionKeyLifetime=" + _trafficEncryptionKeyLifetime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

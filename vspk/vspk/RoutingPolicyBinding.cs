@@ -42,9 +42,13 @@ public class RoutingPolicyBinding: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EOSPFType {OSPFv2,OSPFv3 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EExportToOverlay {DISABLED,ENABLED,INHERITED };
 
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("OSPFType")]
+   protected EOSPFType? _OSPFType;
    
    [JsonProperty("associatedExportRoutingPolicyID")]
    protected String _associatedExportRoutingPolicyID;
@@ -54,6 +58,9 @@ public class RoutingPolicyBinding: RestObject {
    
    [JsonProperty("associatedPolicyObjectGroupID")]
    protected String _associatedPolicyObjectGroupID;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    
    [JsonProperty("description")]
    protected String _description;
@@ -73,8 +80,14 @@ public class RoutingPolicyBinding: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -95,6 +108,17 @@ public class RoutingPolicyBinding: RestObject {
       
       _permissions = new PermissionsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public EOSPFType? NUOSPFType {
+      get {
+         return _OSPFType;
+      }
+      set {
+         this._OSPFType = value;
+      }
    }
 
    
@@ -127,6 +151,17 @@ public class RoutingPolicyBinding: RestObject {
       }
       set {
          this._associatedPolicyObjectGroupID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -198,12 +233,34 @@ public class RoutingPolicyBinding: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -224,8 +281,7 @@ public class RoutingPolicyBinding: RestObject {
    
 
    public String toString() {
-      return "RoutingPolicyBinding [" + "associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", associatedPolicyObjectGroupID=" + _associatedPolicyObjectGroupID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", exportToOverlay=" + _exportToOverlay + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "RoutingPolicyBinding [" + "OSPFType=" + _OSPFType + ", associatedExportRoutingPolicyID=" + _associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + _associatedImportRoutingPolicyID + ", associatedPolicyObjectGroupID=" + _associatedPolicyObjectGroupID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", exportToOverlay=" + _exportToOverlay + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

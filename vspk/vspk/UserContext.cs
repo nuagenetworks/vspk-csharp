@@ -43,6 +43,7 @@ public class UserContext: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
+   public enum ESystemAvatarType {BASE64,COMPUTEDURL,URL };
 
    
    [JsonProperty("AARFlowStatsInterval")]
@@ -56,6 +57,12 @@ public class UserContext: RestObject {
    
    [JsonProperty("VSSStatsInterval")]
    protected long? _VSSStatsInterval;
+   
+   [JsonProperty("allowEnterpriseAvatarOnNSG")]
+   protected bool _allowEnterpriseAvatarOnNSG;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    
    [JsonProperty("deniedFlowCollectionEnabled")]
    protected bool _deniedFlowCollectionEnabled;
@@ -81,8 +88,17 @@ public class UserContext: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
+   
    [JsonProperty("pageSize")]
    protected long? _pageSize;
+   
+   [JsonProperty("rbacEnabled")]
+   protected bool _rbacEnabled;
    
    [JsonProperty("statisticsEnabled")]
    protected bool _statisticsEnabled;
@@ -92,6 +108,12 @@ public class UserContext: RestObject {
    
    [JsonProperty("statsTSDBServerAddress")]
    protected String _statsTSDBServerAddress;
+   
+   [JsonProperty("systemAvatarData")]
+   protected String _systemAvatarData;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("systemAvatarType")]
+   protected ESystemAvatarType? _systemAvatarType;
    
    [JsonProperty("threatIntelligenceEnabled")]
    protected bool _threatIntelligenceEnabled;
@@ -158,6 +180,28 @@ public class UserContext: RestObject {
       }
       set {
          this._VSSStatsInterval = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUAllowEnterpriseAvatarOnNSG {
+      get {
+         return _allowEnterpriseAvatarOnNSG;
+      }
+      set {
+         this._allowEnterpriseAvatarOnNSG = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -251,12 +295,45 @@ public class UserContext: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUPageSize {
       get {
          return _pageSize;
       }
       set {
          this._pageSize = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NURbacEnabled {
+      get {
+         return _rbacEnabled;
+      }
+      set {
+         this._rbacEnabled = value;
       }
    }
 
@@ -295,6 +372,28 @@ public class UserContext: RestObject {
 
    
    [JsonIgnore]
+   public String NUSystemAvatarData {
+      get {
+         return _systemAvatarData;
+      }
+      set {
+         this._systemAvatarData = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public ESystemAvatarType? NUSystemAvatarType {
+      get {
+         return _systemAvatarType;
+      }
+      set {
+         this._systemAvatarType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUThreatIntelligenceEnabled {
       get {
          return _threatIntelligenceEnabled;
@@ -321,8 +420,7 @@ public class UserContext: RestObject {
    
 
    public String toString() {
-      return "UserContext [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSFeatureEnabled=" + _VSSFeatureEnabled + ", VSSStatsInterval=" + _VSSStatsInterval + ", deniedFlowCollectionEnabled=" + _deniedFlowCollectionEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", explicitACLMatchingEnabled=" + _explicitACLMatchingEnabled + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", lastUpdatedBy=" + _lastUpdatedBy + ", pageSize=" + _pageSize + ", statisticsEnabled=" + _statisticsEnabled + ", statsDatabaseProxy=" + _statsDatabaseProxy + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "UserContext [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSFeatureEnabled=" + _VSSFeatureEnabled + ", VSSStatsInterval=" + _VSSStatsInterval + ", allowEnterpriseAvatarOnNSG=" + _allowEnterpriseAvatarOnNSG + ", creationDate=" + _creationDate + ", deniedFlowCollectionEnabled=" + _deniedFlowCollectionEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", explicitACLMatchingEnabled=" + _explicitACLMatchingEnabled + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", pageSize=" + _pageSize + ", rbacEnabled=" + _rbacEnabled + ", statisticsEnabled=" + _statisticsEnabled + ", statsDatabaseProxy=" + _statsDatabaseProxy + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", systemAvatarData=" + _systemAvatarData + ", systemAvatarType=" + _systemAvatarType + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

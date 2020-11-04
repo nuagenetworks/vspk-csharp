@@ -49,6 +49,9 @@ public class VPortMirror: RestObject {
    [JsonProperty("attachedNetworkType")]
    protected String _attachedNetworkType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("domainName")]
    protected String _domainName;
    
@@ -67,6 +70,9 @@ public class VPortMirror: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("mirrorDestinationID")]
    protected String _mirrorDestinationID;
    
@@ -78,6 +84,9 @@ public class VPortMirror: RestObject {
    
    [JsonProperty("networkName")]
    protected String _networkName;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("vportId")]
    protected String _vportId;
@@ -115,6 +124,17 @@ public class VPortMirror: RestObject {
       }
       set {
          this._attachedNetworkType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -186,6 +206,17 @@ public class VPortMirror: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUMirrorDestinationID {
       get {
          return _mirrorDestinationID;
@@ -230,6 +261,17 @@ public class VPortMirror: RestObject {
 
    
    [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUVportId {
       get {
          return _vportId;
@@ -267,8 +309,7 @@ public class VPortMirror: RestObject {
    
 
    public String toString() {
-      return "VPortMirror [" + "attachedNetworkType=" + _attachedNetworkType + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpiseName=" + _enterpiseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mirrorDestinationID=" + _mirrorDestinationID + ", mirrorDestinationName=" + _mirrorDestinationName + ", mirrorDirection=" + _mirrorDirection + ", networkName=" + _networkName + ", vportId=" + _vportId + ", vportName=" + _vportName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VPortMirror [" + "attachedNetworkType=" + _attachedNetworkType + ", creationDate=" + _creationDate + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpiseName=" + _enterpiseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", mirrorDestinationID=" + _mirrorDestinationID + ", mirrorDestinationName=" + _mirrorDestinationName + ", mirrorDirection=" + _mirrorDirection + ", networkName=" + _networkName + ", owner=" + _owner + ", vportId=" + _vportId + ", vportName=" + _vportName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

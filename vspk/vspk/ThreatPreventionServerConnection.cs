@@ -42,14 +42,14 @@ public class ThreatPreventionServerConnection: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EStatus {AUTHENTICATION_FAILED,CONNECTED,DISCONNECTED };
+   public enum EStatus {AUTHENTICATION_FAILED,CONNECTED,DEGRADED,DISCONNECTED,UNREACHABLE };
 
    
    [JsonProperty("FQDN")]
    protected String _FQDN;
    
-   [JsonProperty("VSDName")]
-   protected String _VSDName;
+   [JsonProperty("nodeInfo")]
+   protected System.Collections.Generic.List<String> _nodeInfo;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("status")]
    protected EStatus? _status;
@@ -73,12 +73,12 @@ public class ThreatPreventionServerConnection: RestObject {
 
    
    [JsonIgnore]
-   public String NUVSDName {
+   public System.Collections.Generic.List<String> NUNodeInfo {
       get {
-         return _VSDName;
+         return _nodeInfo;
       }
       set {
-         this._VSDName = value;
+         this._nodeInfo = value;
       }
    }
 
@@ -98,8 +98,7 @@ public class ThreatPreventionServerConnection: RestObject {
    
 
    public String toString() {
-      return "ThreatPreventionServerConnection [" + "FQDN=" + _FQDN + ", VSDName=" + _VSDName + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ThreatPreventionServerConnection [" + "FQDN=" + _FQDN + ", nodeInfo=" + _nodeInfo + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

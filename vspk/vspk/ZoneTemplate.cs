@@ -64,6 +64,9 @@ public class ZoneTemplate: RestObject {
    [JsonProperty("associatedMulticastChannelMapID")]
    protected String _associatedMulticastChannelMapID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -84,6 +87,9 @@ public class ZoneTemplate: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("multicast")]
    protected EMulticast? _multicast;
@@ -96,6 +102,9 @@ public class ZoneTemplate: RestObject {
    
    [JsonProperty("numberOfHostsInSubnets")]
    protected long? _numberOfHostsInSubnets;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("publicZone")]
    protected bool _publicZone;
@@ -194,6 +203,17 @@ public class ZoneTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDescription {
       get {
          return _description;
@@ -271,6 +291,17 @@ public class ZoneTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EMulticast? NUMulticast {
       get {
          return _multicast;
@@ -315,6 +346,17 @@ public class ZoneTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUPublicZone {
       get {
          return _publicZone;
@@ -353,8 +395,7 @@ public class ZoneTemplate: RestObject {
    
 
    public String toString() {
-      return "ZoneTemplate [" + "DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", embeddedMetadata=" + _embeddedMetadata + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", numberOfHostsInSubnets=" + _numberOfHostsInSubnets + ", publicZone=" + _publicZone + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ZoneTemplate [" + "DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", creationDate=" + _creationDate + ", description=" + _description + ", dynamicIpv6Address=" + _dynamicIpv6Address + ", embeddedMetadata=" + _embeddedMetadata + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", numberOfHostsInSubnets=" + _numberOfHostsInSubnets + ", owner=" + _owner + ", publicZone=" + _publicZone + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

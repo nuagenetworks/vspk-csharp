@@ -47,6 +47,9 @@ public class AutoDiscoverHypervisorFromCluster: RestObject {
    
    [JsonProperty("assocEntityID")]
    protected String _assocEntityID;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -60,11 +63,17 @@ public class AutoDiscoverHypervisorFromCluster: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("managedObjectID")]
    protected String _managedObjectID;
    
    [JsonProperty("networkList")]
    protected System.Collections.Generic.List<String> _networkList;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -80,6 +89,17 @@ public class AutoDiscoverHypervisorFromCluster: RestObject {
       }
       set {
          this._assocEntityID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -129,6 +149,17 @@ public class AutoDiscoverHypervisorFromCluster: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUManagedObjectID {
       get {
          return _managedObjectID;
@@ -150,12 +181,22 @@ public class AutoDiscoverHypervisorFromCluster: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
 
    
 
    public String toString() {
-      return "AutoDiscoverHypervisorFromCluster [" + "assocEntityID=" + _assocEntityID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", lastUpdatedBy=" + _lastUpdatedBy + ", managedObjectID=" + _managedObjectID + ", networkList=" + _networkList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "AutoDiscoverHypervisorFromCluster [" + "assocEntityID=" + _assocEntityID + ", creationDate=" + _creationDate + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", managedObjectID=" + _managedObjectID + ", networkList=" + _networkList + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

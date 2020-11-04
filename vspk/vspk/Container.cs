@@ -57,6 +57,9 @@ public class Container: RestObject {
    [JsonProperty("computeProvisioned")]
    protected bool _computeProvisioned;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("deleteExpiry")]
    protected long? _deleteExpiry;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -99,11 +102,17 @@ public class Container: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
    
    [JsonProperty("orchestrationID")]
    protected String _orchestrationID;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("reasonType")]
    protected EReasonType? _reasonType;
@@ -211,6 +220,17 @@ public class Container: RestObject {
       }
       set {
          this._computeProvisioned = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -370,6 +390,17 @@ public class Container: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -387,6 +418,17 @@ public class Container: RestObject {
       }
       set {
          this._orchestrationID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -537,8 +579,7 @@ public class Container: RestObject {
    
 
    public String toString() {
-      return "Container [" + "UUID=" + _UUID + ", VRSID=" + _VRSID + ", computeProvisioned=" + _computeProvisioned + ", deleteExpiry=" + _deleteExpiry + ", deleteMode=" + _deleteMode + ", domainIDs=" + _domainIDs + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", imageID=" + _imageID + ", imageName=" + _imageName + ", interfaces=" + _interfaces + ", l2DomainIDs=" + _l2DomainIDs + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", orchestrationID=" + _orchestrationID + ", reasonType=" + _reasonType + ", resyncInfo=" + _resyncInfo + ", siteIdentifier=" + _siteIdentifier + ", status=" + _status + ", subnetIDs=" + _subnetIDs + ", userID=" + _userID + ", userName=" + _userName + ", vrsRawVersion=" + _vrsRawVersion + ", vrsVersion=" + _vrsVersion + ", zoneIDs=" + _zoneIDs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Container [" + "UUID=" + _UUID + ", VRSID=" + _VRSID + ", computeProvisioned=" + _computeProvisioned + ", creationDate=" + _creationDate + ", deleteExpiry=" + _deleteExpiry + ", deleteMode=" + _deleteMode + ", domainIDs=" + _domainIDs + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", imageID=" + _imageID + ", imageName=" + _imageName + ", interfaces=" + _interfaces + ", l2DomainIDs=" + _l2DomainIDs + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", orchestrationID=" + _orchestrationID + ", owner=" + _owner + ", reasonType=" + _reasonType + ", resyncInfo=" + _resyncInfo + ", siteIdentifier=" + _siteIdentifier + ", status=" + _status + ", subnetIDs=" + _subnetIDs + ", userID=" + _userID + ", userName=" + _userName + ", vrsRawVersion=" + _vrsRawVersion + ", vrsVersion=" + _vrsVersion + ", zoneIDs=" + _zoneIDs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

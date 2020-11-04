@@ -48,6 +48,9 @@ public class Applicationperformancemanagementbinding: RestObject {
    [JsonProperty("associatedApplicationPerformanceManagementID")]
    protected String _associatedApplicationPerformanceManagementID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<String> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -59,6 +62,12 @@ public class Applicationperformancemanagementbinding: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("priority")]
    protected long? _priority;
@@ -95,6 +104,17 @@ public class Applicationperformancemanagementbinding: RestObject {
       }
       set {
          this._associatedApplicationPerformanceManagementID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -144,6 +164,28 @@ public class Applicationperformancemanagementbinding: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUPriority {
       get {
          return _priority;
@@ -181,8 +223,7 @@ public class Applicationperformancemanagementbinding: RestObject {
    
 
    public String toString() {
-      return "Applicationperformancemanagementbinding [" + "associatedApplicationPerformanceManagementID=" + _associatedApplicationPerformanceManagementID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", priority=" + _priority + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Applicationperformancemanagementbinding [" + "associatedApplicationPerformanceManagementID=" + _associatedApplicationPerformanceManagementID + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", priority=" + _priority + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

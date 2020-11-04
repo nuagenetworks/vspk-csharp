@@ -64,6 +64,9 @@ public class BridgeInterface: RestObject {
    [JsonProperty("attachedNetworkType")]
    protected EAttachedNetworkType? _attachedNetworkType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("domainID")]
    protected String _domainID;
    
@@ -85,6 +88,9 @@ public class BridgeInterface: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
    
@@ -93,6 +99,9 @@ public class BridgeInterface: RestObject {
    
    [JsonProperty("networkName")]
    protected String _networkName;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("policyDecisionID")]
    protected String _policyDecisionID;
@@ -245,6 +254,17 @@ public class BridgeInterface: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDomainID {
       get {
          return _domainID;
@@ -322,6 +342,17 @@ public class BridgeInterface: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -350,6 +381,17 @@ public class BridgeInterface: RestObject {
       }
       set {
          this._networkName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -454,8 +496,7 @@ public class BridgeInterface: RestObject {
    
 
    public String toString() {
-      return "BridgeInterface [" + "IPv6Gateway=" + _IPv6Gateway + ", VPortID=" + _VPortID + ", VPortName=" + _VPortName + ", associatedFloatingIPAddress=" + _associatedFloatingIPAddress + ", attachedNetworkID=" + _attachedNetworkID + ", attachedNetworkType=" + _attachedNetworkType + ", domainID=" + _domainID + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", netmask=" + _netmask + ", networkName=" + _networkName + ", policyDecisionID=" + _policyDecisionID + ", tierID=" + _tierID + ", zoneID=" + _zoneID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "BridgeInterface [" + "IPv6Gateway=" + _IPv6Gateway + ", VPortID=" + _VPortID + ", VPortName=" + _VPortName + ", associatedFloatingIPAddress=" + _associatedFloatingIPAddress + ", attachedNetworkID=" + _attachedNetworkID + ", attachedNetworkType=" + _attachedNetworkType + ", creationDate=" + _creationDate + ", domainID=" + _domainID + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", netmask=" + _netmask + ", networkName=" + _networkName + ", owner=" + _owner + ", policyDecisionID=" + _policyDecisionID + ", tierID=" + _tierID + ", zoneID=" + _zoneID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

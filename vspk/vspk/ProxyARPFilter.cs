@@ -48,6 +48,9 @@ public class ProxyARPFilter: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("IPType")]
    protected EIPType? _IPType;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -58,11 +61,17 @@ public class ProxyARPFilter: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("maxAddress")]
    protected String _maxAddress;
    
    [JsonProperty("minAddress")]
    protected String _minAddress;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -78,6 +87,17 @@ public class ProxyARPFilter: RestObject {
       }
       set {
          this._IPType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -116,6 +136,17 @@ public class ProxyARPFilter: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUMaxAddress {
       get {
          return _maxAddress;
@@ -137,12 +168,22 @@ public class ProxyARPFilter: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
 
    
 
    public String toString() {
-      return "ProxyARPFilter [" + "IPType=" + _IPType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", maxAddress=" + _maxAddress + ", minAddress=" + _minAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ProxyARPFilter [" + "IPType=" + _IPType + ", creationDate=" + _creationDate + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", maxAddress=" + _maxAddress + ", minAddress=" + _minAddress + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

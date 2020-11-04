@@ -195,8 +195,7 @@ public class Certificate: RestObject {
    
 
    public String toString() {
-      return "Certificate [" + "embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", issuerDN=" + _issuerDN + ", pemEncoded=" + _pemEncoded + ", publicKey=" + _publicKey + ", serialNumber=" + _serialNumber + ", subjectDN=" + _subjectDN + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Certificate [" + "embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", issuerDN=" + _issuerDN + ", pemEncoded=" + _pemEncoded + ", publicKey=" + _publicKey + ", serialNumber=" + _serialNumber + ", subjectDN=" + _subjectDN + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

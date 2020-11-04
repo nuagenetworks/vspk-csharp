@@ -44,6 +44,9 @@ public class ForwardingClass: RestObject {
    
    public enum EForwardingClass {A,B,C,D,E,F,G,H };
 
+   
+   [JsonProperty("fecEnabled")]
+   protected bool _fecEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("forwardingClass")]
    protected EForwardingClass? _forwardingClass;
@@ -55,6 +58,17 @@ public class ForwardingClass: RestObject {
    
    public ForwardingClass() {
       
+   }
+
+   
+   [JsonIgnore]
+   public bool NUFecEnabled {
+      get {
+         return _fecEnabled;
+      }
+      set {
+         this._fecEnabled = value;
+      }
    }
 
    
@@ -84,8 +98,7 @@ public class ForwardingClass: RestObject {
    
 
    public String toString() {
-      return "ForwardingClass [" + "forwardingClass=" + _forwardingClass + ", loadBalancing=" + _loadBalancing + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ForwardingClass [" + "fecEnabled=" + _fecEnabled + ", forwardingClass=" + _forwardingClass + ", loadBalancing=" + _loadBalancing + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    
