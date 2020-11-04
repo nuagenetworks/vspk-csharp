@@ -249,8 +249,7 @@ public class KeyServerMonitorSeed: RestObject {
    
 
    public String toString() {
-      return "KeyServerMonitorSeed [" + "creationTime=" + _creationTime + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lifetime=" + _lifetime + ", seedTrafficAuthenticationAlgorithm=" + _seedTrafficAuthenticationAlgorithm + ", seedTrafficEncryptionAlgorithm=" + _seedTrafficEncryptionAlgorithm + ", seedTrafficEncryptionKeyLifetime=" + _seedTrafficEncryptionKeyLifetime + ", seedType=" + _seedType + ", startTime=" + _startTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "KeyServerMonitorSeed [" + "creationTime=" + _creationTime + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lifetime=" + _lifetime + ", seedTrafficAuthenticationAlgorithm=" + _seedTrafficAuthenticationAlgorithm + ", seedTrafficEncryptionAlgorithm=" + _seedTrafficEncryptionAlgorithm + ", seedTrafficEncryptionKeyLifetime=" + _seedTrafficEncryptionKeyLifetime + ", seedType=" + _seedType + ", startTime=" + _startTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

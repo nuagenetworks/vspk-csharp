@@ -322,8 +322,7 @@ public class Link: RestObject {
    
 
    public String toString() {
-      return "Link [" + "acceptanceCriteria=" + _acceptanceCriteria + ", associatedDestinationID=" + _associatedDestinationID + ", associatedDestinationName=" + _associatedDestinationName + ", associatedDestinationType=" + _associatedDestinationType + ", associatedSourceID=" + _associatedSourceID + ", associatedSourceName=" + _associatedSourceName + ", associatedSourceType=" + _associatedSourceType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", readOnly=" + _readOnly + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Link [" + "acceptanceCriteria=" + _acceptanceCriteria + ", associatedDestinationID=" + _associatedDestinationID + ", associatedDestinationName=" + _associatedDestinationName + ", associatedDestinationType=" + _associatedDestinationType + ", associatedSourceID=" + _associatedSourceID + ", associatedSourceName=" + _associatedSourceName + ", associatedSourceType=" + _associatedSourceType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", readOnly=" + _readOnly + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

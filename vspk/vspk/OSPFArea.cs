@@ -304,8 +304,7 @@ public class OSPFArea: RestObject {
    
 
    public String toString() {
-      return "OSPFArea [" + "aggregateAreaRange=" + _aggregateAreaRange + ", aggregateAreaRangeNSSA=" + _aggregateAreaRangeNSSA + ", areaID=" + _areaID + ", areaType=" + _areaType + ", defaultMetric=" + _defaultMetric + ", defaultOriginateOption=" + _defaultOriginateOption + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", redistributeExternalEnabled=" + _redistributeExternalEnabled + ", summariesEnabled=" + _summariesEnabled + ", suppressAreaRange=" + _suppressAreaRange + ", suppressAreaRangeNSSA=" + _suppressAreaRangeNSSA + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "OSPFArea [" + "aggregateAreaRange=" + _aggregateAreaRange + ", aggregateAreaRangeNSSA=" + _aggregateAreaRangeNSSA + ", areaID=" + _areaID + ", areaType=" + _areaType + ", defaultMetric=" + _defaultMetric + ", defaultOriginateOption=" + _defaultOriginateOption + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", redistributeExternalEnabled=" + _redistributeExternalEnabled + ", summariesEnabled=" + _summariesEnabled + ", suppressAreaRange=" + _suppressAreaRange + ", suppressAreaRangeNSSA=" + _suppressAreaRangeNSSA + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

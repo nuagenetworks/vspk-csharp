@@ -266,8 +266,7 @@ public class InfrastructureVscProfile: RestObject {
    
 
    public String toString() {
-      return "InfrastructureVscProfile [" + "addressFamily=" + _addressFamily + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstController=" + _firstController + ", firstControllerV6=" + _firstControllerV6 + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", probeInterval=" + _probeInterval + ", secondController=" + _secondController + ", secondControllerV6=" + _secondControllerV6 + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "InfrastructureVscProfile [" + "addressFamily=" + _addressFamily + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstController=" + _firstController + ", firstControllerV6=" + _firstControllerV6 + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", probeInterval=" + _probeInterval + ", secondController=" + _secondController + ", secondControllerV6=" + _secondControllerV6 + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

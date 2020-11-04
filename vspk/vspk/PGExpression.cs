@@ -154,8 +154,7 @@ public class PGExpression: RestObject {
    
 
    public String toString() {
-      return "PGExpression [" + "description=" + _description + ", entityScope=" + _entityScope + ", expression=" + _expression + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", templateID=" + _templateID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "PGExpression [" + "description=" + _description + ", entityScope=" + _entityScope + ", expression=" + _expression + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", templateID=" + _templateID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

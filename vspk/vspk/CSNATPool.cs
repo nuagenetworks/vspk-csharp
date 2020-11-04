@@ -219,8 +219,7 @@ public class CSNATPool: RestObject {
    
 
    public String toString() {
-      return "CSNATPool [" + "IPType=" + _IPType + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", endAddress=" + _endAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", startAddress=" + _startAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "CSNATPool [" + "IPType=" + _IPType + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", endAddress=" + _endAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", startAddress=" + _startAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

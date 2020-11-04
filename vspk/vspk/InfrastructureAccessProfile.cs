@@ -266,8 +266,7 @@ public class InfrastructureAccessProfile: RestObject {
    
 
    public String toString() {
-      return "InfrastructureAccessProfile [" + "SSHAuthMode=" + _SSHAuthMode + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", password=" + _password + ", sourceIPFilter=" + _sourceIPFilter + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "InfrastructureAccessProfile [" + "SSHAuthMode=" + _SSHAuthMode + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", password=" + _password + ", sourceIPFilter=" + _sourceIPFilter + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

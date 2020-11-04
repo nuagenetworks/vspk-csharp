@@ -220,8 +220,7 @@ public class GatewayTemplate: RestObject {
    
 
    public String toString() {
-      return "GatewayTemplate [" + "description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", infrastructureProfileID=" + _infrastructureProfileID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", personality=" + _personality + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "GatewayTemplate [" + "description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", infrastructureProfileID=" + _infrastructureProfileID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", personality=" + _personality + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

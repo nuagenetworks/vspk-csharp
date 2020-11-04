@@ -219,8 +219,7 @@ public class WebCategory: RestObject {
    
 
    public String toString() {
-      return "WebCategory [" + "defaultCategory=" + _defaultCategory + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", type=" + _type + ", webCategoryIdentifier=" + _webCategoryIdentifier + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "WebCategory [" + "defaultCategory=" + _defaultCategory + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", type=" + _type + ", webCategoryIdentifier=" + _webCategoryIdentifier + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

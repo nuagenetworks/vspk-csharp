@@ -225,8 +225,7 @@ public class VMIPReservation: RestObject {
    
 
    public String toString() {
-      return "VMIPReservation [" + "IPType=" + _IPType + ", IPV4Address=" + _IPV4Address + ", IPV6Address=" + _IPV6Address + ", IPV6AllocationPools=" + _IPV6AllocationPools + ", allocationPools=" + _allocationPools + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", state=" + _state + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VMIPReservation [" + "IPType=" + _IPType + ", IPV4Address=" + _IPV4Address + ", IPV6Address=" + _IPV6Address + ", IPV6AllocationPools=" + _IPV6AllocationPools + ", allocationPools=" + _allocationPools + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", state=" + _state + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

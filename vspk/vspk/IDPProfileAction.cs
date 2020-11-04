@@ -112,8 +112,7 @@ public class IDPProfileAction: RestObject {
    
 
    public String toString() {
-      return "IDPProfileAction [" + "IDPSignatures=" + _IDPSignatures + ", action=" + _action + ", associatedIDPProfileID=" + _associatedIDPProfileID + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "IDPProfileAction [" + "IDPSignatures=" + _IDPSignatures + ", action=" + _action + ", associatedIDPProfileID=" + _associatedIDPProfileID + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

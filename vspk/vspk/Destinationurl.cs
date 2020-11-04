@@ -238,8 +238,7 @@ public class Destinationurl: RestObject {
    
 
    public String toString() {
-      return "Destinationurl [" + "HTTPMethod=" + _HTTPMethod + ", URL=" + _URL + ", downThresholdCount=" + _downThresholdCount + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", packetCount=" + _packetCount + ", percentageWeight=" + _percentageWeight + ", probeInterval=" + _probeInterval + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Destinationurl [" + "HTTPMethod=" + _HTTPMethod + ", URL=" + _URL + ", downThresholdCount=" + _downThresholdCount + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", packetCount=" + _packetCount + ", percentageWeight=" + _percentageWeight + ", probeInterval=" + _probeInterval + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

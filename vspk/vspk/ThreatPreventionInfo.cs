@@ -100,8 +100,7 @@ public class ThreatPreventionInfo: RestObject {
    
 
    public String toString() {
-      return "ThreatPreventionInfo [" + "configurationStatus=" + _configurationStatus + ", managementServerConnectionStatus=" + _managementServerConnectionStatus + ", serviceStatus=" + _serviceStatus + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ThreatPreventionInfo [" + "configurationStatus=" + _configurationStatus + ", managementServerConnectionStatus=" + _managementServerConnectionStatus + ", serviceStatus=" + _serviceStatus + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

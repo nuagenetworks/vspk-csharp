@@ -120,8 +120,7 @@ public class IDPProfile: RestObject {
    
 
    public String toString() {
-      return "IDPProfile [" + "associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", name=" + _name + ", protectAgainstInsertionEvasion=" + _protectAgainstInsertionEvasion + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "IDPProfile [" + "associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", name=" + _name + ", protectAgainstInsertionEvasion=" + _protectAgainstInsertionEvasion + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

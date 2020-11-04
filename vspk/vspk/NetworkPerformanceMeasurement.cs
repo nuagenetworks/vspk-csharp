@@ -228,8 +228,7 @@ public class NetworkPerformanceMeasurement: RestObject {
    
 
    public String toString() {
-      return "NetworkPerformanceMeasurement [" + "NPMType=" + _NPMType + ", associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "NetworkPerformanceMeasurement [" + "NPMType=" + _NPMType + ", associatedPerformanceMonitorID=" + _associatedPerformanceMonitorID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

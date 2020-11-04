@@ -307,8 +307,7 @@ public class DomainKindSummary: RestObject {
    
 
    public String toString() {
-      return "DomainKindSummary [" + "criticalAlarmsCount=" + _criticalAlarmsCount + ", domainKindDescription=" + _domainKindDescription + ", domainKindName=" + _domainKindName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayCount=" + _gatewayCount + ", infoAlarmsCount=" + _infoAlarmsCount + ", lastUpdatedBy=" + _lastUpdatedBy + ", majorAlarmsCount=" + _majorAlarmsCount + ", meshGroupCount=" + _meshGroupCount + ", minorAlarmsCount=" + _minorAlarmsCount + ", nsgCount=" + _nsgCount + ", subNetworkCount=" + _subNetworkCount + ", trafficVolume=" + _trafficVolume + ", zoneCount=" + _zoneCount + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "DomainKindSummary [" + "criticalAlarmsCount=" + _criticalAlarmsCount + ", domainKindDescription=" + _domainKindDescription + ", domainKindName=" + _domainKindName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayCount=" + _gatewayCount + ", infoAlarmsCount=" + _infoAlarmsCount + ", lastUpdatedBy=" + _lastUpdatedBy + ", majorAlarmsCount=" + _majorAlarmsCount + ", meshGroupCount=" + _meshGroupCount + ", minorAlarmsCount=" + _minorAlarmsCount + ", nsgCount=" + _nsgCount + ", subNetworkCount=" + _subNetworkCount + ", trafficVolume=" + _trafficVolume + ", zoneCount=" + _zoneCount + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

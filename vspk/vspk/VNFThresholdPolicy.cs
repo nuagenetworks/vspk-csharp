@@ -266,8 +266,7 @@ public class VNFThresholdPolicy: RestObject {
    
 
    public String toString() {
-      return "VNFThresholdPolicy [" + "CPUThreshold=" + _CPUThreshold + ", action=" + _action + ", assocEntityType=" + _assocEntityType + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", memoryThreshold=" + _memoryThreshold + ", minOccurrence=" + _minOccurrence + ", monitInterval=" + _monitInterval + ", name=" + _name + ", storageThreshold=" + _storageThreshold + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VNFThresholdPolicy [" + "CPUThreshold=" + _CPUThreshold + ", action=" + _action + ", assocEntityType=" + _assocEntityType + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", memoryThreshold=" + _memoryThreshold + ", minOccurrence=" + _minOccurrence + ", monitInterval=" + _monitInterval + ", name=" + _name + ", storageThreshold=" + _storageThreshold + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

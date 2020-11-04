@@ -251,8 +251,7 @@ public class Patch: RestObject {
    
 
    public String toString() {
-      return "Patch [" + "description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", patchBuildNumber=" + _patchBuildNumber + ", patchSummary=" + _patchSummary + ", patchTag=" + _patchTag + ", patchVersion=" + _patchVersion + ", supportsDeletion=" + _supportsDeletion + ", supportsNetworkAcceleration=" + _supportsNetworkAcceleration + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Patch [" + "description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", patchBuildNumber=" + _patchBuildNumber + ", patchSummary=" + _patchSummary + ", patchTag=" + _patchTag + ", patchVersion=" + _patchVersion + ", supportsDeletion=" + _supportsDeletion + ", supportsNetworkAcceleration=" + _supportsNetworkAcceleration + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -139,8 +139,7 @@ public class CertificateMetadata: RestObject {
    
 
    public String toString() {
-      return "CertificateMetadata [" + "SHA1Fingerprint=" + _SHA1Fingerprint + ", issuer=" + _issuer + ", notAfter=" + _notAfter + ", notBefore=" + _notBefore + ", serial=" + _serial + ", subject=" + _subject + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "CertificateMetadata [" + "SHA1Fingerprint=" + _SHA1Fingerprint + ", issuer=" + _issuer + ", notAfter=" + _notAfter + ", notBefore=" + _notBefore + ", serial=" + _serial + ", subject=" + _subject + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -211,8 +211,7 @@ public class KeyServerMonitorSEK: RestObject {
    
 
    public String toString() {
-      return "KeyServerMonitorSEK [" + "creationTime=" + _creationTime + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lifetime=" + _lifetime + ", seedPayloadAuthenticationAlgorithm=" + _seedPayloadAuthenticationAlgorithm + ", seedPayloadEncryptionAlgorithm=" + _seedPayloadEncryptionAlgorithm + ", startTime=" + _startTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "KeyServerMonitorSEK [" + "creationTime=" + _creationTime + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lifetime=" + _lifetime + ", seedPayloadAuthenticationAlgorithm=" + _seedPayloadAuthenticationAlgorithm + ", seedPayloadEncryptionAlgorithm=" + _seedPayloadEncryptionAlgorithm + ", startTime=" + _startTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -196,8 +196,7 @@ public class PSPATMap: RestObject {
    
 
    public String toString() {
-      return "PSPATMap [" + "associatedSPATSourcesPoolID=" + _associatedSPATSourcesPoolID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", reservedSPATIPs=" + _reservedSPATIPs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "PSPATMap [" + "associatedSPATSourcesPoolID=" + _associatedSPATSourcesPoolID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", reservedSPATIPs=" + _reservedSPATIPs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -111,8 +111,7 @@ public class UDPProbeTestResult: RestObject {
    
 
    public String toString() {
-      return "UDPProbeTestResult [" + "packetLossPercent=" + _packetLossPercent + ", packetsLost=" + _packetsLost + ", packetsReceived=" + _packetsReceived + ", packetsTransmitted=" + _packetsTransmitted + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "UDPProbeTestResult [" + "packetLossPercent=" + _packetLossPercent + ", packetsLost=" + _packetsLost + ", packetsReceived=" + _packetsReceived + ", packetsTransmitted=" + _packetsTransmitted + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

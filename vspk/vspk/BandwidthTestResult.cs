@@ -69,8 +69,7 @@ public class BandwidthTestResult: RestObject {
    
 
    public String toString() {
-      return "BandwidthTestResult [" + "bandwidth=" + _bandwidth + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "BandwidthTestResult [" + "bandwidth=" + _bandwidth + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

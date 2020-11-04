@@ -166,8 +166,7 @@ public class BulkStatistics: RestObject {
    
 
    public String toString() {
-      return "BulkStatistics [" + "data=" + _data + ", embeddedMetadata=" + _embeddedMetadata + ", endTime=" + _endTime + ", numberOfDataPoints=" + _numberOfDataPoints + ", startTime=" + _startTime + ", version=" + _version + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "BulkStatistics [" + "data=" + _data + ", embeddedMetadata=" + _embeddedMetadata + ", endTime=" + _endTime + ", numberOfDataPoints=" + _numberOfDataPoints + ", startTime=" + _startTime + ", version=" + _version + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

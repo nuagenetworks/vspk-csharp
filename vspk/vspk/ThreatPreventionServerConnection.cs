@@ -98,8 +98,7 @@ public class ThreatPreventionServerConnection: RestObject {
    
 
    public String toString() {
-      return "ThreatPreventionServerConnection [" + "FQDN=" + _FQDN + ", VSDName=" + _VSDName + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ThreatPreventionServerConnection [" + "FQDN=" + _FQDN + ", VSDName=" + _VSDName + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

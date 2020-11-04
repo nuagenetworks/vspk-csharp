@@ -246,8 +246,7 @@ public class PolicyDecision: RestObject {
    
 
    public String toString() {
-      return "PolicyDecision [" + "egressACLs=" + _egressACLs + ", egressQos=" + _egressQos + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fipACLs=" + _fipACLs + ", ingressACLs=" + _ingressACLs + ", ingressAdvFwd=" + _ingressAdvFwd + ", lastUpdatedBy=" + _lastUpdatedBy + ", qos=" + _qos + ", stats=" + _stats + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "PolicyDecision [" + "egressACLs=" + _egressACLs + ", egressQos=" + _egressQos + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fipACLs=" + _fipACLs + ", ingressACLs=" + _ingressACLs + ", ingressAdvFwd=" + _ingressAdvFwd + ", lastUpdatedBy=" + _lastUpdatedBy + ", qos=" + _qos + ", stats=" + _stats + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -195,8 +195,7 @@ public class RemoteVrsInfo: RestObject {
    
 
    public String toString() {
-      return "RemoteVrsInfo [" + "color=" + _color + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", labelStack=" + _labelStack + ", lastUpdatedBy=" + _lastUpdatedBy + ", nextHop=" + _nextHop + ", vrsIP=" + _vrsIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "RemoteVrsInfo [" + "color=" + _color + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", labelStack=" + _labelStack + ", lastUpdatedBy=" + _lastUpdatedBy + ", nextHop=" + _nextHop + ", vrsIP=" + _vrsIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

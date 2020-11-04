@@ -209,8 +209,7 @@ public class OverlayPATNATEntry: RestObject {
    
 
    public String toString() {
-      return "OverlayPATNATEntry [" + "NATEnabled=" + _NATEnabled + ", associatedDomainID=" + _associatedDomainID + ", associatedLinkID=" + _associatedLinkID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", privateIP=" + _privateIP + ", publicIP=" + _publicIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "OverlayPATNATEntry [" + "NATEnabled=" + _NATEnabled + ", associatedDomainID=" + _associatedDomainID + ", associatedLinkID=" + _associatedLinkID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", privateIP=" + _privateIP + ", publicIP=" + _publicIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

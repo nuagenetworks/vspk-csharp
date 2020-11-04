@@ -182,8 +182,7 @@ public class ContainerResync: RestObject {
    
 
    public String toString() {
-      return "ContainerResync [" + "embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastRequestTimestamp=" + _lastRequestTimestamp + ", lastTimeResyncInitiated=" + _lastTimeResyncInitiated + ", lastUpdatedBy=" + _lastUpdatedBy + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ContainerResync [" + "embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastRequestTimestamp=" + _lastRequestTimestamp + ", lastTimeResyncInitiated=" + _lastTimeResyncInitiated + ", lastUpdatedBy=" + _lastUpdatedBy + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

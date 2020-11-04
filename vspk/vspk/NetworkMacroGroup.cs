@@ -205,8 +205,7 @@ public class NetworkMacroGroup: RestObject {
    
 
    public String toString() {
-      return "NetworkMacroGroup [" + "description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isSaaSType=" + _isSaaSType + ", lastUpdatedBy=" + _lastUpdatedBy + ", macroGroupType=" + _macroGroupType + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "NetworkMacroGroup [" + "description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isSaaSType=" + _isSaaSType + ", lastUpdatedBy=" + _lastUpdatedBy + ", macroGroupType=" + _macroGroupType + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

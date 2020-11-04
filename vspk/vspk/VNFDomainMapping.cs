@@ -280,8 +280,7 @@ public class VNFDomainMapping: RestObject {
    
 
    public String toString() {
-      return "VNFDomainMapping [" + "associatedDomainID=" + _associatedDomainID + ", associatedDomainName=" + _associatedDomainName + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", autoCreated=" + _autoCreated + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", segmentationID=" + _segmentationID + ", segmentationType=" + _segmentationType + ", serviceId=" + _serviceId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VNFDomainMapping [" + "associatedDomainID=" + _associatedDomainID + ", associatedDomainName=" + _associatedDomainName + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", autoCreated=" + _autoCreated + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", segmentationID=" + _segmentationID + ", segmentationType=" + _segmentationType + ", serviceId=" + _serviceId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -331,8 +331,7 @@ public class TestSuiteRun: RestObject {
    
 
    public String toString() {
-      return "TestSuiteRun [" + "NSGatewayName=" + _NSGatewayName + ", VPortName=" + _VPortName + ", associatedEntityType=" + _associatedEntityType + ", associatedTestSuiteID=" + _associatedTestSuiteID + ", associatedTestSuiteName=" + _associatedTestSuiteName + ", associatedUnderlayTestID=" + _associatedUnderlayTestID + ", birthCertificate=" + _birthCertificate + ", datapathID=" + _datapathID + ", destination=" + _destination + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", operationStatus=" + _operationStatus + ", subnetName=" + _subnetName + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "TestSuiteRun [" + "NSGatewayName=" + _NSGatewayName + ", VPortName=" + _VPortName + ", associatedEntityType=" + _associatedEntityType + ", associatedTestSuiteID=" + _associatedTestSuiteID + ", associatedTestSuiteName=" + _associatedTestSuiteName + ", associatedUnderlayTestID=" + _associatedUnderlayTestID + ", birthCertificate=" + _birthCertificate + ", datapathID=" + _datapathID + ", destination=" + _destination + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", operationStatus=" + _operationStatus + ", subnetName=" + _subnetName + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

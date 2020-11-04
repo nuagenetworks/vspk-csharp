@@ -69,8 +69,7 @@ public class MTUDiscoveryTestResult: RestObject {
    
 
    public String toString() {
-      return "MTUDiscoveryTestResult [" + "discoveredMTU=" + _discoveredMTU + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "MTUDiscoveryTestResult [" + "discoveredMTU=" + _discoveredMTU + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

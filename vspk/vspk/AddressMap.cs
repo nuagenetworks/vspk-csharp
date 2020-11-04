@@ -242,8 +242,7 @@ public class AddressMap: RestObject {
    
 
    public String toString() {
-      return "AddressMap [" + "associatedPATNATPoolID=" + _associatedPATNATPoolID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", privateIP=" + _privateIP + ", privatePort=" + _privatePort + ", publicIP=" + _publicIP + ", publicPort=" + _publicPort + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "AddressMap [" + "associatedPATNATPoolID=" + _associatedPATNATPoolID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", privateIP=" + _privateIP + ", privatePort=" + _privatePort + ", publicIP=" + _publicIP + ", publicPort=" + _publicPort + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

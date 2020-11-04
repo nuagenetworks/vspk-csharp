@@ -196,8 +196,7 @@ public class StatsCollectorInfo: RestObject {
    
 
    public String toString() {
-      return "StatsCollectorInfo [" + "addressType=" + _addressType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ipAddress=" + _ipAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", port=" + _port + ", protoBufPort=" + _protoBufPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "StatsCollectorInfo [" + "addressType=" + _addressType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ipAddress=" + _ipAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", port=" + _port + ", protoBufPort=" + _protoBufPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

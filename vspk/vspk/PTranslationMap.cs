@@ -210,8 +210,7 @@ public class PTranslationMap: RestObject {
    
 
    public String toString() {
-      return "PTranslationMap [" + "SPATSourceList=" + _SPATSourceList + ", associatedDomainID=" + _associatedDomainID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mappingType=" + _mappingType + ", providerAliasIP=" + _providerAliasIP + ", providerIP=" + _providerIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "PTranslationMap [" + "SPATSourceList=" + _SPATSourceList + ", associatedDomainID=" + _associatedDomainID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mappingType=" + _mappingType + ", providerAliasIP=" + _providerAliasIP + ", providerIP=" + _providerIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

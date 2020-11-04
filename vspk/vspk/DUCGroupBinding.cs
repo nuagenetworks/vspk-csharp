@@ -210,8 +210,7 @@ public class DUCGroupBinding: RestObject {
    
 
    public String toString() {
-      return "DUCGroupBinding [" + "associatedDUCGroupID=" + _associatedDUCGroupID + ", associatedUBRGroupFunction=" + _associatedUBRGroupFunction + ", associatedUBRGroupName=" + _associatedUBRGroupName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", oneWayDelay=" + _oneWayDelay + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "DUCGroupBinding [" + "associatedDUCGroupID=" + _associatedDUCGroupID + ", associatedUBRGroupFunction=" + _associatedUBRGroupFunction + ", associatedUBRGroupName=" + _associatedUBRGroupName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", oneWayDelay=" + _oneWayDelay + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

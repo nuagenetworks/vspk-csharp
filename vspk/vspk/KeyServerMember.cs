@@ -223,8 +223,7 @@ public class KeyServerMember: RestObject {
    
 
    public String toString() {
-      return "KeyServerMember [" + "certificateSerialNumber=" + _certificateSerialNumber + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fqdn=" + _fqdn + ", issuerDN=" + _issuerDN + ", lastUpdatedBy=" + _lastUpdatedBy + ", pemEncoded=" + _pemEncoded + ", publicKey=" + _publicKey + ", subjectDN=" + _subjectDN + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "KeyServerMember [" + "certificateSerialNumber=" + _certificateSerialNumber + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fqdn=" + _fqdn + ", issuerDN=" + _issuerDN + ", lastUpdatedBy=" + _lastUpdatedBy + ", pemEncoded=" + _pemEncoded + ", publicKey=" + _publicKey + ", subjectDN=" + _subjectDN + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -69,8 +69,7 @@ public class IDPSignature: RestObject {
    
 
    public String toString() {
-      return "IDPSignature [" + "IDPSignatures=" + _IDPSignatures + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "IDPSignature [" + "IDPSignatures=" + _IDPSignatures + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

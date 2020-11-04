@@ -225,8 +225,7 @@ public class Job: RestObject {
    
 
    public String toString() {
-      return "Job [" + "assocEntityType=" + _assocEntityType + ", command=" + _command + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", parameters=" + _parameters + ", progress=" + _progress + ", result=" + _result + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Job [" + "assocEntityType=" + _assocEntityType + ", command=" + _command + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", parameters=" + _parameters + ", progress=" + _progress + ", result=" + _result + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

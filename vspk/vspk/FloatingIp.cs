@@ -227,8 +227,7 @@ public class FloatingIp: RestObject {
    
 
    public String toString() {
-      return "FloatingIp [" + "accessControl=" + _accessControl + ", address=" + _address + ", assigned=" + _assigned + ", assignedToObjectType=" + _assignedToObjectType + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "FloatingIp [" + "accessControl=" + _accessControl + ", address=" + _address + ", assigned=" + _assigned + ", assignedToObjectType=" + _assignedToObjectType + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

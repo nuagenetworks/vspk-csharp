@@ -265,8 +265,7 @@ public class IKEPSK: RestObject {
    
 
    public String toString() {
-      return "IKEPSK [" + "associatedEnterpriseID=" + _associatedEnterpriseID + ", autoCreated=" + _autoCreated + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", encryptedPSK=" + _encryptedPSK + ", encryptingCertificateSerialNumber=" + _encryptingCertificateSerialNumber + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", signature=" + _signature + ", signingCertificateSerialNumber=" + _signingCertificateSerialNumber + ", unencryptedPSK=" + _unencryptedPSK + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "IKEPSK [" + "associatedEnterpriseID=" + _associatedEnterpriseID + ", autoCreated=" + _autoCreated + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", encryptedPSK=" + _encryptedPSK + ", encryptingCertificateSerialNumber=" + _encryptingCertificateSerialNumber + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", signature=" + _signature + ", signingCertificateSerialNumber=" + _signingCertificateSerialNumber + ", unencryptedPSK=" + _unencryptedPSK + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

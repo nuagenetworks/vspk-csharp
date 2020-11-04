@@ -219,8 +219,7 @@ public class VirtualIP: RestObject {
    
 
    public String toString() {
-      return "VirtualIP [" + "IPType=" + _IPType + ", MAC=" + _MAC + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", subnetID=" + _subnetID + ", virtualIP=" + _virtualIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VirtualIP [" + "IPType=" + _IPType + ", MAC=" + _MAC + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", subnetID=" + _subnetID + ", virtualIP=" + _virtualIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

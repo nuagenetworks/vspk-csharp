@@ -384,8 +384,7 @@ public class ControllerVRSLink: RestObject {
    
 
    public String toString() {
-      return "ControllerVRSLink [" + "JSONRPCConnectionState=" + _JSONRPCConnectionState + ", VRSID=" + _VRSID + ", VRSPersonality=" + _VRSPersonality + ", VRSSystemId=" + _VRSSystemId + ", VSCConfigState=" + _VSCConfigState + ", VSCCurrentState=" + _VSCCurrentState + ", clusterNodeRole=" + _clusterNodeRole + ", connections=" + _connections + ", controllerID=" + _controllerID + ", controllerType=" + _controllerType + ", dynamic=" + _dynamic + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", peer=" + _peer + ", role=" + _role + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ControllerVRSLink [" + "JSONRPCConnectionState=" + _JSONRPCConnectionState + ", VRSID=" + _VRSID + ", VRSPersonality=" + _VRSPersonality + ", VRSSystemId=" + _VRSSystemId + ", VSCConfigState=" + _VSCConfigState + ", VSCCurrentState=" + _VSCCurrentState + ", clusterNodeRole=" + _clusterNodeRole + ", connections=" + _connections + ", controllerID=" + _controllerID + ", controllerType=" + _controllerType + ", dynamic=" + _dynamic + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", peer=" + _peer + ", role=" + _role + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

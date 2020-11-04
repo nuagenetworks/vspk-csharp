@@ -267,8 +267,7 @@ public class UnderlayTest: RestObject {
    
 
    public String toString() {
-      return "UnderlayTest [" + "associatedDataPathID=" + _associatedDataPathID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", associatedTestSuiteRunID=" + _associatedTestSuiteRunID + ", createOnly=" + _createOnly + ", duration=" + _duration + ", name=" + _name + ", runBandwidthTest=" + _runBandwidthTest + ", runConnectivityTest=" + _runConnectivityTest + ", runMTUDiscoveryTest=" + _runMTUDiscoveryTest + ", startDateTime=" + _startDateTime + ", stopDateTime=" + _stopDateTime + ", testResult=" + _testResult + ", underlayTestServer=" + _underlayTestServer + ", underlayTestType=" + _underlayTestType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "UnderlayTest [" + "associatedDataPathID=" + _associatedDataPathID + ", associatedNSGatewayID=" + _associatedNSGatewayID + ", associatedNSGatewayName=" + _associatedNSGatewayName + ", associatedTestSuiteRunID=" + _associatedTestSuiteRunID + ", createOnly=" + _createOnly + ", duration=" + _duration + ", name=" + _name + ", runBandwidthTest=" + _runBandwidthTest + ", runConnectivityTest=" + _runConnectivityTest + ", runMTUDiscoveryTest=" + _runMTUDiscoveryTest + ", startDateTime=" + _startDateTime + ", stopDateTime=" + _stopDateTime + ", testResult=" + _testResult + ", underlayTestServer=" + _underlayTestServer + ", underlayTestType=" + _underlayTestType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

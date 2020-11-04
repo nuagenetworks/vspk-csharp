@@ -196,8 +196,7 @@ public class CTranslationMap: RestObject {
    
 
    public String toString() {
-      return "CTranslationMap [" + "associatedDomainID=" + _associatedDomainID + ", customerAliasIP=" + _customerAliasIP + ", customerIP=" + _customerIP + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mappingType=" + _mappingType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "CTranslationMap [" + "associatedDomainID=" + _associatedDomainID + ", customerAliasIP=" + _customerAliasIP + ", customerIP=" + _customerIP + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mappingType=" + _mappingType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

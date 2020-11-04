@@ -294,8 +294,7 @@ public class InfrastructureEVDFProfile: RestObject {
    
 
    public String toString() {
-      return "InfrastructureEVDFProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", activeController=" + _activeController + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", nuagePlatform=" + _nuagePlatform + ", proxyDNSName=" + _proxyDNSName + ", serviceIPv4Subnet=" + _serviceIPv4Subnet + ", standbyController=" + _standbyController + ", useTwoFactor=" + _useTwoFactor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "InfrastructureEVDFProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", activeController=" + _activeController + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", nuagePlatform=" + _nuagePlatform + ", proxyDNSName=" + _proxyDNSName + ", serviceIPv4Subnet=" + _serviceIPv4Subnet + ", standbyController=" + _standbyController + ", useTwoFactor=" + _useTwoFactor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -209,8 +209,7 @@ public class SiteInfo: RestObject {
    
 
    public String toString() {
-      return "SiteInfo [" + "address=" + _address + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", siteIdentifier=" + _siteIdentifier + ", xmppDomain=" + _xmppDomain + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "SiteInfo [" + "address=" + _address + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", siteIdentifier=" + _siteIdentifier + ", xmppDomain=" + _xmppDomain + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

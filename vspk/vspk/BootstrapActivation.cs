@@ -336,8 +336,7 @@ public class BootstrapActivation: RestObject {
    
 
    public String toString() {
-      return "BootstrapActivation [" + "action=" + _action + ", associatedEntityType=" + _associatedEntityType + ", autoBootstrap=" + _autoBootstrap + ", cacert=" + _cacert + ", cert=" + _cert + ", configURL=" + _configURL + ", csr=" + _csr + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hash=" + _hash + ", lastUpdatedBy=" + _lastUpdatedBy + ", seed=" + _seed + ", srkPassword=" + _srkPassword + ", status=" + _status + ", tpmOwnerPassword=" + _tpmOwnerPassword + ", tpmState=" + _tpmState + ", vsdTime=" + _vsdTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "BootstrapActivation [" + "action=" + _action + ", associatedEntityType=" + _associatedEntityType + ", autoBootstrap=" + _autoBootstrap + ", cacert=" + _cacert + ", cert=" + _cert + ", configURL=" + _configURL + ", csr=" + _csr + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hash=" + _hash + ", lastUpdatedBy=" + _lastUpdatedBy + ", seed=" + _seed + ", srkPassword=" + _srkPassword + ", status=" + _status + ", tpmOwnerPassword=" + _tpmOwnerPassword + ", tpmState=" + _tpmState + ", vsdTime=" + _vsdTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

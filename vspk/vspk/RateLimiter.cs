@@ -209,8 +209,7 @@ public class RateLimiter: RestObject {
    
 
    public String toString() {
-      return "RateLimiter [" + "committedInformationRate=" + _committedInformationRate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", peakBurstSize=" + _peakBurstSize + ", peakInformationRate=" + _peakInformationRate + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "RateLimiter [" + "committedInformationRate=" + _committedInformationRate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", peakBurstSize=" + _peakBurstSize + ", peakInformationRate=" + _peakInformationRate + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    
