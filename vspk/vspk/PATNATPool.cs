@@ -79,7 +79,7 @@ public class PATNATPool: RestObject {
    protected bool _dynamicSourceEnabled;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("endAddressRange")]
    protected String _endAddressRange;
@@ -277,7 +277,7 @@ public class PATNATPool: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }

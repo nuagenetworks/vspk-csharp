@@ -45,7 +45,7 @@ public class Ltestatistics: RestObject {
 
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("endTime")]
    protected long? _endTime;
@@ -82,7 +82,7 @@ public class Ltestatistics: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }

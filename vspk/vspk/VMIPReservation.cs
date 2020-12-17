@@ -57,16 +57,16 @@ public class VMIPReservation: RestObject {
    protected String _IPV6Address;
    
    [JsonProperty("IPV6AllocationPools")]
-   protected System.Collections.Generic.List<String> _IPV6AllocationPools;
+   protected System.Collections.Generic.List<AllocationPool> _IPV6AllocationPools;
    
    [JsonProperty("allocationPools")]
-   protected System.Collections.Generic.List<String> _allocationPools;
+   protected System.Collections.Generic.List<AllocationPool> _allocationPools;
    
    [JsonProperty("creationDate")]
    protected String _creationDate;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -142,7 +142,7 @@ public class VMIPReservation: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUIPV6AllocationPools {
+   public System.Collections.Generic.List<AllocationPool> NUIPV6AllocationPools {
       get {
          return _IPV6AllocationPools;
       }
@@ -153,7 +153,7 @@ public class VMIPReservation: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUAllocationPools {
+   public System.Collections.Generic.List<AllocationPool> NUAllocationPools {
       get {
          return _allocationPools;
       }
@@ -175,7 +175,7 @@ public class VMIPReservation: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }

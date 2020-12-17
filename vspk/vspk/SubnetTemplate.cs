@@ -78,13 +78,7 @@ public class SubnetTemplate: RestObject {
    protected bool _dualStackDynamicIPAllocation;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
-   
-   [JsonProperty("enableDHCPv4")]
-   protected bool _enableDHCPv4;
-   
-   [JsonProperty("enableDHCPv6")]
-   protected bool _enableDHCPv6;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("encryption")]
    protected EEncryption? _encryption;
@@ -269,34 +263,12 @@ public class SubnetTemplate: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
       set {
          this._embeddedMetadata = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public bool NUEnableDHCPv4 {
-      get {
-         return _enableDHCPv4;
-      }
-      set {
-         this._enableDHCPv4 = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public bool NUEnableDHCPv6 {
-      get {
-         return _enableDHCPv6;
-      }
-      set {
-         this._enableDHCPv6 = value;
       }
    }
 
@@ -476,7 +448,7 @@ public class SubnetTemplate: RestObject {
    
 
    public String toString() {
-      return "SubnetTemplate [" + "DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", creationDate=" + _creationDate + ", description=" + _description + ", dualStackDynamicIPAllocation=" + _dualStackDynamicIPAllocation + ", embeddedMetadata=" + _embeddedMetadata + ", enableDHCPv4=" + _enableDHCPv4 + ", enableDHCPv6=" + _enableDHCPv6 + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", owner=" + _owner + ", proxyARP=" + _proxyARP + ", splitSubnet=" + _splitSubnet + ", useGlobalMAC=" + _useGlobalMAC + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "SubnetTemplate [" + "DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", creationDate=" + _creationDate + ", description=" + _description + ", dualStackDynamicIPAllocation=" + _dualStackDynamicIPAllocation + ", embeddedMetadata=" + _embeddedMetadata + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", owner=" + _owner + ", proxyARP=" + _proxyARP + ", splitSubnet=" + _splitSubnet + ", useGlobalMAC=" + _useGlobalMAC + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

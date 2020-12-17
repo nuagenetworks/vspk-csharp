@@ -141,13 +141,13 @@ public class VPort: RestObject {
    protected long? _domainVLANID;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
    
    [JsonProperty("esGroupVPortInfos")]
-   protected System.Collections.Generic.List<String> _esGroupVPortInfos;
+   protected System.Collections.Generic.List<VPortInfo> _esGroupVPortInfos;
    
    [JsonProperty("externalID")]
    protected String _externalID;
@@ -695,7 +695,7 @@ public class VPort: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -717,7 +717,7 @@ public class VPort: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEsGroupVPortInfos {
+   public System.Collections.Generic.List<VPortInfo> NUEsGroupVPortInfos {
       get {
          return _esGroupVPortInfos;
       }

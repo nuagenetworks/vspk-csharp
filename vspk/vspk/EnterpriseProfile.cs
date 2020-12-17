@@ -75,7 +75,7 @@ public class EnterpriseProfile: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enableApplicationPerformanceManagement")]
    protected bool _enableApplicationPerformanceManagement;
@@ -93,7 +93,7 @@ public class EnterpriseProfile: RestObject {
    protected long? _floatingIPsQuota;
    
    [JsonProperty("forwardingClass")]
-   protected System.Collections.Generic.List<String> _forwardingClass;
+   protected System.Collections.Generic.List<ForwardingClass> _forwardingClass;
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
@@ -258,7 +258,7 @@ public class EnterpriseProfile: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -324,7 +324,7 @@ public class EnterpriseProfile: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUForwardingClass {
+   public System.Collections.Generic.List<ForwardingClass> NUForwardingClass {
       get {
          return _forwardingClass;
       }

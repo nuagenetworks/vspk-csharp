@@ -163,7 +163,7 @@ public class Domain: RestObject {
    protected long? _domainVLANID;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("encryption")]
    protected EEncryption? _encryption;
@@ -313,6 +313,9 @@ public class Domain: RestObject {
    
    [JsonIgnore]
    private EgressAdvFwdTemplatesFetcher _egressAdvFwdTemplates;
+   
+   [JsonIgnore]
+   private EgressAuditACLEntryTemplatesFetcher _egressAuditACLEntryTemplates;
    
    [JsonIgnore]
    private EgressAuditACLTemplatesFetcher _egressAuditACLTemplates;
@@ -489,6 +492,8 @@ public class Domain: RestObject {
       _egressACLTemplates = new EgressACLTemplatesFetcher(this);
       
       _egressAdvFwdTemplates = new EgressAdvFwdTemplatesFetcher(this);
+      
+      _egressAuditACLEntryTemplates = new EgressAuditACLEntryTemplatesFetcher(this);
       
       _egressAuditACLTemplates = new EgressAuditACLTemplatesFetcher(this);
       
@@ -951,7 +956,7 @@ public class Domain: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -1395,6 +1400,10 @@ public class Domain: RestObject {
    
    public EgressAdvFwdTemplatesFetcher getEgressAdvFwdTemplates() {
       return _egressAdvFwdTemplates;
+   }
+   
+   public EgressAuditACLEntryTemplatesFetcher getEgressAuditACLEntryTemplates() {
+      return _egressAuditACLEntryTemplates;
    }
    
    public EgressAuditACLTemplatesFetcher getEgressAuditACLTemplates() {

@@ -75,10 +75,10 @@ public class VSD: RestObject {
    protected String _description;
    
    [JsonProperty("disks")]
-   protected System.Collections.Generic.List<String> _disks;
+   protected System.Collections.Generic.List<DiskStat> _disks;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -273,7 +273,7 @@ public class VSD: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUDisks {
+   public System.Collections.Generic.List<DiskStat> NUDisks {
       get {
          return _disks;
       }
@@ -284,7 +284,7 @@ public class VSD: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }

@@ -112,7 +112,7 @@ public class Subnet: RestObject {
    protected bool _dualStackDynamicIPAllocation;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enableDHCPv4")]
    protected bool _enableDHCPv4;
@@ -572,7 +572,7 @@ public class Subnet: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }

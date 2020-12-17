@@ -118,7 +118,7 @@ public class VCenterDataCenter: RestObject {
    protected bool _disableLROOnDatapath;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enableVRSResourceReservation")]
    protected bool _enableVRSResourceReservation;
@@ -670,7 +670,7 @@ public class VCenterDataCenter: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }

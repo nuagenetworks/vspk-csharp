@@ -104,7 +104,7 @@ public class L2Domain: RestObject {
    protected bool _dualStackDynamicIPAllocation;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enableDHCPv4")]
    protected bool _enableDHCPv4;
@@ -244,6 +244,9 @@ public class L2Domain: RestObject {
    private EgressAdvFwdTemplatesFetcher _egressAdvFwdTemplates;
    
    [JsonIgnore]
+   private EgressAuditACLEntryTemplatesFetcher _egressAuditACLEntryTemplates;
+   
+   [JsonIgnore]
    private EgressAuditACLTemplatesFetcher _egressAuditACLTemplates;
    
    [JsonIgnore]
@@ -379,6 +382,8 @@ public class L2Domain: RestObject {
       _egressACLTemplates = new EgressACLTemplatesFetcher(this);
       
       _egressAdvFwdTemplates = new EgressAdvFwdTemplatesFetcher(this);
+      
+      _egressAuditACLEntryTemplates = new EgressAuditACLEntryTemplatesFetcher(this);
       
       _egressAuditACLTemplates = new EgressAuditACLTemplatesFetcher(this);
       
@@ -621,7 +626,7 @@ public class L2Domain: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -1035,6 +1040,10 @@ public class L2Domain: RestObject {
    
    public EgressAdvFwdTemplatesFetcher getEgressAdvFwdTemplates() {
       return _egressAdvFwdTemplates;
+   }
+   
+   public EgressAuditACLEntryTemplatesFetcher getEgressAuditACLEntryTemplates() {
+      return _egressAuditACLEntryTemplates;
    }
    
    public EgressAuditACLTemplatesFetcher getEgressAuditACLTemplates() {

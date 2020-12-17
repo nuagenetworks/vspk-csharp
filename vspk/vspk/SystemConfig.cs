@@ -273,7 +273,7 @@ public class SystemConfig: RestObject {
    protected String _elasticClusterName;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("embeddedMetadataSize")]
    protected long? _embeddedMetadataSize;
@@ -1393,7 +1393,7 @@ public class SystemConfig: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }

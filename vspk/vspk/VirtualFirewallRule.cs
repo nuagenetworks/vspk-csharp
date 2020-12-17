@@ -110,7 +110,7 @@ public class VirtualFirewallRule: RestObject {
    protected String _domainName;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enterpriseName")]
    protected String _enterpriseName;
@@ -420,7 +420,7 @@ public class VirtualFirewallRule: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }

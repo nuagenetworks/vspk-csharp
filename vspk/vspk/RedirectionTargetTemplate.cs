@@ -58,7 +58,7 @@ public class RedirectionTargetTemplate: RestObject {
    protected EDestinationType? _destinationType;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("endPointType")]
    protected EEndPointType? _endPointType;
@@ -149,7 +149,7 @@ public class RedirectionTargetTemplate: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }

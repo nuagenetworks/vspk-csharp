@@ -49,7 +49,7 @@ public class ThreatPreventionServerConnection: RestObject {
    protected String _FQDN;
    
    [JsonProperty("nodeInfo")]
-   protected System.Collections.Generic.List<String> _nodeInfo;
+   protected System.Collections.Generic.List<ThreatPreventionNodeInfo> _nodeInfo;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("status")]
    protected EStatus? _status;
@@ -73,7 +73,7 @@ public class ThreatPreventionServerConnection: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUNodeInfo {
+   public System.Collections.Generic.List<ThreatPreventionNodeInfo> NUNodeInfo {
       get {
          return _nodeInfo;
       }
