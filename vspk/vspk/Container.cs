@@ -67,7 +67,7 @@ public class Container: RestObject {
    protected System.Collections.Generic.List<String> _domainIDs;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -244,7 +244,7 @@ public class Container: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -528,8 +528,7 @@ public class Container: RestObject {
    
 
    public String toString() {
-      return "Container [" + "UUID=" + _UUID + ", VRSID=" + _VRSID + ", computeProvisioned=" + _computeProvisioned + ", deleteExpiry=" + _deleteExpiry + ", deleteMode=" + _deleteMode + ", domainIDs=" + _domainIDs + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", imageID=" + _imageID + ", imageName=" + _imageName + ", interfaces=" + _interfaces + ", l2DomainIDs=" + _l2DomainIDs + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", orchestrationID=" + _orchestrationID + ", reasonType=" + _reasonType + ", resyncInfo=" + _resyncInfo + ", siteIdentifier=" + _siteIdentifier + ", status=" + _status + ", subnetIDs=" + _subnetIDs + ", userID=" + _userID + ", userName=" + _userName + ", vrsRawVersion=" + _vrsRawVersion + ", vrsVersion=" + _vrsVersion + ", zoneIDs=" + _zoneIDs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Container [" + "UUID=" + _UUID + ", VRSID=" + _VRSID + ", computeProvisioned=" + _computeProvisioned + ", deleteExpiry=" + _deleteExpiry + ", deleteMode=" + _deleteMode + ", domainIDs=" + _domainIDs + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", imageID=" + _imageID + ", imageName=" + _imageName + ", interfaces=" + _interfaces + ", l2DomainIDs=" + _l2DomainIDs + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", orchestrationID=" + _orchestrationID + ", reasonType=" + _reasonType + ", resyncInfo=" + _resyncInfo + ", siteIdentifier=" + _siteIdentifier + ", status=" + _status + ", subnetIDs=" + _subnetIDs + ", userID=" + _userID + ", userName=" + _userName + ", vrsRawVersion=" + _vrsRawVersion + ", vrsVersion=" + _vrsVersion + ", zoneIDs=" + _zoneIDs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -69,7 +69,7 @@ public class OSPFArea: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -192,7 +192,7 @@ public class OSPFArea: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -295,8 +295,7 @@ public class OSPFArea: RestObject {
    
 
    public String toString() {
-      return "OSPFArea [" + "aggregateAreaRange=" + _aggregateAreaRange + ", aggregateAreaRangeNSSA=" + _aggregateAreaRangeNSSA + ", areaID=" + _areaID + ", areaType=" + _areaType + ", defaultMetric=" + _defaultMetric + ", defaultOriginateOption=" + _defaultOriginateOption + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", redistributeExternalEnabled=" + _redistributeExternalEnabled + ", summariesEnabled=" + _summariesEnabled + ", suppressAreaRange=" + _suppressAreaRange + ", suppressAreaRangeNSSA=" + _suppressAreaRangeNSSA + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "OSPFArea [" + "aggregateAreaRange=" + _aggregateAreaRange + ", aggregateAreaRangeNSSA=" + _aggregateAreaRangeNSSA + ", areaID=" + _areaID + ", areaType=" + _areaType + ", defaultMetric=" + _defaultMetric + ", defaultOriginateOption=" + _defaultOriginateOption + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", redistributeExternalEnabled=" + _redistributeExternalEnabled + ", summariesEnabled=" + _summariesEnabled + ", suppressAreaRange=" + _suppressAreaRange + ", suppressAreaRangeNSSA=" + _suppressAreaRangeNSSA + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

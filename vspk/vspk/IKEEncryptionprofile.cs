@@ -108,7 +108,7 @@ public class IKEEncryptionprofile: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -341,7 +341,7 @@ public class IKEEncryptionprofile: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -418,8 +418,7 @@ public class IKEEncryptionprofile: RestObject {
    
 
    public String toString() {
-      return "IKEEncryptionprofile [" + "DPDInterval=" + _DPDInterval + ", DPDMode=" + _DPDMode + ", DPDTimeout=" + _DPDTimeout + ", IPsecAuthenticationAlgorithm=" + _IPsecAuthenticationAlgorithm + ", IPsecDontFragment=" + _IPsecDontFragment + ", IPsecEnablePFS=" + _IPsecEnablePFS + ", IPsecEncryptionAlgorithm=" + _IPsecEncryptionAlgorithm + ", IPsecPreFragment=" + _IPsecPreFragment + ", IPsecSALifetime=" + _IPsecSALifetime + ", IPsecSAReplayWindowSize=" + _IPsecSAReplayWindowSize + ", IPsecSAReplayWindowSizeValue=" + _IPsecSAReplayWindowSizeValue + ", ISAKMPAuthenticationMode=" + _ISAKMPAuthenticationMode + ", ISAKMPDiffieHelmanGroupIdentifier=" + _ISAKMPDiffieHelmanGroupIdentifier + ", ISAKMPEncryptionAlgorithm=" + _ISAKMPEncryptionAlgorithm + ", ISAKMPEncryptionKeyLifetime=" + _ISAKMPEncryptionKeyLifetime + ", ISAKMPHashAlgorithm=" + _ISAKMPHashAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", sequence=" + _sequence + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "IKEEncryptionprofile [" + "DPDInterval=" + _DPDInterval + ", DPDMode=" + _DPDMode + ", DPDTimeout=" + _DPDTimeout + ", IPsecAuthenticationAlgorithm=" + _IPsecAuthenticationAlgorithm + ", IPsecDontFragment=" + _IPsecDontFragment + ", IPsecEnablePFS=" + _IPsecEnablePFS + ", IPsecEncryptionAlgorithm=" + _IPsecEncryptionAlgorithm + ", IPsecPreFragment=" + _IPsecPreFragment + ", IPsecSALifetime=" + _IPsecSALifetime + ", IPsecSAReplayWindowSize=" + _IPsecSAReplayWindowSize + ", IPsecSAReplayWindowSizeValue=" + _IPsecSAReplayWindowSizeValue + ", ISAKMPAuthenticationMode=" + _ISAKMPAuthenticationMode + ", ISAKMPDiffieHelmanGroupIdentifier=" + _ISAKMPDiffieHelmanGroupIdentifier + ", ISAKMPEncryptionAlgorithm=" + _ISAKMPEncryptionAlgorithm + ", ISAKMPEncryptionKeyLifetime=" + _ISAKMPEncryptionKeyLifetime + ", ISAKMPHashAlgorithm=" + _ISAKMPHashAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", sequence=" + _sequence + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

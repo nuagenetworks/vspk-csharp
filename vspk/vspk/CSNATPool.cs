@@ -53,7 +53,7 @@ public class CSNATPool: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("endAddress")]
    protected String _endAddress;
@@ -118,7 +118,7 @@ public class CSNATPool: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -210,8 +210,7 @@ public class CSNATPool: RestObject {
    
 
    public String toString() {
-      return "CSNATPool [" + "IPType=" + _IPType + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", endAddress=" + _endAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", startAddress=" + _startAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "CSNATPool [" + "IPType=" + _IPType + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", endAddress=" + _endAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", startAddress=" + _startAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

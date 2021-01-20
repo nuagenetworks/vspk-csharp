@@ -42,7 +42,7 @@ public class Command: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum ECommand {NSG_APPLY_PATCH,NSG_DELETE_PATCH,NSG_DOWNLOAD_OS_IMAGE,NSG_REBOOT,NSG_RENEW_CERT,NSG_UPDATE_INFO,NSG_UPGRADE_TO_IMAGE,UNKNOWN };
+   public enum ECommand {NSG_APPLY_PATCH,NSG_CONTAINER_TEST_SUITE_RUN,NSG_DELETE_PATCH,NSG_DOWNLOAD_OS_IMAGE,NSG_OVERLAY_SYSLOG_CONTAINER_RESTART,NSG_OVERLAY_SYSLOG_CONTAINER_START,NSG_OVERLAY_SYSLOG_CONTAINER_STOP,NSG_REBOOT,NSG_RENEW_CERT,NSG_UPDATE_INFO,NSG_UPGRADE_TO_IMAGE,UNKNOWN };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EOverride {ABANDON,UNSPECIFIED };
    public enum EStatus {ABANDONED,COMPLETED,FAILED,RUNNING,SKIPPED,STARTED,UNKNOWN };
@@ -283,8 +283,7 @@ public class Command: RestObject {
    
 
    public String toString() {
-      return "Command [" + "assocEntityType=" + _assocEntityType + ", associatedParam=" + _associatedParam + ", associatedParamType=" + _associatedParamType + ", command=" + _command + ", commandInformation=" + _commandInformation + ", detail=" + _detail + ", detailedStatus=" + _detailedStatus + ", detailedStatusCode=" + _detailedStatusCode + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fullCommand=" + _fullCommand + ", lastUpdatedBy=" + _lastUpdatedBy + ", override=" + _override + ", progress=" + _progress + ", status=" + _status + ", summary=" + _summary + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Command [" + "assocEntityType=" + _assocEntityType + ", associatedParam=" + _associatedParam + ", associatedParamType=" + _associatedParamType + ", command=" + _command + ", commandInformation=" + _commandInformation + ", detail=" + _detail + ", detailedStatus=" + _detailedStatus + ", detailedStatusCode=" + _detailedStatusCode + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fullCommand=" + _fullCommand + ", lastUpdatedBy=" + _lastUpdatedBy + ", override=" + _override + ", progress=" + _progress + ", status=" + _status + ", summary=" + _summary + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

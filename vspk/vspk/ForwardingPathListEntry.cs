@@ -56,7 +56,7 @@ public class ForwardingPathListEntry: RestObject {
    protected EFCOverride? _FCOverride;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -122,7 +122,7 @@ public class ForwardingPathListEntry: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -232,8 +232,7 @@ public class ForwardingPathListEntry: RestObject {
    
 
    public String toString() {
-      return "ForwardingPathListEntry [" + "DSCPRemarking=" + _DSCPRemarking + ", FCOverride=" + _FCOverride + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", forwardingAction=" + _forwardingAction + ", lastUpdatedBy=" + _lastUpdatedBy + ", priority=" + _priority + ", remoteUplinkPreference=" + _remoteUplinkPreference + ", slaAware=" + _slaAware + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ForwardingPathListEntry [" + "DSCPRemarking=" + _DSCPRemarking + ", FCOverride=" + _FCOverride + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", forwardingAction=" + _forwardingAction + ", lastUpdatedBy=" + _lastUpdatedBy + ", priority=" + _priority + ", remoteUplinkPreference=" + _remoteUplinkPreference + ", slaAware=" + _slaAware + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

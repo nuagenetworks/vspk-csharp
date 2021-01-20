@@ -154,8 +154,7 @@ public class AutoDiscoverHypervisorFromCluster: RestObject {
    
 
    public String toString() {
-      return "AutoDiscoverHypervisorFromCluster [" + "assocEntityID=" + _assocEntityID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", lastUpdatedBy=" + _lastUpdatedBy + ", managedObjectID=" + _managedObjectID + ", networkList=" + _networkList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "AutoDiscoverHypervisorFromCluster [" + "assocEntityID=" + _assocEntityID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorIP=" + _hypervisorIP + ", lastUpdatedBy=" + _lastUpdatedBy + ", managedObjectID=" + _managedObjectID + ", networkList=" + _networkList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

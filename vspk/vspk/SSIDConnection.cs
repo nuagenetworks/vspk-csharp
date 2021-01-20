@@ -68,7 +68,7 @@ public class SSIDConnection: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -215,7 +215,7 @@ public class SSIDConnection: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -432,8 +432,7 @@ public class SSIDConnection: RestObject {
    
 
    public String toString() {
-      return "SSIDConnection [" + "associatedCaptivePortalProfileID=" + _associatedCaptivePortalProfileID + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", authenticationMode=" + _authenticationMode + ", blackList=" + _blackList + ", broadcastSSID=" + _broadcastSSID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", genericConfig=" + _genericConfig + ", interfaceName=" + _interfaceName + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", passphrase=" + _passphrase + ", permittedAction=" + _permittedAction + ", readonly=" + _readonly + ", redirectOption=" + _redirectOption + ", redirectURL=" + _redirectURL + ", restricted=" + _restricted + ", status=" + _status + ", vlanID=" + _vlanID + ", vportID=" + _vportID + ", whiteList=" + _whiteList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "SSIDConnection [" + "associatedCaptivePortalProfileID=" + _associatedCaptivePortalProfileID + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", authenticationMode=" + _authenticationMode + ", blackList=" + _blackList + ", broadcastSSID=" + _broadcastSSID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", genericConfig=" + _genericConfig + ", interfaceName=" + _interfaceName + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", passphrase=" + _passphrase + ", permittedAction=" + _permittedAction + ", readonly=" + _readonly + ", redirectOption=" + _redirectOption + ", redirectURL=" + _redirectURL + ", restricted=" + _restricted + ", status=" + _status + ", vlanID=" + _vlanID + ", vportID=" + _vportID + ", whiteList=" + _whiteList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

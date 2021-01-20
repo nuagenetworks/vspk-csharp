@@ -49,7 +49,7 @@ public class KeyServerMember: RestObject {
    protected long? _certificateSerialNumber;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -104,7 +104,7 @@ public class KeyServerMember: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -214,8 +214,7 @@ public class KeyServerMember: RestObject {
    
 
    public String toString() {
-      return "KeyServerMember [" + "certificateSerialNumber=" + _certificateSerialNumber + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fqdn=" + _fqdn + ", issuerDN=" + _issuerDN + ", lastUpdatedBy=" + _lastUpdatedBy + ", pemEncoded=" + _pemEncoded + ", publicKey=" + _publicKey + ", subjectDN=" + _subjectDN + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "KeyServerMember [" + "certificateSerialNumber=" + _certificateSerialNumber + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fqdn=" + _fqdn + ", issuerDN=" + _issuerDN + ", lastUpdatedBy=" + _lastUpdatedBy + ", pemEncoded=" + _pemEncoded + ", publicKey=" + _publicKey + ", subjectDN=" + _subjectDN + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

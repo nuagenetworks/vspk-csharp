@@ -56,7 +56,7 @@ public class VirtualIP: RestObject {
    protected String _associatedFloatingIPID;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -129,7 +129,7 @@ public class VirtualIP: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -210,8 +210,7 @@ public class VirtualIP: RestObject {
    
 
    public String toString() {
-      return "VirtualIP [" + "IPType=" + _IPType + ", MAC=" + _MAC + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", subnetID=" + _subnetID + ", virtualIP=" + _virtualIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VirtualIP [" + "IPType=" + _IPType + ", MAC=" + _MAC + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", subnetID=" + _subnetID + ", virtualIP=" + _virtualIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

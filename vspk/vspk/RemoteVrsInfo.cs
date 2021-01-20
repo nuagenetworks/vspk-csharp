@@ -49,7 +49,7 @@ public class RemoteVrsInfo: RestObject {
    protected long? _color;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -98,7 +98,7 @@ public class RemoteVrsInfo: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -186,8 +186,7 @@ public class RemoteVrsInfo: RestObject {
    
 
    public String toString() {
-      return "RemoteVrsInfo [" + "color=" + _color + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", labelStack=" + _labelStack + ", lastUpdatedBy=" + _lastUpdatedBy + ", nextHop=" + _nextHop + ", vrsIP=" + _vrsIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "RemoteVrsInfo [" + "color=" + _color + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", labelStack=" + _labelStack + ", lastUpdatedBy=" + _lastUpdatedBy + ", nextHop=" + _nextHop + ", vrsIP=" + _vrsIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

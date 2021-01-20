@@ -45,13 +45,13 @@ public class NSPortInfo: RestObject {
 
    
    [JsonProperty("monitoringPorts")]
-   protected System.Collections.Generic.List<String> _monitoringPorts;
+   protected System.Collections.Generic.List<MonitoringPort> _monitoringPorts;
    
    [JsonProperty("ports")]
-   protected System.Collections.Generic.List<String> _ports;
+   protected System.Collections.Generic.List<NSPort> _ports;
    
    [JsonProperty("wirelessPorts")]
-   protected System.Collections.Generic.List<String> _wirelessPorts;
+   protected System.Collections.Generic.List<WirelessPort> _wirelessPorts;
    
 
    
@@ -61,7 +61,7 @@ public class NSPortInfo: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUMonitoringPorts {
+   public System.Collections.Generic.List<MonitoringPort> NUMonitoringPorts {
       get {
          return _monitoringPorts;
       }
@@ -72,7 +72,7 @@ public class NSPortInfo: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUPorts {
+   public System.Collections.Generic.List<NSPort> NUPorts {
       get {
          return _ports;
       }
@@ -83,7 +83,7 @@ public class NSPortInfo: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUWirelessPorts {
+   public System.Collections.Generic.List<WirelessPort> NUWirelessPorts {
       get {
          return _wirelessPorts;
       }
@@ -97,8 +97,7 @@ public class NSPortInfo: RestObject {
    
 
    public String toString() {
-      return "NSPortInfo [" + "monitoringPorts=" + _monitoringPorts + ", ports=" + _ports + ", wirelessPorts=" + _wirelessPorts + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "NSPortInfo [" + "monitoringPorts=" + _monitoringPorts + ", ports=" + _ports + ", wirelessPorts=" + _wirelessPorts + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

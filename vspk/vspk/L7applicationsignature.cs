@@ -61,7 +61,7 @@ public class L7applicationsignature: RestObject {
    protected long? _dictionaryVersion;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -180,7 +180,7 @@ public class L7applicationsignature: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -349,8 +349,7 @@ public class L7applicationsignature: RestObject {
    
 
    public String toString() {
-      return "L7applicationsignature [" + "category=" + _category + ", deprecated=" + _deprecated + ", deprecatedVersion=" + _deprecatedVersion + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", guidstring=" + _guidstring + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", pluginName=" + _pluginName + ", productivity=" + _productivity + ", readonly=" + _readonly + ", reference=" + _reference + ", risk=" + _risk + ", signatureIndex=" + _signatureIndex + ", signatureVersion=" + _signatureVersion + ", softwareFlags=" + _softwareFlags + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "L7applicationsignature [" + "category=" + _category + ", deprecated=" + _deprecated + ", deprecatedVersion=" + _deprecatedVersion + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", guidstring=" + _guidstring + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", pluginName=" + _pluginName + ", productivity=" + _productivity + ", readonly=" + _readonly + ", reference=" + _reference + ", risk=" + _risk + ", signatureIndex=" + _signatureIndex + ", signatureVersion=" + _signatureVersion + ", softwareFlags=" + _softwareFlags + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -56,7 +56,7 @@ public class VNFDescriptor: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -141,7 +141,7 @@ public class VNFDescriptor: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -266,8 +266,7 @@ public class VNFDescriptor: RestObject {
    
 
    public String toString() {
-      return "VNFDescriptor [" + "CPUCount=" + _CPUCount + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", memoryMB=" + _memoryMB + ", metadataID=" + _metadataID + ", name=" + _name + ", storageGB=" + _storageGB + ", type=" + _type + ", vendor=" + _vendor + ", visible=" + _visible + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VNFDescriptor [" + "CPUCount=" + _CPUCount + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", memoryMB=" + _memoryMB + ", metadataID=" + _metadataID + ", name=" + _name + ", storageGB=" + _storageGB + ", type=" + _type + ", vendor=" + _vendor + ", visible=" + _visible + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

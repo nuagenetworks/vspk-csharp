@@ -62,7 +62,7 @@ public class BFDSession: RestObject {
    protected long? _BFDTimer;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -149,7 +149,7 @@ public class BFDSession: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -215,8 +215,7 @@ public class BFDSession: RestObject {
    
 
    public String toString() {
-      return "BFDSession [" + "BFDDestinationIP=" + _BFDDestinationIP + ", BFDDestinationIPType=" + _BFDDestinationIPType + ", BFDDestinationIPv6=" + _BFDDestinationIPv6 + ", BFDMultiplier=" + _BFDMultiplier + ", BFDTimer=" + _BFDTimer + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiHopEnabled=" + _multiHopEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "BFDSession [" + "BFDDestinationIP=" + _BFDDestinationIP + ", BFDDestinationIPType=" + _BFDDestinationIPType + ", BFDDestinationIPv6=" + _BFDDestinationIPv6 + ", BFDMultiplier=" + _BFDMultiplier + ", BFDTimer=" + _BFDTimer + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", multiHopEnabled=" + _multiHopEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

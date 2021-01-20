@@ -71,7 +71,7 @@ public class TestSuiteRun: RestObject {
    protected String _domainName;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -202,7 +202,7 @@ public class TestSuiteRun: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -294,8 +294,7 @@ public class TestSuiteRun: RestObject {
    
 
    public String toString() {
-      return "TestSuiteRun [" + "NSGatewayName=" + _NSGatewayName + ", VPortName=" + _VPortName + ", associatedEntityType=" + _associatedEntityType + ", associatedTestSuiteID=" + _associatedTestSuiteID + ", associatedTestSuiteName=" + _associatedTestSuiteName + ", datapathID=" + _datapathID + ", destination=" + _destination + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", operationStatus=" + _operationStatus + ", subnetName=" + _subnetName + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "TestSuiteRun [" + "NSGatewayName=" + _NSGatewayName + ", VPortName=" + _VPortName + ", associatedEntityType=" + _associatedEntityType + ", associatedTestSuiteID=" + _associatedTestSuiteID + ", associatedTestSuiteName=" + _associatedTestSuiteName + ", datapathID=" + _datapathID + ", destination=" + _destination + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", operationStatus=" + _operationStatus + ", subnetName=" + _subnetName + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

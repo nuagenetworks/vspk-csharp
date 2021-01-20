@@ -63,7 +63,7 @@ public class NSGatewaySummary: RestObject {
    protected long? _criticalAlarmsCount;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -195,7 +195,7 @@ public class NSGatewaySummary: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -426,8 +426,7 @@ public class NSGatewaySummary: RestObject {
    
 
    public String toString() {
-      return "NSGatewaySummary [" + "NSGVersion=" + _NSGVersion + ", address=" + _address + ", bootstrapStatus=" + _bootstrapStatus + ", country=" + _country + ", criticalAlarmsCount=" + _criticalAlarmsCount + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", gatewayName=" + _gatewayName + ", gatewayType=" + _gatewayType + ", infoAlarmsCount=" + _infoAlarmsCount + ", lastUpdatedBy=" + _lastUpdatedBy + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", majorAlarmsCount=" + _majorAlarmsCount + ", minorAlarmsCount=" + _minorAlarmsCount + ", personality=" + _personality + ", redundantGroupID=" + _redundantGroupID + ", redundantGroupName=" + _redundantGroupName + ", state=" + _state + ", systemID=" + _systemID + ", timezoneID=" + _timezoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "NSGatewaySummary [" + "NSGVersion=" + _NSGVersion + ", address=" + _address + ", bootstrapStatus=" + _bootstrapStatus + ", country=" + _country + ", criticalAlarmsCount=" + _criticalAlarmsCount + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayID=" + _gatewayID + ", gatewayName=" + _gatewayName + ", gatewayType=" + _gatewayType + ", infoAlarmsCount=" + _infoAlarmsCount + ", lastUpdatedBy=" + _lastUpdatedBy + ", latitude=" + _latitude + ", locality=" + _locality + ", longitude=" + _longitude + ", majorAlarmsCount=" + _majorAlarmsCount + ", minorAlarmsCount=" + _minorAlarmsCount + ", personality=" + _personality + ", redundantGroupID=" + _redundantGroupID + ", redundantGroupName=" + _redundantGroupName + ", state=" + _state + ", systemID=" + _systemID + ", timezoneID=" + _timezoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

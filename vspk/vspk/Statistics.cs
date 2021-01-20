@@ -45,7 +45,7 @@ public class Statistics: RestObject {
 
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("endTime")]
    protected long? _endTime;
@@ -80,7 +80,7 @@ public class Statistics: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -157,8 +157,7 @@ public class Statistics: RestObject {
    
 
    public String toString() {
-      return "Statistics [" + "embeddedMetadata=" + _embeddedMetadata + ", endTime=" + _endTime + ", numberOfDataPoints=" + _numberOfDataPoints + ", startTime=" + _startTime + ", statsData=" + _statsData + ", version=" + _version + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Statistics [" + "embeddedMetadata=" + _embeddedMetadata + ", endTime=" + _endTime + ", numberOfDataPoints=" + _numberOfDataPoints + ", startTime=" + _startTime + ", statsData=" + _statsData + ", version=" + _version + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -49,7 +49,7 @@ public class EventLog: RestObject {
    protected Object _diff;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enterprise")]
    protected String _enterprise;
@@ -116,7 +116,7 @@ public class EventLog: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -270,8 +270,7 @@ public class EventLog: RestObject {
    
 
    public String toString() {
-      return "EventLog [" + "diff=" + _diff + ", embeddedMetadata=" + _embeddedMetadata + ", enterprise=" + _enterprise + ", entities=" + _entities + ", entityID=" + _entityID + ", entityParentID=" + _entityParentID + ", entityParentType=" + _entityParentType + ", entityScope=" + _entityScope + ", entityType=" + _entityType + ", eventReceivedTime=" + _eventReceivedTime + ", externalID=" + _externalID + ", requestID=" + _requestID + ", type=" + _type + ", user=" + _user + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "EventLog [" + "diff=" + _diff + ", embeddedMetadata=" + _embeddedMetadata + ", enterprise=" + _enterprise + ", entities=" + _entities + ", entityID=" + _entityID + ", entityParentID=" + _entityParentID + ", entityParentType=" + _entityParentType + ", entityScope=" + _entityScope + ", entityType=" + _entityType + ", eventReceivedTime=" + _eventReceivedTime + ", externalID=" + _externalID + ", requestID=" + _requestID + ", type=" + _type + ", user=" + _user + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

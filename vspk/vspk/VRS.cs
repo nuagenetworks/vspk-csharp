@@ -72,10 +72,10 @@ public class VRS: RestObject {
    protected String _description;
    
    [JsonProperty("disks")]
-   protected System.Collections.Generic.List<String> _disks;
+   protected System.Collections.Generic.List<DiskStat> _disks;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -340,7 +340,7 @@ public class VRS: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUDisks {
+   public System.Collections.Generic.List<DiskStat> NUDisks {
       get {
          return _disks;
       }
@@ -351,7 +351,7 @@ public class VRS: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -817,8 +817,7 @@ public class VRS: RestObject {
    
 
    public String toString() {
-      return "VRS [" + "address=" + _address + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", dbSynced=" + _dbSynced + ", description=" + _description + ", disks=" + _disks + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayUUID=" + _gatewayUUID + ", hypervisorConnectionState=" + _hypervisorConnectionState + ", hypervisorIdentifier=" + _hypervisorIdentifier + ", hypervisorName=" + _hypervisorName + ", hypervisorType=" + _hypervisorType + ", isResilient=" + _isResilient + ", lastEventName=" + _lastEventName + ", lastEventObject=" + _lastEventObject + ", lastEventTimestamp=" + _lastEventTimestamp + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", licensedState=" + _licensedState + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", multiNICVPortEnabled=" + _multiNICVPortEnabled + ", name=" + _name + ", numberOfBridgeInterfaces=" + _numberOfBridgeInterfaces + ", numberOfContainers=" + _numberOfContainers + ", numberOfHostInterfaces=" + _numberOfHostInterfaces + ", numberOfVirtualMachines=" + _numberOfVirtualMachines + ", parentIDs=" + _parentIDs + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", personality=" + _personality + ", primaryVSCConnectionLost=" + _primaryVSCConnectionLost + ", productVersion=" + _productVersion + ", revertBehaviorEnabled=" + _revertBehaviorEnabled + ", revertCompleted=" + _revertCompleted + ", revertCount=" + _revertCount + ", revertFailedCount=" + _revertFailedCount + ", role=" + _role + ", status=" + _status + ", uptime=" + _uptime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VRS [" + "address=" + _address + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", dbSynced=" + _dbSynced + ", description=" + _description + ", disks=" + _disks + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayUUID=" + _gatewayUUID + ", hypervisorConnectionState=" + _hypervisorConnectionState + ", hypervisorIdentifier=" + _hypervisorIdentifier + ", hypervisorName=" + _hypervisorName + ", hypervisorType=" + _hypervisorType + ", isResilient=" + _isResilient + ", lastEventName=" + _lastEventName + ", lastEventObject=" + _lastEventObject + ", lastEventTimestamp=" + _lastEventTimestamp + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", licensedState=" + _licensedState + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", multiNICVPortEnabled=" + _multiNICVPortEnabled + ", name=" + _name + ", numberOfBridgeInterfaces=" + _numberOfBridgeInterfaces + ", numberOfContainers=" + _numberOfContainers + ", numberOfHostInterfaces=" + _numberOfHostInterfaces + ", numberOfVirtualMachines=" + _numberOfVirtualMachines + ", parentIDs=" + _parentIDs + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", personality=" + _personality + ", primaryVSCConnectionLost=" + _primaryVSCConnectionLost + ", productVersion=" + _productVersion + ", revertBehaviorEnabled=" + _revertBehaviorEnabled + ", revertCompleted=" + _revertCompleted + ", revertCount=" + _revertCount + ", revertFailedCount=" + _revertFailedCount + ", role=" + _role + ", status=" + _status + ", uptime=" + _uptime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

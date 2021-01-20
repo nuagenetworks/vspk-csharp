@@ -197,8 +197,7 @@ public class ZFBAutoAssignment: RestObject {
    
 
    public String toString() {
-      return "ZFBAutoAssignment [" + "ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchAttributeValues=" + _ZFBMatchAttributeValues + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedEnterpriseName=" + _associatedEnterpriseName + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ZFBAutoAssignment [" + "ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchAttributeValues=" + _ZFBMatchAttributeValues + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", associatedEnterpriseName=" + _associatedEnterpriseName + ", description=" + _description + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

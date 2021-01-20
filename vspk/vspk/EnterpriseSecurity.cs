@@ -46,7 +46,7 @@ public class EnterpriseSecurity: RestObject {
 
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -89,7 +89,7 @@ public class EnterpriseSecurity: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -181,8 +181,7 @@ public class EnterpriseSecurity: RestObject {
    
 
    public String toString() {
-      return "EnterpriseSecurity [" + "embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewaySecurityRevision=" + _gatewaySecurityRevision + ", lastUpdatedBy=" + _lastUpdatedBy + ", revision=" + _revision + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "EnterpriseSecurity [" + "embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewaySecurityRevision=" + _gatewaySecurityRevision + ", lastUpdatedBy=" + _lastUpdatedBy + ", revision=" + _revision + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

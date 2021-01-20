@@ -61,7 +61,7 @@ public class Test: RestObject {
    protected String _destination;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -154,7 +154,7 @@ public class Test: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -242,8 +242,7 @@ public class Test: RestObject {
    
 
    public String toString() {
-      return "Test [" + "associatedTestDefinitionID=" + _associatedTestDefinitionID + ", associatedTestSuiteID=" + _associatedTestSuiteID + ", command=" + _command + ", description=" + _description + ", destination=" + _destination + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", order=" + _order + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Test [" + "associatedTestDefinitionID=" + _associatedTestDefinitionID + ", associatedTestSuiteID=" + _associatedTestSuiteID + ", command=" + _command + ", description=" + _description + ", destination=" + _destination + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", order=" + _order + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -55,7 +55,7 @@ public class Monitorscope: RestObject {
    protected System.Collections.Generic.List<String> _destinationNSGs;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -126,7 +126,7 @@ public class Monitorscope: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -214,8 +214,7 @@ public class Monitorscope: RestObject {
    
 
    public String toString() {
-      return "Monitorscope [" + "allowAllDestinationNSGs=" + _allowAllDestinationNSGs + ", allowAllSourceNSGs=" + _allowAllSourceNSGs + ", destinationNSGs=" + _destinationNSGs + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", readOnly=" + _readOnly + ", sourceNSGs=" + _sourceNSGs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Monitorscope [" + "allowAllDestinationNSGs=" + _allowAllDestinationNSGs + ", allowAllSourceNSGs=" + _allowAllSourceNSGs + ", destinationNSGs=" + _destinationNSGs + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", readOnly=" + _readOnly + ", sourceNSGs=" + _sourceNSGs + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

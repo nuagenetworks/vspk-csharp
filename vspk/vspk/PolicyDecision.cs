@@ -52,7 +52,7 @@ public class PolicyDecision: RestObject {
    protected Object _egressQos;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -123,7 +123,7 @@ public class PolicyDecision: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -237,8 +237,7 @@ public class PolicyDecision: RestObject {
    
 
    public String toString() {
-      return "PolicyDecision [" + "egressACLs=" + _egressACLs + ", egressQos=" + _egressQos + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fipACLs=" + _fipACLs + ", ingressACLs=" + _ingressACLs + ", ingressAdvFwd=" + _ingressAdvFwd + ", lastUpdatedBy=" + _lastUpdatedBy + ", qos=" + _qos + ", stats=" + _stats + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "PolicyDecision [" + "egressACLs=" + _egressACLs + ", egressQos=" + _egressQos + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fipACLs=" + _fipACLs + ", ingressACLs=" + _ingressACLs + ", ingressAdvFwd=" + _ingressAdvFwd + ", lastUpdatedBy=" + _lastUpdatedBy + ", qos=" + _qos + ", stats=" + _stats + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -60,7 +60,7 @@ public class PolicyGroup: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -167,7 +167,7 @@ public class PolicyGroup: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -300,8 +300,7 @@ public class PolicyGroup: RestObject {
    
 
    public String toString() {
-      return "PolicyGroup [" + "EVPNCommunityTag=" + _EVPNCommunityTag + ", assocPolicyGroupCategoryID=" + _assocPolicyGroupCategoryID + ", assocPolicyGroupCategoryName=" + _assocPolicyGroupCategoryName + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", external=" + _external + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyGroupID=" + _policyGroupID + ", templateID=" + _templateID + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "PolicyGroup [" + "EVPNCommunityTag=" + _EVPNCommunityTag + ", assocPolicyGroupCategoryID=" + _assocPolicyGroupCategoryID + ", assocPolicyGroupCategoryName=" + _assocPolicyGroupCategoryName + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", external=" + _external + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", policyGroupID=" + _policyGroupID + ", templateID=" + _templateID + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

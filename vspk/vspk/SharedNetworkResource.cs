@@ -85,7 +85,7 @@ public class SharedNetworkResource: RestObject {
    protected bool _dynamicPATAllocationEnabled;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -329,7 +329,7 @@ public class SharedNetworkResource: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -595,8 +595,7 @@ public class SharedNetworkResource: RestObject {
    
 
    public String toString() {
-      return "SharedNetworkResource [" + "DHCPManaged=" + _DHCPManaged + ", ECMPCount=" + _ECMPCount + ", accessRestrictionEnabled=" + _accessRestrictionEnabled + ", address=" + _address + ", associatedPATMapperID=" + _associatedPATMapperID + ", backHaulRouteDistinguisher=" + _backHaulRouteDistinguisher + ", backHaulRouteTarget=" + _backHaulRouteTarget + ", backHaulVNID=" + _backHaulVNID + ", description=" + _description + ", domainRouteDistinguisher=" + _domainRouteDistinguisher + ", domainRouteTarget=" + _domainRouteTarget + ", dynamicPATAllocationEnabled=" + _dynamicPATAllocationEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", netmask=" + _netmask + ", permittedActionType=" + _permittedActionType + ", sharedResourceParentID=" + _sharedResourceParentID + ", subnetRouteDistinguisher=" + _subnetRouteDistinguisher + ", subnetRouteTarget=" + _subnetRouteTarget + ", type=" + _type + ", underlay=" + _underlay + ", uplinkGWVlanAttachmentID=" + _uplinkGWVlanAttachmentID + ", uplinkInterfaceIP=" + _uplinkInterfaceIP + ", uplinkInterfaceMAC=" + _uplinkInterfaceMAC + ", uplinkVPortName=" + _uplinkVPortName + ", useGlobalMAC=" + _useGlobalMAC + ", vnID=" + _vnID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "SharedNetworkResource [" + "DHCPManaged=" + _DHCPManaged + ", ECMPCount=" + _ECMPCount + ", accessRestrictionEnabled=" + _accessRestrictionEnabled + ", address=" + _address + ", associatedPATMapperID=" + _associatedPATMapperID + ", backHaulRouteDistinguisher=" + _backHaulRouteDistinguisher + ", backHaulRouteTarget=" + _backHaulRouteTarget + ", backHaulVNID=" + _backHaulVNID + ", description=" + _description + ", domainRouteDistinguisher=" + _domainRouteDistinguisher + ", domainRouteTarget=" + _domainRouteTarget + ", dynamicPATAllocationEnabled=" + _dynamicPATAllocationEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", netmask=" + _netmask + ", permittedActionType=" + _permittedActionType + ", sharedResourceParentID=" + _sharedResourceParentID + ", subnetRouteDistinguisher=" + _subnetRouteDistinguisher + ", subnetRouteTarget=" + _subnetRouteTarget + ", type=" + _type + ", underlay=" + _underlay + ", uplinkGWVlanAttachmentID=" + _uplinkGWVlanAttachmentID + ", uplinkInterfaceIP=" + _uplinkInterfaceIP + ", uplinkInterfaceMAC=" + _uplinkInterfaceMAC + ", uplinkVPortName=" + _uplinkVPortName + ", useGlobalMAC=" + _useGlobalMAC + ", vnID=" + _vnID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -80,7 +80,7 @@ public class GroupKeyEncryptionProfile: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -247,7 +247,7 @@ public class GroupKeyEncryptionProfile: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -445,8 +445,7 @@ public class GroupKeyEncryptionProfile: RestObject {
    
 
    public String toString() {
-      return "GroupKeyEncryptionProfile [" + "DRSeedLifetime=" + _DRSeedLifetime + ", SEKGenerationInterval=" + _SEKGenerationInterval + ", SEKLifetime=" + _SEKLifetime + ", SEKPayloadEncryptionAlgorithm=" + _SEKPayloadEncryptionAlgorithm + ", SEKPayloadEncryptionBCAlgorithm=" + _SEKPayloadEncryptionBCAlgorithm + ", SEKPayloadEncryptionKeyLength=" + _SEKPayloadEncryptionKeyLength + ", SEKPayloadSigningAlgorithm=" + _SEKPayloadSigningAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", seedGenerationInterval=" + _seedGenerationInterval + ", seedLifetime=" + _seedLifetime + ", seedPayloadAuthenticationAlgorithm=" + _seedPayloadAuthenticationAlgorithm + ", seedPayloadAuthenticationBCAlgorithm=" + _seedPayloadAuthenticationBCAlgorithm + ", seedPayloadAuthenticationKeyLength=" + _seedPayloadAuthenticationKeyLength + ", seedPayloadEncryptionAlgorithm=" + _seedPayloadEncryptionAlgorithm + ", seedPayloadEncryptionBCAlgorithm=" + _seedPayloadEncryptionBCAlgorithm + ", seedPayloadEncryptionKeyLength=" + _seedPayloadEncryptionKeyLength + ", seedPayloadSigningAlgorithm=" + _seedPayloadSigningAlgorithm + ", trafficAuthenticationAlgorithm=" + _trafficAuthenticationAlgorithm + ", trafficEncryptionAlgorithm=" + _trafficEncryptionAlgorithm + ", trafficEncryptionKeyLifetime=" + _trafficEncryptionKeyLifetime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "GroupKeyEncryptionProfile [" + "DRSeedLifetime=" + _DRSeedLifetime + ", SEKGenerationInterval=" + _SEKGenerationInterval + ", SEKLifetime=" + _SEKLifetime + ", SEKPayloadEncryptionAlgorithm=" + _SEKPayloadEncryptionAlgorithm + ", SEKPayloadEncryptionBCAlgorithm=" + _SEKPayloadEncryptionBCAlgorithm + ", SEKPayloadEncryptionKeyLength=" + _SEKPayloadEncryptionKeyLength + ", SEKPayloadSigningAlgorithm=" + _SEKPayloadSigningAlgorithm + ", associatedEnterpriseID=" + _associatedEnterpriseID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", seedGenerationInterval=" + _seedGenerationInterval + ", seedLifetime=" + _seedLifetime + ", seedPayloadAuthenticationAlgorithm=" + _seedPayloadAuthenticationAlgorithm + ", seedPayloadAuthenticationBCAlgorithm=" + _seedPayloadAuthenticationBCAlgorithm + ", seedPayloadAuthenticationKeyLength=" + _seedPayloadAuthenticationKeyLength + ", seedPayloadEncryptionAlgorithm=" + _seedPayloadEncryptionAlgorithm + ", seedPayloadEncryptionBCAlgorithm=" + _seedPayloadEncryptionBCAlgorithm + ", seedPayloadEncryptionKeyLength=" + _seedPayloadEncryptionKeyLength + ", seedPayloadSigningAlgorithm=" + _seedPayloadSigningAlgorithm + ", trafficAuthenticationAlgorithm=" + _trafficAuthenticationAlgorithm + ", trafficEncryptionAlgorithm=" + _trafficEncryptionAlgorithm + ", trafficEncryptionKeyLifetime=" + _trafficEncryptionKeyLifetime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

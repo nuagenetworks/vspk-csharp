@@ -48,7 +48,7 @@ public class BulkStatistics: RestObject {
    protected System.Collections.Generic.List<JObject> _data;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("endTime")]
    protected long? _endTime;
@@ -91,7 +91,7 @@ public class BulkStatistics: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -157,8 +157,7 @@ public class BulkStatistics: RestObject {
    
 
    public String toString() {
-      return "BulkStatistics [" + "data=" + _data + ", embeddedMetadata=" + _embeddedMetadata + ", endTime=" + _endTime + ", numberOfDataPoints=" + _numberOfDataPoints + ", startTime=" + _startTime + ", version=" + _version + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "BulkStatistics [" + "data=" + _data + ", embeddedMetadata=" + _embeddedMetadata + ", endTime=" + _endTime + ", numberOfDataPoints=" + _numberOfDataPoints + ", startTime=" + _startTime + ", version=" + _version + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

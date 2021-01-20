@@ -169,8 +169,7 @@ public class PATIPEntry: RestObject {
    
 
    public String toString() {
-      return "PATIPEntry [" + "IPAddress=" + _IPAddress + ", IPType=" + _IPType + ", PATCentralized=" + _PATCentralized + ", associatedDomainID=" + _associatedDomainID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorID=" + _hypervisorID + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "PATIPEntry [" + "IPAddress=" + _IPAddress + ", IPType=" + _IPType + ", PATCentralized=" + _PATCentralized + ", associatedDomainID=" + _associatedDomainID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", hypervisorID=" + _hypervisorID + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

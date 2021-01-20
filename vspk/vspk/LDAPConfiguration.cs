@@ -61,7 +61,7 @@ public class LDAPConfiguration: RestObject {
    protected String _certificate;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enabled")]
    protected bool _enabled;
@@ -172,7 +172,7 @@ public class LDAPConfiguration: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -326,8 +326,7 @@ public class LDAPConfiguration: RestObject {
    
 
    public String toString() {
-      return "LDAPConfiguration [" + "SSLEnabled=" + _SSLEnabled + ", acceptAllCertificates=" + _acceptAllCertificates + ", authorizationEnabled=" + _authorizationEnabled + ", authorizingUserDN=" + _authorizingUserDN + ", certificate=" + _certificate + ", embeddedMetadata=" + _embeddedMetadata + ", enabled=" + _enabled + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", groupDN=" + _groupDN + ", groupNamePrefix=" + _groupNamePrefix + ", groupNameSuffix=" + _groupNameSuffix + ", lastUpdatedBy=" + _lastUpdatedBy + ", password=" + _password + ", port=" + _port + ", server=" + _server + ", userDNTemplate=" + _userDNTemplate + ", userNameAttribute=" + _userNameAttribute + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "LDAPConfiguration [" + "SSLEnabled=" + _SSLEnabled + ", acceptAllCertificates=" + _acceptAllCertificates + ", authorizationEnabled=" + _authorizationEnabled + ", authorizingUserDN=" + _authorizingUserDN + ", certificate=" + _certificate + ", embeddedMetadata=" + _embeddedMetadata + ", enabled=" + _enabled + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", groupDN=" + _groupDN + ", groupNamePrefix=" + _groupNamePrefix + ", groupNameSuffix=" + _groupNameSuffix + ", lastUpdatedBy=" + _lastUpdatedBy + ", password=" + _password + ", port=" + _port + ", server=" + _server + ", userDNTemplate=" + _userDNTemplate + ", userNameAttribute=" + _userNameAttribute + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

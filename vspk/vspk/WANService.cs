@@ -71,7 +71,7 @@ public class WANService: RestObject {
    protected String _domainName;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enterpriseName")]
    protected String _enterpriseName;
@@ -232,7 +232,7 @@ public class WANService: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -424,8 +424,7 @@ public class WANService: RestObject {
    
 
    public String toString() {
-      return "WANService [" + "IRBEnabled=" + _IRBEnabled + ", WANServiceIdentifier=" + _WANServiceIdentifier + ", associatedDomainID=" + _associatedDomainID + ", associatedVPNConnectID=" + _associatedVPNConnectID + ", configType=" + _configType + ", description=" + _description + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", externalRouteTarget=" + _externalRouteTarget + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", orphan=" + _orphan + ", permittedAction=" + _permittedAction + ", servicePolicy=" + _servicePolicy + ", serviceType=" + _serviceType + ", tunnelType=" + _tunnelType + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "WANService [" + "IRBEnabled=" + _IRBEnabled + ", WANServiceIdentifier=" + _WANServiceIdentifier + ", associatedDomainID=" + _associatedDomainID + ", associatedVPNConnectID=" + _associatedVPNConnectID + ", configType=" + _configType + ", description=" + _description + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", externalRouteTarget=" + _externalRouteTarget + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", orphan=" + _orphan + ", permittedAction=" + _permittedAction + ", servicePolicy=" + _servicePolicy + ", serviceType=" + _serviceType + ", tunnelType=" + _tunnelType + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

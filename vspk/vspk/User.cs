@@ -69,7 +69,7 @@ public class User: RestObject {
    protected String _email;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -218,7 +218,7 @@ public class User: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -359,8 +359,7 @@ public class User: RestObject {
    
 
    public String toString() {
-      return "User [" + "LDAPUserDN=" + _LDAPUserDN + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", disableCertificateAuth=" + _disableCertificateAuth + ", disablePasswordAuth=" + _disablePasswordAuth + ", disabled=" + _disabled + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", managementMode=" + _managementMode + ", mobileNumber=" + _mobileNumber + ", password=" + _password + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "User [" + "LDAPUserDN=" + _LDAPUserDN + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", disableCertificateAuth=" + _disableCertificateAuth + ", disablePasswordAuth=" + _disablePasswordAuth + ", disabled=" + _disabled + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", managementMode=" + _managementMode + ", mobileNumber=" + _mobileNumber + ", password=" + _password + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

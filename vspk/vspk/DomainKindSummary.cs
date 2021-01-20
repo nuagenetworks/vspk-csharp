@@ -55,7 +55,7 @@ public class DomainKindSummary: RestObject {
    protected String _domainKindName;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -144,7 +144,7 @@ public class DomainKindSummary: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -298,8 +298,7 @@ public class DomainKindSummary: RestObject {
    
 
    public String toString() {
-      return "DomainKindSummary [" + "criticalAlarmsCount=" + _criticalAlarmsCount + ", domainKindDescription=" + _domainKindDescription + ", domainKindName=" + _domainKindName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayCount=" + _gatewayCount + ", infoAlarmsCount=" + _infoAlarmsCount + ", lastUpdatedBy=" + _lastUpdatedBy + ", majorAlarmsCount=" + _majorAlarmsCount + ", meshGroupCount=" + _meshGroupCount + ", minorAlarmsCount=" + _minorAlarmsCount + ", nsgCount=" + _nsgCount + ", subNetworkCount=" + _subNetworkCount + ", trafficVolume=" + _trafficVolume + ", zoneCount=" + _zoneCount + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "DomainKindSummary [" + "criticalAlarmsCount=" + _criticalAlarmsCount + ", domainKindDescription=" + _domainKindDescription + ", domainKindName=" + _domainKindName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayCount=" + _gatewayCount + ", infoAlarmsCount=" + _infoAlarmsCount + ", lastUpdatedBy=" + _lastUpdatedBy + ", majorAlarmsCount=" + _majorAlarmsCount + ", meshGroupCount=" + _meshGroupCount + ", minorAlarmsCount=" + _minorAlarmsCount + ", nsgCount=" + _nsgCount + ", subNetworkCount=" + _subNetworkCount + ", trafficVolume=" + _trafficVolume + ", zoneCount=" + _zoneCount + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

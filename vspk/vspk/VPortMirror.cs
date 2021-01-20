@@ -53,7 +53,7 @@ public class VPortMirror: RestObject {
    protected String _domainName;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enterpiseName")]
    protected String _enterpiseName;
@@ -126,7 +126,7 @@ public class VPortMirror: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -258,8 +258,7 @@ public class VPortMirror: RestObject {
    
 
    public String toString() {
-      return "VPortMirror [" + "attachedNetworkType=" + _attachedNetworkType + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpiseName=" + _enterpiseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mirrorDestinationID=" + _mirrorDestinationID + ", mirrorDestinationName=" + _mirrorDestinationName + ", mirrorDirection=" + _mirrorDirection + ", networkName=" + _networkName + ", vportId=" + _vportId + ", vportName=" + _vportName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VPortMirror [" + "attachedNetworkType=" + _attachedNetworkType + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", enterpiseName=" + _enterpiseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mirrorDestinationID=" + _mirrorDestinationID + ", mirrorDestinationName=" + _mirrorDestinationName + ", mirrorDirection=" + _mirrorDirection + ", networkName=" + _networkName + ", vportId=" + _vportId + ", vportName=" + _vportName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

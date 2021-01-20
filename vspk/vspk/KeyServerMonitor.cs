@@ -46,7 +46,7 @@ public class KeyServerMonitor: RestObject {
 
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enterpriseSecuredDataRecordCount")]
    protected long? _enterpriseSecuredDataRecordCount;
@@ -111,7 +111,7 @@ public class KeyServerMonitor: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -255,8 +255,7 @@ public class KeyServerMonitor: RestObject {
    
 
    public String toString() {
-      return "KeyServerMonitor [" + "embeddedMetadata=" + _embeddedMetadata + ", enterpriseSecuredDataRecordCount=" + _enterpriseSecuredDataRecordCount + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewaySecuredDataRecordCount=" + _gatewaySecuredDataRecordCount + ", keyserverMonitorEncryptedSEKCount=" + _keyserverMonitorEncryptedSEKCount + ", keyserverMonitorEncryptedSeedCount=" + _keyserverMonitorEncryptedSeedCount + ", keyserverMonitorSEKCount=" + _keyserverMonitorSEKCount + ", keyserverMonitorSeedCount=" + _keyserverMonitorSeedCount + ", lastUpdateTime=" + _lastUpdateTime + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "KeyServerMonitor [" + "embeddedMetadata=" + _embeddedMetadata + ", enterpriseSecuredDataRecordCount=" + _enterpriseSecuredDataRecordCount + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewaySecuredDataRecordCount=" + _gatewaySecuredDataRecordCount + ", keyserverMonitorEncryptedSEKCount=" + _keyserverMonitorEncryptedSEKCount + ", keyserverMonitorEncryptedSeedCount=" + _keyserverMonitorEncryptedSeedCount + ", keyserverMonitorSEKCount=" + _keyserverMonitorSEKCount + ", keyserverMonitorSeedCount=" + _keyserverMonitorSeedCount + ", lastUpdateTime=" + _lastUpdateTime + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

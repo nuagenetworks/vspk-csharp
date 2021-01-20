@@ -57,7 +57,7 @@ public class Group: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -144,7 +144,7 @@ public class Group: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -262,8 +262,7 @@ public class Group: RestObject {
    
 
    public String toString() {
-      return "Group [" + "LDAPGroupDN=" + _LDAPGroupDN + ", accountRestrictions=" + _accountRestrictions + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", managementMode=" + _managementMode + ", name=" + _name + ", private=" + _private + ", restrictionDate=" + _restrictionDate + ", role=" + _role + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Group [" + "LDAPGroupDN=" + _LDAPGroupDN + ", accountRestrictions=" + _accountRestrictions + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", managementMode=" + _managementMode + ", name=" + _name + ", private=" + _private + ", restrictionDate=" + _restrictionDate + ", role=" + _role + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

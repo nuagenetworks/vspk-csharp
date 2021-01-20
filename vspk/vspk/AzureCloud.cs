@@ -58,7 +58,7 @@ public class AzureCloud: RestObject {
    protected String _clientSecret;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -150,7 +150,7 @@ public class AzureCloud: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -246,8 +246,7 @@ public class AzureCloud: RestObject {
    
 
    public String toString() {
-      return "AzureCloud [" + "associatedIKEEncryptionProfileID=" + _associatedIKEEncryptionProfileID + ", associatedIKEPSKID=" + _associatedIKEPSKID + ", clientID=" + _clientID + ", clientSecret=" + _clientSecret + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", subscriptionID=" + _subscriptionID + ", tenantID=" + _tenantID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "AzureCloud [" + "associatedIKEEncryptionProfileID=" + _associatedIKEEncryptionProfileID + ", associatedIKEPSKID=" + _associatedIKEPSKID + ", clientID=" + _clientID + ", clientSecret=" + _clientSecret + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", subscriptionID=" + _subscriptionID + ", tenantID=" + _tenantID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

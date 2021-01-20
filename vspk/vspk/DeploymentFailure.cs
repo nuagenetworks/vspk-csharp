@@ -74,7 +74,7 @@ public class DeploymentFailure: RestObject {
    protected String _diffMap;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -217,7 +217,7 @@ public class DeploymentFailure: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -327,8 +327,7 @@ public class DeploymentFailure: RestObject {
    
 
    public String toString() {
-      return "DeploymentFailure [" + "affectedEntityID=" + _affectedEntityID + ", affectedEntityType=" + _affectedEntityType + ", assocEntityId=" + _assocEntityId + ", assocEntityType=" + _assocEntityType + ", associatedDomainID=" + _associatedDomainID + ", associatedDomainType=" + _associatedDomainType + ", associatedNetworkEntityID=" + _associatedNetworkEntityID + ", associatedNetworkEntityType=" + _associatedNetworkEntityType + ", diffMap=" + _diffMap + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", eventType=" + _eventType + ", externalID=" + _externalID + ", lastFailureReason=" + _lastFailureReason + ", lastKnownError=" + _lastKnownError + ", lastUpdatedBy=" + _lastUpdatedBy + ", numberOfOccurences=" + _numberOfOccurences + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "DeploymentFailure [" + "affectedEntityID=" + _affectedEntityID + ", affectedEntityType=" + _affectedEntityType + ", assocEntityId=" + _assocEntityId + ", assocEntityType=" + _assocEntityType + ", associatedDomainID=" + _associatedDomainID + ", associatedDomainType=" + _associatedDomainType + ", associatedNetworkEntityID=" + _associatedNetworkEntityID + ", associatedNetworkEntityType=" + _associatedNetworkEntityType + ", diffMap=" + _diffMap + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", eventType=" + _eventType + ", externalID=" + _externalID + ", lastFailureReason=" + _lastFailureReason + ", lastKnownError=" + _lastKnownError + ", lastUpdatedBy=" + _lastUpdatedBy + ", numberOfOccurences=" + _numberOfOccurences + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

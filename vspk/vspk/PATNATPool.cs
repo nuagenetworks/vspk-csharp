@@ -76,7 +76,7 @@ public class PATNATPool: RestObject {
    protected bool _dynamicSourceEnabled;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("endAddressRange")]
    protected String _endAddressRange;
@@ -252,7 +252,7 @@ public class PATNATPool: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -397,8 +397,7 @@ public class PATNATPool: RestObject {
    
 
    public String toString() {
-      return "PATNATPool [" + "IPType=" + _IPType + ", addressRange=" + _addressRange + ", associatedGatewayId=" + _associatedGatewayId + ", associatedGatewayType=" + _associatedGatewayType + ", associatedSubnetId=" + _associatedSubnetId + ", associatedVlanId=" + _associatedVlanId + ", defaultPATIP=" + _defaultPATIP + ", description=" + _description + ", dynamicSourceEnabled=" + _dynamicSourceEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", endAddressRange=" + _endAddressRange + ", endSourceAddress=" + _endSourceAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", startAddressRange=" + _startAddressRange + ", startSourceAddress=" + _startSourceAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "PATNATPool [" + "IPType=" + _IPType + ", addressRange=" + _addressRange + ", associatedGatewayId=" + _associatedGatewayId + ", associatedGatewayType=" + _associatedGatewayType + ", associatedSubnetId=" + _associatedSubnetId + ", associatedVlanId=" + _associatedVlanId + ", defaultPATIP=" + _defaultPATIP + ", description=" + _description + ", dynamicSourceEnabled=" + _dynamicSourceEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", endAddressRange=" + _endAddressRange + ", endSourceAddress=" + _endSourceAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", permittedAction=" + _permittedAction + ", startAddressRange=" + _startAddressRange + ", startSourceAddress=" + _startSourceAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -87,7 +87,7 @@ public class IKEGatewayConnection: RestObject {
    protected EConfigurationStatus? _configurationStatus;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -286,7 +286,7 @@ public class IKEGatewayConnection: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -423,8 +423,7 @@ public class IKEGatewayConnection: RestObject {
    
 
    public String toString() {
-      return "IKEGatewayConnection [" + "NSGIdentifier=" + _NSGIdentifier + ", NSGIdentifierType=" + _NSGIdentifierType + ", NSGRole=" + _NSGRole + ", allowAnySubnet=" + _allowAnySubnet + ", associatedCloudID=" + _associatedCloudID + ", associatedCloudType=" + _associatedCloudType + ", associatedIKEAuthenticationID=" + _associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + _associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + _associatedIKEEncryptionProfileID + ", associatedIKEGatewayProfileID=" + _associatedIKEGatewayProfileID + ", associatedVLANID=" + _associatedVLANID + ", configurationStatus=" + _configurationStatus + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mark=" + _mark + ", name=" + _name + ", portVLANName=" + _portVLANName + ", priority=" + _priority + ", sequence=" + _sequence + ", unencryptedPSK=" + _unencryptedPSK + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "IKEGatewayConnection [" + "NSGIdentifier=" + _NSGIdentifier + ", NSGIdentifierType=" + _NSGIdentifierType + ", NSGRole=" + _NSGRole + ", allowAnySubnet=" + _allowAnySubnet + ", associatedCloudID=" + _associatedCloudID + ", associatedCloudType=" + _associatedCloudType + ", associatedIKEAuthenticationID=" + _associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + _associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + _associatedIKEEncryptionProfileID + ", associatedIKEGatewayProfileID=" + _associatedIKEGatewayProfileID + ", associatedVLANID=" + _associatedVLANID + ", configurationStatus=" + _configurationStatus + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mark=" + _mark + ", name=" + _name + ", portVLANName=" + _portVLANName + ", priority=" + _priority + ", sequence=" + _sequence + ", unencryptedPSK=" + _unencryptedPSK + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

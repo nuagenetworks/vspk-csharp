@@ -81,7 +81,7 @@ public class VNF: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -273,7 +273,7 @@ public class VNF: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -465,8 +465,7 @@ public class VNF: RestObject {
    
 
    public String toString() {
-      return "VNF [" + "CPUCount=" + _CPUCount + ", NSGName=" + _NSGName + ", NSGSystemID=" + _NSGSystemID + ", NSGatewayID=" + _NSGatewayID + ", VNFDescriptorID=" + _VNFDescriptorID + ", VNFDescriptorName=" + _VNFDescriptorName + ", allowedActions=" + _allowedActions + ", associatedVNFMetadataID=" + _associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isAttachedToDescriptor=" + _isAttachedToDescriptor + ", lastKnownError=" + _lastKnownError + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUserAction=" + _lastUserAction + ", memoryMB=" + _memoryMB + ", name=" + _name + ", status=" + _status + ", storageGB=" + _storageGB + ", taskState=" + _taskState + ", type=" + _type + ", vendor=" + _vendor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "VNF [" + "CPUCount=" + _CPUCount + ", NSGName=" + _NSGName + ", NSGSystemID=" + _NSGSystemID + ", NSGatewayID=" + _NSGatewayID + ", VNFDescriptorID=" + _VNFDescriptorID + ", VNFDescriptorName=" + _VNFDescriptorName + ", allowedActions=" + _allowedActions + ", associatedVNFMetadataID=" + _associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + _associatedVNFThresholdPolicyID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isAttachedToDescriptor=" + _isAttachedToDescriptor + ", lastKnownError=" + _lastKnownError + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUserAction=" + _lastUserAction + ", memoryMB=" + _memoryMB + ", name=" + _name + ", status=" + _status + ", storageGB=" + _storageGB + ", taskState=" + _taskState + ", type=" + _type + ", vendor=" + _vendor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

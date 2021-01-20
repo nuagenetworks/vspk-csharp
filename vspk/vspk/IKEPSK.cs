@@ -55,7 +55,7 @@ public class IKEPSK: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("encryptedPSK")]
    protected String _encryptedPSK;
@@ -135,7 +135,7 @@ public class IKEPSK: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -256,8 +256,7 @@ public class IKEPSK: RestObject {
    
 
    public String toString() {
-      return "IKEPSK [" + "associatedEnterpriseID=" + _associatedEnterpriseID + ", autoCreated=" + _autoCreated + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", encryptedPSK=" + _encryptedPSK + ", encryptingCertificateSerialNumber=" + _encryptingCertificateSerialNumber + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", signature=" + _signature + ", signingCertificateSerialNumber=" + _signingCertificateSerialNumber + ", unencryptedPSK=" + _unencryptedPSK + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "IKEPSK [" + "associatedEnterpriseID=" + _associatedEnterpriseID + ", autoCreated=" + _autoCreated + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", encryptedPSK=" + _encryptedPSK + ", encryptingCertificateSerialNumber=" + _encryptingCertificateSerialNumber + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", signature=" + _signature + ", signingCertificateSerialNumber=" + _signingCertificateSerialNumber + ", unencryptedPSK=" + _unencryptedPSK + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

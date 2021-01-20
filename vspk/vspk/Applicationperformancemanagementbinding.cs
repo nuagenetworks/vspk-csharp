@@ -49,7 +49,7 @@ public class Applicationperformancemanagementbinding: RestObject {
    protected String _associatedApplicationPerformanceManagementID;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -95,7 +95,7 @@ public class Applicationperformancemanagementbinding: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -172,8 +172,7 @@ public class Applicationperformancemanagementbinding: RestObject {
    
 
    public String toString() {
-      return "Applicationperformancemanagementbinding [" + "associatedApplicationPerformanceManagementID=" + _associatedApplicationPerformanceManagementID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", priority=" + _priority + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Applicationperformancemanagementbinding [" + "associatedApplicationPerformanceManagementID=" + _associatedApplicationPerformanceManagementID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", priority=" + _priority + ", readOnly=" + _readOnly + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

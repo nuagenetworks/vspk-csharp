@@ -71,7 +71,7 @@ public class Me: RestObject {
    protected String _email;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -698,7 +698,7 @@ public class Me: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -1247,8 +1247,7 @@ public class Me: RestObject {
    
 
    public String toString() {
-      return "Me [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSStatsInterval=" + _VSSStatsInterval + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", disabled=" + _disabled + ", elasticSearchAddress=" + _elasticSearchAddress + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", mobileNumber=" + _mobileNumber + ", password=" + _password + ", role=" + _role + ", statisticsEnabled=" + _statisticsEnabled + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Me [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSStatsInterval=" + _VSSStatsInterval + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", disabled=" + _disabled + ", elasticSearchAddress=" + _elasticSearchAddress + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", mobileNumber=" + _mobileNumber + ", password=" + _password + ", role=" + _role + ", statisticsEnabled=" + _statisticsEnabled + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

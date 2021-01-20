@@ -72,7 +72,7 @@ public class ControllerVRSLink: RestObject {
    protected EClusterNodeRole? _clusterNodeRole;
    
    [JsonProperty("connections")]
-   protected System.Collections.Generic.List<String> _connections;
+   protected System.Collections.Generic.List<SysmonUplinkConnection> _connections;
    
    [JsonProperty("controllerID")]
    protected String _controllerID;
@@ -84,7 +84,7 @@ public class ControllerVRSLink: RestObject {
    protected bool _dynamic;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -206,7 +206,7 @@ public class ControllerVRSLink: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUConnections {
+   public System.Collections.Generic.List<SysmonUplinkConnection> NUConnections {
       get {
          return _connections;
       }
@@ -250,7 +250,7 @@ public class ControllerVRSLink: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -361,8 +361,7 @@ public class ControllerVRSLink: RestObject {
    
 
    public String toString() {
-      return "ControllerVRSLink [" + "JSONRPCConnectionState=" + _JSONRPCConnectionState + ", VRSID=" + _VRSID + ", VRSPersonality=" + _VRSPersonality + ", VSCConfigState=" + _VSCConfigState + ", VSCCurrentState=" + _VSCCurrentState + ", clusterNodeRole=" + _clusterNodeRole + ", connections=" + _connections + ", controllerID=" + _controllerID + ", controllerType=" + _controllerType + ", dynamic=" + _dynamic + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", peer=" + _peer + ", role=" + _role + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "ControllerVRSLink [" + "JSONRPCConnectionState=" + _JSONRPCConnectionState + ", VRSID=" + _VRSID + ", VRSPersonality=" + _VRSPersonality + ", VSCConfigState=" + _VSCConfigState + ", VSCCurrentState=" + _VSCCurrentState + ", clusterNodeRole=" + _clusterNodeRole + ", connections=" + _connections + ", controllerID=" + _controllerID + ", controllerType=" + _controllerType + ", dynamic=" + _dynamic + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", peer=" + _peer + ", role=" + _role + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

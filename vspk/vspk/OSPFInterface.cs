@@ -67,7 +67,7 @@ public class OSPFInterface: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -186,7 +186,7 @@ public class OSPFInterface: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -329,8 +329,7 @@ public class OSPFInterface: RestObject {
    
 
    public String toString() {
-      return "OSPFInterface [" + "adminState=" + _adminState + ", associatedSubnetID=" + _associatedSubnetID + ", authenticationKey=" + _authenticationKey + ", authenticationType=" + _authenticationType + ", deadInterval=" + _deadInterval + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", helloInterval=" + _helloInterval + ", interfaceType=" + _interfaceType + ", lastUpdatedBy=" + _lastUpdatedBy + ", messageDigestKeys=" + _messageDigestKeys + ", metric=" + _metric + ", mtu=" + _mtu + ", name=" + _name + ", passiveEnabled=" + _passiveEnabled + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "OSPFInterface [" + "adminState=" + _adminState + ", associatedSubnetID=" + _associatedSubnetID + ", authenticationKey=" + _authenticationKey + ", authenticationType=" + _authenticationType + ", deadInterval=" + _deadInterval + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", helloInterval=" + _helloInterval + ", interfaceType=" + _interfaceType + ", lastUpdatedBy=" + _lastUpdatedBy + ", messageDigestKeys=" + _messageDigestKeys + ", metric=" + _metric + ", mtu=" + _mtu + ", name=" + _name + ", passiveEnabled=" + _passiveEnabled + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

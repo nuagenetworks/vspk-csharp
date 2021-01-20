@@ -56,7 +56,7 @@ public class Alarm: RestObject {
    protected String _description;
    
    [JsonProperty("embeddedMetadata")]
-   protected System.Collections.Generic.List<String> _embeddedMetadata;
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
    [JsonProperty("enterpriseID")]
    protected String _enterpriseID;
@@ -142,7 +142,7 @@ public class Alarm: RestObject {
 
    
    [JsonIgnore]
-   public System.Collections.Generic.List<String> NUEmbeddedMetadata {
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
       }
@@ -285,8 +285,7 @@ public class Alarm: RestObject {
    
 
    public String toString() {
-      return "Alarm [" + "acknowledged=" + _acknowledged + ", alarmedObjectID=" + _alarmedObjectID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", numberOfOccurances=" + _numberOfOccurances + ", remedy=" + _remedy + ", severity=" + _severity + ", targetObject=" + _targetObject + ", timestamp=" + _timestamp + ", title=" + _title + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType + ", creationDate=" + NUCreationDate + ", lastUpdatedDate="
-              + NULastUpdatedDate + ", owner=" + NUOwner  + "]";
+      return "Alarm [" + "acknowledged=" + _acknowledged + ", alarmedObjectID=" + _alarmedObjectID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", numberOfOccurances=" + _numberOfOccurances + ", remedy=" + _remedy + ", severity=" + _severity + ", targetObject=" + _targetObject + ", timestamp=" + _timestamp + ", title=" + _title + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    
