@@ -42,19 +42,55 @@ public class Roleentry: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum ERoleAccessTypeList {CREATE,CUD_CHILDREN,DELETE,MODIFY,NO_ACCESS,NO_ACCESS_CHILDREN,READ,READ_CHILDREN };
 
    
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
+   
    [JsonProperty("endPointType")]
    protected String _endPointType;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
    
    [JsonProperty("roleAccessTypeList")]
    protected System.Collections.Generic.List<ERoleAccessTypeList> _roleAccessTypeList;
    
 
    
+   [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
+   [JsonIgnore]
+   private PermissionsFetcher _permissions;
+   
    public Roleentry() {
       
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
+      
+      _permissions = new PermissionsFetcher(this);
+      
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
    }
 
    
@@ -65,6 +101,28 @@ public class Roleentry: RestObject {
       }
       set {
          this._endPointType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
       }
    }
 
@@ -82,9 +140,21 @@ public class Roleentry: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
+   public PermissionsFetcher getPermissions() {
+      return _permissions;
+   }
+   
 
    public String toString() {
-      return "Roleentry [" + "endPointType=" + _endPointType + ", roleAccessTypeList=" + _roleAccessTypeList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Roleentry [" + "embeddedMetadata=" + _embeddedMetadata + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", roleAccessTypeList=" + _roleAccessTypeList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

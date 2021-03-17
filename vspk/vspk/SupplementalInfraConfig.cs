@@ -76,7 +76,7 @@ public class SupplementalInfraConfig: RestObject {
 
    public static String getResourceName()
    {
-	return "supplementalinfraconfigs";
+	return "supplementalinfraconfig";
    }
 
    public static String getRestName()
