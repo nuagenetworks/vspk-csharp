@@ -45,6 +45,9 @@ public class DomainKindSummary: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("criticalAlarmsCount")]
    protected long? _criticalAlarmsCount;
    
@@ -72,6 +75,9 @@ public class DomainKindSummary: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("majorAlarmsCount")]
    protected long? _majorAlarmsCount;
    
@@ -83,6 +89,9 @@ public class DomainKindSummary: RestObject {
    
    [JsonProperty("nsgCount")]
    protected long? _nsgCount;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("subNetworkCount")]
    protected long? _subNetworkCount;
@@ -107,6 +116,17 @@ public class DomainKindSummary: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -210,6 +230,17 @@ public class DomainKindSummary: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUMajorAlarmsCount {
       get {
          return _majorAlarmsCount;
@@ -249,6 +280,17 @@ public class DomainKindSummary: RestObject {
       }
       set {
          this._nsgCount = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -298,7 +340,7 @@ public class DomainKindSummary: RestObject {
    
 
    public String toString() {
-      return "DomainKindSummary [" + "criticalAlarmsCount=" + _criticalAlarmsCount + ", domainKindDescription=" + _domainKindDescription + ", domainKindName=" + _domainKindName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayCount=" + _gatewayCount + ", infoAlarmsCount=" + _infoAlarmsCount + ", lastUpdatedBy=" + _lastUpdatedBy + ", majorAlarmsCount=" + _majorAlarmsCount + ", meshGroupCount=" + _meshGroupCount + ", minorAlarmsCount=" + _minorAlarmsCount + ", nsgCount=" + _nsgCount + ", subNetworkCount=" + _subNetworkCount + ", trafficVolume=" + _trafficVolume + ", zoneCount=" + _zoneCount + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "DomainKindSummary [" + "creationDate=" + _creationDate + ", criticalAlarmsCount=" + _criticalAlarmsCount + ", domainKindDescription=" + _domainKindDescription + ", domainKindName=" + _domainKindName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewayCount=" + _gatewayCount + ", infoAlarmsCount=" + _infoAlarmsCount + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", majorAlarmsCount=" + _majorAlarmsCount + ", meshGroupCount=" + _meshGroupCount + ", minorAlarmsCount=" + _minorAlarmsCount + ", nsgCount=" + _nsgCount + ", owner=" + _owner + ", subNetworkCount=" + _subNetworkCount + ", trafficVolume=" + _trafficVolume + ", zoneCount=" + _zoneCount + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

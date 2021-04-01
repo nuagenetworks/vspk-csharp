@@ -63,6 +63,9 @@ public class VRSMetrics: RestObject {
    [JsonProperty("associatedVCenterHypervisorID")]
    protected String _associatedVCenterHypervisorID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("currentVersion")]
    protected String _currentVersion;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -78,11 +81,17 @@ public class VRSMetrics: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("logDiskPartitionUtilization")]
    protected float _logDiskPartitionUtilization;
    
    [JsonProperty("memoryUtilization")]
    protected float _memoryUtilization;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("reDeploy")]
    protected bool _reDeploy;
@@ -167,6 +176,17 @@ public class VRSMetrics: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUCurrentVersion {
       get {
          return _currentVersion;
@@ -222,6 +242,17 @@ public class VRSMetrics: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public float NULogDiskPartitionUtilization {
       get {
          return _logDiskPartitionUtilization;
@@ -239,6 +270,17 @@ public class VRSMetrics: RestObject {
       }
       set {
          this._memoryUtilization = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -280,7 +322,7 @@ public class VRSMetrics: RestObject {
    
 
    public String toString() {
-      return "VRSMetrics [" + "ALUbr0Status=" + _ALUbr0Status + ", CPUUtilization=" + _CPUUtilization + ", VRSProcess=" + _VRSProcess + ", VRSVSCStatus=" + _VRSVSCStatus + ", appliedMetricsPushInterval=" + _appliedMetricsPushInterval + ", associatedVCenterHypervisorID=" + _associatedVCenterHypervisorID + ", currentVersion=" + _currentVersion + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", jesxmonProcess=" + _jesxmonProcess + ", lastUpdatedBy=" + _lastUpdatedBy + ", logDiskPartitionUtilization=" + _logDiskPartitionUtilization + ", memoryUtilization=" + _memoryUtilization + ", reDeploy=" + _reDeploy + ", receivingMetrics=" + _receivingMetrics + ", rootDiskPartitionUtilization=" + _rootDiskPartitionUtilization + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "VRSMetrics [" + "ALUbr0Status=" + _ALUbr0Status + ", CPUUtilization=" + _CPUUtilization + ", VRSProcess=" + _VRSProcess + ", VRSVSCStatus=" + _VRSVSCStatus + ", appliedMetricsPushInterval=" + _appliedMetricsPushInterval + ", associatedVCenterHypervisorID=" + _associatedVCenterHypervisorID + ", creationDate=" + _creationDate + ", currentVersion=" + _currentVersion + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", jesxmonProcess=" + _jesxmonProcess + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", logDiskPartitionUtilization=" + _logDiskPartitionUtilization + ", memoryUtilization=" + _memoryUtilization + ", owner=" + _owner + ", reDeploy=" + _reDeploy + ", receivingMetrics=" + _receivingMetrics + ", rootDiskPartitionUtilization=" + _rootDiskPartitionUtilization + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

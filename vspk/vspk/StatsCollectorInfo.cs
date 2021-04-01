@@ -49,6 +49,9 @@ public class StatsCollectorInfo: RestObject {
    [JsonProperty("addressType")]
    protected EAddressType? _addressType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -63,6 +66,12 @@ public class StatsCollectorInfo: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("port")]
    protected String _port;
@@ -94,6 +103,17 @@ public class StatsCollectorInfo: RestObject {
       }
       set {
          this._addressType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -154,6 +174,28 @@ public class StatsCollectorInfo: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUPort {
       get {
          return _port;
@@ -187,7 +229,7 @@ public class StatsCollectorInfo: RestObject {
    
 
    public String toString() {
-      return "StatsCollectorInfo [" + "addressType=" + _addressType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ipAddress=" + _ipAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", port=" + _port + ", protoBufPort=" + _protoBufPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "StatsCollectorInfo [" + "addressType=" + _addressType + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ipAddress=" + _ipAddress + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", port=" + _port + ", protoBufPort=" + _protoBufPort + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

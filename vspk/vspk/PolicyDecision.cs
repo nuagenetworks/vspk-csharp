@@ -45,6 +45,9 @@ public class PolicyDecision: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("egressACLs")]
    protected System.Collections.Generic.List<JObject> _egressACLs;
    
@@ -72,6 +75,12 @@ public class PolicyDecision: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
+   
    [JsonProperty("qos")]
    protected Object _qos;
    
@@ -97,6 +106,17 @@ public class PolicyDecision: RestObject {
       
       _qOSs = new QOSsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -200,6 +220,28 @@ public class PolicyDecision: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public Object NUQos {
       get {
          return _qos;
@@ -237,7 +279,7 @@ public class PolicyDecision: RestObject {
    
 
    public String toString() {
-      return "PolicyDecision [" + "egressACLs=" + _egressACLs + ", egressQos=" + _egressQos + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fipACLs=" + _fipACLs + ", ingressACLs=" + _ingressACLs + ", ingressAdvFwd=" + _ingressAdvFwd + ", lastUpdatedBy=" + _lastUpdatedBy + ", qos=" + _qos + ", stats=" + _stats + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "PolicyDecision [" + "creationDate=" + _creationDate + ", egressACLs=" + _egressACLs + ", egressQos=" + _egressQos + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fipACLs=" + _fipACLs + ", ingressACLs=" + _ingressACLs + ", ingressAdvFwd=" + _ingressAdvFwd + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", qos=" + _qos + ", stats=" + _stats + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

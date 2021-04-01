@@ -51,6 +51,9 @@ public class NSGatewayTemplate: RestObject {
    [JsonProperty("SSHService")]
    protected ESSHService? _SSHService;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -78,8 +81,14 @@ public class NSGatewayTemplate: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("personality")]
    protected EPersonality? _personality;
@@ -113,6 +122,17 @@ public class NSGatewayTemplate: RestObject {
       }
       set {
          this._SSHService = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -217,12 +237,34 @@ public class NSGatewayTemplate: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -254,7 +296,7 @@ public class NSGatewayTemplate: RestObject {
    
 
    public String toString() {
-      return "NSGatewayTemplate [" + "SSHService=" + _SSHService + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", infrastructureAccessProfileID=" + _infrastructureAccessProfileID + ", infrastructureProfileID=" + _infrastructureProfileID + ", instanceSSHOverride=" + _instanceSSHOverride + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", personality=" + _personality + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "NSGatewayTemplate [" + "SSHService=" + _SSHService + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", infrastructureAccessProfileID=" + _infrastructureAccessProfileID + ", infrastructureProfileID=" + _infrastructureProfileID + ", instanceSSHOverride=" + _instanceSSHOverride + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", personality=" + _personality + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

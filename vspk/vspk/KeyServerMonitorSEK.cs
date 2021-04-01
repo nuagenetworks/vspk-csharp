@@ -47,6 +47,9 @@ public class KeyServerMonitorSEK: RestObject {
    public enum ESeedPayloadEncryptionAlgorithm {AES_128_CBC,AES_256_CBC,TRIPLE_DES_CBC };
 
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("creationTime")]
    protected long? _creationTime;
    
@@ -62,8 +65,14 @@ public class KeyServerMonitorSEK: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("lifetime")]
    protected long? _lifetime;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("seedPayloadAuthenticationAlgorithm")]
    protected ESeedPayloadAuthenticationAlgorithm? _seedPayloadAuthenticationAlgorithm;
@@ -88,6 +97,17 @@ public class KeyServerMonitorSEK: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -147,12 +167,34 @@ public class KeyServerMonitorSEK: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NULifetime {
       get {
          return _lifetime;
       }
       set {
          this._lifetime = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -202,7 +244,7 @@ public class KeyServerMonitorSEK: RestObject {
    
 
    public String toString() {
-      return "KeyServerMonitorSEK [" + "creationTime=" + _creationTime + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lifetime=" + _lifetime + ", seedPayloadAuthenticationAlgorithm=" + _seedPayloadAuthenticationAlgorithm + ", seedPayloadEncryptionAlgorithm=" + _seedPayloadEncryptionAlgorithm + ", startTime=" + _startTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "KeyServerMonitorSEK [" + "creationDate=" + _creationDate + ", creationTime=" + _creationTime + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", lifetime=" + _lifetime + ", owner=" + _owner + ", seedPayloadAuthenticationAlgorithm=" + _seedPayloadAuthenticationAlgorithm + ", seedPayloadEncryptionAlgorithm=" + _seedPayloadEncryptionAlgorithm + ", startTime=" + _startTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

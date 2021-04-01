@@ -48,6 +48,9 @@ public class L7applicationsignature: RestObject {
    [JsonProperty("category")]
    protected String _category;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("deprecated")]
    protected bool _deprecated;
    
@@ -75,8 +78,14 @@ public class L7applicationsignature: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("pluginName")]
    protected String _pluginName;
@@ -131,6 +140,17 @@ public class L7applicationsignature: RestObject {
       }
       set {
          this._category = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -235,12 +255,34 @@ public class L7applicationsignature: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -349,7 +391,7 @@ public class L7applicationsignature: RestObject {
    
 
    public String toString() {
-      return "L7applicationsignature [" + "category=" + _category + ", deprecated=" + _deprecated + ", deprecatedVersion=" + _deprecatedVersion + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", guidstring=" + _guidstring + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", pluginName=" + _pluginName + ", productivity=" + _productivity + ", readonly=" + _readonly + ", reference=" + _reference + ", risk=" + _risk + ", signatureIndex=" + _signatureIndex + ", signatureVersion=" + _signatureVersion + ", softwareFlags=" + _softwareFlags + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "L7applicationsignature [" + "category=" + _category + ", creationDate=" + _creationDate + ", deprecated=" + _deprecated + ", deprecatedVersion=" + _deprecatedVersion + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", guidstring=" + _guidstring + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", pluginName=" + _pluginName + ", productivity=" + _productivity + ", readonly=" + _readonly + ", reference=" + _reference + ", risk=" + _risk + ", signatureIndex=" + _signatureIndex + ", signatureVersion=" + _signatureVersion + ", softwareFlags=" + _softwareFlags + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

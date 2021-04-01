@@ -60,6 +60,9 @@ public class OSPFInterface: RestObject {
    [JsonProperty("authenticationType")]
    protected EAuthenticationType? _authenticationType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("deadInterval")]
    protected long? _deadInterval;
    
@@ -84,6 +87,9 @@ public class OSPFInterface: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("messageDigestKeys")]
    protected System.Collections.Generic.List<String> _messageDigestKeys;
    
@@ -95,6 +101,9 @@ public class OSPFInterface: RestObject {
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("passiveEnabled")]
    protected bool _passiveEnabled;
@@ -159,6 +168,17 @@ public class OSPFInterface: RestObject {
       }
       set {
          this._authenticationType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -252,6 +272,17 @@ public class OSPFInterface: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUMessageDigestKeys {
       get {
          return _messageDigestKeys;
@@ -296,6 +327,17 @@ public class OSPFInterface: RestObject {
 
    
    [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUPassiveEnabled {
       get {
          return _passiveEnabled;
@@ -329,7 +371,7 @@ public class OSPFInterface: RestObject {
    
 
    public String toString() {
-      return "OSPFInterface [" + "adminState=" + _adminState + ", associatedSubnetID=" + _associatedSubnetID + ", authenticationKey=" + _authenticationKey + ", authenticationType=" + _authenticationType + ", deadInterval=" + _deadInterval + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", helloInterval=" + _helloInterval + ", interfaceType=" + _interfaceType + ", lastUpdatedBy=" + _lastUpdatedBy + ", messageDigestKeys=" + _messageDigestKeys + ", metric=" + _metric + ", mtu=" + _mtu + ", name=" + _name + ", passiveEnabled=" + _passiveEnabled + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "OSPFInterface [" + "adminState=" + _adminState + ", associatedSubnetID=" + _associatedSubnetID + ", authenticationKey=" + _authenticationKey + ", authenticationType=" + _authenticationType + ", creationDate=" + _creationDate + ", deadInterval=" + _deadInterval + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", helloInterval=" + _helloInterval + ", interfaceType=" + _interfaceType + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", messageDigestKeys=" + _messageDigestKeys + ", metric=" + _metric + ", mtu=" + _mtu + ", name=" + _name + ", owner=" + _owner + ", passiveEnabled=" + _passiveEnabled + ", priority=" + _priority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

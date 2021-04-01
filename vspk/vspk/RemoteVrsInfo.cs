@@ -48,6 +48,9 @@ public class RemoteVrsInfo: RestObject {
    [JsonProperty("color")]
    protected long? _color;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -63,8 +66,14 @@ public class RemoteVrsInfo: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("nextHop")]
    protected String _nextHop;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("vrsIP")]
    protected String _vrsIP;
@@ -93,6 +102,17 @@ public class RemoteVrsInfo: RestObject {
       }
       set {
          this._color = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -153,12 +173,34 @@ public class RemoteVrsInfo: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUNextHop {
       get {
          return _nextHop;
       }
       set {
          this._nextHop = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -186,7 +228,7 @@ public class RemoteVrsInfo: RestObject {
    
 
    public String toString() {
-      return "RemoteVrsInfo [" + "color=" + _color + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", labelStack=" + _labelStack + ", lastUpdatedBy=" + _lastUpdatedBy + ", nextHop=" + _nextHop + ", vrsIP=" + _vrsIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "RemoteVrsInfo [" + "color=" + _color + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", labelStack=" + _labelStack + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", nextHop=" + _nextHop + ", owner=" + _owner + ", vrsIP=" + _vrsIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

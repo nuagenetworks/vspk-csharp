@@ -60,6 +60,9 @@ public class FloatingIp: RestObject {
    [JsonProperty("associatedSharedNetworkResourceID")]
    protected String _associatedSharedNetworkResourceID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -71,6 +74,12 @@ public class FloatingIp: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -155,6 +164,17 @@ public class FloatingIp: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -198,6 +218,28 @@ public class FloatingIp: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
 
    
    public EventLogsFetcher getEventLogs() {
@@ -218,7 +260,7 @@ public class FloatingIp: RestObject {
    
 
    public String toString() {
-      return "FloatingIp [" + "accessControl=" + _accessControl + ", address=" + _address + ", assigned=" + _assigned + ", assignedToObjectType=" + _assignedToObjectType + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "FloatingIp [" + "accessControl=" + _accessControl + ", address=" + _address + ", assigned=" + _assigned + ", assignedToObjectType=" + _assignedToObjectType + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

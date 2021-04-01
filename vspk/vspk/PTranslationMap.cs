@@ -52,6 +52,9 @@ public class PTranslationMap: RestObject {
    [JsonProperty("associatedDomainID")]
    protected String _associatedDomainID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -63,9 +66,15 @@ public class PTranslationMap: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("mappingType")]
    protected EMappingType? _mappingType;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("providerAliasIP")]
    protected String _providerAliasIP;
@@ -108,6 +117,17 @@ public class PTranslationMap: RestObject {
       }
       set {
          this._associatedDomainID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -157,12 +177,34 @@ public class PTranslationMap: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EMappingType? NUMappingType {
       get {
          return _mappingType;
       }
       set {
          this._mappingType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -201,7 +243,7 @@ public class PTranslationMap: RestObject {
    
 
    public String toString() {
-      return "PTranslationMap [" + "SPATSourceList=" + _SPATSourceList + ", associatedDomainID=" + _associatedDomainID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", mappingType=" + _mappingType + ", providerAliasIP=" + _providerAliasIP + ", providerIP=" + _providerIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "PTranslationMap [" + "SPATSourceList=" + _SPATSourceList + ", associatedDomainID=" + _associatedDomainID + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", mappingType=" + _mappingType + ", owner=" + _owner + ", providerAliasIP=" + _providerAliasIP + ", providerIP=" + _providerIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

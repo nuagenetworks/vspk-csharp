@@ -45,6 +45,9 @@ public class KeyServerMonitor: RestObject {
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
@@ -78,6 +81,12 @@ public class KeyServerMonitor: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
+   
 
    
    [JsonIgnore]
@@ -107,6 +116,17 @@ public class KeyServerMonitor: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -231,6 +251,28 @@ public class KeyServerMonitor: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -255,7 +297,7 @@ public class KeyServerMonitor: RestObject {
    
 
    public String toString() {
-      return "KeyServerMonitor [" + "embeddedMetadata=" + _embeddedMetadata + ", enterpriseSecuredDataRecordCount=" + _enterpriseSecuredDataRecordCount + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewaySecuredDataRecordCount=" + _gatewaySecuredDataRecordCount + ", keyserverMonitorEncryptedSEKCount=" + _keyserverMonitorEncryptedSEKCount + ", keyserverMonitorEncryptedSeedCount=" + _keyserverMonitorEncryptedSeedCount + ", keyserverMonitorSEKCount=" + _keyserverMonitorSEKCount + ", keyserverMonitorSeedCount=" + _keyserverMonitorSeedCount + ", lastUpdateTime=" + _lastUpdateTime + ", lastUpdatedBy=" + _lastUpdatedBy + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "KeyServerMonitor [" + "creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseSecuredDataRecordCount=" + _enterpriseSecuredDataRecordCount + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", gatewaySecuredDataRecordCount=" + _gatewaySecuredDataRecordCount + ", keyserverMonitorEncryptedSEKCount=" + _keyserverMonitorEncryptedSEKCount + ", keyserverMonitorEncryptedSeedCount=" + _keyserverMonitorEncryptedSeedCount + ", keyserverMonitorSEKCount=" + _keyserverMonitorSEKCount + ", keyserverMonitorSeedCount=" + _keyserverMonitorSeedCount + ", lastUpdateTime=" + _lastUpdateTime + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

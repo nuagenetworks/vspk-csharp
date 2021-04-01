@@ -61,6 +61,9 @@ public class KeyServerMonitorEncryptedSeed: RestObject {
    [JsonProperty("associatedKeyServerMonitorSeedID")]
    protected String _associatedKeyServerMonitorSeedID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    
@@ -78,6 +81,12 @@ public class KeyServerMonitorEncryptedSeed: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("seedType")]
    protected ESeedType? _seedType;
@@ -155,6 +164,17 @@ public class KeyServerMonitorEncryptedSeed: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
       get {
          return _embeddedMetadata;
@@ -221,6 +241,28 @@ public class KeyServerMonitorEncryptedSeed: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public ESeedType? NUSeedType {
       get {
          return _seedType;
@@ -243,7 +285,7 @@ public class KeyServerMonitorEncryptedSeed: RestObject {
    
 
    public String toString() {
-      return "KeyServerMonitorEncryptedSeed [" + "SEKCreationTime=" + _SEKCreationTime + ", associatedKeyServerMonitorSEKCreationTime=" + _associatedKeyServerMonitorSEKCreationTime + ", associatedKeyServerMonitorSEKID=" + _associatedKeyServerMonitorSEKID + ", associatedKeyServerMonitorSeedCreationTime=" + _associatedKeyServerMonitorSeedCreationTime + ", associatedKeyServerMonitorSeedID=" + _associatedKeyServerMonitorSeedID + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseSecuredDataID=" + _enterpriseSecuredDataID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", keyServerCertificateSerialNumber=" + _keyServerCertificateSerialNumber + ", lastUpdatedBy=" + _lastUpdatedBy + ", seedType=" + _seedType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "KeyServerMonitorEncryptedSeed [" + "SEKCreationTime=" + _SEKCreationTime + ", associatedKeyServerMonitorSEKCreationTime=" + _associatedKeyServerMonitorSEKCreationTime + ", associatedKeyServerMonitorSEKID=" + _associatedKeyServerMonitorSEKID + ", associatedKeyServerMonitorSeedCreationTime=" + _associatedKeyServerMonitorSeedCreationTime + ", associatedKeyServerMonitorSeedID=" + _associatedKeyServerMonitorSeedID + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseSecuredDataID=" + _enterpriseSecuredDataID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", keyServerCertificateSerialNumber=" + _keyServerCertificateSerialNumber + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", seedType=" + _seedType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

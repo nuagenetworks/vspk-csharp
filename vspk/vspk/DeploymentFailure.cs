@@ -70,6 +70,9 @@ public class DeploymentFailure: RestObject {
    [JsonProperty("associatedNetworkEntityType")]
    protected String _associatedNetworkEntityType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("diffMap")]
    protected String _diffMap;
    
@@ -97,8 +100,14 @@ public class DeploymentFailure: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("numberOfOccurences")]
    protected long? _numberOfOccurences;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -206,6 +215,17 @@ public class DeploymentFailure: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDiffMap {
       get {
          return _diffMap;
@@ -305,12 +325,34 @@ public class DeploymentFailure: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUNumberOfOccurences {
       get {
          return _numberOfOccurences;
       }
       set {
          this._numberOfOccurences = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -327,7 +369,7 @@ public class DeploymentFailure: RestObject {
    
 
    public String toString() {
-      return "DeploymentFailure [" + "affectedEntityID=" + _affectedEntityID + ", affectedEntityType=" + _affectedEntityType + ", assocEntityId=" + _assocEntityId + ", assocEntityType=" + _assocEntityType + ", associatedDomainID=" + _associatedDomainID + ", associatedDomainType=" + _associatedDomainType + ", associatedNetworkEntityID=" + _associatedNetworkEntityID + ", associatedNetworkEntityType=" + _associatedNetworkEntityType + ", diffMap=" + _diffMap + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", eventType=" + _eventType + ", externalID=" + _externalID + ", lastFailureReason=" + _lastFailureReason + ", lastKnownError=" + _lastKnownError + ", lastUpdatedBy=" + _lastUpdatedBy + ", numberOfOccurences=" + _numberOfOccurences + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "DeploymentFailure [" + "affectedEntityID=" + _affectedEntityID + ", affectedEntityType=" + _affectedEntityType + ", assocEntityId=" + _assocEntityId + ", assocEntityType=" + _assocEntityType + ", associatedDomainID=" + _associatedDomainID + ", associatedDomainType=" + _associatedDomainType + ", associatedNetworkEntityID=" + _associatedNetworkEntityID + ", associatedNetworkEntityType=" + _associatedNetworkEntityType + ", creationDate=" + _creationDate + ", diffMap=" + _diffMap + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", eventType=" + _eventType + ", externalID=" + _externalID + ", lastFailureReason=" + _lastFailureReason + ", lastKnownError=" + _lastKnownError + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", numberOfOccurences=" + _numberOfOccurences + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

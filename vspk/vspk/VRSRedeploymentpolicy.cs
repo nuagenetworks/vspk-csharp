@@ -63,6 +63,9 @@ public class VRSRedeploymentpolicy: RestObject {
    [JsonProperty("VRSVSCStatusRedeploymentEnabled")]
    protected bool _VRSVSCStatusRedeploymentEnabled;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("deploymentCountThreshold")]
    protected long? _deploymentCountThreshold;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -78,6 +81,9 @@ public class VRSRedeploymentpolicy: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("logDiskUtilizationRedeploymentEnabled")]
    protected bool _logDiskUtilizationRedeploymentEnabled;
    
@@ -89,6 +95,9 @@ public class VRSRedeploymentpolicy: RestObject {
    
    [JsonProperty("memoryUtilizationThreshold")]
    protected float _memoryUtilizationThreshold;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("redeploymentDelay")]
    protected long? _redeploymentDelay;
@@ -173,6 +182,17 @@ public class VRSRedeploymentpolicy: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUDeploymentCountThreshold {
       get {
          return _deploymentCountThreshold;
@@ -228,6 +248,17 @@ public class VRSRedeploymentpolicy: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NULogDiskUtilizationRedeploymentEnabled {
       get {
          return _logDiskUtilizationRedeploymentEnabled;
@@ -272,6 +303,17 @@ public class VRSRedeploymentpolicy: RestObject {
 
    
    [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NURedeploymentDelay {
       get {
          return _redeploymentDelay;
@@ -308,7 +350,7 @@ public class VRSRedeploymentpolicy: RestObject {
    
 
    public String toString() {
-      return "VRSRedeploymentpolicy [" + "ALUbr0StatusRedeploymentEnabled=" + _ALUbr0StatusRedeploymentEnabled + ", CPUUtilizationRedeploymentEnabled=" + _CPUUtilizationRedeploymentEnabled + ", CPUUtilizationThreshold=" + _CPUUtilizationThreshold + ", VRSCorrectiveActionDelay=" + _VRSCorrectiveActionDelay + ", VRSProcessRedeploymentEnabled=" + _VRSProcessRedeploymentEnabled + ", VRSVSCStatusRedeploymentEnabled=" + _VRSVSCStatusRedeploymentEnabled + ", deploymentCountThreshold=" + _deploymentCountThreshold + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", jesxmonProcessRedeploymentEnabled=" + _jesxmonProcessRedeploymentEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", logDiskUtilizationRedeploymentEnabled=" + _logDiskUtilizationRedeploymentEnabled + ", logDiskUtilizationThreshold=" + _logDiskUtilizationThreshold + ", memoryUtilizationRedeploymentEnabled=" + _memoryUtilizationRedeploymentEnabled + ", memoryUtilizationThreshold=" + _memoryUtilizationThreshold + ", redeploymentDelay=" + _redeploymentDelay + ", rootDiskUtilizationRedeploymentEnabled=" + _rootDiskUtilizationRedeploymentEnabled + ", rootDiskUtilizationThreshold=" + _rootDiskUtilizationThreshold + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "VRSRedeploymentpolicy [" + "ALUbr0StatusRedeploymentEnabled=" + _ALUbr0StatusRedeploymentEnabled + ", CPUUtilizationRedeploymentEnabled=" + _CPUUtilizationRedeploymentEnabled + ", CPUUtilizationThreshold=" + _CPUUtilizationThreshold + ", VRSCorrectiveActionDelay=" + _VRSCorrectiveActionDelay + ", VRSProcessRedeploymentEnabled=" + _VRSProcessRedeploymentEnabled + ", VRSVSCStatusRedeploymentEnabled=" + _VRSVSCStatusRedeploymentEnabled + ", creationDate=" + _creationDate + ", deploymentCountThreshold=" + _deploymentCountThreshold + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", jesxmonProcessRedeploymentEnabled=" + _jesxmonProcessRedeploymentEnabled + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", logDiskUtilizationRedeploymentEnabled=" + _logDiskUtilizationRedeploymentEnabled + ", logDiskUtilizationThreshold=" + _logDiskUtilizationThreshold + ", memoryUtilizationRedeploymentEnabled=" + _memoryUtilizationRedeploymentEnabled + ", memoryUtilizationThreshold=" + _memoryUtilizationThreshold + ", owner=" + _owner + ", redeploymentDelay=" + _redeploymentDelay + ", rootDiskUtilizationRedeploymentEnabled=" + _rootDiskUtilizationRedeploymentEnabled + ", rootDiskUtilizationThreshold=" + _rootDiskUtilizationThreshold + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

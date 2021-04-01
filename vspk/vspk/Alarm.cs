@@ -52,6 +52,9 @@ public class Alarm: RestObject {
    [JsonProperty("alarmedObjectID")]
    protected String _alarmedObjectID;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -73,8 +76,14 @@ public class Alarm: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("numberOfOccurances")]
    protected long? _numberOfOccurances;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("remedy")]
    protected String _remedy;
@@ -126,6 +135,17 @@ public class Alarm: RestObject {
       }
       set {
          this._alarmedObjectID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -208,12 +228,34 @@ public class Alarm: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUNumberOfOccurances {
       get {
          return _numberOfOccurances;
       }
       set {
          this._numberOfOccurances = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -285,7 +327,7 @@ public class Alarm: RestObject {
    
 
    public String toString() {
-      return "Alarm [" + "acknowledged=" + _acknowledged + ", alarmedObjectID=" + _alarmedObjectID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", numberOfOccurances=" + _numberOfOccurances + ", remedy=" + _remedy + ", severity=" + _severity + ", targetObject=" + _targetObject + ", timestamp=" + _timestamp + ", title=" + _title + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Alarm [" + "acknowledged=" + _acknowledged + ", alarmedObjectID=" + _alarmedObjectID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", errorCondition=" + _errorCondition + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", numberOfOccurances=" + _numberOfOccurances + ", owner=" + _owner + ", remedy=" + _remedy + ", severity=" + _severity + ", targetObject=" + _targetObject + ", timestamp=" + _timestamp + ", title=" + _title + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

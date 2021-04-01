@@ -48,6 +48,9 @@ public class KeyServerMonitorSeed: RestObject {
    public enum ESeedType {DR,STANDARD };
 
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("creationTime")]
    protected long? _creationTime;
    
@@ -63,8 +66,14 @@ public class KeyServerMonitorSeed: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("lifetime")]
    protected long? _lifetime;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("seedTrafficAuthenticationAlgorithm")]
    protected ESeedTrafficAuthenticationAlgorithm? _seedTrafficAuthenticationAlgorithm;
@@ -100,6 +109,17 @@ public class KeyServerMonitorSeed: RestObject {
       
       _metadatas = new MetadatasFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -159,12 +179,34 @@ public class KeyServerMonitorSeed: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NULifetime {
       get {
          return _lifetime;
       }
       set {
          this._lifetime = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -240,7 +282,7 @@ public class KeyServerMonitorSeed: RestObject {
    
 
    public String toString() {
-      return "KeyServerMonitorSeed [" + "creationTime=" + _creationTime + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lifetime=" + _lifetime + ", seedTrafficAuthenticationAlgorithm=" + _seedTrafficAuthenticationAlgorithm + ", seedTrafficEncryptionAlgorithm=" + _seedTrafficEncryptionAlgorithm + ", seedTrafficEncryptionKeyLifetime=" + _seedTrafficEncryptionKeyLifetime + ", seedType=" + _seedType + ", startTime=" + _startTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "KeyServerMonitorSeed [" + "creationDate=" + _creationDate + ", creationTime=" + _creationTime + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", lifetime=" + _lifetime + ", owner=" + _owner + ", seedTrafficAuthenticationAlgorithm=" + _seedTrafficAuthenticationAlgorithm + ", seedTrafficEncryptionAlgorithm=" + _seedTrafficEncryptionAlgorithm + ", seedTrafficEncryptionKeyLifetime=" + _seedTrafficEncryptionKeyLifetime + ", seedType=" + _seedType + ", startTime=" + _startTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

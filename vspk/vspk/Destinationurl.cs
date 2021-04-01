@@ -52,6 +52,9 @@ public class Destinationurl: RestObject {
    [JsonProperty("URL")]
    protected String _URL;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("downThresholdCount")]
    protected long? _downThresholdCount;
    
@@ -66,6 +69,12 @@ public class Destinationurl: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("packetCount")]
    protected long? _packetCount;
@@ -114,6 +123,17 @@ public class Destinationurl: RestObject {
       }
       set {
          this._URL = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -174,6 +194,28 @@ public class Destinationurl: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUPacketCount {
       get {
          return _packetCount;
@@ -229,7 +271,7 @@ public class Destinationurl: RestObject {
    
 
    public String toString() {
-      return "Destinationurl [" + "HTTPMethod=" + _HTTPMethod + ", URL=" + _URL + ", downThresholdCount=" + _downThresholdCount + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", packetCount=" + _packetCount + ", percentageWeight=" + _percentageWeight + ", probeInterval=" + _probeInterval + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Destinationurl [" + "HTTPMethod=" + _HTTPMethod + ", URL=" + _URL + ", creationDate=" + _creationDate + ", downThresholdCount=" + _downThresholdCount + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", packetCount=" + _packetCount + ", percentageWeight=" + _percentageWeight + ", probeInterval=" + _probeInterval + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

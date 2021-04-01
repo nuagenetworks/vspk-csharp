@@ -55,6 +55,9 @@ public class InfrastructureEVDFProfile: RestObject {
    [JsonProperty("activeController")]
    protected String _activeController;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -73,11 +76,17 @@ public class InfrastructureEVDFProfile: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("name")]
    protected String _name;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("nuagePlatform")]
    protected ENuagePlatform? _nuagePlatform;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("proxyDNSName")]
    protected String _proxyDNSName;
@@ -137,6 +146,17 @@ public class InfrastructureEVDFProfile: RestObject {
       }
       set {
          this._activeController = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -208,6 +228,17 @@ public class InfrastructureEVDFProfile: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
@@ -225,6 +256,17 @@ public class InfrastructureEVDFProfile: RestObject {
       }
       set {
          this._nuagePlatform = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -285,7 +327,7 @@ public class InfrastructureEVDFProfile: RestObject {
    
 
    public String toString() {
-      return "InfrastructureEVDFProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", activeController=" + _activeController + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", name=" + _name + ", nuagePlatform=" + _nuagePlatform + ", proxyDNSName=" + _proxyDNSName + ", serviceIPv4Subnet=" + _serviceIPv4Subnet + ", standbyController=" + _standbyController + ", useTwoFactor=" + _useTwoFactor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "InfrastructureEVDFProfile [" + "NTPServerKey=" + _NTPServerKey + ", NTPServerKeyID=" + _NTPServerKeyID + ", activeController=" + _activeController + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", nuagePlatform=" + _nuagePlatform + ", owner=" + _owner + ", proxyDNSName=" + _proxyDNSName + ", serviceIPv4Subnet=" + _serviceIPv4Subnet + ", standbyController=" + _standbyController + ", useTwoFactor=" + _useTwoFactor + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

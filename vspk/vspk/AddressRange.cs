@@ -53,6 +53,9 @@ public class AddressRange: RestObject {
    [JsonProperty("IPType")]
    protected EIPType? _IPType;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -65,11 +68,17 @@ public class AddressRange: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("maxAddress")]
    protected String _maxAddress;
    
    [JsonProperty("minAddress")]
    protected String _minAddress;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -112,6 +121,17 @@ public class AddressRange: RestObject {
       }
       set {
          this._IPType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -161,6 +181,17 @@ public class AddressRange: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUMaxAddress {
       get {
          return _maxAddress;
@@ -182,6 +213,17 @@ public class AddressRange: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
 
    
    public EventLogsFetcher getEventLogs() {
@@ -198,7 +240,7 @@ public class AddressRange: RestObject {
    
 
    public String toString() {
-      return "AddressRange [" + "DHCPPoolType=" + _DHCPPoolType + ", IPType=" + _IPType + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", maxAddress=" + _maxAddress + ", minAddress=" + _minAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "AddressRange [" + "DHCPPoolType=" + _DHCPPoolType + ", IPType=" + _IPType + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", maxAddress=" + _maxAddress + ", minAddress=" + _minAddress + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

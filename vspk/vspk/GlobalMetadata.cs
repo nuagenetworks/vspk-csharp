@@ -51,6 +51,9 @@ public class GlobalMetadata: RestObject {
    [JsonProperty("blob")]
    protected String _blob;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -69,6 +72,9 @@ public class GlobalMetadata: RestObject {
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("metadataTagIDs")]
    protected System.Collections.Generic.List<String> _metadataTagIDs;
    
@@ -77,6 +83,9 @@ public class GlobalMetadata: RestObject {
    
    [JsonProperty("networkNotificationDisabled")]
    protected bool _networkNotificationDisabled;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -113,6 +122,17 @@ public class GlobalMetadata: RestObject {
       }
       set {
          this._blob = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -184,6 +204,17 @@ public class GlobalMetadata: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public System.Collections.Generic.List<String> NUMetadataTagIDs {
       get {
          return _metadataTagIDs;
@@ -216,6 +247,17 @@ public class GlobalMetadata: RestObject {
    }
 
    
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
 
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
@@ -228,7 +270,7 @@ public class GlobalMetadata: RestObject {
    
 
    public String toString() {
-      return "GlobalMetadata [" + "assocEntityType=" + _assocEntityType + ", blob=" + _blob + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", globalMetadata=" + _globalMetadata + ", lastUpdatedBy=" + _lastUpdatedBy + ", metadataTagIDs=" + _metadataTagIDs + ", name=" + _name + ", networkNotificationDisabled=" + _networkNotificationDisabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "GlobalMetadata [" + "assocEntityType=" + _assocEntityType + ", blob=" + _blob + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", globalMetadata=" + _globalMetadata + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", metadataTagIDs=" + _metadataTagIDs + ", name=" + _name + ", networkNotificationDisabled=" + _networkNotificationDisabled + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

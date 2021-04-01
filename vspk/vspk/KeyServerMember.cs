@@ -48,6 +48,9 @@ public class KeyServerMember: RestObject {
    [JsonProperty("certificateSerialNumber")]
    protected long? _certificateSerialNumber;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -65,6 +68,12 @@ public class KeyServerMember: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("pemEncoded")]
    protected String _pemEncoded;
@@ -99,6 +108,17 @@ public class KeyServerMember: RestObject {
       }
       set {
          this._certificateSerialNumber = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -170,6 +190,28 @@ public class KeyServerMember: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUPemEncoded {
       get {
          return _pemEncoded;
@@ -214,7 +256,7 @@ public class KeyServerMember: RestObject {
    
 
    public String toString() {
-      return "KeyServerMember [" + "certificateSerialNumber=" + _certificateSerialNumber + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fqdn=" + _fqdn + ", issuerDN=" + _issuerDN + ", lastUpdatedBy=" + _lastUpdatedBy + ", pemEncoded=" + _pemEncoded + ", publicKey=" + _publicKey + ", subjectDN=" + _subjectDN + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "KeyServerMember [" + "certificateSerialNumber=" + _certificateSerialNumber + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", fqdn=" + _fqdn + ", issuerDN=" + _issuerDN + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", pemEncoded=" + _pemEncoded + ", publicKey=" + _publicKey + ", subjectDN=" + _subjectDN + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

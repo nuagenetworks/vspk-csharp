@@ -55,6 +55,9 @@ public class ForwardingPathListEntry: RestObject {
    [JsonProperty("FCOverride")]
    protected EFCOverride? _FCOverride;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -69,6 +72,12 @@ public class ForwardingPathListEntry: RestObject {
    
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("priority")]
    protected long? _priority;
@@ -117,6 +126,17 @@ public class ForwardingPathListEntry: RestObject {
       }
       set {
          this._FCOverride = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
       }
    }
 
@@ -177,6 +197,28 @@ public class ForwardingPathListEntry: RestObject {
 
    
    [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public long? NUPriority {
       get {
          return _priority;
@@ -232,7 +274,7 @@ public class ForwardingPathListEntry: RestObject {
    
 
    public String toString() {
-      return "ForwardingPathListEntry [" + "DSCPRemarking=" + _DSCPRemarking + ", FCOverride=" + _FCOverride + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", forwardingAction=" + _forwardingAction + ", lastUpdatedBy=" + _lastUpdatedBy + ", priority=" + _priority + ", remoteUplinkPreference=" + _remoteUplinkPreference + ", slaAware=" + _slaAware + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "ForwardingPathListEntry [" + "DSCPRemarking=" + _DSCPRemarking + ", FCOverride=" + _FCOverride + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", forwardingAction=" + _forwardingAction + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", priority=" + _priority + ", remoteUplinkPreference=" + _remoteUplinkPreference + ", slaAware=" + _slaAware + ", uplinkPreference=" + _uplinkPreference + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    
