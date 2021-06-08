@@ -91,6 +91,9 @@ public class UserContext: RestObject {
    [JsonProperty("lastUpdatedDate")]
    protected String _lastUpdatedDate;
    
+   [JsonProperty("maintenanceModeEnabled")]
+   protected bool _maintenanceModeEnabled;
+   
    [JsonProperty("owner")]
    protected String _owner;
    
@@ -306,6 +309,17 @@ public class UserContext: RestObject {
 
    
    [JsonIgnore]
+   public bool NUMaintenanceModeEnabled {
+      get {
+         return _maintenanceModeEnabled;
+      }
+      set {
+         this._maintenanceModeEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUOwner {
       get {
          return _owner;
@@ -420,7 +434,7 @@ public class UserContext: RestObject {
    
 
    public String toString() {
-      return "UserContext [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSFeatureEnabled=" + _VSSFeatureEnabled + ", VSSStatsInterval=" + _VSSStatsInterval + ", allowEnterpriseAvatarOnNSG=" + _allowEnterpriseAvatarOnNSG + ", creationDate=" + _creationDate + ", deniedFlowCollectionEnabled=" + _deniedFlowCollectionEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", explicitACLMatchingEnabled=" + _explicitACLMatchingEnabled + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", pageSize=" + _pageSize + ", rbacEnabled=" + _rbacEnabled + ", statisticsEnabled=" + _statisticsEnabled + ", statsDatabaseProxy=" + _statsDatabaseProxy + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", systemAvatarData=" + _systemAvatarData + ", systemAvatarType=" + _systemAvatarType + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "UserContext [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSFeatureEnabled=" + _VSSFeatureEnabled + ", VSSStatsInterval=" + _VSSStatsInterval + ", allowEnterpriseAvatarOnNSG=" + _allowEnterpriseAvatarOnNSG + ", creationDate=" + _creationDate + ", deniedFlowCollectionEnabled=" + _deniedFlowCollectionEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", explicitACLMatchingEnabled=" + _explicitACLMatchingEnabled + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", maintenanceModeEnabled=" + _maintenanceModeEnabled + ", owner=" + _owner + ", pageSize=" + _pageSize + ", rbacEnabled=" + _rbacEnabled + ", statisticsEnabled=" + _statisticsEnabled + ", statsDatabaseProxy=" + _statsDatabaseProxy + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", systemAvatarData=" + _systemAvatarData + ", systemAvatarType=" + _systemAvatarType + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

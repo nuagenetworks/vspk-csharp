@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>net.nuagenetworks.vspk.dll</id>
-    <version>20.10.3</version>
+    <version>20.10.4</version>
     <authors>nuagenetworks</authors>
     <owners>nuagenetworks</owners>
     <projectUrl>https://github.com/nuagenetworks/vspk-csharp</projectUrl>
