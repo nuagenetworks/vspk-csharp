@@ -43,11 +43,14 @@ public class Roleentry: RestObject {
 
    
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum ERoleAccessTypeList {CREATE,CUD_CHILDREN,DELETE,MODIFY,NO_ACCESS,NO_ACCESS_CHILDREN,READ,READ_CHILDREN };
+   public enum ERoleAccessTypeList {CREATE,CUD_CHILDREN,DELETE,MODIFY,NO_ACCESS,NO_ACCESS_CHILDREN,READ,READ_CHILDREN,USE };
 
    
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
+   
+   [JsonProperty("endPointRestName")]
+   protected String _endPointRestName;
    
    [JsonProperty("endPointType")]
    protected String _endPointType;
@@ -90,6 +93,17 @@ public class Roleentry: RestObject {
       }
       set {
          this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUEndPointRestName {
+      get {
+         return _endPointRestName;
+      }
+      set {
+         this._endPointRestName = value;
       }
    }
 
@@ -154,7 +168,7 @@ public class Roleentry: RestObject {
    
 
    public String toString() {
-      return "Roleentry [" + "embeddedMetadata=" + _embeddedMetadata + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", roleAccessTypeList=" + _roleAccessTypeList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Roleentry [" + "embeddedMetadata=" + _embeddedMetadata + ", endPointRestName=" + _endPointRestName + ", endPointType=" + _endPointType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", roleAccessTypeList=" + _roleAccessTypeList + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

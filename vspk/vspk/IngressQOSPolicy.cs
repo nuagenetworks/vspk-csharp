@@ -55,6 +55,9 @@ public class IngressQOSPolicy: RestObject {
    [JsonProperty("creationDate")]
    protected String _creationDate;
    
+   [JsonProperty("customSpqDepth")]
+   protected long? _customSpqDepth;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -146,6 +149,17 @@ public class IngressQOSPolicy: RestObject {
       }
       set {
          this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUCustomSpqDepth {
+      get {
+         return _customSpqDepth;
+      }
+      set {
+         this._customSpqDepth = value;
       }
    }
 
@@ -353,7 +367,7 @@ public class IngressQOSPolicy: RestObject {
    
 
    public String toString() {
-      return "IngressQOSPolicy [" + "assocEgressQosId=" + _assocEgressQosId + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", parentQueueAssociatedRateLimiterID=" + _parentQueueAssociatedRateLimiterID + ", queue1AssociatedRateLimiterID=" + _queue1AssociatedRateLimiterID + ", queue1ForwardingClasses=" + _queue1ForwardingClasses + ", queue2AssociatedRateLimiterID=" + _queue2AssociatedRateLimiterID + ", queue2ForwardingClasses=" + _queue2ForwardingClasses + ", queue3AssociatedRateLimiterID=" + _queue3AssociatedRateLimiterID + ", queue3ForwardingClasses=" + _queue3ForwardingClasses + ", queue4AssociatedRateLimiterID=" + _queue4AssociatedRateLimiterID + ", queue4ForwardingClasses=" + _queue4ForwardingClasses + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "IngressQOSPolicy [" + "assocEgressQosId=" + _assocEgressQosId + ", creationDate=" + _creationDate + ", customSpqDepth=" + _customSpqDepth + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", parentQueueAssociatedRateLimiterID=" + _parentQueueAssociatedRateLimiterID + ", queue1AssociatedRateLimiterID=" + _queue1AssociatedRateLimiterID + ", queue1ForwardingClasses=" + _queue1ForwardingClasses + ", queue2AssociatedRateLimiterID=" + _queue2AssociatedRateLimiterID + ", queue2ForwardingClasses=" + _queue2ForwardingClasses + ", queue3AssociatedRateLimiterID=" + _queue3AssociatedRateLimiterID + ", queue3ForwardingClasses=" + _queue3ForwardingClasses + ", queue4AssociatedRateLimiterID=" + _queue4AssociatedRateLimiterID + ", queue4ForwardingClasses=" + _queue4ForwardingClasses + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

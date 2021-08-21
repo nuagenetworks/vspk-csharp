@@ -94,6 +94,9 @@ public class Permission: RestObject {
    [JsonProperty("permittedEnterpriseDescription")]
    protected String _permittedEnterpriseDescription;
    
+   [JsonProperty("permittedEnterpriseID")]
+   protected String _permittedEnterpriseID;
+   
    [JsonProperty("permittedEnterpriseName")]
    protected String _permittedEnterpriseName;
    
@@ -310,6 +313,17 @@ public class Permission: RestObject {
 
    
    [JsonIgnore]
+   public String NUPermittedEnterpriseID {
+      get {
+         return _permittedEnterpriseID;
+      }
+      set {
+         this._permittedEnterpriseID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUPermittedEnterpriseName {
       get {
          return _permittedEnterpriseName;
@@ -373,7 +387,7 @@ public class Permission: RestObject {
    
 
    public String toString() {
-      return "Permission [" + "associatedGroupDescription=" + _associatedGroupDescription + ", associatedGroupID=" + _associatedGroupID + ", associatedGroupName=" + _associatedGroupName + ", associatedRoleDescription=" + _associatedRoleDescription + ", associatedRoleID=" + _associatedRoleID + ", associatedRoleName=" + _associatedRoleName + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", permittedAction=" + _permittedAction + ", permittedEnterpriseDescription=" + _permittedEnterpriseDescription + ", permittedEnterpriseName=" + _permittedEnterpriseName + ", permittedEntityID=" + _permittedEntityID + ", permittedEntityName=" + _permittedEntityName + ", permittedEntityType=" + _permittedEntityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Permission [" + "associatedGroupDescription=" + _associatedGroupDescription + ", associatedGroupID=" + _associatedGroupID + ", associatedGroupName=" + _associatedGroupName + ", associatedRoleDescription=" + _associatedRoleDescription + ", associatedRoleID=" + _associatedRoleID + ", associatedRoleName=" + _associatedRoleName + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", permittedAction=" + _permittedAction + ", permittedEnterpriseDescription=" + _permittedEnterpriseDescription + ", permittedEnterpriseID=" + _permittedEnterpriseID + ", permittedEnterpriseName=" + _permittedEnterpriseName + ", permittedEntityID=" + _permittedEntityID + ", permittedEntityName=" + _permittedEntityName + ", permittedEntityType=" + _permittedEntityType + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

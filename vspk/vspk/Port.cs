@@ -114,6 +114,9 @@ public class Port: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("portType")]
    protected EPortType? _portType;
+   
+   [JsonProperty("routed")]
+   protected bool _routed;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("status")]
    protected EStatus? _status;
@@ -412,6 +415,17 @@ public class Port: RestObject {
 
    
    [JsonIgnore]
+   public bool NURouted {
+      get {
+         return _routed;
+      }
+      set {
+         this._routed = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EStatus? NUStatus {
       get {
          return _status;
@@ -487,7 +501,7 @@ public class Port: RestObject {
    
 
    public String toString() {
-      return "Port [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedEthernetSegmentGroupID=" + _associatedEthernetSegmentGroupID + ", associatedEthernetSegmentID=" + _associatedEthernetSegmentID + ", associatedEthernetSegmentVLANRange=" + _associatedEthernetSegmentVLANRange + ", associatedEthernetSegmentVirtual=" + _associatedEthernetSegmentVirtual + ", associatedRedundantPortID=" + _associatedRedundantPortID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isResilient=" + _isResilient + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", nativeVLAN=" + _nativeVLAN + ", operationalState=" + _operationalState + ", owner=" + _owner + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", status=" + _status + ", templateID=" + _templateID + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Port [" + "VLANRange=" + _VLANRange + ", associatedEgressQOSPolicyID=" + _associatedEgressQOSPolicyID + ", associatedEthernetSegmentGroupID=" + _associatedEthernetSegmentGroupID + ", associatedEthernetSegmentID=" + _associatedEthernetSegmentID + ", associatedEthernetSegmentVLANRange=" + _associatedEthernetSegmentVLANRange + ", associatedEthernetSegmentVirtual=" + _associatedEthernetSegmentVirtual + ", associatedRedundantPortID=" + _associatedRedundantPortID + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", isResilient=" + _isResilient + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", nativeVLAN=" + _nativeVLAN + ", operationalState=" + _operationalState + ", owner=" + _owner + ", permittedAction=" + _permittedAction + ", physicalName=" + _physicalName + ", portType=" + _portType + ", routed=" + _routed + ", status=" + _status + ", templateID=" + _templateID + ", useUserMnemonic=" + _useUserMnemonic + ", userMnemonic=" + _userMnemonic + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

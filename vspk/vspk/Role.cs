@@ -48,9 +48,6 @@ public class Role: RestObject {
    [JsonProperty("creationDate")]
    protected String _creationDate;
    
-   [JsonProperty("cspOnly")]
-   protected bool _cspOnly;
-   
    [JsonProperty("description")]
    protected String _description;
    
@@ -109,17 +106,6 @@ public class Role: RestObject {
       }
       set {
          this._creationDate = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public bool NUCspOnly {
-      get {
-         return _cspOnly;
-      }
-      set {
-         this._cspOnly = value;
       }
    }
 
@@ -232,7 +218,7 @@ public class Role: RestObject {
    
 
    public String toString() {
-      return "Role [" + "creationDate=" + _creationDate + ", cspOnly=" + _cspOnly + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Role [" + "creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    
