@@ -52,6 +52,9 @@ public class Me: RestObject {
    [JsonProperty("AARProbeStatsInterval")]
    protected long? _AARProbeStatsInterval;
    
+   [JsonProperty("APIKeyExpiry")]
+   protected long? _APIKeyExpiry;
+   
    [JsonProperty("VSSStatsInterval")]
    protected long? _VSSStatsInterval;
    
@@ -293,6 +296,9 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private NSGInfosFetcher _nSGInfos;
+   
+   [JsonIgnore]
+   private NSGMigrationProfilesFetcher _nSGMigrationProfiles;
    
    [JsonIgnore]
    private NSGPatchProfilesFetcher _nSGPatchProfiles;
@@ -551,6 +557,8 @@ public class Me: RestObject {
       
       _nSGInfos = new NSGInfosFetcher(this);
       
+      _nSGMigrationProfiles = new NSGMigrationProfilesFetcher(this);
+      
       _nSGPatchProfiles = new NSGPatchProfilesFetcher(this);
       
       _nSRedundantGatewayGroups = new NSRedundantGatewayGroupsFetcher(this);
@@ -666,6 +674,17 @@ public class Me: RestObject {
       }
       set {
          this._AARProbeStatsInterval = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUAPIKeyExpiry {
+      get {
+         return _APIKeyExpiry;
+      }
+      set {
+         this._APIKeyExpiry = value;
       }
    }
 
@@ -1153,6 +1172,10 @@ public class Me: RestObject {
       return _nSGInfos;
    }
    
+   public NSGMigrationProfilesFetcher getNSGMigrationProfiles() {
+      return _nSGMigrationProfiles;
+   }
+   
    public NSGPatchProfilesFetcher getNSGPatchProfiles() {
       return _nSGPatchProfiles;
    }
@@ -1343,7 +1366,7 @@ public class Me: RestObject {
    
 
    public String toString() {
-      return "Me [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSStatsInterval=" + _VSSStatsInterval + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", creationDate=" + _creationDate + ", disabled=" + _disabled + ", elasticSearchAddress=" + _elasticSearchAddress + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", mobileNumber=" + _mobileNumber + ", owner=" + _owner + ", password=" + _password + ", role=" + _role + ", statisticsEnabled=" + _statisticsEnabled + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Me [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", APIKeyExpiry=" + _APIKeyExpiry + ", VSSStatsInterval=" + _VSSStatsInterval + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", creationDate=" + _creationDate + ", disabled=" + _disabled + ", elasticSearchAddress=" + _elasticSearchAddress + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", enterpriseName=" + _enterpriseName + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", mobileNumber=" + _mobileNumber + ", owner=" + _owner + ", password=" + _password + ", role=" + _role + ", statisticsEnabled=" + _statisticsEnabled + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

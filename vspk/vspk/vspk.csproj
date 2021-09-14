@@ -56,8 +56,8 @@
     <Compile Include="IngressAdvFwdEntryTemplatesFetcher.cs" />
     <Compile Include="BGPPeer.cs" />
     <Compile Include="BGPPeersFetcher.cs" />
-    <Compile Include="AutoDiscoverHypervisorFromCluster.cs" />
-    <Compile Include="AutoDiscoverHypervisorFromClustersFetcher.cs" />
+    <Compile Include="NSGMigrationProfile.cs" />
+    <Compile Include="NSGMigrationProfilesFetcher.cs" />
     <Compile Include="SharedNetworkResource.cs" />
     <Compile Include="SharedNetworkResourcesFetcher.cs" />
     <Compile Include="Port.cs" />
@@ -146,8 +146,8 @@
     <Compile Include="SubnetTemplatesFetcher.cs" />
     <Compile Include="ApplicationBinding.cs" />
     <Compile Include="ApplicationBindingsFetcher.cs" />
-    <Compile Include="RedirectionTarget.cs" />
-    <Compile Include="RedirectionTargetsFetcher.cs" />
+    <Compile Include="AutoDiscoverHypervisorFromCluster.cs" />
+    <Compile Include="AutoDiscoverHypervisorFromClustersFetcher.cs" />
     <Compile Include="TestRun.cs" />
     <Compile Include="TestRunsFetcher.cs" />
     <Compile Include="Group.cs" />
@@ -512,6 +512,8 @@
     <Compile Include="PerformanceMonitorsFetcher.cs" />
     <Compile Include="NSGRoutingPolicyBinding.cs" />
     <Compile Include="NSGRoutingPolicyBindingsFetcher.cs" />
+    <Compile Include="RedirectionTarget.cs" />
+    <Compile Include="RedirectionTargetsFetcher.cs" />
     <Compile Include="NSGatewaysCount.cs" />
     <Compile Include="NSGatewaysCountsFetcher.cs" />
     <Compile Include="VRSAddressRange.cs" />

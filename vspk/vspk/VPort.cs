@@ -48,6 +48,7 @@ public class VPort: RestObject {
    public enum EAssociatedGatewayPersonality {DC7X50,EVDF,EVDFB,HARDWARE_VTEP,NETCONF_7X50,NETCONF_THIRDPARTY_HW_VTEP,NSG,NSGBR,NSGDUC,NUAGE_210_WBX_32_Q,NUAGE_210_WBX_48_S,OTHER,SR_LINUX,UNMANAGED_GATEWAY,VDF,VDFG,VRSB,VRSG,VSA,VSG };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EFlowLimitEnabled {DISABLED,ENABLED,INHERITED };
+   public enum EFlowSetupRateLimitEnabled {DISABLED,ENABLED,INHERITED };
    public enum EGatewayMACMoveRole {SECONDARY,TERTIARY };
    public enum EMulticast {DISABLED,ENABLED,INHERITED };
    public enum EOperationalState {DEGRADED,DOWN,INIT,UP };
@@ -157,6 +158,12 @@ public class VPort: RestObject {
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("flowLimitEnabled")]
    protected EFlowLimitEnabled? _flowLimitEnabled;
+   
+   [JsonProperty("flowSetupRate")]
+   protected long? _flowSetupRate;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("flowSetupRateLimitEnabled")]
+   protected EFlowSetupRateLimitEnabled? _flowSetupRateLimitEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("gatewayMACMoveRole")]
    protected EGatewayMACMoveRole? _gatewayMACMoveRole;
@@ -764,6 +771,28 @@ public class VPort: RestObject {
 
    
    [JsonIgnore]
+   public long? NUFlowSetupRate {
+      get {
+         return _flowSetupRate;
+      }
+      set {
+         this._flowSetupRate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EFlowSetupRateLimitEnabled? NUFlowSetupRateLimitEnabled {
+      get {
+         return _flowSetupRateLimitEnabled;
+      }
+      set {
+         this._flowSetupRateLimitEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EGatewayMACMoveRole? NUGatewayMACMoveRole {
       get {
          return _gatewayMACMoveRole;
@@ -1141,7 +1170,7 @@ public class VPort: RestObject {
    
 
    public String toString() {
-      return "VPort [" + "DPI=" + _DPI + ", FIPIgnoreDefaultRoute=" + _FIPIgnoreDefaultRoute + ", VLAN=" + _VLAN + ", VLANID=" + _VLANID + ", accessRestrictionEnabled=" + _accessRestrictionEnabled + ", active=" + _active + ", addressSpoofing=" + _addressSpoofing + ", assocEntityID=" + _assocEntityID + ", associatedEgressProfileID=" + _associatedEgressProfileID + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", associatedGatewayID=" + _associatedGatewayID + ", associatedGatewayPersonality=" + _associatedGatewayPersonality + ", associatedGatewayType=" + _associatedGatewayType + ", associatedIngressProfileID=" + _associatedIngressProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSSID=" + _associatedSSID + ", associatedSendMulticastChannelMapID=" + _associatedSendMulticastChannelMapID + ", associatedTrunkID=" + _associatedTrunkID + ", autoCreated=" + _autoCreated + ", backhaulSubnetVNID=" + _backhaulSubnetVNID + ", color=" + _color + ", creationDate=" + _creationDate + ", description=" + _description + ", domainID=" + _domainID + ", domainName=" + _domainName + ", domainServiceLabel=" + _domainServiceLabel + ", domainVLANID=" + _domainVLANID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", esGroupVPortInfos=" + _esGroupVPortInfos + ", externalID=" + _externalID + ", flowCount=" + _flowCount + ", flowLimitEnabled=" + _flowLimitEnabled + ", gatewayMACMoveRole=" + _gatewayMACMoveRole + ", gatewayPortName=" + _gatewayPortName + ", gwEligible=" + _gwEligible + ", hasAttachedInterfaces=" + _hasAttachedInterfaces + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", multiNICVPortID=" + _multiNICVPortID + ", multicast=" + _multicast + ", name=" + _name + ", operationalState=" + _operationalState + ", owner=" + _owner + ", peerOperationalState=" + _peerOperationalState + ", routed=" + _routed + ", segmentationID=" + _segmentationID + ", segmentationType=" + _segmentationType + ", serviceID=" + _serviceID + ", subType=" + _subType + ", subnetVNID=" + _subnetVNID + ", systemType=" + _systemType + ", trunkRole=" + _trunkRole + ", type=" + _type + ", zoneID=" + _zoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "VPort [" + "DPI=" + _DPI + ", FIPIgnoreDefaultRoute=" + _FIPIgnoreDefaultRoute + ", VLAN=" + _VLAN + ", VLANID=" + _VLANID + ", accessRestrictionEnabled=" + _accessRestrictionEnabled + ", active=" + _active + ", addressSpoofing=" + _addressSpoofing + ", assocEntityID=" + _assocEntityID + ", associatedEgressProfileID=" + _associatedEgressProfileID + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", associatedGatewayID=" + _associatedGatewayID + ", associatedGatewayPersonality=" + _associatedGatewayPersonality + ", associatedGatewayType=" + _associatedGatewayType + ", associatedIngressProfileID=" + _associatedIngressProfileID + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSSID=" + _associatedSSID + ", associatedSendMulticastChannelMapID=" + _associatedSendMulticastChannelMapID + ", associatedTrunkID=" + _associatedTrunkID + ", autoCreated=" + _autoCreated + ", backhaulSubnetVNID=" + _backhaulSubnetVNID + ", color=" + _color + ", creationDate=" + _creationDate + ", description=" + _description + ", domainID=" + _domainID + ", domainName=" + _domainName + ", domainServiceLabel=" + _domainServiceLabel + ", domainVLANID=" + _domainVLANID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", esGroupVPortInfos=" + _esGroupVPortInfos + ", externalID=" + _externalID + ", flowCount=" + _flowCount + ", flowLimitEnabled=" + _flowLimitEnabled + ", flowSetupRate=" + _flowSetupRate + ", flowSetupRateLimitEnabled=" + _flowSetupRateLimitEnabled + ", gatewayMACMoveRole=" + _gatewayMACMoveRole + ", gatewayPortName=" + _gatewayPortName + ", gwEligible=" + _gwEligible + ", hasAttachedInterfaces=" + _hasAttachedInterfaces + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", multiNICVPortID=" + _multiNICVPortID + ", multicast=" + _multicast + ", name=" + _name + ", operationalState=" + _operationalState + ", owner=" + _owner + ", peerOperationalState=" + _peerOperationalState + ", routed=" + _routed + ", segmentationID=" + _segmentationID + ", segmentationType=" + _segmentationType + ", serviceID=" + _serviceID + ", subType=" + _subType + ", subnetVNID=" + _subnetVNID + ", systemType=" + _systemType + ", trunkRole=" + _trunkRole + ", type=" + _type + ", zoneID=" + _zoneID + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

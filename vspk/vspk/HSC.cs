@@ -110,9 +110,6 @@ public class HSC: RestObject {
    [JsonProperty("name")]
    protected String _name;
    
-   [JsonProperty("numberOfInactiveGateways")]
-   protected long? _numberOfInactiveGateways;
-   
    [JsonProperty("owner")]
    protected String _owner;
    
@@ -122,14 +119,8 @@ public class HSC: RestObject {
    [JsonProperty("peakMemoryUsage")]
    protected float _peakMemoryUsage;
    
-   [JsonProperty("primaryRoleCount")]
-   protected long? _primaryRoleCount;
-   
    [JsonProperty("productVersion")]
    protected String _productVersion;
-   
-   [JsonProperty("secondaryRoleCount")]
-   protected long? _secondaryRoleCount;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("status")]
    protected EStatus? _status;
@@ -427,17 +418,6 @@ public class HSC: RestObject {
 
    
    [JsonIgnore]
-   public long? NUNumberOfInactiveGateways {
-      get {
-         return _numberOfInactiveGateways;
-      }
-      set {
-         this._numberOfInactiveGateways = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUOwner {
       get {
          return _owner;
@@ -471,34 +451,12 @@ public class HSC: RestObject {
 
    
    [JsonIgnore]
-   public long? NUPrimaryRoleCount {
-      get {
-         return _primaryRoleCount;
-      }
-      set {
-         this._primaryRoleCount = value;
-      }
-   }
-
-   
-   [JsonIgnore]
    public String NUProductVersion {
       get {
          return _productVersion;
       }
       set {
          this._productVersion = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public long? NUSecondaryRoleCount {
-      get {
-         return _secondaryRoleCount;
-      }
-      set {
-         this._secondaryRoleCount = value;
       }
    }
 
@@ -587,7 +545,7 @@ public class HSC: RestObject {
    
 
    public String toString() {
-      return "HSC [" + "addresses=" + _addresses + ", alreadyMarkedForUnavailable=" + _alreadyMarkedForUnavailable + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", communicationId=" + _communicationId + ", creationDate=" + _creationDate + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", description=" + _description + ", disks=" + _disks + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", model=" + _model + ", name=" + _name + ", numberOfInactiveGateways=" + _numberOfInactiveGateways + ", owner=" + _owner + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", primaryRoleCount=" + _primaryRoleCount + ", productVersion=" + _productVersion + ", secondaryRoleCount=" + _secondaryRoleCount + ", status=" + _status + ", type=" + _type + ", unavailableTimestamp=" + _unavailableTimestamp + ", vsds=" + _vsds + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "HSC [" + "addresses=" + _addresses + ", alreadyMarkedForUnavailable=" + _alreadyMarkedForUnavailable + ", averageCPUUsage=" + _averageCPUUsage + ", averageMemoryUsage=" + _averageMemoryUsage + ", communicationId=" + _communicationId + ", creationDate=" + _creationDate + ", currentCPUUsage=" + _currentCPUUsage + ", currentMemoryUsage=" + _currentMemoryUsage + ", description=" + _description + ", disks=" + _disks + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastStateChange=" + _lastStateChange + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", location=" + _location + ", managementIP=" + _managementIP + ", messages=" + _messages + ", model=" + _model + ", name=" + _name + ", owner=" + _owner + ", peakCPUUsage=" + _peakCPUUsage + ", peakMemoryUsage=" + _peakMemoryUsage + ", productVersion=" + _productVersion + ", status=" + _status + ", type=" + _type + ", unavailableTimestamp=" + _unavailableTimestamp + ", vsds=" + _vsds + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

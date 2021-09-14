@@ -62,6 +62,9 @@ public class License: RestObject {
    [JsonProperty("allowedNICsCount")]
    protected long? _allowedNICsCount;
    
+   [JsonProperty("allowedOVRSsCount")]
+   protected long? _allowedOVRSsCount;
+   
    [JsonProperty("allowedVDFGsCount")]
    protected long? _allowedVDFGsCount;
    
@@ -257,6 +260,17 @@ public class License: RestObject {
       }
       set {
          this._allowedNICsCount = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUAllowedOVRSsCount {
+      get {
+         return _allowedOVRSsCount;
+      }
+      set {
+         this._allowedOVRSsCount = value;
       }
    }
 
@@ -710,7 +724,7 @@ public class License: RestObject {
    
 
    public String toString() {
-      return "License [" + "additionalSupportedVersions=" + _additionalSupportedVersions + ", allowedAVRSGsCount=" + _allowedAVRSGsCount + ", allowedAVRSsCount=" + _allowedAVRSsCount + ", allowedCPEsCount=" + _allowedCPEsCount + ", allowedNICsCount=" + _allowedNICsCount + ", allowedVDFGsCount=" + _allowedVDFGsCount + ", allowedVDFsCount=" + _allowedVDFsCount + ", allowedVMsCount=" + _allowedVMsCount + ", allowedVRSGsCount=" + _allowedVRSGsCount + ", allowedVRSsCount=" + _allowedVRSsCount + ", city=" + _city + ", company=" + _company + ", country=" + _country + ", creationDate=" + _creationDate + ", customerKey=" + _customerKey + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", encryptionMode=" + _encryptionMode + ", entityScope=" + _entityScope + ", expirationDate=" + _expirationDate + ", expiryTimestamp=" + _expiryTimestamp + ", externalID=" + _externalID + ", isClusterLicense=" + _isClusterLicense + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", license=" + _license + ", licenseEncryption=" + _licenseEncryption + ", licenseEntities=" + _licenseEntities + ", licenseID=" + _licenseID + ", licenseType=" + _licenseType + ", licensedFeature=" + _licensedFeature + ", majorRelease=" + _majorRelease + ", minorRelease=" + _minorRelease + ", owner=" + _owner + ", phone=" + _phone + ", productVersion=" + _productVersion + ", provider=" + _provider + ", requestID=" + _requestID + ", state=" + _state + ", street=" + _street + ", system=" + _system + ", uniqueLicenseIdentifier=" + _uniqueLicenseIdentifier + ", userName=" + _userName + ", zip=" + _zip + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "License [" + "additionalSupportedVersions=" + _additionalSupportedVersions + ", allowedAVRSGsCount=" + _allowedAVRSGsCount + ", allowedAVRSsCount=" + _allowedAVRSsCount + ", allowedCPEsCount=" + _allowedCPEsCount + ", allowedNICsCount=" + _allowedNICsCount + ", allowedOVRSsCount=" + _allowedOVRSsCount + ", allowedVDFGsCount=" + _allowedVDFGsCount + ", allowedVDFsCount=" + _allowedVDFsCount + ", allowedVMsCount=" + _allowedVMsCount + ", allowedVRSGsCount=" + _allowedVRSGsCount + ", allowedVRSsCount=" + _allowedVRSsCount + ", city=" + _city + ", company=" + _company + ", country=" + _country + ", creationDate=" + _creationDate + ", customerKey=" + _customerKey + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", encryptionMode=" + _encryptionMode + ", entityScope=" + _entityScope + ", expirationDate=" + _expirationDate + ", expiryTimestamp=" + _expiryTimestamp + ", externalID=" + _externalID + ", isClusterLicense=" + _isClusterLicense + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", license=" + _license + ", licenseEncryption=" + _licenseEncryption + ", licenseEntities=" + _licenseEntities + ", licenseID=" + _licenseID + ", licenseType=" + _licenseType + ", licensedFeature=" + _licensedFeature + ", majorRelease=" + _majorRelease + ", minorRelease=" + _minorRelease + ", owner=" + _owner + ", phone=" + _phone + ", productVersion=" + _productVersion + ", provider=" + _provider + ", requestID=" + _requestID + ", state=" + _state + ", street=" + _street + ", system=" + _system + ", uniqueLicenseIdentifier=" + _uniqueLicenseIdentifier + ", userName=" + _userName + ", zip=" + _zip + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

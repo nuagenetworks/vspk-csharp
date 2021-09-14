@@ -42,7 +42,7 @@ public class NSGatewaySummary: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EBootstrapStatus {ACTIVE,CERTIFICATE_SIGNED,INACTIVE,NOTIFICATION_APP_REQ_ACK,NOTIFICATION_APP_REQ_SENT,QUARANTINED,REVOKED };
+   public enum EBootstrapStatus {ACTIVE,CERTIFICATE_SIGNED,INACTIVE,MIGRATING,NOTIFICATION_APP_REQ_ACK,NOTIFICATION_APP_REQ_SENT,QUARANTINED,REVOKED };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EPersonality {NSG,NSGBR,NSGDUC };
 
