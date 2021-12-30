@@ -277,6 +277,9 @@ public class Enterprise: RestObject {
    private GroupKeyEncryptionProfilesFetcher _groupKeyEncryptionProfiles;
    
    [JsonIgnore]
+   private ICMPEchoTestDefinitionsFetcher _iCMPEchoTestDefinitions;
+   
+   [JsonIgnore]
    private IDPProfilesFetcher _iDPProfiles;
    
    [JsonIgnore]
@@ -409,6 +412,9 @@ public class Enterprise: RestObject {
    private SAPIngressQoSProfilesFetcher _sAPIngressQoSProfiles;
    
    [JsonIgnore]
+   private ScheduledTestSuitesFetcher _scheduledTestSuites;
+   
+   [JsonIgnore]
    private SharedNetworkResourcesFetcher _sharedNetworkResources;
    
    [JsonIgnore]
@@ -509,6 +515,8 @@ public class Enterprise: RestObject {
       
       _groupKeyEncryptionProfiles = new GroupKeyEncryptionProfilesFetcher(this);
       
+      _iCMPEchoTestDefinitions = new ICMPEchoTestDefinitionsFetcher(this);
+      
       _iDPProfiles = new IDPProfilesFetcher(this);
       
       _iKECertificates = new IKECertificatesFetcher(this);
@@ -596,6 +604,8 @@ public class Enterprise: RestObject {
       _sAPEgressQoSProfiles = new SAPEgressQoSProfilesFetcher(this);
       
       _sAPIngressQoSProfiles = new SAPIngressQoSProfilesFetcher(this);
+      
+      _scheduledTestSuites = new ScheduledTestSuitesFetcher(this);
       
       _sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
       
@@ -1232,6 +1242,10 @@ public class Enterprise: RestObject {
       return _groupKeyEncryptionProfiles;
    }
    
+   public ICMPEchoTestDefinitionsFetcher getICMPEchoTestDefinitions() {
+      return _iCMPEchoTestDefinitions;
+   }
+   
    public IDPProfilesFetcher getIDPProfiles() {
       return _iDPProfiles;
    }
@@ -1406,6 +1420,10 @@ public class Enterprise: RestObject {
    
    public SAPIngressQoSProfilesFetcher getSAPIngressQoSProfiles() {
       return _sAPIngressQoSProfiles;
+   }
+   
+   public ScheduledTestSuitesFetcher getScheduledTestSuites() {
+      return _scheduledTestSuites;
    }
    
    public SharedNetworkResourcesFetcher getSharedNetworkResources() {

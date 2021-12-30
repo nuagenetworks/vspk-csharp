@@ -74,6 +74,9 @@ public class RoutingPolicy: RestObject {
    
    [JsonProperty("policyDefinition")]
    protected String _policyDefinition;
+   
+   [JsonProperty("policyUniqueID")]
+   protected long? _policyUniqueID;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("routingProtocol")]
    protected ERoutingProtocol? _routingProtocol;
@@ -200,6 +203,17 @@ public class RoutingPolicy: RestObject {
 
    
    [JsonIgnore]
+   public long? NUPolicyUniqueID {
+      get {
+         return _policyUniqueID;
+      }
+      set {
+         this._policyUniqueID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public ERoutingProtocol? NURoutingProtocol {
       get {
          return _routingProtocol;
@@ -226,7 +240,7 @@ public class RoutingPolicy: RestObject {
    
 
    public String toString() {
-      return "RoutingPolicy [" + "CustomerID=" + _CustomerID + ", contentType=" + _contentType + ", defaultAction=" + _defaultAction + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", policyDefinition=" + _policyDefinition + ", routingProtocol=" + _routingProtocol + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "RoutingPolicy [" + "CustomerID=" + _CustomerID + ", contentType=" + _contentType + ", defaultAction=" + _defaultAction + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", name=" + _name + ", policyDefinition=" + _policyDefinition + ", policyUniqueID=" + _policyUniqueID + ", routingProtocol=" + _routingProtocol + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

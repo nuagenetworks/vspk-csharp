@@ -82,8 +82,8 @@
     <Compile Include="EgressAuditACLEntryTemplatesFetcher.cs" />
     <Compile Include="RedundancyGroup.cs" />
     <Compile Include="RedundancyGroupsFetcher.cs" />
-    <Compile Include="Connectionendpoint.cs" />
-    <Compile Include="ConnectionendpointsFetcher.cs" />
+    <Compile Include="EgressACLEntryTemplate.cs" />
+    <Compile Include="EgressACLEntryTemplatesFetcher.cs" />
     <Compile Include="TCA.cs" />
     <Compile Include="TCAsFetcher.cs" />
     <Compile Include="SAPEgressQoSProfile.cs" />
@@ -140,6 +140,8 @@
     <Compile Include="IPReservationsFetcher.cs" />
     <Compile Include="ThreatPreventionNodeInfo.cs" />
     <Compile Include="ThreatPreventionNodeInfosFetcher.cs" />
+    <Compile Include="Connectionendpoint.cs" />
+    <Compile Include="ConnectionendpointsFetcher.cs" />
     <Compile Include="RedirectionTargetTemplate.cs" />
     <Compile Include="RedirectionTargetTemplatesFetcher.cs" />
     <Compile Include="SubnetTemplate.cs" />
@@ -258,6 +260,8 @@
     <Compile Include="ForwardingClassFetcher.cs" />
     <Compile Include="ThreatPreventionInfo.cs" />
     <Compile Include="ThreatPreventionInfosFetcher.cs" />
+    <Compile Include="Scheduledtestsuiterun.cs" />
+    <Compile Include="ScheduledtestsuiterunsFetcher.cs" />
     <Compile Include="KeyServerMonitorSeed.cs" />
     <Compile Include="KeyServerMonitorSeedsFetcher.cs" />
     <Compile Include="GatewayTemplate.cs" />
@@ -344,8 +348,8 @@
     <Compile Include="EgressProfilesFetcher.cs" />
     <Compile Include="NetworkMacroGroup.cs" />
     <Compile Include="NetworkMacroGroupsFetcher.cs" />
-    <Compile Include="EgressACLEntryTemplate.cs" />
-    <Compile Include="EgressACLEntryTemplatesFetcher.cs" />
+    <Compile Include="ICMPEchoTestDefinition.cs" />
+    <Compile Include="ICMPEchoTestDefinitionsFetcher.cs" />
     <Compile Include="GNMISession.cs" />
     <Compile Include="GNMISessionsFetcher.cs" />
     <Compile Include="MTUDiscoveryTestResult.cs" />
@@ -376,8 +380,8 @@
     <Compile Include="DomainFIPAclTemplatesFetcher.cs" />
     <Compile Include="OSPFInterface.cs" />
     <Compile Include="OSPFInterfacesFetcher.cs" />
-    <Compile Include="VMIPReservation.cs" />
-    <Compile Include="VMIPReservationsFetcher.cs" />
+    <Compile Include="ScheduledTestSuite.cs" />
+    <Compile Include="ScheduledTestSuitesFetcher.cs" />
     <Compile Include="AddressMap.cs" />
     <Compile Include="AddressMapsFetcher.cs" />
     <Compile Include="VirtualUplink.cs" />
@@ -508,6 +512,8 @@
     <Compile Include="SiteInfosFetcher.cs" />
     <Compile Include="DeploymentFailure.cs" />
     <Compile Include="DeploymentFailuresFetcher.cs" />
+    <Compile Include="VMIPReservation.cs" />
+    <Compile Include="VMIPReservationsFetcher.cs" />
     <Compile Include="PerformanceMonitor.cs" />
     <Compile Include="PerformanceMonitorsFetcher.cs" />
     <Compile Include="NSGRoutingPolicyBinding.cs" />

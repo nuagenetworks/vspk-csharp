@@ -42,18 +42,25 @@ public class TestRun: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EAssociatedTestSuiteRunType {SCHEDULED_TEST_SUITE_RUN,TEST_SUITE_RUN };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EOperationStatus {COMPLETED,FAILED,STARTED,TIMED_OUT,UNKNOWN };
-   public enum ETestResult {DEGRADED,FAIL,NOT_APPLICABLE,PASS };
+   public enum ETestResult {DEGRADED,FAIL,NOT_APPLICABLE,PASS,RUNNING };
    public enum ETestResultDataType {BandwidthTestResult,MTUDiscoveryTestResult,None,TCPConnectTestResult,UDPProbeTestResult };
    public enum EUnderlayTestCategory {BANDWIDTH,CONNECTIVITY,MTU_DISCOVERY };
 
+   
+   [JsonProperty("additionalTestRunDetails")]
+   protected Object _additionalTestRunDetails;
    
    [JsonProperty("associatedTestID")]
    protected String _associatedTestID;
    
    [JsonProperty("associatedTestSuiteRunID")]
    protected String _associatedTestSuiteRunID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("associatedTestSuiteRunType")]
+   protected EAssociatedTestSuiteRunType? _associatedTestSuiteRunType;
    
    [JsonProperty("command")]
    protected String _command;
@@ -144,6 +151,17 @@ public class TestRun: RestObject {
 
    
    [JsonIgnore]
+   public Object NUAdditionalTestRunDetails {
+      get {
+         return _additionalTestRunDetails;
+      }
+      set {
+         this._additionalTestRunDetails = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUAssociatedTestID {
       get {
          return _associatedTestID;
@@ -161,6 +179,17 @@ public class TestRun: RestObject {
       }
       set {
          this._associatedTestSuiteRunID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EAssociatedTestSuiteRunType? NUAssociatedTestSuiteRunType {
+      get {
+         return _associatedTestSuiteRunType;
+      }
+      set {
+         this._associatedTestSuiteRunType = value;
       }
    }
 
@@ -423,7 +452,7 @@ public class TestRun: RestObject {
    
 
    public String toString() {
-      return "TestRun [" + "associatedTestID=" + _associatedTestID + ", associatedTestSuiteRunID=" + _associatedTestSuiteRunID + ", command=" + _command + ", commandExitCode=" + _commandExitCode + ", commandOutput=" + _commandOutput + ", commandOutputSummary=" + _commandOutputSummary + ", creationDate=" + _creationDate + ", duration=" + _duration + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", operationStatus=" + _operationStatus + ", owner=" + _owner + ", startDateTime=" + _startDateTime + ", stopDateTime=" + _stopDateTime + ", testResult=" + _testResult + ", testResultData=" + _testResultData + ", testResultDataType=" + _testResultDataType + ", testResultSpecificationEntityName=" + _testResultSpecificationEntityName + ", underlayTestCategory=" + _underlayTestCategory + ", underlayTestDescription=" + _underlayTestDescription + ", underlayTestName=" + _underlayTestName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "TestRun [" + "additionalTestRunDetails=" + _additionalTestRunDetails + ", associatedTestID=" + _associatedTestID + ", associatedTestSuiteRunID=" + _associatedTestSuiteRunID + ", associatedTestSuiteRunType=" + _associatedTestSuiteRunType + ", command=" + _command + ", commandExitCode=" + _commandExitCode + ", commandOutput=" + _commandOutput + ", commandOutputSummary=" + _commandOutputSummary + ", creationDate=" + _creationDate + ", duration=" + _duration + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", operationStatus=" + _operationStatus + ", owner=" + _owner + ", startDateTime=" + _startDateTime + ", stopDateTime=" + _stopDateTime + ", testResult=" + _testResult + ", testResultData=" + _testResultData + ", testResultDataType=" + _testResultDataType + ", testResultSpecificationEntityName=" + _testResultSpecificationEntityName + ", underlayTestCategory=" + _underlayTestCategory + ", underlayTestDescription=" + _underlayTestDescription + ", underlayTestName=" + _underlayTestName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

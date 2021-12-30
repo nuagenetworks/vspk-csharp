@@ -300,6 +300,9 @@ public class VPort: RestObject {
    private RedirectionTargetsFetcher _redirectionTargets;
    
    [JsonIgnore]
+   private ScheduledtestsuiterunsFetcher _scheduledtestsuiteruns;
+   
+   [JsonIgnore]
    private StatisticsFetcher _statistics;
    
    [JsonIgnore]
@@ -381,6 +384,8 @@ public class VPort: RestObject {
       _qOSs = new QOSsFetcher(this);
       
       _redirectionTargets = new RedirectionTargetsFetcher(this);
+      
+      _scheduledtestsuiteruns = new ScheduledtestsuiterunsFetcher(this);
       
       _statistics = new StatisticsFetcher(this);
       
@@ -1122,6 +1127,10 @@ public class VPort: RestObject {
    
    public RedirectionTargetsFetcher getRedirectionTargets() {
       return _redirectionTargets;
+   }
+   
+   public ScheduledtestsuiterunsFetcher getScheduledtestsuiteruns() {
+      return _scheduledtestsuiteruns;
    }
    
    public StatisticsFetcher getStatistics() {
