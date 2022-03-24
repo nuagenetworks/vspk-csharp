@@ -42,7 +42,7 @@ public class DUCGroupBinding: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EAssociatedUBRGroupFunction {GATEWAY,UBR };
+   public enum EAssociatedUBRGroupFunction {GATEWAY,UBR,HUB };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
 
    

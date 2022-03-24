@@ -277,6 +277,9 @@ public class Me: RestObject {
    private MultiCastChannelMapsFetcher _multiCastChannelMaps;
    
    [JsonIgnore]
+   private NetconfGlobalConfigurationsFetcher _netconfGlobalConfigurations;
+   
+   [JsonIgnore]
    private NetconfProfilesFetcher _netconfProfiles;
    
    [JsonIgnore]
@@ -542,6 +545,8 @@ public class Me: RestObject {
       _mirrorDestinations = new MirrorDestinationsFetcher(this);
       
       _multiCastChannelMaps = new MultiCastChannelMapsFetcher(this);
+      
+      _netconfGlobalConfigurations = new NetconfGlobalConfigurationsFetcher(this);
       
       _netconfProfiles = new NetconfProfilesFetcher(this);
       
@@ -1142,6 +1147,10 @@ public class Me: RestObject {
    
    public MultiCastChannelMapsFetcher getMultiCastChannelMaps() {
       return _multiCastChannelMaps;
+   }
+   
+   public NetconfGlobalConfigurationsFetcher getNetconfGlobalConfigurations() {
+      return _netconfGlobalConfigurations;
    }
    
    public NetconfProfilesFetcher getNetconfProfiles() {

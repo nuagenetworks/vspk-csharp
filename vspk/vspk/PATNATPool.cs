@@ -114,6 +114,9 @@ public class PATNATPool: RestObject {
    [JsonProperty("startSourceAddress")]
    protected String _startSourceAddress;
    
+   [JsonProperty("useUplinkIP")]
+   protected bool _useUplinkIP;
+   
 
    
    [JsonIgnore]
@@ -408,6 +411,17 @@ public class PATNATPool: RestObject {
    }
 
    
+   [JsonIgnore]
+   public bool NUUseUplinkIP {
+      get {
+         return _useUplinkIP;
+      }
+      set {
+         this._useUplinkIP = value;
+      }
+   }
+
+   
 
    
    public AddressMapsFetcher getAddressMaps() {
@@ -448,7 +462,7 @@ public class PATNATPool: RestObject {
    
 
    public String toString() {
-      return "PATNATPool [" + "IPType=" + _IPType + ", addressRange=" + _addressRange + ", associatedGatewayId=" + _associatedGatewayId + ", associatedGatewayType=" + _associatedGatewayType + ", associatedSubnetId=" + _associatedSubnetId + ", associatedVlanId=" + _associatedVlanId + ", creationDate=" + _creationDate + ", defaultPATIP=" + _defaultPATIP + ", description=" + _description + ", dynamicSourceEnabled=" + _dynamicSourceEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", endAddressRange=" + _endAddressRange + ", endSourceAddress=" + _endSourceAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", permittedAction=" + _permittedAction + ", startAddressRange=" + _startAddressRange + ", startSourceAddress=" + _startSourceAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "PATNATPool [" + "IPType=" + _IPType + ", addressRange=" + _addressRange + ", associatedGatewayId=" + _associatedGatewayId + ", associatedGatewayType=" + _associatedGatewayType + ", associatedSubnetId=" + _associatedSubnetId + ", associatedVlanId=" + _associatedVlanId + ", creationDate=" + _creationDate + ", defaultPATIP=" + _defaultPATIP + ", description=" + _description + ", dynamicSourceEnabled=" + _dynamicSourceEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", endAddressRange=" + _endAddressRange + ", endSourceAddress=" + _endSourceAddress + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", permittedAction=" + _permittedAction + ", startAddressRange=" + _startAddressRange + ", startSourceAddress=" + _startSourceAddress + ", useUplinkIP=" + _useUplinkIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

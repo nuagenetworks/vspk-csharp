@@ -37,22 +37,19 @@ using net.nuagenetworks.vspk.v6.fetchers;
 namespace net.nuagenetworks.vspk.v6
 {
 
-public class EsIndexConfig: RestObject {
+public class NetconfGlobalConfiguration: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EConfigStatus {FAILED,IN_PROGRESS,SUCCESS };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EIlmStatus {FAILED,SUCCESS };
-   public enum EIndexType {NUAGE_ACL,NUAGE_ADDRESSMAP,NUAGE_DPI_FLOWSTATS,NUAGE_DPI_PROBESTATS,NUAGE_DPI_SLASTATS,NUAGE_EVENT,NUAGE_FEC,NUAGE_FLOW,NUAGE_GW_SEL_STATS,NUAGE_IKE_PROBESTATS,NUAGE_IKE_PROBE_STATUS,NUAGE_IKE_STATS,NUAGE_LTE,NUAGE_NATT,NUAGE_OAM,NUAGE_SYSMON,NUAGE_VLAN,NUAGE_VNF,NUAGE_VPORT,NUAGE_VPORT_QOS,NUAGE_WIFI };
 
    
-   [JsonProperty("associatedEsIlmPolicyId")]
-   protected String _associatedEsIlmPolicyId;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("configStatus")]
-   protected EConfigStatus? _configStatus;
+   [JsonProperty("configDefinition")]
+   protected String _configDefinition;
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    
    [JsonProperty("description")]
    protected String _description;
@@ -65,29 +62,26 @@ public class EsIndexConfig: RestObject {
    
    [JsonProperty("externalID")]
    protected String _externalID;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("ilmStatus")]
-   protected EIlmStatus? _ilmStatus;
    
-   [JsonProperty("indexPattern")]
-   protected String _indexPattern;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("indexType")]
-   protected EIndexType? _indexType;
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    
    [JsonProperty("name")]
    protected String _name;
    
-   [JsonProperty("numShards")]
-   protected long? _numShards;
+   [JsonProperty("netconfGatewayIDs")]
+   protected System.Collections.Generic.List<String> _netconfGatewayIDs;
    
-   [JsonProperty("policyName")]
-   protected String _policyName;
-   
-   [JsonProperty("rolloverAlias")]
-   protected String _rolloverAlias;
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
+   
+   [JsonIgnore]
+   private DeploymentFailuresFetcher _deploymentFailures;
    
    [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
@@ -98,7 +92,9 @@ public class EsIndexConfig: RestObject {
    [JsonIgnore]
    private PermissionsFetcher _permissions;
    
-   public EsIndexConfig() {
+   public NetconfGlobalConfiguration() {
+      
+      _deploymentFailures = new DeploymentFailuresFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -110,23 +106,23 @@ public class EsIndexConfig: RestObject {
 
    
    [JsonIgnore]
-   public String NUAssociatedEsIlmPolicyId {
+   public String NUConfigDefinition {
       get {
-         return _associatedEsIlmPolicyId;
+         return _configDefinition;
       }
       set {
-         this._associatedEsIlmPolicyId = value;
+         this._configDefinition = value;
       }
    }
 
    
    [JsonIgnore]
-   public EConfigStatus? NUConfigStatus {
+   public String NUCreationDate {
       get {
-         return _configStatus;
+         return _creationDate;
       }
       set {
-         this._configStatus = value;
+         this._creationDate = value;
       }
    }
 
@@ -176,34 +172,23 @@ public class EsIndexConfig: RestObject {
 
    
    [JsonIgnore]
-   public EIlmStatus? NUIlmStatus {
+   public String NULastUpdatedBy {
       get {
-         return _ilmStatus;
+         return _lastUpdatedBy;
       }
       set {
-         this._ilmStatus = value;
+         this._lastUpdatedBy = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUIndexPattern {
+   public String NULastUpdatedDate {
       get {
-         return _indexPattern;
+         return _lastUpdatedDate;
       }
       set {
-         this._indexPattern = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public EIndexType? NUIndexType {
-      get {
-         return _indexType;
-      }
-      set {
-         this._indexType = value;
+         this._lastUpdatedDate = value;
       }
    }
 
@@ -220,39 +205,32 @@ public class EsIndexConfig: RestObject {
 
    
    [JsonIgnore]
-   public long? NUNumShards {
+   public System.Collections.Generic.List<String> NUNetconfGatewayIDs {
       get {
-         return _numShards;
+         return _netconfGatewayIDs;
       }
       set {
-         this._numShards = value;
+         this._netconfGatewayIDs = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUPolicyName {
+   public String NUOwner {
       get {
-         return _policyName;
+         return _owner;
       }
       set {
-         this._policyName = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NURolloverAlias {
-      get {
-         return _rolloverAlias;
-      }
-      set {
-         this._rolloverAlias = value;
+         this._owner = value;
       }
    }
 
    
 
+   
+   public DeploymentFailuresFetcher getDeploymentFailures() {
+      return _deploymentFailures;
+   }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
@@ -268,19 +246,19 @@ public class EsIndexConfig: RestObject {
    
 
    public String toString() {
-      return "EsIndexConfig [" + "associatedEsIlmPolicyId=" + _associatedEsIlmPolicyId + ", configStatus=" + _configStatus + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ilmStatus=" + _ilmStatus + ", indexPattern=" + _indexPattern + ", indexType=" + _indexType + ", name=" + _name + ", numShards=" + _numShards + ", policyName=" + _policyName + ", rolloverAlias=" + _rolloverAlias + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "NetconfGlobalConfiguration [" + "configDefinition=" + _configDefinition + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", netconfGatewayIDs=" + _netconfGatewayIDs + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    
 
    public static String getResourceName()
    {
-	return "esindexconfigs";
+	return "netconfglobalconfigurations";
    }
 
    public static String getRestName()
    {
-	return "esindexconfig";
+	return "netconfglobalconfiguration";
    }
 }
 }

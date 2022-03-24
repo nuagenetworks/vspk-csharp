@@ -42,7 +42,7 @@ public class Subnet: RestObject {
    private const long serialVersionUID = 1L;
 
    
-   public enum EDHCPRelayStatus {DISABLED,ENABLED };
+   public enum EDHCPRelayStatus {DISABLED,ENABLED,OVERRIDE };
    public enum EDPI {DISABLED,ENABLED,INHERITED };
    public enum EIPType {DUALSTACK,IPV4,IPV6 };
    public enum EPATEnabled {DISABLED,ENABLED,INHERITED };
@@ -86,6 +86,21 @@ public class Subnet: RestObject {
    
    [JsonProperty("advertise")]
    protected bool _advertise;
+   
+   [JsonProperty("aggregatedL2DomainID")]
+   protected String _aggregatedL2DomainID;
+   
+   [JsonProperty("aggregatedL2DomainName")]
+   protected String _aggregatedL2DomainName;
+   
+   [JsonProperty("aggregatedL2DomainRT")]
+   protected String _aggregatedL2DomainRT;
+   
+   [JsonProperty("aggregatedL2DomainVNID")]
+   protected long? _aggregatedL2DomainVNID;
+   
+   [JsonProperty("associatedMasterNetconfGatewayId")]
+   protected String _associatedMasterNetconfGatewayId;
    
    [JsonProperty("associatedMulticastChannelMapID")]
    protected String _associatedMulticastChannelMapID;
@@ -180,6 +195,9 @@ public class Subnet: RestObject {
    [JsonProperty("policyGroupID")]
    protected long? _policyGroupID;
    
+   [JsonProperty("primaryDHCPServerAddress")]
+   protected String _primaryDHCPServerAddress;
+   
    [JsonProperty("proxyARP")]
    protected bool _proxyARP;
    
@@ -194,6 +212,9 @@ public class Subnet: RestObject {
    
    [JsonProperty("routeTarget")]
    protected String _routeTarget;
+   
+   [JsonProperty("secondaryDHCPServerAddress")]
+   protected String _secondaryDHCPServerAddress;
    
    [JsonProperty("serviceID")]
    protected long? _serviceID;
@@ -221,6 +242,9 @@ public class Subnet: RestObject {
    
    [JsonProperty("vrrpIPv6BackupAddress")]
    protected String _vrrpIPv6BackupAddress;
+   
+   [JsonProperty("vrrpPriority")]
+   protected long? _vrrpPriority;
    
 
    
@@ -258,6 +282,9 @@ public class Subnet: RestObject {
    private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
+   private GatewaysFetcher _gateways;
+   
+   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
@@ -268,6 +295,9 @@ public class Subnet: RestObject {
    
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
+   
+   [JsonIgnore]
+   private NetconfGatewaysFetcher _netconfGateways;
    
    [JsonIgnore]
    private PATIPEntriesFetcher _pATIPEntries;
@@ -283,6 +313,9 @@ public class Subnet: RestObject {
    
    [JsonIgnore]
    private VMResyncsFetcher _vMResyncs;
+   
+   [JsonIgnore]
+   private RoutingPolicyAssociationsFetcher _routingPolicyAssociations;
    
    [JsonIgnore]
    private StatisticsFetcher _statistics;
@@ -336,6 +369,8 @@ public class Subnet: RestObject {
       
       _eventLogs = new EventLogsFetcher(this);
       
+      _gateways = new GatewaysFetcher(this);
+      
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
       _iKEGatewayConnections = new IKEGatewayConnectionsFetcher(this);
@@ -343,6 +378,8 @@ public class Subnet: RestObject {
       _iPReservations = new IPReservationsFetcher(this);
       
       _metadatas = new MetadatasFetcher(this);
+      
+      _netconfGateways = new NetconfGatewaysFetcher(this);
       
       _pATIPEntries = new PATIPEntriesFetcher(this);
       
@@ -353,6 +390,8 @@ public class Subnet: RestObject {
       _qOSs = new QOSsFetcher(this);
       
       _vMResyncs = new VMResyncsFetcher(this);
+      
+      _routingPolicyAssociations = new RoutingPolicyAssociationsFetcher(this);
       
       _statistics = new StatisticsFetcher(this);
       
@@ -479,6 +518,61 @@ public class Subnet: RestObject {
       }
       set {
          this._advertise = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAggregatedL2DomainID {
+      get {
+         return _aggregatedL2DomainID;
+      }
+      set {
+         this._aggregatedL2DomainID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAggregatedL2DomainName {
+      get {
+         return _aggregatedL2DomainName;
+      }
+      set {
+         this._aggregatedL2DomainName = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAggregatedL2DomainRT {
+      get {
+         return _aggregatedL2DomainRT;
+      }
+      set {
+         this._aggregatedL2DomainRT = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public long? NUAggregatedL2DomainVNID {
+      get {
+         return _aggregatedL2DomainVNID;
+      }
+      set {
+         this._aggregatedL2DomainVNID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedMasterNetconfGatewayId {
+      get {
+         return _associatedMasterNetconfGatewayId;
+      }
+      set {
+         this._associatedMasterNetconfGatewayId = value;
       }
    }
 
@@ -825,6 +919,17 @@ public class Subnet: RestObject {
 
    
    [JsonIgnore]
+   public String NUPrimaryDHCPServerAddress {
+      get {
+         return _primaryDHCPServerAddress;
+      }
+      set {
+         this._primaryDHCPServerAddress = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUProxyARP {
       get {
          return _proxyARP;
@@ -875,6 +980,17 @@ public class Subnet: RestObject {
       }
       set {
          this._routeTarget = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUSecondaryDHCPServerAddress {
+      get {
+         return _secondaryDHCPServerAddress;
+      }
+      set {
+         this._secondaryDHCPServerAddress = value;
       }
    }
 
@@ -978,6 +1094,17 @@ public class Subnet: RestObject {
    }
 
    
+   [JsonIgnore]
+   public long? NUVrrpPriority {
+      get {
+         return _vrrpPriority;
+      }
+      set {
+         this._vrrpPriority = value;
+      }
+   }
+
+   
 
    
    public AddressRangesFetcher getAddressRanges() {
@@ -1024,6 +1151,10 @@ public class Subnet: RestObject {
       return _eventLogs;
    }
    
+   public GatewaysFetcher getGateways() {
+      return _gateways;
+   }
+   
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;
    }
@@ -1038,6 +1169,10 @@ public class Subnet: RestObject {
    
    public MetadatasFetcher getMetadatas() {
       return _metadatas;
+   }
+   
+   public NetconfGatewaysFetcher getNetconfGateways() {
+      return _netconfGateways;
    }
    
    public PATIPEntriesFetcher getPATIPEntries() {
@@ -1058,6 +1193,10 @@ public class Subnet: RestObject {
    
    public VMResyncsFetcher getVMResyncs() {
       return _vMResyncs;
+   }
+   
+   public RoutingPolicyAssociationsFetcher getRoutingPolicyAssociations() {
+      return _routingPolicyAssociations;
    }
    
    public StatisticsFetcher getStatistics() {
@@ -1094,7 +1233,7 @@ public class Subnet: RestObject {
    
 
    public String toString() {
-      return "Subnet [" + "DHCPRelayStatus=" + _DHCPRelayStatus + ", DPI=" + _DPI + ", EVPNEnabled=" + _EVPNEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", PATEnabled=" + _PATEnabled + ", accessRestrictionEnabled=" + _accessRestrictionEnabled + ", address=" + _address + ", advertise=" + _advertise + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", color=" + _color + ", creationDate=" + _creationDate + ", customerID=" + _customerID + ", description=" + _description + ", domainServiceLabel=" + _domainServiceLabel + ", dualStackDynamicIPAllocation=" + _dualStackDynamicIPAllocation + ", embeddedMetadata=" + _embeddedMetadata + ", enableDHCPv4=" + _enableDHCPv4 + ", enableDHCPv6=" + _enableDHCPv6 + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", ingressReplicationEnabled=" + _ingressReplicationEnabled + ", interfaceID=" + _interfaceID + ", irbSubInterfaceID=" + _irbSubInterfaceID + ", l2EncapType=" + _l2EncapType + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", linkLocalAddress=" + _linkLocalAddress + ", maintenanceMode=" + _maintenanceMode + ", multiHomeEnabled=" + _multiHomeEnabled + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", owner=" + _owner + ", policyGroupID=" + _policyGroupID + ", proxyARP=" + _proxyARP + ", public=" + _public + ", resourceType=" + _resourceType + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", serviceID=" + _serviceID + ", splitSubnet=" + _splitSubnet + ", subnetVLANID=" + _subnetVLANID + ", templateID=" + _templateID + ", underlay=" + _underlay + ", underlayEnabled=" + _underlayEnabled + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", vrrpIPv6BackupAddress=" + _vrrpIPv6BackupAddress + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Subnet [" + "DHCPRelayStatus=" + _DHCPRelayStatus + ", DPI=" + _DPI + ", EVPNEnabled=" + _EVPNEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", PATEnabled=" + _PATEnabled + ", accessRestrictionEnabled=" + _accessRestrictionEnabled + ", address=" + _address + ", advertise=" + _advertise + ", aggregatedL2DomainID=" + _aggregatedL2DomainID + ", aggregatedL2DomainName=" + _aggregatedL2DomainName + ", aggregatedL2DomainRT=" + _aggregatedL2DomainRT + ", aggregatedL2DomainVNID=" + _aggregatedL2DomainVNID + ", associatedMasterNetconfGatewayId=" + _associatedMasterNetconfGatewayId + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", color=" + _color + ", creationDate=" + _creationDate + ", customerID=" + _customerID + ", description=" + _description + ", domainServiceLabel=" + _domainServiceLabel + ", dualStackDynamicIPAllocation=" + _dualStackDynamicIPAllocation + ", embeddedMetadata=" + _embeddedMetadata + ", enableDHCPv4=" + _enableDHCPv4 + ", enableDHCPv6=" + _enableDHCPv6 + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", ingressReplicationEnabled=" + _ingressReplicationEnabled + ", interfaceID=" + _interfaceID + ", irbSubInterfaceID=" + _irbSubInterfaceID + ", l2EncapType=" + _l2EncapType + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", linkLocalAddress=" + _linkLocalAddress + ", maintenanceMode=" + _maintenanceMode + ", multiHomeEnabled=" + _multiHomeEnabled + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", owner=" + _owner + ", policyGroupID=" + _policyGroupID + ", primaryDHCPServerAddress=" + _primaryDHCPServerAddress + ", proxyARP=" + _proxyARP + ", public=" + _public + ", resourceType=" + _resourceType + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", secondaryDHCPServerAddress=" + _secondaryDHCPServerAddress + ", serviceID=" + _serviceID + ", splitSubnet=" + _splitSubnet + ", subnetVLANID=" + _subnetVLANID + ", templateID=" + _templateID + ", underlay=" + _underlay + ", underlayEnabled=" + _underlayEnabled + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", vrrpIPv6BackupAddress=" + _vrrpIPv6BackupAddress + ", vrrpPriority=" + _vrrpPriority + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

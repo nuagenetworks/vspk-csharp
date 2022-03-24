@@ -37,25 +37,20 @@ using net.nuagenetworks.vspk.v6.fetchers;
 namespace net.nuagenetworks.vspk.v6
 {
 
-public class EsIndexConfig: RestObject {
+public class RoutingPolicyAssociation: RestObject {
 
    private const long serialVersionUID = 1L;
 
    
-   public enum EConfigStatus {FAILED,IN_PROGRESS,SUCCESS };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EIlmStatus {FAILED,SUCCESS };
-   public enum EIndexType {NUAGE_ACL,NUAGE_ADDRESSMAP,NUAGE_DPI_FLOWSTATS,NUAGE_DPI_PROBESTATS,NUAGE_DPI_SLASTATS,NUAGE_EVENT,NUAGE_FEC,NUAGE_FLOW,NUAGE_GW_SEL_STATS,NUAGE_IKE_PROBESTATS,NUAGE_IKE_PROBE_STATUS,NUAGE_IKE_STATS,NUAGE_LTE,NUAGE_NATT,NUAGE_OAM,NUAGE_SYSMON,NUAGE_VLAN,NUAGE_VNF,NUAGE_VPORT,NUAGE_VPORT_QOS,NUAGE_WIFI };
+   public enum EIpType {IPV4,IPV6 };
 
    
-   [JsonProperty("associatedEsIlmPolicyId")]
-   protected String _associatedEsIlmPolicyId;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("configStatus")]
-   protected EConfigStatus? _configStatus;
+   [JsonProperty("associatedRoutingPolicyID")]
+   protected String _associatedRoutingPolicyID;
    
-   [JsonProperty("description")]
-   protected String _description;
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
@@ -66,26 +61,20 @@ public class EsIndexConfig: RestObject {
    [JsonProperty("externalID")]
    protected String _externalID;
    [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("ilmStatus")]
-   protected EIlmStatus? _ilmStatus;
+   [JsonProperty("ipType")]
+   protected EIpType? _ipType;
    
-   [JsonProperty("indexPattern")]
-   protected String _indexPattern;
-   [JsonConverter(typeof(StringEnumConverter))]
-   [JsonProperty("indexType")]
-   protected EIndexType? _indexType;
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
    
-   [JsonProperty("name")]
-   protected String _name;
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    
-   [JsonProperty("numShards")]
-   protected long? _numShards;
+   [JsonProperty("netconfGatewayIDs")]
+   protected System.Collections.Generic.List<String> _netconfGatewayIDs;
    
-   [JsonProperty("policyName")]
-   protected String _policyName;
-   
-   [JsonProperty("rolloverAlias")]
-   protected String _rolloverAlias;
+   [JsonProperty("owner")]
+   protected String _owner;
    
 
    
@@ -98,7 +87,7 @@ public class EsIndexConfig: RestObject {
    [JsonIgnore]
    private PermissionsFetcher _permissions;
    
-   public EsIndexConfig() {
+   public RoutingPolicyAssociation() {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -110,34 +99,23 @@ public class EsIndexConfig: RestObject {
 
    
    [JsonIgnore]
-   public String NUAssociatedEsIlmPolicyId {
+   public String NUAssociatedRoutingPolicyID {
       get {
-         return _associatedEsIlmPolicyId;
+         return _associatedRoutingPolicyID;
       }
       set {
-         this._associatedEsIlmPolicyId = value;
+         this._associatedRoutingPolicyID = value;
       }
    }
 
    
    [JsonIgnore]
-   public EConfigStatus? NUConfigStatus {
+   public String NUCreationDate {
       get {
-         return _configStatus;
+         return _creationDate;
       }
       set {
-         this._configStatus = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUDescription {
-      get {
-         return _description;
-      }
-      set {
-         this._description = value;
+         this._creationDate = value;
       }
    }
 
@@ -176,78 +154,56 @@ public class EsIndexConfig: RestObject {
 
    
    [JsonIgnore]
-   public EIlmStatus? NUIlmStatus {
+   public EIpType? NUIpType {
       get {
-         return _ilmStatus;
+         return _ipType;
       }
       set {
-         this._ilmStatus = value;
+         this._ipType = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUIndexPattern {
+   public String NULastUpdatedBy {
       get {
-         return _indexPattern;
+         return _lastUpdatedBy;
       }
       set {
-         this._indexPattern = value;
+         this._lastUpdatedBy = value;
       }
    }
 
    
    [JsonIgnore]
-   public EIndexType? NUIndexType {
+   public String NULastUpdatedDate {
       get {
-         return _indexType;
+         return _lastUpdatedDate;
       }
       set {
-         this._indexType = value;
+         this._lastUpdatedDate = value;
       }
    }
 
    
    [JsonIgnore]
-   public String NUName {
+   public System.Collections.Generic.List<String> NUNetconfGatewayIDs {
       get {
-         return _name;
+         return _netconfGatewayIDs;
       }
       set {
-         this._name = value;
+         this._netconfGatewayIDs = value;
       }
    }
 
    
    [JsonIgnore]
-   public long? NUNumShards {
+   public String NUOwner {
       get {
-         return _numShards;
+         return _owner;
       }
       set {
-         this._numShards = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NUPolicyName {
-      get {
-         return _policyName;
-      }
-      set {
-         this._policyName = value;
-      }
-   }
-
-   
-   [JsonIgnore]
-   public String NURolloverAlias {
-      get {
-         return _rolloverAlias;
-      }
-      set {
-         this._rolloverAlias = value;
+         this._owner = value;
       }
    }
 
@@ -268,19 +224,19 @@ public class EsIndexConfig: RestObject {
    
 
    public String toString() {
-      return "EsIndexConfig [" + "associatedEsIlmPolicyId=" + _associatedEsIlmPolicyId + ", configStatus=" + _configStatus + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ilmStatus=" + _ilmStatus + ", indexPattern=" + _indexPattern + ", indexType=" + _indexType + ", name=" + _name + ", numShards=" + _numShards + ", policyName=" + _policyName + ", rolloverAlias=" + _rolloverAlias + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "RoutingPolicyAssociation [" + "associatedRoutingPolicyID=" + _associatedRoutingPolicyID + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ipType=" + _ipType + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", netconfGatewayIDs=" + _netconfGatewayIDs + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    
 
    public static String getResourceName()
    {
-	return "esindexconfigs";
+	return "routingpolicyassociations";
    }
 
    public static String getRestName()
    {
-	return "esindexconfig";
+	return "routingpolicyassociation";
    }
 }
 }

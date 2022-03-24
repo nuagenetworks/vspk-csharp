@@ -380,6 +380,8 @@
     <Compile Include="DomainFIPAclTemplatesFetcher.cs" />
     <Compile Include="OSPFInterface.cs" />
     <Compile Include="OSPFInterfacesFetcher.cs" />
+    <Compile Include="NetconfGlobalConfiguration.cs" />
+    <Compile Include="NetconfGlobalConfigurationsFetcher.cs" />
     <Compile Include="ScheduledTestSuite.cs" />
     <Compile Include="ScheduledTestSuitesFetcher.cs" />
     <Compile Include="AddressMap.cs" />
@@ -516,6 +518,8 @@
     <Compile Include="VMIPReservationsFetcher.cs" />
     <Compile Include="PerformanceMonitor.cs" />
     <Compile Include="PerformanceMonitorsFetcher.cs" />
+    <Compile Include="RoutingPolicyAssociation.cs" />
+    <Compile Include="RoutingPolicyAssociationsFetcher.cs" />
     <Compile Include="NSGRoutingPolicyBinding.cs" />
     <Compile Include="NSGRoutingPolicyBindingsFetcher.cs" />
     <Compile Include="RedirectionTarget.cs" />

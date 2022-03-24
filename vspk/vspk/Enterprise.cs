@@ -247,6 +247,9 @@ public class Enterprise: RestObject {
    private EnterpriseSecuritiesFetcher _enterpriseSecurities;
    
    [JsonIgnore]
+   private EthernetSegmentGWGroupsFetcher _ethernetSegmentGWGroups;
+   
+   [JsonIgnore]
    private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
@@ -494,6 +497,8 @@ public class Enterprise: RestObject {
       _enterpriseNetworks = new EnterpriseNetworksFetcher(this);
       
       _enterpriseSecurities = new EnterpriseSecuritiesFetcher(this);
+      
+      _ethernetSegmentGWGroups = new EthernetSegmentGWGroupsFetcher(this);
       
       _eventLogs = new EventLogsFetcher(this);
       
@@ -1200,6 +1205,10 @@ public class Enterprise: RestObject {
    
    public EnterpriseSecuritiesFetcher getEnterpriseSecurities() {
       return _enterpriseSecurities;
+   }
+   
+   public EthernetSegmentGWGroupsFetcher getEthernetSegmentGWGroups() {
+      return _ethernetSegmentGWGroups;
    }
    
    public EventLogsFetcher getEventLogs() {
