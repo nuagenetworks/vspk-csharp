@@ -138,6 +138,8 @@
     <Compile Include="L4ServiceGroupsFetcher.cs" />
     <Compile Include="IPReservation.cs" />
     <Compile Include="IPReservationsFetcher.cs" />
+    <Compile Include="Ddnsconfigbinding.cs" />
+    <Compile Include="DdnsconfigbindingsFetcher.cs" />
     <Compile Include="ThreatPreventionNodeInfo.cs" />
     <Compile Include="ThreatPreventionNodeInfosFetcher.cs" />
     <Compile Include="Connectionendpoint.cs" />
@@ -646,6 +648,8 @@
     <Compile Include="BRConnectionsFetcher.cs" />
     <Compile Include="NSGInfo.cs" />
     <Compile Include="NSGInfosFetcher.cs" />
+    <Compile Include="Ddnsconfig.cs" />
+    <Compile Include="DdnsconfigsFetcher.cs" />
     <Compile Include="IKEGatewayProfile.cs" />
     <Compile Include="IKEGatewayProfilesFetcher.cs" />
     <Compile Include="FirewallRule.cs" />

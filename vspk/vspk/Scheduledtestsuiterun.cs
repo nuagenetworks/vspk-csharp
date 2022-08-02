@@ -42,6 +42,7 @@ public class Scheduledtestsuiterun: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EOperationStatus {RUNNING,STARTED,UNKNOWN };
 
    
@@ -57,6 +58,9 @@ public class Scheduledtestsuiterun: RestObject {
    [JsonProperty("associatedScheduledTestSuiteName")]
    protected String _associatedScheduledTestSuiteName;
    
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
+   
    [JsonProperty("datapathID")]
    protected String _datapathID;
    
@@ -66,11 +70,29 @@ public class Scheduledtestsuiterun: RestObject {
    [JsonProperty("domainName")]
    protected String _domainName;
    
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
+   
    [JsonProperty("macAddress")]
    protected String _macAddress;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("operationStatus")]
    protected EOperationStatus? _operationStatus;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("secondaryDatapathID")]
    protected String _secondaryDatapathID;
@@ -105,9 +127,19 @@ public class Scheduledtestsuiterun: RestObject {
 
    
    [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
+   [JsonIgnore]
    private TestRunsFetcher _testRuns;
    
    public Scheduledtestsuiterun() {
+      
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
       
       _testRuns = new TestRunsFetcher(this);
       
@@ -159,6 +191,17 @@ public class Scheduledtestsuiterun: RestObject {
 
    
    [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUDatapathID {
       get {
          return _datapathID;
@@ -192,6 +235,61 @@ public class Scheduledtestsuiterun: RestObject {
 
    
    [JsonIgnore]
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUMacAddress {
       get {
          return _macAddress;
@@ -209,6 +307,17 @@ public class Scheduledtestsuiterun: RestObject {
       }
       set {
          this._operationStatus = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -325,13 +434,21 @@ public class Scheduledtestsuiterun: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
    public TestRunsFetcher getTestRuns() {
       return _testRuns;
    }
    
 
    public String toString() {
-      return "Scheduledtestsuiterun [" + "NSGatewayName=" + _NSGatewayName + ", VPortName=" + _VPortName + ", associatedScheduledTestSuiteID=" + _associatedScheduledTestSuiteID + ", associatedScheduledTestSuiteName=" + _associatedScheduledTestSuiteName + ", datapathID=" + _datapathID + ", destination=" + _destination + ", domainName=" + _domainName + ", macAddress=" + _macAddress + ", operationStatus=" + _operationStatus + ", secondaryDatapathID=" + _secondaryDatapathID + ", secondaryNSGatewayName=" + _secondaryNSGatewayName + ", secondarySystemID=" + _secondarySystemID + ", sourceIP=" + _sourceIP + ", subnetName=" + _subnetName + ", systemID=" + _systemID + ", vlanID=" + _vlanID + ", vportPortName=" + _vportPortName + ", vportVlanID=" + _vportVlanID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Scheduledtestsuiterun [" + "NSGatewayName=" + _NSGatewayName + ", VPortName=" + _VPortName + ", associatedScheduledTestSuiteID=" + _associatedScheduledTestSuiteID + ", associatedScheduledTestSuiteName=" + _associatedScheduledTestSuiteName + ", creationDate=" + _creationDate + ", datapathID=" + _datapathID + ", destination=" + _destination + ", domainName=" + _domainName + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", macAddress=" + _macAddress + ", operationStatus=" + _operationStatus + ", owner=" + _owner + ", secondaryDatapathID=" + _secondaryDatapathID + ", secondaryNSGatewayName=" + _secondaryNSGatewayName + ", secondarySystemID=" + _secondarySystemID + ", sourceIP=" + _sourceIP + ", subnetName=" + _subnetName + ", systemID=" + _systemID + ", vlanID=" + _vlanID + ", vportPortName=" + _vportPortName + ", vportVlanID=" + _vportVlanID + ", zoneName=" + _zoneName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

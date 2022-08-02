@@ -289,6 +289,9 @@ public class NSGateway: RestObject {
    private CommandsFetcher _commands;
    
    [JsonIgnore]
+   private DdnsconfigsFetcher _ddnsconfigs;
+   
+   [JsonIgnore]
    private EnterprisePermissionsFetcher _enterprisePermissions;
    
    [JsonIgnore]
@@ -369,6 +372,8 @@ public class NSGateway: RestObject {
       _bootstrapActivations = new BootstrapActivationsFetcher(this);
       
       _commands = new CommandsFetcher(this);
+      
+      _ddnsconfigs = new DdnsconfigsFetcher(this);
       
       _enterprisePermissions = new EnterprisePermissionsFetcher(this);
       
@@ -1218,6 +1223,10 @@ public class NSGateway: RestObject {
    
    public CommandsFetcher getCommands() {
       return _commands;
+   }
+   
+   public DdnsconfigsFetcher getDdnsconfigs() {
+      return _ddnsconfigs;
    }
    
    public EnterprisePermissionsFetcher getEnterprisePermissions() {

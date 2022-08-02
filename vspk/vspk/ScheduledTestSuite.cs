@@ -42,17 +42,39 @@ public class ScheduledTestSuite: RestObject {
    private const long serialVersionUID = 1L;
 
    
+   public enum EEntityScope {ENTERPRISE,GLOBAL };
    public enum EScheduleIntervalUnits {DAYS,HOURS,MINUTES,MONTHS };
 
+   
+   [JsonProperty("creationDate")]
+   protected String _creationDate;
    
    [JsonProperty("description")]
    protected String _description;
    
+   [JsonProperty("embeddedMetadata")]
+   protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
+   
    [JsonProperty("endDateTime")]
    protected long? _endDateTime;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("entityScope")]
+   protected EEntityScope? _entityScope;
+   
+   [JsonProperty("externalID")]
+   protected String _externalID;
+   
+   [JsonProperty("lastUpdatedBy")]
+   protected String _lastUpdatedBy;
+   
+   [JsonProperty("lastUpdatedDate")]
+   protected String _lastUpdatedDate;
    
    [JsonProperty("name")]
    protected String _name;
+   
+   [JsonProperty("owner")]
+   protected String _owner;
    
    [JsonProperty("scheduleInterval")]
    protected long? _scheduleInterval;
@@ -66,6 +88,12 @@ public class ScheduledTestSuite: RestObject {
 
    
    [JsonIgnore]
+   private GlobalMetadatasFetcher _globalMetadatas;
+   
+   [JsonIgnore]
+   private MetadatasFetcher _metadatas;
+   
+   [JsonIgnore]
    private ScheduledtestsuiterunsFetcher _scheduledtestsuiteruns;
    
    [JsonIgnore]
@@ -73,10 +101,25 @@ public class ScheduledTestSuite: RestObject {
    
    public ScheduledTestSuite() {
       
+      _globalMetadatas = new GlobalMetadatasFetcher(this);
+      
+      _metadatas = new MetadatasFetcher(this);
+      
       _scheduledtestsuiteruns = new ScheduledtestsuiterunsFetcher(this);
       
       _tests = new TestsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCreationDate {
+      get {
+         return _creationDate;
+      }
+      set {
+         this._creationDate = value;
+      }
    }
 
    
@@ -87,6 +130,17 @@ public class ScheduledTestSuite: RestObject {
       }
       set {
          this._description = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public System.Collections.Generic.List<Metadata> NUEmbeddedMetadata {
+      get {
+         return _embeddedMetadata;
+      }
+      set {
+         this._embeddedMetadata = value;
       }
    }
 
@@ -103,12 +157,67 @@ public class ScheduledTestSuite: RestObject {
 
    
    [JsonIgnore]
+   public EEntityScope? NUEntityScope {
+      get {
+         return _entityScope;
+      }
+      set {
+         this._entityScope = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUExternalID {
+      get {
+         return _externalID;
+      }
+      set {
+         this._externalID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedBy {
+      get {
+         return _lastUpdatedBy;
+      }
+      set {
+         this._lastUpdatedBy = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULastUpdatedDate {
+      get {
+         return _lastUpdatedDate;
+      }
+      set {
+         this._lastUpdatedDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUName {
       get {
          return _name;
       }
       set {
          this._name = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUOwner {
+      get {
+         return _owner;
+      }
+      set {
+         this._owner = value;
       }
    }
 
@@ -148,6 +257,14 @@ public class ScheduledTestSuite: RestObject {
    
 
    
+   public GlobalMetadatasFetcher getGlobalMetadatas() {
+      return _globalMetadatas;
+   }
+   
+   public MetadatasFetcher getMetadatas() {
+      return _metadatas;
+   }
+   
    public ScheduledtestsuiterunsFetcher getScheduledtestsuiteruns() {
       return _scheduledtestsuiteruns;
    }
@@ -158,7 +275,7 @@ public class ScheduledTestSuite: RestObject {
    
 
    public String toString() {
-      return "ScheduledTestSuite [" + "description=" + _description + ", endDateTime=" + _endDateTime + ", name=" + _name + ", scheduleInterval=" + _scheduleInterval + ", scheduleIntervalUnits=" + _scheduleIntervalUnits + ", startDateTime=" + _startDateTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "ScheduledTestSuite [" + "creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", endDateTime=" + _endDateTime + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", scheduleInterval=" + _scheduleInterval + ", scheduleIntervalUnits=" + _scheduleIntervalUnits + ", startDateTime=" + _startDateTime + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    
