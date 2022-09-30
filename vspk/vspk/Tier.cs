@@ -78,6 +78,9 @@ public class Tier: RestObject {
    
    [JsonProperty("probeInterval")]
    protected long? _probeInterval;
+   
+   [JsonProperty("probePerformanceStats")]
+   protected bool _probePerformanceStats;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("tierType")]
    protected ETierType? _tierType;
@@ -234,6 +237,17 @@ public class Tier: RestObject {
 
    
    [JsonIgnore]
+   public bool NUProbePerformanceStats {
+      get {
+         return _probePerformanceStats;
+      }
+      set {
+         this._probePerformanceStats = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public ETierType? NUTierType {
       get {
          return _tierType;
@@ -275,7 +289,7 @@ public class Tier: RestObject {
    
 
    public String toString() {
-      return "Tier [" + "creationDate=" + _creationDate + ", description=" + _description + ", downThresholdCount=" + _downThresholdCount + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", packetCount=" + _packetCount + ", probeInterval=" + _probeInterval + ", tierType=" + _tierType + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Tier [" + "creationDate=" + _creationDate + ", description=" + _description + ", downThresholdCount=" + _downThresholdCount + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", packetCount=" + _packetCount + ", probeInterval=" + _probeInterval + ", probePerformanceStats=" + _probePerformanceStats + ", tierType=" + _tierType + ", timeout=" + _timeout + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    
