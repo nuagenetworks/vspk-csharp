@@ -55,6 +55,9 @@ public class VirtualIP: RestObject {
    [JsonProperty("associatedFloatingIPID")]
    protected String _associatedFloatingIPID;
    
+   [JsonProperty("associatedSecondaryFloatingIPID")]
+   protected String _associatedSecondaryFloatingIPID;
+   
    [JsonProperty("creationDate")]
    protected String _creationDate;
    
@@ -138,6 +141,17 @@ public class VirtualIP: RestObject {
       }
       set {
          this._associatedFloatingIPID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedSecondaryFloatingIPID {
+      get {
+         return _associatedSecondaryFloatingIPID;
+      }
+      set {
+         this._associatedSecondaryFloatingIPID = value;
       }
    }
 
@@ -261,7 +275,7 @@ public class VirtualIP: RestObject {
    
 
    public String toString() {
-      return "VirtualIP [" + "IPType=" + _IPType + ", MAC=" + _MAC + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", subnetID=" + _subnetID + ", virtualIP=" + _virtualIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "VirtualIP [" + "IPType=" + _IPType + ", MAC=" + _MAC + ", associatedFloatingIPID=" + _associatedFloatingIPID + ", associatedSecondaryFloatingIPID=" + _associatedSecondaryFloatingIPID + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", subnetID=" + _subnetID + ", virtualIP=" + _virtualIP + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

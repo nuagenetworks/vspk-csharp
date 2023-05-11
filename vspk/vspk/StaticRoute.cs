@@ -44,7 +44,7 @@ public class StaticRoute: RestObject {
    
    public enum EIPType {IPV4,IPV6 };
    public enum EEntityScope {ENTERPRISE,GLOBAL };
-   public enum EType {EXIT_DOMAIN,NETCONF,OVERLAY,OVERLAY_ADDRESS_TRANSLATION };
+   public enum EType {EXIT_DOMAIN,FIP,NETCONF,OVERLAY,OVERLAY_ADDRESS_TRANSLATION };
 
    
    [JsonProperty("BFDEnabled")]
@@ -58,6 +58,9 @@ public class StaticRoute: RestObject {
    
    [JsonProperty("address")]
    protected String _address;
+   
+   [JsonProperty("associatedFIPDomainID")]
+   protected String _associatedFIPDomainID;
    
    [JsonProperty("associatedGatewayIDs")]
    protected System.Collections.Generic.List<String> _associatedGatewayIDs;
@@ -173,6 +176,17 @@ public class StaticRoute: RestObject {
       }
       set {
          this._address = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUAssociatedFIPDomainID {
+      get {
+         return _associatedFIPDomainID;
+      }
+      set {
+         this._associatedFIPDomainID = value;
       }
    }
 
@@ -355,7 +369,7 @@ public class StaticRoute: RestObject {
    
 
    public String toString() {
-      return "StaticRoute [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedGatewayIDs=" + _associatedGatewayIDs + ", associatedSubnetID=" + _associatedSubnetID + ", blackHoleEnabled=" + _blackHoleEnabled + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", netmask=" + _netmask + ", nextHopIp=" + _nextHopIp + ", owner=" + _owner + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "StaticRoute [" + "BFDEnabled=" + _BFDEnabled + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", address=" + _address + ", associatedFIPDomainID=" + _associatedFIPDomainID + ", associatedGatewayIDs=" + _associatedGatewayIDs + ", associatedSubnetID=" + _associatedSubnetID + ", blackHoleEnabled=" + _blackHoleEnabled + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", netmask=" + _netmask + ", nextHopIp=" + _nextHopIp + ", owner=" + _owner + ", routeDistinguisher=" + _routeDistinguisher + ", type=" + _type + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

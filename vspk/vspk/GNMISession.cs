@@ -102,12 +102,17 @@ public class GNMISession: RestObject {
 
    
    [JsonIgnore]
+   private AlarmsFetcher _alarms;
+   
+   [JsonIgnore]
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
    private MetadatasFetcher _metadatas;
    
    public GNMISession() {
+      
+      _alarms = new AlarmsFetcher(this);
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
@@ -304,6 +309,10 @@ public class GNMISession: RestObject {
 
    
 
+   
+   public AlarmsFetcher getAlarms() {
+      return _alarms;
+   }
    
    public GlobalMetadatasFetcher getGlobalMetadatas() {
       return _globalMetadatas;

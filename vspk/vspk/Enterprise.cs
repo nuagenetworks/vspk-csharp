@@ -168,6 +168,9 @@ public class Enterprise: RestObject {
    
    [JsonProperty("sharedEnterprise")]
    protected bool _sharedEnterprise;
+   
+   [JsonProperty("statsProfileID")]
+   protected String _statsProfileID;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("threatIntelligenceEnabled")]
    protected EThreatIntelligenceEnabled? _threatIntelligenceEnabled;
@@ -1071,6 +1074,17 @@ public class Enterprise: RestObject {
 
    
    [JsonIgnore]
+   public String NUStatsProfileID {
+      get {
+         return _statsProfileID;
+      }
+      set {
+         this._statsProfileID = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EThreatIntelligenceEnabled? NUThreatIntelligenceEnabled {
       get {
          return _threatIntelligenceEnabled;
@@ -1489,7 +1503,7 @@ public class Enterprise: RestObject {
    
 
    public String toString() {
-      return "Enterprise [" + "BGPEnabled=" + _BGPEnabled + ", DHCPLeaseInterval=" + _DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + _LDAPAuthorizationEnabled + ", LDAPEnabled=" + _LDAPEnabled + ", VNFManagementEnabled=" + _VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + _allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + _allowGatewayManagement + ", allowTrustedForwardingClass=" + _allowTrustedForwardingClass + ", allowedForwardingClasses=" + _allowedForwardingClasses + ", allowedForwardingMode=" + _allowedForwardingMode + ", associatedEnterpriseSecurityID=" + _associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + _associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + _associatedKeyServerMonitorID + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", blockedPageText=" + _blockedPageText + ", creationDate=" + _creationDate + ", customerID=" + _customerID + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", embeddedMetadata=" + _embeddedMetadata + ", enableApplicationPerformanceManagement=" + _enableApplicationPerformanceManagement + ", encryptionManagementMode=" + _encryptionManagementMode + ", enterpriseProfileID=" + _enterpriseProfileID + ", enterpriseType=" + _enterpriseType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", floatingIPsQuota=" + _floatingIPsQuota + ", floatingIPsUsed=" + _floatingIPsUsed + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", forwardingClass=" + _forwardingClass + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", localAS=" + _localAS + ", name=" + _name + ", owner=" + _owner + ", receiveMultiCastListID=" + _receiveMultiCastListID + ", sendMultiCastListID=" + _sendMultiCastListID + ", sharedEnterprise=" + _sharedEnterprise + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", threatPreventionManagementEnabled=" + _threatPreventionManagementEnabled + ", useGlobalMAC=" + _useGlobalMAC + ", virtualFirewallRulesEnabled=" + _virtualFirewallRulesEnabled + ", webFilterEnabled=" + _webFilterEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Enterprise [" + "BGPEnabled=" + _BGPEnabled + ", DHCPLeaseInterval=" + _DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + _LDAPAuthorizationEnabled + ", LDAPEnabled=" + _LDAPEnabled + ", VNFManagementEnabled=" + _VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + _allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + _allowGatewayManagement + ", allowTrustedForwardingClass=" + _allowTrustedForwardingClass + ", allowedForwardingClasses=" + _allowedForwardingClasses + ", allowedForwardingMode=" + _allowedForwardingMode + ", associatedEnterpriseSecurityID=" + _associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + _associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + _associatedKeyServerMonitorID + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", blockedPageText=" + _blockedPageText + ", creationDate=" + _creationDate + ", customerID=" + _customerID + ", description=" + _description + ", dictionaryVersion=" + _dictionaryVersion + ", embeddedMetadata=" + _embeddedMetadata + ", enableApplicationPerformanceManagement=" + _enableApplicationPerformanceManagement + ", encryptionManagementMode=" + _encryptionManagementMode + ", enterpriseProfileID=" + _enterpriseProfileID + ", enterpriseType=" + _enterpriseType + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", floatingIPsQuota=" + _floatingIPsQuota + ", floatingIPsUsed=" + _floatingIPsUsed + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", forwardingClass=" + _forwardingClass + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", localAS=" + _localAS + ", name=" + _name + ", owner=" + _owner + ", receiveMultiCastListID=" + _receiveMultiCastListID + ", sendMultiCastListID=" + _sendMultiCastListID + ", sharedEnterprise=" + _sharedEnterprise + ", statsProfileID=" + _statsProfileID + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", threatPreventionManagementEnabled=" + _threatPreventionManagementEnabled + ", useGlobalMAC=" + _useGlobalMAC + ", virtualFirewallRulesEnabled=" + _virtualFirewallRulesEnabled + ", webFilterEnabled=" + _webFilterEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

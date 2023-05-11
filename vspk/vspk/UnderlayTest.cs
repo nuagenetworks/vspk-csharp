@@ -102,7 +102,12 @@ public class UnderlayTest: RestObject {
    
 
    
+   [JsonIgnore]
+   private TestRunsFetcher _testRuns;
+   
    public UnderlayTest() {
+      
+      _testRuns = new TestRunsFetcher(this);
       
    }
 
@@ -306,6 +311,10 @@ public class UnderlayTest: RestObject {
 
    
 
+   
+   public TestRunsFetcher getTestRuns() {
+      return _testRuns;
+   }
    
 
    public String toString() {

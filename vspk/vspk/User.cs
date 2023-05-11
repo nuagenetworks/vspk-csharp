@@ -47,6 +47,15 @@ public class User: RestObject {
    public enum EManagementMode {CMS,DEFAULT };
 
    
+   [JsonProperty("LDAPDomain")]
+   protected String _LDAPDomain;
+   
+   [JsonProperty("LDAPEnabled")]
+   protected bool _LDAPEnabled;
+   
+   [JsonProperty("LDAPId")]
+   protected String _LDAPId;
+   
    [JsonProperty("LDAPUserDN")]
    protected String _LDAPUserDN;
    
@@ -151,6 +160,39 @@ public class User: RestObject {
       
       _vMs = new VMsFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NULDAPDomain {
+      get {
+         return _LDAPDomain;
+      }
+      set {
+         this._LDAPDomain = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NULDAPEnabled {
+      get {
+         return _LDAPEnabled;
+      }
+      set {
+         this._LDAPEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULDAPId {
+      get {
+         return _LDAPId;
+      }
+      set {
+         this._LDAPId = value;
+      }
    }
 
    
@@ -410,7 +452,7 @@ public class User: RestObject {
    
 
    public String toString() {
-      return "User [" + "LDAPUserDN=" + _LDAPUserDN + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", creationDate=" + _creationDate + ", disableCertificateAuth=" + _disableCertificateAuth + ", disablePasswordAuth=" + _disablePasswordAuth + ", disabled=" + _disabled + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", managementMode=" + _managementMode + ", mobileNumber=" + _mobileNumber + ", owner=" + _owner + ", password=" + _password + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "User [" + "LDAPDomain=" + _LDAPDomain + ", LDAPEnabled=" + _LDAPEnabled + ", LDAPId=" + _LDAPId + ", LDAPUserDN=" + _LDAPUserDN + ", avatarData=" + _avatarData + ", avatarType=" + _avatarType + ", creationDate=" + _creationDate + ", disableCertificateAuth=" + _disableCertificateAuth + ", disablePasswordAuth=" + _disablePasswordAuth + ", disabled=" + _disabled + ", email=" + _email + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", firstName=" + _firstName + ", lastName=" + _lastName + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", managementMode=" + _managementMode + ", mobileNumber=" + _mobileNumber + ", owner=" + _owner + ", password=" + _password + ", userName=" + _userName + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

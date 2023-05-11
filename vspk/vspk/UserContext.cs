@@ -69,6 +69,9 @@ public class UserContext: RestObject {
    
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
+   
+   [JsonProperty("enhancedSecurityEnabled")]
+   protected bool _enhancedSecurityEnabled;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("entityScope")]
    protected EEntityScope? _entityScope;
@@ -81,6 +84,9 @@ public class UserContext: RestObject {
    
    [JsonProperty("flowCollectionEnabled")]
    protected bool _flowCollectionEnabled;
+   
+   [JsonProperty("globalNetworkMacroGroupsEnabled")]
+   protected bool _globalNetworkMacroGroupsEnabled;
    
    [JsonProperty("googleMapsAPIKey")]
    protected String _googleMapsAPIKey;
@@ -232,6 +238,17 @@ public class UserContext: RestObject {
 
    
    [JsonIgnore]
+   public bool NUEnhancedSecurityEnabled {
+      get {
+         return _enhancedSecurityEnabled;
+      }
+      set {
+         this._enhancedSecurityEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public EEntityScope? NUEntityScope {
       get {
          return _entityScope;
@@ -271,6 +288,17 @@ public class UserContext: RestObject {
       }
       set {
          this._flowCollectionEnabled = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUGlobalNetworkMacroGroupsEnabled {
+      get {
+         return _globalNetworkMacroGroupsEnabled;
+      }
+      set {
+         this._globalNetworkMacroGroupsEnabled = value;
       }
    }
 
@@ -434,7 +462,7 @@ public class UserContext: RestObject {
    
 
    public String toString() {
-      return "UserContext [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSFeatureEnabled=" + _VSSFeatureEnabled + ", VSSStatsInterval=" + _VSSStatsInterval + ", allowEnterpriseAvatarOnNSG=" + _allowEnterpriseAvatarOnNSG + ", creationDate=" + _creationDate + ", deniedFlowCollectionEnabled=" + _deniedFlowCollectionEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", explicitACLMatchingEnabled=" + _explicitACLMatchingEnabled + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", maintenanceModeEnabled=" + _maintenanceModeEnabled + ", owner=" + _owner + ", pageSize=" + _pageSize + ", rbacEnabled=" + _rbacEnabled + ", statisticsEnabled=" + _statisticsEnabled + ", statsDatabaseProxy=" + _statsDatabaseProxy + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", systemAvatarData=" + _systemAvatarData + ", systemAvatarType=" + _systemAvatarType + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "UserContext [" + "AARFlowStatsInterval=" + _AARFlowStatsInterval + ", AARProbeStatsInterval=" + _AARProbeStatsInterval + ", VSSFeatureEnabled=" + _VSSFeatureEnabled + ", VSSStatsInterval=" + _VSSStatsInterval + ", allowEnterpriseAvatarOnNSG=" + _allowEnterpriseAvatarOnNSG + ", creationDate=" + _creationDate + ", deniedFlowCollectionEnabled=" + _deniedFlowCollectionEnabled + ", embeddedMetadata=" + _embeddedMetadata + ", enhancedSecurityEnabled=" + _enhancedSecurityEnabled + ", entityScope=" + _entityScope + ", explicitACLMatchingEnabled=" + _explicitACLMatchingEnabled + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", globalNetworkMacroGroupsEnabled=" + _globalNetworkMacroGroupsEnabled + ", googleMapsAPIKey=" + _googleMapsAPIKey + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", maintenanceModeEnabled=" + _maintenanceModeEnabled + ", owner=" + _owner + ", pageSize=" + _pageSize + ", rbacEnabled=" + _rbacEnabled + ", statisticsEnabled=" + _statisticsEnabled + ", statsDatabaseProxy=" + _statsDatabaseProxy + ", statsTSDBServerAddress=" + _statsTSDBServerAddress + ", systemAvatarData=" + _systemAvatarData + ", systemAvatarType=" + _systemAvatarType + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

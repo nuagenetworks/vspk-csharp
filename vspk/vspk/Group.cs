@@ -47,8 +47,14 @@ public class Group: RestObject {
    public enum ERole {ADMINOPERATOR,AUDITADMIN,CMS,CSPOPERATOR,CSPROOT,JMS,NETCONFMGR,ORGADMIN,ORGNETWORKDESIGNER,ORGUSER,POSTACTIVATION,PREACTIVATION,SECURITYADMINISTRATOR,STATS,SYSTEM,UNKNOWN,USER };
 
    
+   [JsonProperty("LDAPDomain")]
+   protected String _LDAPDomain;
+   
    [JsonProperty("LDAPGroupDN")]
    protected String _LDAPGroupDN;
+   
+   [JsonProperty("LDAPId")]
+   protected String _LDAPId;
    
    [JsonProperty("accountRestrictions")]
    protected bool _accountRestrictions;
@@ -125,12 +131,34 @@ public class Group: RestObject {
 
    
    [JsonIgnore]
+   public String NULDAPDomain {
+      get {
+         return _LDAPDomain;
+      }
+      set {
+         this._LDAPDomain = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULDAPGroupDN {
       get {
          return _LDAPGroupDN;
       }
       set {
          this._LDAPGroupDN = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NULDAPId {
+      get {
+         return _LDAPId;
+      }
+      set {
+         this._LDAPId = value;
       }
    }
 
@@ -313,7 +341,7 @@ public class Group: RestObject {
    
 
    public String toString() {
-      return "Group [" + "LDAPGroupDN=" + _LDAPGroupDN + ", accountRestrictions=" + _accountRestrictions + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", managementMode=" + _managementMode + ", name=" + _name + ", owner=" + _owner + ", private=" + _private + ", restrictionDate=" + _restrictionDate + ", role=" + _role + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Group [" + "LDAPDomain=" + _LDAPDomain + ", LDAPGroupDN=" + _LDAPGroupDN + ", LDAPId=" + _LDAPId + ", accountRestrictions=" + _accountRestrictions + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", managementMode=" + _managementMode + ", name=" + _name + ", owner=" + _owner + ", private=" + _private + ", restrictionDate=" + _restrictionDate + ", role=" + _role + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

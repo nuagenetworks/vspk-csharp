@@ -52,6 +52,9 @@ public class NetconfManager: RestObject {
    [JsonProperty("creationDate")]
    protected String _creationDate;
    
+   [JsonProperty("description")]
+   protected String _description;
+   
    [JsonProperty("embeddedMetadata")]
    protected System.Collections.Generic.List<Metadata> _embeddedMetadata;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -137,6 +140,17 @@ public class NetconfManager: RestObject {
       }
       set {
          this._creationDate = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUDescription {
+      get {
+         return _description;
+      }
+      set {
+         this._description = value;
       }
    }
 
@@ -279,7 +293,7 @@ public class NetconfManager: RestObject {
    
 
    public String toString() {
-      return "NetconfManager [" + "assocEntityType=" + _assocEntityType + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", eventProcessingEnabled=" + _eventProcessingEnabled + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", release=" + _release + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "NetconfManager [" + "assocEntityType=" + _assocEntityType + ", creationDate=" + _creationDate + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", eventProcessingEnabled=" + _eventProcessingEnabled + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", release=" + _release + ", status=" + _status + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

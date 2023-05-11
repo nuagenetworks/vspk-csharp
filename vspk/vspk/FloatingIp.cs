@@ -78,6 +78,9 @@ public class FloatingIp: RestObject {
    [JsonProperty("ingressRateLimiterID")]
    protected String _ingressRateLimiterID;
    
+   [JsonProperty("isSecondaryFIP")]
+   protected bool _isSecondaryFIP;
+   
    [JsonProperty("lastUpdatedBy")]
    protected String _lastUpdatedBy;
    
@@ -241,6 +244,17 @@ public class FloatingIp: RestObject {
 
    
    [JsonIgnore]
+   public bool NUIsSecondaryFIP {
+      get {
+         return _isSecondaryFIP;
+      }
+      set {
+         this._isSecondaryFIP = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NULastUpdatedBy {
       get {
          return _lastUpdatedBy;
@@ -297,7 +311,7 @@ public class FloatingIp: RestObject {
    
 
    public String toString() {
-      return "FloatingIp [" + "accessControl=" + _accessControl + ", address=" + _address + ", assigned=" + _assigned + ", assignedToObjectType=" + _assignedToObjectType + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", creationDate=" + _creationDate + ", egressRateLimiterID=" + _egressRateLimiterID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ingressRateLimiterID=" + _ingressRateLimiterID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "FloatingIp [" + "accessControl=" + _accessControl + ", address=" + _address + ", assigned=" + _assigned + ", assignedToObjectType=" + _assignedToObjectType + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", creationDate=" + _creationDate + ", egressRateLimiterID=" + _egressRateLimiterID + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", ingressRateLimiterID=" + _ingressRateLimiterID + ", isSecondaryFIP=" + _isSecondaryFIP + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -220,6 +220,9 @@ public class Me: RestObject {
    private GlobalMetadatasFetcher _globalMetadatas;
    
    [JsonIgnore]
+   private GNMIProfilesFetcher _gNMIProfiles;
+   
+   [JsonIgnore]
    private HostInterfacesFetcher _hostInterfaces;
    
    [JsonIgnore]
@@ -257,6 +260,9 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private L4ServicesFetcher _l4Services;
+   
+   [JsonIgnore]
+   private L4ServiceGroupsFetcher _l4ServiceGroups;
    
    [JsonIgnore]
    private L7applicationsignaturesFetcher _l7applicationsignatures;
@@ -368,6 +374,9 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private StatsCollectorInfosFetcher _statsCollectorInfos;
+   
+   [JsonIgnore]
+   private StatisticsprofilesFetcher _statisticsprofiles;
    
    [JsonIgnore]
    private SubnetsFetcher _subnets;
@@ -508,6 +517,8 @@ public class Me: RestObject {
       
       _globalMetadatas = new GlobalMetadatasFetcher(this);
       
+      _gNMIProfiles = new GNMIProfilesFetcher(this);
+      
       _hostInterfaces = new HostInterfacesFetcher(this);
       
       _infrastructureAccessProfiles = new InfrastructureAccessProfilesFetcher(this);
@@ -533,6 +544,8 @@ public class Me: RestObject {
       _l2Domains = new L2DomainsFetcher(this);
       
       _l4Services = new L4ServicesFetcher(this);
+      
+      _l4ServiceGroups = new L4ServiceGroupsFetcher(this);
       
       _l7applicationsignatures = new L7applicationsignaturesFetcher(this);
       
@@ -607,6 +620,8 @@ public class Me: RestObject {
       _staticRoutes = new StaticRoutesFetcher(this);
       
       _statsCollectorInfos = new StatsCollectorInfosFetcher(this);
+      
+      _statisticsprofiles = new StatisticsprofilesFetcher(this);
       
       _subnets = new SubnetsFetcher(this);
       
@@ -1073,6 +1088,10 @@ public class Me: RestObject {
       return _globalMetadatas;
    }
    
+   public GNMIProfilesFetcher getGNMIProfiles() {
+      return _gNMIProfiles;
+   }
+   
    public HostInterfacesFetcher getHostInterfaces() {
       return _hostInterfaces;
    }
@@ -1123,6 +1142,10 @@ public class Me: RestObject {
    
    public L4ServicesFetcher getL4Services() {
       return _l4Services;
+   }
+   
+   public L4ServiceGroupsFetcher getL4ServiceGroups() {
+      return _l4ServiceGroups;
    }
    
    public L7applicationsignaturesFetcher getL7applicationsignatures() {
@@ -1271,6 +1294,10 @@ public class Me: RestObject {
    
    public StatsCollectorInfosFetcher getStatsCollectorInfos() {
       return _statsCollectorInfos;
+   }
+   
+   public StatisticsprofilesFetcher getStatisticsprofiles() {
+      return _statisticsprofiles;
    }
    
    public SubnetsFetcher getSubnets() {
