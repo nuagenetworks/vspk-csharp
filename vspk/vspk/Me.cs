@@ -196,6 +196,9 @@ public class Me: RestObject {
    private EnterprisesFetcher _enterprises;
    
    [JsonIgnore]
+   private EnterpriseNetworksFetcher _enterpriseNetworks;
+   
+   [JsonIgnore]
    private EnterpriseProfilesFetcher _enterpriseProfiles;
    
    [JsonIgnore]
@@ -290,6 +293,9 @@ public class Me: RestObject {
    
    [JsonIgnore]
    private NetworkLayoutsFetcher _networkLayouts;
+   
+   [JsonIgnore]
+   private NetworkMacroGroupsFetcher _networkMacroGroups;
    
    [JsonIgnore]
    private NetworkPerformanceMeasurementsFetcher _networkPerformanceMeasurements;
@@ -501,6 +507,8 @@ public class Me: RestObject {
       
       _enterprises = new EnterprisesFetcher(this);
       
+      _enterpriseNetworks = new EnterpriseNetworksFetcher(this);
+      
       _enterpriseProfiles = new EnterpriseProfilesFetcher(this);
       
       _esIlmPolicies = new EsIlmPoliciesFetcher(this);
@@ -564,6 +572,8 @@ public class Me: RestObject {
       _netconfProfiles = new NetconfProfilesFetcher(this);
       
       _networkLayouts = new NetworkLayoutsFetcher(this);
+      
+      _networkMacroGroups = new NetworkMacroGroupsFetcher(this);
       
       _networkPerformanceMeasurements = new NetworkPerformanceMeasurementsFetcher(this);
       
@@ -1056,6 +1066,10 @@ public class Me: RestObject {
       return _enterprises;
    }
    
+   public EnterpriseNetworksFetcher getEnterpriseNetworks() {
+      return _enterpriseNetworks;
+   }
+   
    public EnterpriseProfilesFetcher getEnterpriseProfiles() {
       return _enterpriseProfiles;
    }
@@ -1182,6 +1196,10 @@ public class Me: RestObject {
    
    public NetworkLayoutsFetcher getNetworkLayouts() {
       return _networkLayouts;
+   }
+   
+   public NetworkMacroGroupsFetcher getNetworkMacroGroups() {
+      return _networkMacroGroups;
    }
    
    public NetworkPerformanceMeasurementsFetcher getNetworkPerformanceMeasurements() {

@@ -53,6 +53,7 @@ public class L2Domain: RestObject {
    public enum EMaintenanceMode {DISABLED,ENABLED,ENABLED_INHERITED };
    public enum EMulticast {DISABLED,ENABLED,INHERITED };
    public enum EPolicyChangeStatus {APPLIED,DISCARDED,STARTED };
+   public enum EStatefulMode {REFLEXIVE,STATEFUL };
    public enum EThreatIntelligenceEnabled {DISABLED,ENABLED,INHERITED };
    public enum EUplinkPreference {PRIMARY,PRIMARY_SECONDARY,SECONDARY,SECONDARY_PRIMARY,SYMMETRIC };
    public enum EUseGlobalMAC {DISABLED,ENABLED };
@@ -183,6 +184,9 @@ public class L2Domain: RestObject {
    
    [JsonProperty("serviceID")]
    protected long? _serviceID;
+   [JsonConverter(typeof(StringEnumConverter))]
+   [JsonProperty("statefulMode")]
+   protected EStatefulMode? _statefulMode;
    
    [JsonProperty("stretched")]
    protected bool _stretched;
@@ -201,6 +205,9 @@ public class L2Domain: RestObject {
    
    [JsonProperty("vnId")]
    protected long? _vnId;
+   
+   [JsonProperty("wbxDisableMacMove")]
+   protected bool _wbxDisableMacMove;
    
 
    
@@ -923,6 +930,17 @@ public class L2Domain: RestObject {
 
    
    [JsonIgnore]
+   public EStatefulMode? NUStatefulMode {
+      get {
+         return _statefulMode;
+      }
+      set {
+         this._statefulMode = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUStretched {
       get {
          return _stretched;
@@ -984,6 +1002,17 @@ public class L2Domain: RestObject {
       }
       set {
          this._vnId = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public bool NUWbxDisableMacMove {
+      get {
+         return _wbxDisableMacMove;
+      }
+      set {
+         this._wbxDisableMacMove = value;
       }
    }
 
@@ -1192,7 +1221,7 @@ public class L2Domain: RestObject {
    
 
    public String toString() {
-      return "L2Domain [" + "DHCPManaged=" + _DHCPManaged + ", DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", VXLANECMPEnabled=" + _VXLANECMPEnabled + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", associatedUnderlayID=" + _associatedUnderlayID + ", color=" + _color + ", creationDate=" + _creationDate + ", customerID=" + _customerID + ", description=" + _description + ", dualStackDynamicIPAllocation=" + _dualStackDynamicIPAllocation + ", embeddedMetadata=" + _embeddedMetadata + ", enableDHCPv4=" + _enableDHCPv4 + ", enableDHCPv6=" + _enableDHCPv6 + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", flowCount=" + _flowCount + ", flowLimitEnabled=" + _flowLimitEnabled + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", ingressReplicationEnabled=" + _ingressReplicationEnabled + ", interfaceID=" + _interfaceID + ", l2EncapType=" + _l2EncapType + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", owner=" + _owner + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", routedVPLSEnabled=" + _routedVPLSEnabled + ", serviceID=" + _serviceID + ", stretched=" + _stretched + ", templateID=" + _templateID + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", uplinkPreference=" + _uplinkPreference + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "L2Domain [" + "DHCPManaged=" + _DHCPManaged + ", DPI=" + _DPI + ", IPType=" + _IPType + ", IPv6Address=" + _IPv6Address + ", IPv6Gateway=" + _IPv6Gateway + ", VXLANECMPEnabled=" + _VXLANECMPEnabled + ", address=" + _address + ", associatedMulticastChannelMapID=" + _associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + _associatedSharedNetworkResourceID + ", associatedUnderlayID=" + _associatedUnderlayID + ", color=" + _color + ", creationDate=" + _creationDate + ", customerID=" + _customerID + ", description=" + _description + ", dualStackDynamicIPAllocation=" + _dualStackDynamicIPAllocation + ", embeddedMetadata=" + _embeddedMetadata + ", enableDHCPv4=" + _enableDHCPv4 + ", enableDHCPv6=" + _enableDHCPv6 + ", encryption=" + _encryption + ", entityScope=" + _entityScope + ", entityState=" + _entityState + ", externalID=" + _externalID + ", flowCollectionEnabled=" + _flowCollectionEnabled + ", flowCount=" + _flowCount + ", flowLimitEnabled=" + _flowLimitEnabled + ", gateway=" + _gateway + ", gatewayMACAddress=" + _gatewayMACAddress + ", ingressReplicationEnabled=" + _ingressReplicationEnabled + ", interfaceID=" + _interfaceID + ", l2EncapType=" + _l2EncapType + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", maintenanceMode=" + _maintenanceMode + ", multicast=" + _multicast + ", name=" + _name + ", netmask=" + _netmask + ", owner=" + _owner + ", policyChangeStatus=" + _policyChangeStatus + ", routeDistinguisher=" + _routeDistinguisher + ", routeTarget=" + _routeTarget + ", routedVPLSEnabled=" + _routedVPLSEnabled + ", serviceID=" + _serviceID + ", statefulMode=" + _statefulMode + ", stretched=" + _stretched + ", templateID=" + _templateID + ", threatIntelligenceEnabled=" + _threatIntelligenceEnabled + ", uplinkPreference=" + _uplinkPreference + ", useGlobalMAC=" + _useGlobalMAC + ", vnId=" + _vnId + ", wbxDisableMacMove=" + _wbxDisableMacMove + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

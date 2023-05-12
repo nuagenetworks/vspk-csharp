@@ -75,6 +75,9 @@ public class DHCPv6Option: RestObject {
    [JsonProperty("owner")]
    protected String _owner;
    
+   [JsonProperty("subOptionType")]
+   protected String _subOptionType;
+   
    [JsonProperty("type")]
    protected String _type;
    
@@ -219,6 +222,17 @@ public class DHCPv6Option: RestObject {
 
    
    [JsonIgnore]
+   public String NUSubOptionType {
+      get {
+         return _subOptionType;
+      }
+      set {
+         this._subOptionType = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public String NUType {
       get {
          return _type;
@@ -260,7 +274,7 @@ public class DHCPv6Option: RestObject {
    
 
    public String toString() {
-      return "DHCPv6Option [" + "actualType=" + _actualType + ", actualValues=" + _actualValues + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", length=" + _length + ", owner=" + _owner + ", type=" + _type + ", value=" + _value + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "DHCPv6Option [" + "actualType=" + _actualType + ", actualValues=" + _actualValues + ", creationDate=" + _creationDate + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", length=" + _length + ", owner=" + _owner + ", subOptionType=" + _subOptionType + ", type=" + _type + ", value=" + _value + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -44,6 +44,9 @@ public class Statisticsprofile: RestObject {
    
 
    
+   [JsonProperty("cloneFrom")]
+   protected String _cloneFrom;
+   
    [JsonProperty("description")]
    protected String _description;
    
@@ -72,6 +75,17 @@ public class Statisticsprofile: RestObject {
       
       _nSGateways = new NSGatewaysFetcher(this);
       
+   }
+
+   
+   [JsonIgnore]
+   public String NUCloneFrom {
+      get {
+         return _cloneFrom;
+      }
+      set {
+         this._cloneFrom = value;
+      }
    }
 
    
@@ -124,7 +138,7 @@ public class Statisticsprofile: RestObject {
    
 
    public String toString() {
-      return "Statisticsprofile [" + "description=" + _description + ", flowStatsAggregationEnabled=" + _flowStatsAggregationEnabled + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "Statisticsprofile [" + "cloneFrom=" + _cloneFrom + ", description=" + _description + ", flowStatsAggregationEnabled=" + _flowStatsAggregationEnabled + ", name=" + _name + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

@@ -241,6 +241,9 @@ public class NSGateway: RestObject {
    [JsonProperty("owner")]
    protected String _owner;
    
+   [JsonProperty("pathMTUDiscovery")]
+   protected bool _pathMTUDiscovery;
+   
    [JsonProperty("pending")]
    protected bool _pending;
    [JsonConverter(typeof(StringEnumConverter))]
@@ -1090,6 +1093,17 @@ public class NSGateway: RestObject {
 
    
    [JsonIgnore]
+   public bool NUPathMTUDiscovery {
+      get {
+         return _pathMTUDiscovery;
+      }
+      set {
+         this._pathMTUDiscovery = value;
+      }
+   }
+
+   
+   [JsonIgnore]
    public bool NUPending {
       get {
          return _pending;
@@ -1341,7 +1355,7 @@ public class NSGateway: RestObject {
    
 
    public String toString() {
-      return "NSGateway [" + "AARApplicationReleaseDate=" + _AARApplicationReleaseDate + ", AARApplicationVersion=" + _AARApplicationVersion + ", BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUCoreAllocation=" + _CPUCoreAllocation + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NATTraversalEnabled=" + _NATTraversalEnabled + ", NSGVersion=" + _NSGVersion + ", SGTPropagationEnabled=" + _SGTPropagationEnabled + ", SKU=" + _SKU + ", SSHService=" + _SSHService + ", TCPMSSEnabled=" + _TCPMSSEnabled + ", TCPMaximumSegmentSize=" + _TCPMaximumSegmentSize + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", VSDAARApplicationVersion=" + _VSDAARApplicationVersion + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNSGMigrationProfileID=" + _associatedNSGMigrationProfileID + ", associatedNSGUpgradeProfileID=" + _associatedNSGUpgradeProfileID + ", associatedOverlayManagementProfileID=" + _associatedOverlayManagementProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", certValidityDays=" + _certValidityDays + ", configurationReloadState=" + _configurationReloadState + ", configurationStatus=" + _configurationStatus + ", configureLoadBalancing=" + _configureLoadBalancing + ", controlTrafficCOSValue=" + _controlTrafficCOSValue + ", controlTrafficDSCPValue=" + _controlTrafficDSCPValue + ", creationDate=" + _creationDate + ", datapathID=" + _datapathID + ", derivedSSHServiceState=" + _derivedSSHServiceState + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", functions=" + _functions + ", gatewayConfigRawVersion=" + _gatewayConfigRawVersion + ", gatewayConfigVersion=" + _gatewayConfigVersion + ", gatewayConnected=" + _gatewayConnected + ", hugePageSetting=" + _hugePageSetting + ", inheritedSSHServiceState=" + _inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + _lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", libraries=" + _libraries + ", locationID=" + _locationID + ", name=" + _name + ", networkAcceleration=" + _networkAcceleration + ", operationMode=" + _operationMode + ", operationStatus=" + _operationStatus + ", owner=" + _owner + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", statsProfileID=" + _statsProfileID + ", syslogLevel=" + _syslogLevel + ", systemID=" + _systemID + ", templateID=" + _templateID + ", threatPreventionEnabled=" + _threatPreventionEnabled + ", tunnelShaping=" + _tunnelShaping + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "NSGateway [" + "AARApplicationReleaseDate=" + _AARApplicationReleaseDate + ", AARApplicationVersion=" + _AARApplicationVersion + ", BIOSReleaseDate=" + _BIOSReleaseDate + ", BIOSVersion=" + _BIOSVersion + ", CPUCoreAllocation=" + _CPUCoreAllocation + ", CPUType=" + _CPUType + ", MACAddress=" + _MACAddress + ", NATTraversalEnabled=" + _NATTraversalEnabled + ", NSGVersion=" + _NSGVersion + ", SGTPropagationEnabled=" + _SGTPropagationEnabled + ", SKU=" + _SKU + ", SSHService=" + _SSHService + ", TCPMSSEnabled=" + _TCPMSSEnabled + ", TCPMaximumSegmentSize=" + _TCPMaximumSegmentSize + ", TPMStatus=" + _TPMStatus + ", TPMVersion=" + _TPMVersion + ", UUID=" + _UUID + ", VSDAARApplicationVersion=" + _VSDAARApplicationVersion + ", ZFBMatchAttribute=" + _ZFBMatchAttribute + ", ZFBMatchValue=" + _ZFBMatchValue + ", associatedGatewaySecurityID=" + _associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + _associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + _associatedNSGInfoID + ", associatedNSGMigrationProfileID=" + _associatedNSGMigrationProfileID + ", associatedNSGUpgradeProfileID=" + _associatedNSGUpgradeProfileID + ", associatedOverlayManagementProfileID=" + _associatedOverlayManagementProfileID + ", autoDiscGatewayID=" + _autoDiscGatewayID + ", bootstrapID=" + _bootstrapID + ", bootstrapStatus=" + _bootstrapStatus + ", certValidityDays=" + _certValidityDays + ", configurationReloadState=" + _configurationReloadState + ", configurationStatus=" + _configurationStatus + ", configureLoadBalancing=" + _configureLoadBalancing + ", controlTrafficCOSValue=" + _controlTrafficCOSValue + ", controlTrafficDSCPValue=" + _controlTrafficDSCPValue + ", creationDate=" + _creationDate + ", datapathID=" + _datapathID + ", derivedSSHServiceState=" + _derivedSSHServiceState + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", enterpriseID=" + _enterpriseID + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", family=" + _family + ", functions=" + _functions + ", gatewayConfigRawVersion=" + _gatewayConfigRawVersion + ", gatewayConfigVersion=" + _gatewayConfigVersion + ", gatewayConnected=" + _gatewayConnected + ", hugePageSetting=" + _hugePageSetting + ", inheritedSSHServiceState=" + _inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + _lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", libraries=" + _libraries + ", locationID=" + _locationID + ", name=" + _name + ", networkAcceleration=" + _networkAcceleration + ", operationMode=" + _operationMode + ", operationStatus=" + _operationStatus + ", owner=" + _owner + ", pathMTUDiscovery=" + _pathMTUDiscovery + ", pending=" + _pending + ", permittedAction=" + _permittedAction + ", personality=" + _personality + ", productName=" + _productName + ", redundancyGroupID=" + _redundancyGroupID + ", serialNumber=" + _serialNumber + ", statsProfileID=" + _statsProfileID + ", syslogLevel=" + _syslogLevel + ", systemID=" + _systemID + ", templateID=" + _templateID + ", threatPreventionEnabled=" + _threatPreventionEnabled + ", tunnelShaping=" + _tunnelShaping + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    
