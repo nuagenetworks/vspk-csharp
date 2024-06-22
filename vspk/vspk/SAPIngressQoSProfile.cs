@@ -51,6 +51,9 @@ public class SAPIngressQoSProfile: RestObject {
    
    [JsonProperty("blobText")]
    protected String _blobText;
+   
+   [JsonProperty("blobText_SRL_23_10")]
+   protected String _blobText_SRL_23_10;
    [JsonConverter(typeof(StringEnumConverter))]
    [JsonProperty("blobType")]
    protected EBlobType? _blobType;
@@ -125,6 +128,17 @@ public class SAPIngressQoSProfile: RestObject {
       }
       set {
          this._blobText = value;
+      }
+   }
+
+   
+   [JsonIgnore]
+   public String NUBlobText_SRL_23_10 {
+      get {
+         return _blobText_SRL_23_10;
+      }
+      set {
+         this._blobText_SRL_23_10 = value;
       }
    }
 
@@ -266,7 +280,7 @@ public class SAPIngressQoSProfile: RestObject {
    
 
    public String toString() {
-      return "SAPIngressQoSProfile [" + "assocEntityType=" + _assocEntityType + ", blobText=" + _blobText + ", blobType=" + _blobType + ", creationDate=" + _creationDate + ", customerID=" + _customerID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
+      return "SAPIngressQoSProfile [" + "assocEntityType=" + _assocEntityType + ", blobText=" + _blobText + ", blobText_SRL_23_10=" + _blobText_SRL_23_10 + ", blobType=" + _blobType + ", creationDate=" + _creationDate + ", customerID=" + _customerID + ", description=" + _description + ", embeddedMetadata=" + _embeddedMetadata + ", entityScope=" + _entityScope + ", externalID=" + _externalID + ", lastUpdatedBy=" + _lastUpdatedBy + ", lastUpdatedDate=" + _lastUpdatedDate + ", name=" + _name + ", owner=" + _owner + ", id=" + NUId + ", parentId=" + NUParentId + ", parentType=" + NUParentType  + "]";
    }
    
    

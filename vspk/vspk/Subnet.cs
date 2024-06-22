@@ -285,6 +285,9 @@ public class Subnet: RestObject {
    private EventLogsFetcher _eventLogs;
    
    [JsonIgnore]
+   private FloatingIpsFetcher _floatingIps;
+   
+   [JsonIgnore]
    private GatewaysFetcher _gateways;
    
    [JsonIgnore]
@@ -371,6 +374,8 @@ public class Subnet: RestObject {
       _enterprisePermissions = new EnterprisePermissionsFetcher(this);
       
       _eventLogs = new EventLogsFetcher(this);
+      
+      _floatingIps = new FloatingIpsFetcher(this);
       
       _gateways = new GatewaysFetcher(this);
       
@@ -1163,6 +1168,10 @@ public class Subnet: RestObject {
    
    public EventLogsFetcher getEventLogs() {
       return _eventLogs;
+   }
+   
+   public FloatingIpsFetcher getFloatingIps() {
+      return _floatingIps;
    }
    
    public GatewaysFetcher getGateways() {
